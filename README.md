@@ -2,6 +2,10 @@
 
 A comprehensive rework of Minecraft progression based on real-life tech.
 
+Contact/Issues:
+https://github.com/AndroidDoctorr/Materia/issues
+https://discord.gg/pTdnkRHH
+
 Inspired by:
 
 - Primitive Technology: https://www.youtube.com/channel/UCAL3JXZSzSm8AlZyD3nQdBA

@@ -16,6 +16,10 @@ Materia is a progression overhaul mod that replaces “one-step” vanilla advan
 
 **Materia** is a Minecraft progression overhaul that builds a realistic stone→metalworking tech tree around tool- and station-gated crafting (knapping/hewing, kilns, hot-metal forging on tiered anvils), plus interconnected systems like liquids/fermentation, textiles/storage, expanded dyes, and advanced mechanics like logic and power components.
 
+## 256 characters or less
+
+Materia overhauls Minecraft progression with station- and tool-gated crafting: knap stone, hew wood, fire kilns, forge on tiered anvils, manage heat and liquids, and build into textiles, dyes, logic, power components, and cannons.
+
 ## License
 
 Materia is licensed under the **MIT License**. See `../LICENSE`.
