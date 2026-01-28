@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:squash"
+        }
+    ],
+    "result": {
+        "item": "materia:squash_seeds",
+        "count": 4
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "tag": "materia:rough_planks"
+        },
+        {
+            "tag": "materia:rough_planks"
+        },
+        {
+            "tag": "materia:rough_planks"
+        },
+        {
+            "item": "materia:bow_drill"
+        }
+    ],
+    "result": {
+        "item": "minecraft:campfire",
+        "count": 1
+    }
+}

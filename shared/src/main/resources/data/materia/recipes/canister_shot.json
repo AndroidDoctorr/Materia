@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SPS",
+        "PDP",
+        "SPS"
+    ],
+    "key": {
+        "P": {
+            "tag": "materia:soft_plates"
+        },
+        "S": {
+            "tag": "materia:shrapnel"
+        },
+        "D": {
+            "item": "materia:dynamite"
+        }
+    },
+    "result": {
+        "item": "materia:canister_shot",
+        "count": 1
+    }
+}

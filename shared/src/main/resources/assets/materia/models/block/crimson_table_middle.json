@@ -1,0 +1,7 @@
+﻿{
+    "parent": "materia:block/acacia_table_middle",
+    "textures": {
+        "all": "minecraft:block/crimson_planks",
+        "particle": "minecraft:block/crimson_planks"
+    }
+}

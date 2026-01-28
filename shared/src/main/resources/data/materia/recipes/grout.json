@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:pile_of_sand"
+        },
+        {
+            "item": "materia:ash"
+        },
+        {
+            "tag": "materia:lime"
+        },
+        [
+            { "tag": "materia:water" },
+            { "type": "forge:partial_nbt", "item": "minecraft:potion", "nbt": "{Potion:\"minecraft:water\"}" }
+        ]
+    ],
+    "result": {
+        "item": "materia:grout",
+        "count": 4
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "replace": false,
+    "values": [
+        "#materia:hot_sealants",
+        "minecraft:honeycomb"
+    ]
+}

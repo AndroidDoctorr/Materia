@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SCS",
+        "CNC",
+        "SCS"
+    ],
+    "key": {
+        "C": {
+            "item": "minecraft:green_carpet"
+        },
+        "S": {
+            "item": "materia:green_string"
+        },
+        "N": {
+            "tag": "materia:all_needles"
+        }
+    },
+    "result": {
+        "item": "minecraft:green_wool",
+        "count": 1
+    }
+}

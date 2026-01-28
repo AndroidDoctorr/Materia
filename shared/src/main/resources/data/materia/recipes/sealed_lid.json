@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:lid"
+        },
+        {
+            "tag": "materia:sealants"
+        }
+    ],
+    "result": {
+        "item": "materia:sealed_lid",
+        "count": 1
+    }
+}

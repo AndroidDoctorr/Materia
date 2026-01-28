@@ -1,0 +1,36 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:olive_dye"
+        },
+        {
+            "item": "minecraft:terracotta"
+        },
+        {
+            "item": "minecraft:terracotta"
+        },
+        {
+            "item": "minecraft:terracotta"
+        },
+        {
+            "item": "minecraft:terracotta"
+        },
+        {
+            "item": "minecraft:terracotta"
+        },
+        {
+            "item": "minecraft:terracotta"
+        },
+        {
+            "item": "minecraft:terracotta"
+        },
+        {
+            "item": "minecraft:terracotta"
+        }
+    ],
+    "result": {
+        "item": "materia:olive_terracotta",
+        "count": 8
+    }
+}

@@ -1,0 +1,79 @@
+{
+    "variants": {
+        "r=false,s=false,q=false,facing=north": {
+            "model": "materia:block/rs_latch_0"
+        },
+        "r=false,s=false,q=true,facing=north": {
+            "model": "materia:block/rs_latch_1"
+        },
+        "r=true,s=false,q=false,facing=north": {
+            "model": "materia:block/rs_latch_r"
+        },
+        "r=false,s=true,q=true,facing=north": {
+            "model": "materia:block/rs_latch_s"
+        },
+        "r=true,s=true,q=false,facing=north": {
+            "model": "materia:block/rs_latch_rs"
+        },
+        "r=false,s=false,q=false,facing=east": {
+            "model": "materia:block/rs_latch_0",
+            "y": 90
+        },
+        "r=false,s=false,q=true,facing=east": {
+            "model": "materia:block/rs_latch_1",
+            "y": 90
+        },
+        "r=true,s=false,q=false,facing=east": {
+            "model": "materia:block/rs_latch_r",
+            "y": 90
+        },
+        "r=false,s=true,q=true,facing=east": {
+            "model": "materia:block/rs_latch_s",
+            "y": 90
+        },
+        "r=true,s=true,q=false,facing=east": {
+            "model": "materia:block/rs_latch_rs",
+            "y": 90
+        },
+        "r=false,s=false,q=false,facing=south": {
+            "model": "materia:block/rs_latch_0",
+            "y": 180
+        },
+        "r=false,s=false,q=true,facing=south": {
+            "model": "materia:block/rs_latch_1",
+            "y": 180
+        },
+        "r=true,s=false,q=false,facing=south": {
+            "model": "materia:block/rs_latch_r",
+            "y": 180
+        },
+        "r=false,s=true,q=true,facing=south": {
+            "model": "materia:block/rs_latch_s",
+            "y": 180
+        },
+        "r=true,s=true,q=false,facing=south": {
+            "model": "materia:block/rs_latch_rs",
+            "y": 180
+        },
+        "r=false,s=false,q=false,facing=west": {
+            "model": "materia:block/rs_latch_0",
+            "y": 270
+        },
+        "r=false,s=false,q=true,facing=west": {
+            "model": "materia:block/rs_latch_1",
+            "y": 270
+        },
+        "r=true,s=false,q=false,facing=west": {
+            "model": "materia:block/rs_latch_r",
+            "y": 270
+        },
+        "r=false,s=true,q=true,facing=west": {
+            "model": "materia:block/rs_latch_s",
+            "y": 270
+        },
+        "r=true,s=true,q=false,facing=west": {
+            "model": "materia:block/rs_latch_rs",
+            "y": 270
+        }
+    }
+}

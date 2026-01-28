@@ -1,0 +1,11 @@
+{
+    "replace": false,
+    "values": [
+        "minecraft:raw_iron",
+        "minecraft:flint",
+        "materia:pebble",
+        "#materia:all_rivets",
+        "#materia:all_nails",
+        "#materia:all_nuggets"
+    ]
+}

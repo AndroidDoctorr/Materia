@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " T ",
+        "RRR",
+        "WPW"
+    ],
+    "key": {
+        "R": {
+            "item": "minecraft:redstone"
+        },
+        "T": {
+            "item": "minecraft:redstone_torch"
+        },
+        "W": {
+            "tag": "materia:insulated_wires"
+        },
+        "P": {
+            "tag": "materia:all_plates"
+        }
+    },
+    "result": {
+        "item": "materia:nor_gate",
+        "count": 1
+    }
+}

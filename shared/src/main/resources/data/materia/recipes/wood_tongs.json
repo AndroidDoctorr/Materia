@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "tag": "materia:rough_planks"
+        },
+        {
+            "tag": "materia:rough_planks"
+        },
+        {
+            "tag": "materia:hot_sealants"
+        },
+        {
+            "tag": "materia:basic_lashings"
+        }
+    ],
+    "result": {
+        "item": "materia:wood_tongs",
+        "count": 1
+    }
+}

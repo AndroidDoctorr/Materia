@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:stick"
+        },
+        {
+            "item": "minecraft:stick"
+        },
+        {
+            "item": "materia:pebble"
+        },
+        {
+            "item": "materia:lashing"
+        }
+    ],
+    "result": {
+        "item": "materia:bow_drill",
+        "count": 1
+    }
+}

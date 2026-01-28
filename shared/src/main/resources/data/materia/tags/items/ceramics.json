@@ -1,0 +1,9 @@
+{
+    "replace": false,
+    "values": [
+        "minecraft:brick",
+        "materia:fire_brick",
+        "materia:crucible",
+        "materia:terracotta_roof_tile"
+    ]
+}

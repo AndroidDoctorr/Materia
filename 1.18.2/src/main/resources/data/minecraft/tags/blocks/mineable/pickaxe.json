@@ -1,0 +1,16 @@
+{
+    "replace": false,
+    "values": [
+        "materia:malachite",
+        "materia:magnetite",
+        "materia:sphalerite",
+        "materia:surface_iron_ore",
+        "materia:sulfur_ore",
+        "materia:deepslate_sulfur_ore",
+        "materia:tuff_sulfur_ore",
+        "materia:furnace_kiln",
+        "materia:blast_furnace_kiln",
+        "materia:limestone",
+        "materia:bauxite_ore"
+    ]
+}

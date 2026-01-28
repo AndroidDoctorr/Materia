@@ -1,0 +1,16 @@
+{
+    "replace": false,
+    "entries": [
+        "materia:cow_animal_fat",
+        "materia:cow_bones",
+        "materia:sheep_animal_fat",
+        "materia:sheep_bones",
+        "materia:sheep_wool_clumps",
+        "materia:pig_animal_fat",
+        "materia:pig_bones",
+        "materia:horse_animal_fat",
+        "materia:horse_bones",
+        "materia:leaf_fibers",
+        "materia:grass_fibers"
+    ]
+}

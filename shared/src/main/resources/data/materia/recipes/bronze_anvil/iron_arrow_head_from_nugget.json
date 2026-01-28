@@ -1,0 +1,15 @@
+{
+    "type": "materia:bronze_anvil",
+    "input": {
+        "item": "materia:wrought_iron_nugget",
+        "count": 1
+    },
+    "tool_tags": [
+        "materia:bronze_tongs",
+        "materia:bronze_hammers"
+    ],
+    "result": {
+        "item": "materia:iron_arrow_head",
+        "count": 1
+    }
+}

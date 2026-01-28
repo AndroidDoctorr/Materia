@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:leather_chestpiece"
+        },
+        {
+            "item": "materia:leather_backpiece"
+        },
+        {
+            "item": "materia:leather_shoulder"
+        },
+        {
+            "item": "materia:leather_shoulder"
+        },
+        {
+            "item": "materia:leather_strap"
+        },
+        {
+            "item": "materia:leather_strap"
+        }
+    ],
+    "result": {
+        "item": "minecraft:leather_chestplate",
+        "count": 1
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "HPH",
+        "PLP",
+        "PPP"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:smooth_oak_planks"
+        },
+        "H": {
+            "item": "materia:brass_hinge"
+        },
+        "L": {
+            "item": "materia:brass_latch"
+        }
+    },
+    "result": {
+        "item": "minecraft:chest",
+        "count": 1
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:indigo_dye"
+        },
+        {
+            "item": "minecraft:terracotta"
+        },
+        {
+            "item": "minecraft:terracotta"
+        },
+        {
+            "item": "minecraft:terracotta"
+        },
+        {
+            "item": "minecraft:terracotta"
+        },
+        {
+            "item": "minecraft:terracotta"
+        },
+        {
+            "item": "minecraft:terracotta"
+        },
+        {
+            "item": "minecraft:terracotta"
+        },
+        {
+            "item": "minecraft:terracotta"
+        }
+    ],
+    "result": {
+        "item": "materia:indigo_terracotta",
+        "count": 8
+    }
+}

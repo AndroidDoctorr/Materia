@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:grout"
+        },
+        {
+            "item": "materia:fire_brick"
+        },
+        {
+            "item": "materia:fire_brick"
+        },
+        {
+            "item": "materia:fire_brick"
+        },
+        {
+            "item": "materia:fire_brick"
+        }
+    ],
+    "result": {
+        "item": "materia:fire_brick_block",
+        "count": 1
+    }
+}

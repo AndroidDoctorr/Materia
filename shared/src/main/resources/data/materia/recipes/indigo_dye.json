@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:indigo"
+        }
+    ],
+    "result": {
+        "item": "materia:indigo_dye",
+        "count": 1
+    }
+}

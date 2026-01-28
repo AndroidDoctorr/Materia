@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "RRR",
+        " A "
+    ],
+    "key": {
+        "A": {
+            "item": "materia:iron_anvil"
+        },
+        "R": {
+            "item": "minecraft:redstone"
+        }
+    },
+    "result": {
+        "item": "minecraft:anvil"
+    }
+}

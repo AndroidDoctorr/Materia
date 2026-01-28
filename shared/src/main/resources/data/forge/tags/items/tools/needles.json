@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "materia:iron_needle",
+    "materia:brass_needle",
+    "materia:steel_needle",
+    "materia:bronze_needle",
+    "materia:copper_needle"
+  ]
+}

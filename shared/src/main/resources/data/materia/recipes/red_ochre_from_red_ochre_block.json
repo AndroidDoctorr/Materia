@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:red_ochre_block"
+        }
+    ],
+    "result": {
+        "item": "materia:red_ochre",
+        "count": 4
+    }
+}

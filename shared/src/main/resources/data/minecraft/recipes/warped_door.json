@@ -1,0 +1,32 @@
+﻿{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "BPS",
+        "NPK",
+        "BPH"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:smooth_warped_planks"
+        },
+        "B": {
+            "item": "materia:brass_hinge"
+        },
+        "K": {
+            "item": "materia:brass_handle"
+        },
+        "N": {
+            "tag": "materia:all_nails"
+        },
+        "H": {
+            "tag": "materia:all_hammers"
+        },
+        "S": {
+            "tag": "materia:all_saws"
+        }
+    },
+    "result": {
+        "item": "minecraft:warped_door",
+        "count": 1
+    }
+}

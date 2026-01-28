@@ -1,0 +1,12 @@
+{
+    "type": "materia:stone_anvil",
+    "input": {
+        "item": "materia:wrought_iron_nugget",
+        "count": 9
+    },
+    "tool_tag": "materia:stone_hammers",
+    "result": {
+        "item": "materia:wrought_iron_ingot",
+        "count": 1
+    }
+}

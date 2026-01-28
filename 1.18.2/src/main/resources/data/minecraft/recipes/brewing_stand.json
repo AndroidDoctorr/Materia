@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "WWW",
+        "BRB",
+        "PPP"
+    ],
+    "key": {
+        "R": {
+            "item": "minecraft:blaze_rod"
+        },
+        "B": {
+            "tag": "materia:hard_bands"
+        },
+        "W": {
+            "tag": "materia:hard_wires"
+        },
+        "P": {
+            "tag": "materia:hard_plates"
+        }
+    },
+    "result": {
+        "item": "minecraft:brewing_stand",
+        "count": 1
+    }
+}

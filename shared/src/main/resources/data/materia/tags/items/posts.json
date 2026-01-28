@@ -1,0 +1,24 @@
+{
+    "replace": false,
+    "values": [
+        "materia:oak_post",
+        "materia:spruce_post",
+        "materia:birch_post",
+        "materia:jungle_post",
+        "materia:acacia_post",
+        {
+            "id": "materia:mangrove_post",
+            "required": false
+        },
+        {
+            "id": "materia:crimson_post",
+            "required": false
+        },
+        {
+            "id": "materia:warped_post",
+            "required": false
+        },
+        "materia:dark_oak_post",
+        "materia:rubber_wood_post"
+    ]
+}

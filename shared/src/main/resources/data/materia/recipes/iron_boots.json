@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:iron_boot"
+        },
+        {
+            "item": "materia:iron_boot"
+        }
+    ],
+    "result": {
+        "item": "materia:iron_boots",
+        "count": 1
+    }
+}

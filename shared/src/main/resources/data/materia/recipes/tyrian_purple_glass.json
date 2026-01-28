@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "GGG",
+        "GTG",
+        "GGG"
+    ],
+    "key": {
+        "G": {
+            "item": "minecraft:glass"
+        },
+        "T": {
+            "item": "materia:tyrian_purple_dye"
+        }
+    },
+    "result": {
+        "item": "materia:tyrian_purple_glass",
+        "count": 8
+    }
+}

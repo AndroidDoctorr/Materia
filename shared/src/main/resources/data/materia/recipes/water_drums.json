@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:drum"
+        },
+        {
+            "item": "materia:drum"
+        },
+        {
+            "tag": "materia:blue_dyes"
+        }
+    ],
+    "result": {
+        "item": "materia:water_drums",
+        "count": 1
+    }
+}

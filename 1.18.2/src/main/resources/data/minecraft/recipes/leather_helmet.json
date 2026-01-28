@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SHS",
+        "HFH"
+    ],
+    "key": {
+        "H": {
+            "item": "materia:hardened_leather"
+        },
+        "S": {
+            "item": "materia:leather_strap"
+        },
+        "F": {
+            "tag": "materia:leather_finishes"
+        }
+    },
+    "result": {
+        "item": "minecraft:leather_helmet",
+        "count": 1
+    }
+}

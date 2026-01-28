@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "materia:pink_string" },
+    { "item": "materia:pink_string" },
+    { "item": "materia:pink_string" },
+    { "item": "materia:pink_string" },
+    { "item": "materia:pink_string" },
+    { "item": "materia:pink_string" },
+    { "item": "materia:pink_string" },
+    { "item": "materia:pink_string" },
+    { "tag": "materia:all_needles" }
+  ],
+  "result": { "item": "minecraft:pink_carpet", "count": 1 }
+}

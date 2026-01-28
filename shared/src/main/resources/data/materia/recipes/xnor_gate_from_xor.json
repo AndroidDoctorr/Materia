@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:xor_gate"
+        },
+        {
+            "tag": "materia:inverters"
+        }
+    ],
+    "result": {
+        "item": "materia:xnor_gate",
+        "count": 1
+    }
+}

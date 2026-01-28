@@ -1,0 +1,18 @@
+{
+    "type": "materia:advanced_kiln",
+    "group": "glass",
+    "ingredient1": {
+        "item": "materia:glass_mixture"
+    },
+    "ingredient2": {
+        "item": "minecraft:sand"
+    },
+    "result": {
+        "item": "minecraft:glass",
+        "count": 1
+    },
+    "cookingtime": 1200,
+    "experience": 0.5,
+    "requires_chimney": true,
+    "requires_bellows": true
+}

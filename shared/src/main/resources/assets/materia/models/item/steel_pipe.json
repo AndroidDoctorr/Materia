@@ -1,0 +1,14 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "materia:item/steel_pipe"
+    },
+    "overrides": [
+        {
+            "predicate": {
+                "materia:has_glass": 1.0
+            },
+            "model": "materia:item/steel_pipe_with_glass"
+        }
+    ]
+}

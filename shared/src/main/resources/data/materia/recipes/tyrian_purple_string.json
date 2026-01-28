@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:clump_of_tyrian_purple_wool"
+        },
+        {
+            "item": "materia:spindle"
+        }
+    ],
+    "result": {
+        "item": "materia:tyrian_purple_string",
+        "count": 2
+    }
+}

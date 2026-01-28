@@ -1,0 +1,8 @@
+{
+    "replace": false,
+    "values": [
+        "materia:copper_wire",
+        "materia:aluminum_wire",
+        "materia:gold_wire"
+    ]
+}

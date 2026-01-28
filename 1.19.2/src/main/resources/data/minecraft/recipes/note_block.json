@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SMS",
+        "PBP",
+        "WRW"
+    ],
+    "key": {
+        "B": {
+            "item": "materia:box_frame"
+        },
+        "S": {
+            "item": "materia:solenoid"
+        },
+        "P": {
+            "tag": "materia:hard_plates"
+        },
+        "W": {
+            "tag": "materia:insulated_wires"
+        },
+        "M": {
+            "item": "materia:magnetized_rod"
+        },
+        "R": {
+            "item": "minecraft:redstone"
+        }
+    },
+    "result": {
+        "item": "minecraft:note_block",
+        "count": 1
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "type": "materia:bronze_anvil",
+    "input": {
+        "item": "materia:brass_wire"
+    },
+    "tool_tags": [
+        "materia:bronze_hammers",
+        "materia:bronze_chisels"
+    ],
+    "result": {
+        "item": "materia:brass_needle",
+        "count": 16
+    }
+}

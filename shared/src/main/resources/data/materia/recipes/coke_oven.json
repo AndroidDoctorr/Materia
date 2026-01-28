@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "MBM",
+        "B B",
+        "MBM"
+    ],
+    "key": {
+        "B": {
+            "item": "materia:fire_brick_block"
+        },
+        "M": {
+            "item": "materia:mortar"
+        }
+    },
+    "result": {
+        "item": "materia:coke_oven"
+    }
+}

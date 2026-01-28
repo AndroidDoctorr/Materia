@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "materia:bronze_arrow",
+    "materia:iron_arrow",
+    "materia:steel_arrow"
+  ]
+}
+

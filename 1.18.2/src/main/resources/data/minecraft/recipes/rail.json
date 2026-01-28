@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " P ",
+        "RTR",
+        " P "
+    ],
+    "key": {
+        "P": {
+            "tag": "materia:smooth_planks"
+        },
+        "R": {
+            "item": "materia:steel_rail"
+        },
+        "T": {
+            "item": "materia:tar"
+        }
+    },
+    "result": {
+        "item": "minecraft:rail"
+    }
+}

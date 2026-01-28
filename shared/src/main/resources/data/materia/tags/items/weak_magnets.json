@@ -1,0 +1,8 @@
+{
+    "replace": false,
+    "values": [
+        "materia:magnetized_needle",
+        "materia:magnetized_rod",
+        "materia:lodestone"
+    ]
+}

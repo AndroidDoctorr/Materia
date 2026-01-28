@@ -1,0 +1,8 @@
+{
+    "replace": false,
+    "values": [
+        "#materia:weak_magnets",
+        "#materia:medium_magnets",
+        "#materia:strong_magnets"
+    ]
+}

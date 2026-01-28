@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:minecart_wheel"
+        },
+        {
+            "item": "materia:minecart_wheel"
+        },
+        {
+            "tag": "materia:hard_rods"
+        },
+        {
+            "tag": "materia:all_rivets"
+        },
+        {
+            "tag": "materia:lubricants"
+        }
+    ],
+    "result": {
+        "item": "materia:minecart_axle"
+    }
+}

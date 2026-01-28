@@ -1,0 +1,16 @@
+{
+    "variants": {
+        "has_grape_vine=false,has_grapes=false": {
+            "model": "materia:block/dark_oak_post"
+        },
+        "has_grape_vine=true,has_grapes=false": {
+            "model": "materia:block/dark_oak_post_with_grape_vine"
+        },
+        "has_grape_vine=true,has_grapes=true": {
+            "model": "materia:block/dark_oak_post_with_grapes"
+        },
+        "has_grape_vine=false,has_grapes=true": {
+            "model": "materia:block/dark_oak_post"
+        }
+    }
+}

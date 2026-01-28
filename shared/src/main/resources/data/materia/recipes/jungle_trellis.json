@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " S ",
+        "PSP"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:jungle_post"
+        },
+        "S": {
+            "item": "materia:smooth_jungle_planks"
+        }
+    },
+    "result": {
+        "item": "materia:jungle_trellis",
+        "count": 1
+    }
+}

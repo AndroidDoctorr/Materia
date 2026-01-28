@@ -1,0 +1,7 @@
+﻿{
+    "parent": "materia:block/acacia_joists",
+    "textures": {
+        "all": "minecraft:block/warped_planks",
+        "particle": "minecraft:block/warped_planks"
+    }
+}

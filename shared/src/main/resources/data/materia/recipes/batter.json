@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "tag": "forge:flour"
+        },
+        {
+            "item": "minecraft:egg"
+        },
+        {
+            "item": "minecraft:sugar"
+        },
+        [
+            { "tag": "materia:water" },
+            { "type": "forge:partial_nbt", "item": "minecraft:potion", "nbt": "{Potion:\"minecraft:water\"}" }
+        ],
+        {
+            "tag": "materia:milk"
+        }
+    ],
+    "result": {
+        "item": "materia:batter",
+        "count": 1
+    }
+}

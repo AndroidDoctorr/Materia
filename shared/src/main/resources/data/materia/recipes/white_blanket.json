@@ -1,0 +1,21 @@
+﻿{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:white_carpet"
+        },
+        {
+            "item": "minecraft:white_carpet"
+        },
+        {
+            "tag": "materia:all_needles"
+        },
+        {
+            "tag": "materia:strings"
+        }
+    ],
+    "result": {
+        "item": "materia:white_blanket",
+        "count": 1
+    }
+}

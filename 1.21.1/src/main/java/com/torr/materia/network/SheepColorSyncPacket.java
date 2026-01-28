@@ -1,0 +1,47 @@
+package com.torr.materia.network;
+
+import com.torr.materia.capability.CustomSheepColorCapability;
+import com.torr.materia.entity.CustomSheepColor;
+import net.minecraft.client.Minecraft;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.animal.Sheep;
+import net.minecraftforge.event.network.CustomPayloadEvent;
+
+public class SheepColorSyncPacket {
+    private final int entityId;
+    private final String colorName;
+
+    public SheepColorSyncPacket(int entityId, CustomSheepColor color) {
+        this.entityId = entityId;
+        this.colorName = color != null ? color.name() : "";
+    }
+
+    public SheepColorSyncPacket(FriendlyByteBuf buffer) {
+        this.entityId = buffer.readInt();
+        this.colorName = buffer.readUtf();
+    }
+
+    public void encode(FriendlyByteBuf buffer) {
+        buffer.writeInt(entityId);
+        buffer.writeUtf(colorName);
+    }
+
+    public static void handle(SheepColorSyncPacket msg, CustomPayloadEvent.Context context) {
+        context.enqueueWork(() -> {
+            // Client-side handling
+            if (context.isClientSide()) {
+                Entity entity = Minecraft.getInstance().level.getEntity(msg.entityId);
+                if (entity instanceof Sheep sheep) {
+                    var capOptional = sheep.getCapability(CustomSheepColorCapability.CUSTOM_SHEEP_COLOR);
+                    if (capOptional.isPresent()) {
+                        var capability = capOptional.resolve().get();
+                        CustomSheepColor color = msg.colorName.isEmpty() ? null : CustomSheepColor.valueOf(msg.colorName);
+                        capability.setCustomColor(color);
+                    }
+                }
+            }
+        });
+        context.setPacketHandled(true);
+    }
+}

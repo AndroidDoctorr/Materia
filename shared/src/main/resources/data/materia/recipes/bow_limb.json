@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "tag": "materia:smooth_planks"
+        },
+        {
+            "tag": "materia:all_cutting_tools"
+        }
+    ],
+    "result": {
+        "item": "materia:bow_limb",
+        "count": 1
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "replace": false,
+    "values": [
+        "#materia:strong_adhesives",
+        "materia:leather_strap"
+    ]
+}

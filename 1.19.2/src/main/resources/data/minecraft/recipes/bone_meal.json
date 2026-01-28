@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "tag": "materia:calcites"
+        },
+        {
+            "item": "materia:animal_fat"
+        }
+    ],
+    "result": {
+        "item": "minecraft:bone_meal",
+        "count": 2
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "HPR",
+        "SPS",
+        "TPT"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:bronze_plate"
+        },
+        "T": {
+            "item": "materia:tanned_leather"
+        },
+        "S": {
+            "item": "materia:leather_strap"
+        },
+        "H": {
+            "tag": "materia:all_hammers"
+        },
+        "R": {
+            "tag": "materia:all_rivets"
+        }
+    },
+    "result": {
+        "item": "materia:bronze_chestpiece",
+        "count": 1
+    }
+}

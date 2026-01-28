@@ -1,0 +1,29 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:string",
+    "materia:red_string",
+    "materia:red_ochre_string",
+    "materia:tyrian_purple_string",
+    "materia:olive_string",
+    "materia:ochre_string",
+    "materia:lavender_string",
+    "materia:charcoal_gray_string",
+    "materia:indigo_string",
+    "materia:blue_string",
+    "materia:light_blue_string",
+    "materia:cyan_string",
+    "materia:green_string",
+    "materia:pink_string",
+    "materia:lime_string",
+    "materia:yellow_string",
+    "materia:orange_string",
+    "materia:magenta_string",
+    "materia:brown_string",
+    "materia:black_string",
+    "materia:white_string",
+    "materia:gray_string",
+    "materia:light_gray_string",
+    "materia:purple_string"
+  ]
+}

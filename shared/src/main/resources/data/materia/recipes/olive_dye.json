@@ -1,0 +1,13 @@
+{
+    "type": "materia:kiln",
+    "ingredient": {
+        "item": "minecraft:cactus"
+    },
+    "result": {
+        "item": "materia:olive_dye",
+        "count": 1
+    },
+    "cookingtime": 800,
+    "experience": 0.3,
+    "requires_chimney": true
+}

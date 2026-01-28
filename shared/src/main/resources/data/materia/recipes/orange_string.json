@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:clump_of_orange_wool"
+        },
+        {
+            "item": "materia:spindle"
+        }
+    ],
+    "result": {
+        "item": "materia:orange_string",
+        "count": 2
+    }
+}

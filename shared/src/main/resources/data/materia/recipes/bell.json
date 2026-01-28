@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SRS",
+        " P ",
+        "PBP"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:brass_plate"
+        },
+        "B": {
+            "item": "materia:brass_rod"
+        },
+        "S": {
+            "tag": "materia:smooth_planks"
+        },
+        "R": {
+            "item": "materia:rope"
+        }
+    },
+    "result": {
+        "item": "minecraft:bell",
+        "count": 1
+    }
+}

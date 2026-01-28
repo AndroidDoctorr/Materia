@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "MBM",
+        "BWB",
+        "MBM"
+    ],
+    "key": {
+        "B": {
+            "item": "materia:fire_brick_block"
+        },
+        "W": {
+            "item": "materia:bellows"
+        },
+        "M": {
+            "item": "materia:mortar"
+        }
+    },
+    "result": {
+        "item": "materia:furnace_kiln"
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "type": "materia:kiln",
+    "ingredient": {
+        "item": "materia:clay_bowl"
+    },
+    "result": {
+        "item": "materia:crucible",
+        "count": 1
+    },
+    "cookingtime": 400,
+    "experience": 0.1
+}

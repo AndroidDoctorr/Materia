@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:iron_needle"
+        },
+        {
+            "tag": "materia:all_magnets"
+        }
+    ],
+    "result": {
+        "item": "materia:magnetized_needle",
+        "count": 1
+    }
+}

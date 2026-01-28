@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "materia:indigo_string" },
+    { "item": "materia:indigo_string" },
+    { "item": "materia:indigo_string" },
+    { "item": "materia:indigo_string" },
+    { "item": "materia:indigo_string" },
+    { "item": "materia:indigo_string" },
+    { "item": "materia:indigo_string" },
+    { "item": "materia:indigo_string" },
+    { "tag": "materia:all_needles" }
+  ],
+  "result": { "item": "materia:indigo_carpet", "count": 1 }
+}

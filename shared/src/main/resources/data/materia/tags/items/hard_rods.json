@@ -1,0 +1,8 @@
+{
+    "replace": false,
+    "values": [
+        "materia:bronze_rod",
+        "materia:iron_rod",
+        "materia:steel_rod"
+    ]
+}

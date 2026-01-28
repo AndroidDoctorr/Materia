@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:rubber_tree_log"
+        },
+        {
+            "tag": "materia:all_saws"
+        }
+    ],
+    "result": {
+        "item": "materia:rubber_wood_post",
+        "count": 4
+    }
+}

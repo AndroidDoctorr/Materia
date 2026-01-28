@@ -1,0 +1,36 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:tyrian_purple_string"
+        },
+        {
+            "item": "materia:tyrian_purple_string"
+        },
+        {
+            "item": "materia:tyrian_purple_string"
+        },
+        {
+            "item": "materia:tyrian_purple_string"
+        },
+        {
+            "item": "materia:tyrian_purple_string"
+        },
+        {
+            "item": "materia:tyrian_purple_string"
+        },
+        {
+            "item": "materia:tyrian_purple_string"
+        },
+        {
+            "item": "materia:tyrian_purple_string"
+        },
+        {
+            "tag": "materia:all_needles"
+        }
+    ],
+    "result": {
+        "item": "materia:tyrian_purple_carpet",
+        "count": 1
+    }
+}

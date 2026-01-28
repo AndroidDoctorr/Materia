@@ -1,0 +1,10 @@
+{
+    "replace": false,
+    "values": [
+        "materia:pitch",
+        "materia:resin",
+        "materia:glue",
+        "materia:strong_glue",
+        "minecraft:slime_ball"
+    ]
+}

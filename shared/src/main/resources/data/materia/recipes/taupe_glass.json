@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "GGG",
+        "GDG",
+        "GGG"
+    ],
+    "key": {
+        "G": {
+            "item": "minecraft:glass"
+        },
+        "D": {
+            "item": "materia:ochre"
+        }
+    },
+    "result": {
+        "item": "materia:taupe_glass",
+        "count": 8
+    }
+}

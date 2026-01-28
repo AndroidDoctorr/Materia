@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "JPJ",
+        "PPP",
+        "JPJ"
+    ],
+    "key": {
+        "P": {
+            "tag": "materia:smooth_planks"
+        },
+        "J": {
+            "tag": "materia:all_wood_joiners"
+        }
+    },
+    "result": {
+        "item": "materia:box_frame",
+        "count": 1
+    }
+}

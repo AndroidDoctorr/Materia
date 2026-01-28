@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:rough_jungle_plank"
+        },
+        {
+            "item": "materia:bronze_saw"
+        }
+    ],
+    "result": {
+        "item": "materia:smooth_jungle_planks",
+        "count": 2
+    }
+}

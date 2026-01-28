@@ -1,0 +1,7 @@
+{
+    "replace": false,
+    "values": [
+        "#materia:weak_acids",
+        "#materia:strong_acids"
+    ]
+}

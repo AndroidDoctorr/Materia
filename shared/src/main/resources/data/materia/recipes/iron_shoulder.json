@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:iron_plate"
+        },
+        {
+            "tag": "materia:all_rivets"
+        },
+        {
+            "item": "materia:leather_strap"
+        },
+        {
+            "tag": "materia:bronze_hammers"
+        }
+    ],
+    "result": {
+        "item": "materia:iron_shoulder",
+        "count": 1
+    }
+}

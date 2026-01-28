@@ -1,0 +1,149 @@
+{
+    "ambientocclusion": false,
+    "textures": {
+        "wood": "minecraft:block/oak_planks",
+        "iron": "minecraft:block/cauldron_side",
+        "opening": "materia:block/cannon_opening",
+        "particle": "minecraft:block/terracotta"
+    },
+    "elements": [
+        {
+            "name": "cannon_body",
+            "from": [
+                2,
+                4,
+                2
+            ],
+            "to": [
+                14,
+                16,
+                14
+            ],
+            "faces": {
+                "north": {
+                    "uv": [
+                        2,
+                        14,
+                        14,
+                        2
+                    ],
+                    "texture": "#iron"
+                },
+                "south": {
+                    "uv": [
+                        2,
+                        14,
+                        14,
+                        2
+                    ],
+                    "texture": "#iron"
+                },
+                "east": {
+                    "uv": [
+                        2,
+                        14,
+                        14,
+                        2
+                    ],
+                    "texture": "#iron"
+                },
+                "west": {
+                    "uv": [
+                        2,
+                        14,
+                        14,
+                        2
+                    ],
+                    "texture": "#iron"
+                },
+                "up": {
+                    "uv": [
+                        0,
+                        0,
+                        12,
+                        12
+                    ],
+                    "texture": "#opening"
+                },
+                "down": {
+                    "uv": [
+                        2,
+                        2,
+                        14,
+                        14
+                    ],
+                    "texture": "#iron"
+                }
+            }
+        },
+        {
+            "name": "cannon_body_2",
+            "from": [
+                3,
+                16,
+                3
+            ],
+            "to": [
+                13,
+                24,
+                13
+            ],
+            "faces": {
+                "north": {
+                    "uv": [
+                        3,
+                        2,
+                        13,
+                        10
+                    ],
+                    "texture": "#iron"
+                },
+                "south": {
+                    "uv": [
+                        3,
+                        2,
+                        13,
+                        10
+                    ],
+                    "texture": "#iron"
+                },
+                "east": {
+                    "uv": [
+                        3,
+                        2,
+                        13,
+                        10
+                    ],
+                    "texture": "#iron"
+                },
+                "west": {
+                    "uv": [
+                        3,
+                        2,
+                        13,
+                        10
+                    ],
+                    "texture": "#iron"
+                },
+                "up": {
+                    "uv": [
+                        1,
+                        1,
+                        11,
+                        11
+                    ],
+                    "texture": "#opening"
+                },
+                "down": {
+                    "uv": [
+                        4,
+                        4,
+                        12,
+                        12
+                    ],
+                    "texture": "#iron"
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:dried_gourd"
+        },
+        {
+            "tag": "materia:yellow_dyes"
+        },
+        {
+            "tag": "materia:all_cutting_tools"
+        },
+        {
+            "tag": "materia:seeds"
+        }
+    ],
+    "result": {
+        "item": "materia:air_maraca",
+        "count": 1
+    }
+}

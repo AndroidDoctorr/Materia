@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "B B",
+        "RWR"
+    ],
+    "key": {
+        "B": {
+            "item": "materia:bronze_blade"
+        },
+        "W": {
+            "item": "materia:bronze_wire"
+        },
+        "R": {
+            "tag": "materia:advanced_bindings"
+        }
+    },
+    "result": {
+        "item": "materia:bronze_shears",
+        "count": 1
+    }
+}

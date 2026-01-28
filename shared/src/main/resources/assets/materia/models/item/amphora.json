@@ -1,0 +1,122 @@
+{
+    "parent": "materia:block/amphora",
+    "display": {
+        "thirdperson_righthand": {
+            "rotation": [
+                0,
+                45,
+                0
+            ],
+            "translation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                0.5,
+                0.5,
+                0.5
+            ]
+        },
+        "firstperson_righthand": {
+            "rotation": [
+                0,
+                45,
+                0
+            ],
+            "translation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                0.5,
+                0.5,
+                0.5
+            ]
+        },
+        "gui": {
+            "rotation": [
+                30,
+                45,
+                0
+            ],
+            "translation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                0.625,
+                0.625,
+                0.625
+            ]
+        },
+        "ground": {
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "translation": [
+                0,
+                3,
+                0
+            ],
+            "scale": [
+                0.25,
+                0.25,
+                0.25
+            ]
+        },
+        "fixed": {
+            "rotation": [
+                0,
+                0,
+                0
+            ],
+            "translation": [
+                0,
+                0,
+                0
+            ],
+            "scale": [
+                0.5,
+                0.5,
+                0.5
+            ]
+        }
+    },
+    "overrides": [
+        {
+            "predicate": {
+                "liquid_type": 1.0
+            },
+            "model": "materia:item/amphora_water"
+        },
+        {
+            "predicate": {
+                "liquid_type": 2.0
+            },
+            "model": "materia:item/amphora_wine"
+        },
+        {
+            "predicate": {
+                "liquid_type": 3.0
+            },
+            "model": "materia:item/amphora_vinegar"
+        },
+        {
+            "predicate": {
+                "liquid_type": 4.0
+            },
+            "model": "materia:item/amphora_olive_oil"
+        },
+        {
+            "predicate": {
+                "liquid_type": 5.0
+            },
+            "model": "materia:item/amphora_grape_juice"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:soda_ash"
+        },
+        {
+            "item": "materia:quicklime"
+        }
+    ],
+    "result": {
+        "item": "materia:glass_mixture",
+        "count": 2
+    }
+}

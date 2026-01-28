@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:block",
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "conditions": [
+                        {
+                            "condition": "minecraft:block_state_property",
+                            "block": "materia:charcoal_gray_bed",
+                            "properties": {
+                                "part": "head"
+                            }
+                        }
+                    ],
+                    "name": "materia:charcoal_gray_bed"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SLS",
+        "RFR",
+        "PJP"
+    ],
+    "key": {
+        "P": {
+            "tag": "materia:smooth_planks"
+        },
+        "R": {
+            "item": "materia:rope"
+        },
+        "L": {
+            "item": "materia:frame_loom"
+        },
+        "F": {
+            "item": "materia:box_frame"
+        },
+        "J": {
+            "tag": "materia:all_wood_joiners"
+        },
+        "S": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "item": "minecraft:loom",
+        "count": 1
+    }
+}

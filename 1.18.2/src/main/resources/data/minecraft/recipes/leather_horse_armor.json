@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "HSH",
+        "TTT",
+        "LRL"
+    ],
+    "key": {
+        "L": {
+            "item": "materia:leather_strap"
+        },
+        "S": {
+            "item": "minecraft:saddle"
+        },
+        "R": {
+            "tag": "materia:all_rivets"
+        },
+        "T": {
+            "item": "materia:tanned_leather"
+        },
+        "H": {
+            "item": "materia:hardened_leather"
+        }
+    },
+    "result": {
+        "item": "minecraft:leather_horse_armor",
+        "count": 1
+    }
+}

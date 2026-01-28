@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:diamond"
+        },
+        {
+            "item": "materia:steel_shovel_head"
+        }
+    ],
+    "result": {
+        "item": "materia:diamond_shovel_head",
+        "count": 1
+    }
+}

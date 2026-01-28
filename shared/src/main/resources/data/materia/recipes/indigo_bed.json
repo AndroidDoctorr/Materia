@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:bed_frame"
+        },
+        {
+            "item": "materia:indigo_blanket"
+        },
+        {
+            "item": "materia:mattress"
+        }
+    ],
+    "result": {
+        "item": "materia:indigo_bed",
+        "count": 1
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "NLN",
+        "GRG",
+        " B "
+    ],
+    "key": {
+        "L": {
+            "item": "materia:lens"
+        },
+        "B": {
+            "item": "materia:brass_plate"
+        },
+        "G": {
+            "item": "materia:brass_gears"
+        },
+        "R": {
+            "item": "minecraft:redstone"
+        },
+        "N": {
+            "item": "materia:brass_needle"
+        }
+    },
+    "result": {
+        "item": "minecraft:clock",
+        "count": 1
+    }
+}

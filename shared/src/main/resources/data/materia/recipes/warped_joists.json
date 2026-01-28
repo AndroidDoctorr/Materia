@@ -1,0 +1,18 @@
+﻿{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "PNP"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:smooth_warped_planks"
+        },
+        "N": {
+            "tag": "materia:all_wood_joiners"
+        }
+    },
+    "result": {
+        "item": "materia:warped_joists",
+        "count": 1
+    }
+}

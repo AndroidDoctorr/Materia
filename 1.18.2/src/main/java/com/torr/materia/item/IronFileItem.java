@@ -1,0 +1,28 @@
+package com.torr.materia.item;
+
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+
+/**
+ * Iron file used for smoothing and shaping metal surfaces. 
+ * Survives crafting recipes while losing durability.
+ */
+public class IronFileItem extends Item {
+
+    public IronFileItem(Properties properties) {
+        super(properties);
+    }
+
+    /* Container behaviour for crafting */
+    @Override
+    public boolean hasContainerItem(ItemStack stack) {
+        return true;
+    }
+
+    @Override
+    public ItemStack getContainerItem(ItemStack stack) {
+        ItemStack copy = stack.copy();
+        copy.setDamageValue(copy.getDamageValue() + 1);
+        return copy.getDamageValue() >= copy.getMaxDamage() ? ItemStack.EMPTY : copy;
+    }
+}

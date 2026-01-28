@@ -1,0 +1,17 @@
+{
+    "variants": {
+        "has_grape_vine=false,has_grapes=false": {
+            "model": "materia:block/mangrove_post"
+        },
+        "has_grape_vine=true,has_grapes=false": {
+            "model": "materia:block/mangrove_post_with_grape_vine"
+        },
+        "has_grape_vine=true,has_grapes=true": {
+            "model": "materia:block/mangrove_post_with_grapes"
+        },
+        "has_grape_vine=false,has_grapes=true": {
+            "model": "materia:block/mangrove_post"
+        }
+    }
+}
+

@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "tag": "materia:all_planks"
+        },
+        {
+            "item": "materia:handle"
+        },
+        {
+            "tag": "materia:basic_bindings"
+        },
+        {
+            "tag": "materia:basic_bindings"
+        }
+    ],
+    "result": {
+        "item": "minecraft:wooden_shovel",
+        "count": 1
+    }
+}

@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "materia:block/cannon"
+    },
+    "facing=east": {
+      "model": "materia:block/cannon",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "materia:block/cannon",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "materia:block/cannon",
+      "y": 270
+    }
+  }
+}
+

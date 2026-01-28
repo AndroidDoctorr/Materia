@@ -1,0 +1,14 @@
+{
+  "multipart": [
+    { "apply": { "model": "materia:block/oak_post" } },
+
+    { "when": { "has_grape_vine": "true", "has_grapes": "false", "has_hops_vine": "false", "has_hops": "false", "has_wisteria_vine": "false", "has_wisteria_flowers": "false" }, "apply": { "model": "materia:block/post_grape_vine_overlay" } },
+    { "when": { "has_grape_vine": "true", "has_grapes": "true", "has_hops_vine": "false", "has_hops": "false", "has_wisteria_vine": "false", "has_wisteria_flowers": "false" }, "apply": { "model": "materia:block/post_grapes_overlay" } },
+
+    { "when": { "has_grape_vine": "false", "has_grapes": "false", "has_hops_vine": "true", "has_hops": "false", "has_wisteria_vine": "false", "has_wisteria_flowers": "false" }, "apply": { "model": "materia:block/post_hops_vine_overlay" } },
+    { "when": { "has_grape_vine": "false", "has_grapes": "false", "has_hops_vine": "true", "has_hops": "true", "has_wisteria_vine": "false", "has_wisteria_flowers": "false" }, "apply": { "model": "materia:block/post_hops_overlay" } },
+
+    { "when": { "has_grape_vine": "false", "has_grapes": "false", "has_hops_vine": "false", "has_hops": "false", "has_wisteria_vine": "true", "has_wisteria_flowers": "false" }, "apply": { "model": "materia:block/post_wisteria_vine_overlay" } },
+    { "when": { "has_grape_vine": "false", "has_grapes": "false", "has_hops_vine": "false", "has_hops": "false", "has_wisteria_vine": "true", "has_wisteria_flowers": "true" }, "apply": { "model": "materia:block/post_wisteria_flowers_overlay" } }
+  ]
+}

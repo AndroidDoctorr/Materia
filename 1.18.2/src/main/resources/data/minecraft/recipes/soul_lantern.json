@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " C ",
+        "PFP",
+        "BMB"
+    ],
+    "key": {
+        "M": {
+            "tag": "materia:hard_plates"
+        },
+        "P": {
+            "item": "minecraft:glass_pane"
+        },
+        "B": {
+            "tag": "materia:hard_bands"
+        },
+        "C": {
+            "item": "minecraft:chain"
+        },
+        "F": {
+            "item": "minecraft:soul_sand"
+        }
+    },
+    "result": {
+        "item": "minecraft:soul_lantern",
+        "count": 2
+    }
+}

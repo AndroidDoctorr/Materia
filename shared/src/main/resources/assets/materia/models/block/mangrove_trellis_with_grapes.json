@@ -1,0 +1,8 @@
+{
+    "parent": "materia:block/acacia_trellis_with_grapes",
+    "textures": {
+        "corner": "minecraft:block/mangrove_planks",
+        "middle": "materia:block/mangrove_trellis",
+        "particle": "minecraft:block/mangrove_planks"
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "tag": "materia:rough_planks"
+        },
+        {
+            "tag": "materia:rough_planks"
+        },
+        {
+            "tag": "materia:rough_planks"
+        },
+        {
+            "item": "materia:bow_drill"
+        },
+        {
+            "item": "minecraft:soul_sand"
+        }
+    ],
+    "result": {
+        "item": "minecraft:soul_campfire",
+        "count": 1
+    }
+}

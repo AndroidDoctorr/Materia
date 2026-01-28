@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:smelting",
+    "ingredient": {
+        "item": "minecraft:rabbit"
+    },
+    "result": "materia:ash",
+    "experience": 0.0,
+    "cookingtime": 200
+}

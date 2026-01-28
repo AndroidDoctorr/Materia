@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:paper_pulp"
+        },
+        {
+            "item": "materia:mortar_and_pestle"
+        }
+    ],
+    "result": {
+        "item": "materia:fine_paper_pulp",
+        "count": 1
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "JSJ",
+        "PSP"
+    ],
+    "key": {
+        "P": {
+            "tag": "materia:smooth_planks"
+        },
+        "S": {
+            "item": "minecraft:stick"
+        },
+        "J": {
+            "tag": "materia:all_wood_joiners"
+        }
+    },
+    "result": {
+        "item": "minecraft:ladder",
+        "count": 3
+    }
+}

@@ -1,0 +1,24 @@
+{
+  "multipart": [
+    {
+      "when": { "up": "true" },
+      "apply": { "model": "materia:block/wild_hops_vine_u" }
+    },
+    {
+      "when": { "north": "true" },
+      "apply": { "model": "materia:block/wild_hops_vine_1" }
+    },
+    {
+      "when": { "east": "true" },
+      "apply": { "model": "materia:block/wild_hops_vine_1", "y": 90 }
+    },
+    {
+      "when": { "south": "true" },
+      "apply": { "model": "materia:block/wild_hops_vine_1", "y": 180 }
+    },
+    {
+      "when": { "west": "true" },
+      "apply": { "model": "materia:block/wild_hops_vine_1", "y": 270 }
+    }
+  ]
+}

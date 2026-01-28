@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "PLP",
+        "PLP"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:plant_fiber"
+        },
+        "L": {
+            "item": "materia:lashing"
+        }
+    },
+    "result": {
+        "item": "materia:bundle",
+        "count": 1
+    }
+}

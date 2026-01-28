@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " T ",
+        "THT",
+        " T "
+    ],
+    "key": {
+        "T": {
+            "item": "materia:target"
+        },
+        "H": {
+            "item": "minecraft:hay_block"
+        }
+    },
+    "result": {
+        "item": "minecraft:target",
+        "count": 1
+    }
+}

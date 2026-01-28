@@ -1,0 +1,10 @@
+{
+    "replace": false,
+    "values": [
+        "#materia:all_rods",
+        "minecraft:stick",
+        "materia:handle",
+        "minecraft:bone",
+        "materia:bone_handle"
+    ]
+}

@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "PSP",
+        "SPS",
+        "PSP"
+    ],
+    "key": {
+        "S": {
+            "item": "minecraft:stick"
+        },
+        "P": {
+            "tag": "materia:smooth_planks"
+        }
+    },
+    "result": {
+        "item": "materia:wooden_wheel",
+        "count": 1
+    }
+}

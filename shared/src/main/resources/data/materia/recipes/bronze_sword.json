@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:bronze_sword_blade"
+        },
+        {
+            "item": "materia:bronze_crossbar"
+        },
+        {
+            "tag": "materia:bronze_handles"
+        },
+        {
+            "tag": "materia:advanced_bindings"
+        }
+    ],
+    "result": {
+        "item": "materia:bronze_sword",
+        "count": 1
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:drum"
+        },
+        {
+            "item": "materia:drum"
+        },
+        {
+            "tag": "materia:red_dyes"
+        }
+    ],
+    "result": {
+        "item": "materia:fire_drums",
+        "count": 1
+    }
+}

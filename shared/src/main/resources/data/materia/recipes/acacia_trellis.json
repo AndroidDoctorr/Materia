@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " S ",
+        "PSP"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:acacia_post"
+        },
+        "S": {
+            "item": "materia:smooth_acacia_planks"
+        }
+    },
+    "result": {
+        "item": "materia:acacia_trellis",
+        "count": 1
+    }
+}

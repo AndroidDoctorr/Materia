@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:pink_dye"
+        },
+        {
+            "tag": "materia:clumps_of_wool"
+        },
+        {
+            "tag": "materia:clumps_of_wool"
+        },
+        {
+            "tag": "materia:clumps_of_wool"
+        }
+    ],
+    "result": {
+        "item": "materia:clump_of_pink_wool",
+        "count": 3
+    }
+}

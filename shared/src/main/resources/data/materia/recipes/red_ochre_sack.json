@@ -1,0 +1,18 @@
+﻿{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:red_ochre_carpet"
+        },
+        {
+            "tag": "materia:all_needles"
+        },
+        {
+            "tag": "materia:strings"
+        }
+    ],
+    "result": {
+        "item": "materia:red_ochre_sack",
+        "count": 1
+    }
+}

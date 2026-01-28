@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "BGB",
+        "BCB"
+    ],
+    "key": {
+        "B": {
+            "item": "minecraft:bricks"
+        },
+        "G": {
+            "item": "materia:grout"
+        },
+        "C": {
+            "item": "minecraft:campfire"
+        }
+    },
+    "result": {
+        "item": "materia:oven",
+        "count": 1
+    }
+}

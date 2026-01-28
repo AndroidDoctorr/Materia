@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:steel_hammer_head"
+        },
+        {
+            "item": "materia:iron_handle"
+        },
+        {
+            "tag": "materia:advanced_bindings"
+        }
+    ],
+    "result": {
+        "item": "materia:steel_hammer",
+        "count": 1
+    }
+}

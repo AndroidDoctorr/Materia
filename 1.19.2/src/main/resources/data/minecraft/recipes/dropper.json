@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " S ",
+        "SFS",
+        "RHR"
+    ],
+    "key": {
+        "S": {
+            "tag": "materia:hard_plates"
+        },
+        "F": {
+            "item": "materia:box_frame"
+        },
+        "R": {
+            "item": "minecraft:redstone"
+        },
+        "H": {
+            "item": "minecraft:hopper"
+        }
+    },
+    "result": {
+        "item": "minecraft:dropper",
+        "count": 1
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "replace": false,
+    "values": [
+        "materia:pitch",
+        "materia:resin",
+        "materia:tar",
+        "materia:rubber_sheet"
+    ]
+}

@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:gold_shovel_head"
+        },
+        {
+            "item": "materia:handle"
+        },
+        {
+            "item": "materia:handle"
+        },
+        {
+            "tag": "materia:advanced_bindings"
+        }
+    ],
+    "result": {
+        "item": "minecraft:gold_shovel",
+        "count": 1
+    }
+}

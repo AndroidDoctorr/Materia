@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:blue_dye"
+        },
+        {
+            "tag": "materia:clumps_of_wool"
+        },
+        {
+            "tag": "materia:clumps_of_wool"
+        },
+        {
+            "tag": "materia:clumps_of_wool"
+        }
+    ],
+    "result": {
+        "item": "materia:clump_of_blue_wool",
+        "count": 3
+    }
+}

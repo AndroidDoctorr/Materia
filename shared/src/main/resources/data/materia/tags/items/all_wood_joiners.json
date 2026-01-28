@@ -1,0 +1,9 @@
+{
+    "replace": false,
+    "values": [
+        "#materia:all_nails",
+        "#materia:strong_adhesives",
+        "materia:leather_strap",
+        "materia:rope"
+    ]
+}

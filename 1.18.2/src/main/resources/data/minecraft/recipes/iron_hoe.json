@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:steel_hoe_head"
+        },
+        {
+            "item": "materia:handle"
+        },
+        {
+            "item": "materia:handle"
+        },
+        {
+            "tag": "materia:advanced_bindings"
+        }
+    ],
+    "result": {
+        "item": "minecraft:iron_hoe",
+        "count": 1
+    }
+}

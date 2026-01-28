@@ -1,0 +1,493 @@
+{
+    "ambientocclusion": false,
+    "textures": {
+        "base": "materia:block/spinning_wheel_base",
+        "wheel": "materia:block/spinning_wheel_2",
+        "particle": "materia:block/spinning_wheel_base"
+    },
+    "elements": [
+        {
+            "name": "base",
+            "from": [
+                4,
+                0,
+                0
+            ],
+            "to": [
+                12,
+                4,
+                16
+            ],
+            "faces": {
+                "north": {
+                    "uv": [
+                        0,
+                        12,
+                        8,
+                        16
+                    ],
+                    "texture": "#base"
+                },
+                "south": {
+                    "uv": [
+                        0,
+                        12,
+                        8,
+                        16
+                    ],
+                    "texture": "#base"
+                },
+                "west": {
+                    "uv": [
+                        0,
+                        8,
+                        16,
+                        12
+                    ],
+                    "texture": "#base"
+                },
+                "east": {
+                    "uv": [
+                        0,
+                        8,
+                        16,
+                        12
+                    ],
+                    "texture": "#base"
+                },
+                "up": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        8
+                    ],
+                    "texture": "#base"
+                },
+                "down": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        8
+                    ],
+                    "texture": "#base"
+                }
+            }
+        },
+        {
+            "name": "wheel",
+            "from": [
+                8,
+                5,
+                5
+            ],
+            "to": [
+                9,
+                16,
+                16
+            ],
+            "faces": {
+                "north": {
+                    "uv": [
+                        15,
+                        0,
+                        16,
+                        11
+                    ],
+                    "texture": "#wheel"
+                },
+                "south": {
+                    "uv": [
+                        15,
+                        0,
+                        16,
+                        11
+                    ],
+                    "texture": "#wheel"
+                },
+                "west": {
+                    "uv": [
+                        0,
+                        0,
+                        11,
+                        11
+                    ],
+                    "texture": "#wheel"
+                },
+                "east": {
+                    "uv": [
+                        0,
+                        0,
+                        11,
+                        11
+                    ],
+                    "texture": "#wheel"
+                },
+                "up": {
+                    "uv": [
+                        15,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#wheel"
+                },
+                "down": {
+                    "uv": [
+                        15,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#wheel"
+                }
+            }
+        },
+        {
+            "name": "spindle",
+            "from": [
+                4,
+                7,
+                0
+            ],
+            "to": [
+                12,
+                10,
+                3
+            ],
+            "faces": {
+                "east": {
+                    "uv": [
+                        4,
+                        4,
+                        7,
+                        7
+                    ],
+                    "texture": "#wheel"
+                },
+                "west": {
+                    "uv": [
+                        4,
+                        4,
+                        7,
+                        7
+                    ],
+                    "texture": "#wheel"
+                },
+                "north": {
+                    "uv": [
+                        0,
+                        11,
+                        8,
+                        14
+                    ],
+                    "texture": "#wheel"
+                },
+                "south": {
+                    "uv": [
+                        0,
+                        11,
+                        8,
+                        14
+                    ],
+                    "texture": "#wheel"
+                },
+                "up": {
+                    "uv": [
+                        0,
+                        12,
+                        8,
+                        15
+                    ],
+                    "texture": "#wheel"
+                },
+                "down": {
+                    "uv": [
+                        0,
+                        12,
+                        8,
+                        15
+                    ],
+                    "texture": "#wheel"
+                }
+            }
+        },
+        {
+            "name": "spindle_strut_left",
+            "from": [
+                3,
+                0,
+                1
+            ],
+            "to": [
+                4,
+                9,
+                2
+            ],
+            "faces": {
+                "north": {
+                    "uv": [
+                        15,
+                        0,
+                        16,
+                        9
+                    ],
+                    "texture": "#base"
+                },
+                "south": {
+                    "uv": [
+                        15,
+                        0,
+                        16,
+                        9
+                    ],
+                    "texture": "#base"
+                },
+                "west": {
+                    "uv": [
+                        15,
+                        0,
+                        16,
+                        9
+                    ],
+                    "texture": "#base"
+                },
+                "east": {
+                    "uv": [
+                        15,
+                        0,
+                        16,
+                        9
+                    ],
+                    "texture": "#base"
+                },
+                "up": {
+                    "uv": [
+                        15,
+                        0,
+                        16,
+                        1
+                    ],
+                    "texture": "#base"
+                },
+                "down": {
+                    "uv": [
+                        15,
+                        0,
+                        16,
+                        1
+                    ],
+                    "texture": "#base"
+                }
+            }
+        },
+        {
+            "name": "spindle_strut_right",
+            "from": [
+                12,
+                0,
+                1
+            ],
+            "to": [
+                13,
+                9,
+                2
+            ],
+            "faces": {
+                "north": {
+                    "uv": [
+                        15,
+                        0,
+                        16,
+                        9
+                    ],
+                    "texture": "#base"
+                },
+                "south": {
+                    "uv": [
+                        15,
+                        0,
+                        16,
+                        9
+                    ],
+                    "texture": "#base"
+                },
+                "west": {
+                    "uv": [
+                        15,
+                        0,
+                        16,
+                        9
+                    ],
+                    "texture": "#base"
+                },
+                "east": {
+                    "uv": [
+                        15,
+                        0,
+                        16,
+                        9
+                    ],
+                    "texture": "#base"
+                },
+                "up": {
+                    "uv": [
+                        15,
+                        0,
+                        16,
+                        1
+                    ],
+                    "texture": "#base"
+                },
+                "down": {
+                    "uv": [
+                        15,
+                        0,
+                        16,
+                        1
+                    ],
+                    "texture": "#base"
+                }
+            }
+        },
+        {
+            "name": "wheel_strut_left",
+            "from": [
+                7,
+                4,
+                11
+            ],
+            "to": [
+                8,
+                12,
+                12
+            ],
+            "faces": {
+                "north": {
+                    "uv": [
+                        15,
+                        0,
+                        16,
+                        8
+                    ],
+                    "texture": "#base"
+                },
+                "south": {
+                    "uv": [
+                        15,
+                        0,
+                        16,
+                        8
+                    ],
+                    "texture": "#base"
+                },
+                "west": {
+                    "uv": [
+                        15,
+                        0,
+                        16,
+                        8
+                    ],
+                    "texture": "#base"
+                },
+                "east": {
+                    "uv": [
+                        15,
+                        0,
+                        16,
+                        8
+                    ],
+                    "texture": "#base"
+                },
+                "up": {
+                    "uv": [
+                        15,
+                        0,
+                        16,
+                        1
+                    ],
+                    "texture": "#base"
+                },
+                "down": {
+                    "uv": [
+                        15,
+                        0,
+                        16,
+                        1
+                    ],
+                    "texture": "#base"
+                }
+            }
+        },
+        {
+            "name": "wheel_strut_right",
+            "from": [
+                9,
+                4,
+                11
+            ],
+            "to": [
+                10,
+                12,
+                12
+            ],
+            "faces": {
+                "north": {
+                    "uv": [
+                        15,
+                        0,
+                        16,
+                        8
+                    ],
+                    "texture": "#base"
+                },
+                "south": {
+                    "uv": [
+                        15,
+                        0,
+                        16,
+                        8
+                    ],
+                    "texture": "#base"
+                },
+                "west": {
+                    "uv": [
+                        15,
+                        0,
+                        16,
+                        8
+                    ],
+                    "texture": "#base"
+                },
+                "east": {
+                    "uv": [
+                        15,
+                        0,
+                        16,
+                        8
+                    ],
+                    "texture": "#base"
+                },
+                "up": {
+                    "uv": [
+                        15,
+                        0,
+                        16,
+                        1
+                    ],
+                    "texture": "#base"
+                },
+                "down": {
+                    "uv": [
+                        15,
+                        0,
+                        16,
+                        1
+                    ],
+                    "texture": "#base"
+                }
+            }
+        }
+    ]
+}

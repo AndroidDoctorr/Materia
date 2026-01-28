@@ -1,0 +1,14 @@
+{
+    "type": "materia:bronze_anvil",
+    "input": {
+        "item": "materia:bronze_plate"
+    },
+    "tool_tags": [
+        "materia:bronze_hammers",
+        "materia:bronze_chisels"
+    ],
+    "result": {
+        "item": "materia:bronze_shovel_head",
+        "count": 1
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        [
+            {
+                "tag": "materia:water"
+            },
+            {
+                "type": "forge:partial_nbt",
+                "item": "minecraft:potion",
+                "nbt": "{Potion:\"minecraft:water\"}"
+            }
+        ],
+        {
+            "item": "materia:quicklime"
+        }
+    ],
+    "result": {
+        "item": "materia:slaked_lime",
+        "count": 1
+    }
+}

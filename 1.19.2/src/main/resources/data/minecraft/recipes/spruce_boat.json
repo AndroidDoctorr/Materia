@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "O O",
+        "PSP",
+        "PPP"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:smooth_spruce_planks"
+        },
+        "O": {
+            "item": "materia:oar"
+        },
+        "S": {
+            "item": "materia:pitch"
+        }
+    },
+    "result": {
+        "item": "minecraft:spruce_boat",
+        "count": 1
+    }
+}

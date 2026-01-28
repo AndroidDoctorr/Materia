@@ -1,0 +1,36 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:charcoal_gray_dye"
+        },
+        {
+            "item": "minecraft:terracotta"
+        },
+        {
+            "item": "minecraft:terracotta"
+        },
+        {
+            "item": "minecraft:terracotta"
+        },
+        {
+            "item": "minecraft:terracotta"
+        },
+        {
+            "item": "minecraft:terracotta"
+        },
+        {
+            "item": "minecraft:terracotta"
+        },
+        {
+            "item": "minecraft:terracotta"
+        },
+        {
+            "item": "minecraft:terracotta"
+        }
+    ],
+    "result": {
+        "item": "materia:charcoal_gray_terracotta",
+        "count": 8
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "tag": "materia:reeds"
+        },
+        {
+            "tag": "materia:reeds"
+        },
+        {
+            "tag": "materia:reeds"
+        },
+        {
+            "tag": "materia:adhesives"
+        },
+        {
+            "tag": "materia:basic_lashings"
+        },
+        {
+            "tag": "materia:yellow_dyes"
+        }
+    ],
+    "result": {
+        "item": "materia:air_flute",
+        "count": 1
+    }
+}

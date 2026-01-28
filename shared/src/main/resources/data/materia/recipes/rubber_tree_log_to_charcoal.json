@@ -1,0 +1,19 @@
+{
+    "type": "materia:fire_pit",
+    "ingredient": {
+        "item": "materia:rubber_tree_log"
+    },
+    "results": [
+        {
+            "item": "minecraft:charcoal",
+            "count": 1
+        },
+        {
+            "item": "materia:latex",
+            "count": 1
+        }
+    ],
+    "cookingtime": 200,
+    "experience": 0.1
+}
+

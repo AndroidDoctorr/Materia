@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:hand_axe"
+        },
+        {
+            "item": "materia:handle"
+        },
+        {
+            "tag": "materia:basic_lashings"
+        }
+    ],
+    "result": {
+        "item": "minecraft:stone_axe",
+        "count": 1
+    }
+}

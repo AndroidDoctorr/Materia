@@ -1,0 +1,14 @@
+{
+    "type": "materia:bronze_anvil",
+    "input": {
+        "item": "materia:iron_plate"
+    },
+    "tool_tags": [
+        "materia:iron_hammers",
+        "materia:iron_hammers"
+    ],
+    "result": {
+        "item": "materia:minecart_wheel",
+        "count": 1
+    }
+}

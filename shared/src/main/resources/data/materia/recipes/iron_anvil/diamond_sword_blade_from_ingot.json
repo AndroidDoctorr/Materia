@@ -1,0 +1,16 @@
+{
+    "type": "materia:iron_anvil",
+    "input_a": {
+        "item": "minecraft:diamond",
+        "count": 2
+    },
+    "tool_tags": [
+        "materia:steel_hammers",
+        "materia:steel_hammers",
+        "materia:steel_hammers"
+    ],
+    "result": {
+        "item": "materia:diamond_sword_blade",
+        "count": 1
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "PVP",
+        "HIH",
+        "HRH"
+    ],
+    "key": {
+        "P": {
+            "tag": "materia:smooth_planks"
+        },
+        "I": {
+            "tag": "materia:hard_rods"
+        },
+        "H": {
+            "tag": "materia:hard_plates"
+        },
+        "R": {
+            "item": "minecraft:redstone"
+        },
+        "V": {
+            "tag": "materia:all_rivets"
+        }
+    },
+    "result": {
+        "item": "minecraft:piston",
+        "count": 1
+    }
+}

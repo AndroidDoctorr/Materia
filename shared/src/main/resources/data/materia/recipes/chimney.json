@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "BCB",
+        "BCB"
+    ],
+    "key": {
+        "B": {
+            "item": "minecraft:brick"
+        },
+        "C": {
+            "item": "minecraft:clay_ball"
+        }
+    },
+    "result": {
+        "item": "materia:chimney",
+        "count": 1
+    }
+}

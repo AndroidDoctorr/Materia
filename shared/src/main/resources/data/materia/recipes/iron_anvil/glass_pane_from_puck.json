@@ -1,0 +1,15 @@
+{
+    "type": "materia:iron_anvil",
+    "input_a": {
+        "item": "materia:glass_puck"
+    },
+    "tool_tags": [
+        "materia:bronze_tongs",
+        "materia:bronze_tongs",
+        "materia:bronze_tongs"
+    ],
+    "result": {
+        "item": "minecraft:glass_pane",
+        "count": 1
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "replace": false,
+    "values": [
+        "minecraft:tnt",
+        "materia:stone_cannonball",
+        "materia:iron_cannonball",
+        "materia:canister_shot"
+    ]
+}

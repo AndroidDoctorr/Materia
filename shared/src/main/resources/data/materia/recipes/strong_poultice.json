@@ -1,0 +1,30 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:vinegar"
+        },
+        {
+            "item": "materia:boiled_bark"
+        },
+        {
+            "item": "materia:resin"
+        },
+        {
+            "item": "minecraft:honeycomb"
+        },
+        {
+            "tag": "materia:linens"
+        },
+        {
+            "tag": "materia:lipids"
+        },
+        {
+            "tag": "materia:water"
+        }
+    ],
+    "result": {
+        "item": "materia:strong_poultice",
+        "count": 1
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:spruce_log"
+        },
+        {
+            "tag": "materia:all_saws"
+        }
+    ],
+    "result": {
+        "item": "materia:spruce_post",
+        "count": 4
+    }
+}

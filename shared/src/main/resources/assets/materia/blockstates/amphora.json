@@ -1,0 +1,64 @@
+{
+    "variants": {
+        "closed=false,liquid_type=empty": {
+            "model": "materia:block/amphora"
+        },
+        "closed=false,liquid_type=water": {
+            "model": "materia:block/amphora_water"
+        },
+        "closed=false,liquid_type=wine": {
+            "model": "materia:block/amphora_wine"
+        },
+        "closed=false,liquid_type=vinegar": {
+            "model": "materia:block/amphora_vinegar"
+        },
+        "closed=false,liquid_type=olive_oil": {
+            "model": "materia:block/amphora_olive_oil"
+        },
+        "closed=false,liquid_type=lava": {
+            "model": "materia:block/amphora_lava"
+        },
+        "closed=false,liquid_type=grape_juice": {
+            "model": "materia:block/amphora_grape_juice"
+        },
+        "closed=false,liquid_type=milk": {
+            "model": "materia:block/amphora_milk"
+        },
+        "closed=false,liquid_type=beer_mash": {
+            "model": "materia:block/amphora_beer_mash"
+        },
+        "closed=false,liquid_type=beer": {
+            "model": "materia:block/amphora_beer"
+        },
+        "closed=true,liquid_type=empty": {
+            "model": "materia:block/amphora_closed"
+        },
+        "closed=true,liquid_type=water": {
+            "model": "materia:block/amphora_closed"
+        },
+        "closed=true,liquid_type=wine": {
+            "model": "materia:block/amphora_closed"
+        },
+        "closed=true,liquid_type=vinegar": {
+            "model": "materia:block/amphora_closed"
+        },
+        "closed=true,liquid_type=olive_oil": {
+            "model": "materia:block/amphora_closed"
+        },
+        "closed=true,liquid_type=lava": {
+            "model": "materia:block/amphora_closed"
+        },
+        "closed=true,liquid_type=grape_juice": {
+            "model": "materia:block/amphora_closed"
+        },
+        "closed=true,liquid_type=milk": {
+            "model": "materia:block/amphora_closed"
+        },
+        "closed=true,liquid_type=beer_mash": {
+            "model": "materia:block/amphora_closed"
+        },
+        "closed=true,liquid_type=beer": {
+            "model": "materia:block/amphora_closed"
+        }
+    }
+}

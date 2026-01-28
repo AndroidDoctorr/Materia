@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:squash"
+        },
+        {
+            "tag": "materia:all_cutting_tools"
+        }
+    ],
+    "result": {
+        "item": "materia:sliced_squash",
+        "count": 1
+    }
+}

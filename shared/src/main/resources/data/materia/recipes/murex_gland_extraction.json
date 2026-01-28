@@ -1,0 +1,14 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:murex_shell"
+        },
+        {
+            "tag": "materia:basic_cutting_tools"
+        }
+    ],
+    "result": {
+        "item": "materia:murex_gland_brandaris"
+    }
+}

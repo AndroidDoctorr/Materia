@@ -1,0 +1,7 @@
+{
+    "replace": false,
+    "values": [
+        "materia:bronze_tongs",
+        "#materia:iron_tongs"
+    ]
+}

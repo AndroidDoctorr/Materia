@@ -1,0 +1,16 @@
+{
+    "type": "materia:iron_anvil",
+    "input_a": {
+        "item": "materia:steel_rod",
+        "count": 1
+    },
+    "tool_tags": [
+        "materia:iron_tongs",
+        "materia:iron_drawplates",
+        "materia:iron_tongs"
+    ],
+    "result": {
+        "item": "materia:steel_wire",
+        "count": 1
+    }
+}

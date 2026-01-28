@@ -1,0 +1,8 @@
+{
+    "replace": false,
+    "values": [
+        "materia:calcite_powder",
+        "materia:crushed_shells",
+        "materia:crushed_bones"
+    ]
+}

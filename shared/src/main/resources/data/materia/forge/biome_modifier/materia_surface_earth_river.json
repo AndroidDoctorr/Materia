@@ -1,0 +1,9 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#materia:river",
+  "step": "vegetal_decoration",
+  "features": [
+    "materia:surface_earth_river_placed"
+  ]
+}
+

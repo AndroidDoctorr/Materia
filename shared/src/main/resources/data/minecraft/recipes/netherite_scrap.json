@@ -1,0 +1,16 @@
+{
+    "type": "materia:kiln",
+    "group": "netherite",
+    "ingredient": {
+        "item": "minecraft:ancient_debris"
+    },
+    "result": {
+        "item": "minecraft:netherite_scrap",
+        "count": 1
+    },
+    "cookingtime": 2400,
+    "experience": 2.0,
+    "requires_chimney": true,
+    "requires_bellows": true,
+    "requires_coke_fuel": true
+}

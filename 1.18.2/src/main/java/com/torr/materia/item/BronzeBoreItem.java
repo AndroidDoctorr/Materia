@@ -1,0 +1,28 @@
+package com.torr.materia.item;
+
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+
+/**
+ * Bronze bore used for making holes in metal plates. 
+ * Survives crafting recipes while losing durability.
+ */
+public class BronzeBoreItem extends Item {
+
+    public BronzeBoreItem(Properties properties) {
+        super(properties);
+    }
+
+    /* Container behaviour for crafting */
+    @Override
+    public boolean hasContainerItem(ItemStack stack) {
+        return true;
+    }
+
+    @Override
+    public ItemStack getContainerItem(ItemStack stack) {
+        ItemStack copy = stack.copy();
+        copy.setDamageValue(copy.getDamageValue() + 1);
+        return copy.getDamageValue() >= copy.getMaxDamage() ? ItemStack.EMPTY : copy;
+    }
+}

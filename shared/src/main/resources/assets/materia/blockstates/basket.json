@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "open=false": {
+            "model": "materia:block/basket"
+        },
+        "open=true": {
+            "model": "materia:block/basket_open"
+        }
+    }
+}

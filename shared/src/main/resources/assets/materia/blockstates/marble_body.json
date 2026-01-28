@@ -1,0 +1,19 @@
+{
+    "variants": {
+        "facing=north": {
+            "model": "materia:block/marble_body"
+        },
+        "facing=south": {
+            "model": "materia:block/marble_body",
+            "y": 180
+        },
+        "facing=west": {
+            "model": "materia:block/marble_body",
+            "y": 270
+        },
+        "facing=east": {
+            "model": "materia:block/marble_body",
+            "y": 90
+        }
+    }
+}

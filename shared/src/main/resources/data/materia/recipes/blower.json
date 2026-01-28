@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " P ",
+        "PDP",
+        " P "
+    ],
+    "key": {
+        "P": {
+            "tag": "materia:hard_plates"
+        },
+        "D": {
+            "item": "materia:dynamo"
+        }
+    },
+    "result": {
+        "item": "materia:blower",
+        "count": 1
+    }
+}

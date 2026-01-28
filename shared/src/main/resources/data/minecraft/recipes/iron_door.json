@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "BPS",
+        "NPK",
+        "BPH"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:steel_plate"
+        },
+        "B": {
+            "item": "materia:iron_hinge"
+        },
+        "K": {
+            "item": "materia:iron_handle"
+        },
+        "N": {
+            "item": "materia:iron_rivets"
+        },
+        "H": {
+            "tag": "materia:iron_hammers"
+        },
+        "S": {
+            "tag": "materia:iron_files"
+        }
+    },
+    "result": {
+        "item": "minecraft:iron_door",
+        "count": 1
+    }
+}

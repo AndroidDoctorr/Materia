@@ -1,0 +1,30 @@
+{
+    "replace": false,
+    "values": [
+        "materia:clump_of_wool",
+        "materia:clump_of_black_wool",
+        "materia:clump_of_ochre_wool",
+        "materia:clump_of_red_ochre_wool",
+        "materia:clump_of_yellow_wool",
+        "materia:clump_of_brown_wool",
+        "materia:clump_of_cyan_wool",
+        "materia:clump_of_gray_wool",
+        "materia:clump_of_green_wool",
+        "materia:clump_of_light_blue_wool",
+        "materia:clump_of_light_gray_wool",
+        "materia:clump_of_lime_wool",
+        "materia:clump_of_magenta_wool",
+        "materia:clump_of_orange_wool",
+        "materia:clump_of_pink_wool",
+        "materia:clump_of_purple_wool",
+        "materia:clump_of_red_wool",
+        "materia:clump_of_tyrian_purple_wool",
+        "materia:clump_of_lavender_wool",
+        "materia:clump_of_charcoal_gray_wool",
+        "materia:clump_of_olive_wool",
+        "materia:clump_of_indigo_wool",
+        "materia:clump_of_taupe_wool",
+        "materia:clump_of_white_wool",
+        "materia:clump_of_blue_wool"
+    ]
+}

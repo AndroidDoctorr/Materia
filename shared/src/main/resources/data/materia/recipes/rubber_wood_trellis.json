@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " S ",
+        "PSP"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:rubber_wood_post"
+        },
+        "S": {
+            "item": "materia:smooth_rubber_wood_planks"
+        }
+    },
+    "result": {
+        "item": "materia:rubber_wood_trellis",
+        "count": 1
+    }
+}

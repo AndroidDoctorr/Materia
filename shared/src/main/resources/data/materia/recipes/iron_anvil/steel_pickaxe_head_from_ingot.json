@@ -1,0 +1,16 @@
+{
+    "type": "materia:iron_anvil",
+    "input_a": {
+        "item": "materia:steel_rod",
+        "count": 3
+    },
+    "tool_tags": [
+        "materia:steel_hammers",
+        "materia:steel_hammers",
+        "materia:steel_hammers"
+    ],
+    "result": {
+        "item": "materia:steel_pickaxe_head",
+        "count": 1
+    }
+}

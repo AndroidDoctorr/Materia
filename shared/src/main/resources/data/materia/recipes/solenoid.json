@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:magnetized_rod"
+        },
+        {
+            "item": "materia:insulated_copper_wire"
+        },
+        {
+            "item": "minecraft:redstone"
+        }
+    ],
+    "result": {
+        "item": "materia:solenoid",
+        "count": 1
+    }
+}

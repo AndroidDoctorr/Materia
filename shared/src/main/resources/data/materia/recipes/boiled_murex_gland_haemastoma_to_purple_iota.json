@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:boiled_murex_gland_haemastoma"
+        }
+    ],
+    "result": {
+        "item": "materia:purple_iota",
+        "count": 1
+    }
+}

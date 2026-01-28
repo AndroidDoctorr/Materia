@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:voltaic_layer"
+        },
+        {
+            "tag": "materia:all_plates"
+        },
+        {
+            "tag": "materia:insulators"
+        },
+        {
+            "item": "minecraft:redstone"
+        }
+    ],
+    "result": {
+        "item": "materia:battery",
+        "count": 1
+    }
+}

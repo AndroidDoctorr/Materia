@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SCS",
+        "CNC",
+        "SCS"
+    ],
+    "key": {
+        "C": {
+            "item": "materia:taupe_carpet"
+        },
+        "S": {
+            "item": "materia:taupe_string"
+        },
+        "N": {
+            "tag": "materia:all_needles"
+        }
+    },
+    "result": {
+        "item": "materia:taupe_wool",
+        "count": 1
+    }
+}

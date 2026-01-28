@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "PSP",
+        "PSP",
+        "NPN"
+    ],
+    "key": {
+        "P": {
+            "tag": "materia:hard_plates"
+        },
+        "S": {
+            "tag": "materia:hot_sealants"
+        },
+        "N": {
+            "tag": "materia:all_nails"
+        }
+    },
+    "result": {
+        "item": "minecraft:cauldron",
+        "count": 1
+    }
+}

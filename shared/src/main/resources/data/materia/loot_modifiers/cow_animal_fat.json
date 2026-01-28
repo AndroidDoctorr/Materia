@@ -1,0 +1,26 @@
+{
+    "type": "materia:animal_drop_modifier",
+    "conditions": [
+        {
+            "condition": "minecraft:killed_by_player"
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "type": "minecraft:cow"
+            }
+        },
+        {
+            "condition": "minecraft:random_chance",
+            "chance": 1
+        }
+    ],
+    "item": {
+        "item": "materia:animal_fat",
+        "count": {
+            "min": 1,
+            "max": 3
+        }
+    }
+}

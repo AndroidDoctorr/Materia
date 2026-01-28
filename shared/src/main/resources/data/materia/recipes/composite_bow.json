@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "BHB",
+        "LGL",
+        "SSS"
+    ],
+    "key": {
+        "L": {
+            "item": "materia:bow_limb"
+        },
+        "S": {
+            "tag": "materia:strong_bowstrings"
+        },
+        "G": {
+            "tag": "materia:strong_adhesives"
+        },
+        "H": {
+            "item": "materia:handle"
+        },
+        "B": {
+            "item": "materia:bone_strip"
+        }
+    },
+    "result": {
+        "item": "materia:composite_bow",
+        "count": 1
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SHS",
+        "TFT"
+    ],
+    "key": {
+        "H": {
+            "item": "materia:hardened_leather"
+        },
+        "S": {
+            "item": "materia:leather_strap"
+        },
+        "T": {
+            "item": "materia:tanned_leather"
+        },
+        "F": {
+            "tag": "materia:leather_finishes"
+        }
+    },
+    "result": {
+        "item": "minecraft:leather_leggings",
+        "count": 1
+    }
+}

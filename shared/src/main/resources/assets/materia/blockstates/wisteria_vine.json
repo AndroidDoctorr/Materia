@@ -1,0 +1,13 @@
+{
+    "variants": {
+        "age=0": {
+            "model": "materia:block/wisteria_stage0"
+        },
+        "age=1": {
+            "model": "materia:block/wisteria_stage1"
+        },
+        "age=2": {
+            "model": "materia:block/wisteria_stage2"
+        }
+    }
+}

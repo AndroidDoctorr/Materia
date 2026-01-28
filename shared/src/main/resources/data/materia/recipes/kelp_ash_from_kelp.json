@@ -1,0 +1,14 @@
+{
+    "type": "materia:kiln",
+    "group": "kelp_ash",
+    "ingredient": {
+        "item": "minecraft:kelp"
+    },
+    "result": {
+        "item": "materia:kelp_ash",
+        "count": 1
+    },
+    "cookingtime": 800,
+    "experience": 0.3,
+    "requires_chimney": true
+}

@@ -1,0 +1,26 @@
+﻿{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "RSL",
+        "PSP"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:rough_warped_plank"
+        },
+        "L": {
+            "tag": "materia:all_wood_joiners"
+        },
+        "S": {
+            "item": "materia:smooth_warped_planks"
+        },
+        "R": {
+            "item": "materia:rope"
+        }
+    },
+    "result": {
+        "item": "minecraft:warped_fence_gate",
+        "count": 1
+    }
+}
+

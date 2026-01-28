@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "PBP",
+        "PSP",
+        "PBP"
+    ],
+    "key": {
+        "P": {
+            "tag": "materia:smooth_planks"
+        },
+        "B": {
+            "tag": "materia:hard_bands"
+        },
+        "S": {
+            "tag": "materia:sealants"
+        }
+    },
+    "result": {
+        "item": "minecraft:barrel",
+        "count": 1
+    }
+}

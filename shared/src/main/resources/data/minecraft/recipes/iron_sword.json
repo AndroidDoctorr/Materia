@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:steel_sword_blade"
+        },
+        {
+            "item": "materia:steel_crossbar"
+        },
+        {
+            "item": "materia:iron_handle"
+        },
+        {
+            "tag": "materia:advanced_bindings"
+        }
+    ],
+    "result": {
+        "item": "minecraft:iron_sword",
+        "count": 1
+    }
+}

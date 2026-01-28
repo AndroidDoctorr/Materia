@@ -1,0 +1,7 @@
+{
+    "replace": false,
+    "values": [
+        "materia:bronze_drawplate",
+        "#materia:iron_drawplates"
+    ]
+}

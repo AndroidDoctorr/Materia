@@ -1,0 +1,20 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "materia:item/steel_tongs"
+    },
+    "overrides": [
+        {
+            "predicate": {
+                "materia:state": 0.5
+            },
+            "model": "materia:item/steel_tongs_ingot_cold"
+        },
+        {
+            "predicate": {
+                "materia:state": 1.0
+            },
+            "model": "materia:item/steel_tongs_ingot_hot"
+        }
+    ]
+}

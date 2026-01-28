@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "count=1": { "model": "materia:block/stone_cannonball_pile_1" },
+    "count=2": { "model": "materia:block/stone_cannonball_pile_2" },
+    "count=3": { "model": "materia:block/stone_cannonball_pile_3" },
+    "count=4": { "model": "materia:block/stone_cannonball_pile_4" },
+    "count=5": { "model": "materia:block/stone_cannonball_pile_5" },
+    "count=6": { "model": "materia:block/stone_cannonball_pile_6" },
+    "count=7": { "model": "materia:block/stone_cannonball_pile_7" },
+    "count=8": { "model": "materia:block/stone_cannonball_pile_8" },
+    "count=9": { "model": "materia:block/stone_cannonball_pile_9" },
+    "count=10": { "model": "materia:block/stone_cannonball_pile_10" },
+    "count=11": { "model": "materia:block/stone_cannonball_pile_11" },
+    "count=12": { "model": "materia:block/stone_cannonball_pile_12" },
+    "count=13": { "model": "materia:block/stone_cannonball_pile_13" },
+    "count=14": { "model": "materia:block/stone_cannonball_pile_14" }
+  }
+}

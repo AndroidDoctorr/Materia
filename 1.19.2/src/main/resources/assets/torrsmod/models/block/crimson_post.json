@@ -1,0 +1,7 @@
+﻿{
+    "parent": "materia:block/acacia_post",
+    "textures": {
+        "all": "minecraft:block/crimson_planks",
+        "particle": "minecraft:block/crimson_planks"
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "GGG",
+        "GRG",
+        "GGG"
+    ],
+    "key": {
+        "G": {
+            "item": "minecraft:glass"
+        },
+        "R": {
+            "item": "materia:red_ochre"
+        }
+    },
+    "result": {
+        "item": "materia:red_ochre_glass",
+        "count": 8
+    }
+}

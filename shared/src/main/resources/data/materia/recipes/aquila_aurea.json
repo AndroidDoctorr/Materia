@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "PIP",
+        "PIP",
+        " P "
+    ],
+    "key": {
+        "P": {
+            "item": "materia:gold_plate"
+        },
+        "I": {
+            "item": "minecraft:gold_ingot"
+        }
+    },
+    "result": {
+        "item": "materia:aquila_aurea",
+        "count": 1
+    }
+}

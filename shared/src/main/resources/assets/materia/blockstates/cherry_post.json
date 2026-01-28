@@ -1,0 +1,84 @@
+{
+  "variants": {
+    "facing=east,has_grape_vine=false,has_grapes=false,has_wisteria_vine=false,has_wisteria_flowers=false": { "model": "materia:block/cherry_post" },
+    "facing=west,has_grape_vine=false,has_grapes=false,has_wisteria_vine=false,has_wisteria_flowers=false": { "model": "materia:block/cherry_post", "y": 180, "uvlock": true },
+    "facing=south,has_grape_vine=false,has_grapes=false,has_wisteria_vine=false,has_wisteria_flowers=false": { "model": "materia:block/cherry_post", "y": 90, "uvlock": true },
+    "facing=north,has_grape_vine=false,has_grapes=false,has_wisteria_vine=false,has_wisteria_flowers=false": { "model": "materia:block/cherry_post", "y": 270, "uvlock": true },
+
+    "facing=east,has_grape_vine=true,has_grapes=false,has_wisteria_vine=false,has_wisteria_flowers=false": { "model": "materia:block/cherry_post_with_grape_vine" },
+    "facing=west,has_grape_vine=true,has_grapes=false,has_wisteria_vine=false,has_wisteria_flowers=false": { "model": "materia:block/cherry_post_with_grape_vine", "y": 180, "uvlock": true },
+    "facing=south,has_grape_vine=true,has_grapes=false,has_wisteria_vine=false,has_wisteria_flowers=false": { "model": "materia:block/cherry_post_with_grape_vine", "y": 90, "uvlock": true },
+    "facing=north,has_grape_vine=true,has_grapes=false,has_wisteria_vine=false,has_wisteria_flowers=false": { "model": "materia:block/cherry_post_with_grape_vine", "y": 270, "uvlock": true },
+
+    "facing=east,has_grape_vine=true,has_grapes=true,has_wisteria_vine=false,has_wisteria_flowers=false": { "model": "materia:block/cherry_post_with_grapes" },
+    "facing=west,has_grape_vine=true,has_grapes=true,has_wisteria_vine=false,has_wisteria_flowers=false": { "model": "materia:block/cherry_post_with_grapes", "y": 180, "uvlock": true },
+    "facing=south,has_grape_vine=true,has_grapes=true,has_wisteria_vine=false,has_wisteria_flowers=false": { "model": "materia:block/cherry_post_with_grapes", "y": 90, "uvlock": true },
+    "facing=north,has_grape_vine=true,has_grapes=true,has_wisteria_vine=false,has_wisteria_flowers=false": { "model": "materia:block/cherry_post_with_grapes", "y": 270, "uvlock": true },
+
+    "facing=east,has_grape_vine=false,has_grapes=true,has_wisteria_vine=false,has_wisteria_flowers=false": { "model": "materia:block/cherry_post" },
+    "facing=west,has_grape_vine=false,has_grapes=true,has_wisteria_vine=false,has_wisteria_flowers=false": { "model": "materia:block/cherry_post", "y": 180, "uvlock": true },
+    "facing=south,has_grape_vine=false,has_grapes=true,has_wisteria_vine=false,has_wisteria_flowers=false": { "model": "materia:block/cherry_post", "y": 90, "uvlock": true },
+    "facing=north,has_grape_vine=false,has_grapes=true,has_wisteria_vine=false,has_wisteria_flowers=false": { "model": "materia:block/cherry_post", "y": 270, "uvlock": true },
+
+    "facing=east,has_grape_vine=false,has_grapes=false,has_wisteria_vine=true,has_wisteria_flowers=false": { "model": "materia:block/cherry_post" },
+    "facing=west,has_grape_vine=false,has_grapes=false,has_wisteria_vine=true,has_wisteria_flowers=false": { "model": "materia:block/cherry_post", "y": 180, "uvlock": true },
+    "facing=south,has_grape_vine=false,has_grapes=false,has_wisteria_vine=true,has_wisteria_flowers=false": { "model": "materia:block/cherry_post", "y": 90, "uvlock": true },
+    "facing=north,has_grape_vine=false,has_grapes=false,has_wisteria_vine=true,has_wisteria_flowers=false": { "model": "materia:block/cherry_post", "y": 270, "uvlock": true },
+
+    "facing=east,has_grape_vine=true,has_grapes=false,has_wisteria_vine=true,has_wisteria_flowers=false": { "model": "materia:block/cherry_post_with_grape_vine" },
+    "facing=west,has_grape_vine=true,has_grapes=false,has_wisteria_vine=true,has_wisteria_flowers=false": { "model": "materia:block/cherry_post_with_grape_vine", "y": 180, "uvlock": true },
+    "facing=south,has_grape_vine=true,has_grapes=false,has_wisteria_vine=true,has_wisteria_flowers=false": { "model": "materia:block/cherry_post_with_grape_vine", "y": 90, "uvlock": true },
+    "facing=north,has_grape_vine=true,has_grapes=false,has_wisteria_vine=true,has_wisteria_flowers=false": { "model": "materia:block/cherry_post_with_grape_vine", "y": 270, "uvlock": true },
+
+    "facing=east,has_grape_vine=true,has_grapes=true,has_wisteria_vine=true,has_wisteria_flowers=false": { "model": "materia:block/cherry_post_with_grapes" },
+    "facing=west,has_grape_vine=true,has_grapes=true,has_wisteria_vine=true,has_wisteria_flowers=false": { "model": "materia:block/cherry_post_with_grapes", "y": 180, "uvlock": true },
+    "facing=south,has_grape_vine=true,has_grapes=true,has_wisteria_vine=true,has_wisteria_flowers=false": { "model": "materia:block/cherry_post_with_grapes", "y": 90, "uvlock": true },
+    "facing=north,has_grape_vine=true,has_grapes=true,has_wisteria_vine=true,has_wisteria_flowers=false": { "model": "materia:block/cherry_post_with_grapes", "y": 270, "uvlock": true },
+
+    "facing=east,has_grape_vine=false,has_grapes=true,has_wisteria_vine=true,has_wisteria_flowers=false": { "model": "materia:block/cherry_post" },
+    "facing=west,has_grape_vine=false,has_grapes=true,has_wisteria_vine=true,has_wisteria_flowers=false": { "model": "materia:block/cherry_post", "y": 180, "uvlock": true },
+    "facing=south,has_grape_vine=false,has_grapes=true,has_wisteria_vine=true,has_wisteria_flowers=false": { "model": "materia:block/cherry_post", "y": 90, "uvlock": true },
+    "facing=north,has_grape_vine=false,has_grapes=true,has_wisteria_vine=true,has_wisteria_flowers=false": { "model": "materia:block/cherry_post", "y": 270, "uvlock": true },
+
+    "facing=east,has_grape_vine=false,has_grapes=false,has_wisteria_vine=true,has_wisteria_flowers=true": { "model": "materia:block/cherry_post" },
+    "facing=west,has_grape_vine=false,has_grapes=false,has_wisteria_vine=true,has_wisteria_flowers=true": { "model": "materia:block/cherry_post", "y": 180, "uvlock": true },
+    "facing=south,has_grape_vine=false,has_grapes=false,has_wisteria_vine=true,has_wisteria_flowers=true": { "model": "materia:block/cherry_post", "y": 90, "uvlock": true },
+    "facing=north,has_grape_vine=false,has_grapes=false,has_wisteria_vine=true,has_wisteria_flowers=true": { "model": "materia:block/cherry_post", "y": 270, "uvlock": true },
+
+    "facing=east,has_grape_vine=true,has_grapes=false,has_wisteria_vine=true,has_wisteria_flowers=true": { "model": "materia:block/cherry_post_with_grape_vine" },
+    "facing=west,has_grape_vine=true,has_grapes=false,has_wisteria_vine=true,has_wisteria_flowers=true": { "model": "materia:block/cherry_post_with_grape_vine", "y": 180, "uvlock": true },
+    "facing=south,has_grape_vine=true,has_grapes=false,has_wisteria_vine=true,has_wisteria_flowers=true": { "model": "materia:block/cherry_post_with_grape_vine", "y": 90, "uvlock": true },
+    "facing=north,has_grape_vine=true,has_grapes=false,has_wisteria_vine=true,has_wisteria_flowers=true": { "model": "materia:block/cherry_post_with_grape_vine", "y": 270, "uvlock": true },
+
+    "facing=east,has_grape_vine=true,has_grapes=true,has_wisteria_vine=true,has_wisteria_flowers=true": { "model": "materia:block/cherry_post_with_grapes" },
+    "facing=west,has_grape_vine=true,has_grapes=true,has_wisteria_vine=true,has_wisteria_flowers=true": { "model": "materia:block/cherry_post_with_grapes", "y": 180, "uvlock": true },
+    "facing=south,has_grape_vine=true,has_grapes=true,has_wisteria_vine=true,has_wisteria_flowers=true": { "model": "materia:block/cherry_post_with_grapes", "y": 90, "uvlock": true },
+    "facing=north,has_grape_vine=true,has_grapes=true,has_wisteria_vine=true,has_wisteria_flowers=true": { "model": "materia:block/cherry_post_with_grapes", "y": 270, "uvlock": true },
+
+    "facing=east,has_grape_vine=false,has_grapes=true,has_wisteria_vine=true,has_wisteria_flowers=true": { "model": "materia:block/cherry_post" },
+    "facing=west,has_grape_vine=false,has_grapes=true,has_wisteria_vine=true,has_wisteria_flowers=true": { "model": "materia:block/cherry_post", "y": 180, "uvlock": true },
+    "facing=south,has_grape_vine=false,has_grapes=true,has_wisteria_vine=true,has_wisteria_flowers=true": { "model": "materia:block/cherry_post", "y": 90, "uvlock": true },
+    "facing=north,has_grape_vine=false,has_grapes=true,has_wisteria_vine=true,has_wisteria_flowers=true": { "model": "materia:block/cherry_post", "y": 270, "uvlock": true },
+
+    "facing=east,has_grape_vine=false,has_grapes=false,has_wisteria_vine=false,has_wisteria_flowers=true": { "model": "materia:block/cherry_post" },
+    "facing=west,has_grape_vine=false,has_grapes=false,has_wisteria_vine=false,has_wisteria_flowers=true": { "model": "materia:block/cherry_post", "y": 180, "uvlock": true },
+    "facing=south,has_grape_vine=false,has_grapes=false,has_wisteria_vine=false,has_wisteria_flowers=true": { "model": "materia:block/cherry_post", "y": 90, "uvlock": true },
+    "facing=north,has_grape_vine=false,has_grapes=false,has_wisteria_vine=false,has_wisteria_flowers=true": { "model": "materia:block/cherry_post", "y": 270, "uvlock": true },
+
+    "facing=east,has_grape_vine=true,has_grapes=false,has_wisteria_vine=false,has_wisteria_flowers=true": { "model": "materia:block/cherry_post_with_grape_vine" },
+    "facing=west,has_grape_vine=true,has_grapes=false,has_wisteria_vine=false,has_wisteria_flowers=true": { "model": "materia:block/cherry_post_with_grape_vine", "y": 180, "uvlock": true },
+    "facing=south,has_grape_vine=true,has_grapes=false,has_wisteria_vine=false,has_wisteria_flowers=true": { "model": "materia:block/cherry_post_with_grape_vine", "y": 90, "uvlock": true },
+    "facing=north,has_grape_vine=true,has_grapes=false,has_wisteria_vine=false,has_wisteria_flowers=true": { "model": "materia:block/cherry_post_with_grape_vine", "y": 270, "uvlock": true },
+
+    "facing=east,has_grape_vine=true,has_grapes=true,has_wisteria_vine=false,has_wisteria_flowers=true": { "model": "materia:block/cherry_post_with_grapes" },
+    "facing=west,has_grape_vine=true,has_grapes=true,has_wisteria_vine=false,has_wisteria_flowers=true": { "model": "materia:block/cherry_post_with_grapes", "y": 180, "uvlock": true },
+    "facing=south,has_grape_vine=true,has_grapes=true,has_wisteria_vine=false,has_wisteria_flowers=true": { "model": "materia:block/cherry_post_with_grapes", "y": 90, "uvlock": true },
+    "facing=north,has_grape_vine=true,has_grapes=true,has_wisteria_vine=false,has_wisteria_flowers=true": { "model": "materia:block/cherry_post_with_grapes", "y": 270, "uvlock": true },
+
+    "facing=east,has_grape_vine=false,has_grapes=true,has_wisteria_vine=false,has_wisteria_flowers=true": { "model": "materia:block/cherry_post" },
+    "facing=west,has_grape_vine=false,has_grapes=true,has_wisteria_vine=false,has_wisteria_flowers=true": { "model": "materia:block/cherry_post", "y": 180, "uvlock": true },
+    "facing=south,has_grape_vine=false,has_grapes=true,has_wisteria_vine=false,has_wisteria_flowers=true": { "model": "materia:block/cherry_post", "y": 90, "uvlock": true },
+    "facing=north,has_grape_vine=false,has_grapes=true,has_wisteria_vine=false,has_wisteria_flowers=true": { "model": "materia:block/cherry_post", "y": 270, "uvlock": true }
+  }
+}
+

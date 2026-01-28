@@ -1,0 +1,26 @@
+﻿{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "TWT",
+        "SBS",
+        " S "
+    ],
+    "key": {
+        "S": {
+            "item": "minecraft:stick"
+        },
+        "B": {
+            "item": "materia:black_blanket"
+        },
+        "W": {
+            "tag": "materia:all_wood_joiners"
+        },
+        "T": {
+            "tag": "materia:all_strings"
+        }
+    },
+    "result": {
+        "item": "minecraft:black_banner",
+        "count": 1
+    }
+}

@@ -1,0 +1,6 @@
+﻿{
+    "textures": {
+        "layer0": "materia:item/cyan_blanket"
+    },
+    "parent": "item/generated"
+}

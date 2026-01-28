@@ -1,0 +1,16 @@
+{
+    "variants": {
+        "water_level=0": {
+            "model": "materia:block/pot"
+        },
+        "water_level=1": {
+            "model": "materia:block/beer_pot_low"
+        },
+        "water_level=2": {
+            "model": "materia:block/beer_pot_medium"
+        },
+        "water_level=3": {
+            "model": "materia:block/beer_pot_full"
+        }
+    }
+}

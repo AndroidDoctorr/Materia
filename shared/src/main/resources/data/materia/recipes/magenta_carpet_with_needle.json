@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "materia:magenta_string" },
+    { "item": "materia:magenta_string" },
+    { "item": "materia:magenta_string" },
+    { "item": "materia:magenta_string" },
+    { "item": "materia:magenta_string" },
+    { "item": "materia:magenta_string" },
+    { "item": "materia:magenta_string" },
+    { "item": "materia:magenta_string" },
+    { "tag": "materia:all_needles" }
+  ],
+  "result": { "item": "minecraft:magenta_carpet", "count": 1 }
+}

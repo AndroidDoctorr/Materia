@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        [
+            {
+                "tag": "materia:water"
+            },
+            {
+                "type": "forge:partial_nbt",
+                "item": "minecraft:potion",
+                "nbt": "{Potion:\"minecraft:water\"}"
+            }
+        ],
+        {
+            "tag": "forge:flour"
+        }
+    ],
+    "result": {
+        "item": "materia:dough",
+        "count": 1
+    }
+}

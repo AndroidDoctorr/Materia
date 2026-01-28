@@ -1,0 +1,18 @@
+﻿{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "PFP"
+    ],
+    "key": {
+        "P": {
+            "tag": "materia:smooth_planks"
+        },
+        "F": {
+            "item": "materia:box_frame"
+        }
+    },
+    "result": {
+        "item": "minecraft:chiseled_bookshelf",
+        "count": 1
+    }
+}

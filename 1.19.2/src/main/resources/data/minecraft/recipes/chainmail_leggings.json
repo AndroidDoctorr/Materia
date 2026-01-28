@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SCS",
+        "CLC",
+        "C C"
+    ],
+    "key": {
+        "C": {
+            "item": "materia:iron_rings"
+        },
+        "S": {
+            "item": "materia:leather_strap"
+        },
+        "L": {
+            "item": "materia:tanned_leather"
+        }
+    },
+    "result": {
+        "item": "minecraft:chainmail_leggings",
+        "count": 1
+    }
+}

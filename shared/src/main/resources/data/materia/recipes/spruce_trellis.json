@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " S ",
+        "PSP"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:spruce_post"
+        },
+        "S": {
+            "item": "materia:smooth_spruce_planks"
+        }
+    },
+    "result": {
+        "item": "materia:spruce_trellis",
+        "count": 1
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "replace": false,
+    "values": [
+        "minecraft:charcoal",
+        "minecraft:coal",
+        "materia:pitch",
+        "materia:coal_coke",
+        "materia:tar"
+    ]
+}

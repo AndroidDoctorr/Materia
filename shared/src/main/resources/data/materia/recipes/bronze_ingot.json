@@ -1,0 +1,17 @@
+{
+    "type": "materia:advanced_kiln",
+    "group": "bronze_alloy",
+    "ingredient1": {
+        "item": "minecraft:raw_copper"
+    },
+    "ingredient2": {
+        "item": "materia:tin_nugget"
+    },
+    "result": {
+        "item": "materia:bronze_ingot",
+        "count": 1
+    },
+    "cookingtime": 1200,
+    "experience": 0.1,
+    "requires_chimney": true
+}

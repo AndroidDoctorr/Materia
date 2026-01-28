@@ -1,0 +1,7 @@
+{
+    "replace": false,
+    "values": [
+        "materia:handle",
+        "#materia:bronze_handles"
+    ]
+}

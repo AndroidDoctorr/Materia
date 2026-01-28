@@ -1,0 +1,12 @@
+{
+    "replace": false,
+    "values": [
+        "materia:copper_plate",
+        "materia:aluminum_plate",
+        "materia:gold_plate",
+        "materia:tin_plate",
+        "materia:brass_plate",
+        "materia:zinc_plate",
+        "materia:lead_plate"
+    ]
+}

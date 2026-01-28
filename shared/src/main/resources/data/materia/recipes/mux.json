@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "RTR",
+        "AOA"
+    ],
+    "key": {
+        "R": {
+            "item": "minecraft:redstone"
+        },
+        "T": {
+            "item": "minecraft:redstone_torch"
+        },
+        "O": {
+            "item": "materia:or_gate"
+        },
+        "A": {
+            "item": "materia:and_gate"
+        }
+    },
+    "result": {
+        "item": "materia:mux",
+        "count": 1
+    }
+}

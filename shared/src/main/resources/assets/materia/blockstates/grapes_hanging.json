@@ -1,0 +1,13 @@
+{
+    "variants": {
+        "age=0": {
+            "model": "materia:block/grapes_hanging_0"
+        },
+        "age=1": {
+            "model": "materia:block/grapes_hanging_1"
+        },
+        "age=2": {
+            "model": "materia:block/grapes_hanging"
+        }
+    }
+}

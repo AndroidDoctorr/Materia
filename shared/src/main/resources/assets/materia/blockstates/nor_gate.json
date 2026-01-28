@@ -1,0 +1,64 @@
+{
+    "variants": {
+        "a=false,b=false,facing=north": {
+            "model": "materia:block/nor_0"
+        },
+        "a=true,b=false,facing=north": {
+            "model": "materia:block/nor_1"
+        },
+        "a=false,b=true,facing=north": {
+            "model": "materia:block/nor_2"
+        },
+        "a=true,b=true,facing=north": {
+            "model": "materia:block/nor_3"
+        },
+        "a=false,b=false,facing=east": {
+            "model": "materia:block/nor_0",
+            "y": 90
+        },
+        "a=true,b=false,facing=east": {
+            "model": "materia:block/nor_1",
+            "y": 90
+        },
+        "a=false,b=true,facing=east": {
+            "model": "materia:block/nor_2",
+            "y": 90
+        },
+        "a=true,b=true,facing=east": {
+            "model": "materia:block/nor_3",
+            "y": 90
+        },
+        "a=false,b=false,facing=south": {
+            "model": "materia:block/nor_0",
+            "y": 180
+        },
+        "a=true,b=false,facing=south": {
+            "model": "materia:block/nor_1",
+            "y": 180
+        },
+        "a=false,b=true,facing=south": {
+            "model": "materia:block/nor_2",
+            "y": 180
+        },
+        "a=true,b=true,facing=south": {
+            "model": "materia:block/nor_3",
+            "y": 180
+        },
+        "a=false,b=false,facing=west": {
+            "model": "materia:block/nor_0",
+            "y": 270
+        },
+        "a=true,b=false,facing=west": {
+            "model": "materia:block/nor_1",
+            "y": 270
+        },
+        "a=false,b=true,facing=west": {
+            "model": "materia:block/nor_2",
+            "y": 270
+        },
+        "a=true,b=true,facing=west": {
+            "model": "materia:block/nor_3",
+            "y": 270
+        }
+    }
+}

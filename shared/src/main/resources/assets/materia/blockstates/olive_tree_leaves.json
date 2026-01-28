@@ -1,0 +1,88 @@
+{
+    "variants": {
+        "distance=1,persistent=false,has_olives=false": {
+            "model": "materia:block/olive_tree_leaves"
+        },
+        "distance=1,persistent=false,has_olives=true": {
+            "model": "materia:block/olive_tree_leaves_with_olives"
+        },
+        "distance=1,persistent=true,has_olives=false": {
+            "model": "materia:block/olive_tree_leaves"
+        },
+        "distance=1,persistent=true,has_olives=true": {
+            "model": "materia:block/olive_tree_leaves_with_olives"
+        },
+        "distance=2,persistent=false,has_olives=false": {
+            "model": "materia:block/olive_tree_leaves"
+        },
+        "distance=2,persistent=false,has_olives=true": {
+            "model": "materia:block/olive_tree_leaves_with_olives"
+        },
+        "distance=2,persistent=true,has_olives=false": {
+            "model": "materia:block/olive_tree_leaves"
+        },
+        "distance=2,persistent=true,has_olives=true": {
+            "model": "materia:block/olive_tree_leaves_with_olives"
+        },
+        "distance=3,persistent=false,has_olives=false": {
+            "model": "materia:block/olive_tree_leaves"
+        },
+        "distance=3,persistent=false,has_olives=true": {
+            "model": "materia:block/olive_tree_leaves_with_olives"
+        },
+        "distance=3,persistent=true,has_olives=false": {
+            "model": "materia:block/olive_tree_leaves"
+        },
+        "distance=3,persistent=true,has_olives=true": {
+            "model": "materia:block/olive_tree_leaves_with_olives"
+        },
+        "distance=4,persistent=false,has_olives=false": {
+            "model": "materia:block/olive_tree_leaves"
+        },
+        "distance=4,persistent=false,has_olives=true": {
+            "model": "materia:block/olive_tree_leaves_with_olives"
+        },
+        "distance=4,persistent=true,has_olives=false": {
+            "model": "materia:block/olive_tree_leaves"
+        },
+        "distance=4,persistent=true,has_olives=true": {
+            "model": "materia:block/olive_tree_leaves_with_olives"
+        },
+        "distance=5,persistent=false,has_olives=false": {
+            "model": "materia:block/olive_tree_leaves"
+        },
+        "distance=5,persistent=false,has_olives=true": {
+            "model": "materia:block/olive_tree_leaves_with_olives"
+        },
+        "distance=5,persistent=true,has_olives=false": {
+            "model": "materia:block/olive_tree_leaves"
+        },
+        "distance=5,persistent=true,has_olives=true": {
+            "model": "materia:block/olive_tree_leaves_with_olives"
+        },
+        "distance=6,persistent=false,has_olives=false": {
+            "model": "materia:block/olive_tree_leaves"
+        },
+        "distance=6,persistent=false,has_olives=true": {
+            "model": "materia:block/olive_tree_leaves_with_olives"
+        },
+        "distance=6,persistent=true,has_olives=false": {
+            "model": "materia:block/olive_tree_leaves"
+        },
+        "distance=6,persistent=true,has_olives=true": {
+            "model": "materia:block/olive_tree_leaves_with_olives"
+        },
+        "distance=7,persistent=false,has_olives=false": {
+            "model": "materia:block/olive_tree_leaves"
+        },
+        "distance=7,persistent=false,has_olives=true": {
+            "model": "materia:block/olive_tree_leaves_with_olives"
+        },
+        "distance=7,persistent=true,has_olives=false": {
+            "model": "materia:block/olive_tree_leaves"
+        },
+        "distance=7,persistent=true,has_olives=true": {
+            "model": "materia:block/olive_tree_leaves_with_olives"
+        }
+    }
+}

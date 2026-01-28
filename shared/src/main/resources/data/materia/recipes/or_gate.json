@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "RRR",
+        "WPW"
+    ],
+    "key": {
+        "R": {
+            "item": "minecraft:redstone"
+        },
+        "W": {
+            "tag": "materia:insulated_wires"
+        },
+        "P": {
+            "tag": "materia:all_plates"
+        }
+    },
+    "result": {
+        "item": "materia:or_gate",
+        "count": 1
+    }
+}

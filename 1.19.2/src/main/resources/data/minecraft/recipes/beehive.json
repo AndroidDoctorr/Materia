@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " H ",
+        "PFP",
+        " A "
+    ],
+    "key": {
+        "P": {
+            "tag": "materia:smooth_planks"
+        },
+        "H": {
+            "item": "minecraft:honeycomb"
+        },
+        "A": {
+            "tag": "materia:adhesives"
+        },
+        "F": {
+            "item": "materia:box_frame"
+        }
+    },
+    "result": {
+        "item": "minecraft:beehive",
+        "count": 1
+    }
+}

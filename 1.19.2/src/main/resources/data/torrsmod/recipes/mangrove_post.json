@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:mangrove_log"
+        },
+        {
+            "tag": "materia:all_saws"
+        }
+    ],
+    "result": {
+        "item": "materia:mangrove_post",
+        "count": 4
+    }
+}
+

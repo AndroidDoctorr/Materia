@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:rock"
+        }
+    ],
+    "result": {
+        "item": "materia:hammer_stone",
+        "count": 1
+    }
+}

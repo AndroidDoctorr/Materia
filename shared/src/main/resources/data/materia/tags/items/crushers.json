@@ -1,0 +1,7 @@
+{
+    "replace": false,
+    "values": [
+        "#materia:all_hammers",
+        "materia:mortar_and_pestle"
+    ]
+}

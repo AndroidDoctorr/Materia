@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:saltpeter"
+        },
+        {
+            "item": "materia:sulfur"
+        },
+        {
+            "tag": "materia:carbon"
+        }
+    ],
+    "result": {
+        "item": "minecraft:gunpowder",
+        "count": 1
+    }
+}

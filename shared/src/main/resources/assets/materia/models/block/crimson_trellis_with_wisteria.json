@@ -1,0 +1,8 @@
+﻿{
+    "parent": "materia:block/acacia_trellis_with_wisteria",
+    "textures": {
+        "corner": "minecraft:block/crimson_planks",
+        "middle": "materia:block/crimson_trellis",
+        "particle": "minecraft:block/crimson_planks"
+    }
+}

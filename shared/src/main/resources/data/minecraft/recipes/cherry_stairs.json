@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PN ",
+    "PP ",
+    "PPP"
+  ],
+  "key": {
+    "P": {
+      "item": "materia:smooth_cherry_planks"
+    },
+    "N": {
+      "tag": "materia:all_nails"
+    }
+  },
+  "result": {
+    "item": "minecraft:cherry_stairs",
+    "count": 1
+  }
+}
+

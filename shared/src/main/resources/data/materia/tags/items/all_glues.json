@@ -1,0 +1,9 @@
+{
+    "replace": false,
+    "values": [
+        "materia:glue",
+        "materia:strong_glue",
+        "materia:resin",
+        "materia:pitch"
+    ]
+}

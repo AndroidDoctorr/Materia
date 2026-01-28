@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:hand_axe"
+        },
+        {
+            "item": "materia:handle"
+        },
+        {
+            "item": "materia:handle"
+        },
+        {
+            "tag": "materia:basic_lashings"
+        }
+    ],
+    "result": {
+        "item": "minecraft:wooden_hoe",
+        "count": 1
+    }
+}

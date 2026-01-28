@@ -1,0 +1,12 @@
+{
+    "type": "materia:kiln",
+    "ingredient": {
+        "item": "materia:brining_vat_unfired"
+    },
+    "result": {
+        "item": "materia:brining_vat",
+        "count": 1
+    },
+    "cookingtime": 1200,
+    "experience": 0.3
+}

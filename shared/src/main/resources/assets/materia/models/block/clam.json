@@ -1,0 +1,138 @@
+{
+    "ambientocclusion": false,
+    "textures": {
+        "all": "materia:block/clam",
+        "particle": "materia:block/clam"
+    },
+    "elements": [
+        {
+            "from": [
+                4,
+                0,
+                4
+            ],
+            "to": [
+                12,
+                4,
+                10
+            ],
+            "faces": {
+                "north": {
+                    "uv": [
+                        2,
+                        12,
+                        10,
+                        16
+                    ],
+                    "texture": "#all"
+                },
+                "south": {
+                    "uv": [
+                        2,
+                        8,
+                        10,
+                        12
+                    ],
+                    "texture": "#all"
+                },
+                "east": {
+                    "uv": [
+                        2,
+                        12,
+                        8,
+                        16
+                    ],
+                    "texture": "#all"
+                },
+                "west": {
+                    "uv": [
+                        2,
+                        12,
+                        8,
+                        16
+                    ],
+                    "texture": "#all"
+                },
+                "up": {
+                    "rotation": 180,
+                    "uv": [
+                        0,
+                        0,
+                        8,
+                        6
+                    ],
+                    "texture": "#all"
+                },
+                "down": {
+                    "rotation": 180,
+                    "uv": [
+                        0,
+                        0,
+                        8,
+                        6
+                    ],
+                    "texture": "#all"
+                }
+            }
+        },
+        {
+            "from": [
+                6,
+                0,
+                10
+            ],
+            "to": [
+                10,
+                2,
+                12
+            ],
+            "faces": {
+                "south": {
+                    "uv": [
+                        8,
+                        0,
+                        12,
+                        2
+                    ],
+                    "texture": "#all"
+                },
+                "east": {
+                    "uv": [
+                        10,
+                        0,
+                        12,
+                        2
+                    ],
+                    "texture": "#all"
+                },
+                "west": {
+                    "uv": [
+                        10,
+                        0,
+                        12,
+                        2
+                    ],
+                    "texture": "#all"
+                },
+                "up": {
+                    "uv": [
+                        12,
+                        0,
+                        16,
+                        2
+                    ],
+                    "texture": "#all"
+                },
+                "down": {
+                    "uv": [
+                        12,
+                        0,
+                        16,
+                        2
+                    ],
+                    "texture": "#all"
+                }
+            }
+        }
+    ]
+}

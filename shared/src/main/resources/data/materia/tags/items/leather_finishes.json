@@ -1,0 +1,8 @@
+{
+    "replace": false,
+    "values": [
+        "materia:animal_fat",
+        "minecraft:honeycomb",
+        "materia:olive_oil"
+    ]
+}

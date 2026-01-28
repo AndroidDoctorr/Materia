@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SRS",
+        "CFC",
+        "LBL"
+    ],
+    "key": {
+        "F": {
+            "item": "materia:bronze_chestpiece"
+        },
+        "B": {
+            "item": "materia:bronze_backpiece"
+        },
+        "S": {
+            "item": "materia:bronze_shoulder"
+        },
+        "L": {
+            "item": "materia:leather_strap"
+        },
+        "C": {
+            "item": "materia:brass_buckle"
+        },
+        "R": {
+            "tag": "materia:all_rivets"
+        }
+    },
+    "result": {
+        "item": "materia:bronze_chestplate",
+        "count": 1
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:bronze_pickaxe_head"
+        },
+        {
+            "item": "materia:handle"
+        },
+        {
+            "tag": "materia:advanced_bindings"
+        },
+        {
+            "tag": "materia:advanced_bindings"
+        }
+    ],
+    "result": {
+        "item": "materia:bronze_pickaxe",
+        "count": 1
+    }
+}

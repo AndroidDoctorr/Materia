@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:stick"
+        },
+        {
+            "tag": "materia:smooth_planks"
+        },
+        {
+            "tag": "materia:adhesives"
+        }
+    ],
+    "result": {
+        "item": "materia:spindle",
+        "count": 1
+    }
+}

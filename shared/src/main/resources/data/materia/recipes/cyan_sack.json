@@ -1,0 +1,18 @@
+﻿{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:cyan_carpet"
+        },
+        {
+            "tag": "materia:all_needles"
+        },
+        {
+            "tag": "materia:strings"
+        }
+    ],
+    "result": {
+        "item": "materia:cyan_sack",
+        "count": 1
+    }
+}

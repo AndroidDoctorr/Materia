@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:magenta_iota"
+        },
+        {
+            "item": "materia:magenta_iota"
+        },
+        {
+            "item": "materia:magenta_iota"
+        },
+        {
+            "item": "materia:magenta_iota"
+        },
+        {
+            "item": "materia:magenta_iota"
+        },
+        {
+            "item": "materia:magenta_iota"
+        }
+    ],
+    "result": {
+        "item": "materia:magenta_blob",
+        "count": 1
+    }
+}

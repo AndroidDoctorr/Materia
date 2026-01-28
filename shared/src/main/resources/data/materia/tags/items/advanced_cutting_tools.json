@@ -1,0 +1,11 @@
+{
+    "replace": false,
+    "values": [
+        "materia:bronze_knife",
+        "materia:iron_knife",
+        "materia:steel_knife",
+        "minecraft:iron_sword",
+        "minecraft:diamond_sword",
+        "minecraft:netherite_sword"
+    ]
+}

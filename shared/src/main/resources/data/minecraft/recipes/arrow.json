@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:flint_arrow_head"
+        },
+        {
+            "item": "minecraft:stick"
+        },
+        {
+            "item": "materia:fletching"
+        },
+        {
+            "item": "materia:fletching"
+        },
+        {
+            "tag": "materia:basic_bindings"
+        }
+    ],
+    "result": {
+        "item": "minecraft:arrow",
+        "count": 1
+    }
+}

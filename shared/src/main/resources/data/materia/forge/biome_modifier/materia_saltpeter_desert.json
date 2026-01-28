@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#materia:desert",
+  "step": "underground_ores",
+  "features": [
+    "materia:saltpeter_sand_placed",
+    "materia:saltpeter_sandstone_placed"
+  ]
+}
+

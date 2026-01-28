@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "LSL",
+        "S S",
+        "LSL"
+    ],
+    "key": {
+        "S": {
+            "item": "minecraft:stick"
+        },
+        "L": {
+            "item": "materia:lashing"
+        }
+    },
+    "result": {
+        "item": "materia:paper_frame",
+        "count": 1
+    }
+}

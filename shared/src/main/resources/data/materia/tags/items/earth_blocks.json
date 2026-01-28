@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "materia:earth",
+    {
+      "id": "minecraft:packed_mud",
+      "required": false
+    }
+  ]
+}
+

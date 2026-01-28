@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "POP",
+        "ATR"
+    ],
+    "key": {
+        "P": {
+            "tag": "materia:smooth_planks"
+        },
+        "T": {
+            "tag": "materia:tables"
+        },
+        "R": {
+            "item": "materia:rope"
+        },
+        "O": {
+            "item": "materia:target"
+        },
+        "A": {
+            "tag": "materia:adhesives"
+        }
+    },
+    "result": {
+        "item": "minecraft:fletching_table",
+        "count": 1
+    }
+}

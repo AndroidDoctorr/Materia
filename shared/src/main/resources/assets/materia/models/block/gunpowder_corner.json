@@ -1,0 +1,7 @@
+{
+  "parent": "materia:block/gunpowder_dot",
+  "textures": {
+    "all": "materia:block/gunpowder_corner",
+    "particle": "materia:block/gunpowder_corner"
+  }
+}

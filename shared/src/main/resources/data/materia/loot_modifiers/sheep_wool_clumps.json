@@ -1,0 +1,12 @@
+{
+    "type": "materia:sheep_wool_modifier",
+    "conditions": [
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "type": "minecraft:sheep"
+            }
+        }
+    ]
+}

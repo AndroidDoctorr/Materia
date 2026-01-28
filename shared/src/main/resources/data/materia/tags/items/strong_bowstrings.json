@@ -1,0 +1,9 @@
+{
+    "replace": false,
+    "values": [
+        "#materia:strings",
+        "materia:steel_wire",
+        "materia:iron_wire",
+        "materia:bronze_wire"
+    ]
+}

@@ -1,0 +1,6 @@
+﻿{
+    "textures": {
+        "layer0": "materia:item/olive_sack"
+    },
+    "parent": "item/generated"
+}

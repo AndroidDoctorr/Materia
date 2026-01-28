@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:random_patch",
+  "config": {
+    "feature": {
+      "feature": {
+        "type": "minecraft:simple_block",
+        "config": {
+          "to_place": {
+            "type": "minecraft:simple_state_provider",
+            "state": {
+              "Name": "materia:indigo"
+            }
+          }
+        }
+      },
+      "placement": []
+    },
+    "tries": 32,
+    "xz_spread": 6,
+    "y_spread": 2
+  }
+}

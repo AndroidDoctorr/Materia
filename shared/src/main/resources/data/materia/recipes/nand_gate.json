@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "RTR",
+        "WPW"
+    ],
+    "key": {
+        "R": {
+            "item": "minecraft:redstone"
+        },
+        "T": {
+            "item": "minecraft:redstone_torch"
+        },
+        "W": {
+            "tag": "materia:insulated_wires"
+        },
+        "P": {
+            "tag": "materia:all_plates"
+        }
+    },
+    "result": {
+        "item": "materia:nand_gate",
+        "count": 1
+    }
+}

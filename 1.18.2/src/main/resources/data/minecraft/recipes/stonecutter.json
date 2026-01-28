@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "RSR",
+        "PDP",
+        "PBP"
+    ],
+    "key": {
+        "D": {
+            "item": "materia:dynamo"
+        },
+        "S": {
+            "tag": "materia:all_sawblades"
+        },
+        "B": {
+            "item": "materia:battery"
+        },
+        "P": {
+            "tag": "materia:hard_plates"
+        },
+        "R": {
+            "tag": "materia:all_rivets"
+        }
+    },
+    "result": {
+        "item": "minecraft:stonecutter",
+        "count": 1
+    }
+}

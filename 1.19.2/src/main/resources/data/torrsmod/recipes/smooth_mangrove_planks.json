@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:rough_mangrove_plank"
+        },
+        {
+            "item": "materia:bronze_saw"
+        }
+    ],
+    "result": {
+        "item": "materia:smooth_mangrove_planks",
+        "count": 2
+    }
+}
+

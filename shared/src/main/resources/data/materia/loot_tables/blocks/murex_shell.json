@@ -1,0 +1,156 @@
+{
+    "type": "minecraft:block",
+    "pools": [
+        {
+            "name": "gland_drop_brandaris",
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:murex_gland_brandaris"
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:murex_shell",
+                    "functions": [
+                        {
+                            "function": "minecraft:copy_state",
+                            "block": "materia:murex_shell",
+                            "properties": [
+                                "variety",
+                                "dead"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "conditions": [
+                {
+                    "condition": "minecraft:match_tool",
+                    "predicate": {
+                        "tag": "materia:basic_cutting_tools"
+                    }
+                },
+                {
+                    "condition": "minecraft:block_state_property",
+                    "block": "materia:murex_shell",
+                    "properties": {
+                        "variety": "0"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "gland_drop_trunculus",
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:murex_gland_trunculus"
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:murex_shell",
+                    "functions": [
+                        {
+                            "function": "minecraft:copy_state",
+                            "block": "materia:murex_shell",
+                            "properties": [
+                                "variety",
+                                "dead"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "conditions": [
+                {
+                    "condition": "minecraft:match_tool",
+                    "predicate": {
+                        "tag": "materia:basic_cutting_tools"
+                    }
+                },
+                {
+                    "condition": "minecraft:block_state_property",
+                    "block": "materia:murex_shell",
+                    "properties": {
+                        "variety": "1"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "gland_drop_haemastoma",
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:murex_gland_haemastoma"
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:murex_shell",
+                    "functions": [
+                        {
+                            "function": "minecraft:copy_state",
+                            "block": "materia:murex_shell",
+                            "properties": [
+                                "variety",
+                                "dead"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "conditions": [
+                {
+                    "condition": "minecraft:match_tool",
+                    "predicate": {
+                        "tag": "materia:basic_cutting_tools"
+                    }
+                },
+                {
+                    "condition": "minecraft:block_state_property",
+                    "block": "materia:murex_shell",
+                    "properties": {
+                        "variety": "2"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "shell_self",
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:murex_shell",
+                    "functions": [
+                        {
+                            "function": "minecraft:copy_state",
+                            "block": "materia:murex_shell",
+                            "properties": [
+                                "variety",
+                                "dead"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "conditions": [
+                {
+                    "condition": "minecraft:inverted",
+                    "term": {
+                        "condition": "minecraft:match_tool",
+                        "predicate": {
+                            "tag": "materia:basic_cutting_tools"
+                        }
+                    }
+                },
+                {
+                    "condition": "minecraft:survives_explosion"
+                }
+            ]
+        }
+    ]
+}

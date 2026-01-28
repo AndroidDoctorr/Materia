@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:drum"
+        },
+        {
+            "item": "materia:drum"
+        },
+        {
+            "tag": "materia:green_dyes"
+        }
+    ],
+    "result": {
+        "item": "materia:earth_drums",
+        "count": 1
+    }
+}

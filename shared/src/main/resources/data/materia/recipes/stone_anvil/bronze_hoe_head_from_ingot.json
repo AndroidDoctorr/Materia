@@ -1,0 +1,12 @@
+{
+    "type": "materia:stone_anvil",
+    "input": {
+        "item": "materia:bronze_ingot",
+        "count": 2
+    },
+    "tool_tag": "materia:all_hammers",
+    "result": {
+        "item": "materia:bronze_hoe_head",
+        "count": 1
+    }
+}

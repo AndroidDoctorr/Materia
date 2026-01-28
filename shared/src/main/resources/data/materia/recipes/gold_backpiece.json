@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "HPR",
+        "TPT",
+        "SPS"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:gold_plate"
+        },
+        "T": {
+            "item": "materia:tanned_leather"
+        },
+        "S": {
+            "item": "materia:leather_strap"
+        },
+        "H": {
+            "tag": "materia:bronze_hammers"
+        },
+        "R": {
+            "tag": "materia:all_rivets"
+        }
+    },
+    "result": {
+        "item": "materia:gold_backpiece",
+        "count": 1
+    }
+}

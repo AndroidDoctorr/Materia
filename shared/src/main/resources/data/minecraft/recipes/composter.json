@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "PSP",
+        "PPP"
+    ],
+    "key": {
+        "P": {
+            "tag": "materia:smooth_planks"
+        },
+        "S": {
+            "tag": "materia:sealants"
+        }
+    },
+    "result": {
+        "item": "minecraft:composter",
+        "count": 1
+    }
+}

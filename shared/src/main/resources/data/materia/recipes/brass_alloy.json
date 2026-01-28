@@ -1,0 +1,16 @@
+{
+    "type": "materia:advanced_kiln",
+    "ingredient1": {
+        "item": "materia:zinc_ingot"
+    },
+    "ingredient2": {
+        "item": "minecraft:copper_ingot"
+    },
+    "result": {
+        "item": "materia:brass_ingot",
+        "count": 1
+    },
+    "cookingtime": 800,
+    "experience": 0.5,
+    "requires_chimney": true
+}

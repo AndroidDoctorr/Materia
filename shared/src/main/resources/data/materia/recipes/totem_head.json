@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "PPP",
+        "ESE",
+        " P "
+    ],
+    "key": {
+        "P": {
+            "item": "materia:gold_plate"
+        },
+        "E": {
+            "item": "minecraft:emerald"
+        },
+        "S": {
+            "item": "minecraft:wither_skeleton_skull"
+        }
+    },
+    "result": {
+        "item": "materia:totem_head",
+        "count": 1
+    }
+}

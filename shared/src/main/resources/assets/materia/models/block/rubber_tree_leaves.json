@@ -1,0 +1,6 @@
+{
+    "parent": "block/leaves",
+    "textures": {
+        "all": "materia:block/rubber_tree_leaves"
+    }
+}

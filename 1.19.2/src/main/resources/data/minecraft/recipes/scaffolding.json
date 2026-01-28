@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "BLB",
+        "BAB",
+        "BLB"
+    ],
+    "key": {
+        "B": {
+            "item": "minecraft:bamboo"
+        },
+        "L": {
+            "tag": "materia:basic_bindings"
+        },
+        "A": {
+            "tag": "materia:adhesives"
+        }
+    },
+    "result": {
+        "item": "minecraft:scaffolding",
+        "count": 4
+    }
+}

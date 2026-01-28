@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:rock"
+        },
+        {
+            "tag": "materia:bronze_chisels"
+        },
+        {
+            "tag": "materia:all_hammers"
+        }
+    ],
+    "result": {
+        "item": "minecraft:stone_button",
+        "count": 2
+    }
+}

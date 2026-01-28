@@ -1,0 +1,44 @@
+{
+  "replace": false,
+  "values": [
+    "materia:oak_trellis",
+    "materia:dark_oak_trellis",
+    "materia:spruce_trellis",
+    "materia:birch_trellis",
+    "materia:jungle_trellis",
+    "materia:acacia_trellis",
+    {
+      "id": "materia:cherry_trellis",
+      "required": false
+    },
+    "materia:crimson_trellis",
+    "materia:warped_trellis",
+    "materia:rubber_wood_trellis",
+    "materia:oak_post",
+    "materia:dark_oak_post",
+    "materia:spruce_post",
+    "materia:birch_post",
+    "materia:jungle_post",
+    "materia:acacia_post",
+    {
+      "id": "materia:cherry_post",
+      "required": false
+    },
+    "materia:crimson_post",
+    "materia:warped_post",
+    "materia:rubber_wood_post",
+    "materia:oak_joists",
+    "materia:dark_oak_joists",
+    "materia:spruce_joists",
+    "materia:birch_joists",
+    "materia:jungle_joists",
+    "materia:acacia_joists",
+    {
+      "id": "materia:cherry_joists",
+      "required": false
+    },
+    "materia:crimson_joists",
+    "materia:warped_joists",
+    "materia:rubber_wood_joists"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "tag": "materia:pestles"
+        },
+        {
+            "item": "materia:crucible"
+        }
+    ],
+    "result": {
+        "item": "materia:mortar_and_pestle",
+        "count": 1
+    }
+}

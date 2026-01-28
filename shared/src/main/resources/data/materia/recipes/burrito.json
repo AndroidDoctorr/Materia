@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:tortilla"
+        },
+        {
+            "item": "materia:beans"
+        },
+        {
+            "item": "materia:peppers"
+        }
+    ],
+    "result": {
+        "item": "materia:burrito",
+        "count": 1
+    }
+}

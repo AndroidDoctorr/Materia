@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SRS",
+        "CFC",
+        "LBL"
+    ],
+    "key": {
+        "F": {
+            "item": "materia:gold_chestpiece"
+        },
+        "B": {
+            "item": "materia:gold_backpiece"
+        },
+        "S": {
+            "item": "materia:gold_shoulder"
+        },
+        "L": {
+            "item": "materia:leather_strap"
+        },
+        "C": {
+            "item": "materia:brass_buckle"
+        },
+        "R": {
+            "tag": "materia:all_rivets"
+        }
+    },
+    "result": {
+        "item": "minecraft:golden_chestplate",
+        "count": 1
+    }
+}

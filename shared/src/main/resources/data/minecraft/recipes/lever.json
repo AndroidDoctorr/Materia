@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:stick"
+        },
+        {
+            "tag": "materia:all_plates"
+        },
+        {
+            "tag": "materia:all_rivets"
+        },
+        {
+            "tag": "materia:all_hammers"
+        }
+    ],
+    "result": {
+        "item": "minecraft:lever",
+        "count": 1
+    }
+}

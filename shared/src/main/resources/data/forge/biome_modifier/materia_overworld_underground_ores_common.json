@@ -1,0 +1,22 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#materia:overworld",
+  "step": "underground_ores",
+  "features": [
+    "materia:earth_subsoil_placed",
+    "materia:malachite_ore_placed",
+    "materia:surface_iron_ore_placed",
+    "materia:ochre_clay_placed",
+    "materia:red_ochre_clay_placed",
+    "materia:sphalerite_ore_placed",
+    "materia:sphalerite_cave_placed",
+    "materia:sulfur_ore_placed",
+    "materia:sulfur_ore_lava_placed",
+    "materia:marble_vein_rare_placed",
+    "materia:marble_vein_surface_placed",
+    "materia:limestone_vein_rare_placed",
+    "materia:marble_test_placed",
+    "materia:limestone_test_placed"
+  ]
+}
+

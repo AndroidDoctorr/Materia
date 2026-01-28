@@ -1,0 +1,18 @@
+﻿{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:black_carpet"
+        },
+        {
+            "tag": "materia:all_needles"
+        },
+        {
+            "tag": "materia:strings"
+        }
+    ],
+    "result": {
+        "item": "materia:black_sack",
+        "count": 1
+    }
+}

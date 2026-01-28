@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:smooth_birch_planks"
+        },
+        {
+            "item": "minecraft:stick"
+        },
+        {
+            "tag": "materia:all_wood_joiners"
+        },
+        {
+            "item": "minecraft:black_dye"
+        }
+    ],
+    "result": {
+        "item": "minecraft:birch_sign",
+        "count": 2
+    }
+}

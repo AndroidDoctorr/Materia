@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:brass_wire"
+        },
+        {
+            "tag": "materia:all_chisels"
+        }
+    ],
+    "result": {
+        "item": "materia:brass_rivets",
+        "count": 16
+    }
+}

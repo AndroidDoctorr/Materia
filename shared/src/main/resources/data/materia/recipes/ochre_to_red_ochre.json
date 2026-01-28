@@ -1,0 +1,12 @@
+{
+    "type": "materia:kiln",
+    "ingredient": {
+        "item": "materia:ochre"
+    },
+    "result": {
+        "item": "materia:red_ochre",
+        "count": 1
+    },
+    "cookingtime": 400,
+    "experience": 0.1
+}

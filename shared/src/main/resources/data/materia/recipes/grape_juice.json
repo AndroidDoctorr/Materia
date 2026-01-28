@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:grapes"
+        },
+        {
+            "item": "materia:mortar_and_pestle"
+        },
+        {
+            "item": "materia:crucible"
+        }
+    ],
+    "result": {
+        "item": "materia:grape_juice",
+        "count": 1
+    }
+}

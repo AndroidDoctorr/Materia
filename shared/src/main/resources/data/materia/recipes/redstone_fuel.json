@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "tag": "materia:basic_fuels"
+        },
+        {
+            "tag": "materia:basic_fuels"
+        },
+        {
+            "item": "minecraft:redstone"
+        }
+    ],
+    "result": {
+        "item": "materia:redstone_fuel",
+        "count": 2
+    }
+}

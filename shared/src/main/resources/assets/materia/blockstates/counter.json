@@ -1,0 +1,94 @@
+{
+    "variants": {
+        "input=false,reset=false,output=false,carry=false,facing=north": {
+            "model": "materia:block/counter_0"
+        },
+        "input=false,reset=false,output=true,carry=false,facing=north": {
+            "model": "materia:block/counter_1"
+        },
+        "input=false,reset=true,output=false,carry=false,facing=north": {
+            "model": "materia:block/counter_r"
+        },
+        "input=true,reset=true,output=false,carry=false,facing=north": {
+            "model": "materia:block/counter_r_c"
+        },
+        "input=true,reset=false,output=false,carry=true,facing=north": {
+            "model": "materia:block/counter_q"
+        },
+        "input=true,reset=false,output=true,carry=false,facing=north": {
+            "model": "materia:block/counter_1_c"
+        },
+        "input=false,reset=false,output=false,carry=false,facing=east": {
+            "model": "materia:block/counter_0",
+            "y": 90
+        },
+        "input=false,reset=false,output=true,carry=false,facing=east": {
+            "model": "materia:block/counter_1",
+            "y": 90
+        },
+        "input=false,reset=true,output=false,carry=false,facing=east": {
+            "model": "materia:block/counter_r",
+            "y": 90
+        },
+        "input=true,reset=true,output=false,carry=false,facing=east": {
+            "model": "materia:block/counter_r_c",
+            "y": 90
+        },
+        "input=true,reset=false,output=false,carry=true,facing=east": {
+            "model": "materia:block/counter_q",
+            "y": 90
+        },
+        "input=true,reset=false,output=true,carry=false,facing=east": {
+            "model": "materia:block/counter_1_c",
+            "y": 90
+        },
+        "input=false,reset=false,output=false,carry=false,facing=south": {
+            "model": "materia:block/counter_0",
+            "y": 180
+        },
+        "input=false,reset=false,output=true,carry=false,facing=south": {
+            "model": "materia:block/counter_1",
+            "y": 180
+        },
+        "input=false,reset=true,output=false,carry=false,facing=south": {
+            "model": "materia:block/counter_r",
+            "y": 180
+        },
+        "input=true,reset=true,output=false,carry=false,facing=south": {
+            "model": "materia:block/counter_r_c",
+            "y": 180
+        },
+        "input=true,reset=false,output=false,carry=true,facing=south": {
+            "model": "materia:block/counter_q",
+            "y": 180
+        },
+        "input=true,reset=false,output=true,carry=false,facing=south": {
+            "model": "materia:block/counter_1_c",
+            "y": 180
+        },
+        "input=false,reset=false,output=false,carry=false,facing=west": {
+            "model": "materia:block/counter_0",
+            "y": 270
+        },
+        "input=false,reset=false,output=true,carry=false,facing=west": {
+            "model": "materia:block/counter_1",
+            "y": 270
+        },
+        "input=false,reset=true,output=false,carry=false,facing=west": {
+            "model": "materia:block/counter_r",
+            "y": 270
+        },
+        "input=true,reset=true,output=false,carry=false,facing=west": {
+            "model": "materia:block/counter_r_c",
+            "y": 270
+        },
+        "input=true,reset=false,output=false,carry=true,facing=west": {
+            "model": "materia:block/counter_q",
+            "y": 270
+        },
+        "input=true,reset=false,output=true,carry=false,facing=west": {
+            "model": "materia:block/counter_1_c",
+            "y": 270
+        }
+    }
+}

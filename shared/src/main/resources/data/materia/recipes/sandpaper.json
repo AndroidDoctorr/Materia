@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:glue"
+        },
+        {
+            "item": "minecraft:paper"
+        },
+        {
+            "item": "materia:pile_of_sand"
+        }
+    ],
+    "result": {
+        "item": "materia:sandpaper",
+        "count": 1
+    }
+}

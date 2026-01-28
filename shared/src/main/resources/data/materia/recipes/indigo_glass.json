@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "GGG",
+        "GIG",
+        "GGG"
+    ],
+    "key": {
+        "G": {
+            "item": "minecraft:glass"
+        },
+        "I": {
+            "item": "materia:indigo_dye"
+        }
+    },
+    "result": {
+        "item": "materia:indigo_glass",
+        "count": 8
+    }
+}

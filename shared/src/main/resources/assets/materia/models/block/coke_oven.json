@@ -1,0 +1,10 @@
+{
+    "parent": "block/orientable_with_bottom",
+    "textures": {
+        "top": "materia:block/coke_oven_top",
+        "bottom": "materia:block/fire_bricks_small",
+        "side": "materia:block/fire_bricks_small",
+        "front": "materia:block/coke_oven_front",
+        "particle": "materia:block/fire_bricks_small"
+    }
+}

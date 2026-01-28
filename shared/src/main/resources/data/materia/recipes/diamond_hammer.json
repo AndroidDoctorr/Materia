@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "D",
+        "A",
+        "S"
+    ],
+    "key": {
+        "S": {
+            "item": "materia:steel_hammer"
+        },
+        "D": {
+            "item": "minecraft:diamond"
+        },
+        "A": {
+            "tag": "materia:strong_adhesives"
+        }
+    },
+    "result": {
+        "item": "materia:diamond_hammer",
+        "count": 1
+    }
+}

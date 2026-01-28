@@ -1,0 +1,159 @@
+package com.torr.materia.recipe;
+
+import com.google.gson.JsonObject;
+import com.torr.materia.ModRecipes;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.RegistryAccess;
+import net.minecraft.util.GsonHelper;
+import net.minecraft.world.Container;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.Level;
+import net.minecraftforge.registries.ForgeRegistries;
+
+import javax.annotation.Nullable;
+
+public class KilnRecipe implements Recipe<Container> {
+    private final ResourceLocation id;
+    private final String group;
+    private final Ingredient ingredient;
+    private final ItemStack result;
+    private final int cookingTime;
+    private final float experience;
+    private final boolean requiresChimney;
+    private final boolean requiresBellows;
+    private final boolean requiresCokeFuel;
+
+    public KilnRecipe(ResourceLocation id, String group, Ingredient ingredient, ItemStack result, int cookingTime, float experience, boolean requiresChimney, boolean requiresBellows, boolean requiresCokeFuel) {
+        this.id = id;
+        this.group = group;
+        this.ingredient = ingredient;
+        this.result = result;
+        this.cookingTime = cookingTime;
+        this.experience = experience;
+        this.requiresChimney = requiresChimney;
+        this.requiresBellows = requiresBellows;
+        this.requiresCokeFuel = requiresCokeFuel;
+    }
+
+    @Override
+    public boolean matches(Container container, Level level) {
+        return this.ingredient.test(container.getItem(0));
+    }
+
+    @Override
+    public ItemStack assemble(Container container, RegistryAccess registryAccess) {
+        return result.copy();
+    }
+
+    @Override
+    public boolean canCraftInDimensions(int width, int height) {
+        return true;
+    }
+
+    @Override
+    public ItemStack getResultItem(RegistryAccess registryAccess) {
+        return result;
+    }
+
+    public Ingredient getIngredient() {
+        return this.ingredient;
+    }
+
+    public int getCookingTime() {
+        return this.cookingTime;
+    }
+
+    public float getExperience() {
+        return this.experience;
+    }
+
+    public boolean requiresChimney() {
+        return this.requiresChimney;
+    }
+
+    public boolean requiresBellows() {
+        return this.requiresBellows;
+    }
+
+    /**
+     * If true, this recipe requires coal coke fuel to run.
+     * Bellows-tier recipes are considered "hot" and require coal coke by default.
+     */
+    public boolean requiresCokeFuel() {
+        return this.requiresCokeFuel || this.requiresBellows;
+    }
+
+    @Override
+    public ResourceLocation getId() {
+        return this.id;
+    }
+
+    @Override
+    public RecipeSerializer<?> getSerializer() {
+        return ModRecipes.KILN_SERIALIZER.get();
+    }
+
+    @Override
+    public RecipeType<?> getType() {
+        return ModRecipes.KILN_TYPE.get();
+    }
+
+    @Override
+    public String getGroup() {
+        return this.group;
+    }
+
+    public static class Serializer implements RecipeSerializer<KilnRecipe> {
+        @Override
+        public KilnRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
+            String group = GsonHelper.getAsString(json, "group", "");
+            Ingredient ingredient = Ingredient.fromJson(json.get("ingredient"));
+            
+            JsonObject resultObj = GsonHelper.getAsJsonObject(json, "result");
+            String itemName = GsonHelper.getAsString(resultObj, "item");
+            int count = GsonHelper.getAsInt(resultObj, "count", 1);
+            Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(itemName));
+            ItemStack result = item != null ? new ItemStack(item, count) : ItemStack.EMPTY;
+            
+            int cookingTime = GsonHelper.getAsInt(json, "cookingtime", 200);
+            float experience = GsonHelper.getAsFloat(json, "experience", 0.0f);
+            boolean requiresChimney = GsonHelper.getAsBoolean(json, "requires_chimney", false);
+            boolean requiresBellows = GsonHelper.getAsBoolean(json, "requires_bellows", false);
+            boolean requiresCokeFuel = GsonHelper.getAsBoolean(json, "requires_coke_fuel", false);
+            
+            return new KilnRecipe(recipeId, group, ingredient, result, cookingTime, experience, requiresChimney, requiresBellows, requiresCokeFuel);
+        }
+
+        @Override
+        public @Nullable KilnRecipe fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer) {
+            String group = buffer.readUtf();
+            Ingredient ingredient = Ingredient.fromNetwork(buffer);
+            ItemStack result = buffer.readItem();
+            int cookingTime = buffer.readInt();
+            float experience = buffer.readFloat();
+            boolean requiresChimney = buffer.readBoolean();
+            boolean requiresBellows = buffer.readBoolean();
+            boolean requiresCokeFuel = buffer.readBoolean();
+            
+            return new KilnRecipe(recipeId, group, ingredient, result, cookingTime, experience, requiresChimney, requiresBellows, requiresCokeFuel);
+        }
+
+        @Override
+        public void toNetwork(FriendlyByteBuf buffer, KilnRecipe recipe) {
+            buffer.writeUtf(recipe.group);
+            recipe.ingredient.toNetwork(buffer);
+            buffer.writeItem(recipe.result);
+            buffer.writeInt(recipe.cookingTime);
+            buffer.writeFloat(recipe.experience);
+            buffer.writeBoolean(recipe.requiresChimney);
+            buffer.writeBoolean(recipe.requiresBellows);
+            buffer.writeBoolean(recipe.requiresCokeFuel);
+        }
+    }
+} 

@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "": {
+            "model": "materia:block/wrought_iron_block"
+        }
+    }
+}

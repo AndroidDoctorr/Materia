@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "HT",
+        "SF"
+    ],
+    "key": {
+        "T": {
+            "item": "materia:tanned_leather"
+        },
+        "H": {
+            "item": "materia:hardened_leather"
+        },
+        "S": {
+            "item": "materia:leather_strap"
+        },
+        "F": {
+            "tag": "materia:leather_finishes"
+        }
+    },
+    "result": {
+        "item": "materia:leather_shoulder",
+        "count": 1
+    }
+}

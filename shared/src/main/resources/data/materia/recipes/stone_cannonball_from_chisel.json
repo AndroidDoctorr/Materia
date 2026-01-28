@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:rock"
+        },
+        {
+            "tag": "materia:bronze_hammers"
+        },
+        {
+            "tag": "materia:all_chisels"
+        }
+    ],
+    "result": {
+        "item": "materia:stone_cannonball",
+        "count": 1
+    }
+}

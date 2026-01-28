@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "PRP",
+        "PAP",
+        "PRP"
+    ],
+    "key": {
+        "A": {
+            "item": "minecraft:leather_horse_armor"
+        },
+        "P": {
+            "item": "materia:gold_plate"
+        },
+        "R": {
+            "tag": "materia:all_rivets"
+        }
+    },
+    "result": {
+        "item": "minecraft:golden_horse_armor",
+        "count": 1
+    }
+}

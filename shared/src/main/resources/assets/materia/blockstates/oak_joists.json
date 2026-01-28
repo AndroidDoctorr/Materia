@@ -1,0 +1,38 @@
+{
+  "multipart": [
+    { "when": { "facing": "east" }, "apply": { "model": "materia:block/oak_joists", "y": 90 } },
+    { "when": { "facing": "west" }, "apply": { "model": "materia:block/oak_joists", "y": 270 } },
+    { "when": { "facing": "south" }, "apply": { "model": "materia:block/oak_joists" } },
+    { "when": { "facing": "north" }, "apply": { "model": "materia:block/oak_joists", "y": 180 } },
+
+    { "when": { "facing": "east", "has_grape_vine": "true", "has_grapes": "false", "has_hops_vine": "false", "has_hops": "false", "has_wisteria_vine": "false", "has_wisteria_flowers": "false" }, "apply": { "model": "materia:block/joists_grape_vine_overlay", "y": 90 } },
+    { "when": { "facing": "west", "has_grape_vine": "true", "has_grapes": "false", "has_hops_vine": "false", "has_hops": "false", "has_wisteria_vine": "false", "has_wisteria_flowers": "false" }, "apply": { "model": "materia:block/joists_grape_vine_overlay", "y": 270 } },
+    { "when": { "facing": "south", "has_grape_vine": "true", "has_grapes": "false", "has_hops_vine": "false", "has_hops": "false", "has_wisteria_vine": "false", "has_wisteria_flowers": "false" }, "apply": { "model": "materia:block/joists_grape_vine_overlay" } },
+    { "when": { "facing": "north", "has_grape_vine": "true", "has_grapes": "false", "has_hops_vine": "false", "has_hops": "false", "has_wisteria_vine": "false", "has_wisteria_flowers": "false" }, "apply": { "model": "materia:block/joists_grape_vine_overlay", "y": 180 } },
+
+    { "when": { "facing": "east", "has_grape_vine": "true", "has_grapes": "true", "has_hops_vine": "false", "has_hops": "false", "has_wisteria_vine": "false", "has_wisteria_flowers": "false" }, "apply": { "model": "materia:block/joists_grapes_overlay", "y": 90 } },
+    { "when": { "facing": "west", "has_grape_vine": "true", "has_grapes": "true", "has_hops_vine": "false", "has_hops": "false", "has_wisteria_vine": "false", "has_wisteria_flowers": "false" }, "apply": { "model": "materia:block/joists_grapes_overlay", "y": 270 } },
+    { "when": { "facing": "south", "has_grape_vine": "true", "has_grapes": "true", "has_hops_vine": "false", "has_hops": "false", "has_wisteria_vine": "false", "has_wisteria_flowers": "false" }, "apply": { "model": "materia:block/joists_grapes_overlay" } },
+    { "when": { "facing": "north", "has_grape_vine": "true", "has_grapes": "true", "has_hops_vine": "false", "has_hops": "false", "has_wisteria_vine": "false", "has_wisteria_flowers": "false" }, "apply": { "model": "materia:block/joists_grapes_overlay", "y": 180 } },
+
+    { "when": { "facing": "east", "has_grape_vine": "false", "has_grapes": "false", "has_hops_vine": "true", "has_hops": "false", "has_wisteria_vine": "false", "has_wisteria_flowers": "false" }, "apply": { "model": "materia:block/joists_hops_vine_overlay", "y": 90 } },
+    { "when": { "facing": "west", "has_grape_vine": "false", "has_grapes": "false", "has_hops_vine": "true", "has_hops": "false", "has_wisteria_vine": "false", "has_wisteria_flowers": "false" }, "apply": { "model": "materia:block/joists_hops_vine_overlay", "y": 270 } },
+    { "when": { "facing": "south", "has_grape_vine": "false", "has_grapes": "false", "has_hops_vine": "true", "has_hops": "false", "has_wisteria_vine": "false", "has_wisteria_flowers": "false" }, "apply": { "model": "materia:block/joists_hops_vine_overlay" } },
+    { "when": { "facing": "north", "has_grape_vine": "false", "has_grapes": "false", "has_hops_vine": "true", "has_hops": "false", "has_wisteria_vine": "false", "has_wisteria_flowers": "false" }, "apply": { "model": "materia:block/joists_hops_vine_overlay", "y": 180 } },
+
+    { "when": { "facing": "east", "has_grape_vine": "false", "has_grapes": "false", "has_hops_vine": "true", "has_hops": "true", "has_wisteria_vine": "false", "has_wisteria_flowers": "false" }, "apply": { "model": "materia:block/joists_hops_overlay", "y": 90 } },
+    { "when": { "facing": "west", "has_grape_vine": "false", "has_grapes": "false", "has_hops_vine": "true", "has_hops": "true", "has_wisteria_vine": "false", "has_wisteria_flowers": "false" }, "apply": { "model": "materia:block/joists_hops_overlay", "y": 270 } },
+    { "when": { "facing": "south", "has_grape_vine": "false", "has_grapes": "false", "has_hops_vine": "true", "has_hops": "true", "has_wisteria_vine": "false", "has_wisteria_flowers": "false" }, "apply": { "model": "materia:block/joists_hops_overlay" } },
+    { "when": { "facing": "north", "has_grape_vine": "false", "has_grapes": "false", "has_hops_vine": "true", "has_hops": "true", "has_wisteria_vine": "false", "has_wisteria_flowers": "false" }, "apply": { "model": "materia:block/joists_hops_overlay", "y": 180 } },
+
+    { "when": { "facing": "east", "has_grape_vine": "false", "has_grapes": "false", "has_hops_vine": "false", "has_hops": "false", "has_wisteria_vine": "true", "has_wisteria_flowers": "false" }, "apply": { "model": "materia:block/joists_wisteria_vine_overlay", "y": 90 } },
+    { "when": { "facing": "west", "has_grape_vine": "false", "has_grapes": "false", "has_hops_vine": "false", "has_hops": "false", "has_wisteria_vine": "true", "has_wisteria_flowers": "false" }, "apply": { "model": "materia:block/joists_wisteria_vine_overlay", "y": 270 } },
+    { "when": { "facing": "south", "has_grape_vine": "false", "has_grapes": "false", "has_hops_vine": "false", "has_hops": "false", "has_wisteria_vine": "true", "has_wisteria_flowers": "false" }, "apply": { "model": "materia:block/joists_wisteria_vine_overlay" } },
+    { "when": { "facing": "north", "has_grape_vine": "false", "has_grapes": "false", "has_hops_vine": "false", "has_hops": "false", "has_wisteria_vine": "true", "has_wisteria_flowers": "false" }, "apply": { "model": "materia:block/joists_wisteria_vine_overlay", "y": 180 } },
+
+    { "when": { "facing": "east", "has_grape_vine": "false", "has_grapes": "false", "has_hops_vine": "false", "has_hops": "false", "has_wisteria_vine": "true", "has_wisteria_flowers": "true" }, "apply": { "model": "materia:block/joists_wisteria_flowers_overlay", "y": 90 } },
+    { "when": { "facing": "west", "has_grape_vine": "false", "has_grapes": "false", "has_hops_vine": "false", "has_hops": "false", "has_wisteria_vine": "true", "has_wisteria_flowers": "true" }, "apply": { "model": "materia:block/joists_wisteria_flowers_overlay", "y": 270 } },
+    { "when": { "facing": "south", "has_grape_vine": "false", "has_grapes": "false", "has_hops_vine": "false", "has_hops": "false", "has_wisteria_vine": "true", "has_wisteria_flowers": "true" }, "apply": { "model": "materia:block/joists_wisteria_flowers_overlay" } },
+    { "when": { "facing": "north", "has_grape_vine": "false", "has_grapes": "false", "has_hops_vine": "false", "has_hops": "false", "has_wisteria_vine": "true", "has_wisteria_flowers": "true" }, "apply": { "model": "materia:block/joists_wisteria_flowers_overlay", "y": 180 } }
+  ]
+}

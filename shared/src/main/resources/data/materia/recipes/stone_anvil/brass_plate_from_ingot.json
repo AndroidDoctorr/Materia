@@ -1,0 +1,11 @@
+{
+    "type": "materia:stone_anvil",
+    "input": {
+        "item": "materia:brass_ingot"
+    },
+    "tool_tag": "materia:bronze_hammers",
+    "result": {
+        "item": "materia:brass_plate",
+        "count": 1
+    }
+}

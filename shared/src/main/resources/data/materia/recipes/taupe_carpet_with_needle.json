@@ -1,0 +1,36 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:taupe_string"
+        },
+        {
+            "item": "materia:taupe_string"
+        },
+        {
+            "item": "materia:taupe_string"
+        },
+        {
+            "item": "materia:taupe_string"
+        },
+        {
+            "item": "materia:taupe_string"
+        },
+        {
+            "item": "materia:taupe_string"
+        },
+        {
+            "item": "materia:taupe_string"
+        },
+        {
+            "item": "materia:taupe_string"
+        },
+        {
+            "tag": "materia:all_needles"
+        }
+    ],
+    "result": {
+        "item": "materia:taupe_carpet",
+        "count": 1
+    }
+}

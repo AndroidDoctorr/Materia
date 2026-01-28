@@ -1,0 +1,9 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#materia:river",
+  "step": "underground_ores",
+  "features": [
+    "materia:gravel_tin_ore_river_placed"
+  ]
+}
+

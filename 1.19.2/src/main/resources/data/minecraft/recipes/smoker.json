@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SPS",
+        "PKP",
+        "SBS"
+    ],
+    "key": {
+        "P": {
+            "tag": "materia:hard_plates"
+        },
+        "B": {
+            "item": "materia:bellows"
+        },
+        "S": {
+            "tag": "materia:hot_sealants"
+        },
+        "K": {
+            "item": "materia:kiln"
+        }
+    },
+    "result": {
+        "item": "minecraft:smoker"
+    }
+}

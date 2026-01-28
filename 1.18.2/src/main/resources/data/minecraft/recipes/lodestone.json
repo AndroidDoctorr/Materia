@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "LLL",
+        "LLL",
+        "LLL"
+    ],
+    "key": {
+        "L": {
+            "item": "materia:lodestone"
+        }
+    },
+    "result": {
+        "item": "minecraft:lodestone",
+        "count": 1
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:tanned_leather"
+        },
+        {
+            "tag": "materia:all_cutting_tools"
+        }
+    ],
+    "result": {
+        "item": "materia:leather_strap",
+        "count": 4
+    }
+}

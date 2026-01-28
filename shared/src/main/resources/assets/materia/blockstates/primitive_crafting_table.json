@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "": {
+            "model": "materia:block/primitive_crafting_table"
+        }
+    }
+}

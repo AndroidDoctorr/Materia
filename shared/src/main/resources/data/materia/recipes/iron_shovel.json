@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:iron_shovel_head"
+        },
+        {
+            "item": "materia:bronze_pole"
+        },
+        {
+            "tag": "materia:advanced_bindings"
+        }
+    ],
+    "result": {
+        "item": "materia:iron_shovel",
+        "count": 1
+    }
+}

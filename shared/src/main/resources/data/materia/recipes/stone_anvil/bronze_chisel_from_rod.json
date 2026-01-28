@@ -1,0 +1,11 @@
+{
+    "type": "materia:stone_anvil",
+    "input": {
+        "item": "materia:bronze_rod"
+    },
+    "tool_tag": "materia:all_hammers",
+    "result": {
+        "item": "materia:bronze_chisel",
+        "count": 1
+    }
+}

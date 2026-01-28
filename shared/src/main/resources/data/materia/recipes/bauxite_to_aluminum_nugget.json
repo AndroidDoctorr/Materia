@@ -1,0 +1,14 @@
+{
+    "type": "materia:kiln",
+    "ingredient": {
+        "item": "materia:bauxite"
+    },
+    "result": {
+        "item": "materia:aluminum_nugget",
+        "count": 9
+    },
+    "cookingtime": 800,
+    "experience": 0.7,
+    "requires_chimney": true
+}
+

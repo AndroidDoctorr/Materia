@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:bone_char"
+        },
+        {
+            "tag": "materia:lipids"
+        }
+    ],
+    "result": {
+        "item": "minecraft:black_dye",
+        "count": 1
+    }
+}

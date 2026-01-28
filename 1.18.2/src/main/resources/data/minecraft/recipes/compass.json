@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "G",
+        "M",
+        "P"
+    ],
+    "key": {
+        "G": {
+            "item": "minecraft:glass_pane"
+        },
+        "M": {
+            "item": "materia:magnetized_rod"
+        },
+        "P": {
+            "item": "materia:iron_plate"
+        }
+    },
+    "result": {
+        "item": "minecraft:compass",
+        "count": 1
+    }
+}

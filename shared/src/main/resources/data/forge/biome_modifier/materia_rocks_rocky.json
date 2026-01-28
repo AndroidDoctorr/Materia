@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#materia:rocky",
+  "step": "underground_decoration",
+  "features": [
+    "materia:surface_rock_rocky_placed",
+    "materia:cave_rock_rocky_placed"
+  ]
+}
+

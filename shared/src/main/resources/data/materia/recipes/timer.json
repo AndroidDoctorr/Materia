@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "TRT",
+        "QSQ",
+        "WPW"
+    ],
+    "key": {
+        "R": {
+            "item": "minecraft:redstone"
+        },
+        "T": {
+            "item": "minecraft:redstone_torch"
+        },
+        "S": {
+            "item": "materia:solenoid"
+        },
+        "Q": {
+            "item": "minecraft:quartz"
+        },
+        "W": {
+            "tag": "materia:insulated_wires"
+        },
+        "P": {
+            "tag": "materia:all_plates"
+        }
+    },
+    "result": {
+        "item": "materia:timer",
+        "count": 1
+    }
+}

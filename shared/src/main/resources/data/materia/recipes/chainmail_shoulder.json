@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "CC",
+        "CS"
+    ],
+    "key": {
+        "C": {
+            "item": "materia:iron_rings"
+        },
+        "S": {
+            "item": "materia:leather_strap"
+        }
+    },
+    "result": {
+        "item": "materia:chainmail_shoulder",
+        "count": 1
+    }
+}

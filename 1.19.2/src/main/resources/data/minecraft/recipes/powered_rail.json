@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SPS",
+        "RTR",
+        "SPS"
+    ],
+    "key": {
+        "P": {
+            "tag": "materia:smooth_planks"
+        },
+        "R": {
+            "item": "materia:gold_rail"
+        },
+        "T": {
+            "item": "materia:tar"
+        },
+        "S": {
+            "item": "minecraft:redstone"
+        }
+    },
+    "result": {
+        "item": "minecraft:powered_rail"
+    }
+}

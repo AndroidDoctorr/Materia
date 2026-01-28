@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "DAD",
+        "WSW",
+        "DDD"
+    ],
+    "key": {
+        "S": {
+            "item": "minecraft:iron_chestplate"
+        },
+        "D": {
+            "item": "minecraft:diamond"
+        },
+        "A": {
+            "tag": "materia:strong_adhesives"
+        },
+        "W": {
+            "tag": "materia:all_wires"
+        }
+    },
+    "result": {
+        "item": "minecraft:diamond_chestplate",
+        "count": 1
+    }
+}

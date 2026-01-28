@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:mortar_and_pestle"
+        },
+        {
+            "item": "materia:corn"
+        }
+    ],
+    "result": {
+        "item": "materia:cornmeal",
+        "count": 2
+    }
+}

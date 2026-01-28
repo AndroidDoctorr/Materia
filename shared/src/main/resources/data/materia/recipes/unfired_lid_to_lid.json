@@ -1,0 +1,12 @@
+{
+    "type": "materia:kiln",
+    "ingredient": {
+        "item": "materia:unfired_lid"
+    },
+    "result": {
+        "item": "materia:lid",
+        "count": 1
+    },
+    "cookingtime": 800,
+    "experience": 0.1
+}

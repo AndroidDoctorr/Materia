@@ -1,0 +1,7 @@
+{
+    "replace": false,
+    "values": [
+        "materia:iron_hammer",
+        "#materia:steel_hammers"
+    ]
+}

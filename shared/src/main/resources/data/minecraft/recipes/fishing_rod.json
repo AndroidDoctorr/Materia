@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:handle"
+        },
+        {
+            "item": "minecraft:stick"
+        },
+        {
+            "tag": "materia:all_bowstrings"
+        },
+        {
+            "tag": "materia:adhesives"
+        },
+        {
+            "item": "materia:fishing_hook"
+        }
+    ],
+    "result": {
+        "item": "minecraft:fishing_rod",
+        "count": 1
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:bronze_saw"
+        },
+        {
+            "item": "materia:bronze_hammer"
+        },
+        {
+            "item": "materia:bronze_shears"
+        },
+        {
+            "item": "materia:water_pot"
+        },
+        {
+            "item": "materia:rope"
+        },
+        {
+            "item": "materia:primitive_crafting_table"
+        }
+    ],
+    "result": {
+        "item": "minecraft:crafting_table",
+        "count": 1
+    }
+}

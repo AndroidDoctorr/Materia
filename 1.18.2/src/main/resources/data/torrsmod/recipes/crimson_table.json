@@ -1,0 +1,24 @@
+﻿{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SSS",
+        "PNP",
+        "P P"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:crimson_post"
+        },
+        "S": {
+            "item": "materia:smooth_crimson_planks"
+        },
+        "N": {
+            "tag": "materia:all_nails"
+        }
+    },
+    "result": {
+        "item": "materia:crimson_table",
+        "count": 1
+    }
+}
+

@@ -1,0 +1,13 @@
+{
+    "variants": {
+        "stage=empty": {
+            "model": "materia:block/brining_vat"
+        },
+        "stage=water": {
+            "model": "materia:block/brining_vat_full"
+        },
+        "stage=salt": {
+            "model": "materia:block/brining_vat_salt"
+        }
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "PAP",
+        "RPR",
+        "PAP"
+    ],
+    "key": {
+        "P": {
+            "tag": "materia:hard_plates"
+        },
+        "A": {
+            "item": "materia:minecart_axle"
+        },
+        "R": {
+            "tag": "materia:all_rivets"
+        }
+    },
+    "result": {
+        "item": "minecraft:minecart"
+    }
+}

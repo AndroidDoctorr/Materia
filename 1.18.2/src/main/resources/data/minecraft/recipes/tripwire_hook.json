@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "tag": "materia:smooth_planks"
+        },
+        {
+            "tag": "materia:all_wires"
+        }
+    ],
+    "result": {
+        "item": "minecraft:tripwire_hook",
+        "count": 4
+    }
+}

@@ -1,0 +1,145 @@
+{
+    "ambientocclusion": false,
+    "textures": {
+        "corn": "materia:block/corn_1",
+        "squash": "materia:block/squash_1"
+    },
+    "elements": [
+        {
+            "comment": "Corn layer (innermost)",
+            "from": [
+                6.8,
+                0,
+                8
+            ],
+            "to": [
+                9.2,
+                16,
+                8
+            ],
+            "shade": false,
+            "faces": {
+                "north": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#corn"
+                },
+                "south": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#corn"
+                }
+            }
+        },
+        {
+            "comment": "Corn layer perpendicular",
+            "from": [
+                8,
+                0,
+                6.8
+            ],
+            "to": [
+                8,
+                16,
+                9.2
+            ],
+            "shade": false,
+            "faces": {
+                "west": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#corn"
+                },
+                "east": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#corn"
+                }
+            }
+        },
+        {
+            "comment": "Squash layer (outermost)",
+            "from": [
+                5.2,
+                0,
+                8
+            ],
+            "to": [
+                10.8,
+                16,
+                8
+            ],
+            "shade": false,
+            "faces": {
+                "north": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#squash"
+                },
+                "south": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#squash"
+                }
+            }
+        },
+        {
+            "comment": "Squash layer perpendicular",
+            "from": [
+                8,
+                0,
+                5.2
+            ],
+            "to": [
+                8,
+                16,
+                10.8
+            ],
+            "shade": false,
+            "faces": {
+                "west": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#squash"
+                },
+                "east": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#squash"
+                }
+            }
+        }
+    ]
+}

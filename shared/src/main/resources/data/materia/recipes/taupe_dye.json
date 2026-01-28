@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "tag": "materia:calcites"
+        }
+    ],
+    "result": {
+        "item": "materia:taupe_dye",
+        "count": 1
+    }
+}

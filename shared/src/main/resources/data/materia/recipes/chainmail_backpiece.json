@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " C ",
+        "CCC",
+        "CCC"
+    ],
+    "key": {
+        "C": {
+            "item": "materia:iron_rings"
+        }
+    },
+    "result": {
+        "item": "materia:chainmail_backpiece",
+        "count": 1
+    }
+}

@@ -1,0 +1,42 @@
+{
+    "ambientocclusion": false,
+    "textures": {
+        "vine": "materia:block/grapes_2",
+        "particle": "materia:block/grapes_2"
+    },
+    "elements": [
+        {
+            "from": [
+                0,
+                15.9,
+                0
+            ],
+            "to": [
+                16,
+                15.9,
+                16
+            ],
+            "shade": false,
+            "faces": {
+                "down": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#vine"
+                },
+                "up": {
+                    "uv": [
+                        0,
+                        16,
+                        16,
+                        0
+                    ],
+                    "texture": "#vine"
+                }
+            }
+        }
+    ]
+}

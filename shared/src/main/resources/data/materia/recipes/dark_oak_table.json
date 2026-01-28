@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SSS",
+        "PNP",
+        "P P"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:dark_oak_post"
+        },
+        "S": {
+            "item": "materia:smooth_dark_oak_planks"
+        },
+        "N": {
+            "tag": "materia:all_nails"
+        }
+    },
+    "result": {
+        "item": "materia:dark_oak_table",
+        "count": 1
+    }
+}

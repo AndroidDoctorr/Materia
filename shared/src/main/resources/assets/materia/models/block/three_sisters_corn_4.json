@@ -1,0 +1,144 @@
+{
+    "ambientocclusion": false,
+    "textures": {
+        "corn": "materia:block/corn_4_lower"
+    },
+    "elements": [
+        {
+            "comment": "Corn plane 1 (x=6, tall stage lower)",
+            "from": [
+                6,
+                0,
+                0
+            ],
+            "to": [
+                6,
+                16,
+                16
+            ],
+            "shade": false,
+            "faces": {
+                "west": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#corn"
+                },
+                "east": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#corn"
+                }
+            }
+        },
+        {
+            "comment": "Corn plane 2 (x=10)",
+            "from": [
+                10,
+                0,
+                0
+            ],
+            "to": [
+                10,
+                16,
+                16
+            ],
+            "shade": false,
+            "faces": {
+                "west": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#corn"
+                },
+                "east": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#corn"
+                }
+            }
+        },
+        {
+            "comment": "Corn plane 3 (z=6)",
+            "from": [
+                0,
+                0,
+                6
+            ],
+            "to": [
+                16,
+                16,
+                6
+            ],
+            "shade": false,
+            "faces": {
+                "north": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#corn"
+                },
+                "south": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#corn"
+                }
+            }
+        },
+        {
+            "comment": "Corn plane 4 (z=10)",
+            "from": [
+                0,
+                0,
+                10
+            ],
+            "to": [
+                16,
+                16,
+                10
+            ],
+            "shade": false,
+            "faces": {
+                "north": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#corn"
+                },
+                "south": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#corn"
+                }
+            }
+        }
+    ]
+}

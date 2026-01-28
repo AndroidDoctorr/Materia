@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "DD",
+        "DA",
+        " S"
+    ],
+    "key": {
+        "S": {
+            "item": "minecraft:iron_axe"
+        },
+        "D": {
+            "item": "minecraft:diamond"
+        },
+        "A": {
+            "tag": "materia:strong_adhesives"
+        }
+    },
+    "result": {
+        "item": "minecraft:diamond_axe",
+        "count": 1
+    }
+}

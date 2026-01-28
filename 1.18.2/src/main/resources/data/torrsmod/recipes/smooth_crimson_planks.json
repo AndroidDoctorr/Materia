@@ -1,0 +1,16 @@
+﻿{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:rough_crimson_plank"
+        },
+        {
+            "item": "materia:bronze_saw"
+        }
+    ],
+    "result": {
+        "item": "materia:smooth_crimson_planks",
+        "count": 2
+    }
+}
+

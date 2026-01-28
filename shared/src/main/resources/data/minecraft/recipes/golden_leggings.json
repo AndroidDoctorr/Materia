@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "STS",
+        "PRP",
+        "PHP"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:gold_plate"
+        },
+        "S": {
+            "item": "materia:leather_strap"
+        },
+        "R": {
+            "tag": "materia:all_rivets"
+        },
+        "H": {
+            "tag": "materia:bronze_hammers"
+        },
+        "T": {
+            "item": "materia:tanned_leather"
+        }
+    },
+    "result": {
+        "item": "minecraft:golden_leggings",
+        "count": 1
+    }
+}

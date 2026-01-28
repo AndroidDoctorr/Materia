@@ -1,0 +1,9 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#materia:overworld_non_river",
+  "step": "underground_ores",
+  "features": [
+    "materia:gravel_tin_ore_placed"
+  ]
+}
+

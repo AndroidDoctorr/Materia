@@ -1,0 +1,31 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "tag": "materia:reeds"
+        },
+        {
+            "tag": "materia:strings"
+        },
+        {
+            "tag": "materia:basic_lashings"
+        },
+        {
+            "tag": "materia:green_dyes"
+        },
+        {
+            "tag": "materia:all_glues"
+        },
+        {
+            "item": "minecraft:redstone"
+        },
+        {
+            "tag": "materia:all_cutting_tools"
+        }
+    ],
+    "result": {
+        "item": "materia:earth_harp",
+        "count": 1
+    }
+}
+

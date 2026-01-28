@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:clump_of_charcoal_gray_wool"
+        },
+        {
+            "item": "materia:spindle"
+        }
+    ],
+    "result": {
+        "item": "materia:charcoal_gray_string",
+        "count": 2
+    }
+}

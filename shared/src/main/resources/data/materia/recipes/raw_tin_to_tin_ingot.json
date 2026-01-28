@@ -1,0 +1,12 @@
+{
+    "type": "materia:kiln",
+    "ingredient": {
+        "item": "materia:raw_tin"
+    },
+    "result": {
+        "item": "materia:tin_nugget",
+        "count": 9
+    },
+    "cookingtime": 800,
+    "experience": 0.7
+}

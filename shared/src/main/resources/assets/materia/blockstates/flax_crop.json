@@ -1,0 +1,28 @@
+{
+    "variants": {
+        "age=0": {
+            "model": "materia:block/flax_stage0"
+        },
+        "age=1": {
+            "model": "materia:block/flax_stage1"
+        },
+        "age=2": {
+            "model": "materia:block/flax_stage2"
+        },
+        "age=3": {
+            "model": "materia:block/flax_stage3"
+        },
+        "age=4": {
+            "model": "materia:block/flax_stage4"
+        },
+        "age=5": {
+            "model": "materia:block/flax_stage5"
+        },
+        "age=6": {
+            "model": "materia:block/flax_stage6"
+        },
+        "age=7": {
+            "model": "materia:block/flax_stage7"
+        }
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "O O",
+        "PSP",
+        "PPP"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:smooth_dark_oak_planks"
+        },
+        "O": {
+            "item": "materia:oar"
+        },
+        "S": {
+            "item": "materia:pitch"
+        }
+    },
+    "result": {
+        "item": "minecraft:dark_oak_boat",
+        "count": 1
+    }
+}

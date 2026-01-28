@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:chainmail_chestpiece"
+        },
+        {
+            "item": "materia:chainmail_backpiece"
+        },
+        {
+            "item": "materia:chainmail_shoulder"
+        },
+        {
+            "item": "materia:chainmail_shoulder"
+        },
+        {
+            "tag": "materia:hard_rings"
+        },
+        {
+            "item": "materia:leather_strap"
+        }
+    ],
+    "result": {
+        "item": "minecraft:chainmail_chestplate",
+        "count": 1
+    }
+}

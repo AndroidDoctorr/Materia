@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:iron_spear_head"
+        },
+        {
+            "item": "materia:handle"
+        },
+        {
+            "item": "materia:handle"
+        },
+        {
+            "tag": "materia:advanced_bindings"
+        }
+    ],
+    "result": {
+        "item": "materia:iron_spear",
+        "count": 1
+    }
+}

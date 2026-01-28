@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:dried_gourd"
+        },
+        {
+            "tag": "materia:purple_dyes"
+        },
+        {
+            "tag": "materia:all_cutting_tools"
+        },
+        {
+            "tag": "materia:seeds"
+        }
+    ],
+    "result": {
+        "item": "materia:life_maraca",
+        "count": 1
+    }
+}

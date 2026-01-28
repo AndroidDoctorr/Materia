@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:campfire_cooking",
+    "ingredient": {
+        "tag": "forge:dough"
+    },
+    "result": "minecraft:bread",
+    "experience": 0.0,
+    "cookingtime": 300
+}

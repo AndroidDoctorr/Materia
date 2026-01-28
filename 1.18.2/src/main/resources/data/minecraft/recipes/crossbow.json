@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "LPL",
+        "SHS",
+        "GBG"
+    ],
+    "key": {
+        "L": {
+            "item": "materia:bow_limb"
+        },
+        "H": {
+            "item": "materia:handle"
+        },
+        "S": {
+            "tag": "materia:strong_bowstrings"
+        },
+        "G": {
+            "tag": "materia:strong_adhesives"
+        },
+        "B": {
+            "item": "materia:brass_latch"
+        },
+        "P": {
+            "tag": "materia:smooth_planks"
+        }
+    },
+    "result": {
+        "item": "minecraft:crossbow",
+        "count": 1
+    }
+}

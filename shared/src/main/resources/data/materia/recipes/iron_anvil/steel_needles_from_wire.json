@@ -1,0 +1,16 @@
+{
+    "type": "materia:iron_anvil",
+    "input_a": {
+        "item": "materia:steel_wire",
+        "count": 1
+    },
+    "tool_tags": [
+        "materia:iron_hammers",
+        "materia:iron_hammers",
+        "materia:iron_chisels"
+    ],
+    "result": {
+        "item": "materia:steel_needle",
+        "count": 16
+    }
+}

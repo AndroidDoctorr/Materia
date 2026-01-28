@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "PNP"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:smooth_birch_planks"
+        },
+        "N": {
+            "tag": "materia:all_nails"
+        }
+    },
+    "result": {
+        "item": "minecraft:birch_slab",
+        "count": 1
+    }
+}

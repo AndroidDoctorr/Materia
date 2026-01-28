@@ -1,0 +1,12 @@
+{
+    "type": "materia:oven",
+    "ingredient": {
+        "tag": "forge:dough"
+    },
+    "result": {
+        "item": "minecraft:bread",
+        "count": 1
+    },
+    "experience": 0.35,
+    "cookingtime": 200
+}

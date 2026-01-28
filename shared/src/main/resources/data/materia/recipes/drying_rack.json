@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "JSJ",
+        "S S"
+    ],
+    "key": {
+        "S": {
+            "item": "minecraft:stick"
+        },
+        "J": {
+            "tag": "materia:basic_bindings"
+        }
+    },
+    "result": {
+        "item": "materia:drying_rack",
+        "count": 1
+    }
+}

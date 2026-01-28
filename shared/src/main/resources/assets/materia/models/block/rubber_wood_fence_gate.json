@@ -1,0 +1,6 @@
+{
+    "parent": "block/template_fence_gate",
+    "textures": {
+        "texture": "materia:block/rubber_wood_planks"
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "RPH",
+        "PTP",
+        "SBS"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:iron_plate"
+        },
+        "S": {
+            "item": "materia:leather_strap"
+        },
+        "R": {
+            "tag": "materia:all_rivets"
+        },
+        "H": {
+            "tag": "materia:bronze_hammers"
+        },
+        "T": {
+            "item": "materia:tanned_leather"
+        },
+        "B": {
+            "item": "materia:brass_buckle"
+        }
+    },
+    "result": {
+        "item": "materia:iron_helmet",
+        "count": 1
+    }
+}

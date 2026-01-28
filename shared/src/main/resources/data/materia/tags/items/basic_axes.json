@@ -1,0 +1,8 @@
+{
+    "replace": false,
+    "values": [
+        "materia:hand_axe",
+        "minecraft:wooden_axe",
+        "minecraft:stone_axe"
+    ]
+}

@@ -1,0 +1,124 @@
+{
+    "variants": {
+        "interval=0,output=false,facing=north": {
+            "model": "materia:block/timer_0_0"
+        },
+        "interval=0,output=true,facing=north": {
+            "model": "materia:block/timer_0_1"
+        },
+        "interval=1,output=false,facing=north": {
+            "model": "materia:block/timer_1_0"
+        },
+        "interval=1,output=true,facing=north": {
+            "model": "materia:block/timer_1_1"
+        },
+        "interval=2,output=false,facing=north": {
+            "model": "materia:block/timer_2_0"
+        },
+        "interval=2,output=true,facing=north": {
+            "model": "materia:block/timer_2_1"
+        },
+        "interval=3,output=false,facing=north": {
+            "model": "materia:block/timer_3_0"
+        },
+        "interval=3,output=true,facing=north": {
+            "model": "materia:block/timer_3_1"
+        },
+        "interval=0,output=false,facing=east": {
+            "model": "materia:block/timer_0_0",
+            "y": 90
+        },
+        "interval=0,output=true,facing=east": {
+            "model": "materia:block/timer_0_1",
+            "y": 90
+        },
+        "interval=1,output=false,facing=east": {
+            "model": "materia:block/timer_1_0",
+            "y": 90
+        },
+        "interval=1,output=true,facing=east": {
+            "model": "materia:block/timer_1_1",
+            "y": 90
+        },
+        "interval=2,output=false,facing=east": {
+            "model": "materia:block/timer_2_0",
+            "y": 90
+        },
+        "interval=2,output=true,facing=east": {
+            "model": "materia:block/timer_2_1",
+            "y": 90
+        },
+        "interval=3,output=false,facing=east": {
+            "model": "materia:block/timer_3_0",
+            "y": 90
+        },
+        "interval=3,output=true,facing=east": {
+            "model": "materia:block/timer_3_1",
+            "y": 90
+        },
+        "interval=0,output=false,facing=south": {
+            "model": "materia:block/timer_0_0",
+            "y": 180
+        },
+        "interval=0,output=true,facing=south": {
+            "model": "materia:block/timer_0_1",
+            "y": 180
+        },
+        "interval=1,output=false,facing=south": {
+            "model": "materia:block/timer_1_0",
+            "y": 180
+        },
+        "interval=1,output=true,facing=south": {
+            "model": "materia:block/timer_1_1",
+            "y": 180
+        },
+        "interval=2,output=false,facing=south": {
+            "model": "materia:block/timer_2_0",
+            "y": 180
+        },
+        "interval=2,output=true,facing=south": {
+            "model": "materia:block/timer_2_1",
+            "y": 180
+        },
+        "interval=3,output=false,facing=south": {
+            "model": "materia:block/timer_3_0",
+            "y": 180
+        },
+        "interval=3,output=true,facing=south": {
+            "model": "materia:block/timer_3_1",
+            "y": 180
+        },
+        "interval=0,output=false,facing=west": {
+            "model": "materia:block/timer_0_0",
+            "y": 270
+        },
+        "interval=0,output=true,facing=west": {
+            "model": "materia:block/timer_0_1",
+            "y": 270
+        },
+        "interval=1,output=false,facing=west": {
+            "model": "materia:block/timer_1_0",
+            "y": 270
+        },
+        "interval=1,output=true,facing=west": {
+            "model": "materia:block/timer_1_1",
+            "y": 270
+        },
+        "interval=2,output=false,facing=west": {
+            "model": "materia:block/timer_2_0",
+            "y": 270
+        },
+        "interval=2,output=true,facing=west": {
+            "model": "materia:block/timer_2_1",
+            "y": 270
+        },
+        "interval=3,output=false,facing=west": {
+            "model": "materia:block/timer_3_0",
+            "y": 270
+        },
+        "interval=3,output=true,facing=west": {
+            "model": "materia:block/timer_3_1",
+            "y": 270
+        }
+    }
+}

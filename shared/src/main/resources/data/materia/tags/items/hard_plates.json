@@ -1,0 +1,8 @@
+{
+    "replace": false,
+    "values": [
+        "materia:bronze_plate",
+        "materia:iron_plate",
+        "materia:steel_plate"
+    ]
+}

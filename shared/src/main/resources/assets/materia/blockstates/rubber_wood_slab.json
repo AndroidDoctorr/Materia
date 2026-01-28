@@ -1,0 +1,13 @@
+{
+    "variants": {
+        "type=bottom": {
+            "model": "materia:block/rubber_wood_slab"
+        },
+        "type=top": {
+            "model": "materia:block/rubber_wood_slab_top"
+        },
+        "type=double": {
+            "model": "materia:block/rubber_wood_planks"
+        }
+    }
+}

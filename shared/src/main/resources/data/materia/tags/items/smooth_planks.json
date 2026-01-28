@@ -1,0 +1,24 @@
+{
+    "replace": false,
+    "values": [
+        "materia:smooth_oak_planks",
+        "materia:smooth_spruce_planks",
+        "materia:smooth_birch_planks",
+        "materia:smooth_jungle_planks",
+        "materia:smooth_acacia_planks",
+        {
+            "id": "materia:smooth_mangrove_planks",
+            "required": false
+        },
+        {
+            "id": "materia:smooth_crimson_planks",
+            "required": false
+        },
+        {
+            "id": "materia:smooth_warped_planks",
+            "required": false
+        },
+        "materia:smooth_dark_oak_planks",
+        "materia:smooth_rubber_wood_planks"
+    ]
+}

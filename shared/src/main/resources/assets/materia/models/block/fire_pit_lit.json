@@ -1,0 +1,9 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "up": "materia:block/kiln_top_lit",
+        "north": "materia:block/kiln_back_lit",
+        "all": "materia:block/fired_earth",
+        "particle": "materia:block/fired_earth"
+    }
+}

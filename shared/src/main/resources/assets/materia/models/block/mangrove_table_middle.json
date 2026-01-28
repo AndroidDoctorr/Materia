@@ -1,0 +1,7 @@
+{
+    "parent": "materia:block/acacia_table_middle",
+    "textures": {
+        "all": "minecraft:block/mangrove_planks",
+        "particle": "minecraft:block/mangrove_planks"
+    }
+}

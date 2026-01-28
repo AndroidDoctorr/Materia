@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:charcoal"
+        },
+        {
+            "tag": "materia:all_crushers"
+        },
+        {
+            "tag": "materia:lipids"
+        }
+    ],
+    "result": {
+        "item": "materia:charcoal_gray_dye",
+        "count": 2
+    }
+}

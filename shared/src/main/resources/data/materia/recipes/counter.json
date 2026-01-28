@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "RTR",
+        "NSN"
+    ],
+    "key": {
+        "R": {
+            "item": "minecraft:redstone"
+        },
+        "T": {
+            "item": "minecraft:redstone_torch"
+        },
+        "N": {
+            "item": "materia:nand_gate"
+        },
+        "S": {
+            "item": "materia:solenoid"
+        }
+    },
+    "result": {
+        "item": "materia:counter",
+        "count": 1
+    }
+}

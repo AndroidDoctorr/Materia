@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#materia:beach",
+  "step": "vegetal_decoration",
+  "features": [
+    "materia:murex_shell_placed",
+    "materia:clam_placed"
+  ]
+}
+

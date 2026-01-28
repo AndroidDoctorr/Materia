@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:purple_iota"
+        },
+        {
+            "item": "materia:purple_iota"
+        },
+        {
+            "item": "materia:purple_iota"
+        },
+        {
+            "item": "materia:purple_iota"
+        },
+        {
+            "item": "materia:purple_iota"
+        },
+        {
+            "item": "materia:purple_iota"
+        }
+    ],
+    "result": {
+        "item": "materia:purple_blob",
+        "count": 1
+    }
+}

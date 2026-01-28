@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "PRP",
+        "RFR",
+        "PRP"
+    ],
+    "key": {
+        "P": {
+            "tag": "materia:posts"
+        },
+        "R": {
+            "item": "materia:rope"
+        },
+        "F": {
+            "item": "materia:wood_frame"
+        }
+    },
+    "result": {
+        "item": "materia:bed_frame",
+        "count": 1
+    }
+}

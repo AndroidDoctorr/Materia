@@ -1,0 +1,23 @@
+﻿{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "JSJ",
+        "BSB",
+        "JSJ"
+    ],
+    "key": {
+        "S": {
+            "tag": "materia:smooth_planks"
+        },
+        "B": {
+            "tag": "materia:hard_bands"
+        },
+        "J": {
+            "tag": "materia:strong_wood_joiners"
+        }
+    },
+    "result": {
+        "item": "minecraft:shield",
+        "count": 1
+    }
+}

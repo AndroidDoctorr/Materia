@@ -1,0 +1,15 @@
+{
+    "type": "materia:iron_anvil",
+    "input_a": {
+        "item": "materia:bronze_ingot"
+    },
+    "tool_tags": [
+        "materia:stone_hammers",
+        "materia:stone_hammers",
+        "materia:stone_hammers"
+    ],
+    "result": {
+        "item": "materia:bronze_rod",
+        "count": 1
+    }
+}

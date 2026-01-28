@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "PNP",
+        "P P"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:smooth_rubber_wood_planks"
+        },
+        "N": {
+            "tag": "materia:all_nails"
+        }
+    },
+    "result": {
+        "item": "materia:rubber_wood_planks",
+        "count": 1
+    }
+}

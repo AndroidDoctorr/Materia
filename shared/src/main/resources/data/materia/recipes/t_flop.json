@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "RTR",
+        "CRC",
+        "WPW"
+    ],
+    "key": {
+        "R": {
+            "item": "minecraft:redstone"
+        },
+        "T": {
+            "item": "minecraft:redstone_torch"
+        },
+        "C": {
+            "item": "minecraft:comparator"
+        },
+        "W": {
+            "tag": "materia:insulated_wires"
+        },
+        "P": {
+            "tag": "materia:all_plates"
+        }
+    },
+    "result": {
+        "item": "materia:t_flop",
+        "count": 1
+    }
+}

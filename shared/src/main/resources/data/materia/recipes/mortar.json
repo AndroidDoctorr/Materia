@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:slaked_lime"
+        },
+        {
+            "item": "materia:pile_of_sand"
+        }
+    ],
+    "result": {
+        "item": "materia:mortar",
+        "count": 2
+    }
+}

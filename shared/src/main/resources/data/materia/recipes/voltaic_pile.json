@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:voltaic_layer"
+        },
+        {
+            "item": "materia:voltaic_layer"
+        },
+        {
+            "item": "materia:voltaic_layer"
+        },
+        {
+            "item": "materia:voltaic_layer"
+        }
+    ],
+    "result": {
+        "item": "materia:voltaic_pile",
+        "count": 1
+    }
+}

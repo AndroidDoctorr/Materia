@@ -1,0 +1,19 @@
+{
+    "type": "materia:advanced_kiln",
+    "group": "glass",
+    "ingredient1": {
+        "item": "materia:glass_mixture"
+    },
+    "ingredient2": {
+        "item": "materia:pile_of_sand"
+    },
+    "result": {
+        "item": "materia:glass_puck",
+        "count": 1
+    },
+    "cookingtime": 1200,
+    "experience": 0.1,
+    "requires_chimney": true,
+    "requires_bellows": true,
+    "requires_coke_fuel": true
+}

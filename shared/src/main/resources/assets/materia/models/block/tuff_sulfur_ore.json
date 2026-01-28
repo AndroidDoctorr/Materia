@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "materia:block/tuff_sulfur_ore",
+        "particle": "materia:block/tuff_sulfur_ore"
+    }
+}

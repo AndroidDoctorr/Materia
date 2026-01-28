@@ -1,0 +1,12 @@
+{
+    "replace": false,
+    "values": [
+        "materia:copper_rod",
+        "materia:aluminum_rod",
+        "materia:gold_rod",
+        "materia:tin_rod",
+        "materia:brass_rod",
+        "materia:zinc_rod",
+        "materia:lead_rod"
+    ]
+}

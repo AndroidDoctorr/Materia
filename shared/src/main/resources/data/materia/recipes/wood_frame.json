@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SJS",
+        "SJS"
+    ],
+    "key": {
+        "J": {
+            "tag": "materia:all_wood_joiners"
+        },
+        "S": {
+            "tag": "materia:smooth_planks"
+        }
+    },
+    "result": {
+        "item": "materia:wood_frame",
+        "count": 2
+    }
+}

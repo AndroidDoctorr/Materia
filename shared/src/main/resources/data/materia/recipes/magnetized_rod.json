@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:iron_rod"
+        },
+        {
+            "tag": "materia:medium_magnets"
+        }
+    ],
+    "result": {
+        "item": "materia:magnetized_rod",
+        "count": 1
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "ECE",
+        "EEE"
+    ],
+    "key": {
+        "E": {
+            "tag": "materia:earth_blocks"
+        },
+        "C": {
+            "item": "minecraft:campfire"
+        }
+    },
+    "result": {
+        "item": "materia:kiln",
+        "count": 1
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "GGG",
+        "GNG",
+        "ASA"
+    ],
+    "key": {
+        "G": {
+            "item": "minecraft:glass_pane"
+        },
+        "N": {
+            "item": "minecraft:nether_star"
+        },
+        "S": {
+            "item": "materia:obsidian_slab"
+        },
+        "A": {
+            "tag": "materia:strong_adhesives"
+        }
+    },
+    "result": {
+        "item": "minecraft:beacon",
+        "count": 1
+    }
+}

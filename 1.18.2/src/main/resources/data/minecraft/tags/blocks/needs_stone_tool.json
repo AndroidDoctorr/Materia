@@ -1,0 +1,12 @@
+{
+    "replace": false,
+    "values": [
+        "materia:sphalerite",
+        "materia:malachite",
+        "materia:magnetite",
+        "materia:sulfur_ore",
+        "materia:deepslate_sulfur_ore",
+        "materia:tuff_sulfur_ore",
+        "materia:bauxite_ore"
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "DAD",
+        " S "
+    ],
+    "key": {
+        "S": {
+            "item": "minecraft:iron_sword"
+        },
+        "D": {
+            "item": "minecraft:diamond"
+        },
+        "A": {
+            "tag": "materia:strong_adhesives"
+        }
+    },
+    "result": {
+        "item": "minecraft:diamond_sword",
+        "count": 1
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "GGG",
+        "GOG",
+        "GGG"
+    ],
+    "key": {
+        "G": {
+            "item": "minecraft:glass"
+        },
+        "O": {
+            "item": "materia:olive_dye"
+        }
+    },
+    "result": {
+        "item": "materia:olive_glass",
+        "count": 8
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "tag": "materia:reeds"
+        },
+        {
+            "tag": "materia:basic_lashings"
+        },
+        {
+            "tag": "materia:yellow_dyes"
+        },
+        {
+            "tag": "materia:all_glues"
+        },
+        {
+            "item": "minecraft:redstone"
+        },
+        {
+            "tag": "materia:all_cutting_tools"
+        }
+    ],
+    "result": {
+        "item": "materia:air_bass",
+        "count": 1
+    }
+}

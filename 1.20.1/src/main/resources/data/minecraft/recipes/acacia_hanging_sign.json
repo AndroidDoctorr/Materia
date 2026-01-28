@@ -1,0 +1,28 @@
+﻿{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "CSC",
+        "NPD"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:smooth_acacia_planks"
+        },
+        "N": {
+            "tag": "materia:all_wood_joiners"
+        },
+        "C": {
+            "item": "minecraft:chain"
+        },
+        "S": {
+            "item": "minecraft:stick"
+        },
+        "D": {
+            "item": "minecraft:black_dye"
+        }
+    },
+    "result": {
+        "item": "minecraft:acacia_hanging_sign",
+        "count": 2
+    }
+}

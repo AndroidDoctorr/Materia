@@ -1,0 +1,172 @@
+{
+    "multipart": [
+        {
+            "when": {
+                "corn_age": "1"
+            },
+            "apply": {
+                "model": "materia:block/three_sisters_corn_1"
+            }
+        },
+        {
+            "when": {
+                "corn_age": "2"
+            },
+            "apply": {
+                "model": "materia:block/three_sisters_corn_2"
+            }
+        },
+        {
+            "when": {
+                "corn_age": "3"
+            },
+            "apply": {
+                "model": "materia:block/three_sisters_corn_3"
+            }
+        },
+        {
+            "when": {
+                "corn_age": "4"
+            },
+            "apply": {
+                "model": "materia:block/three_sisters_corn_4"
+            }
+        },
+        {
+            "when": {
+                "corn_age": "5"
+            },
+            "apply": {
+                "model": "materia:block/three_sisters_corn_5"
+            }
+        },
+        {
+            "when": {
+                "corn_age": "6"
+            },
+            "apply": {
+                "model": "materia:block/three_sisters_corn_6"
+            }
+        },
+        {
+            "when": {
+                "corn_age": "7"
+            },
+            "apply": {
+                "model": "materia:block/three_sisters_corn_7"
+            }
+        },
+        {
+            "when": {
+                "beans_age": "1"
+            },
+            "apply": {
+                "model": "materia:block/three_sisters_beans_1"
+            }
+        },
+        {
+            "when": {
+                "beans_age": "2"
+            },
+            "apply": {
+                "model": "materia:block/three_sisters_beans_2"
+            }
+        },
+        {
+            "when": {
+                "beans_age": "3"
+            },
+            "apply": {
+                "model": "materia:block/three_sisters_beans_3"
+            }
+        },
+        {
+            "when": {
+                "beans_age": "4"
+            },
+            "apply": {
+                "model": "materia:block/three_sisters_beans_4"
+            }
+        },
+        {
+            "when": {
+                "beans_age": "5"
+            },
+            "apply": {
+                "model": "materia:block/three_sisters_beans_5"
+            }
+        },
+        {
+            "when": {
+                "beans_age": "6"
+            },
+            "apply": {
+                "model": "materia:block/three_sisters_beans_6"
+            }
+        },
+        {
+            "when": {
+                "beans_age": "7"
+            },
+            "apply": {
+                "model": "materia:block/three_sisters_beans_7"
+            }
+        },
+        {
+            "when": {
+                "squash_age": "1"
+            },
+            "apply": {
+                "model": "materia:block/three_sisters_squash_1"
+            }
+        },
+        {
+            "when": {
+                "squash_age": "2"
+            },
+            "apply": {
+                "model": "materia:block/three_sisters_squash_2"
+            }
+        },
+        {
+            "when": {
+                "squash_age": "3"
+            },
+            "apply": {
+                "model": "materia:block/three_sisters_squash_3"
+            }
+        },
+        {
+            "when": {
+                "squash_age": "4"
+            },
+            "apply": {
+                "model": "materia:block/three_sisters_squash_4"
+            }
+        },
+        {
+            "when": {
+                "squash_age": "5"
+            },
+            "apply": {
+                "model": "materia:block/three_sisters_squash_5"
+            }
+        },
+        {
+            "when": {
+                "squash_age": "6"
+            },
+            "apply": {
+                "model": "materia:block/three_sisters_squash_6"
+            }
+        },
+        {
+            "when": {
+                "squash_age": "7"
+            },
+            "apply": {
+                "model": "materia:block/three_sisters_squash_7"
+            }
+        }
+    ]
+}

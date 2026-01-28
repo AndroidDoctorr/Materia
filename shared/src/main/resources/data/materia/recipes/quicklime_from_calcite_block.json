@@ -1,0 +1,13 @@
+{
+    "type": "materia:kiln",
+    "ingredient": {
+        "item": "minecraft:calcite"
+    },
+    "result": {
+        "item": "materia:quicklime",
+        "count": 9
+    },
+    "cookingtime": 800,
+    "experience": 0.3,
+    "requires_chimney": true
+}

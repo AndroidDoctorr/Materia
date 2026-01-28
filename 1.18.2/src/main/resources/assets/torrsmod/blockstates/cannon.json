@@ -1,0 +1,35 @@
+{
+    "variants": {
+        "facing=north,powered=false": {
+            "model": "materia:block/cannon"
+        },
+        "facing=east,powered=false": {
+            "model": "materia:block/cannon",
+            "y": 90
+        },
+        "facing=south,powered=false": {
+            "model": "materia:block/cannon",
+            "y": 180
+        },
+        "facing=west,powered=false": {
+            "model": "materia:block/cannon",
+            "y": 270
+        },
+        "facing=north,powered=true": {
+            "model": "materia:block/cannon"
+        },
+        "facing=east,powered=true": {
+            "model": "materia:block/cannon",
+            "y": 90
+        },
+        "facing=south,powered=true": {
+            "model": "materia:block/cannon",
+            "y": 180
+        },
+        "facing=west,powered=true": {
+            "model": "materia:block/cannon",
+            "y": 270
+        }
+    }
+}
+

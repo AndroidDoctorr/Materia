@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:rough_oak_plank",
+            "count": 1
+        },
+        {
+            "item": "materia:hand_axe",
+            "count": 1
+        }
+    ],
+    "result": {
+        "item": "minecraft:stick",
+        "count": 4
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "up": "materia:block/wicker_top",
+        "all": "materia:block/wicker",
+        "particle": "materia:block/wicker"
+    }
+}

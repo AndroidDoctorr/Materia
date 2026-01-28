@@ -1,0 +1,12 @@
+{
+    "type": "materia:oven",
+    "ingredient": {
+        "item": "minecraft:porkchop"
+    },
+    "result": {
+        "item": "minecraft:cooked_porkchop",
+        "count": 1
+    },
+    "experience": 0.35,
+    "cookingtime": 200
+}

@@ -1,0 +1,8 @@
+{
+    "replace": false,
+    "values": [
+        "materia:leather_strap",
+        "materia:lashing",
+        "#materia:strings"
+    ]
+}

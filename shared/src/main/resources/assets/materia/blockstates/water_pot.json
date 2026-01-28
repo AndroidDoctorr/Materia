@@ -1,0 +1,28 @@
+{
+    "variants": {
+        "boiling=false,water_level=0": {
+            "model": "materia:block/water_pot_empty"
+        },
+        "boiling=false,water_level=1": {
+            "model": "materia:block/water_pot_low"
+        },
+        "boiling=false,water_level=2": {
+            "model": "materia:block/water_pot_medium"
+        },
+        "boiling=false,water_level=3": {
+            "model": "materia:block/water_pot_full"
+        },
+        "boiling=true,water_level=0": {
+            "model": "materia:block/water_pot_empty"
+        },
+        "boiling=true,water_level=1": {
+            "model": "materia:block/water_pot_low"
+        },
+        "boiling=true,water_level=2": {
+            "model": "materia:block/water_pot_medium"
+        },
+        "boiling=true,water_level=3": {
+            "model": "materia:block/water_pot_full"
+        }
+    }
+}

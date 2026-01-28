@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "TTT",
+        "TDT",
+        "TTT"
+    ],
+    "key": {
+        "T": {
+            "item": "minecraft:terracotta"
+        },
+        "D": {
+            "item": "materia:lavender_dye"
+        }
+    },
+    "result": {
+        "item": "materia:lavender_terracotta",
+        "count": 8
+    }
+}

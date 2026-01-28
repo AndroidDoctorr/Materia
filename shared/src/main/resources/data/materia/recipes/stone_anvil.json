@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:rock"
+        },
+        {
+            "item": "materia:rock"
+        },
+        {
+            "item": "materia:rock"
+        },
+        {
+            "item": "materia:rock"
+        },
+        {
+            "item": "materia:stone_hammer"
+        }
+    ],
+    "result": {
+        "item": "materia:stone_anvil",
+        "count": 1
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "JPJ",
+        "SPS",
+        "JLJ"
+    ],
+    "key": {
+        "P": {
+            "tag": "materia:smooth_planks"
+        },
+        "S": {
+            "item": "minecraft:stick"
+        },
+        "J": {
+            "tag": "materia:all_wood_joiners"
+        },
+        "L": {
+            "item": "minecraft:stone_slab"
+        }
+    },
+    "result": {
+        "item": "minecraft:armor_stand",
+        "count": 1
+    }
+}

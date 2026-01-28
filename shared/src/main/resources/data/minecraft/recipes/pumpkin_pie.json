@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:batter"
+        },
+        {
+            "item": "minecraft:sugar"
+        },
+        {
+            "tag": "materia:milk"
+        },
+        {
+            "item": "minecraft:pumpkin"
+        }
+    ],
+    "result": {
+        "item": "minecraft:pumpkin_pie",
+        "count": 1
+    }
+}

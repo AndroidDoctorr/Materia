@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "RSL",
+        "PSP"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:rough_jungle_plank"
+        },
+        "L": {
+            "tag": "materia:all_wood_joiners"
+        },
+        "S": {
+            "item": "materia:smooth_jungle_plank"
+        },
+        "R": {
+            "item": "materia:rope"
+        }
+    },
+    "result": {
+        "item": "minecraft:jungle_fence_gate",
+        "count": 1
+    }
+}

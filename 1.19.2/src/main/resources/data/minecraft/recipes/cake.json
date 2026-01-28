@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:plain_cake"
+        },
+        {
+            "item": "minecraft:sugar"
+        },
+        {
+            "tag": "materia:milk"
+        },
+        {
+            "item": "minecraft:sweet_berries"
+        }
+    ],
+    "result": {
+        "item": "minecraft:cake",
+        "count": 1
+    }
+}

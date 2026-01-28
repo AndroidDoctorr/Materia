@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "BR ",
+        "LPS",
+        " P "
+    ],
+    "key": {
+        "P": {
+            "item": "materia:steel_plate"
+        },
+        "L": {
+            "item": "materia:tanned_leather"
+        },
+        "R": {
+            "tag": "materia:iron_rivets"
+        },
+        "B": {
+            "item": "materia:brass_buckle"
+        },
+        "S": {
+            "item": "materia:leather_strap"
+        }
+    },
+    "result": {
+        "item": "materia:steel_boot",
+        "count": 1
+    }
+}

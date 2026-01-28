@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "materia:flint_knife",
+    "materia:bronze_knife",
+    "materia:iron_knife",
+    "materia:steel_knife"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " S ",
+        "RDR",
+        "PBP"
+    ],
+    "key": {
+        "S": {
+            "item": "minecraft:stone_slab"
+        },
+        "R": {
+            "tag": "materia:hard_rods"
+        },
+        "D": {
+            "item": "materia:dynamo"
+        },
+        "P": {
+            "tag": "materia:posts"
+        },
+        "B": {
+            "item": "materia:battery"
+        }
+    },
+    "result": {
+        "item": "minecraft:grindstone"
+    }
+}

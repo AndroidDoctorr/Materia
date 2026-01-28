@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "LLL",
+        "WPT",
+        " O "
+    ],
+    "key": {
+        "L": {
+            "item": "materia:lens"
+        },
+        "W": {
+            "item": "materia:brass_wire"
+        },
+        "P": {
+            "item": "materia:brass_pipe"
+        },
+        "O": {
+            "tag": "materia:lubricants"
+        },
+        "T": {
+            "item": "materia:tanned_leather"
+        }
+    },
+    "result": {
+        "item": "minecraft:spyglass",
+        "count": 1
+    }
+}

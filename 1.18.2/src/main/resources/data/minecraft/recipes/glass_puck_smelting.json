@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:smelting",
+    "ingredient": {
+        "item": "materia:glass_puck"
+    },
+    "result": "materia:glass_puck",
+    "experience": 0.1,
+    "cookingtime": 200
+}

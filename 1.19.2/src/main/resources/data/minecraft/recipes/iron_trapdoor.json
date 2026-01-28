@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " K ",
+        "PPP",
+        "BRB"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:iron_plate"
+        },
+        "B": {
+            "item": "materia:brass_hinge"
+        },
+        "K": {
+            "item": "materia:iron_handle"
+        },
+        "R": {
+            "tag": "materia:all_rivets"
+        }
+    },
+    "result": {
+        "item": "minecraft:iron_trapdoor",
+        "count": 1
+    }
+}

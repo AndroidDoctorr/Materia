@@ -1,0 +1,12 @@
+{
+    "replace": false,
+    "values": [
+        "materia:mortar_and_pestle",
+        "materia:netherite_hammer",
+        "materia:steel_hammer",
+        "materia:bronze_hammer",
+        "materia:iron_hammer",
+        "materia:stone_hammer",
+        "materia:diamond_hammer"
+    ]
+}

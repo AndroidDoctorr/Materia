@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:grout"
+        },
+        {
+            "item": "minecraft:brick"
+        },
+        {
+            "item": "minecraft:brick"
+        },
+        {
+            "item": "minecraft:brick"
+        },
+        {
+            "item": "minecraft:brick"
+        }
+    ],
+    "result": {
+        "item": "minecraft:bricks",
+        "count": 1
+    }
+}

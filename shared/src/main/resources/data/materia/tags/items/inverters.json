@@ -1,0 +1,7 @@
+{
+    "replace": false,
+    "values": [
+        "materia:not_gate",
+        "minecraft:redstone_torch"
+    ]
+}

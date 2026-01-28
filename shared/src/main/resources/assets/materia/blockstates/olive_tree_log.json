@@ -1,0 +1,16 @@
+{
+    "variants": {
+        "axis=y": {
+            "model": "materia:block/olive_tree_log"
+        },
+        "axis=z": {
+            "model": "materia:block/olive_tree_log",
+            "x": 90
+        },
+        "axis=x": {
+            "model": "materia:block/olive_tree_log",
+            "x": 90,
+            "y": 90
+        }
+    }
+}

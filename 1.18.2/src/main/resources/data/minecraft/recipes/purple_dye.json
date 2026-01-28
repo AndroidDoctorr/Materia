@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:purple_blob"
+        },
+        {
+            "item": "materia:purple_blob"
+        },
+        {
+            "item": "materia:purple_blob"
+        },
+        {
+            "item": "materia:purple_blob"
+        },
+        {
+            "item": "materia:purple_blob"
+        },
+        {
+            "item": "materia:purple_blob"
+        }
+    ],
+    "result": {
+        "item": "minecraft:purple_dye",
+        "count": 1
+    }
+}

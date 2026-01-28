@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:ochre"
+        },
+        {
+            "item": "materia:ash"
+        }
+    ],
+    "result": {
+        "item": "minecraft:brown_dye",
+        "count": 2
+    }
+}

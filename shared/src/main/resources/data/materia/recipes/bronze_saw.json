@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:bronze_saw_band"
+        },
+        {
+            "item": "materia:handle"
+        },
+        {
+            "tag": "materia:adhesives"
+        }
+    ],
+    "result": {
+        "item": "materia:bronze_saw",
+        "count": 1
+    }
+}

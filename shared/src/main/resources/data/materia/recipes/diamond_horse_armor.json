@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "DGD",
+        "DAD",
+        "DGD"
+    ],
+    "key": {
+        "A": {
+            "item": "minecraft:iron_horse_armor"
+        },
+        "D": {
+            "item": "minecraft:diamond"
+        },
+        "G": {
+            "tag": "materia:strong_adhesives"
+        }
+    },
+    "result": {
+        "item": "minecraft:diamond_horse_armor",
+        "count": 1
+    }
+}

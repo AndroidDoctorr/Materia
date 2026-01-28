@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:bronze_hammer_head"
+        },
+        {
+            "item": "materia:handle"
+        },
+        {
+            "item": "materia:lashing"
+        },
+        {
+            "item": "materia:lashing"
+        }
+    ],
+    "result": {
+        "item": "materia:bronze_hammer",
+        "count": 1
+    }
+}

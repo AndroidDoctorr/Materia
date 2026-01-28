@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:oak_bark"
+        },
+        {
+            "tag": "materia:linens"
+        },
+        {
+            "tag": "materia:lipids"
+        },
+        {
+            "tag": "materia:water"
+        }
+    ],
+    "result": {
+        "item": "materia:weak_poultice",
+        "count": 1
+    }
+}

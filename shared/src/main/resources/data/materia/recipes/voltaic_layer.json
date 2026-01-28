@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:copper_plate"
+        },
+        {
+            "item": "materia:zinc_plate"
+        },
+        {
+            "tag": "materia:linens"
+        },
+        {
+            "tag": "materia:weak_acids"
+        }
+    ],
+    "result": {
+        "item": "materia:voltaic_layer",
+        "count": 1
+    }
+}

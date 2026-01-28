@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SPT",
+        "SPL"
+    ],
+    "key": {
+        "L": {
+            "item": "materia:tanned_leather"
+        },
+        "T": {
+            "tag": "materia:hot_sealants"
+        },
+        "S": {
+            "item": "minecraft:stick"
+        },
+        "P": {
+            "tag": "materia:smooth_planks"
+        }
+    },
+    "result": {
+        "item": "materia:bellows",
+        "count": 1
+    }
+}

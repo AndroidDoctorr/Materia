@@ -1,0 +1,444 @@
+{
+    "ambientocclusion": false,
+    "textures": {
+        "crucible": "minecraft:block/terracotta",
+        "particle": "materia:block/oil",
+        "oil": "materia:block/oil",
+        "wick": "materia:block/wick"
+    },
+    "elements": [
+        {
+            "from": [
+                6,
+                0,
+                6
+            ],
+            "to": [
+                10,
+                1,
+                10
+            ],
+            "faces": {
+                "up": {
+                    "uv": [
+                        0,
+                        0,
+                        4,
+                        4
+                    ],
+                    "texture": "#crucible"
+                },
+                "down": {
+                    "uv": [
+                        0,
+                        0,
+                        4,
+                        4
+                    ],
+                    "texture": "#crucible"
+                },
+                "north": {
+                    "uv": [
+                        0,
+                        0,
+                        1,
+                        4
+                    ],
+                    "texture": "#crucible"
+                },
+                "south": {
+                    "uv": [
+                        0,
+                        0,
+                        1,
+                        4
+                    ],
+                    "texture": "#crucible"
+                },
+                "west": {
+                    "uv": [
+                        0,
+                        0,
+                        1,
+                        4
+                    ],
+                    "texture": "#crucible"
+                },
+                "east": {
+                    "uv": [
+                        0,
+                        0,
+                        1,
+                        4
+                    ],
+                    "texture": "#crucible"
+                }
+            }
+        },
+        {
+            "from": [
+                6,
+                1,
+                5
+            ],
+            "to": [
+                10,
+                2,
+                6
+            ],
+            "faces": {
+                "up": {
+                    "uv": [
+                        0,
+                        0,
+                        1,
+                        4
+                    ],
+                    "texture": "#crucible"
+                },
+                "down": {
+                    "uv": [
+                        0,
+                        0,
+                        1,
+                        4
+                    ],
+                    "texture": "#crucible"
+                },
+                "north": {
+                    "uv": [
+                        0,
+                        0,
+                        4,
+                        1
+                    ],
+                    "texture": "#crucible"
+                },
+                "south": {
+                    "uv": [
+                        0,
+                        0,
+                        4,
+                        1
+                    ],
+                    "texture": "#crucible"
+                },
+                "west": {
+                    "uv": [
+                        0,
+                        0,
+                        1,
+                        1
+                    ],
+                    "texture": "#crucible"
+                },
+                "east": {
+                    "uv": [
+                        0,
+                        0,
+                        1,
+                        1
+                    ],
+                    "texture": "#crucible"
+                }
+            }
+        },
+        {
+            "from": [
+                6,
+                1,
+                10
+            ],
+            "to": [
+                10,
+                2,
+                11
+            ],
+            "faces": {
+                "up": {
+                    "uv": [
+                        0,
+                        0,
+                        1,
+                        4
+                    ],
+                    "texture": "#crucible"
+                },
+                "down": {
+                    "uv": [
+                        0,
+                        0,
+                        1,
+                        4
+                    ],
+                    "texture": "#crucible"
+                },
+                "north": {
+                    "uv": [
+                        0,
+                        0,
+                        4,
+                        1
+                    ],
+                    "texture": "#crucible"
+                },
+                "south": {
+                    "uv": [
+                        0,
+                        0,
+                        4,
+                        1
+                    ],
+                    "texture": "#crucible"
+                },
+                "west": {
+                    "uv": [
+                        0,
+                        0,
+                        1,
+                        1
+                    ],
+                    "texture": "#crucible"
+                },
+                "east": {
+                    "uv": [
+                        0,
+                        0,
+                        1,
+                        1
+                    ],
+                    "texture": "#crucible"
+                }
+            }
+        },
+        {
+            "from": [
+                5,
+                1,
+                6
+            ],
+            "to": [
+                6,
+                2,
+                10
+            ],
+            "faces": {
+                "up": {
+                    "uv": [
+                        0,
+                        0,
+                        4,
+                        1
+                    ],
+                    "texture": "#crucible"
+                },
+                "down": {
+                    "uv": [
+                        0,
+                        0,
+                        4,
+                        1
+                    ],
+                    "texture": "#crucible"
+                },
+                "north": {
+                    "uv": [
+                        0,
+                        0,
+                        1,
+                        1
+                    ],
+                    "texture": "#crucible"
+                },
+                "south": {
+                    "uv": [
+                        0,
+                        0,
+                        1,
+                        1
+                    ],
+                    "texture": "#crucible"
+                },
+                "west": {
+                    "uv": [
+                        0,
+                        0,
+                        4,
+                        1
+                    ],
+                    "texture": "#crucible"
+                },
+                "east": {
+                    "uv": [
+                        0,
+                        0,
+                        4,
+                        1
+                    ],
+                    "texture": "#crucible"
+                }
+            }
+        },
+        {
+            "from": [
+                10,
+                1,
+                6
+            ],
+            "to": [
+                11,
+                2,
+                10
+            ],
+            "faces": {
+                "up": {
+                    "uv": [
+                        0,
+                        0,
+                        4,
+                        1
+                    ],
+                    "texture": "#crucible"
+                },
+                "down": {
+                    "uv": [
+                        0,
+                        0,
+                        4,
+                        1
+                    ],
+                    "texture": "#crucible"
+                },
+                "north": {
+                    "uv": [
+                        0,
+                        0,
+                        1,
+                        1
+                    ],
+                    "texture": "#crucible"
+                },
+                "south": {
+                    "uv": [
+                        0,
+                        0,
+                        1,
+                        1
+                    ],
+                    "texture": "#crucible"
+                },
+                "west": {
+                    "uv": [
+                        0,
+                        0,
+                        4,
+                        1
+                    ],
+                    "texture": "#crucible"
+                },
+                "east": {
+                    "uv": [
+                        0,
+                        0,
+                        4,
+                        1
+                    ],
+                    "texture": "#crucible"
+                }
+            }
+        },
+        {
+            "from": [
+                6,
+                2,
+                6
+            ],
+            "to": [
+                10,
+                2,
+                10
+            ],
+            "faces": {
+                "up": {
+                    "uv": [
+                        0,
+                        0,
+                        4,
+                        4
+                    ],
+                    "texture": "#oil"
+                }
+            }
+        },
+        {
+            "from": [
+                8,
+                2,
+                3
+            ],
+            "to": [
+                9,
+                3,
+                7
+            ],
+            "faces": {
+                "up": {
+                    "uv": [
+                        1,
+                        0,
+                        5,
+                        1
+                    ],
+                    "rotation": 90,
+                    "texture": "#wick"
+                },
+                "down": {
+                    "uv": [
+                        1,
+                        0,
+                        5,
+                        1
+                    ],
+                    "rotation": 90,
+                    "texture": "#wick"
+                },
+                "north": {
+                    "uv": [
+                        0,
+                        0,
+                        1,
+                        1
+                    ],
+                    "texture": "#wick"
+                },
+                "south": {
+                    "uv": [
+                        5,
+                        0,
+                        6,
+                        1
+                    ],
+                    "texture": "#wick"
+                },
+                "west": {
+                    "uv": [
+                        1,
+                        0,
+                        5,
+                        1
+                    ],
+                    "texture": "#wick"
+                },
+                "east": {
+                    "uv": [
+                        5,
+                        0,
+                        1,
+                        1
+                    ],
+                    "texture": "#wick"
+                }
+            }
+        }
+    ]
+}

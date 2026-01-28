@@ -1,0 +1,6 @@
+{
+    "parent": "materia:block/amphora",
+    "textures": {
+        "liquid": "materia:block/milk"
+    }
+}

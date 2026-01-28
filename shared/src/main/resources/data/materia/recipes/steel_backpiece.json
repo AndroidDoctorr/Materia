@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "HPR",
+        "TPT",
+        "SPS"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:steel_plate"
+        },
+        "T": {
+            "item": "materia:tanned_leather"
+        },
+        "S": {
+            "item": "materia:leather_strap"
+        },
+        "H": {
+            "tag": "materia:iron_hammers"
+        },
+        "R": {
+            "tag": "materia:iron_rivets"
+        }
+    },
+    "result": {
+        "item": "materia:steel_backpiece",
+        "count": 1
+    }
+}

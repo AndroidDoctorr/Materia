@@ -1,0 +1,7 @@
+{
+    "parent": "minecraft:block/cube_column",
+    "textures": {
+        "end": "materia:block/rubber_tree_log_top",
+        "side": "materia:block/tapped_rubber_tree_log"
+    }
+}

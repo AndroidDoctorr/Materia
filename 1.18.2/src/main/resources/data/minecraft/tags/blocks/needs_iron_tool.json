@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:obsidian",
+    "minecraft:crying_obsidian"
+  ]
+}
+{
+    "replace": false,
+    "values": [
+        "materia:furnace_kiln",
+        "materia:blast_furnace_kiln",
+        "minecraft:copper_ore",
+        "minecraft:deepslate_copper_ore"
+    ]
+}

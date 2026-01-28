@@ -1,0 +1,8 @@
+﻿{
+    "parent": "materia:block/acacia_table_end",
+    "textures": {
+        "all": "minecraft:block/warped_planks",
+        "particle": "minecraft:block/warped_planks"
+    }
+}
+

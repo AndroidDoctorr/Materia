@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:totem_head"
+        },
+        {
+            "item": "materia:totem_body"
+        }
+    ],
+    "result": {
+        "item": "minecraft:totem_of_undying",
+        "count": 1
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "PN ",
+        "PP ",
+        "PPP"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:smooth_mangrove_planks"
+        },
+        "N": {
+            "tag": "materia:all_nails"
+        }
+    },
+    "result": {
+        "item": "minecraft:mangrove_stairs",
+        "count": 1
+    }
+}
+

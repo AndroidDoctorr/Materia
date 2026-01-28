@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SHK",
+    "PPP",
+    "BNB"
+  ],
+  "key": {
+    "P": {
+      "item": "materia:smooth_cherry_planks"
+    },
+    "B": {
+      "item": "materia:brass_hinge"
+    },
+    "K": {
+      "item": "materia:brass_handle"
+    },
+    "N": {
+      "tag": "materia:all_nails"
+    },
+    "H": {
+      "tag": "materia:all_hammers"
+    },
+    "S": {
+      "tag": "materia:all_saws"
+    }
+  },
+  "result": {
+    "item": "minecraft:cherry_trapdoor",
+    "count": 1
+  }
+}
+

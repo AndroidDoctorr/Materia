@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "STS",
+        "PRP",
+        "PHP"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:steel_plate"
+        },
+        "S": {
+            "item": "materia:leather_strap"
+        },
+        "R": {
+            "tag": "materia:iron_rivets"
+        },
+        "H": {
+            "tag": "materia:iron_hammers"
+        },
+        "T": {
+            "item": "materia:tanned_leather"
+        }
+    },
+    "result": {
+        "item": "minecraft:iron_leggings",
+        "count": 1
+    }
+}

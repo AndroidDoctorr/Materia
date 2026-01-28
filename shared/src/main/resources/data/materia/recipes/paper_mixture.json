@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "FFF",
+        "FAF",
+        "FFF"
+    ],
+    "key": {
+        "F": {
+            "item": "materia:plant_fiber"
+        },
+        "A": {
+            "item": "materia:ash"
+        }
+    },
+    "result": {
+        "item": "materia:paper_mixture",
+        "count": 1
+    }
+}

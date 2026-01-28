@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:wood_frame"
+        },
+        {
+            "tag": "materia:smooth_planks"
+        },
+        {
+            "tag": "materia:all_trings"
+        },
+        {
+            "tag": "materia:all_strings"
+        },
+        {
+            "tag": "materia:all_strings"
+        },
+        {
+            "tag": "materia:all_strings"
+        }
+    ],
+    "result": {
+        "item": "materia:frame_loom",
+        "count": 1
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "DDD",
+        " A ",
+        " S "
+    ],
+    "key": {
+        "S": {
+            "item": "minecraft:iron_pickaxe"
+        },
+        "D": {
+            "item": "minecraft:diamond"
+        },
+        "A": {
+            "tag": "materia:strong_adhesives"
+        }
+    },
+    "result": {
+        "item": "minecraft:diamond_pickaxe",
+        "count": 1
+    }
+}

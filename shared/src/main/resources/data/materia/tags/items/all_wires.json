@@ -1,0 +1,13 @@
+{
+    "replace": false,
+    "values": [
+        "materia:bronze_wire",
+        "materia:copper_wire",
+        "materia:gold_wire",
+        "materia:tin_wire",
+        "materia:brass_wire",
+        "materia:aluminum_wire",
+        "materia:iron_wire",
+        "materia:steel_wire"
+    ]
+}

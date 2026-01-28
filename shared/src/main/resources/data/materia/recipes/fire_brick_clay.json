@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:clay_ball"
+        },
+        {
+            "item": "minecraft:clay_ball"
+        },
+        {
+            "item": "materia:pile_of_sand"
+        },
+        {
+            "tag": "materia:pozzolans"
+        }
+    ],
+    "result": {
+        "item": "materia:fire_brick_clay",
+        "count": 4
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "type": "materia:kiln",
+    "ingredient": {
+        "item": "materia:clay_pot"
+    },
+    "result": {
+        "item": "materia:pot",
+        "count": 1
+    },
+    "cookingtime": 800,
+    "experience": 0.1
+}

@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#materia:temperate_forest",
+  "step": "vegetal_decoration",
+  "features": [
+    "materia:wild_grape_vine_placed",
+    "materia:wild_wisteria_vine_placed"
+  ]
+}
+

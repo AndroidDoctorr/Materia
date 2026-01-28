@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "  W",
+        "SRP",
+        "PPP"
+    ],
+    "key": {
+        "S": {
+            "item": "materia:spindle"
+        },
+        "P": {
+            "tag": "materia:smooth_planks"
+        },
+        "R": {
+            "item": "materia:rope"
+        },
+        "W": {
+            "item": "materia:wooden_wheel"
+        }
+    },
+    "result": {
+        "item": "materia:spinning_wheel",
+        "count": 1
+    }
+}

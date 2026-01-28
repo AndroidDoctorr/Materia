@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "PLP",
+        "SPR"
+    ],
+    "key": {
+        "P": {
+            "tag": "materia:smooth_planks"
+        },
+        "S": {
+            "tag": "materia:adhesives"
+        },
+        "L": {
+            "item": "materia:tanned_leather"
+        },
+        "R": {
+            "item": "materia:rope"
+        }
+    },
+    "result": {
+        "item": "materia:drum",
+        "count": 1
+    }
+}

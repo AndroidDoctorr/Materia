@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#materia:warm_wet_surface",
+  "step": "vegetal_decoration",
+  "features": [
+    "materia:bauxite_patch_placed",
+    "materia:bauxite_patch_on_ore_placed"
+  ]
+}
+

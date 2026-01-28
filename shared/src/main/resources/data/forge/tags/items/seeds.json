@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:wheat_seeds",
+    "minecraft:beetroot_seeds",
+    "materia:squash_seeds",
+    "materia:flax_seeds",
+    "materia:pepper_seeds",
+    "materia:beans",
+    "materia:corn"
+  ]
+}

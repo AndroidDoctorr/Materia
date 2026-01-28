@@ -1,0 +1,64 @@
+{
+    "variants": {
+        "occupied=false,part=head,facing=north": {
+            "model": "materia:block/bedroll_head"
+        },
+        "occupied=false,part=foot,facing=north": {
+            "model": "materia:block/bedroll_foot"
+        },
+        "occupied=false,part=head,facing=south": {
+            "model": "materia:block/bedroll_head",
+            "y": 180
+        },
+        "occupied=false,part=foot,facing=south": {
+            "model": "materia:block/bedroll_foot",
+            "y": 180
+        },
+        "occupied=false,part=head,facing=west": {
+            "model": "materia:block/bedroll_head",
+            "y": 270
+        },
+        "occupied=false,part=foot,facing=west": {
+            "model": "materia:block/bedroll_foot",
+            "y": 270
+        },
+        "occupied=false,part=head,facing=east": {
+            "model": "materia:block/bedroll_head",
+            "y": 90
+        },
+        "occupied=false,part=foot,facing=east": {
+            "model": "materia:block/bedroll_foot",
+            "y": 90
+        },
+        "occupied=true,part=head,facing=north": {
+            "model": "materia:block/bedroll_head"
+        },
+        "occupied=true,part=foot,facing=north": {
+            "model": "materia:block/bedroll_foot"
+        },
+        "occupied=true,part=head,facing=south": {
+            "model": "materia:block/bedroll_head",
+            "y": 180
+        },
+        "occupied=true,part=foot,facing=south": {
+            "model": "materia:block/bedroll_foot",
+            "y": 180
+        },
+        "occupied=true,part=head,facing=west": {
+            "model": "materia:block/bedroll_head",
+            "y": 270
+        },
+        "occupied=true,part=foot,facing=west": {
+            "model": "materia:block/bedroll_foot",
+            "y": 270
+        },
+        "occupied=true,part=head,facing=east": {
+            "model": "materia:block/bedroll_head",
+            "y": 90
+        },
+        "occupied=true,part=foot,facing=east": {
+            "model": "materia:block/bedroll_foot",
+            "y": 90
+        }
+    }
+}

@@ -1,0 +1,282 @@
+{
+    "item.hammer_stone.knap": {
+        "category": "player",
+        "sounds": [
+            {
+                "name": "materia:hammer_knap",
+                "volume": 1.0,
+                "pitch": 1.0
+            }
+        ]
+    },
+    "item.axe.craft": {
+        "category": "player",
+        "sounds": [
+            {
+                "name": "materia:axe_craft",
+                "volume": 1.0,
+                "pitch": 1.0
+            }
+        ]
+    },
+    "item.flint.craft": {
+        "category": "player",
+        "sounds": [
+            {
+                "name": "materia:flint_craft",
+                "volume": 1.0,
+                "pitch": 1.0
+            }
+        ]
+    },
+    "item.bow_drill.use": {
+        "category": "player",
+        "sounds": [
+            {
+                "name": "materia:bow_drill",
+                "volume": 1.0,
+                "pitch": 1.0
+            }
+        ]
+    },
+    "item.saw.craft": {
+        "category": "player",
+        "sounds": [
+            {
+                "name": "materia:saw",
+                "volume": 1.0,
+                "pitch": 1.0
+            }
+        ]
+    },
+    "item.air_maraca.use": {
+        "category": "player",
+        "sounds": [
+            {
+                "name": "materia:air_maraca",
+                "volume": 0.8,
+                "pitch": 1.0
+            }
+        ]
+    },
+    "item.earth_maraca.use": {
+        "category": "player",
+        "sounds": [
+            {
+                "name": "materia:earth_maraca",
+                "volume": 0.8,
+                "pitch": 1.0
+            }
+        ]
+    },
+    "item.fire_maraca.use": {
+        "category": "player",
+        "sounds": [
+            {
+                "name": "materia:fire_maraca",
+                "volume": 0.8,
+                "pitch": 1.0
+            }
+        ]
+    },
+    "item.water_maraca.use": {
+        "category": "player",
+        "sounds": [
+            {
+                "name": "materia:water_maraca",
+                "volume": 0.8,
+                "pitch": 1.0
+            }
+        ]
+    },
+    "item.life_maraca.use": {
+        "category": "player",
+        "sounds": [
+            {
+                "name": "materia:life_maraca",
+                "volume": 0.8,
+                "pitch": 1.0
+            }
+        ]
+    },
+    "item.air_flute.use": {
+        "category": "player",
+        "sounds": [
+            {
+                "name": "materia:air_flute",
+                "volume": 0.8,
+                "pitch": 1.0
+            }
+        ]
+    },
+    "item.earth_flute.use": {
+        "category": "player",
+        "sounds": [
+            {
+                "name": "materia:earth_flute",
+                "volume": 0.8,
+                "pitch": 1.0
+            }
+        ]
+    },
+    "item.fire_flute.use": {
+        "category": "player",
+        "sounds": [
+            {
+                "name": "materia:fire_flute",
+                "volume": 0.8,
+                "pitch": 1.0
+            }
+        ]
+    },
+    "item.water_flute.use": {
+        "category": "player",
+        "sounds": [
+            {
+                "name": "materia:water_flute",
+                "volume": 0.8,
+                "pitch": 1.0
+            }
+        ]
+    },
+    "item.air_drums.use": {
+        "category": "player",
+        "sounds": [
+            {
+                "name": "materia:air_drums",
+                "volume": 0.8,
+                "pitch": 1.0
+            }
+        ]
+    },
+    "item.earth_drums.use": {
+        "category": "player",
+        "sounds": [
+            {
+                "name": "materia:earth_drums",
+                "volume": 0.8,
+                "pitch": 1.0
+            }
+        ]
+    },
+    "item.fire_drums.use": {
+        "category": "player",
+        "sounds": [
+            {
+                "name": "materia:fire_drums",
+                "volume": 0.8,
+                "pitch": 1.0
+            }
+        ]
+    },
+    "item.water_drums.use": {
+        "category": "player",
+        "sounds": [
+            {
+                "name": "materia:water_drums",
+                "volume": 0.8,
+                "pitch": 1.0
+            }
+        ]
+    },
+    "item.air_bass.use": {
+        "category": "player",
+        "sounds": [
+            {
+                "name": "materia:air_bass",
+                "volume": 0.8,
+                "pitch": 1.0
+            }
+        ]
+    },
+    "item.earth_bass.use": {
+        "category": "player",
+        "sounds": [
+            {
+                "name": "materia:earth_bass",
+                "volume": 0.8,
+                "pitch": 1.0
+            }
+        ]
+    },
+    "item.fire_bass.use": {
+        "category": "player",
+        "sounds": [
+            {
+                "name": "materia:fire_bass",
+                "volume": 0.8,
+                "pitch": 1.0
+            }
+        ]
+    },
+    "item.water_bass.use": {
+        "category": "player",
+        "sounds": [
+            {
+                "name": "materia:water_bass",
+                "volume": 0.8,
+                "pitch": 1.0
+            }
+        ]
+    },
+    "item.air_harp.use": {
+        "category": "player",
+        "sounds": [
+            {
+                "name": "materia:air_harp",
+                "volume": 0.8,
+                "pitch": 1.0
+            }
+        ]
+    },
+    "item.earth_harp.use": {
+        "category": "player",
+        "sounds": [
+            {
+                "name": "materia:earth_harp",
+                "volume": 0.8,
+                "pitch": 1.0
+            }
+        ]
+    },
+    "item.fire_harp.use": {
+        "category": "player",
+        "sounds": [
+            {
+                "name": "materia:fire_harp",
+                "volume": 0.8,
+                "pitch": 1.0
+            }
+        ]
+    },
+    "item.water_harp.use": {
+        "category": "player",
+        "sounds": [
+            {
+                "name": "materia:water_harp",
+                "volume": 0.8,
+                "pitch": 1.0
+            }
+        ]
+    },
+    "item.pottery.break": {
+        "category": "block",
+        "sounds": [
+            {
+                "name": "materia:pottery_break",
+                "volume": 1.0,
+                "pitch": 1.0
+            }
+        ]
+    },
+    "item.basket.open": {
+        "category": "block",
+        "sounds": [
+            {
+                "name": "materia:wicker_basket",
+                "volume": 1.0,
+                "pitch": 1.0
+            }
+        ]
+    }
+}

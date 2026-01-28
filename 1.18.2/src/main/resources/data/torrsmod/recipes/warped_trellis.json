@@ -1,0 +1,19 @@
+﻿{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " S ",
+        "PSP"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:warped_post"
+        },
+        "S": {
+            "item": "materia:smooth_warped_planks"
+        }
+    },
+    "result": {
+        "item": "materia:warped_trellis",
+        "count": 1
+    }
+}

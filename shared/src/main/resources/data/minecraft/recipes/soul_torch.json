@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "S",
+        "T"
+    ],
+    "key": {
+        "S": {
+            "item": "materia:pile_of_soul_sand"
+        },
+        "T": {
+            "item": "minecraft:torch"
+        }
+    },
+    "result": {
+        "item": "minecraft:soul_torch",
+        "count": 1
+    }
+}

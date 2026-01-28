@@ -1,0 +1,144 @@
+{
+    "ambientocclusion": false,
+    "textures": {
+        "squash": "materia:block/squash_1"
+    },
+    "elements": [
+        {
+            "comment": "Squash plane 1 (x=2, outermost)",
+            "from": [
+                2,
+                0,
+                0
+            ],
+            "to": [
+                2,
+                16,
+                16
+            ],
+            "shade": false,
+            "faces": {
+                "west": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#squash"
+                },
+                "east": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#squash"
+                }
+            }
+        },
+        {
+            "comment": "Squash plane 2 (x=14)",
+            "from": [
+                14,
+                0,
+                0
+            ],
+            "to": [
+                14,
+                16,
+                16
+            ],
+            "shade": false,
+            "faces": {
+                "west": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#squash"
+                },
+                "east": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#squash"
+                }
+            }
+        },
+        {
+            "comment": "Squash plane 3 (z=2)",
+            "from": [
+                0,
+                0,
+                2
+            ],
+            "to": [
+                16,
+                16,
+                2
+            ],
+            "shade": false,
+            "faces": {
+                "north": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#squash"
+                },
+                "south": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#squash"
+                }
+            }
+        },
+        {
+            "comment": "Squash plane 4 (z=14)",
+            "from": [
+                0,
+                0,
+                14
+            ],
+            "to": [
+                16,
+                16,
+                14
+            ],
+            "shade": false,
+            "faces": {
+                "north": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#squash"
+                },
+                "south": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#squash"
+                }
+            }
+        }
+    ]
+}

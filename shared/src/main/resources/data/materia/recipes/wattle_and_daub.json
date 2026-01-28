@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "PEP",
+        "PEP"
+    ],
+    "key": {
+        "P": {
+            "tag": "materia:rough_planks"
+        },
+        "E": {
+            "tag": "materia:earth_blocks"
+        }
+    },
+    "result": {
+        "item": "materia:wattle_and_daub",
+        "count": 4
+    }
+}

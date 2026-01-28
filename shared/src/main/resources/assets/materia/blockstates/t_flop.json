@@ -1,0 +1,64 @@
+{
+    "variants": {
+        "input=false,output=false,facing=north": {
+            "model": "materia:block/t_flop_0"
+        },
+        "input=true,output=false,facing=north": {
+            "model": "materia:block/t_flop_1"
+        },
+        "input=false,output=true,facing=north": {
+            "model": "materia:block/t_flop_2"
+        },
+        "input=true,output=true,facing=north": {
+            "model": "materia:block/t_flop_3"
+        },
+        "input=false,output=false,facing=east": {
+            "model": "materia:block/t_flop_0",
+            "y": 90
+        },
+        "input=true,output=false,facing=east": {
+            "model": "materia:block/t_flop_1",
+            "y": 90
+        },
+        "input=false,output=true,facing=east": {
+            "model": "materia:block/t_flop_2",
+            "y": 90
+        },
+        "input=true,output=true,facing=east": {
+            "model": "materia:block/t_flop_3",
+            "y": 90
+        },
+        "input=false,output=false,facing=south": {
+            "model": "materia:block/t_flop_0",
+            "y": 180
+        },
+        "input=true,output=false,facing=south": {
+            "model": "materia:block/t_flop_1",
+            "y": 180
+        },
+        "input=false,output=true,facing=south": {
+            "model": "materia:block/t_flop_2",
+            "y": 180
+        },
+        "input=true,output=true,facing=south": {
+            "model": "materia:block/t_flop_3",
+            "y": 180
+        },
+        "input=false,output=false,facing=west": {
+            "model": "materia:block/t_flop_0",
+            "y": 270
+        },
+        "input=true,output=false,facing=west": {
+            "model": "materia:block/t_flop_1",
+            "y": 270
+        },
+        "input=false,output=true,facing=west": {
+            "model": "materia:block/t_flop_2",
+            "y": 270
+        },
+        "input=true,output=true,facing=west": {
+            "model": "materia:block/t_flop_3",
+            "y": 270
+        }
+    }
+}

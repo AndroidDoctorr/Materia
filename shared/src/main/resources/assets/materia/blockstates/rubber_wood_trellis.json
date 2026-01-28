@@ -1,0 +1,94 @@
+{
+    "variants": {
+        "facing=east,has_grape_vine=false,has_grapes=false,has_wisteria_vine=false,has_wisteria_flowers=false": {
+            "model": "materia:block/rubber_wood_trellis"
+        },
+        "facing=west,has_grape_vine=false,has_grapes=false,has_wisteria_vine=false,has_wisteria_flowers=false": {
+            "model": "materia:block/rubber_wood_trellis",
+            "y": 180,
+            "uvlock": true
+        },
+        "facing=south,has_grape_vine=false,has_grapes=false,has_wisteria_vine=false,has_wisteria_flowers=false": {
+            "model": "materia:block/rubber_wood_trellis",
+            "y": 90,
+            "uvlock": true
+        },
+        "facing=north,has_grape_vine=false,has_grapes=false,has_wisteria_vine=false,has_wisteria_flowers=false": {
+            "model": "materia:block/rubber_wood_trellis",
+            "y": 270,
+            "uvlock": true
+        },
+        "facing=east,has_grape_vine=true,has_grapes=false,has_wisteria_vine=false,has_wisteria_flowers=false": {
+            "model": "materia:block/rubber_wood_trellis_with_grape_vine"
+        },
+        "facing=west,has_grape_vine=true,has_grapes=false,has_wisteria_vine=false,has_wisteria_flowers=false": {
+            "model": "materia:block/rubber_wood_trellis_with_grape_vine",
+            "y": 180,
+            "uvlock": true
+        },
+        "facing=south,has_grape_vine=true,has_grapes=false,has_wisteria_vine=false,has_wisteria_flowers=false": {
+            "model": "materia:block/rubber_wood_trellis_with_grape_vine",
+            "y": 90,
+            "uvlock": true
+        },
+        "facing=north,has_grape_vine=true,has_grapes=false,has_wisteria_vine=false,has_wisteria_flowers=false": {
+            "model": "materia:block/rubber_wood_trellis_with_grape_vine",
+            "y": 270,
+            "uvlock": true
+        },
+        "facing=east,has_grape_vine=true,has_grapes=true,has_wisteria_vine=false,has_wisteria_flowers=false": {
+            "model": "materia:block/rubber_wood_trellis_with_grapes"
+        },
+        "facing=west,has_grape_vine=true,has_grapes=true,has_wisteria_vine=false,has_wisteria_flowers=false": {
+            "model": "materia:block/rubber_wood_trellis_with_grapes",
+            "y": 180,
+            "uvlock": true
+        },
+        "facing=south,has_grape_vine=true,has_grapes=true,has_wisteria_vine=false,has_wisteria_flowers=false": {
+            "model": "materia:block/rubber_wood_trellis_with_grapes",
+            "y": 90,
+            "uvlock": true
+        },
+        "facing=north,has_grape_vine=true,has_grapes=true,has_wisteria_vine=false,has_wisteria_flowers=false": {
+            "model": "materia:block/rubber_wood_trellis_with_grapes",
+            "y": 270,
+            "uvlock": true
+        },
+        "facing=east,has_grape_vine=false,has_grapes=false,has_wisteria_vine=true,has_wisteria_flowers=false": {
+            "model": "materia:block/rubber_wood_trellis_with_wisteria"
+        },
+        "facing=west,has_grape_vine=false,has_grapes=false,has_wisteria_vine=true,has_wisteria_flowers=false": {
+            "model": "materia:block/rubber_wood_trellis_with_wisteria",
+            "y": 180,
+            "uvlock": true
+        },
+        "facing=south,has_grape_vine=false,has_grapes=false,has_wisteria_vine=true,has_wisteria_flowers=false": {
+            "model": "materia:block/rubber_wood_trellis_with_wisteria",
+            "y": 90,
+            "uvlock": true
+        },
+        "facing=north,has_grape_vine=false,has_grapes=false,has_wisteria_vine=true,has_wisteria_flowers=false": {
+            "model": "materia:block/rubber_wood_trellis_with_wisteria",
+            "y": 270,
+            "uvlock": true
+        },
+        "facing=east,has_grape_vine=false,has_grapes=false,has_wisteria_vine=true,has_wisteria_flowers=true": {
+            "model": "materia:block/rubber_wood_trellis_with_wisteria_flowers"
+        },
+        "facing=west,has_grape_vine=false,has_grapes=false,has_wisteria_vine=true,has_wisteria_flowers=true": {
+            "model": "materia:block/rubber_wood_trellis_with_wisteria_flowers",
+            "y": 180,
+            "uvlock": true
+        },
+        "facing=south,has_grape_vine=false,has_grapes=false,has_wisteria_vine=true,has_wisteria_flowers=true": {
+            "model": "materia:block/rubber_wood_trellis_with_wisteria_flowers",
+            "y": 90,
+            "uvlock": true
+        },
+        "facing=north,has_grape_vine=false,has_grapes=false,has_wisteria_vine=true,has_wisteria_flowers=true": {
+            "model": "materia:block/rubber_wood_trellis_with_wisteria_flowers",
+            "y": 270,
+            "uvlock": true
+        }
+    }
+}

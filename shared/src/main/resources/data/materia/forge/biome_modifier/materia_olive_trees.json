@@ -1,0 +1,9 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#materia:temperate",
+  "step": "vegetal_decoration",
+  "features": [
+    "materia:olive_tree_placed"
+  ]
+}
+

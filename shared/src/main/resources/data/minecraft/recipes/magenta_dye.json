@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:magenta_blob"
+        },
+        {
+            "item": "materia:magenta_blob"
+        },
+        {
+            "item": "materia:magenta_blob"
+        },
+        {
+            "item": "materia:magenta_blob"
+        },
+        {
+            "item": "materia:magenta_blob"
+        },
+        {
+            "item": "materia:magenta_blob"
+        }
+    ],
+    "result": {
+        "item": "minecraft:magenta_dye",
+        "count": 1
+    }
+}

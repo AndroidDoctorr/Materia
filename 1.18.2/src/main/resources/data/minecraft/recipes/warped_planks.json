@@ -1,0 +1,19 @@
+﻿{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "PNP",
+        "P P"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:smooth_warped_planks"
+        },
+        "N": {
+            "tag": "materia:all_nails"
+        }
+    },
+    "result": {
+        "item": "minecraft:warped_planks",
+        "count": 1
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:crucible"
+        },
+        {
+            "tag": "materia:lamp_oils"
+        },
+        {
+            "tag": "materia:lamp_wicks"
+        }
+    ],
+    "result": {
+        "item": "materia:oil_lamp",
+        "count": 1
+    }
+}

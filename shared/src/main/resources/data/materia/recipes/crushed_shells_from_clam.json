@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:clam"
+        },
+        {
+            "tag": "materia:crushers"
+        }
+    ],
+    "result": {
+        "item": "materia:crushed_shells",
+        "count": 1
+    }
+}

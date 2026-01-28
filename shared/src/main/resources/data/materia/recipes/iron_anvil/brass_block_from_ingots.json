@@ -1,0 +1,16 @@
+{
+    "type": "materia:iron_anvil",
+    "input_a": {
+        "item": "materia:brass_ingot",
+        "count": 9
+    },
+    "tool_tags": [
+        "materia:all_hammers",
+        "materia:all_hammers",
+        "materia:all_hammers"
+    ],
+    "result": {
+        "item": "materia:brass_block",
+        "count": 1
+    }
+}

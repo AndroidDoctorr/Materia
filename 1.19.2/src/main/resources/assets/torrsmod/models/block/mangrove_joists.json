@@ -1,0 +1,8 @@
+{
+    "parent": "materia:block/acacia_joists",
+    "textures": {
+        "all": "minecraft:block/mangrove_planks",
+        "particle": "minecraft:block/mangrove_planks"
+    }
+}
+

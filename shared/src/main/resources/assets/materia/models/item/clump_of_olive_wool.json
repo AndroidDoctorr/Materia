@@ -1,0 +1,6 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "materia:item/clump_of_olive_wool"
+    }
+}

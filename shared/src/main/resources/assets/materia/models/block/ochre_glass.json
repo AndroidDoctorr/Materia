@@ -1,0 +1,6 @@
+{
+    "parent": "block/glass",
+    "textures": {
+        "all": "materia:block/ochre_glass"
+    }
+}

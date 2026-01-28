@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "PRP",
+        "SWS",
+        "PBP"
+    ],
+    "key": {
+        "P": {
+            "tag": "materia:hard_plates"
+        },
+        "R": {
+            "tag": "materia:hard_rods"
+        },
+        "S": {
+            "item": "materia:solenoid"
+        },
+        "W": {
+            "item": "materia:insulated_copper_wire"
+        },
+        "B": {
+            "item": "materia:battery"
+        }
+    },
+    "result": {
+        "item": "materia:dynamo",
+        "count": 1
+    }
+}

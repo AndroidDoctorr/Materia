@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "GGG",
+        "SQS",
+        "WPW"
+    ],
+    "key": {
+        "G": {
+            "item": "minecraft:glass_pane"
+        },
+        "Q": {
+            "item": "minecraft:quartz"
+        },
+        "S": {
+            "item": "materia:solenoid"
+        },
+        "P": {
+            "tag": "materia:smooth_planks"
+        },
+        "W": {
+            "tag": "materia:insulated_wires"
+        }
+    },
+    "result": {
+        "item": "minecraft:daylight_detector",
+        "count": 1
+    }
+}

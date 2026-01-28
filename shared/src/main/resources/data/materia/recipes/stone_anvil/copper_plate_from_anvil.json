@@ -1,0 +1,11 @@
+{
+    "type": "materia:stone_anvil",
+    "input": {
+        "item": "minecraft:copper_ingot"
+    },
+    "tool_tag": "materia:stone_hammers",
+    "result": {
+        "item": "materia:copper_plate",
+        "count": 1
+    }
+}

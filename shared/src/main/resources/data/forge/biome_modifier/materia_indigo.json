@@ -1,0 +1,9 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#materia:tropical",
+  "step": "vegetal_decoration",
+  "features": [
+    "materia:indigo_placed"
+  ]
+}
+

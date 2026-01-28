@@ -1,0 +1,12 @@
+{
+    "type": "materia:kiln",
+    "ingredient": {
+        "item": "materia:unfired_amphora"
+    },
+    "result": {
+        "item": "materia:amphora",
+        "count": 1
+    },
+    "cookingtime": 1200,
+    "experience": 0.3
+}

@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "BBB",
+        "PFP",
+        "BBB"
+    ],
+    "key": {
+        "P": {
+            "tag": "materia:smooth_planks"
+        },
+        "B": {
+            "item": "minecraft:book"
+        },
+        "F": {
+            "item": "materia:box_frame"
+        }
+    },
+    "result": {
+        "item": "minecraft:bookshelf",
+        "count": 1
+    }
+}

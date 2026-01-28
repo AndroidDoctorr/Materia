@@ -1,0 +1,36 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:linen_bag"
+        },
+        {
+            "tag": "materia:all_needles"
+        },
+        {
+            "tag": "materia:strings"
+        },
+        {
+            "tag": "materia:bedfills"
+        },
+        {
+            "tag": "materia:bedfills"
+        },
+        {
+            "tag": "materia:bedfills"
+        },
+        {
+            "tag": "materia:bedfills"
+        },
+        {
+            "tag": "materia:bedfills"
+        },
+        {
+            "tag": "materia:bedfills"
+        }
+    ],
+    "result": {
+        "item": "materia:mattress",
+        "count": 1
+    }
+}

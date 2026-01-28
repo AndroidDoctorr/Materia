@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "BHC",
+        "PXP",
+        "RPR"
+    ],
+    "key": {
+        "C": {
+            "tag": "materia:all_chisels"
+        },
+        "H": {
+            "tag": "materia:bronze_hammers"
+        },
+        "B": {
+            "tag": "materia:all_bores"
+        },
+        "X": {
+            "item": "minecraft:crafting_table"
+        },
+        "P": {
+            "tag": "materia:hard_plates"
+        },
+        "R": {
+            "tag": "materia:all_rivets"
+        }
+    },
+    "result": {
+        "item": "minecraft:smithing_table",
+        "count": 1
+    }
+}

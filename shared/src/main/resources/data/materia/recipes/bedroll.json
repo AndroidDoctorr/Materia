@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:bundle"
+        },
+        {
+            "item": "materia:bundle"
+        },
+        {
+            "item": "materia:bundle"
+        },
+        {
+            "item": "materia:rope"
+        },
+        {
+            "item": "materia:rope"
+        },
+        {
+            "item": "materia:rope"
+        }
+    ],
+    "result": {
+        "item": "materia:bedroll",
+        "count": 1
+    }
+}

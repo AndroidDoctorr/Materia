@@ -1,0 +1,11 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "materia:block/marble",
+        "east": "materia:block/marble_carved_1",
+        "west": "materia:block/marble_carved_1",
+        "north": "materia:block/marble_carved_2",
+        "south": "materia:block/marble_carved_2",
+        "particle": "materia:block/marble"
+    }
+}

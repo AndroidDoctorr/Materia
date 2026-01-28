@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:plant_fiber"
+        },
+        {
+            "item": "materia:plant_fiber"
+        },
+        {
+            "item": "materia:plant_fiber"
+        }
+    ],
+    "result": {
+        "item": "materia:lashing",
+        "count": 1
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "replace": false,
+    "values": [
+        "materia:magenta_blanket",
+        "materia:pink_blanket",
+        "materia:red_blanket",
+        "materia:orange_blanket",
+        "materia:yellow_blanket",
+        "materia:lime_blanket",
+        "materia:green_blanket",
+        "materia:cyan_blanket",
+        "materia:blue_blanket",
+        "materia:light_blue_blanket",
+        "materia:purple_blanket",
+        "materia:brown_blanket",
+        "materia:black_blanket",
+        "materia:gray_blanket",
+        "materia:light_gray_blanket",
+        "materia:white_blanket",
+        "materia:ochre_blanket",
+        "materia:red_ochre_blanket",
+        "materia:lavender_blanket",
+        "materia:indigo_blanket",
+        "materia:tyrian_purple_blanket",
+        "materia:taupe_blanket",
+        "materia:olive_blanket",
+        "materia:charcoal_gray_blanket"
+    ]
+}

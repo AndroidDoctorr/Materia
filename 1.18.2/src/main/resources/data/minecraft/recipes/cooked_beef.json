@@ -1,0 +1,9 @@
+{
+    "type": "materia:oven",
+    "ingredient": {
+        "item": "minecraft:beef"
+    },
+    "result": "materia:ash",
+    "experience": 0.0,
+    "cookingtime": 200
+}

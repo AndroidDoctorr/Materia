@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " W ",
+        "SDS",
+        " W "
+    ],
+    "key": {
+        "D": {
+            "item": "minecraft:dispenser"
+        },
+        "S": {
+            "item": "materia:solenoid"
+        },
+        "W": {
+            "tag": "materia:insulated_wires"
+        }
+    },
+    "result": {
+        "item": "minecraft:dispenser",
+        "count": 1
+    }
+}

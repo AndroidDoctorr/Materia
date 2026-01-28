@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SLS",
+        "NPN",
+        "SSS"
+    ],
+    "key": {
+        "P": {
+            "tag": "materia:posts"
+        },
+        "S": {
+            "tag": "materia:smooth_planks"
+        },
+        "L": {
+            "tag": "materia:linens"
+        },
+        "N": {
+            "tag": "materia:all_nails"
+        }
+    },
+    "result": {
+        "item": "minecraft:lectern",
+        "count": 1
+    }
+}

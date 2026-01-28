@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SPP",
+        "P  ",
+        " PP"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:thick_iron_plate"
+        },
+        "S": {
+            "item": "minecraft:flint_and_steel"
+        }
+    },
+    "result": {
+        "item": "materia:cannon_barrel",
+        "count": 1
+    }
+}

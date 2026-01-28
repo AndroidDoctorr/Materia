@@ -1,0 +1,15 @@
+{
+    "type": "materia:bronze_anvil",
+    "input": {
+        "item": "materia:copper_nugget",
+        "count": 9
+    },
+    "tool_tags": [
+        "materia:bronze_hammers",
+        "materia:bronze_hammers"
+    ],
+    "result": {
+        "item": "minecraft:copper_ingot",
+        "count": 1
+    }
+}

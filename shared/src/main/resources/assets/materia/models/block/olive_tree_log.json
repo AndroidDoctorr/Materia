@@ -1,0 +1,8 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "up": "materia:block/olive_tree_log_top",
+        "down": "materia:block/olive_tree_log_top",
+        "side": "materia:block/olive_tree_log"
+    }
+}

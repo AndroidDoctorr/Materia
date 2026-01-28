@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "PCP",
+        " T "
+    ],
+    "key": {
+        "P": {
+            "tag": "minecraft:paper"
+        },
+        "C": {
+            "tag": "minecraft:compass"
+        },
+        "T": {
+            "tag": "materia:tables"
+        }
+    },
+    "result": {
+        "item": "minecraft:cartography_table",
+        "count": 1
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:boiled_murex_gland_trunculus"
+        }
+    ],
+    "result": {
+        "item": "materia:magenta_iota",
+        "count": 1
+    }
+}

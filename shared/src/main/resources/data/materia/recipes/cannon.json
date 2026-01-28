@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "RBR",
+        "TOT",
+        "PPP"
+    ],
+    "key": {
+        "P": {
+            "tag": "materia:smooth_planks"
+        },
+        "T": {
+            "tag": "materia:posts"
+        },
+        "R": {
+            "item": "materia:iron_rivets"
+        },
+        "B": {
+            "item": "materia:cannon_barrel"
+        },
+        "O": {
+            "item": "materia:rope"
+        }
+    },
+    "result": {
+        "item": "materia:cannon",
+        "count": 1
+    }
+}

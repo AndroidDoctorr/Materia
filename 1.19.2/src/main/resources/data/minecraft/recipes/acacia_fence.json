@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "PLP",
+        "PLP"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:rough_acacia_plank"
+        },
+        "L": {
+            "tag": "materia:all_wood_joiners"
+        }
+    },
+    "result": {
+        "item": "minecraft:acacia_fence",
+        "count": 1
+    }
+}

@@ -1,0 +1,34 @@
+{
+    "variants": {
+        "input=false,facing=north": {
+            "model": "materia:block/not_0"
+        },
+        "input=true,facing=north": {
+            "model": "materia:block/not_1"
+        },
+        "input=false,facing=east": {
+            "model": "materia:block/not_0",
+            "y": 90
+        },
+        "input=true,facing=east": {
+            "model": "materia:block/not_1",
+            "y": 90
+        },
+        "input=false,facing=south": {
+            "model": "materia:block/not_0",
+            "y": 180
+        },
+        "input=true,facing=south": {
+            "model": "materia:block/not_1",
+            "y": 180
+        },
+        "input=false,facing=west": {
+            "model": "materia:block/not_0",
+            "y": 270
+        },
+        "input=true,facing=west": {
+            "model": "materia:block/not_1",
+            "y": 270
+        }
+    }
+}

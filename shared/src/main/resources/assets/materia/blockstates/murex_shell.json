@@ -1,0 +1,82 @@
+{
+    "multipart": [
+        {
+            "when": {
+                "facing": "north",
+                "dead": "false"
+            },
+            "apply": {
+                "model": "materia:block/murex_shell",
+                "y": 180
+            }
+        },
+        {
+            "when": {
+                "facing": "south",
+                "dead": "false"
+            },
+            "apply": {
+                "model": "materia:block/murex_shell"
+            }
+        },
+        {
+            "when": {
+                "facing": "west",
+                "dead": "false"
+            },
+            "apply": {
+                "model": "materia:block/murex_shell",
+                "y": 270
+            }
+        },
+        {
+            "when": {
+                "facing": "east",
+                "dead": "false"
+            },
+            "apply": {
+                "model": "materia:block/murex_shell",
+                "y": 90
+            }
+        },
+        {
+            "when": {
+                "facing": "north",
+                "dead": "true"
+            },
+            "apply": {
+                "model": "materia:block/murex_shell_dead",
+                "y": 180
+            }
+        },
+        {
+            "when": {
+                "facing": "south",
+                "dead": "true"
+            },
+            "apply": {
+                "model": "materia:block/murex_shell_dead"
+            }
+        },
+        {
+            "when": {
+                "facing": "west",
+                "dead": "true"
+            },
+            "apply": {
+                "model": "materia:block/murex_shell_dead",
+                "y": 270
+            }
+        },
+        {
+            "when": {
+                "facing": "east",
+                "dead": "true"
+            },
+            "apply": {
+                "model": "materia:block/murex_shell_dead",
+                "y": 90
+            }
+        }
+    ]
+}

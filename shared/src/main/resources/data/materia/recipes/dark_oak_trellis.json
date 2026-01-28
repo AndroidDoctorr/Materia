@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " S ",
+        "PSP"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:dark_oak_post"
+        },
+        "S": {
+            "item": "materia:smooth_dark_oak_planks"
+        }
+    },
+    "result": {
+        "item": "materia:dark_oak_trellis",
+        "count": 1
+    }
+}

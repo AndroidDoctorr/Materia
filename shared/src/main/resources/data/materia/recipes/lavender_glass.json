@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "GGG",
+        "GDG",
+        "GGG"
+    ],
+    "key": {
+        "G": {
+            "item": "minecraft:glass"
+        },
+        "D": {
+            "item": "materia:lavender_dye"
+        }
+    },
+    "result": {
+        "item": "materia:lavender_glass",
+        "count": 8
+    }
+}

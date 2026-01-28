@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:glass_puck"
+        },
+        {
+            "tag": "materia:grinders"
+        }
+    ],
+    "result": {
+        "item": "materia:rough_lens",
+        "count": 1
+    }
+}

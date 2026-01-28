@@ -1,0 +1,24 @@
+{
+    "replace": false,
+    "values": [
+        "materia:rough_oak_plank",
+        "materia:rough_spruce_plank",
+        "materia:rough_birch_plank",
+        "materia:rough_jungle_plank",
+        "materia:rough_acacia_plank",
+        {
+            "id": "materia:rough_mangrove_plank",
+            "required": false
+        },
+        {
+            "id": "materia:rough_crimson_plank",
+            "required": false
+        },
+        {
+            "id": "materia:rough_warped_plank",
+            "required": false
+        },
+        "materia:rough_dark_oak_plank",
+        "materia:rough_rubber_wood_plank"
+    ]
+}

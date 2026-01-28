@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "PPP",
+        "PNP",
+        " P "
+    ],
+    "key": {
+        "P": {
+            "item": "materia:gold_plate"
+        },
+        "N": {
+            "item": "minecraft:nether_star"
+        }
+    },
+    "result": {
+        "item": "materia:totem_body",
+        "count": 1
+    }
+}

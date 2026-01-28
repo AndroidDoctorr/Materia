@@ -1,0 +1,9 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#materia:rocky",
+  "step": "underground_ores",
+  "features": [
+    "materia:magnetite_ore_rocky_placed"
+  ]
+}
+

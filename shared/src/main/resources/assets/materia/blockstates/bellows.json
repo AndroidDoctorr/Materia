@@ -1,0 +1,19 @@
+{
+    "variants": {
+        "facing=north": {
+            "model": "materia:block/bellows"
+        },
+        "facing=south": {
+            "model": "materia:block/bellows",
+            "y": 180
+        },
+        "facing=west": {
+            "model": "materia:block/bellows",
+            "y": 270
+        },
+        "facing=east": {
+            "model": "materia:block/bellows",
+            "y": 90
+        }
+    }
+}

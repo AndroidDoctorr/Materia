@@ -1,0 +1,81 @@
+{
+  "type": "minecraft:ore",
+  "config": {
+    "discard_chance_on_air_exposure": 0.0,
+    "size": 28,
+    "targets": [
+      {
+        "state": {
+          "Name": "materia:bauxite_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "minecraft:stone_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "materia:bauxite_ore"
+        },
+        "target": {
+          "block": "minecraft:dirt",
+          "predicate_type": "minecraft:block_match"
+        }
+      },
+      {
+        "state": {
+          "Name": "materia:bauxite_ore"
+        },
+        "target": {
+          "block": "minecraft:grass_block",
+          "predicate_type": "minecraft:block_match"
+        }
+      },
+      {
+        "state": {
+          "Name": "materia:bauxite_ore"
+        },
+        "target": {
+          "block": "minecraft:coarse_dirt",
+          "predicate_type": "minecraft:block_match"
+        }
+      },
+      {
+        "state": {
+          "Name": "materia:bauxite_ore"
+        },
+        "target": {
+          "block": "minecraft:podzol",
+          "predicate_type": "minecraft:block_match"
+        }
+      },
+      {
+        "state": {
+          "Name": "materia:bauxite_ore"
+        },
+        "target": {
+          "block": "minecraft:rooted_dirt",
+          "predicate_type": "minecraft:block_match"
+        }
+      },
+      {
+        "state": {
+          "Name": "materia:bauxite_ore"
+        },
+        "target": {
+          "block": "minecraft:mycelium",
+          "predicate_type": "minecraft:block_match"
+        }
+      },
+      {
+        "state": {
+          "Name": "materia:bauxite_ore"
+        },
+        "target": {
+          "block": "materia:earth",
+          "predicate_type": "minecraft:block_match"
+        }
+      }
+    ]
+  }
+}

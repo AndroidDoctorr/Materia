@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "LHL",
+        "SGS"
+    ],
+    "key": {
+        "L": {
+            "item": "materia:bow_limb"
+        },
+        "H": {
+            "item": "materia:handle"
+        },
+        "S": {
+            "tag": "materia:all_bowstrings"
+        },
+        "G": {
+            "tag": "materia:adhesives"
+        }
+    },
+    "result": {
+        "item": "minecraft:bow",
+        "count": 1
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "type": "materia:advanced_kiln",
+    "group": "brass_alloy",
+    "ingredient1": {
+        "item": "minecraft:raw_copper",
+        "count": 2
+    },
+    "ingredient2": {
+        "item": "materia:raw_zinc",
+        "count": 1
+    },
+    "result": {
+        "item": "materia:brass_ingot",
+        "count": 3
+    },
+    "cookingtime": 800,
+    "experience": 0.15,
+    "requires_chimney": true
+}

@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "half=lower": {
+            "model": "materia:block/wild_corn_lower"
+        },
+        "half=upper": {
+            "model": "materia:block/wild_corn_upper"
+        }
+    }
+}

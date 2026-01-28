@@ -1,0 +1,14 @@
+{
+    "type": "materia:bronze_anvil",
+    "input": {
+        "item": "minecraft:copper_ingot"
+    },
+    "tool_tags": [
+        "materia:stone_hammers",
+        "materia:stone_hammers"
+    ],
+    "result": {
+        "item": "materia:copper_rod",
+        "count": 1
+    }
+}

@@ -1,0 +1,20 @@
+﻿{
+    "type": "minecraft:block",
+    "pools": [
+        {
+            "name": "warped_table_pool",
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:warped_table"
+                }
+            ],
+            "conditions": [
+                {
+                    "condition": "minecraft:survives_explosion"
+                }
+            ]
+        }
+    ]
+}

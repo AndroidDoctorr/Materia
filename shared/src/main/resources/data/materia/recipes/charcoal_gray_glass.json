@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "GGG",
+        "GDG",
+        "GGG"
+    ],
+    "key": {
+        "G": {
+            "item": "minecraft:glass"
+        },
+        "D": {
+            "item": "materia:charcoal_gray_dye"
+        }
+    },
+    "result": {
+        "item": "materia:charcoal_gray_glass",
+        "count": 8
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "ANH",
+        "GBS",
+        "WDW"
+    ],
+    "key": {
+        "B": {
+            "item": "materia:box_frame"
+        },
+        "D": {
+            "item": "materia:dynamo"
+        },
+        "W": {
+            "tag": "materia:insulated_wires"
+        },
+        "N": {
+            "tag": "materia:all_needles"
+        },
+        "G": {
+            "item": "materia:brass_gears"
+        },
+        "S": {
+            "item": "materia:solenoid"
+        },
+        "A": {
+            "item": "minecraft:stick"
+        },
+        "H": {
+            "tag": "materia:adhesives"
+        }
+    },
+    "result": {
+        "item": "minecraft:jukebox",
+        "count": 1
+    }
+}

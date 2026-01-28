@@ -1,0 +1,20 @@
+﻿{
+    "type": "minecraft:block",
+    "pools": [
+        {
+            "name": "crimson_table_pool",
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:crimson_table"
+                }
+            ],
+            "conditions": [
+                {
+                    "condition": "minecraft:survives_explosion"
+                }
+            ]
+        }
+    ]
+}

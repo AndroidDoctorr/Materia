@@ -1,0 +1,14 @@
+{
+    "type": "materia:kiln",
+    "ingredient": {
+        "item": "minecraft:raw_iron"
+    },
+    "result": {
+        "item": "materia:wrought_iron_nugget",
+        "count": 9
+    },
+    "cookingtime": 1600,
+    "experience": 1.0,
+    "requires_chimney": true,
+    "requires_bellows": true
+}

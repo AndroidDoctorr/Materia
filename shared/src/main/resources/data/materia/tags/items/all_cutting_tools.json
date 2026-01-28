@@ -1,0 +1,10 @@
+{
+    "replace": false,
+    "values": [
+        "#materia:basic_cutting_tools",
+        "#materia:all_knives",
+        "minecraft:iron_sword",
+        "minecraft:diamond_sword",
+        "minecraft:netherite_sword"
+    ]
+}

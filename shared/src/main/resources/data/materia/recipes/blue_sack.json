@@ -1,0 +1,18 @@
+﻿{
+    "ingredients": [
+        {
+            "item": "minecraft:blue_carpet"
+        },
+        {
+            "tag": "materia:all_needles"
+        },
+        {
+            "tag": "materia:strings"
+        }
+    ],
+    "result": {
+        "count": 1,
+        "item": "materia:blue_sack"
+    },
+    "type": "minecraft:crafting_shapeless"
+}

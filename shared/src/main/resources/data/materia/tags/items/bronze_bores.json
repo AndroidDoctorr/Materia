@@ -1,0 +1,7 @@
+{
+    "replace": false,
+    "values": [
+        "materia:bronze_bore",
+        "#materia:iron_bores"
+    ]
+}

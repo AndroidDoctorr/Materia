@@ -1,0 +1,9 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#materia:warm_wet_surface",
+  "step": "underground_ores",
+  "features": [
+    "materia:bauxite_ore_blob_placed"
+  ]
+}
+

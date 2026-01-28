@@ -1,0 +1,7 @@
+{
+    "replace": false,
+    "values": [
+        "#materia:hard_rods",
+        "#materia:soft_rods"
+    ]
+}

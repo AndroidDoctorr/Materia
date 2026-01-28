@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:ash"
+        },
+        [
+            {
+                "tag": "materia:water"
+            },
+            {
+                "type": "forge:partial_nbt",
+                "item": "minecraft:potion",
+                "nbt": "{Potion:\"minecraft:water\"}"
+            }
+        ]
+    ],
+    "result": {
+        "item": "materia:potash",
+        "count": 1
+    }
+}

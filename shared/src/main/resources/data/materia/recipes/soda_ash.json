@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:kelp_ash"
+        },
+        [
+            { "tag": "materia:water" },
+            { "type": "forge:partial_nbt", "item": "minecraft:potion", "nbt": "{Potion:\"minecraft:water\"}" }
+        ]
+    ],
+    "result": {
+        "item": "materia:soda_ash",
+        "count": 1
+    }
+}

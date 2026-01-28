@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+        "item": "materia:marble"
+    },
+    "result": "materia:marble_bust",
+    "count": 1
+}

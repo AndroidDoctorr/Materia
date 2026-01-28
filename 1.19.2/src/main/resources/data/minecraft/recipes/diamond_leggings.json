@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "WDW",
+        "DSD",
+        "DAD"
+    ],
+    "key": {
+        "S": {
+            "item": "minecraft:iron_leggings"
+        },
+        "D": {
+            "item": "minecraft:diamond"
+        },
+        "A": {
+            "tag": "materia:strong_adhesives"
+        },
+        "W": {
+            "tag": "materia:all_wires"
+        }
+    },
+    "result": {
+        "item": "minecraft:diamond_leggings",
+        "count": 1
+    }
+}

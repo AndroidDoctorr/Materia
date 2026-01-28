@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:pebble"
+        },
+        {
+            "item": "materia:pebble"
+        },
+        {
+            "item": "materia:pebble"
+        },
+        {
+            "item": "materia:pebble"
+        }
+    ],
+    "result": {
+        "item": "minecraft:gravel",
+        "count": 1
+    }
+}

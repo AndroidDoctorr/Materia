@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "DDD",
+        "DSD",
+        "WAW"
+    ],
+    "key": {
+        "S": {
+            "item": "minecraft:iron_helmet"
+        },
+        "D": {
+            "item": "minecraft:diamond"
+        },
+        "A": {
+            "tag": "materia:strong_adhesives"
+        },
+        "W": {
+            "tag": "materia:all_wires"
+        }
+    },
+    "result": {
+        "item": "minecraft:diamond_helmet",
+        "count": 1
+    }
+}

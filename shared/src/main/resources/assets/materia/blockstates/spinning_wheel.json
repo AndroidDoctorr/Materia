@@ -1,0 +1,64 @@
+{
+    "variants": {
+        "facing=north,frame=0,waterlogged=false": {
+            "model": "materia:block/spinning_wheel"
+        },
+        "facing=north,frame=0,waterlogged=true": {
+            "model": "materia:block/spinning_wheel"
+        },
+        "facing=north,frame=1,waterlogged=false": {
+            "model": "materia:block/spinning_wheel_2"
+        },
+        "facing=north,frame=1,waterlogged=true": {
+            "model": "materia:block/spinning_wheel_2"
+        },
+        "facing=east,frame=0,waterlogged=false": {
+            "model": "materia:block/spinning_wheel",
+            "y": 90
+        },
+        "facing=east,frame=0,waterlogged=true": {
+            "model": "materia:block/spinning_wheel",
+            "y": 90
+        },
+        "facing=east,frame=1,waterlogged=false": {
+            "model": "materia:block/spinning_wheel_2",
+            "y": 90
+        },
+        "facing=east,frame=1,waterlogged=true": {
+            "model": "materia:block/spinning_wheel_2",
+            "y": 90
+        },
+        "facing=south,frame=0,waterlogged=false": {
+            "model": "materia:block/spinning_wheel",
+            "y": 180
+        },
+        "facing=south,frame=0,waterlogged=true": {
+            "model": "materia:block/spinning_wheel",
+            "y": 180
+        },
+        "facing=south,frame=1,waterlogged=false": {
+            "model": "materia:block/spinning_wheel_2",
+            "y": 180
+        },
+        "facing=south,frame=1,waterlogged=true": {
+            "model": "materia:block/spinning_wheel_2",
+            "y": 180
+        },
+        "facing=west,frame=0,waterlogged=false": {
+            "model": "materia:block/spinning_wheel",
+            "y": 270
+        },
+        "facing=west,frame=0,waterlogged=true": {
+            "model": "materia:block/spinning_wheel",
+            "y": 270
+        },
+        "facing=west,frame=1,waterlogged=false": {
+            "model": "materia:block/spinning_wheel_2",
+            "y": 270
+        },
+        "facing=west,frame=1,waterlogged=true": {
+            "model": "materia:block/spinning_wheel_2",
+            "y": 270
+        }
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:smooth_dark_oak_planks"
+        },
+        {
+            "item": "minecraft:stick"
+        },
+        {
+            "tag": "materia:all_wood_joiners"
+        },
+        {
+            "item": "minecraft:black_dye"
+        }
+    ],
+    "result": {
+        "item": "minecraft:dark_oak_sign",
+        "count": 2
+    }
+}

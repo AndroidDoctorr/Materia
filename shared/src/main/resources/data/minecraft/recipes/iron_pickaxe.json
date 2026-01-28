@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:steel_pickaxe_head"
+        },
+        {
+            "item": "materia:iron_handle"
+        },
+        {
+            "tag": "materia:strong_adhesives"
+        }
+    ],
+    "result": {
+        "item": "minecraft:iron_pickaxe",
+        "count": 1
+    }
+}

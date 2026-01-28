@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#materia:disabled",
+  "step": "underground_decoration",
+  "features": [
+    "materia:surface_rock_placed",
+    "materia:cave_rock_placed"
+  ]
+}
+

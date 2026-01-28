@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "BR ",
+        "LPS",
+        " P "
+    ],
+    "key": {
+        "P": {
+            "item": "materia:gold_plate"
+        },
+        "L": {
+            "item": "materia:tanned_leather"
+        },
+        "R": {
+            "tag": "materia:all_rivets"
+        },
+        "B": {
+            "item": "materia:brass_buckle"
+        },
+        "S": {
+            "item": "materia:leather_strap"
+        }
+    },
+    "result": {
+        "item": "materia:gold_boot",
+        "count": 1
+    }
+}

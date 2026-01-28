@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:flint",
+            "count": 1
+        },
+        {
+            "item": "materia:hammer_stone",
+            "count": 1
+        }
+    ],
+    "result": {
+        "item": "materia:knapped_flint",
+        "count": 1
+    }
+}

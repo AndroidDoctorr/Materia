@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:tyrian_purple_blob"
+        },
+        {
+            "item": "materia:tyrian_purple_blob"
+        },
+        {
+            "item": "materia:tyrian_purple_blob"
+        },
+        {
+            "item": "materia:tyrian_purple_blob"
+        },
+        {
+            "item": "materia:tyrian_purple_blob"
+        },
+        {
+            "item": "materia:tyrian_purple_blob"
+        }
+    ],
+    "result": {
+        "item": "materia:tyrian_purple_dye",
+        "count": 1
+    }
+}
