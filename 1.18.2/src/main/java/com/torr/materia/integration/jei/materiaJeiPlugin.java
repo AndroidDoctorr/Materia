@@ -6,6 +6,8 @@ import com.torr.materia.ModRecipes;
 import com.torr.materia.materia;
 import com.torr.materia.integration.jei.drying_rack.DryingRackJeiCategory;
 import com.torr.materia.integration.jei.drying_rack.DryingRackJeiRecipe;
+import com.torr.materia.integration.jei.flint_knife.FlintKnifeJeiCategory;
+import com.torr.materia.integration.jei.flint_knife.FlintKnifeJeiRecipe;
 import com.torr.materia.integration.jei.frame_loom.FrameLoomJeiCategory;
 import com.torr.materia.integration.jei.frame_loom.FrameLoomJeiRecipe;
 import com.torr.materia.integration.jei.hewing.HewingJeiCategory;
@@ -16,6 +18,7 @@ import com.torr.materia.integration.jei.water_pot.WaterPotJeiCategory;
 import com.torr.materia.integration.jei.water_pot.WaterPotJeiRecipe;
 import com.torr.materia.recipe.AdvancedKilnRecipe;
 import com.torr.materia.recipe.BronzeAnvilRecipe;
+import com.torr.materia.recipe.FlintKnifeRecipe;
 import com.torr.materia.recipe.IronAnvilRecipe;
 import com.torr.materia.recipe.KilnRecipe;
 import com.torr.materia.recipe.PrimitiveCraftingTableRecipe;
@@ -62,6 +65,7 @@ public class materiaJeiPlugin implements IModPlugin {
                 new IronAnvilJeiCategory(guiHelper),
                 new HewingJeiCategory(guiHelper),
                 new PrimitiveCraftingJeiCategory(guiHelper),
+                new FlintKnifeJeiCategory(guiHelper),
                 new FrameLoomJeiCategory(guiHelper),
                 new WaterPotJeiCategory(guiHelper),
                 new DryingRackJeiCategory(guiHelper)
@@ -88,14 +92,14 @@ public class materiaJeiPlugin implements IModPlugin {
         registration.addRecipes(materiaJeiRecipeTypes.BRONZE_ANVIL, bronzeAnvil);
         registration.addRecipes(materiaJeiRecipeTypes.IRON_ANVIL, ironAnvil);
 
-        // JEI often hides "special" crafting recipes by default (CustomRecipe).
-        // Explicitly register ours so it shows up in the vanilla Crafting category.
-        List<CraftingRecipe> primitiveCrafting = recipeManager.getAllRecipesFor(RecipeType.CRAFTING)
-                .stream()
-                .filter(r -> r instanceof PrimitiveCraftingTableRecipe)
-                .map(r -> (CraftingRecipe) r)
-                .collect(Collectors.toList());
-        registration.addRecipes(RecipeTypes.CRAFTING, primitiveCrafting);
+        // JEI-only helper category: Flint Knife assembly
+        FlintKnifeJeiRecipe flintKnife = new FlintKnifeJeiRecipe(
+                Ingredient.of(ModItems.KNAPPED_FLINT.get()),
+                Ingredient.of(ModItems.BONE_HANDLE.get()),
+                Ingredient.of(ModItems.LASHING.get(), ModItems.GLUE.get()),
+                new ItemStack(ModItems.FLINT_KNIFE.get())
+        );
+        registration.addRecipes(materiaJeiRecipeTypes.FLINT_KNIFE, List.of(flintKnife));
 
         // Custom JEI displays for "special" crafting that JEI won't reliably list:
         Ingredient basicAxes = Ingredient.of(ItemTags.create(new ResourceLocation(materia.MOD_ID, "basic_axes")));
@@ -196,7 +200,8 @@ public class materiaJeiPlugin implements IModPlugin {
 
         registration.addRecipeCatalyst(new ItemStack(ModItems.ROUGH_OAK_PLANK.get()), materiaJeiRecipeTypes.HEWING);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.PRIMITIVE_CRAFTING_TABLE.get()), materiaJeiRecipeTypes.PRIMITIVE_CRAFTING);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.PRIMITIVE_CRAFTING_TABLE.get()), RecipeTypes.CRAFTING);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.PRIMITIVE_CRAFTING_TABLE.get()), materiaJeiRecipeTypes.FLINT_KNIFE);
+        registration.addRecipeCatalyst(new ItemStack(Blocks.CRAFTING_TABLE), materiaJeiRecipeTypes.FLINT_KNIFE);
 
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.FRAME_LOOM.get()), materiaJeiRecipeTypes.FRAME_LOOM);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.WATER_POT.get()), materiaJeiRecipeTypes.WATER_POT);

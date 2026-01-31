@@ -2,6 +2,7 @@ package com.torr.materia.integration.jei;
 
 import com.torr.materia.materia;
 import com.torr.materia.integration.jei.drying_rack.DryingRackJeiRecipe;
+import com.torr.materia.integration.jei.flint_knife.FlintKnifeJeiRecipe;
 import com.torr.materia.integration.jei.frame_loom.FrameLoomJeiRecipe;
 import com.torr.materia.integration.jei.hewing.HewingJeiRecipe;
 import com.torr.materia.integration.jei.primitive.PrimitiveCraftingJeiRecipe;
@@ -26,6 +27,7 @@ public final class materiaJeiRecipeTypes {
     // JEI-only helper categories for "special" crafting logic
     public static final RecipeType<HewingJeiRecipe> HEWING = RecipeType.create(materia.MOD_ID, "hewing", HewingJeiRecipe.class);
     public static final RecipeType<PrimitiveCraftingJeiRecipe> PRIMITIVE_CRAFTING = RecipeType.create(materia.MOD_ID, "primitive_crafting", PrimitiveCraftingJeiRecipe.class);
+    public static final RecipeType<FlintKnifeJeiRecipe> FLINT_KNIFE = RecipeType.create(materia.MOD_ID, "flint_knife", FlintKnifeJeiRecipe.class);
 
     public static final RecipeType<FrameLoomJeiRecipe> FRAME_LOOM = RecipeType.create(materia.MOD_ID, "frame_loom", FrameLoomJeiRecipe.class);
     public static final RecipeType<WaterPotJeiRecipe> WATER_POT = RecipeType.create(materia.MOD_ID, "water_pot", WaterPotJeiRecipe.class);

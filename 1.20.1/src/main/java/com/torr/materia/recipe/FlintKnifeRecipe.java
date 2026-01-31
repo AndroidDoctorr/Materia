@@ -9,6 +9,7 @@ import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingBookCategory;
 import net.minecraft.world.item.crafting.CustomRecipe;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import org.jetbrains.annotations.NotNull;
@@ -74,6 +75,21 @@ public class FlintKnifeRecipe extends CustomRecipe {
     @Override
     public @NotNull ItemStack getResultItem(@NotNull RegistryAccess registryAccess) {
         return new ItemStack(ModItems.FLINT_KNIFE.get());
+    }
+
+    @Override
+    public @NotNull NonNullList<Ingredient> getIngredients() {
+        // JEI + recipe book display:
+        // CustomRecipe defaults to an empty ingredient list unless overridden.
+        // This recipe accepts any arrangement of:
+        // - 1x knapped flint
+        // - 1x bone handle
+        // - 1x lashing OR glue
+        NonNullList<Ingredient> ingredients = NonNullList.create();
+        ingredients.add(Ingredient.of(ModItems.KNAPPED_FLINT.get()));
+        ingredients.add(Ingredient.of(ModItems.BONE_HANDLE.get()));
+        ingredients.add(Ingredient.of(ModItems.LASHING.get(), ModItems.GLUE.get()));
+        return ingredients;
     }
 
     @Override

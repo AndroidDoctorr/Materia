@@ -5,8 +5,10 @@ import com.mojang.logging.LogUtils;
 import com.torr.materia.block.GrapeVineBlock;
 import com.torr.materia.datagen.ModDataGenerators;
 import com.torr.materia.config.materiaCommonConfig;
+import com.torr.materia.world.feature.ModConfiguredFeatures;
 import com.torr.materia.world.feature.ModFeatures;
 import com.torr.materia.world.feature.ModFoliagePlacerTypes;
+import com.torr.materia.world.feature.ModPlacedFeatures;
 import com.torr.materia.network.NetworkHandler;
 import com.torr.materia.util.CannonDispenserBehaviors;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -61,6 +63,8 @@ public class materia
         
         // Register world generation features
         ModFeatures.register(modEventBus);
+        ModConfiguredFeatures.register(modEventBus);
+        ModPlacedFeatures.register(modEventBus);
         ModFoliagePlacerTypes.register(modEventBus);
         
         // Register recipe serializers

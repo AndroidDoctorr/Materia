@@ -1,6 +1,6 @@
 {
   "type": "forge:add_features",
-  "biomes": "#materia:disabled",
+  "biomes": "#materia:overworld_non_rocky",
   "step": "underground_decoration",
   "features": [
     "materia:surface_rock_placed",

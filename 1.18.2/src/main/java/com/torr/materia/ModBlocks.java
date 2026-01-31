@@ -482,6 +482,9 @@ public class ModBlocks {
         public static final RegistryObject<Block> THATCH = registerBlock("thatch",
                         () -> new Block(BlockBehaviour.Properties.of(Material.PLANT).strength(0.5f)
                                         .sound(SoundType.GRASS).noOcclusion()));
+        public static final RegistryObject<Block> THATCH_SLAB = registerBlock("thatch_slab",
+                        () -> new net.minecraft.world.level.block.SlabBlock(
+                                BlockBehaviour.Properties.copy(ModBlocks.THATCH.get())));
         public static final RegistryObject<Block> THATCH_SLOPE = registerBlock("thatch_slope",
                         () -> new net.minecraft.world.level.block.StairBlock(
                                 () -> ModBlocks.THATCH.get().defaultBlockState(),

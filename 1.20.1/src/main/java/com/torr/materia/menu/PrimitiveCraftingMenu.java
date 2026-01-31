@@ -3,6 +3,8 @@ package com.torr.materia.menu;
 import com.torr.materia.ModBlocks;
 import com.torr.materia.ModMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.protocol.game.ClientboundContainerSetSlotPacket;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -73,7 +75,11 @@ public class PrimitiveCraftingMenu extends AbstractContainerMenu {
             }
             resultContainer.setItem(0, resultStack);
             menu.setRemoteSlot(0, resultStack);
-            menu.broadcastChanges();
+
+            // Sync the result slot to the client (broadcastChanges alone isn't enough for result slots)
+            if (player instanceof ServerPlayer serverPlayer) {
+                serverPlayer.connection.send(new ClientboundContainerSetSlotPacket(menu.containerId, menu.incrementStateId(), 0, resultStack));
+            }
         }
     }
 

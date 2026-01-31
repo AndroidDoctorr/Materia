@@ -1741,9 +1741,6 @@ public class ModItems {
         public static final RegistryObject<Item> CLUMP_OF_INDIGO_WOOL = ITEMS.register("clump_of_indigo_wool",
                         () -> new Item(new Item.Properties()
                                         ));
-        public static final RegistryObject<Item> CLUMP_OF_TAUPE_WOOL = ITEMS.register("clump_of_taupe_wool",
-                        () -> new Item(new Item.Properties()
-                                        ));
         public static final RegistryObject<Item> CLUMP_OF_YELLOW_WOOL = ITEMS.register("clump_of_yellow_wool",
                         () -> new Item(new Item.Properties()
                                         ));

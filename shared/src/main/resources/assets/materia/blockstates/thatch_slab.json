@@ -1,0 +1,14 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "materia:block/thatch_slab"
+    },
+    "type=top": {
+      "model": "materia:block/thatch_slab_top"
+    },
+    "type=double": {
+      "model": "materia:block/thatch"
+    }
+  }
+}
+

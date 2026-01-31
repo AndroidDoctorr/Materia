@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BLB"
+  ],
+  "key": {
+    "B": {
+      "item": "materia:bundle"
+    },
+    "L": {
+      "item": "materia:lashing"
+    }
+  },
+  "result": {
+    "item": "materia:thatch_slab",
+    "count": 1
+  }
+}
+

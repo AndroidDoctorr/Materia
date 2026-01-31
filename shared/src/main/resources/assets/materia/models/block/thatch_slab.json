@@ -1,0 +1,9 @@
+{
+  "parent": "block/slab",
+  "textures": {
+    "bottom": "materia:block/thatch",
+    "top": "materia:block/thatch",
+    "side": "materia:block/thatch"
+  }
+}
+

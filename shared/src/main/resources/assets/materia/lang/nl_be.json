@@ -151,6 +151,7 @@
     "item.materia.thatch": "Rietdak",
     "block.materia.wattle_and_daub": "Vlechtwerk en Leem",
     "block.materia.thatch": "Rietdak",
+    "block.materia.thatch_slab": "Rietdakplaat",
     "item.materia.lodestone": "Magneetijzer",
     "item.materia.fishing_net": "Visnet",
     "item.materia.rope": "Touw",
@@ -819,5 +820,6 @@
     "jei.materia.iron_anvil": "IJzeren Aambeeld",
     "jei.materia.hewing": "Behakken",
     "jei.materia.primitive_crafting": "Primitief Maken",
+    "jei.materia.flint_knife": "Vuursteenmes",
     "item.materia.wooden_wheel": "Houten Wiel"
 }
