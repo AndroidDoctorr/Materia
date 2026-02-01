@@ -184,7 +184,8 @@ public class materiaJeiPlugin implements IModPlugin {
                 new DryingRackJeiRecipe(List.of(new ItemStack(ModItems.LEATHER_STRETCHED.get())), new ItemStack(ModItems.TANNED_LEATHER_STRETCHED.get())),
                 new DryingRackJeiRecipe(List.of(new ItemStack(Items.PORKCHOP)), new ItemStack(ModItems.JERKY.get())),
                 new DryingRackJeiRecipe(List.of(new ItemStack(Items.BEEF)), new ItemStack(ModItems.JERKY.get())),
-                new DryingRackJeiRecipe(List.of(new ItemStack(Items.MUTTON)), new ItemStack(ModItems.JERKY.get()))
+                new DryingRackJeiRecipe(List.of(new ItemStack(Items.MUTTON)), new ItemStack(ModItems.JERKY.get())),
+                new DryingRackJeiRecipe(List.of(new ItemStack(ModItems.CLEAN_GUT.get())), new ItemStack(ModItems.CORD.get()))
         );
         registration.addRecipes(materiaJeiRecipeTypes.DRYING_RACK, dryingRack);
     }

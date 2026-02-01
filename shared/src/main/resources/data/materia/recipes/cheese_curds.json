@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "materia:milk"
+    },
+    {
+      "item": "materia:rennet"
+    },
+    {
+      "item": "materia:salt"
+    },
+    {
+      "tag": "materia:linens"
+    }
+  ],
+  "result": {
+    "item": "materia:cheese_curds",
+    "count": 4
+  }
+}

@@ -1,7 +1,7 @@
 {
     "replace": false,
     "values": [
-        "materia:lashing",
+        "#materia:strings",
         "#materia:strong_bowstrings"
     ]
 }

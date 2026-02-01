@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "bites=0": { "model": "materia:block/aged_cheese_wheel" },
+    "bites=1": { "model": "materia:block/aged_cheese_wheel_b1" },
+    "bites=2": { "model": "materia:block/aged_cheese_wheel_b2" },
+    "bites=3": { "model": "materia:block/aged_cheese_wheel_b3" },
+    "bites=4": { "model": "materia:block/aged_cheese_wheel_b4" },
+    "bites=5": { "model": "materia:block/aged_cheese_wheel_b5" },
+    "bites=6": { "model": "materia:block/aged_cheese_wheel_b6" },
+    "bites=7": { "model": "materia:block/aged_cheese_wheel_b7" }
+  }
+}
+

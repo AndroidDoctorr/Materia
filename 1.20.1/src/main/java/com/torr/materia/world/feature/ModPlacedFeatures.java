@@ -22,7 +22,7 @@ import java.util.List;
 
 public class ModPlacedFeatures {
     public static final DeferredRegister<PlacedFeature> PLACED_FEATURES =
-            DeferredRegister.create(ResourceKey.createRegistryKey(new ResourceLocation("worldgen/placed_feature")), materia.MOD_ID);
+            DeferredRegister.createOptional(ResourceKey.createRegistryKey(new ResourceLocation("worldgen/placed_feature")), materia.MOD_ID);
 
     // Common placement for tin gravel - rare but big alluvial deposits
     public static final RegistryObject<PlacedFeature> GRAVEL_TIN_ORE_PLACED = PLACED_FEATURES.register("gravel_tin_ore_placed",

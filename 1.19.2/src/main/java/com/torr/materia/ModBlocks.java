@@ -209,6 +209,16 @@ public class ModBlocks {
         public static final RegistryObject<Block> DRYING_RACK = registerBlock("drying_rack",
                         () -> new DryingRackBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(0.6f)
                                         .sound(SoundType.WOOD).noOcclusion()));
+
+        // Cheese wheels (placeable blocks; aging behavior comes later)
+        public static final RegistryObject<Block> FRESH_CHEESE_WHEEL = registerBlock("fresh_cheese_wheel",
+                        () -> new FreshCheeseWheelBlock(BlockBehaviour.Properties.of(Material.CAKE).strength(0.4f)
+                                        .sound(SoundType.WOOL)
+                                        .noOcclusion()));
+        public static final RegistryObject<Block> AGED_CHEESE_WHEEL = registerBlock("aged_cheese_wheel",
+                        () -> new CheeseWheelBlock(BlockBehaviour.Properties.of(Material.CAKE).strength(0.6f)
+                                        .sound(SoundType.WOOL)
+                                        .noOcclusion()));
         public static final RegistryObject<Block> CHIMNEY = registerBlock("chimney",
                         () -> new com.torr.materia.block.ChimneyBlock(BlockBehaviour.Properties.of(Material.STONE)
                                         .strength(1.0f).sound(SoundType.STONE).noOcclusion()));

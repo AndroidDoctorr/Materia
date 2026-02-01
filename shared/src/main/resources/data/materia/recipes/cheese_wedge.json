@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:aged_cheese_wheel"
+        },
+        {
+            "tag": "materia:all_cutting_tools"
+        }
+    ],
+    "result": {
+        "item": "materia:cheese_wedge",
+        "count": 8
+    }
+}

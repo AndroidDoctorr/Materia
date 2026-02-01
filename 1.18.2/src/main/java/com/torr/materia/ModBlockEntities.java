@@ -6,6 +6,7 @@ import com.torr.materia.blockentity.BriningVatBlockEntity;
 import com.torr.materia.blockentity.KilnBlockEntity;
 import com.torr.materia.blockentity.OvenBlockEntity;
 import com.torr.materia.blockentity.DryingRackBlockEntity;
+import com.torr.materia.blockentity.CheeseWheelBlockEntity;
 import com.torr.materia.blockentity.WaterPotBlockEntity;
 import com.torr.materia.blockentity.MilkPotBlockEntity;
 import com.torr.materia.blockentity.BeerPotBlockEntity;
@@ -75,6 +76,12 @@ public class ModBlockEntities {
                         .register("drying_rack_block_entity",
                                         () -> BlockEntityType.Builder.of(DryingRackBlockEntity::new,
                                                         ModBlocks.DRYING_RACK.get()).build(null));
+
+        public static final RegistryObject<BlockEntityType<CheeseWheelBlockEntity>> CHEESE_WHEEL_BLOCK_ENTITY = BLOCK_ENTITIES
+                        .register("cheese_wheel_block_entity",
+                                        () -> BlockEntityType.Builder.of(CheeseWheelBlockEntity::new,
+                                                        ModBlocks.FRESH_CHEESE_WHEEL.get(),
+                                                        ModBlocks.AGED_CHEESE_WHEEL.get()).build(null));
 
         public static final RegistryObject<BlockEntityType<com.torr.materia.blockentity.FrameLoomBlockEntity>> FRAME_LOOM_BLOCK_ENTITY = BLOCK_ENTITIES
                         .register("frame_loom_block_entity",

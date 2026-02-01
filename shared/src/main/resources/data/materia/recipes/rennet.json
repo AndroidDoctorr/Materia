@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "materia:animal_gut"
+    },
+    {
+      "tag": "materia:all_cutting_tools"
+    }
+  ],
+  "result": {
+    "item": "materia:rennet",
+    "count": 1
+  }
+}
+

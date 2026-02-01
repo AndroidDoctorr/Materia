@@ -43,7 +43,7 @@ public class DryingRackBlockEntity extends BlockEntity {
         
         // Check if we have items that can be dried (leather in slot 0 OR meat in slot 1)
         boolean shouldDryLeather = items.getStackInSlot(0).is(ModItems.LEATHER_STRETCHED.get());
-        boolean shouldDryMeat = isRawMeat(items.getStackInSlot(1));
+        boolean shouldDryMeat = isRawMeat(items.getStackInSlot(1)) || items.getStackInSlot(1).is(ModItems.CLEAN_GUT.get());
         boolean isDrying = (shouldDryLeather || shouldDryMeat) && hasLitCampfireNearby();
 
         // Update blockstate if needed
@@ -76,6 +76,9 @@ public class DryingRackBlockEntity extends BlockEntity {
         if (!meatIn.isEmpty() && isRawMeat(meatIn)) {
             ItemStack jerky = new ItemStack(ModItems.JERKY.get(), meatIn.getCount());
             items.setStackInSlot(1, jerky);
+        } else if (!meatIn.isEmpty() && meatIn.is(ModItems.CLEAN_GUT.get())) {
+            ItemStack cord = new ItemStack(ModItems.CORD.get(), meatIn.getCount());
+            items.setStackInSlot(1, cord);
         }
         
         setChanged();
@@ -86,7 +89,8 @@ public class DryingRackBlockEntity extends BlockEntity {
     public boolean isFinished() {
         boolean leatherFinished = items.getStackInSlot(0).is(ModItems.TANNED_LEATHER_STRETCHED.get());
         boolean jerkyFinished = items.getStackInSlot(1).is(ModItems.JERKY.get());
-        return leatherFinished || jerkyFinished;
+        boolean cordFinished = items.getStackInSlot(1).is(ModItems.CORD.get());
+        return leatherFinished || jerkyFinished || cordFinished;
     }
     
     private boolean isRawMeat(ItemStack stack) {

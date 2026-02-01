@@ -27,7 +27,7 @@ Notes:
 | <img src="../../../shared/src/main/resources/assets/materia/textures/item/baked_squash.png" alt="Baked squash" width="16" height="16"> `materia:baked_squash` | 5 | 0.6 | No recipe JSON found yet (see note below) |
 | <img src="../../../shared/src/main/resources/assets/materia/textures/item/tortilla.png" alt="Tortilla" width="16" height="16"> `materia:tortilla` | 4 | 0.4 | Smelting or campfire cooking |
 | <img src="../../../shared/src/main/resources/assets/materia/textures/item/burrito.png" alt="Burrito" width="16" height="16"> `materia:burrito` | 8 | 0.9 | Tortilla + beans + peppers |
-| <img src="../../../shared/src/main/resources/assets/materia/textures/item/fresh_cheese.png" alt="Fresh cheese" width="16" height="16"> `materia:fresh_cheese` | 4 | 0.5 | Made from milk + vinegar + salt + linen |
+| <img src="../../../shared/src/main/resources/assets/materia/textures/item/soft_cheese.png" alt="Soft cheese" width="16" height="16"> `materia:soft_cheese` | 3 | 0.4 | Made from milk + vinegar + salt + linen |
 | <img src="../../../shared/src/main/resources/assets/materia/textures/item/porridge.png" alt="Porridge" width="16" height="16"> `materia:porridge` | 7 | 0.8 | No recipe JSON found yet (see note below) |
 | <img src="../../../shared/src/main/resources/assets/materia/textures/item/chili.png" alt="Chili" width="16" height="16"> `materia:chili` | 1 | 0.2 | No recipe JSON found yet (see note below) |
 | <img src="../../../shared/src/main/resources/assets/materia/textures/item/salt.png" alt="Salt" width="16" height="16"> `materia:salt` | 1 | 0.1 | `alwaysEat()` (you can eat it even when full) |
@@ -69,9 +69,9 @@ These are “food chain” ingredients but do not have food properties in 1.18.2
 - Bread (campfire): `shared/src/main/resources/data/materia/recipes/dough_to_bread_campfire.json`
 - Bread (oven): `shared/src/main/resources/data/materia/recipes/oven_bread.json`
 
-### Fresh cheese
+### Soft cheese
 
-- `shared/src/main/resources/data/minecraft/recipes/fresh_cheese.json`
+- `shared/src/main/resources/data/minecraft/recipes/soft_cheese.json`
 
 Ingredients used:
 

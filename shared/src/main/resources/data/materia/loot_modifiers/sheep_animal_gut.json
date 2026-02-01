@@ -1,0 +1,27 @@
+{
+    "type": "materia:animal_drop_modifier",
+    "conditions": [
+        {
+            "condition": "minecraft:killed_by_player"
+        },
+        {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+                "type": "minecraft:sheep"
+            }
+        },
+        {
+            "condition": "minecraft:random_chance",
+            "chance": 0.25
+        }
+    ],
+    "item": {
+        "item": "materia:animal_gut",
+        "count": {
+            "min": 1,
+            "max": 1
+        }
+    }
+}
+

@@ -72,19 +72,32 @@ Powder increases projectile speed.
 
 Internally, the launch speed is:
 
-- \(speed = 0.55 + 0.18 \times powder\)
+- \(speed = 0.52 + 0.17 \times p + 0.02 \times p^2\) where \(p = powder\)
+
+Notes:
+
+- This is tuned so **partial charges still matter** (1–3 powder shots are meaningfully shorter than a full 4-powder shot).
+
+## Accuracy (slight aim randomization)
+
+Cannons are **not perfectly laser-accurate**. Each shot gets a small random deviation, with ammo affecting it slightly:
+
+- **Iron cannonball**: slightly **more accurate**
+- **Stone cannonball**: baseline
+- **Canister shot**: slightly **less accurate**
+- **TNT**: slightly **less accurate**
 
 ## Ammo behavior
 
 ### Cannonballs (stone / iron)
 
 - Deal **direct hit damage** to entities
-- Do **not** explode (today)
-- On impact they disappear (no block damage yet)
-
-Planned / future note:
-
-- You mentioned a future upgrade: cannonballs damaging stone / stone bricks (to cobble / cracked stone). This is **not implemented yet** in the current major-version work.
+- Do **not** explode
+- Can **transform/break certain blocks** on impact (controlled by config):
+  - Stone -> cobblestone
+  - Cobblestone -> pebbles
+  - Sand/red sand can break
+  - Optional “cracked_” variant swapping when available
 
 ### Canister shot
 

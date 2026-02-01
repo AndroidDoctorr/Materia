@@ -43,28 +43,31 @@ public class CannonFireLogic {
         // Spawn outside the block collision to avoid self-hit
         Vec3 muzzle = new Vec3(pos.getX() + 0.5, pos.getY() + 1.05, pos.getZ() + 0.5).add(dir.scale(0.65));
 
-        float speed = 0.55f + 0.18f * powder;
+        // Tuned so partial charges are still useful, but full charge reaches farther.
+        float p = Mth.clamp(powder, 0, CannonBlockEntity.MAX_POWDER);
+        float speed = 0.52f + 0.17f * p + 0.02f * p * p;
+        float inaccuracy = getInaccuracyForAmmo(ammo);
 
         if (ammo.is(Items.TNT)) {
             CannonTntEntity tnt = new CannonTntEntity(ModEntities.CANNON_TNT_PROJECTILE.get(), level);
             tnt.setPos(muzzle.x, muzzle.y, muzzle.z);
             tnt.setItem(ammo);
             if (owner != null) tnt.setOwner(owner);
-            tnt.shoot(dir.x, dir.y, dir.z, speed, 0.0f);
+            tnt.shoot(dir.x, dir.y, dir.z, speed, inaccuracy);
             level.addFreshEntity(tnt);
         } else if (ammo.is(ModItems.CANISTER_SHOT.get())) {
             CanisterShotEntity can = new CanisterShotEntity(ModEntities.CANISTER_SHOT_PROJECTILE.get(), level);
             can.setPos(muzzle.x, muzzle.y, muzzle.z);
             can.setItem(ammo);
             if (owner != null) can.setOwner(owner);
-            can.shoot(dir.x, dir.y, dir.z, speed, 0.0f);
+            can.shoot(dir.x, dir.y, dir.z, speed, inaccuracy);
             level.addFreshEntity(can);
         } else {
             CannonballEntity projectile = new CannonballEntity(ModEntities.CANNONBALL_PROJECTILE.get(), level);
             projectile.setPos(muzzle.x, muzzle.y, muzzle.z);
             projectile.setItem(ammo);
             if (owner != null) projectile.setOwner(owner);
-            projectile.shoot(dir.x, dir.y, dir.z, speed, 0.0f);
+            projectile.shoot(dir.x, dir.y, dir.z, speed, inaccuracy);
             level.addFreshEntity(projectile);
         }
 
@@ -93,6 +96,15 @@ public class CannonFireLogic {
         double z = -sinT * Math.cos(phi);
 
         return new Vec3(x, y, z).normalize();
+    }
+
+    private static float getInaccuracyForAmmo(ItemStack ammo) {
+        // These values are intentionally small: just enough to make shots feel a bit less laser-precise.
+        if (ammo.is(ModItems.IRON_CANNONBALL.get())) return 0.85f;
+        if (ammo.is(ModItems.STONE_CANNONBALL.get())) return 1.0f;
+        if (ammo.is(ModItems.CANISTER_SHOT.get())) return 1.15f;
+        if (ammo.is(Items.TNT)) return 1.20f;
+        return 1.0f;
     }
 }
 

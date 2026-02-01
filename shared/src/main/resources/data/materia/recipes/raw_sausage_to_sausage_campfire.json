@@ -1,0 +1,10 @@
+{
+    "type": "minecraft:campfire_cooking",
+    "ingredient": {
+        "item": "materia:raw_sausage"
+    },
+    "result": "materia:sausage",
+    "experience": 0.35,
+    "cookingtime": 600
+}
+

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CC",
+    "CC"
+  ],
+  "key": {
+    "C": {
+      "item": "materia:cheese_curds"
+    }
+  },
+  "result": {
+    "item": "materia:fresh_cheese_wheel",
+    "count": 1
+  }
+}
+

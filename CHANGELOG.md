@@ -2,6 +2,34 @@
 
 All notable changes to **Materia** (mod id: `materia`) will be documented in this file.
 
+## 1.0.4 (2026-02-01)
+
+- Added initial **cheese + gut processing** content (first-phase):
+  - New items: `animal_gut`, `clean_gut`, `rennet`, `cheese_curds`, `soft_cheese`, `cord`
+  - New placeable blocks: `fresh_cheese_wheel`, `aged_cheese_wheel`
+  - New recipes:
+    - `animal_gut` + vinegar -> `clean_gut`
+    - `animal_gut` + cutting tool -> `rennet`
+    - milk + vinegar -> `soft_cheese`
+    - milk + rennet -> `cheese_curds`
+    - 4x `cheese_curds` -> `fresh_cheese_wheel`
+  - Updated **drying rack**: `clean_gut` can be dried near a lit campfire into `cord`
+  - Cheese wheels:
+    - Wheels are **slab-height** (cake-like)
+    - **Fresh** wheels are **not edible** and **age in-world** into **aged** wheels (moving the block does **not** reset aging)
+    - **Aged** wheels can be sliced into 8 servings (and can also be crafted into wedges with a cutting tool)
+- Added **animal gut** as occasional animal loot (killed by player):
+  - Cows / pigs / sheep have a **25%** chance to drop `animal_gut`
+- Added **sausage**:
+  - New items: `raw_sausage`, `sausage`
+  - New recipes:
+    - `clean_gut` + porkchop + salt + cutting tool -> `raw_sausage`
+    - Cook `raw_sausage` -> `sausage` (oven or campfire)
+- Improved **cannon** feel:
+  - Increased max range for fully-charged shots
+  - Made partial charges more meaningfully different
+  - Added slight aim randomization (iron cannonballs a bit tighter; canister/TNT a bit wider)
+
 ## 1.0.3 (2026-01-31)
 
 - Fixed **tool harvesting** in **1.20.1** and **1.21.1** (e.g. `materia:malachite`): added missing vanilla block tags for pickaxe mining and tool tiers so blocks that require the correct tool drop properly again.

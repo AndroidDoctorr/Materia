@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:clean_gut"
+        },
+        {
+            "item": "minecraft:porkchop"
+        },
+        {
+            "tag": "forge:salt"
+        },
+        {
+            "tag": "materia:all_cutting_tools"
+        }
+    ],
+    "result": {
+        "item": "materia:raw_sausage",
+        "count": 1
+    }
+}
+

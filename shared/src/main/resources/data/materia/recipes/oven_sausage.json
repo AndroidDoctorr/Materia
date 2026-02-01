@@ -1,0 +1,13 @@
+{
+    "type": "materia:oven",
+    "ingredient": {
+        "item": "materia:raw_sausage"
+    },
+    "result": {
+        "item": "materia:sausage",
+        "count": 1
+    },
+    "experience": 0.35,
+    "cookingtime": 200
+}
+

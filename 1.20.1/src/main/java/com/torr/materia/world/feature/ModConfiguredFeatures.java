@@ -35,7 +35,7 @@ import java.util.function.Supplier;
 
 public class ModConfiguredFeatures {
     public static final DeferredRegister<ConfiguredFeature<?, ?>> CONFIGURED_FEATURES =
-            DeferredRegister.create(ResourceKey.createRegistryKey(new ResourceLocation("worldgen/configured_feature")), materia.MOD_ID);
+            DeferredRegister.createOptional(ResourceKey.createRegistryKey(new ResourceLocation("worldgen/configured_feature")), materia.MOD_ID);
 
     // Configure the tin gravel ore generation - alluvial deposits in stone/dirt layers
     public static final RegistryObject<ConfiguredFeature<?, ?>> GRAVEL_TIN_ORE = CONFIGURED_FEATURES.register("gravel_tin_ore",

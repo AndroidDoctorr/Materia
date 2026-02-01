@@ -1526,6 +1526,15 @@ public class ModItems {
                                                 .nutrition(6)
                                                 .saturationModifier(0.8f)
                                                 .build())));
+        public static final RegistryObject<Item> RAW_SAUSAGE = ITEMS.register("raw_sausage",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> SAUSAGE = ITEMS.register("sausage",
+                        () -> new Item(new Item.Properties()
+                                        
+                                        .food(new net.minecraft.world.food.FoodProperties.Builder()
+                                                .nutrition(7)
+                                                .saturationModifier(0.8f)
+                                                .build())));
         public static final RegistryObject<Item> SQUASH = ITEMS.register("squash",
                         () -> new Item(new Item.Properties()
                                         
@@ -1663,13 +1672,34 @@ public class ModItems {
                                                 .nutrition(8)
                                                 .saturationModifier(0.9f)
                                                 .build())));
-        public static final RegistryObject<Item> FRESH_CHEESE = ITEMS.register("fresh_cheese",
+
+        // Cheese / gut processing (1.0.4)
+        public static final RegistryObject<Item> SOFT_CHEESE = ITEMS.register("soft_cheese",
                         () -> new Item(new Item.Properties()
-                                        
                                         .food(new net.minecraft.world.food.FoodProperties.Builder()
-                                                .nutrition(4)
-                                                .saturationModifier(0.5f)
+                                                .nutrition(3)
+                                                .saturationModifier(0.4f)
                                                 .build())));
+        public static final RegistryObject<Item> CHEESE_CURDS = ITEMS.register("cheese_curds",
+                        () -> new Item(new Item.Properties()
+                                        .food(new net.minecraft.world.food.FoodProperties.Builder()
+                                                .nutrition(2)
+                                                .saturationModifier(0.2f)
+                                                .build())));
+        public static final RegistryObject<Item> RENNET = ITEMS.register("rennet",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> ANIMAL_GUT = ITEMS.register("animal_gut",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> CLEAN_GUT = ITEMS.register("clean_gut",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> CORD = ITEMS.register("cord",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> CHEESE_WEDGE = ITEMS.register("cheese_wedge",
+                        () -> new Item(new Item.Properties()
+                                        .food(new net.minecraft.world.food.FoodProperties.Builder()
+                                                        .nutrition(2)
+                                                        .saturationModifier(0.2f)
+                                                        .build())));
 
         // Wool Items
         public static final RegistryObject<Item> CLUMP_OF_WOOL = ITEMS.register("clump_of_wool",
