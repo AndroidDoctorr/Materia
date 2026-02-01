@@ -4,7 +4,8 @@ import com.torr.materia.ModBlocks;
 import com.torr.materia.materia;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
@@ -21,7 +22,7 @@ import java.util.List;
 
 public class ModPlacedFeatures {
     public static final DeferredRegister<PlacedFeature> PLACED_FEATURES =
-            DeferredRegister.createOptional(Registries.PLACED_FEATURE, materia.MOD_ID);
+            DeferredRegister.create(ResourceKey.createRegistryKey(new ResourceLocation("worldgen/placed_feature")), materia.MOD_ID);
 
     // Common placement for tin gravel - rare but big alluvial deposits
     public static final RegistryObject<PlacedFeature> GRAVEL_TIN_ORE_PLACED = PLACED_FEATURES.register("gravel_tin_ore_placed",

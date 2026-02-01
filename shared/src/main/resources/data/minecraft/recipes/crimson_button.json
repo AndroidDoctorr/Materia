@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "materia:smooth_crimson_planks"
+    },
+    {
+      "tag": "materia:all_cutting_tools"
+    }
+  ],
+  "result": {
+    "item": "minecraft:crimson_button",
+    "count": 2
+  }
+}
+

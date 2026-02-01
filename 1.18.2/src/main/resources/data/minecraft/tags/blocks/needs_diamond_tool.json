@@ -1,9 +1,12 @@
 {
-  "replace": true,
+  "replace": false,
   "values": [
+    "minecraft:obsidian",
+    "minecraft:crying_obsidian",
     "minecraft:ancient_debris",
     "minecraft:respawn_anchor",
-    "minecraft:netherite_block"
+    "minecraft:netherite_block",
+    "materia:obsidian_slab"
   ]
 }
 

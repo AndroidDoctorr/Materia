@@ -172,10 +172,15 @@ tasks.named('processResources', ProcessResources).configure {
         expand replaceProperties + [project: project]
     }
 
+    // Ensure 1.21.1 path mirroring always runs (even when Gradle thinks resources are up-to-date),
+    // otherwise the jar may miss the required singular-folder datapack paths and blocks will drop nothing.
+    outputs.upToDateWhen { false }
+
     // Minecraft 1.21.1 data paths changed:
     // - recipes -> recipe
     // - tags/blocks -> tags/block
     // - tags/items -> tags/item
+    // - loot_tables -> loot_table
     //
     // Keep our source tree compatible with earlier versions (plural folders),
     // and mirror them into the 1.21.1 expected locations at build time.
@@ -212,6 +217,18 @@ tasks.named('processResources', ProcessResources).configure {
             includeEmptyDirs = false
             eachFile { fcd ->
                 fcd.path = fcd.path.replace("/tags/items/", "/tags/item/")
+            }
+        }
+
+        // Minecraft 1.21+ loot table folder is singular (loot_table). If we don't mirror this,
+        // mod blocks can mine/break but will drop nothing because their loot tables aren't found.
+        copy {
+            from(new File(out, "data"))
+            include("**/loot_tables/**/*.json")
+            into(new File(out, "data"))
+            includeEmptyDirs = false
+            eachFile { fcd ->
+                fcd.path = fcd.path.replace("/loot_tables/", "/loot_table/")
             }
         }
 

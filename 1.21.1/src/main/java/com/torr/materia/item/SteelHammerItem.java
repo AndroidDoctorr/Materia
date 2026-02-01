@@ -46,6 +46,14 @@ public class SteelHammerItem extends PickaxeItem {
 
     @Override
     public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity entity) {
+        // Force-drop obsidian when using the steel hammer (bypasses vanilla diamond gating)
+        if (!level.isClientSide && (state.is(Blocks.OBSIDIAN) || state.is(Blocks.CRYING_OBSIDIAN) || state.is(ModBlocks.OBSIDIAN_SLAB.get()))) {
+            level.destroyBlock(pos, false);
+            Block.popResource(level, pos, new ItemStack(state.getBlock().asItem()));
+            stack.hurtAndBreak(1, entity, entity.getUsedItemHand() == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND);
+            return true;
+        }
+
         if (entity instanceof Player player && shouldActAsSilkTouch(player, state)) {
             // Drop the block itself instead of its normal drops
             if (!level.isClientSide) {
@@ -84,7 +92,7 @@ public class SteelHammerItem extends PickaxeItem {
 
     @Override
     public boolean isCorrectToolForDrops(ItemStack stack, BlockState state) {
-        if (state.is(Blocks.OBSIDIAN) || state.is(Blocks.CRYING_OBSIDIAN)) {
+        if (state.is(Blocks.OBSIDIAN) || state.is(Blocks.CRYING_OBSIDIAN) || state.is(ModBlocks.OBSIDIAN_SLAB.get())) {
             return true;
         }
         // Steel hammer is the only hammer allowed to harvest deepslate
@@ -96,7 +104,10 @@ public class SteelHammerItem extends PickaxeItem {
 
     @Override
     public float getDestroySpeed(ItemStack stack, BlockState state) {
-        if (state.is(Blocks.OBSIDIAN) || state.is(Blocks.CRYING_OBSIDIAN)) return 3.0F; // slow but allowed
+        if (state.is(Blocks.OBSIDIAN) || state.is(Blocks.CRYING_OBSIDIAN) || state.is(ModBlocks.OBSIDIAN_SLAB.get())) {
+            // Make obsidian workable with steel (about ~1s without Efficiency)
+            return 80.0F;
+        }
         if (state.is(Blocks.DEEPSLATE)) return this.getTier().getSpeed(); // allow deepslate for steel hammer
         if (state.is(ModBlocks.SURFACE_IRON_ORE.get())) return 1.5F; // slower surface iron
         return super.getDestroySpeed(stack, state);

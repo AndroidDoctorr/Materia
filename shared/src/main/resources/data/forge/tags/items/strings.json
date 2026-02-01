@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "minecraft:string",
+    "materia:taupe_string",
     "materia:red_string",
     "materia:red_ochre_string",
     "materia:tyrian_purple_string",

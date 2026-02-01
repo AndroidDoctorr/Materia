@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "materia:clump_of_wool"
+    },
+    {
+      "item": "materia:spindle"
+    }
+  ],
+  "result": {
+    "item": "materia:taupe_string",
+    "count": 2
+  }
+}
+

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "materia:smooth_spruce_planks"
+    },
+    {
+      "tag": "materia:all_cutting_tools"
+    }
+  ],
+  "result": {
+    "item": "minecraft:spruce_button",
+    "count": 2
+  }
+}
+

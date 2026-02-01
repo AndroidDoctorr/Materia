@@ -4,8 +4,8 @@ import com.torr.materia.ModBlocks;
 import com.torr.materia.materia;
 import com.torr.materia.world.feature.ModFeatures;
 import com.torr.materia.world.feature.OliveFoliagePlacer;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.features.OreFeatures;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
@@ -35,7 +35,7 @@ import java.util.function.Supplier;
 
 public class ModConfiguredFeatures {
     public static final DeferredRegister<ConfiguredFeature<?, ?>> CONFIGURED_FEATURES =
-            DeferredRegister.createOptional(Registries.CONFIGURED_FEATURE, materia.MOD_ID);
+            DeferredRegister.create(ResourceKey.createRegistryKey(new ResourceLocation("worldgen/configured_feature")), materia.MOD_ID);
 
     // Configure the tin gravel ore generation - alluvial deposits in stone/dirt layers
     public static final RegistryObject<ConfiguredFeature<?, ?>> GRAVEL_TIN_ORE = CONFIGURED_FEATURES.register("gravel_tin_ore",

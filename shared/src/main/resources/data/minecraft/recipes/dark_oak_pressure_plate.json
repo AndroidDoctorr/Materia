@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " N",
+    "PP"
+  ],
+  "key": {
+    "P": {
+      "item": "materia:smooth_dark_oak_planks"
+    },
+    "N": {
+      "tag": "materia:all_nails"
+    }
+  },
+  "result": {
+    "item": "minecraft:dark_oak_pressure_plate",
+    "count": 1
+  }
+}
+
