@@ -12,6 +12,7 @@ import com.torr.materia.integration.jei.frame_loom.FrameLoomJeiCategory;
 import com.torr.materia.integration.jei.frame_loom.FrameLoomJeiRecipe;
 import com.torr.materia.integration.jei.hewing.HewingJeiCategory;
 import com.torr.materia.integration.jei.hewing.HewingJeiRecipe;
+import com.torr.materia.integration.jei.oven.OvenJeiCategory;
 import com.torr.materia.integration.jei.primitive.PrimitiveCraftingJeiCategory;
 import com.torr.materia.integration.jei.primitive.PrimitiveCraftingJeiRecipe;
 import com.torr.materia.integration.jei.water_pot.WaterPotJeiCategory;
@@ -20,6 +21,7 @@ import com.torr.materia.recipe.AdvancedKilnRecipe;
 import com.torr.materia.recipe.BronzeAnvilRecipe;
 import com.torr.materia.recipe.IronAnvilRecipe;
 import com.torr.materia.recipe.KilnRecipe;
+import com.torr.materia.recipe.OvenRecipe;
 import com.torr.materia.recipe.StoneAnvilRecipe;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
@@ -54,6 +56,7 @@ public class materiaJeiPlugin implements IModPlugin {
         registration.addRecipeCategories(
                 new KilnJeiCategory(guiHelper),
                 new AdvancedKilnJeiCategory(guiHelper),
+                new OvenJeiCategory(guiHelper),
                 new StoneAnvilJeiCategory(guiHelper),
                 new BronzeAnvilJeiCategory(guiHelper),
                 new IronAnvilJeiCategory(guiHelper),
@@ -75,12 +78,14 @@ public class materiaJeiPlugin implements IModPlugin {
 
         List<KilnRecipe> kiln = recipeManager.getAllRecipesFor(ModRecipes.KILN_TYPE.get());
         List<AdvancedKilnRecipe> advancedKiln = recipeManager.getAllRecipesFor(ModRecipes.ADVANCED_KILN_TYPE.get());
+        List<OvenRecipe> oven = recipeManager.getAllRecipesFor(ModRecipes.OVEN_TYPE.get());
         List<StoneAnvilRecipe> stoneAnvil = recipeManager.getAllRecipesFor(ModRecipes.STONE_ANVIL_TYPE.get());
         List<BronzeAnvilRecipe> bronzeAnvil = recipeManager.getAllRecipesFor(ModRecipes.BRONZE_ANVIL_TYPE.get());
         List<IronAnvilRecipe> ironAnvil = recipeManager.getAllRecipesFor(ModRecipes.IRON_ANVIL_TYPE.get());
 
         registration.addRecipes(materiaJeiRecipeTypes.KILN, kiln);
         registration.addRecipes(materiaJeiRecipeTypes.ADVANCED_KILN, advancedKiln);
+        registration.addRecipes(materiaJeiRecipeTypes.OVEN, oven);
         registration.addRecipes(materiaJeiRecipeTypes.STONE_ANVIL, stoneAnvil);
         registration.addRecipes(materiaJeiRecipeTypes.BRONZE_ANVIL, bronzeAnvil);
         registration.addRecipes(materiaJeiRecipeTypes.IRON_ANVIL, ironAnvil);
@@ -195,6 +200,7 @@ public class materiaJeiPlugin implements IModPlugin {
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.FURNACE_KILN.get()), materiaJeiRecipeTypes.KILN);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.BLAST_FURNACE_KILN.get()), materiaJeiRecipeTypes.ADVANCED_KILN);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.OVEN.get()), materiaJeiRecipeTypes.OVEN);
 
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.STONE_ANVIL.get()), materiaJeiRecipeTypes.STONE_ANVIL);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.BRONZE_ANVIL.get()), materiaJeiRecipeTypes.BRONZE_ANVIL);

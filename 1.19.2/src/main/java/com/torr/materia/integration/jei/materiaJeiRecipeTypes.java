@@ -5,6 +5,7 @@ import com.torr.materia.recipe.AdvancedKilnRecipe;
 import com.torr.materia.recipe.BronzeAnvilRecipe;
 import com.torr.materia.recipe.IronAnvilRecipe;
 import com.torr.materia.recipe.KilnRecipe;
+import com.torr.materia.recipe.OvenRecipe;
 import com.torr.materia.integration.jei.drying_rack.DryingRackJeiRecipe;
 import com.torr.materia.integration.jei.flint_knife.FlintKnifeJeiRecipe;
 import com.torr.materia.integration.jei.frame_loom.FrameLoomJeiRecipe;
@@ -19,6 +20,7 @@ public final class materiaJeiRecipeTypes {
 
     public static final RecipeType<KilnRecipe> KILN = RecipeType.create(materia.MOD_ID, "kiln", KilnRecipe.class);
     public static final RecipeType<AdvancedKilnRecipe> ADVANCED_KILN = RecipeType.create(materia.MOD_ID, "advanced_kiln", AdvancedKilnRecipe.class);
+    public static final RecipeType<OvenRecipe> OVEN = RecipeType.create(materia.MOD_ID, "oven", OvenRecipe.class);
 
     public static final RecipeType<StoneAnvilRecipe> STONE_ANVIL = RecipeType.create(materia.MOD_ID, "stone_anvil", StoneAnvilRecipe.class);
     public static final RecipeType<BronzeAnvilRecipe> BRONZE_ANVIL = RecipeType.create(materia.MOD_ID, "bronze_anvil", BronzeAnvilRecipe.class);

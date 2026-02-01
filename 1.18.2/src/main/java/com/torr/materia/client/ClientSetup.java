@@ -72,6 +72,7 @@ public class ClientSetup {
             com.torr.materia.item.AmphoraItem.registerItemProperties();
             com.torr.materia.item.CompositeBowItem.registerItemProperties();
             com.torr.materia.item.DynamiteItem.registerItemProperties();
+            com.torr.materia.item.BombItem.registerItemProperties();
 
             // Register render layer for transparency
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.FLAX_CROP.get(), RenderType.cutout());
@@ -241,6 +242,8 @@ public class ClientSetup {
                 FallingAmphoraRenderer::new);
             net.minecraft.client.renderer.entity.EntityRenderers.register(
                 ModEntities.DYNAMITE_PROJECTILE.get(), ThrownItemRenderer::new);
+            net.minecraft.client.renderer.entity.EntityRenderers.register(
+                ModEntities.BOMB_PROJECTILE.get(), ThrownItemRenderer::new);
             net.minecraft.client.renderer.entity.EntityRenderers.register(
                 ModEntities.CANNONBALL_PROJECTILE.get(), ThrownItemRenderer::new);
             net.minecraft.client.renderer.entity.EntityRenderers.register(

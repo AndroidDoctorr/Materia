@@ -3,6 +3,7 @@ package com.torr.materia;
 import com.torr.materia.entity.RockEntity;
 import com.torr.materia.entity.FallingAmphoraEntity;
 import com.torr.materia.entity.DynamiteEntity;
+import com.torr.materia.entity.BombEntity;
 import com.torr.materia.entity.MetalArrowEntity;
 import com.torr.materia.entity.CannonballEntity;
 import com.torr.materia.entity.CannonTntEntity;
@@ -49,6 +50,14 @@ public class ModEntities {
                     .clientTrackingRange(4)
                     .updateInterval(10)
                     .build("dynamite_projectile"));
+
+    public static final RegistryObject<EntityType<BombEntity>> BOMB_PROJECTILE = ENTITIES.register(
+            "bomb_projectile",
+            () -> EntityType.Builder.<BombEntity>of(BombEntity::new, MobCategory.MISC)
+                    .sized(0.25F, 0.25F)
+                    .clientTrackingRange(4)
+                    .updateInterval(10)
+                    .build("bomb_projectile"));
 
     public static final RegistryObject<EntityType<CannonballEntity>> CANNONBALL_PROJECTILE = ENTITIES.register(
             "cannonball_projectile",

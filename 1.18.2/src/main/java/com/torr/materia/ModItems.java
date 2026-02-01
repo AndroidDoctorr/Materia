@@ -20,6 +20,7 @@ import com.torr.materia.item.TongsItem;
 import com.torr.materia.item.PaperFrameItem;
 import com.torr.materia.item.MagnetItem;
 import com.torr.materia.item.DynamiteItem;
+import com.torr.materia.item.BombItem;
 import com.torr.materia.item.PoulticeItem;
 import com.torr.materia.item.CannonballItem;
 import net.minecraft.world.item.Item;
@@ -1953,6 +1954,10 @@ public class ModItems {
                                         .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)));
         public static final RegistryObject<Item> DYNAMITE = ITEMS.register("dynamite",
                         () -> new DynamiteItem(new Item.Properties()
+                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_COMBAT)
+                                        .stacksTo(16)));
+        public static final RegistryObject<Item> BOMB = ITEMS.register("bomb",
+                        () -> new BombItem(new Item.Properties()
                                         .tab(net.minecraft.world.item.CreativeModeTab.TAB_COMBAT)
                                         .stacksTo(16)));
         public static final RegistryObject<Item> STONE_CANNONBALL = ITEMS.register("stone_cannonball",

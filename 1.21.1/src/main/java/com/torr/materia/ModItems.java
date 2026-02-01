@@ -19,6 +19,7 @@ import com.torr.materia.item.TongsItem;
 import com.torr.materia.item.PaperFrameItem;
 import com.torr.materia.item.MagnetItem;
 import com.torr.materia.item.DynamiteItem;
+import com.torr.materia.item.BombItem;
 import com.torr.materia.item.CannonballItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
@@ -1971,6 +1972,10 @@ public class ModItems {
                                         ));
         public static final RegistryObject<Item> DYNAMITE = ITEMS.register("dynamite",
                         () -> new DynamiteItem(new Item.Properties()
+                                        
+                                        .stacksTo(16)));
+        public static final RegistryObject<Item> BOMB = ITEMS.register("bomb",
+                        () -> new BombItem(new Item.Properties()
                                         
                                         .stacksTo(16)));
         public static final RegistryObject<Item> STONE_CANNONBALL = ITEMS.register("stone_cannonball",
