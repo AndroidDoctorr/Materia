@@ -1,9 +1,8 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "PN ",
-    "PP ",
-    "PPP"
+    "PN",
+    "PP"
   ],
   "key": {
     "P": {
@@ -18,4 +17,3 @@
     "count": 1
   }
 }
-

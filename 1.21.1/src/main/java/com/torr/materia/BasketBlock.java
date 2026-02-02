@@ -121,7 +121,7 @@ public class BasketBlock extends BaseEntityBlock {
 
                 // Open the GUI
                 MenuProvider containerProvider = createMenuProvider(state, level, pos);
-                ((ServerPlayer) player).openMenu(containerProvider);
+                ((ServerPlayer) player).openMenu(containerProvider, pos);
                 return InteractionResult.SUCCESS;
             }
         }

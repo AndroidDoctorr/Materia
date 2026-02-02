@@ -19,7 +19,7 @@ public class KilnMenu extends AbstractContainerMenu {
     private final ContainerData data;
 
     public KilnMenu(int windowId, Inventory inv, FriendlyByteBuf extraData) {
-        this(windowId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(4));
+        this(windowId, inv, getBlockEntity(inv, extraData), new SimpleContainerData(4));
     }
 
     public KilnMenu(int windowId, Inventory inv, BlockEntity entity, ContainerData data) {
@@ -42,6 +42,13 @@ public class KilnMenu extends AbstractContainerMenu {
         });
 
         addDataSlots(data);
+    }
+
+    private static BlockEntity getBlockEntity(Inventory inv, FriendlyByteBuf extraData) {
+        if (extraData == null) {
+            throw new IllegalStateException("KilnMenu extraData is null (missing BlockPos). Use ServerPlayer.openMenu(..., pos) so the client can resolve the BlockEntity.");
+        }
+        return inv.player.level().getBlockEntity(extraData.readBlockPos());
     }
 
     public boolean isCrafting() {

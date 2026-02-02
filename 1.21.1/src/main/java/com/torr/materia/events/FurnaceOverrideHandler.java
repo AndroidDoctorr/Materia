@@ -69,7 +69,7 @@ public class FurnaceOverrideHandler {
             if (!output.isEmpty()) kilnBE.getItemHandler().setStackInSlot(2, output);
 
             // Open our UI immediately
-            ((ServerPlayer) event.getEntity()).openMenu(kilnBE);
+            ((ServerPlayer) event.getEntity()).openMenu(kilnBE, pos);
             event.setCanceled(true);
             event.setCancellationResult(InteractionResult.SUCCESS);
         }

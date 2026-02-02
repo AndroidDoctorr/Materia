@@ -114,10 +114,10 @@ public class KilnBlock extends BaseEntityBlock {
 
                 if (hasChimney) {
                     // Open advanced kiln menu
-                    ((ServerPlayer) player).openMenu(kilnEntity);
+                    ((ServerPlayer) player).openMenu(kilnEntity, pos);
                 } else {
                     // Open basic kiln menu
-                    ((ServerPlayer) player).openMenu(kilnEntity);
+                    ((ServerPlayer) player).openMenu(kilnEntity, pos);
                 }
             } else {
                 throw new IllegalStateException("Our Container provider is missing!");

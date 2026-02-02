@@ -5,6 +5,7 @@ import com.torr.materia.menu.SackMenu;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -40,7 +41,7 @@ public class SackItem extends Item {
         if (!level.isClientSide && player instanceof ServerPlayer serverPlayer) {
             MenuConstructor constructor = (containerId, inv, p) -> new SackMenu(containerId, inv, hand);
             MenuProvider provider = new SimpleMenuProvider(constructor, Component.translatable("container.materia.sack"));
-            serverPlayer.openMenu(provider);
+            serverPlayer.openMenu(provider, (FriendlyByteBuf buf) -> buf.writeEnum(hand));
         }
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
     }

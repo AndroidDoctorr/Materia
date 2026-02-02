@@ -94,7 +94,7 @@ public class OvenBlock extends BaseEntityBlock {
         if (!level.isClientSide()) {
             BlockEntity entity = level.getBlockEntity(pos);
             if(entity instanceof OvenBlockEntity ovenEntity) {
-                ((ServerPlayer) player).openMenu(ovenEntity);
+                ((ServerPlayer) player).openMenu(ovenEntity, pos);
             } else {
                 throw new IllegalStateException("Our Container provider is missing!");
             }

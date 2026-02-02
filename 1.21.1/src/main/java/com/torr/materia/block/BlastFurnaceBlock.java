@@ -60,7 +60,7 @@ public class BlastFurnaceBlock extends com.torr.materia.KilnBlock {
                 }
 
                 // Open blast furnace GUI
-                ((ServerPlayer) player).openMenu(kilnEntity);
+                ((ServerPlayer) player).openMenu(kilnEntity, pos);
             } else {
                 throw new IllegalStateException("Our Container provider is missing!");
             }

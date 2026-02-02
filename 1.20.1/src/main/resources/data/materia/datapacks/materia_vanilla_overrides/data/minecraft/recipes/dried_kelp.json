@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "minecraft:kelp"
+  },
+  "result": "materia:ash",
+  "experience": 0.0,
+  "cookingtime": 200
+}
+

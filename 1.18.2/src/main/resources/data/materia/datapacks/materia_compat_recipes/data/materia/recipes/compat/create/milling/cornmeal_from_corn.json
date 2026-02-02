@@ -1,0 +1,28 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "create"
+        }
+      ],
+      "recipe": {
+        "type": "create:milling",
+        "ingredients": [
+          {
+            "item": "materia:corn"
+          }
+        ],
+        "results": [
+          {
+            "item": "materia:cornmeal",
+            "count": 2
+          }
+        ],
+        "processingTime": 50
+      }
+    }
+  ]
+}

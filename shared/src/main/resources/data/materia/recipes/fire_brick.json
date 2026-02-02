@@ -4,7 +4,6 @@
     "ingredient": {
         "item": "materia:fire_brick_clay"
     },
-    "ingredient2": {},
     "result": {
         "item": "materia:fire_brick",
         "count": 1

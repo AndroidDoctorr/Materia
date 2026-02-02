@@ -1,22 +1,19 @@
-[19Jan2026 09:28:37.344] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forge_userdev_data, --assetIndex, 17, --assetsDir, C:\Users\gbart\.gradle\caches\forge_gradle\assets, --gameDir, ., --mod, materia, --all, --output, C:\MCMods\materia\1.21.1\src\generated\resources, --existing, C:\MCMods\materia\1.21.1\src\main\resources]
-[19Jan2026 09:28:37.346] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: JVM identified as Eclipse Adoptium OpenJDK 64-Bit Server VM 21.0.9+10-LTS
-[19Jan2026 09:28:37.346] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.2.4 starting: java version 21.0.9 by Eclipse Adoptium; OS Windows 10 arch amd64 version 10.0
-[19Jan2026 09:28:37.423] [main/WARN] [net.minecraftforge.fml.loading.FMLConfig/CORE]: Configuration file C:\MCMods\materia\1.21.1\run-data\config\fml.toml is not correct. Correcting
-[19Jan2026 09:28:37.424] [main/INFO] [net.minecraftforge.fml.loading.FMLConfig/CORE]: Incorrect key [earlyWindowSkipGLVersions] was corrected from null to []
-[19Jan2026 09:28:37.425] [main/INFO] [net.minecraftforge.fml.loading.FMLConfig/CORE]: Incorrect key [earlyWindowLogHelpMessage] was corrected from null to true
-[19Jan2026 09:28:37.425] [main/INFO] [net.minecraftforge.fml.loading.FMLConfig/CORE]: Incorrect key [earlyWindowSquir] was corrected from null to false
-[19Jan2026 09:28:37.425] [main/INFO] [net.minecraftforge.fml.loading.FMLConfig/CORE]: Incorrect key [earlyWindowShowCPU] was corrected from null to false
-[19Jan2026 09:28:37.436] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forge_userdev_data
-[19Jan2026 09:28:37.517] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=jar:file:///C:/Users/gbart/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.7/8ab114ac385e6dbdad5efafe28aba4df8120915f/mixin-0.8.7.jar!/ Service=ModLauncher Env=UNKNOWN
-[19Jan2026 09:28:38.642] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
-[19Jan2026 09:28:39.173] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forge_userdev_data' with arguments [--gameDir, ., --assetsDir, C:\Users\gbart\.gradle\caches\forge_gradle\assets, --assetIndex, 17, --mod, materia, --all, --output, C:\MCMods\materia\1.21.1\src\generated\resources, --existing, C:\MCMods\materia\1.21.1\src\main\resources]
-[19Jan2026 09:28:43.136] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 52.1.9, for MC 1.21.1 with MCP 20240808.132146
-[19Jan2026 09:28:43.136] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v52.1.9 Initialized
-[19Jan2026 09:28:43.172] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Opening jdk.naming.dns/com.sun.jndi.dns to java.naming
-[19Jan2026 09:28:44.164] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [materia]
-[19Jan2026 09:28:44.198] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/gbart/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.21.1-52.1.9_mapped_official_1.21.1/forge-1.21.1-52.1.9_mapped_official_1.21.1.jar%230!/assets/.mcassetsroot' uses unexpected schema
-[19Jan2026 09:28:44.199] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/gbart/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.21.1-52.1.9_mapped_official_1.21.1/forge-1.21.1-52.1.9_mapped_official_1.21.1.jar%230!/data/.mcassetsroot' uses unexpected schema
-[19Jan2026 09:28:44.274] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Registries
-[19Jan2026 09:28:44.526] [main/INFO] [net.minecraft.data.DataGenerator/]: Registries finished after 251 ms
-[19Jan2026 09:28:44.526] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 252 ms
-[19Jan2026 09:28:44.533] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 74, old count: 74, new count: 75, removed stale: 0, written: 1
+[01Feb2026 19:39:12.181] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forge_userdev_data, --assetIndex, 17, --assetsDir, C:\Users\gbart\.gradle\caches\forge_gradle\assets, --gameDir, ., --mod, materia, --all, --output, C:\MCMods\Materia\1.21.1\src\generated\resources, --existing, C:\MCMods\Materia\1.21.1\src\main\resources]
+[01Feb2026 19:39:12.186] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: JVM identified as Eclipse Adoptium OpenJDK 64-Bit Server VM 21.0.9+10-LTS
+[01Feb2026 19:39:12.186] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.2.4 starting: java version 21.0.9 by Eclipse Adoptium; OS Windows 10 arch amd64 version 10.0
+[01Feb2026 19:39:12.263] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forge_userdev_data
+[01Feb2026 19:39:12.342] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=jar:file:///C:/Users/gbart/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.7/8ab114ac385e6dbdad5efafe28aba4df8120915f/mixin-0.8.7.jar!/ Service=ModLauncher Env=UNKNOWN
+[01Feb2026 19:39:13.548] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
+[01Feb2026 19:39:14.110] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forge_userdev_data' with arguments [--gameDir, ., --assetsDir, C:\Users\gbart\.gradle\caches\forge_gradle\assets, --assetIndex, 17, --mod, materia, --all, --output, C:\MCMods\Materia\1.21.1\src\generated\resources, --existing, C:\MCMods\Materia\1.21.1\src\main\resources]
+[01Feb2026 19:39:17.495] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 52.1.9, for MC 1.21.1 with MCP 20240808.132146
+[01Feb2026 19:39:17.495] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v52.1.9 Initialized
+[01Feb2026 19:39:17.527] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Opening jdk.naming.dns/com.sun.jndi.dns to java.naming
+[01Feb2026 19:39:17.565] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager...
+[01Feb2026 19:39:17.568] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager took 2.074 milliseconds
+[01Feb2026 19:39:18.557] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [materia]
+[01Feb2026 19:39:18.599] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/gbart/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.21.1-52.1.9_mapped_official_1.21.1/forge-1.21.1-52.1.9_mapped_official_1.21.1.jar%230!/assets/.mcassetsroot' uses unexpected schema
+[01Feb2026 19:39:18.599] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/gbart/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.21.1-52.1.9_mapped_official_1.21.1/forge-1.21.1-52.1.9_mapped_official_1.21.1.jar%230!/data/.mcassetsroot' uses unexpected schema
+[01Feb2026 19:39:18.681] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Registries
+[01Feb2026 19:39:18.926] [main/INFO] [net.minecraft.data.DataGenerator/]: Registries finished after 244 ms
+[01Feb2026 19:39:18.926] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 245 ms
+[01Feb2026 19:39:18.933] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 76, old count: 74, new count: 77, removed stale: 0, written: 76

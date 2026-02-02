@@ -99,7 +99,7 @@ public class StoneAnvilBlock extends BaseEntityBlock {
                 }
 
                 // Normal anvil GUI interaction
-                ((ServerPlayer) player).openMenu(anvilEntity);
+                ((ServerPlayer) player).openMenu(anvilEntity, pos);
             }
         }
         return InteractionResult.sidedSuccess(level.isClientSide());

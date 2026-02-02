@@ -87,6 +87,93 @@ Next implementation note:
   - [ ] add config toggles or alternate (non-override) recipes where feasible
 - [ ] Ensure recipe outputs are predictable and don’t create “dupe loops” with other mods’ processing chains.
 
+#### B1a) Current vanilla-override footprint (initial notes)
+
+Materia currently ships **a large set of recipes in the `minecraft` namespace** under `shared/src/main/resources/data/minecraft/recipes/`. These override vanilla recipes and effectively act as progression gates (or outright replacements) in modpacks.
+
+Quick inventory snapshot (current repo state):
+
+- **Total override recipe JSONs**: 375
+- **Recipes containing `materia:` references**: 303 (strong signal these are Materia-authored overrides)
+- **Result namespace breakdown**:
+  - `minecraft:*` outputs: 360
+  - `materia:*` outputs: 15
+
+High-impact examples spotted so far:
+
+- **Core materials / crafting**
+  - `minecraft:oak_planks` now requires `materia:smooth_oak_planks` + `materia:all_nails`
+  - `minecraft:paper` now requires `materia:fine_paper_pulp` + `materia:paper_frame`
+  - `minecraft:gunpowder` now requires `materia:saltpeter` + `materia:sulfur` + `materia:carbon`
+- **Automation / redstone**
+  - `minecraft:hopper` now requires `materia:hard_plates`
+  - `minecraft:minecart` now requires `materia:minecart_axle` + `materia:hard_plates` + `materia:all_rivets`
+- **Tools / armor**
+  - `minecraft:iron_pickaxe` now requires `materia:steel_pickaxe_head` + `materia:iron_handle` + `materia:strong_adhesives`
+  - `minecraft:iron_sword` now requires `materia:steel_sword_blade` + `materia:steel_crossbar` + `materia:iron_handle` + `materia:advanced_bindings`
+- **Nether progression**
+  - `minecraft:netherite_scrap` is produced via `materia:kiln` from `minecraft:ancient_debris` with additional kiln requirements
+- **Potentially most disruptive “replacement” override**
+  - `data/minecraft/recipes/furnace.json` no longer crafts `minecraft:furnace`; it crafts `materia:furnace_kiln`
+
+High-impact progression-gate shortlist (auto-inventoried from overrides):
+
+- **Wood building blocks**: all vanilla planks are gated behind `materia:smooth_*_planks` + `materia:all_nails`
+  - `oak_planks`, `spruce_planks`, `birch_planks`, `jungle_planks`, `acacia_planks`, `dark_oak_planks`, `mangrove_planks`, `cherry_planks`, `crimson_planks`, `warped_planks`
+- **Storage / transport / automation**
+  - `chest` → requires `materia:brass_hinge` + `materia:brass_latch` + `materia:smooth_oak_planks`
+  - `minecart` → requires `materia:minecart_axle` + `materia:hard_plates` + `materia:all_rivets`
+  - `hopper` → requires `materia:hard_plates`
+- **Redstone**
+  - `piston` → requires `materia:hard_plates` + `materia:hard_rods` + `materia:all_rivets` + `materia:smooth_planks`
+  - `observer` → requires `materia:box_frame` + `materia:hard_plates` + `materia:solenoid`
+  - `dispenser` → requires `materia:insulated_wires` + `materia:solenoid`
+  - `dropper` → requires `materia:box_frame` + `materia:hard_plates`
+  - `comparator` → requires `materia:all_plates` + `materia:insulated_wires`
+  - `lever` → requires `materia:all_hammers` + `materia:all_plates` + `materia:all_rivets`
+  - `rail` / `powered_rail` → use `materia:steel_rail` / `materia:gold_rail` + `materia:tar` + `materia:smooth_planks`
+- **Combat / tools / armor** (example subset)
+  - `iron_pickaxe` → `materia:steel_pickaxe_head` + `materia:iron_handle` + `materia:strong_adhesives`
+  - `iron_sword` → `materia:steel_sword_blade` + `materia:steel_crossbar` + `materia:iron_handle` + `materia:advanced_bindings`
+  - `iron_shovel` / `iron_hoe` → similar “tool head + handle/bindings” assembly
+  - `iron_helmet` / `iron_chestplate` / `iron_leggings` / `iron_boots` → gated behind Materia steel/leather/buckle/rivet parts
+  - `iron_door` / `iron_trapdoor` → gated behind Materia hinges/plates/rivets/tools
+- **Nether progression**
+  - `netherite_scrap` → produced via `materia:kiln` (not vanilla blasting/smelting)
+
+Overrides that output `materia:*` (i.e., replacing vanilla outputs) currently include:
+
+- **Kilns**:
+  - `blast_furnace.json` → `materia:blast_furnace_kiln`
+  - `furnace.json` → `materia:furnace_kiln`
+- **Food cooking**:
+  - `cooked_*` and `dried_kelp` recipes → `materia:ash`
+- **Other**:
+  - `glass_puck_smelting.json` → `materia:glass_puck`
+  - `lavender_dye_from_lilac.json` (and `magenta_dye_from_allium.json`) → `materia:lavender_dye`
+  - `plain_cake.json` → `materia:plain_cake`
+
+Why this matters for compatibility:
+
+- These overrides can conflict with modpacks that expect vanilla recipes to exist (JEI/guidebooks/questlines), and can create unexpected loops when other mods add alternative conversions.
+- The `furnace.json` replacement is especially high-risk because it changes what “furnace” means in every pack.
+
+Proposed direction (what we’ll implement next):
+
+- **Move vanilla overrides into an optional built-in datapack** (disabled by default) so modpacks can opt-in to Materia’s progression-gated vanilla crafting.
+- For any Materia-only outputs currently living in the `minecraft` namespace (like `materia:furnace_kiln`), provide a **non-override recipe** under `data/materia/recipes/` so enabling/disabling the override pack doesn’t strand items behind missing recipes.
+- Then do a second pass to flag + fix any likely “dupe loop” candidates (recipes where another mod can cheaply reverse or reprocess back into the same input).
+
+Implementation status (started):
+
+- [x] **Inventory + shortlist** captured above (counts + high-impact gate list).
+- [x] **Carve-out for the most disruptive replacements**: moved the 15 `minecraft:*` recipes that output `materia:*` into an **optional built-in datapack** named `materia_vanilla_overrides` (added per-version pack metadata).
+- [x] Added non-override Materia recipes for:
+  - `materia:furnace_kiln`
+  - `materia:blast_furnace_kiln`
+  - `materia:plain_cake`
+  so disabling the override pack does not remove access to these items.
+
 ### B2) Alternative recipe sets (optional “compat packs”)
 
 Create optional datapacks (shipped disabled by default, or documented) that add:

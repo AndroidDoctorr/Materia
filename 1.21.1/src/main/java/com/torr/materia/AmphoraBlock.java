@@ -236,7 +236,7 @@ public class AmphoraBlock extends BaseEntityBlock implements SimpleWaterloggedBl
             // Only open GUI if amphora is in solid storage mode or empty (and held item is empty)
             if (held.isEmpty() && amphoraEntity.canAcceptSolidItems()) {
                 MenuProvider containerProvider = createMenuProvider(state, level, pos);
-                ((ServerPlayer) player).openMenu(containerProvider);
+                ((ServerPlayer) player).openMenu(containerProvider, pos);
                 return InteractionResult.SUCCESS;
             } else if (amphoraEntity.getStorageMode() == AmphoraBlockEntity.MODE_LIQUID) {
                 player.displayClientMessage(Component.translatable("message.materia.amphora.liquid_mode"), true);

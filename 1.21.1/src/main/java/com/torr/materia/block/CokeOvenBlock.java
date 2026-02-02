@@ -92,7 +92,7 @@ public class CokeOvenBlock extends BaseEntityBlock {
         if (!level.isClientSide()) {
             BlockEntity entity = level.getBlockEntity(pos);
             if (entity instanceof CokeOvenBlockEntity cokeOvenEntity) {
-                ((ServerPlayer) player).openMenu(cokeOvenEntity);
+                ((ServerPlayer) player).openMenu(cokeOvenEntity, pos);
             } else {
                 throw new IllegalStateException("Our Container provider is missing!");
             }

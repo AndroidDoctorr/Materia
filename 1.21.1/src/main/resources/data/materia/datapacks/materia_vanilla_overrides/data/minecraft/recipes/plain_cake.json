@@ -1,0 +1,10 @@
+{
+  "type": "materia:oven",
+  "ingredient": {
+    "item": "materia:batter"
+  },
+  "result": "materia:plain_cake",
+  "experience": 0.0,
+  "cookingtime": 200
+}
+

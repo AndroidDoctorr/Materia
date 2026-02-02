@@ -91,7 +91,7 @@ public class FirePitBlock extends BaseEntityBlock {
         if (!level.isClientSide()) {
             BlockEntity entity = level.getBlockEntity(pos);
             if(entity instanceof FirePitBlockEntity pitEntity) {
-                ((ServerPlayer) player).openMenu(pitEntity);
+                ((ServerPlayer) player).openMenu(pitEntity, pos);
             } else {
                 throw new IllegalStateException("Our Container provider is missing!");
             }
