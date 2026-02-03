@@ -88,6 +88,8 @@ minecraft {
 
         server {
             property 'forge.enabledGameTestNamespaces', mod_id
+            // Use a separate run dir so a running client world doesn't lock the server world.
+            workingDirectory project.file('run-server')
             args '--nogui'
         }
 

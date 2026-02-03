@@ -2,7 +2,6 @@ package com.torr.materia.network;
 
 import com.torr.materia.capability.CustomSheepColorCapability;
 import com.torr.materia.entity.CustomSheepColor;
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.animal.Sheep;
@@ -34,17 +33,49 @@ public class SheepColorSyncPacket {
         context.enqueueWork(() -> {
             // Client-side handling
             if (context.getDirection().getReceptionSide().isClient()) {
-                Entity entity = Minecraft.getInstance().level.getEntity(entityId);
-                if (entity instanceof Sheep sheep) {
-                    var capOptional = sheep.getCapability(CustomSheepColorCapability.CUSTOM_SHEEP_COLOR);
-                    if (capOptional.isPresent()) {
-                        var capability = capOptional.resolve().get();
-                        CustomSheepColor color = colorName.isEmpty() ? null : CustomSheepColor.valueOf(colorName);
-                        capability.setCustomColor(color);
-                    }
-                }
+                applyClient(entityId, colorName);
             }
         });
         context.setPacketHandled(true);
+    }
+
+    /**
+     * Dedicated-server-safe: uses reflection so this class can load on server.
+     */
+    private static void applyClient(int entityId, String colorName) {
+        try {
+            Class<?> mcClass = Class.forName("net.minecraft.client.Minecraft");
+            Object mc = mcClass.getMethod("getInstance").invoke(null);
+            Object level = null;
+            try {
+                level = mcClass.getField("level").get(mc);
+            } catch (NoSuchFieldException | IllegalAccessException ignored) {
+                // fall through to declared-field attempt below
+            }
+            if (level == null) {
+                try {
+                    var f = mcClass.getDeclaredField("level");
+                    f.setAccessible(true);
+                    level = f.get(mc);
+                } catch (Throwable ignored) {
+                    level = null;
+                }
+            }
+            if (level == null) return;
+
+            // ClientLevel#getEntity(int)
+            var getEntity = level.getClass().getMethod("getEntity", int.class);
+            Object entityObj = getEntity.invoke(level, entityId);
+            if (!(entityObj instanceof Entity entity)) return;
+            if (!(entity instanceof Sheep sheep)) return;
+
+            var capOptional = sheep.getCapability(CustomSheepColorCapability.CUSTOM_SHEEP_COLOR);
+            if (!capOptional.isPresent()) return;
+            var capability = capOptional.resolve().get();
+            CustomSheepColor color = colorName.isEmpty() ? null : CustomSheepColor.valueOf(colorName);
+            capability.setCustomColor(color);
+        } catch (Throwable ignored) {
+            // Ignore if anything fails (e.g. client classes not present).
+        }
     }
 }

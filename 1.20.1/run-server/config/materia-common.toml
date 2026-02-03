@@ -1,0 +1,27 @@
+
+[cannonballs]
+	#If false, cannonballs will not transform/break blocks (entity damage still applies).
+	blockEffectsEnabled = true
+	#If true, cannonballs will try to swap blocks to a cracked_ variant when available.
+	crackVariants = true
+	#If true, cannonballs can turn stone (and some stones for iron cannonballs) into cobblestone.
+	stoneToCobblestone = true
+	#If true, cannonballs can turn cobblestone into pebbles.
+	cobblestoneToPebbles = true
+	#If true, cannonballs can break sand/red sand.
+	breakSand = true
+	#If true, iron cannonballs can smash a wider set of base stones (granite/etc.) into cobblestone.
+	ironExtraStoneSmashing = true
+
+[vines]
+	#If true, grape vines and wisteria vines will avoid occupying the same support block state.
+	preventGrapeWisteriaOverlap = true
+	#If true, supports (trellis/joists/posts) will attempt to self-heal if overlapping vine states somehow occur.
+	selfHealSupportOverlap = true
+	#Chance (0-100) per random tick for a mature grape/wisteria crop block to attempt spreading onto nearby supports.
+	#Range: 0 ~ 100
+	plantSpreadChancePercent = 10
+	#Chance (0-100) per random tick for a support block (trellis/joists/posts) to attempt spreading vine state to nearby supports.
+	#Range: 0 ~ 100
+	supportChainSpreadChancePercent = 2
+
