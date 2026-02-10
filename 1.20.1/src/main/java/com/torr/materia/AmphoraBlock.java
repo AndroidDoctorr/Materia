@@ -195,6 +195,16 @@ public class AmphoraBlock extends BaseEntityBlock implements SimpleWaterloggedBl
             return InteractionResult.PASS;
         }
 
+        // Empty-hand right-click should open the UI.
+        // Use sneak + empty-hand to remove lids (handled below).
+        if (held.isEmpty() && !player.isShiftKeyDown()) {
+            if (!level.isClientSide() && player instanceof ServerPlayer sp) {
+                MenuProvider containerProvider = createMenuProvider(state, level, pos);
+                NetworkHooks.openScreen(sp, containerProvider, pos);
+            }
+            return InteractionResult.sidedSuccess(level.isClientSide());
+        }
+
         // Handle lid interactions first
         InteractionResult lidResult = handleLidInteractions(state, level, pos, player, hand, held, amphoraEntity);
         if (lidResult != InteractionResult.PASS) {
@@ -207,18 +217,6 @@ public class AmphoraBlock extends BaseEntityBlock implements SimpleWaterloggedBl
             return liquidResult;
         }
 
-        // Handle GUI opening for solid storage
-        if (!level.isClientSide()) {
-            // Only open GUI if amphora is in solid storage mode or empty (and held item is empty)
-            if (held.isEmpty() && amphoraEntity.canAcceptSolidItems()) {
-                MenuProvider containerProvider = createMenuProvider(state, level, pos);
-                NetworkHooks.openScreen((ServerPlayer) player, containerProvider, pos);
-                return InteractionResult.SUCCESS;
-            } else if (amphoraEntity.getStorageMode() == AmphoraBlockEntity.MODE_LIQUID) {
-                player.displayClientMessage(Component.translatable("message.materia.amphora.liquid_mode"), true);
-                return InteractionResult.SUCCESS;
-            }
-        }
         return InteractionResult.sidedSuccess(level.isClientSide());
     }
     

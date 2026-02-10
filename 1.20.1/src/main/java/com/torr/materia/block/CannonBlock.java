@@ -140,20 +140,12 @@ public class CannonBlock extends BaseEntityBlock {
         if (held.isEmpty()) {
             if (!cannonBe.hasPowder()) {
                 player.displayClientMessage(Component.literal("Cannon has no powder!"), true);
-                return InteractionResult.SUCCESS;
             }
             if (!cannonBe.hasAmmo()) {
                 player.displayClientMessage(Component.literal("Cannon has no ammo!"), true);
-                return InteractionResult.SUCCESS;
             }
-        }
-
-        // Aiming (only when charged + loaded)
-        if (held.isEmpty() && cannonBe.hasPowder() && cannonBe.hasAmmo()) {
             if (player instanceof ServerPlayer sp) {
-                // Start each aim session from a known orientation (not permanently stuck)
-                cannonBe.setAimDegrees(0f, 85f);
-                level.sendBlockUpdated(pos, state, state, 3);
+                materia.LOGGER.info("Sending CannonStartAimPacket to {} for pos {}", sp.getGameProfile().getName(), pos);
                 NetworkHandler.INSTANCE.send(PacketDistributor.PLAYER.with(() -> sp), new CannonStartAimPacket(pos));
             }
             return InteractionResult.SUCCESS;

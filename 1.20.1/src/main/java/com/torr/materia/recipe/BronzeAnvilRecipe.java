@@ -81,7 +81,10 @@ public class BronzeAnvilRecipe implements Recipe<CraftingContainer> {
     public static class Serializer implements RecipeSerializer<BronzeAnvilRecipe> {
         @Override
         public BronzeAnvilRecipe fromJson(ResourceLocation id, JsonObject json) {
-            JsonObject inputObj = GsonHelper.getAsJsonObject(json, "input");
+            // Back-compat: older datapack json used "input_a"
+            JsonObject inputObj = json.has("input")
+                    ? GsonHelper.getAsJsonObject(json, "input")
+                    : GsonHelper.getAsJsonObject(json, "input_a");
             String inputItem = GsonHelper.getAsString(inputObj, "item");
             int inputCount = GsonHelper.getAsInt(inputObj, "count", 1);
             ItemStack ingredient = new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation(inputItem)), inputCount);

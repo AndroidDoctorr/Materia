@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "uuid": "78285e89-bfaa-431e-9008-36cfbb4e3f46",
+    "name": "AndroidDoctorr",
+    "level": 4,
+    "bypassesPlayerLimit": true
+  }
+]

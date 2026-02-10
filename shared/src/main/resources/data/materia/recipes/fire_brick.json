@@ -1,5 +1,5 @@
 {
-    "type": "materia:advanced_kiln",
+    "type": "materia:kiln",
     "group": "fire_brick",
     "ingredient": {
         "item": "materia:fire_brick_clay"

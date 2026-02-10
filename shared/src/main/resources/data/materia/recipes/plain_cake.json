@@ -3,7 +3,10 @@
   "ingredient": {
     "item": "materia:batter"
   },
-  "result": "materia:plain_cake",
+  "result": {
+    "item": "materia:plain_cake",
+    "count": 1
+  },
   "experience": 0.0,
   "cookingtime": 200
 }

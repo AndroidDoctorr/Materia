@@ -5,6 +5,7 @@ import com.mojang.math.Axis;
 import com.torr.materia.ModBlocks;
 import com.torr.materia.block.CannonBlock;
 import com.torr.materia.blockentity.CannonBlockEntity;
+import com.torr.materia.materia;
 import com.torr.materia.util.CannonMath;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -19,10 +20,12 @@ public class CannonRenderer implements BlockEntityRenderer<CannonBlockEntity> {
     private static final double PIVOT_Y = 10.0D / 16.0D;
     private static final double PIVOT_Z = 0.5D;
 
-    // 1.20.1: barrel model matches our yawWorld convention (no extra 180 offset needed).
+    // 1.20.1: barrel model aligns with the yawWorld convention used by aiming + firing.
+    // Keep any model-specific tweaks here (render-only).
     private static final float MODEL_YAW_OFFSET_DEG = 0f;
 
     private final BlockRenderDispatcher blockRenderer;
+    private static Boolean lastLoggedIntegrated = null;
 
     public CannonRenderer(BlockEntityRendererProvider.Context ctx) {
         this.blockRenderer = Minecraft.getInstance().getBlockRenderer();
@@ -47,15 +50,40 @@ public class CannonRenderer implements BlockEntityRenderer<CannonBlockEntity> {
         float yaw = be.getYawDeg();
         float pitch = be.getPitchDeg();
 
+        Boolean integrated = null;
+        try {
+            integrated = Minecraft.getInstance().hasSingleplayerServer();
+        } catch (Throwable ignored) {
+            integrated = null;
+        }
+
+        // Log once per "integrated vs dedicated-server connection" mode.
+        // This lets us compare singleplayer vs multiplayer within the same client session.
+        if (integrated == null ? lastLoggedIntegrated != null : !integrated.equals(lastLoggedIntegrated)) {
+            lastLoggedIntegrated = integrated;
+            String source = "unknown";
+            try {
+                var cs = CannonRenderer.class.getProtectionDomain().getCodeSource();
+                if (cs != null && cs.getLocation() != null) source = cs.getLocation().toString();
+            } catch (Throwable ignored) {
+            }
+            float yawWorld = baseModelY + yaw;
+            float yawVisual = baseModelY + yaw + MODEL_YAW_OFFSET_DEG;
+            materia.LOGGER.info(
+                    "CannonRenderer init: integrated={} source={} pos={} facing={} baseModelY={} yaw={} pitch={} yawWorld={} yawVisual={} offset={}",
+                    integrated, source, be.getBlockPos(), facing, baseModelY, yaw, pitch, yawWorld, yawVisual, MODEL_YAW_OFFSET_DEG
+            );
+        }
+
         poseStack.pushPose();
 
         // Rotate barrel around a pivot point above the base
         poseStack.translate(PIVOT_X, PIVOT_Y, PIVOT_Z);
         // IMPORTANT: PoseStack rotations are applied in local space.
         // We want yaw to pick the heading, then pitch to tilt towards that heading.
-        // Visual yaw is inverted relative to our yawWorld convention (aiming/firing math),
-        // so negate here to keep the model aligned with the shot direction.
-        poseStack.mulPose(Axis.YP.rotationDegrees(baseModelY - yaw + MODEL_YAW_OFFSET_DEG));
+        // Use the same yaw convention as aiming/firing:
+        // yawWorld = baseModelY + yaw
+        poseStack.mulPose(Axis.YP.rotationDegrees(baseModelY + yaw + MODEL_YAW_OFFSET_DEG));
         poseStack.mulPose(Axis.XP.rotationDegrees(-pitch));
         poseStack.translate(-PIVOT_X, -PIVOT_Y, -PIVOT_Z);
 
