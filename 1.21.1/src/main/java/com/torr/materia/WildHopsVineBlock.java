@@ -60,16 +60,9 @@ public class WildHopsVineBlock extends VineBlock {
     }
 
     private InteractionResult handleUse(Level level, BlockPos pos) {
-        if (!level.isClientSide) {
-            RandomSource random = level.getRandom();
-            if (random.nextFloat() < 0.3f) {
-                popResource(level, pos, new ItemStack(ModItems.HOPS_SEEDS.get(), 1));
-            }
-            if (random.nextFloat() < 0.7f) {
-                popResource(level, pos, new ItemStack(ModItems.PLANT_FIBER.get(), 1));
-            }
-        }
-        return InteractionResult.sidedSuccess(level.isClientSide);
+        // Wild vines should NOT be harvestable by right-click (prevents infinite seeds/fiber exploit).
+        // Loot should come from breaking the vine only.
+        return InteractionResult.PASS;
     }
 
     @Override

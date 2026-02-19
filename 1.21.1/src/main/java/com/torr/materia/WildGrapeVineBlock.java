@@ -62,19 +62,9 @@ public class WildGrapeVineBlock extends VineBlock {
     }
 
     private InteractionResult handleUse(Level level, BlockPos pos) {
-        if (!level.isClientSide) {
-            // Chance to drop grape seeds when right-clicked
-            RandomSource random = level.getRandom();
-            if (random.nextFloat() < 0.3f) { // 30% chance
-                popResource(level, pos, new ItemStack(ModItems.GRAPE_SEEDS.get(), 1));
-            }
-            
-            // Always drop plant fiber
-            if (random.nextFloat() < 0.7f) { // 70% chance
-                popResource(level, pos, new ItemStack(ModItems.PLANT_FIBER.get(), 1));
-            }
-        }
-        return InteractionResult.sidedSuccess(level.isClientSide);
+        // Wild vines should NOT be harvestable by right-click (prevents infinite seeds/fiber exploit).
+        // Loot should come from breaking the vine only.
+        return InteractionResult.PASS;
     }
 
     @Override

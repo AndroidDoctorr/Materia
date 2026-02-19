@@ -49,24 +49,9 @@ public class WildWisteriaVineBlock extends VineBlock {
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        // Only harvest on empty-hand right-click, so other mods' tools can still interact.
-        if (!player.getItemInHand(hand).isEmpty()) {
-            return InteractionResult.PASS;
-        }
-
-        if (!level.isClientSide) {
-            // Chance to drop wisteria seeds when right-clicked
-            Random random = level.getRandom();
-            if (random.nextFloat() < 0.3f) { // 30% chance
-                popResource(level, pos, new ItemStack(ModItems.WISTERIA_SEEDS.get(), 1));
-            }
-            
-            // Chance to drop plant fiber
-            if (random.nextFloat() < 0.7f) { // 70% chance
-                popResource(level, pos, new ItemStack(ModItems.PLANT_FIBER.get(), 1));
-            }
-        }
-        return InteractionResult.sidedSuccess(level.isClientSide);
+        // Wild vines should NOT be harvestable by right-click (prevents infinite seeds/fiber exploit).
+        // Loot should come from breaking the vine only.
+        return InteractionResult.PASS;
     }
 
     @Override

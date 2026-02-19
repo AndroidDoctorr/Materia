@@ -2,6 +2,18 @@
 
 All notable changes to **Materia** (mod id: `materia`) will be documented in this file.
 
+## 1.0.5 (2026-02-17)
+
+- Fixed multiple **dedicated server** issues in the **1.20.1** port:
+  - Prevented client-only classes from being loaded on the server during cannon aiming.
+  - Improved cannon interaction so aiming UI can be opened reliably via server->client packet.
+- Fixed **1.21.1** menu opening crashes for several blocks (kiln/oven/etc.) by updating to the newer `openMenu(..., BlockPos)` flow.
+- Fixed several **recipe parsing** problems and improved **cross-version recipe compatibility** (schema/IDs) so servers start cleanly.
+- Moved disruptive **vanilla recipe overrides** into an optional built-in datapack (`materia_vanilla_overrides`) and added safer **compat recipe** helpers in an optional built-in datapack (`materia_compat_recipes`).
+- Added **JEI** support for **oven** recipes (so cooking recipes like `raw_sausage -> sausage` show up).
+- Added throwable **Bomb** item (grenade-like), similar to dynamite, with ignition requirement and a larger explosion than dynamite.
+- Fixed an exploit: **wild vines** (wild wisteria/grapes/hops) no longer drop seeds/fiber on **right-click**; loot is obtained by **breaking** only.
+
 ## 1.0.4 (2026-02-01)
 
 - Added initial **cheese + gut processing** content (first-phase):
