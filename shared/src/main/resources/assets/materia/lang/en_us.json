@@ -834,5 +834,12 @@
     "item.materia.strong_poultice": "Strong Poultice",
     "item.materia.oak_bark": "Oak Bark",
     "item.materia.boiled_bark": "Boiled Bark",
-    "item.materia.wooden_wheel": "Wooden Wheel"
+    "item.materia.wooden_wheel": "Wooden Wheel",
+    "item.materia.batter": "Batter",
+    "item.materia.bronze_boot": "Bronze Boot",
+    "item.materia.gold_boot": "Gold Boot",
+    "item.materia.gold_backpiece": "Gold Backpiece",
+    "item.materia.gold_chestpiece": "Gold Chestpiece",
+    "item.materia.gold_shoulder": "Gold Shoulder",
+    "item.materia.unfired_amphora": "Unfired Amphora"
 }

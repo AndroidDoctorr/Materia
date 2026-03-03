@@ -834,5 +834,12 @@
     "jei.materia.hewing": "Behakken",
     "jei.materia.primitive_crafting": "Primitief Maken",
     "jei.materia.flint_knife": "Vuursteenmes",
-    "item.materia.wooden_wheel": "Houten Wiel"
+    "item.materia.wooden_wheel": "Houten Wiel",
+    "item.materia.batter": "Beslag",
+    "item.materia.bronze_boot": "Bronzen Laars",
+    "item.materia.gold_boot": "Gouden Laars",
+    "item.materia.gold_backpiece": "Gouden Rugstuk",
+    "item.materia.gold_chestpiece": "Gouden Borststuk",
+    "item.materia.gold_shoulder": "Gouden Schouder",
+    "item.materia.unfired_amphora": "Ongebakken Amfora"
 }

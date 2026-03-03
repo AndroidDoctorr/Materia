@@ -2,6 +2,18 @@
 
 All notable changes to **Materia** (mod id: `materia`) will be documented in this file.
 
+## 1.0.6 (2026-03-03)
+
+- Fixed vine crop placement/survival edge cases across versions so seed-planted **wisteria/grape/hops** crop blocks no longer remain as free-floating stage-0 plants near support structures.
+- Fixed **gravel loot regression**: restored **flint** drops while keeping Materia pebble behavior, and added occasional `materia:rock` bonus drops.
+- Fixed **1.18.2 startup crash** related to worldgen registry initialization by correcting configured/placed feature registry keys for that version.
+- Added clearer **metalworking guidance** in docs and JEI:
+  - Anvil inputs must be **hot** (including `/heatmetal` note for testing/creative).
+  - Some recipes consume **multiple units** (for example, 9 ingots -> 1 block).
+  - Added explicit alloy ratio guidance for **bronze** and **brass**.
+- Added missing item translations in `en_us` and `nl_be` for:
+  - `batter`, `bronze_boot`, `gold_boot`, `gold_backpiece`, `gold_chestpiece`, `gold_shoulder`, `unfired_amphora`.
+
 ## 1.0.5 (2026-02-17)
 
 - Fixed multiple **dedicated server** issues in the **1.20.1** port:

@@ -100,16 +100,11 @@ public class GrapeVineBlock extends CropBlock {
 
     @Override
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        // Check if planted on farmland (for initial growth)
+        // Seed-planted crop vines only survive on farmland.
+        // Support structure growth is represented on support block states, not free-standing crop blocks.
         BlockPos belowPos = pos.below();
         BlockState belowState = level.getBlockState(belowPos);
-        
-        if (belowState.getBlock() instanceof FarmBlock) {
-            return true;
-        }
-        
-        // Check if attached to a support structure
-        return hasNearbySupport(level, pos);
+        return belowState.getBlock() instanceof FarmBlock;
     }
 
     private boolean hasNearbySupport(LevelReader level, BlockPos pos) {

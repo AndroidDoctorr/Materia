@@ -25,10 +25,12 @@ import com.torr.materia.recipe.OvenRecipe;
 import com.torr.materia.recipe.StoneAnvilRecipe;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.client.Minecraft;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
@@ -193,6 +195,8 @@ public class materiaJeiPlugin implements IModPlugin {
                 new DryingRackJeiRecipe(List.of(new ItemStack(ModItems.CLEAN_GUT.get())), new ItemStack(ModItems.CORD.get()))
         );
         registration.addRecipes(materiaJeiRecipeTypes.DRYING_RACK, dryingRack);
+
+        registerMetalworkingJeiTips(registration);
     }
 
     @Override
@@ -213,6 +217,40 @@ public class materiaJeiPlugin implements IModPlugin {
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.FRAME_LOOM.get()), materiaJeiRecipeTypes.FRAME_LOOM);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.WATER_POT.get()), materiaJeiRecipeTypes.WATER_POT);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.DRYING_RACK.get()), materiaJeiRecipeTypes.DRYING_RACK);
+    }
+
+    private void registerMetalworkingJeiTips(IRecipeRegistration registration) {
+        registration.addIngredientInfo(
+                List.of(
+                        new ItemStack(ModBlocks.STONE_ANVIL.get()),
+                        new ItemStack(ModBlocks.BRONZE_ANVIL.get()),
+                        new ItemStack(ModBlocks.IRON_ANVIL.get())
+                ),
+                VanillaTypes.ITEM_STACK,
+                Component.literal("Metalworking tip: anvil inputs must be hot."),
+                Component.literal("Creative/testing: use /heatmetal on the held item."),
+                Component.literal("Some recipes consume multiple units (for example, 9 ingots -> 1 metal block).")
+        );
+
+        registration.addIngredientInfo(
+                List.of(
+                        new ItemStack(Items.RAW_COPPER),
+                        new ItemStack(ModItems.TIN_NUGGET.get()),
+                        new ItemStack(ModItems.BRONZE_INGOT.get())
+                ),
+                VanillaTypes.ITEM_STACK,
+                Component.literal("Bronze alloy: 1x raw copper + 1x tin nugget.")
+        );
+
+        registration.addIngredientInfo(
+                List.of(
+                        new ItemStack(Items.RAW_COPPER),
+                        new ItemStack(ModItems.RAW_ZINC.get()),
+                        new ItemStack(ModItems.BRASS_INGOT.get())
+                ),
+                VanillaTypes.ITEM_STACK,
+                Component.literal("Brass alloy: 2x raw copper + 1x raw zinc.")
+        );
     }
 }
 

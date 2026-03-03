@@ -4,6 +4,19 @@ This page explains the “metalworking grammar” used throughout Materia: most 
 
 If you ever feel stuck, open JEI and search the part name (ex: “wire”, “rod”, “drawplate”) and check which anvil category it appears under.
 
+## Metalworking essentials (easy to miss)
+
+- **Metal must be hot to be worked on an anvil.**
+  - Cold metal will not work in anvil recipes.
+  - In normal play, heat metal in a valid heat source.
+  - In Creative/testing, you can force heat with the command: `/heatmetal`.
+- **Anvil recipes may consume multiple units of the same item.**
+  - Example: some recipes use **9 ingots** (such as compressing into a metal block).
+  - Always check JEI input counts, not just item types.
+- **Alloy basics (common confusion):**
+  - **Bronze**: `raw_copper` + `tin_nugget`
+  - **Brass**: `2x raw_copper` + `1x raw_zinc`
+
 Related foundation pages:
 
 - [Kilns](kilns.md) (heat source)
