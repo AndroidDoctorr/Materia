@@ -1,15 +1,3 @@
 {
-    "type": "minecraft:crafting_shapeless",
-    "ingredients": [
-        {
-            "tag": "materia:rough_planks"
-        },
-        {
-            "tag": "materia:all_axes"
-        }
-    ],
-    "result": {
-        "item": "minecraft:stick",
-        "count": 4
-    }
+    "type": "materia:sticks_from_rough_plank"
 }

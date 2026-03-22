@@ -7,6 +7,10 @@
         "materia:smooth_jungle_planks",
         "materia:smooth_acacia_planks",
         {
+            "id": "materia:smooth_cherry_planks",
+            "required": false
+        },
+        {
             "id": "materia:smooth_mangrove_planks",
             "required": false
         },
