@@ -270,7 +270,7 @@ public class ModConfiguredFeatures {
     // Configure rubber tree generation - tall birch/small jungle style
     public static final RegistryObject<ConfiguredFeature<?, ?>> RUBBER_TREE = CONFIGURED_FEATURES.register("rubber_tree",
             () -> new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
-                    BlockStateProvider.simple(ModBlocks.RUBBER_TREE_LOG.get()),  // trunk
+                    BlockStateProvider.simple(ModBlocks.RUBBER_WOOD_LOG.get()),  // trunk
                     new StraightTrunkPlacer(6, 3, 2),                           // base height 6, random 0-3, random 0-2 for top
                     BlockStateProvider.simple(ModBlocks.RUBBER_TREE_LEAVES.get()), // leaves
                     new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), // radius 2, offset 0, height 3

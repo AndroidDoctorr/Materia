@@ -15,8 +15,14 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.server.packs.PackType;
+import net.minecraft.server.packs.repository.Pack;
+import net.minecraft.server.packs.repository.PackSource;
+import net.minecraftforge.resource.PathResourcePack;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.AddPackFindersEvent;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -86,6 +92,8 @@ public class materia
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
         // Register the processIMC method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
+        // Register built-in optional datapacks
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::addPackFinders);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
@@ -102,6 +110,7 @@ public class materia
         
         // Register recipe types during setup event
         event.enqueueWork(() -> {
+            ModRecipes.WATER_POT_TYPE = RecipeType.register(new ResourceLocation(materia.MOD_ID, "water_pot").toString());
             ModRecipes.FIRE_PIT_TYPE = RecipeType.register(new ResourceLocation(materia.MOD_ID, "fire_pit").toString());
             ModRecipes.KILN_TYPE = RecipeType.register(new ResourceLocation(materia.MOD_ID, "kiln").toString());
             ModRecipes.OVEN_TYPE = RecipeType.register(new ResourceLocation(materia.MOD_ID, "oven").toString());
@@ -191,6 +200,34 @@ public class materia
 
     // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
     // Event bus for receiving Registry Events)
+    private void addPackFinders(AddPackFindersEvent event) {
+        if (event.getPackType() == PackType.SERVER_DATA) {
+            registerBuiltinDatapack(event, "materia_vanilla_overrides", "Materia: Vanilla Overrides", true);
+            registerBuiltinDatapack(event, "materia_compat_recipes", "Materia: Compat Recipes", false);
+        }
+    }
+
+    private static void registerBuiltinDatapack(AddPackFindersEvent event, String packName, String displayName, boolean required) {
+        try {
+            java.nio.file.Path packPath = ModList.get()
+                    .getModFileById(MOD_ID).getFile()
+                    .findResource("data", "materia", "datapacks", packName);
+            event.addRepositorySource((consumer, constructor) -> {
+                Pack pack = Pack.create(
+                        "builtin/" + packName,
+                        required,
+                        () -> new PathResourcePack(packName, packPath),
+                        constructor,
+                        Pack.Position.TOP,
+                        PackSource.BUILT_IN
+                );
+                if (pack != null) consumer.accept(pack);
+            });
+        } catch (Exception e) {
+            LOGGER.warn("Could not register built-in datapack '{}': {}", packName, e.getMessage());
+        }
+    }
+
     @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistryEvents
     {

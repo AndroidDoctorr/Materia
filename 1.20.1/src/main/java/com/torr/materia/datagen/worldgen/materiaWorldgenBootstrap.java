@@ -251,7 +251,7 @@ public final class materiaWorldgenBootstrap {
         )));
 
         context.register(RUBBER_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
-                BlockStateProvider.simple(ModBlocks.RUBBER_TREE_LOG.get()),
+                BlockStateProvider.simple(ModBlocks.RUBBER_WOOD_LOG.get()),
                 new StraightTrunkPlacer(6, 3, 2),
                 BlockStateProvider.simple(ModBlocks.RUBBER_TREE_LEAVES.get()),
                 new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),

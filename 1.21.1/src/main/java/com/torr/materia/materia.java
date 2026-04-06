@@ -15,7 +15,17 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.packs.PackType;
+import net.minecraft.server.packs.PathPackResources;
+import net.minecraft.server.packs.repository.Pack;
+import net.minecraft.server.packs.PackLocationInfo;
+import net.minecraft.server.packs.PackSelectionConfig;
+import net.minecraft.server.packs.repository.PackSource;
+import java.util.Optional;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.AddPackFindersEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
@@ -98,6 +108,8 @@ public class materia
         modEventBus.addListener(this::enqueueIMC);
         // Register the processIMC method for modloading
         modEventBus.addListener(this::processIMC);
+        // Register built-in optional datapacks
+        modEventBus.addListener(this::addPackFinders);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
@@ -190,6 +202,32 @@ public class materia
     {
         // Do something when the server starts
         LOGGER.info("HELLO from server starting");
+    }
+
+    private void addPackFinders(AddPackFindersEvent event) {
+        if (event.getPackType() == PackType.SERVER_DATA) {
+            registerBuiltinDatapack(event, "materia_vanilla_overrides", "Materia: Vanilla Overrides", true);
+            registerBuiltinDatapack(event, "materia_compat_recipes", "Materia: Compat Recipes", false);
+        }
+    }
+
+    private static void registerBuiltinDatapack(AddPackFindersEvent event, String packName, String displayName, boolean required) {
+        try {
+            java.nio.file.Path packPath = ModList.get()
+                    .getModFileById(MOD_ID).getFile()
+                    .findResource("data", "materia", "datapacks", packName);
+            Pack pack = Pack.readMetaAndCreate(
+                    new PackLocationInfo("builtin/" + packName, Component.literal(displayName), PackSource.BUILT_IN, Optional.empty()),
+                    new PathPackResources.PathResourcesSupplier(packPath),
+                    PackType.SERVER_DATA,
+                    new PackSelectionConfig(required, Pack.Position.TOP, false)
+            );
+            if (pack != null) {
+                event.addRepositorySource(consumer -> consumer.accept(pack));
+            }
+        } catch (Exception e) {
+            LOGGER.warn("Could not register built-in datapack '{}': {}", packName, e.getMessage());
+        }
     }
 
     // 1.19+ Forge: registration is handled via DeferredRegister, so we don't use RegistryEvent.Register anymore.

@@ -1,5 +1,6 @@
 package com.torr.materia;
 
+import com.torr.materia.recipe.WaterPotRecipe;
 import com.torr.materia.recipe.FlintKnifeRecipe;
 import com.torr.materia.recipe.FlintSpearRecipe;
 import com.torr.materia.recipe.StickFromRoughPlankRecipe;
@@ -60,8 +61,11 @@ public class ModRecipes {
             RECIPE_SERIALIZERS.register("bronze_anvil", () -> new BronzeAnvilRecipe.Serializer());
     public static final RegistryObject<RecipeSerializer<IronAnvilRecipe>> IRON_ANVIL_SERIALIZER =
             RECIPE_SERIALIZERS.register("iron_anvil", () -> new IronAnvilRecipe.Serializer());
-    
+    public static final RegistryObject<RecipeSerializer<WaterPotRecipe>> WATER_POT_SERIALIZER =
+            RECIPE_SERIALIZERS.register("water_pot", () -> new WaterPotRecipe.Serializer());
+
     // Recipe types will be registered during FMLCommonSetupEvent
+    public static RecipeType<WaterPotRecipe> WATER_POT_TYPE;
     public static RecipeType<FirePitRecipe> FIRE_PIT_TYPE;
     public static RecipeType<KilnRecipe> KILN_TYPE;
     public static RecipeType<OvenRecipe> OVEN_TYPE;

@@ -1,9 +1,9 @@
 ## Rubber tree
 
-<img src="../../../shared/src/main/resources/assets/materia/textures/block/rubber_tree_log.png" alt="Rubber tree log (texture)" width="64" height="64">
+<img src="../../../shared/src/main/resources/assets/materia/textures/block/rubber_wood_log.png" alt="Rubber wood log (texture)" width="64" height="64">
 <img src="../../../shared/src/main/resources/assets/materia/textures/block/rubber_tree_leaves.png" alt="Rubber tree leaves (texture)" width="64" height="64">
 <img src="../../../shared/src/main/resources/assets/materia/textures/block/rubber_tree_sapling.png" alt="Rubber tree sapling (texture)" width="64" height="64">
-<img src="../../../shared/src/main/resources/assets/materia/textures/block/tapped_rubber_tree_log.png" alt="Tapped rubber tree log (texture)" width="64" height="64">
+<img src="../../../shared/src/main/resources/assets/materia/textures/block/tapped_rubber_wood_log.png" alt="Tapped rubber wood log (texture)" width="64" height="64">
 
 Rubber trees are a worldgen tree that provides **latex** via the tapping system.
 
@@ -15,14 +15,14 @@ Rubber trees are added to tropical biomes via a biome modifier:
 
 ## Blocks
 
-- Log: `materia:rubber_tree_log`
-  - Loot table: `shared/src/main/resources/data/materia/loot_tables/blocks/rubber_tree_log.json`
+- Log: `materia:rubber_wood_log`
+  - Loot table: `shared/src/main/resources/data/materia/loot_tables/blocks/rubber_wood_log.json`
 - Leaves: `materia:rubber_tree_leaves`
   - Loot table: `shared/src/main/resources/data/materia/loot_tables/blocks/rubber_tree_leaves.json`
 - Sapling: `materia:rubber_tree_sapling`
   - Loot table: `shared/src/main/resources/data/materia/loot_tables/blocks/rubber_tree_sapling.json`
-- Tapped log: `materia:tapped_rubber_tree_log`
-  - Loot table: `shared/src/main/resources/data/materia/loot_tables/blocks/tapped_rubber_tree_log.json`
+- Tapped log: `materia:tapped_rubber_wood_log`
+  - Loot table: `shared/src/main/resources/data/materia/loot_tables/blocks/tapped_rubber_wood_log.json`
 
 ## Getting latex (tapping)
 
@@ -30,7 +30,7 @@ Latex is gathered by right-clicking rubber logs with certain early cutting tools
 
 In 1.18.2, the “tapping” action is implemented directly in the tool items:
 
-- Right-click `materia:rubber_tree_log` with:
+- Right-click `materia:rubber_wood_log` with:
   - `materia:knapped_flint`
   - `materia:flint_knife`
   - `materia:iron_knife`
@@ -38,7 +38,7 @@ In 1.18.2, the “tapping” action is implemented directly in the tool items:
 
 Result:
 
-- The log becomes `materia:tapped_rubber_tree_log` (axis preserved).
+- The log becomes `materia:tapped_rubber_wood_log` (axis preserved).
 - It drops **1–2** `materia:latex`.
 - The tool takes **1 durability** damage and plays a “flint craft” sound.
 
@@ -57,9 +57,9 @@ Full mechanics page:
 
 Rubber logs can be processed in a fire pit:
 
-- Rubber log: `shared/src/main/resources/data/materia/recipes/rubber_tree_log_to_charcoal.json`
+- Rubber log: `shared/src/main/resources/data/materia/recipes/rubber_wood_log_to_charcoal.json`
   - yields `minecraft:charcoal` + `materia:latex`
-- Tapped rubber log: `shared/src/main/resources/data/materia/recipes/tapped_rubber_tree_log_to_charcoal.json`
+- Tapped rubber log: `shared/src/main/resources/data/materia/recipes/tapped_rubber_wood_log_to_charcoal.json`
   - yields `minecraft:charcoal` + `materia:ash`
 
 ## Related

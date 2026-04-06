@@ -2,8 +2,8 @@
   "replace": false,
   "values": [
     "materia:olive_tree_log",
-    "materia:rubber_tree_log",
-    "materia:tapped_rubber_tree_log",
+    "materia:rubber_wood_log",
+    "materia:tapped_rubber_wood_log",
     "materia:sapped_spruce_log"
   ]
 }

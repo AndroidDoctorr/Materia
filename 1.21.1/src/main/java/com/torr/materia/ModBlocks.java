@@ -351,7 +351,7 @@ public class ModBlocks {
         // OTHER BLOCKS
         public static final RegistryObject<Block> SAPPED_SPRUCE_LOG = registerBlock("sapped_spruce_log",
                         () -> new com.torr.materia.block.SappedSpruceLogBlock());
-        public static final RegistryObject<Block> TAPPED_RUBBER_TREE_LOG = registerBlock("tapped_rubber_tree_log",
+        public static final RegistryObject<Block> TAPPED_RUBBER_WOOD_LOG = registerBlock("tapped_rubber_wood_log",
                         () -> new com.torr.materia.block.TappedRubberTreeLogBlock());
 
         // DECORATIVE BLOCKS
@@ -574,7 +574,7 @@ public class ModBlocks {
                                         .sound(SoundType.METAL)));
 
         // Rubber Tree/Wood blocks
-        public static final RegistryObject<Block> RUBBER_TREE_LOG = registerBlock("rubber_tree_log",
+        public static final RegistryObject<Block> RUBBER_WOOD_LOG = registerBlock("rubber_wood_log",
                         () -> new net.minecraft.world.level.block.RotatedPillarBlock(BlockBehaviour.Properties.of()
                                         .strength(2.0f)
                                         .sound(SoundType.WOOD)));

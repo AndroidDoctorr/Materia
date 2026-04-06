@@ -36,12 +36,12 @@ Related blocks:
 
 ## Rubber latex
 
-- Right-click a rubber tree log → becomes a tapped rubber tree log
+- Right-click a rubber wood log → becomes a tapped rubber wood log
 - Drops 1–2 latex
 
 Related blocks:
 
-- `materia:rubber_tree_log` → `materia:tapped_rubber_tree_log`
+- `materia:rubber_wood_log` → `materia:tapped_rubber_wood_log`
 
 See also:
 

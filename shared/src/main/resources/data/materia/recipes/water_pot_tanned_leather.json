@@ -1,0 +1,7 @@
+{
+    "type": "materia:water_pot",
+    "ingredient": { "item": "materia:tanned_leather" },
+    "results": [{ "item": "materia:hardened_leather", "count": 1 }],
+    "cookingtime": 160,
+    "requires_boiling": true
+}

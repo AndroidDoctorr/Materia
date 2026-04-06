@@ -1,0 +1,13 @@
+{
+    "replace": false,
+    "values": [
+        "materia:ochre_carpet",
+        "materia:red_ochre_carpet",
+        "materia:lavender_carpet",
+        "materia:indigo_carpet",
+        "materia:tyrian_purple_carpet",
+        "materia:taupe_carpet",
+        "materia:olive_carpet",
+        "materia:charcoal_gray_carpet"
+    ]
+}

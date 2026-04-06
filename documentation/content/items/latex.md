@@ -8,7 +8,7 @@ Latex is gathered from rubber trees using early cutting tools.
 
 Right-click a **rubber tree log** with a tapping-capable tool:
 
-- rubber tree log → tapped rubber tree log
+- rubber wood log → tapped rubber wood log
 - drops 1–2 latex
 
 More complete reference:
@@ -24,4 +24,4 @@ Latex can be processed in a fire pit:
 
 Also, rubber logs themselves have a fire pit recipe:
 
-- `shared/src/main/resources/data/materia/recipes/rubber_tree_log_to_charcoal.json` (yields charcoal + latex)
+- `shared/src/main/resources/data/materia/recipes/rubber_wood_log_to_charcoal.json` (yields charcoal + latex)

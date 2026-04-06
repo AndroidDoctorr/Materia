@@ -2,6 +2,20 @@
 
 All notable changes to **Materia** (mod id: `materia`) will be documented in this file.
 
+## 1.0.7 (2026-04-05)
+
+- Fixed crafting sticks and smooth planks from rough cherry, mangrove, and nether-based wood planks
+- Fixed orientation of upside-down thatch stairs corners
+- Added missing loot tables for all custom blocks
+- **Cannonball piles** now correctly drop the exact number of cannonballs stored in the pile (1–14), not a fixed 3–5 range (this was always handled in Java; the incorrect loot table that was briefly added has been removed)
+- **Vanilla recipe overrides** are now bundled as built-in datapacks, registered in Forge via `AddPackFindersEvent` on all supported versions (1.18.2, 1.19.2, 1.20.1, 1.21.1):
+  - All 375 `minecraft`-namespace recipe overrides live in the shared `materia_vanilla_overrides` datapack (`data/materia/datapacks/materia_vanilla_overrides/`); each port supplies a matching `pack.mcmeta` (pack format per MC version)
+  - **`materia_vanilla_overrides` is required (on by default)** so progression-gated vanilla crafting applies unless you explicitly disable it (e.g. `/datapack disable "builtin/materia_vanilla_overrides"`)
+  - **`materia_compat_recipes`** (Create / Farmer's Delight compat) is also registered and **optional (off by default)** — enable when those mods are present
+  - Disabling either pack does not strand key Materia items: non-override recipes exist for outputs such as `materia:furnace_kiln`, `materia:blast_furnace_kiln`, and `materia:plain_cake`
+- **Documentation**: `documentation/mod-compatibility-roadmap.md` updated for B1 (override pack layout + registration) and a **dupe loop audit** (B1b: no infinite loops found; a few broken or awkward recipes called out for follow-up)
+
+
 ## 1.0.6 (2026-03-03)
 
 - Fixed vine crop placement/survival edge cases across versions so seed-planted **wisteria/grape/hops** crop blocks no longer remain as free-floating stage-0 plants near support structures.

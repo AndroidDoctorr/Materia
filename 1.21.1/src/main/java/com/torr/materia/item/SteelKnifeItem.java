@@ -57,10 +57,10 @@ public class SteelKnifeItem extends SwordItem {
         }
 
         // Check if we're right-clicking a rubber tree log
-        if (state.is(ModBlocks.RUBBER_TREE_LOG.get())) {
+        if (state.is(ModBlocks.RUBBER_WOOD_LOG.get())) {
             if (!level.isClientSide()) {
                 // Convert to tapped rubber tree log
-                level.setBlock(pos, ModBlocks.TAPPED_RUBBER_TREE_LOG.get().defaultBlockState()
+                level.setBlock(pos, ModBlocks.TAPPED_RUBBER_WOOD_LOG.get().defaultBlockState()
                         .setValue(RotatedPillarBlock.AXIS, state.getValue(RotatedPillarBlock.AXIS)), 3);
                 
                 // Drop 1-2 latex items

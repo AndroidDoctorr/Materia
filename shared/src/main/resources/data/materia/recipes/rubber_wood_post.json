@@ -2,7 +2,7 @@
     "type": "minecraft:crafting_shapeless",
     "ingredients": [
         {
-            "item": "materia:rubber_tree_log"
+            "item": "materia:rubber_wood_log"
         },
         {
             "tag": "materia:all_saws"

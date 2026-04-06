@@ -1,17 +1,18 @@
 package com.torr.materia.blockentity;
 
 import com.torr.materia.ModBlockEntities;
-import com.torr.materia.ModItems;
 import com.torr.materia.ModBlocks;
+import com.torr.materia.ModRecipes;
 import com.torr.materia.WaterPotBlock;
+import com.torr.materia.recipe.WaterPotRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CampfireBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -23,27 +24,16 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nullable;
-import java.util.Random;
+import java.util.Optional;
 
 /**
- * BlockEntity for the Water Pot. Handles boiling detection and simple in-place
- * recipes:
- * - Bone -> Glue
- * - Tanned Leather -> Hardened Leather
- * - Brandaris gland -> Boiled Brandaris Gland
- * - Trunculus gland -> Boiled Trunculus Gland
- * - Haemastoma gland -> Boiled Haemastoma Gland
- * - Oak Bark -> Boiled Bark
- * - Earth -> Clay Ball and Dirt
- * - Paper mixture -> Paper Pulp
+ * BlockEntity for the Water Pot. Handles boiling detection and processes
+ * {@code materia:water_pot} recipes loaded from JSON datapacks.
  */
 public class WaterPotBlockEntity extends BlockEntity {
 
-    private static final int COOK_TIME_TOTAL = 160; // 8 seconds at 20 tps
-
     private int boilTicks;
     private int cookTime;
-    private final Random random = new Random();
     
     // Water level system (0 = empty, 3 = full)
     private int waterLevel = 0; // Start empty by default
@@ -101,62 +91,34 @@ public class WaterPotBlockEntity extends BlockEntity {
             return;
         }
 
-        // Determine whether recipe needs boiling
-        boolean requiresBoiling = input.is(Items.BONE) || input.is(ModItems.TANNED_LEATHER.get()) || 
-                                 input.is(ModItems.MUREX_GLAND_BRANDARIS.get()) ||
-                                 input.is(ModItems.MUREX_GLAND_TRUNCULUS.get()) ||
-                                 input.is(ModItems.MUREX_GLAND_HAEMASTOMA.get()) ||
-                                 input.is(ModItems.OAK_BARK.get());
-        if (requiresBoiling && !isBoiling) {
+        SimpleContainer container = new SimpleContainer(input);
+        Optional<WaterPotRecipe> recipeOpt = level.getRecipeManager()
+                .getRecipeFor(ModRecipes.WATER_POT_TYPE, container, level);
+
+        if (recipeOpt.isEmpty()) {
+            cookTime = 0;
+            return;
+        }
+        WaterPotRecipe recipe = recipeOpt.get();
+
+        if (recipe.requiresBoiling() && !isBoiling) {
+            cookTime = 0;
+            return;
+        }
+        if (input.getCount() < recipe.getIngredientCount()) {
             cookTime = 0;
             return;
         }
 
         cookTime++;
-        if (cookTime < COOK_TIME_TOTAL) {
+        if (cookTime < recipe.getCookingTime()) {
             return;
         }
 
-        if (input.is(Items.BONE)) {
-            // Bone  -> Glue
-            items.extractItem(0, 1, false);
-            spawnOutput(new ItemStack(ModItems.GLUE.get()));
-        } else if (input.is(ModItems.TANNED_LEATHER.get())) {
-            // Leather -> Hardened Leather
-            items.extractItem(0, 1, false);
-            spawnOutput(new ItemStack(ModItems.HARDENED_LEATHER.get()));
-        } else if (input.is(ModItems.MUREX_GLAND_BRANDARIS.get())) {
-            // Brandaris gland -> boiled brandaris gland
-            items.extractItem(0, 1, false);
-            spawnOutput(new ItemStack(ModItems.BOILED_MUREX_GLAND_BRANDARIS.get()));
-        } else if (input.is(ModItems.MUREX_GLAND_TRUNCULUS.get())) {
-            // Trunculus gland -> boiled trunculus gland
-            items.extractItem(0, 1, false);
-            spawnOutput(new ItemStack(ModItems.BOILED_MUREX_GLAND_TRUNCULUS.get()));
-        } else if (input.is(ModItems.MUREX_GLAND_HAEMASTOMA.get())) {
-            // Haemastoma gland -> boiled haemastoma gland
-            items.extractItem(0, 1, false);
-            spawnOutput(new ItemStack(ModItems.BOILED_MUREX_GLAND_HAEMASTOMA.get()));
-        } else if (input.is(ModItems.OAK_BARK.get())) {
-            // Oak bark -> boiled bark
-            items.extractItem(0, 1, false);
-            spawnOutput(new ItemStack(ModItems.BOILED_BARK.get()));
-        } else if (input.is(ModBlocks.EARTH.get().asItem())) {
-            // Need two earth blocks to separate
-            if (input.getCount() < 2) {
-                // Wait until we have two
-                cookTime = 0;
-                return;
-            }
-            items.extractItem(0, 2, false);
-            spawnOutput(new ItemStack(Items.CLAY_BALL, 4));
-            spawnOutput(new ItemStack(Items.DIRT));
-            // Replace water pot with empty pot block
+        items.extractItem(0, recipe.getIngredientCount(), false);
+        recipe.getResults().forEach(this::spawnOutput);
+        if (recipe.consumesWater()) {
             level.setBlock(worldPosition, ModBlocks.POT.get().defaultBlockState(), 3);
-        } else if (input.is(ModItems.PAPER_MIXTURE.get())) {
-            // Paper mixture -> paper pulp
-            items.extractItem(0, 1, false);
-            spawnOutput(new ItemStack(ModItems.PAPER_PULP.get()));
         }
 
         cookTime = 0;

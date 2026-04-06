@@ -120,8 +120,8 @@ public class materiaJeiPlugin implements IModPlugin {
                 new HewingJeiRecipe(Ingredient.of(Items.CRIMSON_STEM), basicAxes, new ItemStack(ModItems.ROUGH_CRIMSON_PLANK.get(), 4)),
                 new HewingJeiRecipe(Ingredient.of(Items.WARPED_STEM), basicAxes, new ItemStack(ModItems.ROUGH_WARPED_PLANK.get(), 4)),
                 new HewingJeiRecipe(Ingredient.of(Items.DARK_OAK_LOG), basicAxes, new ItemStack(ModItems.ROUGH_DARK_OAK_PLANK.get(), 4)),
-                new HewingJeiRecipe(Ingredient.of(ModBlocks.RUBBER_TREE_LOG.get().asItem()), basicAxes, new ItemStack(ModItems.ROUGH_RUBBER_WOOD_PLANK.get(), 4)),
-                new HewingJeiRecipe(Ingredient.of(ModBlocks.TAPPED_RUBBER_TREE_LOG.get().asItem()), basicAxes, new ItemStack(ModItems.ROUGH_RUBBER_WOOD_PLANK.get(), 4)),
+                new HewingJeiRecipe(Ingredient.of(ModBlocks.RUBBER_WOOD_LOG.get().asItem()), basicAxes, new ItemStack(ModItems.ROUGH_RUBBER_WOOD_PLANK.get(), 4)),
+                new HewingJeiRecipe(Ingredient.of(ModBlocks.TAPPED_RUBBER_WOOD_LOG.get().asItem()), basicAxes, new ItemStack(ModItems.ROUGH_RUBBER_WOOD_PLANK.get(), 4)),
                 new HewingJeiRecipe(Ingredient.of(ModBlocks.SAPPED_SPRUCE_LOG.get().asItem()), basicAxes, new ItemStack(ModItems.ROUGH_SPRUCE_PLANK.get(), 4)),
                 new HewingJeiRecipe(Ingredient.of(ModBlocks.OLIVE_TREE_LOG.get().asItem()), basicAxes, new ItemStack(ModItems.ROUGH_OAK_PLANK.get(), 4))
         );

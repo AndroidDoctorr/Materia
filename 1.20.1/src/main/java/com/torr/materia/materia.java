@@ -15,7 +15,14 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.packs.PackType;
+import net.minecraft.server.packs.PathPackResources;
+import net.minecraft.server.packs.repository.Pack;
+import net.minecraft.server.packs.repository.PackSource;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.AddPackFindersEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -95,6 +102,8 @@ public class materia
         modEventBus.addListener(this::enqueueIMC);
         // Register the processIMC method for modloading
         modEventBus.addListener(this::processIMC);
+        // Register built-in optional datapacks
+        modEventBus.addListener(this::addPackFinders);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
@@ -187,6 +196,35 @@ public class materia
     {
         // Do something when the server starts
         LOGGER.info("HELLO from server starting");
+    }
+
+    private void addPackFinders(AddPackFindersEvent event) {
+        if (event.getPackType() == PackType.SERVER_DATA) {
+            registerBuiltinDatapack(event, "materia_vanilla_overrides", "Materia: Vanilla Overrides", true);
+            registerBuiltinDatapack(event, "materia_compat_recipes", "Materia: Compat Recipes", false);
+        }
+    }
+
+    private static void registerBuiltinDatapack(AddPackFindersEvent event, String packName, String displayName, boolean required) {
+        try {
+            java.nio.file.Path packPath = ModList.get()
+                    .getModFileById(MOD_ID).getFile()
+                    .findResource("data", "materia", "datapacks", packName);
+            Pack pack = Pack.readMetaAndCreate(
+                    "builtin/" + packName,
+                    Component.literal(displayName),
+                    required,
+                    id -> new PathPackResources(id, packPath, true),
+                    PackType.SERVER_DATA,
+                    Pack.Position.TOP,
+                    PackSource.BUILT_IN
+            );
+            if (pack != null) {
+                event.addRepositorySource(consumer -> consumer.accept(pack));
+            }
+        } catch (Exception e) {
+            LOGGER.warn("Could not register built-in datapack '{}': {}", packName, e.getMessage());
+        }
     }
 
     // 1.19+ Forge: registration is handled via DeferredRegister, so we don't use RegistryEvent.Register anymore.

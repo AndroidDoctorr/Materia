@@ -1,0 +1,7 @@
+{
+    "type": "materia:water_pot",
+    "ingredient": { "item": "materia:paper_mixture" },
+    "results": [{ "item": "materia:paper_pulp", "count": 1 }],
+    "cookingtime": 160,
+    "requires_boiling": false
+}

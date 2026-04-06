@@ -104,7 +104,7 @@ public class WildHopsVineFeature extends Feature<NoneFeatureConfiguration> {
                 state.is(Blocks.STRIPPED_CRIMSON_HYPHAE) ||
                 state.is(Blocks.STRIPPED_WARPED_HYPHAE) ||
                 state.is(Blocks.DARK_OAK_LOG) ||
-                state.is(ModBlocks.RUBBER_TREE_LOG.get()) ||
+                state.is(ModBlocks.RUBBER_WOOD_LOG.get()) ||
                 state.is(ModBlocks.OLIVE_TREE_LOG.get());
     }
 }

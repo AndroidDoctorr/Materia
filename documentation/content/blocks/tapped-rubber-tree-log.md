@@ -1,12 +1,12 @@
-## Tapped rubber tree log
+## Tapped rubber wood log
 
-<img src="../../../shared/src/main/resources/assets/materia/textures/block/tapped_rubber_tree_log.png" alt="Tapped rubber tree log (texture)" width="128" height="128">
+<img src="../../../shared/src/main/resources/assets/materia/textures/block/tapped_rubber_wood_log.png" alt="Tapped rubber wood log (texture)" width="128" height="128">
 
-`materia:tapped_rubber_tree_log` is the “spent” form of a rubber log after it has been tapped for latex.
+`materia:tapped_rubber_wood_log` is the "spent" form of a rubber log after it has been tapped for latex.
 
 ## How you get it
 
-Right-click `materia:rubber_tree_log` with one of the tapping-capable tools:
+Right-click `materia:rubber_wood_log` with one of the tapping-capable tools:
 
 - `materia:knapped_flint`
 - `materia:flint_knife`
@@ -26,7 +26,7 @@ Source of truth (1.18.2):
 
 Tapped rubber logs can be processed in a fire pit:
 
-- `shared/src/main/resources/data/materia/recipes/tapped_rubber_tree_log_to_charcoal.json`
+- `shared/src/main/resources/data/materia/recipes/tapped_rubber_wood_log_to_charcoal.json`
 
 This yields:
 
@@ -38,4 +38,3 @@ This yields:
 - [Rubber tree](rubber-tree.md)
 - [Tapping (sap and latex)](../../mechanics/tapping.md)
 - [Latex](../items/latex.md)
-

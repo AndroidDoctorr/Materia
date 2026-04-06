@@ -42,7 +42,7 @@
     "trunk_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "materia:rubber_tree_log",
+        "Name": "materia:rubber_wood_log",
         "Properties": {
           "axis": "y"
         }
