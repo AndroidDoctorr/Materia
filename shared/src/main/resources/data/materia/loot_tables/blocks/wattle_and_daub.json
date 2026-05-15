@@ -2,8 +2,8 @@
     "type": "minecraft:block",
     "pools": [
         {
-            "name": "wattle_and_daub_pool",
-            "rolls": 2,
+            "name": "earth_pool",
+            "rolls": 1,
             "entries": [
                 {
                     "type": "minecraft:item",
@@ -13,6 +13,39 @@
             "conditions": [
                 {
                     "condition": "minecraft:survives_explosion"
+                },
+                {
+                    "condition": "minecraft:random_chance",
+                    "chance": 0.5
+                }
+            ]
+        },
+        {
+            "name": "stick_scrap_pool",
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:stick",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1.0,
+                                "max": 2.0
+                            }
+                        }
+                    ]
+                }
+            ],
+            "conditions": [
+                {
+                    "condition": "minecraft:survives_explosion"
+                },
+                {
+                    "condition": "minecraft:random_chance",
+                    "chance": 0.35
                 }
             ]
         }

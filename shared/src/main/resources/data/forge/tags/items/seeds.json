@@ -7,6 +7,14 @@
     "materia:flax_seeds",
     "materia:pepper_seeds",
     "materia:beans",
-    "materia:corn"
+    "materia:corn",
+    {
+      "id": "immersiveengineering:hemp_seed",
+      "required": false
+    },
+    {
+      "id": "#pamhc2crops:seeds",
+      "required": false
+    }
   ]
 }

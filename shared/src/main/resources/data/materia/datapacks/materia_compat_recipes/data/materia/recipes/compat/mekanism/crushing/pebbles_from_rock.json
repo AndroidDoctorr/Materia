@@ -1,0 +1,26 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "mekanism"
+        }
+      ],
+      "recipe": {
+        "type": "mekanism:crushing",
+        "input": {
+          "ingredient": {
+            "item": "materia:rock"
+          },
+          "amount": 1
+        },
+        "output": {
+          "item": "materia:pebble",
+          "count": 2
+        }
+      }
+    }
+  ]
+}

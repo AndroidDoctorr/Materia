@@ -1,0 +1,26 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "mekanism"
+        }
+      ],
+      "recipe": {
+        "type": "mekanism:crushing",
+        "input": {
+          "ingredient": {
+            "item": "materia:plant_fiber"
+          },
+          "amount": 4
+        },
+        "output": {
+          "item": "materia:taupe_string",
+          "count": 1
+        }
+      }
+    }
+  ]
+}

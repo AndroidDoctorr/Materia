@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "create"
+        }
+      ],
+      "recipe": {
+        "type": "create:mixing",
+        "ingredients": [
+          {
+            "tag": "forge:flour"
+          },
+          {
+            "type": "fluid_stack",
+            "fluid": "minecraft:water",
+            "amount": 250
+          }
+        ],
+        "results": [
+          {
+            "id": "materia:dough",
+            "count": 1
+          }
+        ]
+      }
+    }
+  ]
+}

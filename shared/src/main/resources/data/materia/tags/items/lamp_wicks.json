@@ -2,6 +2,6 @@
     "replace": false,
     "values": [
         "#materia:strings",
-        "materia:plant_fiber"
+        "#forge:fibers"
     ]
 }

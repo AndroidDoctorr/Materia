@@ -2,13 +2,13 @@
     "type": "minecraft:crafting_shapeless",
     "ingredients": [
         {
-            "item": "materia:plant_fiber"
+            "tag": "forge:fibers"
         },
         {
-            "item": "materia:plant_fiber"
+            "tag": "forge:fibers"
         },
         {
-            "item": "materia:plant_fiber"
+            "tag": "forge:fibers"
         }
     ],
     "result": {

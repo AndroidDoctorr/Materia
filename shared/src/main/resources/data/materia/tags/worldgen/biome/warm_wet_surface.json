@@ -6,7 +6,11 @@
     "minecraft:bamboo_jungle",
     "minecraft:savanna",
     "minecraft:savanna_plateau",
-    "minecraft:mangrove_swamp"
+    "minecraft:mangrove_swamp",
+    "#minecraft:is_jungle",
+    "#minecraft:is_savanna",
+    {"id": "#forge:is_dense_jungle", "required": false},
+    {"id": "#forge:is_sparse_jungle", "required": false}
   ]
 }
 

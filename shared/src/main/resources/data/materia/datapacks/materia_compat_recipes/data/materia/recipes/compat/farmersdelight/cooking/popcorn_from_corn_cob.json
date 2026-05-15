@@ -1,0 +1,27 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "farmersdelight"
+        }
+      ],
+      "recipe": {
+        "type": "farmersdelight:cooking",
+        "recipe_book_tab": "misc",
+        "ingredients": [
+          {
+            "item": "materia:corn_cob"
+          }
+        ],
+        "result": {
+          "item": "materia:popcorn"
+        },
+        "experience": 0.0,
+        "cookingtime": 300
+      }
+    }
+  ]
+}

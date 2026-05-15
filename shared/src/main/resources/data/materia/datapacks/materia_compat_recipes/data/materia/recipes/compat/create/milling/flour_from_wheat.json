@@ -1,0 +1,28 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "create"
+        }
+      ],
+      "recipe": {
+        "type": "create:milling",
+        "ingredients": [
+          {
+            "item": "minecraft:wheat"
+          }
+        ],
+        "results": [
+          {
+            "item": "materia:flour",
+            "count": 1
+          }
+        ],
+        "processingTime": 50
+      }
+    }
+  ]
+}

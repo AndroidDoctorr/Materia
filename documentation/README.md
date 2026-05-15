@@ -38,6 +38,11 @@ Materia is licensed under the **MIT License**. See [`../LICENSE`](../LICENSE).
   - [Fire pit](mechanics/fire-pit.md)
   - [Knapping](mechanics/knapping.md)
   - [Tapping](mechanics/tapping.md)
+- **Mod compatibility**
+  - [Roadmap & checklist](mod-compatibility-roadmap.md)
+  - [Optional compat recipes (`materia_compat_recipes`)](mod-compat-recipes.md)
+  - [Fluids & pipes (IFluidHandler)](fluid-pipe-compat.md)
+  - [Release testing (1.1.x)](testing-1.1.md)
 - **Reference**
   - [Minecraft version support & branches](reference/VERSIONS.md)
   - [Version differences (parity tracker)](reference/VERSION_DIFFERENCES.md)

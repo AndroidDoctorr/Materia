@@ -1,9 +1,6 @@
 package com.torr.materia.block;
 
-import com.torr.materia.ModBlocks;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -11,7 +8,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BedBlock;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BedPart;
@@ -78,51 +74,7 @@ public class BedrollBlock extends BedBlock {
             return InteractionResult.FAIL;
         }
 
-        // Sleep succeeded - schedule delayed dawn and cleanup using a simple timer
-        if (level instanceof ServerLevel serverLevel) {
-            new Thread(() -> {
-                try {
-                    Thread.sleep(5000); // 5 second delay
-                    
-                    // Execute on server thread
-                    serverLevel.getServer().execute(() -> {
-                        // Advance time to dawn
-                        long currentTime = serverLevel.getDayTime();
-                        long timeToMorning = 24000 - (currentTime % 24000);
-                        if (timeToMorning > 12000) timeToMorning = 24000 - timeToMorning;
-                        serverLevel.setDayTime(currentTime + timeToMorning);
-                        
-                        // Remove both bedroll blocks - calculate both positions correctly
-                        Direction facing = state.getValue(FACING);
-                        final BlockPos finalHeadPos;
-                        final BlockPos finalFootPos;
-                        if (part == BedPart.HEAD) {
-                            // If we clicked the head, foot is in the opposite direction of facing
-                            finalHeadPos = headPos;
-                            finalFootPos = pos.relative(facing.getOpposite());
-                        } else {
-                            // If we clicked the foot, head is in the direction of facing
-                            finalHeadPos = pos.relative(facing);
-                            finalFootPos = pos;
-                        }
-                        
-                        // Force remove both blocks
-                        if (serverLevel.getBlockState(finalHeadPos).is(ModBlocks.BEDROLL.get())) {
-                            serverLevel.setBlock(finalHeadPos, Blocks.AIR.defaultBlockState(), 11);
-                        }
-                        if (serverLevel.getBlockState(finalFootPos).is(ModBlocks.BEDROLL.get())) {
-                            serverLevel.setBlock(finalFootPos, Blocks.AIR.defaultBlockState(), 11);
-                        }
-                        
-                        // Give bedroll back to player
-                        player.getInventory().add(new ItemStack(com.torr.materia.ModItems.BEDROLL.get()));
-                    });
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                }
-            }).start();
-        }
-
+        // Dawn, block removal, and returning the bedroll item are handled only by BedrollSleepHandler
         return InteractionResult.SUCCESS;
     }
 }

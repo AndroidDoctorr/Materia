@@ -1,6 +1,5 @@
 package com.torr.materia.blockentity;
 
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import com.torr.materia.ModBlockEntities;
 import com.torr.materia.menu.AmphoraMenu;
 import net.minecraft.core.BlockPos;
@@ -18,7 +17,9 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
@@ -51,6 +52,7 @@ public class AmphoraBlockEntity extends BaseContainerBlockEntity implements Worl
     
     // Forge capabilities
     private LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.values());
+    private LazyOptional<IFluidHandler> fluidCapability = LazyOptional.of(() -> new AmphoraFluidHandler(this));
 
     public AmphoraBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.AMPHORA_BLOCK_ENTITY.get(), pos, state);
@@ -541,6 +543,9 @@ public class AmphoraBlockEntity extends BaseContainerBlockEntity implements Worl
     // Forge capabilities
     @Override
     public <T> LazyOptional<T> getCapability(Capability<T> cap, @Nullable Direction side) {
+        if (!this.remove && cap == ForgeCapabilities.FLUID_HANDLER && this.storageMode != MODE_SOLID) {
+            return fluidCapability.cast();
+        }
         if (!this.remove && cap == ForgeCapabilities.ITEM_HANDLER && this.storageMode == MODE_SOLID) {
             if (side == null) {
                 return handlers[0].cast();
@@ -557,11 +562,13 @@ public class AmphoraBlockEntity extends BaseContainerBlockEntity implements Worl
         for (LazyOptional<? extends IItemHandler> handler : handlers) {
             handler.invalidate();
         }
+        fluidCapability.invalidate();
     }
 
     @Override
     public void reviveCaps() {
         super.reviveCaps();
         this.handlers = SidedInvWrapper.create(this, Direction.values());
+        this.fluidCapability = LazyOptional.of(() -> new AmphoraFluidHandler(this));
     }
 }

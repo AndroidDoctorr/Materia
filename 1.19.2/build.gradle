@@ -170,6 +170,8 @@ tasks.named('processResources', ProcessResources).configure {
     // Also exclude cherry block recipes/loot tables that are only present in 1.20+.
     exclude('data/materia/recipes/**/*cherry*.json')
     exclude('data/materia/loot_tables/blocks/cherry_*.json')
+    // Same for shared vanilla-override recipes under the embedded datapack path.
+    exclude('data/materia/datapacks/materia_vanilla_overrides/data/minecraft/recipes/cherry_*.json')
     var replaceProperties = [
             minecraft_version: minecraft_version, minecraft_version_range: minecraft_version_range,
             forge_version: forge_version, forge_version_range: forge_version_range,

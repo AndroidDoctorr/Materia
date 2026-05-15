@@ -1,0 +1,31 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "farmersdelight"
+        }
+      ],
+      "recipe": {
+        "type": "farmersdelight:cutting",
+        "ingredients": [
+          {
+            "item": "materia:plant_fiber"
+          }
+        ],
+        "tool": {
+          "tag": "forge:tools/knives"
+        },
+        "result": [
+          {
+            "item": "materia:taupe_string",
+            "count": 1,
+            "chance": 0.34
+          }
+        ]
+      }
+    }
+  ]
+}

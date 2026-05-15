@@ -18,3 +18,21 @@ Plant fiber is a basic early-game material used for bindings (like lashing).
 ## Used for
 
 - [Lashing](lashing.md)
+- Bundle, paper mixture, lamp wicks (any recipe that asks for `#forge:fibers`)
+
+## Mod compatibility
+
+Materia's core fiber recipes (lashing, bundle, paper mixture) consume the
+`#forge:fibers` tag rather than `materia:plant_fiber` directly, so any other
+mod's fiber item that joins that tag is a drop-in equivalent.
+
+- **Immersive Engineering** — `immersiveengineering:hemp_fiber` is bridged
+  into `#forge:fibers` (and `#forge:fiber`) automatically. Industrial hemp is
+  effectively the same as plant fiber for Materia. No optional datapack or
+  config toggle is needed; the bridge is always-on but the entry is marked
+  `required: false`, so it does nothing if IE is not installed.
+- **Hemp → string** is intentionally **not** added to Materia's compat
+  datapack: IE already ships a `4× hemp_fiber → 1× string` crafting recipe,
+  and `minecraft:string` is already in `#forge:strings`, which Materia accepts
+  via `#materia:strings`. Adding a Materia path would just duplicate IE's
+  conversion (or fight it for `taupe_string`).

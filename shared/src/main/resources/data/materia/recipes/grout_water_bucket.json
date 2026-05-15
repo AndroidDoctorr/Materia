@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:water_bucket"
+        },
+        {
+            "item": "materia:pile_of_sand"
+        },
+        {
+            "item": "materia:ash"
+        },
+        {
+            "tag": "materia:lime"
+        }
+    ],
+    "result": {
+        "item": "materia:grout",
+        "count": 4
+    }
+}

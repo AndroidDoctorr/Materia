@@ -840,5 +840,11 @@
     "item.materia.gold_backpiece": "Gold Backpiece",
     "item.materia.gold_chestpiece": "Gold Chestpiece",
     "item.materia.gold_shoulder": "Gold Shoulder",
-    "item.materia.unfired_amphora": "Unfired Amphora"
+    "item.materia.unfired_amphora": "Unfired Amphora",
+    "fluid_type.materia.wine": "Wine",
+    "fluid_type.materia.grape_juice": "Grape Juice",
+    "fluid_type.materia.olive_oil": "Olive Oil",
+    "fluid_type.materia.vinegar": "Vinegar",
+    "fluid_type.materia.beer": "Beer",
+    "fluid_type.materia.beer_mash": "Beer Mash"
 }

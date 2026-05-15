@@ -7,7 +7,7 @@
     ],
     "key": {
         "F": {
-            "item": "materia:plant_fiber"
+            "tag": "forge:fibers"
         },
         "A": {
             "item": "materia:ash"

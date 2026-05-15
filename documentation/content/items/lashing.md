@@ -10,4 +10,8 @@ A basic binding component used for early tools.
 
 Recipe:
 
-- 3× plant fiber → 1× lashing
+- 3× `#forge:fibers` → 1× lashing
+
+The recipe consumes the `#forge:fibers` tag, so any fiber item registered
+to that tag works — Materia's plant fiber, or Immersive Engineering's
+`hemp_fiber` when IE is installed.

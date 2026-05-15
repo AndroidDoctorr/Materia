@@ -176,6 +176,10 @@ tasks.named('processResources', ProcessResources).configure {
     // so keep any 1.19.2-specific biome modifier + biome tag resources out of the 1.18.2 jar.
     exclude('data/materia/forge/biome_modifier/**')
     exclude('data/materia/tags/worldgen/biome/**')
+    // Shared recipe overrides for mangrove (1.19+) and cherry (1.20+) reference items that
+    // do not exist in 1.18.2, which breaks datapack loading.
+    exclude('data/materia/datapacks/materia_vanilla_overrides/data/minecraft/recipes/mangrove_*.json')
+    exclude('data/materia/datapacks/materia_vanilla_overrides/data/minecraft/recipes/cherry_*.json')
 
     filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
         expand replaceProperties + [project: project]

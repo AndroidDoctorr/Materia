@@ -6,12 +6,19 @@
             "entries": [
                 {
                     "type": "minecraft:item",
+                    "conditions": [
+                        {
+                            "condition": "minecraft:block_state_property",
+                            "block": "materia:bedroll",
+                            "properties": {
+                                "part": "head"
+                            }
+                        },
+                        {
+                            "condition": "minecraft:survives_explosion"
+                        }
+                    ],
                     "name": "materia:bedroll"
-                }
-            ],
-            "conditions": [
-                {
-                    "condition": "minecraft:survives_explosion"
                 }
             ]
         }

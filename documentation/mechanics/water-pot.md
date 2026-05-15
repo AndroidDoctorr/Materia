@@ -10,6 +10,10 @@ The water pot boils when placed above a lit campfire.
 
 Water level ranges from **0 (empty)** to **3 (full)**.
 
+### Automation (pipes / hoppers)
+
+Forge **`IFluidHandler`** (water only) and a **one-slot** item handler are available for pipes and item logistics; level maps to tank contents as in [Fluid and pipe compatibility](../fluid-pipe-compat.md).
+
 You can move water in/out using:
 
 - water cups / crucibles

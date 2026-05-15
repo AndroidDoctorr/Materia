@@ -16,6 +16,7 @@ Inspired by:
 Start here:
 
 - `documentation/README.md`
+- Modpack / cross-mod setup: `documentation/mod-compatibility-roadmap.md` and `documentation/mod-compat-recipes.md` (optional built-in datapack `materia_compat_recipes` for Create, Farmer’s Delight, Mekanism, Immersive Engineering)
 
 ## License
 

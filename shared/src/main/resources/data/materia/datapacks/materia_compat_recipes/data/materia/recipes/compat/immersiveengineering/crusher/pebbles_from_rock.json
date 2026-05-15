@@ -1,0 +1,25 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "immersiveengineering"
+        }
+      ],
+      "recipe": {
+        "type": "immersiveengineering:crusher",
+        "secondaries": [],
+        "energy": 800,
+        "input": {
+          "item": "materia:rock"
+        },
+        "result": {
+          "item": "materia:pebble",
+          "count": 2
+        }
+      }
+    }
+  ]
+}

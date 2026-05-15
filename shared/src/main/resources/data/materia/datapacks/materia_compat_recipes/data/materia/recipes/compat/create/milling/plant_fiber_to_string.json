@@ -1,0 +1,29 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "create"
+        }
+      ],
+      "recipe": {
+        "type": "create:milling",
+        "ingredients": [
+          {
+            "item": "materia:plant_fiber"
+          }
+        ],
+        "results": [
+          {
+            "item": "materia:taupe_string",
+            "count": 1,
+            "chance": 0.34
+          }
+        ],
+        "processingTime": 40
+      }
+    }
+  ]
+}

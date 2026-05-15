@@ -58,6 +58,8 @@ public class materia
         // Server-side tuning toggles for "world-affecting" mechanics (A2)
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, materiaCommonConfig.SPEC);
 
+        ModFluids.register(modEventBus);
+
         // Register the items
         ModItems.ITEMS.register(modEventBus);
         // Register entities

@@ -64,6 +64,8 @@ public class materia
         // Register armor materials (1.21+ registry) before items that reference them.
         com.torr.materia.item.ModArmorMaterials.register(modEventBus);
 
+        ModFluids.register(modEventBus);
+
         // Register the items
         ModItems.ITEMS.register(modEventBus);
         // Register entities

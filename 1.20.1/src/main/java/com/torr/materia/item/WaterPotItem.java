@@ -30,6 +30,16 @@ public class WaterPotItem extends BlockItem {
     }
 
     @Override
+    public boolean hasCraftingRemainingItem(ItemStack stack) {
+        return true;
+    }
+
+    @Override
+    public ItemStack getCraftingRemainingItem(ItemStack stack) {
+        return new ItemStack(ModItems.POT.get());
+    }
+
+    @Override
     public InteractionResult useOn(UseOnContext context) {
         // If player is sneaking, use normal block placement behavior
         if (context.getPlayer().isShiftKeyDown()) {

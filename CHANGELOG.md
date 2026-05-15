@@ -2,6 +2,28 @@
 
 All notable changes to **Materia** (mod id: `materia`) will be documented in this file.
 
+## 1.1.0 (2026-04-05)
+
+- **Optional `materia_compat_recipes` datapack** (`forge:conditional` + `forge:mod_loaded`; no compile-time dependency on other mods)
+  - **Create — milling** (in `shared/`): wheat → `materia:flour`; `materia:corn` → `materia:cornmeal` (×2); chance-based `plant_fiber` → `materia:taupe_string`.
+  - **Create — mixing:** `forge:flour` + water → `materia:dough`; cornmeal + water → `materia:masa_dough`; egg + sugar + flour + water + `forge:milk` → `materia:batter`. **1.18.2–1.20.1** use Create 0.5–style JSON under each port’s `.../compat/create/mixing/`. **1.21.1** uses Create 6–style JSON (`fluid_stack`, `id` results) under `1.21.1/.../compat/create/mixing/` only — mixing files are **not** in `shared/` so Gradle does not merge duplicate paths with 1.21.1 overrides.
+  - **Farmer’s Delight:** cutting-board flour, cornmeal, chance-based fiber → string (knife via `forge:tools/knives`); **cutting** squash → 2× sliced squash; **cooking** corn cob → popcorn.
+  - **Mekanism:** crusher 4× `plant_fiber` → `taupe_string`; `materia:rock` → 2× `materia:pebble`.
+  - **Immersive Engineering:** crusher wheat/corn → flour/cornmeal; no stacked fiber input (IE format); rock → 2× pebble.
+  - Compat JSON for milling and most recipes lives under **`shared/.../materia_compat_recipes/`**; earlier duplicate compat trees under version folders were removed where superseded by `shared/`. Keeping Create mixing out of `shared/` for **1.21.1** also fixes Gradle **`processResources`** duplicate-path errors vs per-port mixing files.
+- **`forge:seeds`:** optional `#pamhc2crops:seeds` entry (`required: false`) for Pam’s packs.
+- **Water pot — `WaterPotBlockEntity`:** **1.20.1** fix — fluid `LazyOptional` + non-final item optional (matches **1.21.1**). **1.19.2** — expose `IFluidHandler` and invalidate the fluid optional (was half-wired).
+- **Documentation:** `documentation/mod-compatibility-roadmap.md` (B2, E), `mod-compat-recipes.md`, `testing-1.1.md`, `reference/VERSION_DIFFERENCES.md` (water pot + Create mixing per port), `fluid-pipe-compat.md` (automation / D3 notes).
+
+## 1.0.8 (2026-04-05)
+
+- **Vanilla override pack (`materia_vanilla_overrides`) — B1b fixes**
+  - **`glass_puck_smelting`:** furnace now smelts `minecraft:glass` → `materia:glass_puck` (recycles glass blocks into pucks). Replaces a broken no-op recipe.
+  - **Raw iron:** removed placeholder recipes that used `minecraft:barrier` as the ingredient for smelting/blasting raw iron; vanilla `raw_iron` → `iron_ingot` recipes apply again.
+  - **Meat and fish (oven):** removed seven `minecraft:`-namespace `materia:oven` recipes that output `materia:ash` for beef/chicken/cod/mutton/porkchop/rabbit/salmon. Vanilla furnace/blast smelting recipe IDs for those items are restored; the Materia oven still uses `oven_*.json` for proper cooking.
+  - Removed matching legacy copies under `1.18.2/` and `1.19.2/` `data/minecraft/recipes/` for the same files.
+- **Documentation:** `documentation/mod-compatibility-roadmap.md` updated to reflect B1b completion.
+
 ## 1.0.7 (2026-04-05)
 
 - Fixed crafting sticks and smooth planks from rough cherry, mangrove, and nether-based wood planks

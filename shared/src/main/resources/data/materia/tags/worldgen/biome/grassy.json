@@ -14,7 +14,12 @@
     "minecraft:windswept_savanna",
     "minecraft:jungle",
     "minecraft:sparse_jungle",
-    "minecraft:bamboo_jungle"
+    "minecraft:bamboo_jungle",
+    "#minecraft:is_forest",
+    "#minecraft:is_savanna",
+    "#minecraft:is_jungle",
+    {"id": "#forge:is_plains", "required": false},
+    {"id": "#forge:is_forest", "required": false}
   ]
 }
 

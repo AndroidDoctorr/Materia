@@ -1,6 +1,5 @@
 package com.torr.materia.blockentity;
 
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import com.torr.materia.ModBlockEntities;
 import com.torr.materia.ModBlocks;
 import com.torr.materia.ModRecipes;
@@ -19,7 +18,9 @@ import net.minecraft.world.level.block.CampfireBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
@@ -40,7 +41,8 @@ public class WaterPotBlockEntity extends BlockEntity {
 
     // Simple 1-slot inventory (input while boiling)
     private final ItemStackHandler items = new ItemStackHandler(1);
-    private final LazyOptional<IItemHandler> itemOptional = LazyOptional.of(() -> items);
+    private LazyOptional<IItemHandler> itemOptional = LazyOptional.of(() -> items);
+    private LazyOptional<IFluidHandler> fluidCapability = LazyOptional.of(() -> new WaterPotFluidHandler(this));
 
     public WaterPotBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.WATER_POT_BLOCK_ENTITY.get(), pos, state);
@@ -182,10 +184,14 @@ public class WaterPotBlockEntity extends BlockEntity {
     public void invalidateCaps() {
         super.invalidateCaps();
         itemOptional.invalidate();
+        fluidCapability.invalidate();
     }
 
     @Override
     public <T> LazyOptional<T> getCapability(Capability<T> cap, @Nullable net.minecraft.core.Direction side) {
+        if (cap == ForgeCapabilities.FLUID_HANDLER) {
+            return fluidCapability.cast();
+        }
         if (cap == ForgeCapabilities.ITEM_HANDLER) {
             return itemOptional.cast();
         }
@@ -233,6 +239,13 @@ public class WaterPotBlockEntity extends BlockEntity {
     @Override
     public void handleUpdateTag(CompoundTag tag) {
         load(tag);
+    }
+
+    @Override
+    public void reviveCaps() {
+        super.reviveCaps();
+        itemOptional = LazyOptional.of(() -> items);
+        fluidCapability = LazyOptional.of(() -> new WaterPotFluidHandler(this));
     }
     
     @Override

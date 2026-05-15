@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "tag": "forge:flour"
+        },
+        {
+            "tag": "forge:flour"
+        },
+        {
+            "tag": "forge:flour"
+        },
+        {
+            "tag": "forge:flour"
+        },
+        {
+            "item": "materia:water_pot"
+        }
+    ],
+    "result": {
+        "item": "materia:dough",
+        "count": 4
+    }
+}

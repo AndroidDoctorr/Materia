@@ -1,0 +1,48 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:water_pot"
+        },
+        {
+            "item": "materia:pile_of_sand"
+        },
+        {
+            "item": "materia:pile_of_sand"
+        },
+        {
+            "item": "materia:pile_of_sand"
+        },
+        {
+            "item": "materia:pile_of_sand"
+        },
+        {
+            "item": "materia:ash"
+        },
+        {
+            "item": "materia:ash"
+        },
+        {
+            "item": "materia:ash"
+        },
+        {
+            "item": "materia:ash"
+        },
+        {
+            "tag": "materia:lime"
+        },
+        {
+            "tag": "materia:lime"
+        },
+        {
+            "tag": "materia:lime"
+        },
+        {
+            "tag": "materia:lime"
+        }
+    ],
+    "result": {
+        "item": "materia:grout",
+        "count": 16
+    }
+}

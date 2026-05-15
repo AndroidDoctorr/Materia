@@ -3,6 +3,7 @@ package com.torr.materia.events;
 import com.torr.materia.ModBlocks;
 import com.torr.materia.materia;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -118,23 +119,22 @@ public class BedrollSleepHandler {
         }
 
         BedPart part = state.getValue(BedBlock.PART);
-        if (part == BedPart.HEAD) {
-            BlockPos footPos = headOrFoot.relative(state.getValue(BedBlock.FACING).getOpposite());
-            level.setBlock(headOrFoot, net.minecraft.world.level.block.Blocks.AIR.defaultBlockState(), 11);
-            level.setBlock(footPos, net.minecraft.world.level.block.Blocks.AIR.defaultBlockState(), 11);
-        } else {
-            BlockPos headPos = headOrFoot.relative(state.getValue(BedBlock.FACING));
-            level.setBlock(headOrFoot, net.minecraft.world.level.block.Blocks.AIR.defaultBlockState(), 11);
-            level.setBlock(headPos, net.minecraft.world.level.block.Blocks.AIR.defaultBlockState(), 11);
-        }
+        Direction facing = state.getValue(BedBlock.FACING);
+        BlockPos headPos = part == BedPart.HEAD ? headOrFoot : headOrFoot.relative(facing);
+        BlockPos footPos = part == BedPart.HEAD ? headOrFoot.relative(facing.getOpposite()) : headOrFoot;
+        level.destroyBlock(headPos, false, null);
+        level.destroyBlock(footPos, false, null);
     }
 
     private static void tryRemoveAdjacent(Level level, BlockPos pos) {
         BlockState state = level.getBlockState(pos);
         if (!state.is(ModBlocks.BEDROLL.get())) return;
+        Direction facing = state.getValue(BedBlock.FACING);
         BlockPos other = state.getValue(BedBlock.PART) == BedPart.HEAD
-                ? pos.relative(state.getValue(BedBlock.FACING).getOpposite())
-                : pos.relative(state.getValue(BedBlock.FACING));
-        level.setBlock(other, net.minecraft.world.level.block.Blocks.AIR.defaultBlockState(), 11);
+                ? pos.relative(facing.getOpposite())
+                : pos.relative(facing);
+        if (level.getBlockState(other).is(ModBlocks.BEDROLL.get())) {
+            level.destroyBlock(other, false, null);
+        }
     }
 }
