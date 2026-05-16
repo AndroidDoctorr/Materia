@@ -148,7 +148,7 @@ public class FrameLoomBlock extends Block implements SimpleWaterloggedBlock, Ent
 
     private Item mapStringToCarpet(Item stringItem) {
         // Natural/vanilla string should produce taupe carpet (white is harder)
-        if (stringItem == Items.STRING) return ModBlocks.TAUPE_CARPET.get().asItem();
+        if (stringItem == Items.STRING || stringItem == ModItems.LASHING.get()) return ModBlocks.TAUPE_CARPET.get().asItem();
 
         // Vanilla colors
         if (stringItem == ModItems.WHITE_STRING.get()) return Items.WHITE_CARPET;

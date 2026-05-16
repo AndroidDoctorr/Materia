@@ -21,7 +21,7 @@ public class NetheriteHammerItem extends PickaxeItem {
 
     public NetheriteHammerItem(Properties properties) {
         // Netherite hammer: highest tier, toughest material
-        super(Tiers.NETHERITE, properties.attributes(DiggerItem.createAttributes(Tiers.NETHERITE, 7.0F, -2.9F)));
+        super(Tiers.NETHERITE, properties.attributes(HammerKnockback.withHammerKnockback(DiggerItem.createAttributes(Tiers.NETHERITE, 7.0F, -2.9F))));
     }
 
     @Override

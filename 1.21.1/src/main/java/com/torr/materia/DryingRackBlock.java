@@ -82,8 +82,9 @@ public class DryingRackBlock extends Block implements EntityBlock {
         boolean hasLeather = !leatherSlot.isEmpty();
         boolean hasMeat = !meatSlot.isEmpty();
         
-        // If player is holding meat and we have leather, or holding leather and we have meat, deny
-        if ((isRawMeat(held) && hasLeather) || (held.is(net.minecraft.world.item.Items.LEATHER) && hasMeat)) {
+        // If player is holding meat or gut and we have leather, or holding leather and slot 2 occupied, deny
+        if ((isRawMeat(held) && hasLeather) || (held.is(ModItems.CLEAN_GUT.get()) && hasLeather)
+                || (held.is(net.minecraft.world.item.Items.LEATHER) && hasMeat)) {
             return InteractionResult.PASS;
         }
         
@@ -132,8 +133,8 @@ public class DryingRackBlock extends Block implements EntityBlock {
         // Handle meat slot (slot 1) - only if no leather
         if (!hasLeather) {
             if (meatSlot.isEmpty() || (meatSlot.getCount() < 2 && meatSlot.is(held.getItem()))) {
-                // insert raw meat for jerky making (up to 2 pieces)
-                if (isRawMeat(held)) {
+                // insert raw meat for jerky or clean gut for cord (up to 2 pieces)
+                if (isRawMeat(held) || held.is(ModItems.CLEAN_GUT.get())) {
                     if (!level.isClientSide) {
                         ItemStack existing = handler.getStackInSlot(1);
                         if (existing.isEmpty()) {

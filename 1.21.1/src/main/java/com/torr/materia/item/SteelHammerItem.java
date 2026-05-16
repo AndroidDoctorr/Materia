@@ -26,7 +26,7 @@ public class SteelHammerItem extends PickaxeItem {
 
     public SteelHammerItem(Properties properties) {
         // Steel hammer: best damage and speed, hardest material holds edge best
-        super(Tiers.DIAMOND, properties.attributes(DiggerItem.createAttributes(Tiers.DIAMOND, 8.0F, -2.7F)));
+        super(Tiers.DIAMOND, properties.attributes(HammerKnockback.withHammerKnockback(DiggerItem.createAttributes(Tiers.DIAMOND, 8.0F, -2.7F))));
     }
 
     @Override

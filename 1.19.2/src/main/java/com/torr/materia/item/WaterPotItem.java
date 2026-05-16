@@ -19,7 +19,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 
@@ -58,6 +57,9 @@ public class WaterPotItem extends BlockItem {
         if (clickedState.getBlock() instanceof com.torr.materia.block.BriningVatBlock) {
             return InteractionResult.PASS;
         }
+        if (clickedState.getBlock() instanceof com.torr.materia.AmphoraBlock) {
+            return InteractionResult.PASS;
+        }
 
         // Try to place water next to the clicked block
         Direction direction = context.getClickedFace();
@@ -68,8 +70,8 @@ public class WaterPotItem extends BlockItem {
         if (level.mayInteract(player, blockpos) && player.mayUseItemAt(blockpos1, direction, itemstack)) {
             BlockState blockstate = level.getBlockState(blockpos1);
 
-            // Try to place water
-            if (blockstate.isAir()) {
+            // Try to place water (into air or promoting flowing WATER to source for infinite wells)
+            if (acceptsPotReleasedWater(blockstate)) {
                 if (level.isClientSide) {
                     return InteractionResult.SUCCESS;
                 } else {
@@ -98,6 +100,13 @@ public class WaterPotItem extends BlockItem {
         return InteractionResult.PASS;
     }
 
+    private static boolean acceptsPotReleasedWater(BlockState state) {
+        if (state.isAir()) {
+            return true;
+        }
+        return state.is(Blocks.WATER) && !state.getFluidState().isSource();
+    }
+
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack itemstack = player.getItemInHand(hand);
@@ -113,13 +122,17 @@ public class WaterPotItem extends BlockItem {
         if (blockhitresult.getType() == HitResult.Type.BLOCK) {
             BlockPos blockpos = blockhitresult.getBlockPos();
             Direction direction = blockhitresult.getDirection();
+            BlockState lookedAt = level.getBlockState(blockpos);
+            if (lookedAt.getBlock() instanceof com.torr.materia.AmphoraBlock) {
+                return InteractionResultHolder.pass(itemstack);
+            }
             BlockPos blockpos1 = blockpos.relative(direction);
 
             if (level.mayInteract(player, blockpos) && player.mayUseItemAt(blockpos1, direction, itemstack)) {
                 BlockState blockstate = level.getBlockState(blockpos1);
 
-                // Try to place water
-                if (blockstate.isAir()) {
+                // Try to place water (into air or promoting flowing WATER to source for infinite wells)
+                if (acceptsPotReleasedWater(blockstate)) {
                     if (level.isClientSide) {
                         return InteractionResultHolder.sidedSuccess(itemstack, true);
                     } else {

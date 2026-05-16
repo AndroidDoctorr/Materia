@@ -25,7 +25,7 @@ public class StoneHammerItem extends PickaxeItem {
 
     public StoneHammerItem(Properties properties) {
         // Stone tier, high attack damage (5), slow swing speed (-3.4F)
-        super(Tiers.STONE, properties.attributes(DiggerItem.createAttributes(Tiers.STONE, 5.0F, -3.4F)));
+        super(Tiers.STONE, properties.attributes(HammerKnockback.withHammerKnockback(DiggerItem.createAttributes(Tiers.STONE, 5.0F, -3.4F))));
     }
 
     /* Container behaviour for crafting */

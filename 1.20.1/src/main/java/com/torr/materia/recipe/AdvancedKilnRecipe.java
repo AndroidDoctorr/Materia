@@ -119,12 +119,9 @@ public class AdvancedKilnRecipe implements Recipe<Container> {
         return this.requiresBellows;
     }
 
-    /**
-     * If true, this recipe requires coal coke fuel to run.
-     * Bellows-tier recipes are considered "hot" and require coal coke by default.
-     */
+    /** True only when this recipe asks for coal coke in the fuel slot. */
     public boolean requiresCokeFuel() {
-        return this.requiresCokeFuel || this.requiresBellows;
+        return this.requiresCokeFuel;
     }
 
     @Override

@@ -219,7 +219,7 @@ public class ModConfiguredFeatures {
                         OreConfiguration.target(new BlockMatchTest(Blocks.IRON_ORE), ModBlocks.SURFACE_IRON_ORE.get().defaultBlockState()),
                         OreConfiguration.target(new BlockMatchTest(Blocks.DEEPSLATE_IRON_ORE), ModBlocks.SURFACE_IRON_ORE.get().defaultBlockState())
                 );
-                return new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(targets, 6));
+                return new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(targets, 9));
             });
 
     // Configure ochre clay deposits - replaces clay with ochre (rare)

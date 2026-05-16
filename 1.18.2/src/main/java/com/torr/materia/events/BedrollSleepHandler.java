@@ -73,6 +73,7 @@ public class BedrollSleepHandler {
                 BlockPos headPos = playerToBedrollHead.remove(uuid);
                 if (headPos != null) {
                     removeBedrollAt(serverLevel, headPos);
+                    player.getInventory().add(new net.minecraft.world.item.ItemStack(com.torr.materia.ModItems.BEDROLL.get()));
                 }
             }
             playerSleepDelay.remove(uuid);

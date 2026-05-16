@@ -1,0 +1,14 @@
+{
+    "type": "materia:fire_pit",
+    "ingredient": {
+        "item": "materia:latex"
+    },
+    "results": [
+        {
+            "item": "materia:resin",
+            "count": 2
+        }
+    ],
+    "cookingtime": 280,
+    "experience": 0.06
+}

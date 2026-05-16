@@ -23,7 +23,7 @@ public class DiamondHammerItem extends PickaxeItem {
 
     public DiamondHammerItem(Properties properties) {
         // Diamond hammer: highest tier, toughest material
-        super(Tiers.DIAMOND, properties.attributes(DiggerItem.createAttributes(Tiers.DIAMOND, 7.0F, -2.9F)));
+        super(Tiers.DIAMOND, properties.attributes(HammerKnockback.withHammerKnockback(DiggerItem.createAttributes(Tiers.DIAMOND, 7.0F, -2.9F))));
     }
 
     @Override

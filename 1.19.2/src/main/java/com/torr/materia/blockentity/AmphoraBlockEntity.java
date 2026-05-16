@@ -208,11 +208,12 @@ public class AmphoraBlockEntity extends BaseContainerBlockEntity implements Worl
     // WorldlyContainer implementation for automation
     @Override
     public int[] getSlotsForFace(Direction side) {
-        // Allow automation from all sides for solid storage
-        if (this.storageMode == MODE_SOLID) {
+        // Forge SidedInvWrapper + GUI with side null resolves to handlers[0] (DOWN). Slots must exist for
+        // MODE_EMPTY empty inventory or player insert / shift-click rejects every stack.
+        if (this.storageMode == MODE_SOLID || this.storageMode == MODE_EMPTY) {
             return new int[]{0, 1, 2, 3, 4, 5};
         }
-        return new int[0]; // No automation for empty or liquid mode
+        return new int[0];
     }
 
     @Override
@@ -541,7 +542,8 @@ public class AmphoraBlockEntity extends BaseContainerBlockEntity implements Worl
     // Forge capabilities
     @Override
     public <T> LazyOptional<T> getCapability(Capability<T> cap, @Nullable Direction side) {
-        if (!this.remove && cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && this.storageMode == MODE_SOLID) {
+        if (!this.remove && cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY
+                && (this.storageMode == MODE_SOLID || this.storageMode == MODE_EMPTY)) {
             if (side == null) {
                 return handlers[0].cast();
             } else {

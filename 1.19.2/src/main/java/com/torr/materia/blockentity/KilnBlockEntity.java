@@ -17,7 +17,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -82,6 +81,8 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
     private int fuelTime = 0;
     private int maxFuelTime = 0;
     private boolean burningCoke = false;
+    /** True while burning coal/charcoal/coke/pitch/redstone-burn tier fuel (wood/planks/sticks excluded). */
+    private boolean burningHeavyBloomeryFuel = false;
 
     public KilnBlockEntity(BlockPos pos, BlockState blockState) {
         super(ModBlockEntities.KILN_BLOCK_ENTITY.get(), pos, blockState);
@@ -166,6 +167,7 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
         tag.putInt("kiln.fuel_time", fuelTime);
         tag.putInt("kiln.max_fuel_time", maxFuelTime);
         tag.putBoolean("kiln.burning_coke", burningCoke);
+        tag.putBoolean("kiln.burning_heavy_bloomery", burningHeavyBloomeryFuel);
         super.saveAdditional(tag);
     }
 
@@ -198,6 +200,9 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
         fuelTime = tag.getInt("kiln.fuel_time");
         maxFuelTime = tag.getInt("kiln.max_fuel_time");
         burningCoke = tag.getBoolean("kiln.burning_coke");
+        burningHeavyBloomeryFuel = tag.contains("kiln.burning_heavy_bloomery")
+                ? tag.getBoolean("kiln.burning_heavy_bloomery")
+                : burningCoke;
     }
 
     public void drops() {
@@ -215,11 +220,12 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
         if (level == null) return false;
         // Blast furnace behaves as if chimney is always present
         if (level.getBlockState(worldPosition).getBlock() == ModBlocks.BLAST_FURNACE_KILN.get()) return true;
-        // Furnace-kiln requires a furnace chimney block above it
-        if (level.getBlockState(worldPosition).getBlock() == ModBlocks.FURNACE_KILN.get()) {
-            return hasFurnaceChimney();
-        }
         BlockPos chimneyPos = worldPosition.above();
+        // Furnace-kiln: dedicated furnace chimney or standard kiln chimney above (both stacks count)
+        if (level.getBlockState(worldPosition).getBlock() == ModBlocks.FURNACE_KILN.get()) {
+            BlockState above = level.getBlockState(chimneyPos);
+            return above.is(ModBlocks.FURNACE_CHIMNEY.get()) || above.is(ModBlocks.CHIMNEY.get());
+        }
         return level.getBlockState(chimneyPos).is(ModBlocks.CHIMNEY.get());
     }
 
@@ -246,16 +252,7 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
         return false;
     }
 
-    /**
-     * Check if this furnace has a furnace chimney above it
-     */
-    private boolean hasFurnaceChimney() {
-        if (level == null) return false;
-        // Only furnace-kiln can have furnace chimneys
-        if (level.getBlockState(worldPosition).getBlock() != ModBlocks.FURNACE_KILN.get()) return false;
-        BlockPos chimneyPos = worldPosition.above();
-        return level.getBlockState(chimneyPos).is(ModBlocks.FURNACE_CHIMNEY.get());
-    }
+
 
     /**
      * Check if this is a blast furnace
@@ -272,6 +269,114 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
         if (level == null) return false;
         return level.getBlockState(worldPosition).getBlock() == ModBlocks.FURNACE_KILN.get() ||
                level.getBlockState(worldPosition).getBlock() == ModBlocks.BLAST_FURNACE_KILN.get();
+    }
+
+    /**
+     * Blast furnace; or advanced clay kiln (chimney + bellows); or fire-brick furnace kiln with a chimney stack.
+     */
+    private boolean meetsFurnaceEquivalentHighHeatGate() {
+        if (isBlastFurnace()) return true;
+        if (!isFurnaceType() && getTemperatureTier() >= 3) return true;
+        if (level != null && level.getBlockState(worldPosition).getBlock() == ModBlocks.FURNACE_KILN.get()) {
+            BlockState above = level.getBlockState(worldPosition.above());
+            return above.is(ModBlocks.FURNACE_CHIMNEY.get()) || above.is(ModBlocks.CHIMNEY.get());
+        }
+        return false;
+    }
+
+    private static boolean basicKilnRecipeNeedsHeavyBloomeryFuel(KilnRecipe kilnRecipe) {
+        return kilnRecipe.requiresBellows() && !kilnRecipe.requiresCokeFuel();
+    }
+
+    /**
+     * Furnace kiln + chimney can run wrought/bloom ironing without clay bellows; fire brick clay still requires real bellows.
+     */
+    private static boolean furnaceKilnSkipsClayBellowsForWroughtLine(KilnBlockEntity entity, ItemStack kilnResult) {
+        if (!entity.isFurnaceType() || !entity.meetsFurnaceEquivalentHighHeatGate()) {
+            return false;
+        }
+        Item item = kilnResult.getItem();
+        return item == ModItems.WROUGHT_IRON_INGOT.get() || item == ModItems.WROUGHT_IRON_NUGGET.get();
+    }
+
+    /**
+     * On furnace kiln, charcoal/coal path skips direct wrought outputs in favor of re-heating a bloom slab.
+     */
+    private static boolean skipFurnaceKilnWroughtForBloomReheat(KilnBlockEntity entity, ItemStack kilnPeekResult) {
+        if (!entity.isFurnaceType() || !entity.meetsFurnaceEquivalentHighHeatGate()) {
+            return false;
+        }
+        ItemStack slot0 = entity.itemHandler.getStackInSlot(0);
+        if (slot0.isEmpty() || slot0.getItem() != Items.RAW_IRON) {
+            return false;
+        }
+        Item out = kilnPeekResult.getItem();
+        if (out != ModItems.WROUGHT_IRON_INGOT.get() && out != ModItems.WROUGHT_IRON_NUGGET.get()) {
+            return false;
+        }
+        return !entity.hasCokeFuelAvailableOrBurning();
+    }
+
+    /** Furnace/blast kiln: coke + raw iron at bloomery-grade heat yields vanilla iron ingots instead of wrought. */
+    private static ItemStack coerceFurnaceKilnWroughtMetalOutput(KilnBlockEntity entity, ItemStack kilnRecipeResultCopy) {
+        if (!(entity.isFurnaceType()
+                && entity.meetsFurnaceEquivalentHighHeatGate()
+                && entity.hasCokeFuelAvailableOrBurning())) {
+            return kilnRecipeResultCopy;
+        }
+        ItemStack in = entity.itemHandler.getStackInSlot(0);
+        if (in.isEmpty() || in.getItem() != Items.RAW_IRON) {
+            return kilnRecipeResultCopy;
+        }
+        Item item = kilnRecipeResultCopy.getItem();
+        if (item == ModItems.WROUGHT_IRON_INGOT.get()) {
+            return new ItemStack(Items.IRON_INGOT, kilnRecipeResultCopy.getCount());
+        }
+        if (item == ModItems.WROUGHT_IRON_NUGGET.get()) {
+            int nugs = kilnRecipeResultCopy.getCount();
+            int ingots = nugs / 9;
+            return ingots <= 0 ? kilnRecipeResultCopy : new ItemStack(Items.IRON_INGOT, ingots);
+        }
+        return kilnRecipeResultCopy;
+    }
+
+    private boolean heavyBloomeryFuelAllowsPendingRecipe() {
+        if (fuelTime > 0) {
+            return burningHeavyBloomeryFuel;
+        }
+        ItemStack fuelStack = itemHandler.getStackInSlot(1);
+        return FuelHelper.isHeavyBloomeryKilnFuel(fuelStack);
+    }
+
+    private static boolean furnaceKilnBloomReheatEligible(KilnBlockEntity entity) {
+        if (!entity.isFurnaceType() || !entity.meetsFurnaceEquivalentHighHeatGate()) {
+            return false;
+        }
+        ItemStack slot0 = entity.itemHandler.getStackInSlot(0);
+        if (slot0.isEmpty() || slot0.getItem() != Items.RAW_IRON) {
+            return false;
+        }
+        if (entity.hasCokeFuelAvailableOrBurning()) {
+            return false;
+        }
+        return entity.heavyBloomeryFuelAllowsPendingRecipe();
+    }
+
+    private static boolean kilnAllowsBloomReheatForMetalInput(KilnBlockEntity entity, ItemStack oneItemFromInputSlot) {
+        if (oneItemFromInputSlot.getItem() != Items.RAW_IRON) {
+            return true;
+        }
+        return furnaceKilnBloomReheatEligible(entity);
+    }
+
+    private static boolean kilnAllowsRawIronSmeltingRecipeToWrought(KilnBlockEntity entity, ItemStack smeltResult) {
+        if (smeltResult.getItem() != ModItems.WROUGHT_IRON_INGOT.get()) {
+            return true;
+        }
+        if (entity.itemHandler.getStackInSlot(0).getItem() != Items.RAW_IRON) {
+            return true;
+        }
+        return !entity.isFurnaceType() && entity.meetsFurnaceEquivalentHighHeatGate();
     }
 
     /**
@@ -367,6 +472,7 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
             this.fuelTime = getFuelTime(fuelStack);
             this.maxFuelTime = this.fuelTime;
             this.burningCoke = fuelStack.getItem() == ModItems.COAL_COKE.get();
+            this.burningHeavyBloomeryFuel = FuelHelper.isHeavyBloomeryKilnFuel(fuelStack);
             fuelStack.shrink(1);
         }
     }
@@ -418,10 +524,10 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
                 return; // Can't craft without bellows
             }
             
-            // Special case: Steel smelting (raw iron + coal -> steel) requires furnace chimney or blast furnace
+            // Special case: Steel smelting (raw iron + coal -> steel) requires high-heat kiln or blast furnace
             if (recipe.getResultItem().getItem() == net.minecraft.world.item.Items.IRON_INGOT) {
-                if (!(entity.isBlastFurnace() || entity.hasFurnaceChimney())) {
-                    return; // Steel requires furnace+chimney or blast furnace
+                if (!entity.meetsFurnaceEquivalentHighHeatGate()) {
+                    return;
                 }
             }
 
@@ -484,8 +590,19 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
         if (recipe.isPresent()) {
             KilnRecipe kilnRecipe = recipe.get();
 
-            // Require coal coke for hot recipes
+            ItemStack kilnPeekResult = kilnRecipe.getResultItem();
+            boolean skipLowHeatWroughtClay = kilnPeekResult.getItem() == ModItems.WROUGHT_IRON_INGOT.get()
+                    && !entity.meetsFurnaceEquivalentHighHeatGate();
+            boolean skipFurnaceBloom = skipFurnaceKilnWroughtForBloomReheat(entity, kilnPeekResult);
+
+            if (!skipLowHeatWroughtClay && !skipFurnaceBloom) {
+
+            // Require coal coke only when explicitly requested (bellows alone no longer implies coke)
             if (kilnRecipe.requiresCokeFuel() && !entity.hasCokeFuelAvailableOrBurning()) {
+                return;
+            }
+            // Bellows-tier recipes forbid wood plank/stick tiers; charcoal and coal qualify.
+            if (basicKilnRecipeNeedsHeavyBloomeryFuel(kilnRecipe) && !entity.heavyBloomeryFuelAllowsPendingRecipe()) {
                 return;
             }
 
@@ -498,20 +615,16 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
             if (kilnRecipe.requiresChimney() && !entity.hasChimney()) {
                 return; // Can't craft without chimney
             }
-            // Netherite scrap requires furnace-type high heat (blast furnace, or furnace-kiln with furnace chimney)
+            // Netherite scrap requires blast furnace or furnace-equivalent high heat
             if (kilnRecipe.getResultItem().getItem() == Items.NETHERITE_SCRAP) {
-                boolean allowed = entity.isBlastFurnace() || (entity.isFurnaceType() && entity.hasFurnaceChimney());
-                if (!allowed) return;
-            }
-            // Gate wrought iron ingot to furnace or blast furnace with furnace chimney (for furnace)
-            if (kilnRecipe.getResultItem().getItem() == com.torr.materia.ModItems.WROUGHT_IRON_INGOT.get()) {
-                boolean allowed = entity.isBlastFurnace() || (entity.isFurnaceType() && entity.hasFurnaceChimney());
-                if (!allowed) return;
+                if (!entity.meetsFurnaceEquivalentHighHeatGate()) return;
             }
             
-            // Check if bellows is required and present
+            // Check if bellows is required and present (furnace_kiln + chimney substitutes for wrought line only)
             if (kilnRecipe.requiresBellows() && !entity.hasBellows()) {
-                return; // Can't craft without bellows
+                if (!furnaceKilnSkipsClayBellowsForWroughtLine(entity, kilnPeekResult)) {
+                    return; // Can't craft without bellows
+                }
             }
             
             // Zinc evaporation: in furnace/blast furnace, or advanced kiln (chimney+bellows), raw zinc-only smelt produces nothing
@@ -525,10 +638,13 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
                 }
             }
 
-            ItemStack result = kilnRecipe.getResultItem().copy();
+            ItemStack result = coerceFurnaceKilnWroughtMetalOutput(entity, kilnRecipe.getResultItem().copy());
 
-            // In furnace types, never produce nuggets from kiln recipes; fall through to vanilla smelting instead
-            if (entity.isFurnaceType() && isNuggetItem(result.getItem())) {
+            // In furnace types, never produce kiln nugget recipes except the wrought bloom nugget line
+            boolean skipIronNuggetFurnaceBypass = entity.isFurnaceType()
+                    && isNuggetItem(result.getItem())
+                    && result.getItem() != ModItems.WROUGHT_IRON_NUGGET.get();
+            if (skipIronNuggetFurnaceBypass) {
                 // Do not craft via kiln recipe; allow vanilla smelting below
             } else {
             ItemStack outputSlot = entity.itemHandler.getStackInSlot(2);
@@ -555,6 +671,7 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
                 return; // Do not consume input if output can't accept
             }
             }
+            }
         }
         
         // No kiln recipe found - check vanilla smelting recipes for heatable metals or stone smelting
@@ -571,6 +688,10 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
                 if (!(entity.isFurnaceType() || entity.getTemperatureTier() >= 2)) {
                     return;
                 }
+            }
+
+            if (!kilnAllowsRawIronSmeltingRecipeToWrought(entity, result)) {
+                return;
             }
             
             // Only allow smelting if result is a heatable metal (like glass pucks)
@@ -592,8 +713,8 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
                 }
             }
             
-            // Allow stone smelting for blast furnaces (no chimney needed) or furnaces with furnace chimney
-            if ((entity.isBlastFurnace() || entity.hasFurnaceChimney()) && isStoneSmeltingRecipe(smeltRecipe)) {
+            // Allow stone smelting where high-heat kiln rules apply
+            if (entity.meetsFurnaceEquivalentHighHeatGate() && isStoneSmeltingRecipe(smeltRecipe)) {
                 if (outputSlot.isEmpty()) {
                     entity.itemHandler.extractItem(0, 1, false);
                     entity.itemHandler.setStackInSlot(2, result);
@@ -616,6 +737,9 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
             ItemStack copy = input.copy();
             copy.setCount(1);
             if (copy.is(com.torr.materia.events.HotMetalEventHandler.HEATABLE_METALS)) {
+                if (!kilnAllowsBloomReheatForMetalInput(entity, copy)) {
+                    return;
+                }
                 ItemStack outputSlot = entity.itemHandler.getStackInSlot(2);
                 if (outputSlot.isEmpty()) {
                     entity.itemHandler.setStackInSlot(2, copy);
@@ -671,9 +795,9 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
                 return false; // Can't craft without bellows
             }
             
-            // Special case: Steel smelting requires furnace chimney or blast furnace
+            // Special case: Steel smelting requires high-heat kiln or blast furnace
             if (recipe.getResultItem().getItem() == net.minecraft.world.item.Items.IRON_INGOT) {
-                if (!(entity.isBlastFurnace() || entity.hasFurnaceChimney())) {
+                if (!entity.meetsFurnaceEquivalentHighHeatGate()) {
                     return false;
                 }
             }
@@ -705,8 +829,17 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
             }
             KilnRecipe kilnRecipe = recipe.get();
 
-            // Require coal coke for hot recipes
+            ItemStack kilnPeekResult = kilnRecipe.getResultItem();
+            boolean skipLowHeatWroughtClay = kilnPeekResult.getItem() == ModItems.WROUGHT_IRON_INGOT.get()
+                    && !entity.meetsFurnaceEquivalentHighHeatGate();
+            boolean skipFurnaceBloom = skipFurnaceKilnWroughtForBloomReheat(entity, kilnPeekResult);
+
+            if (!skipLowHeatWroughtClay && !skipFurnaceBloom) {
+
             if (kilnRecipe.requiresCokeFuel() && !entity.hasCokeFuelAvailableOrBurning()) {
+                return false;
+            }
+            if (basicKilnRecipeNeedsHeavyBloomeryFuel(kilnRecipe) && !entity.heavyBloomeryFuelAllowsPendingRecipe()) {
                 return false;
             }
 
@@ -719,24 +852,30 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
             if (kilnRecipe.requiresChimney() && !entity.hasChimney()) {
                 return false; // Can't craft without chimney
             }
-            // Gate wrought iron ingot to furnace with furnace chimney only
-            if (kilnRecipe.getResultItem().getItem() == com.torr.materia.ModItems.WROUGHT_IRON_INGOT.get()) {
-                return entity.isFurnaceType() && entity.hasFurnaceChimney()
-                        && canInsertAmountIntoOutputSlot(kilnRecipe.getResultItem(), entity)
-                        && canInsertItemIntoOutputSlot(kilnRecipe.getResultItem(), entity);
+            if (kilnRecipe.getResultItem().getItem() == Items.NETHERITE_SCRAP) {
+                if (!entity.meetsFurnaceEquivalentHighHeatGate()) {
+                    return false;
+                }
             }
             
-            // Check if bellows is required and present
+            // Check if bellows is required and present (furnace kiln substitutes for wrought line only)
             if (kilnRecipe.requiresBellows() && !entity.hasBellows()) {
-                return false; // Can't craft without bellows
+                if (!furnaceKilnSkipsClayBellowsForWroughtLine(entity, kilnPeekResult)) {
+                    return false; // Can't craft without bellows
+                }
             }
             
-            // In furnace types, never allow kiln nugget recipes (ingots only)
-            if (entity.isFurnaceType() && isNuggetItem(kilnRecipe.getResultItem().getItem())) {
+            // In furnace types, skip generic kiln nugget recipes except wrought bloom nuggets
+            ItemStack insertionPreview = coerceFurnaceKilnWroughtMetalOutput(entity, kilnRecipe.getResultItem().copy());
+            boolean skipIronNuggetFurnaceBypass = entity.isFurnaceType()
+                    && isNuggetItem(insertionPreview.getItem())
+                    && insertionPreview.getItem() != ModItems.WROUGHT_IRON_NUGGET.get();
+            if (skipIronNuggetFurnaceBypass) {
                 // Skip kiln-based nugget results; allow vanilla smelting checks below
             } else {
-                return canInsertAmountIntoOutputSlot(kilnRecipe.getResultItem(), entity)
-                        && canInsertItemIntoOutputSlot(kilnRecipe.getResultItem(), entity);
+                return canInsertAmountIntoOutputSlot(insertionPreview, entity)
+                        && canInsertItemIntoOutputSlot(insertionPreview, entity);
+            }
             }
         }
 
@@ -754,6 +893,10 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
                     return false;
                 }
             }
+
+            if (!kilnAllowsRawIronSmeltingRecipeToWrought(entity, result)) {
+                return false;
+            }
             
             // Allow smelting if result is a heatable metal (like glass pucks)
             if (result.is(com.torr.materia.events.HotMetalEventHandler.HEATABLE_METALS)) {
@@ -761,8 +904,7 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
                         && canInsertItemIntoOutputSlot(result, entity);
             }
             
-            // Allow stone smelting for blast furnaces (no chimney needed) or furnaces with furnace chimney
-            if ((entity.isBlastFurnace() || entity.hasFurnaceChimney()) && isStoneSmeltingRecipe(smeltRecipe)) {
+            if (entity.meetsFurnaceEquivalentHighHeatGate() && isStoneSmeltingRecipe(smeltRecipe)) {
                 return canInsertAmountIntoOutputSlot(result, entity)
                         && canInsertItemIntoOutputSlot(result, entity);
             }
@@ -771,6 +913,11 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
         // No recipe matched: allow re-heating in kiln if input is heatable metal and output can accept
         ItemStack input = entity.itemHandler.getStackInSlot(0);
         if (!input.isEmpty() && !input.isEdible() && input.is(com.torr.materia.events.HotMetalEventHandler.HEATABLE_METALS)) {
+            ItemStack probe = input.copy();
+            probe.setCount(1);
+            if (!kilnAllowsBloomReheatForMetalInput(entity, probe)) {
+                return false;
+            }
             ItemStack outputSlot = entity.itemHandler.getStackInSlot(2);
             return outputSlot.isEmpty() || (outputSlot.getItem() == input.getItem() && outputSlot.getCount() < outputSlot.getMaxStackSize());
         }

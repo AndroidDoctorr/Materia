@@ -2,10 +2,11 @@ package com.torr.materia.item;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
 
 public class HammerStoneItem extends Item {
     public HammerStoneItem(Properties properties) {
-        super(properties);
+        super(properties.attributes(HammerKnockback.withHammerKnockback(ItemAttributeModifiers.EMPTY)));
     }
 
     @Override
@@ -23,4 +24,4 @@ public class HammerStoneItem extends Item {
         }
         return copy;
     }
-} 
+}

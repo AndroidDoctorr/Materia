@@ -20,6 +20,8 @@ public class AmphoraMenu extends AbstractContainerMenu {
     private final AmphoraBlockEntity blockEntity;
     private final Level level;
     private final ContainerLevelAccess access;
+    /** Number of block slots at the start of {@link AbstractContainerMenu#slots} when the item capability is present (6), else 0. */
+    private final int amphoraSlotCount;
     
     // Custom slot that prevents amphorae from being placed
     public static class AmphoraSlot extends SlotItemHandler {
@@ -84,10 +86,7 @@ public class AmphoraMenu extends AbstractContainerMenu {
         this.level = inv.player.level;
         this.access = ContainerLevelAccess.create(level, blockEntity.getBlockPos());
 
-        this.addPlayerInventory(inv);
-        this.addPlayerHotbar(inv);
-
-        // Add amphora slots (3 rows of 2 slots each)
+        int slotsBeforeAmphora = this.slots.size();
         this.blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
             // Top row (slots 0-1)
             this.addSlot(new AmphoraSlot(handler, 0, 71, 17, this.blockEntity));
@@ -101,6 +100,10 @@ public class AmphoraMenu extends AbstractContainerMenu {
             this.addSlot(new AmphoraSlot(handler, 4, 71, 53, this.blockEntity));
             this.addSlot(new AmphoraSlot(handler, 5, 89, 53, this.blockEntity));
         });
+        this.amphoraSlotCount = this.slots.size() - slotsBeforeAmphora;
+
+        this.addPlayerInventory(inv);
+        this.addPlayerHotbar(inv);
     }
 
     @Override
@@ -116,32 +119,29 @@ public class AmphoraMenu extends AbstractContainerMenu {
         // Store original count to detect if anything moved
         int originalCount = sourceStack.getCount();
 
-        // Check if the slot clicked is one of the container slots
-        if (index < 6) {
-            // This is an amphora slot - move to player inventory
-            if (!moveItemStackTo(sourceStack, 6, 42, true)) {
+        int totalSlots = this.slots.size();
+
+        if (this.amphoraSlotCount > 0 && index < this.amphoraSlotCount) {
+            if (!moveItemStackTo(sourceStack, this.amphoraSlotCount, totalSlots, true)) {
                 return ItemStack.EMPTY;
             }
-        } else if (index < 42) {
-            // This is a player inventory slot - try to move to amphora
-            
-            // Pre-validate before attempting move
+        } else if (index >= this.amphoraSlotCount && index < totalSlots) {
             if (sourceStack.getItem() instanceof net.minecraft.world.item.BlockItem blockItem) {
                 if (blockItem.getBlock() instanceof com.torr.materia.AmphoraBlock) {
-                    return ItemStack.EMPTY; // No amphora-in-amphora
+                    return ItemStack.EMPTY;
                 }
             }
-            
-            if (blockEntity.isFermenting() || 
-                blockEntity.getStorageMode() == com.torr.materia.blockentity.AmphoraBlockEntity.MODE_LIQUID) {
-                return ItemStack.EMPTY; // Can't add to fermenting or liquid amphora
+
+            if (this.amphoraSlotCount <= 0 || blockEntity.isFermenting()
+                    || blockEntity.getStorageMode() == AmphoraBlockEntity.MODE_LIQUID) {
+                return ItemStack.EMPTY;
             }
-            
-            if (!moveItemStackTo(sourceStack, 0, 6, false)) {
+
+            if (!moveItemStackTo(sourceStack, 0, this.amphoraSlotCount, false)) {
                 return ItemStack.EMPTY;
             }
         } else {
-            return ItemStack.EMPTY; // Invalid slot
+            return ItemStack.EMPTY;
         }
 
         // Check if anything actually moved

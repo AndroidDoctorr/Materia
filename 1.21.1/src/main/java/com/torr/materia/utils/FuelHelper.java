@@ -22,6 +22,23 @@ public class FuelHelper {
     private static final TagKey<Item> SAPLINGS = ItemTags.SAPLINGS;
     
     /**
+     * Non-woody kiln fuels suited to bellows-boosted heats (coal, charcoal, coke, pitch/tar/redstone blends).
+     * Sticks/planks/saplings are intentionally excluded here.
+     */
+    public static boolean isHeavyBloomeryKilnFuel(ItemStack stack) {
+        if (stack.isEmpty()) {
+            return false;
+        }
+        Item item = stack.getItem();
+        return item == Items.CHARCOAL
+                || item == Items.COAL
+                || item == ModItems.COAL_COKE.get()
+                || item == ModItems.REDSTONE_FUEL.get()
+                || item == ModItems.PITCH.get()
+                || item == ModItems.TAR.get();
+    }
+
+    /**
      * Check if an ItemStack is a valid fuel item
      * @param stack The ItemStack to check
      * @return true if the item can be used as fuel

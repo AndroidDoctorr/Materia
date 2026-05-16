@@ -1,5 +1,11 @@
 package com.torr.materia.item;
 
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import com.torr.materia.ModToolTiers;
 import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.ItemStack;
@@ -22,6 +28,16 @@ public class IronHammerItem extends PickaxeItem {
     public IronHammerItem(Properties properties) {
         // Iron hammer: mid-tier, tougher than bronze
         super(ModToolTiers.WROUGHT_IRON, 7, -2.9F, properties);
+    }
+
+    @Override
+    public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot slot) {
+        Multimap<Attribute, AttributeModifier> multimap = HashMultimap.create(super.getDefaultAttributeModifiers(slot));
+        if (slot == EquipmentSlot.MAINHAND) {
+            multimap.put(Attributes.ATTACK_KNOCKBACK, new AttributeModifier(HammerKnockback.MODIFIER_UUID, "Hammer knockback",
+                    HammerKnockback.AMOUNT, AttributeModifier.Operation.ADDITION));
+        }
+        return multimap;
     }
 
     @Override

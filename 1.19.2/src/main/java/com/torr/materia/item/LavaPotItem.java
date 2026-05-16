@@ -39,6 +39,10 @@ public class LavaPotItem extends BlockItem {
         // Try to place lava next to the clicked block
         Level level = context.getLevel();
         BlockPos blockpos = context.getClickedPos();
+        BlockState clickedState = level.getBlockState(blockpos);
+        if (clickedState.getBlock() instanceof com.torr.materia.AmphoraBlock) {
+            return InteractionResult.PASS;
+        }
         Direction direction = context.getClickedFace();
         BlockPos blockpos1 = blockpos.relative(direction);
         Player player = context.getPlayer();
@@ -92,6 +96,9 @@ public class LavaPotItem extends BlockItem {
         if (blockhitresult.getType() == HitResult.Type.BLOCK) {
             BlockPos blockpos = blockhitresult.getBlockPos();
             Direction direction = blockhitresult.getDirection();
+            if (level.getBlockState(blockpos).getBlock() instanceof com.torr.materia.AmphoraBlock) {
+                return InteractionResultHolder.pass(itemstack);
+            }
             BlockPos blockpos1 = blockpos.relative(direction);
 
             if (level.mayInteract(player, blockpos) && player.mayUseItemAt(blockpos1, direction, itemstack)) {

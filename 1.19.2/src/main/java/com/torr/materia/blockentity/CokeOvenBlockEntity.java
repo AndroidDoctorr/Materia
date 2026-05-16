@@ -243,7 +243,9 @@ public class CokeOvenBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     private static boolean isCokeOvenFuel(ItemStack stack) {
-        return isCokable(stack);
+        if (stack.isEmpty()) return false;
+        Item item = stack.getItem();
+        return item == Items.COAL || item == Items.CHARCOAL;
     }
 }
 

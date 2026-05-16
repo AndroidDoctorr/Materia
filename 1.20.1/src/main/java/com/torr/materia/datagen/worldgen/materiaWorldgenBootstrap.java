@@ -212,7 +212,7 @@ public final class materiaWorldgenBootstrap {
                         OreConfiguration.target(new BlockMatchTest(Blocks.IRON_ORE), ModBlocks.SURFACE_IRON_ORE.get().defaultBlockState()),
                         OreConfiguration.target(new BlockMatchTest(Blocks.DEEPSLATE_IRON_ORE), ModBlocks.SURFACE_IRON_ORE.get().defaultBlockState())
                 ),
-                6
+                9
         )));
 
         context.register(OCHRE_CLAY, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(
@@ -465,9 +465,9 @@ public final class materiaWorldgenBootstrap {
 
         context.register(SURFACE_IRON_ORE_PLACED, new PlacedFeature(configured.getOrThrow(SURFACE_IRON_ORE),
                 List.of(
-                        CountPlacement.of(7),
+                        CountPlacement.of(12),
                         InSquarePlacement.spread(),
-                        HeightRangePlacement.uniform(VerticalAnchor.absolute(60), VerticalAnchor.absolute(120)),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(42), VerticalAnchor.absolute(132)),
                         EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.ONLY_IN_AIR_PREDICATE, 1),
                         BiomeFilter.biome()
                 )));

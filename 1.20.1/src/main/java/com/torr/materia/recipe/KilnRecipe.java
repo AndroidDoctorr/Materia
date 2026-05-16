@@ -82,11 +82,11 @@ public class KilnRecipe implements Recipe<Container> {
     }
 
     /**
-     * If true, this recipe requires coal coke fuel to run.
-     * Bellows-tier recipes are considered "hot" and require coal coke by default.
+     * True only when this recipe asks for coal coke in the fuel slot.
+     * Bellows uses {@link #requiresBellows}; coal or charcoal qualify unless {@code requires_coke_fuel} is set.
      */
     public boolean requiresCokeFuel() {
-        return this.requiresCokeFuel || this.requiresBellows;
+        return this.requiresCokeFuel;
     }
 
     @Override

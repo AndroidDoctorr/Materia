@@ -21,8 +21,9 @@ public class NeedleItem extends Item {
 
     @Override
     public ItemStack getContainerItem(ItemStack stack) {
-        // Return the same item unchanged (needle doesn't take damage)
-        return stack.copy();
+        ItemStack remainder = stack.copy();
+        remainder.setCount(1);
+        return remainder;
     }
 }
 

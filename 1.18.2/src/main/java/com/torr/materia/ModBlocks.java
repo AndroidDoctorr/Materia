@@ -200,7 +200,7 @@ public class ModBlocks {
                         () -> new BasketBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(0.3f)
                                         .sound(SoundType.WOOD).noOcclusion()),
                         (block) -> new com.torr.materia.item.BasketItem(block, 
-                                new Item.Properties().tab(net.minecraft.world.item.CreativeModeTab.TAB_BUILDING_BLOCKS).stacksTo(1)));
+                                new Item.Properties().tab(net.minecraft.world.item.CreativeModeTab.TAB_BUILDING_BLOCKS).stacksTo(4)));
         public static final RegistryObject<Block> OIL_LAMP = registerBlock("oil_lamp",
                         () -> new OilLampBlock(BlockBehaviour.Properties.of(Material.DECORATION)
                                         .strength(0.0f)
@@ -491,7 +491,7 @@ public class ModBlocks {
                                         .sound(SoundType.WOOD).noOcclusion()));
         public static final RegistryObject<Block> THATCH = registerBlock("thatch",
                         () -> new Block(BlockBehaviour.Properties.of(Material.PLANT).strength(0.5f)
-                                        .sound(SoundType.GRASS).noOcclusion()));
+                                        .sound(SoundType.GRASS)));
         public static final RegistryObject<Block> THATCH_SLAB = registerBlock("thatch_slab",
                         () -> new net.minecraft.world.level.block.SlabBlock(
                                 BlockBehaviour.Properties.copy(ModBlocks.THATCH.get())));

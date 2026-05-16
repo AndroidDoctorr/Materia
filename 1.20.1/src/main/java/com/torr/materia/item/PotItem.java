@@ -49,6 +49,11 @@ public class PotItem extends BlockItem {
         Player player = context.getPlayer();
         ItemStack itemstack = context.getItemInHand();
 
+        // Amphorae claim a source fluid via waterlogged state; fluid is decorative, not a scoop source
+        if (blockstate.getBlock() instanceof com.torr.materia.AmphoraBlock) {
+            return InteractionResult.PASS;
+        }
+
         // Check for water source blocks
         if (blockstate.is(Blocks.WATER)
                 || (blockstate.getFluidState().getType() == Fluids.WATER && blockstate.getFluidState().isSource())) {
@@ -123,6 +128,10 @@ public class PotItem extends BlockItem {
 
         BlockPos pos = hitResult.getBlockPos();
         BlockState state = level.getBlockState(pos);
+
+        if (state.getBlock() instanceof com.torr.materia.AmphoraBlock) {
+            return InteractionResultHolder.pass(itemstack);
+        }
 
         // Try to fill with water
         if (state.is(Blocks.WATER)

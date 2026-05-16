@@ -4,10 +4,13 @@ import com.torr.materia.ModBlocks;
 import com.torr.materia.ModItems;
 import com.torr.materia.ModRecipes;
 import com.torr.materia.materia;
+import com.torr.materia.integration.jei.coke_oven.CokeOvenJeiCategory;
+import com.torr.materia.integration.jei.coke_oven.CokeOvenJeiRecipe;
 import com.torr.materia.integration.jei.drying_rack.DryingRackJeiCategory;
 import com.torr.materia.integration.jei.drying_rack.DryingRackJeiRecipe;
 import com.torr.materia.integration.jei.flint_knife.FlintKnifeJeiCategory;
 import com.torr.materia.integration.jei.flint_knife.FlintKnifeJeiRecipe;
+import com.torr.materia.integration.jei.fire_pit.FirePitJeiCategory;
 import com.torr.materia.integration.jei.frame_loom.FrameLoomJeiCategory;
 import com.torr.materia.integration.jei.frame_loom.FrameLoomJeiRecipe;
 import com.torr.materia.integration.jei.hewing.HewingJeiCategory;
@@ -60,6 +63,7 @@ public class materiaJeiPlugin implements IModPlugin {
                 new KilnJeiCategory(guiHelper),
                 new AdvancedKilnJeiCategory(guiHelper),
                 new OvenJeiCategory(guiHelper),
+                new CokeOvenJeiCategory(guiHelper),
                 new StoneAnvilJeiCategory(guiHelper),
                 new BronzeAnvilJeiCategory(guiHelper),
                 new IronAnvilJeiCategory(guiHelper),
@@ -68,7 +72,8 @@ public class materiaJeiPlugin implements IModPlugin {
                 new FlintKnifeJeiCategory(guiHelper),
                 new FrameLoomJeiCategory(guiHelper),
                 new WaterPotJeiCategory(guiHelper),
-                new DryingRackJeiCategory(guiHelper)
+                new DryingRackJeiCategory(guiHelper),
+                new FirePitJeiCategory(guiHelper)
         );
     }
 
@@ -86,9 +91,19 @@ public class materiaJeiPlugin implements IModPlugin {
         List<BronzeAnvilRecipe> bronzeAnvil = recipeManager.getAllRecipesFor(ModRecipes.BRONZE_ANVIL_TYPE.get()).stream().map(RecipeHolder::value).toList();
         List<IronAnvilRecipe> ironAnvil = recipeManager.getAllRecipesFor(ModRecipes.IRON_ANVIL_TYPE.get()).stream().map(RecipeHolder::value).toList();
 
+        registration.addRecipes(materiaJeiRecipeTypes.FIRE_PIT,
+                recipeManager.getAllRecipesFor(ModRecipes.FIRE_PIT_TYPE.get()).stream().map(RecipeHolder::value).toList());
+
         registration.addRecipes(materiaJeiRecipeTypes.KILN, kiln);
         registration.addRecipes(materiaJeiRecipeTypes.ADVANCED_KILN, advancedKiln);
         registration.addRecipes(materiaJeiRecipeTypes.OVEN, oven);
+        ItemStack coalCokeForJei = new ItemStack(ModItems.COAL_COKE.get());
+        Ingredient vanillaCoalOnly = Ingredient.of(Items.COAL);
+        List<CokeOvenJeiRecipe> cokeOvenRecipes = List.of(
+                new CokeOvenJeiRecipe(vanillaCoalOnly, Ingredient.of(Items.COAL), coalCokeForJei),
+                new CokeOvenJeiRecipe(vanillaCoalOnly, Ingredient.of(Items.CHARCOAL), coalCokeForJei)
+        );
+        registration.addRecipes(materiaJeiRecipeTypes.COKE_OVEN, cokeOvenRecipes);
         registration.addRecipes(materiaJeiRecipeTypes.STONE_ANVIL, stoneAnvil);
         registration.addRecipes(materiaJeiRecipeTypes.BRONZE_ANVIL, bronzeAnvil);
         registration.addRecipes(materiaJeiRecipeTypes.IRON_ANVIL, ironAnvil);
@@ -138,6 +153,7 @@ public class materiaJeiPlugin implements IModPlugin {
         // Frame Loom (8x string -> carpet; output depends on string color)
         List<FrameLoomJeiRecipe> frameLoom = List.of(
                 new FrameLoomJeiRecipe(List.of(new ItemStack(Items.STRING, 8)), new ItemStack(ModBlocks.TAUPE_CARPET.get())),
+                new FrameLoomJeiRecipe(List.of(new ItemStack(ModItems.LASHING.get(), 8)), new ItemStack(ModBlocks.TAUPE_CARPET.get())),
 
                 new FrameLoomJeiRecipe(List.of(new ItemStack(ModItems.WHITE_STRING.get(), 8)), new ItemStack(Items.WHITE_CARPET)),
                 new FrameLoomJeiRecipe(List.of(new ItemStack(ModItems.LIGHT_GRAY_STRING.get(), 8)), new ItemStack(Items.LIGHT_GRAY_CARPET)),
@@ -206,6 +222,7 @@ public class materiaJeiPlugin implements IModPlugin {
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.FURNACE_KILN.get()), materiaJeiRecipeTypes.KILN);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.BLAST_FURNACE_KILN.get()), materiaJeiRecipeTypes.ADVANCED_KILN);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.OVEN.get()), materiaJeiRecipeTypes.OVEN);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.COKE_OVEN.get()), materiaJeiRecipeTypes.COKE_OVEN);
 
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.STONE_ANVIL.get()), materiaJeiRecipeTypes.STONE_ANVIL);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.BRONZE_ANVIL.get()), materiaJeiRecipeTypes.BRONZE_ANVIL);
@@ -218,7 +235,7 @@ public class materiaJeiPlugin implements IModPlugin {
 
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.FRAME_LOOM.get()), materiaJeiRecipeTypes.FRAME_LOOM);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.WATER_POT.get()), materiaJeiRecipeTypes.WATER_POT);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.DRYING_RACK.get()), materiaJeiRecipeTypes.DRYING_RACK);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.FIRE_PIT.get()), materiaJeiRecipeTypes.FIRE_PIT);
     }
 
     private void registerMetalworkingJeiTips(IRecipeRegistration registration) {

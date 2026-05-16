@@ -243,9 +243,9 @@ public class ModPlacedFeatures {
     public static final RegistryObject<PlacedFeature> SURFACE_IRON_ORE_PLACED = PLACED_FEATURES.register("surface_iron_ore_placed",
             () -> new PlacedFeature(Holder.direct(ModConfiguredFeatures.SURFACE_IRON_ORE.get()),
                     List.of(
-                            CountPlacement.of(7),
+                            CountPlacement.of(12),
                             InSquarePlacement.spread(),
-                            HeightRangePlacement.uniform(VerticalAnchor.absolute(60), VerticalAnchor.absolute(120)),
+                            HeightRangePlacement.uniform(VerticalAnchor.absolute(42), VerticalAnchor.absolute(132)),
                             EnvironmentScanPlacement.scanningFor(net.minecraft.core.Direction.UP, BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.ONLY_IN_AIR_PREDICATE, 1),
                             BiomeFilter.biome())));
 

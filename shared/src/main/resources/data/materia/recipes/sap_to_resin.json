@@ -1,0 +1,14 @@
+{
+    "type": "materia:fire_pit",
+    "ingredient": {
+        "item": "materia:sap"
+    },
+    "results": [
+        {
+            "item": "materia:resin",
+            "count": 1
+        }
+    ],
+    "cookingtime": 340,
+    "experience": 0.04
+}

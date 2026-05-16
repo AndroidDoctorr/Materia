@@ -24,7 +24,7 @@ public class BronzeHammerItem extends PickaxeItem {
 
     public BronzeHammerItem(Properties properties) {
         // Bronze hammer: bronze-tier mining so it can harvest copper (vanilla) and mod soft ores
-        super(ModToolTiers.BRONZE, properties.attributes(DiggerItem.createAttributes(ModToolTiers.BRONZE, 6.0F, -3.1F)));
+        super(ModToolTiers.BRONZE, properties.attributes(HammerKnockback.withHammerKnockback(DiggerItem.createAttributes(ModToolTiers.BRONZE, 6.0F, -3.1F))));
     }
 
     @Override

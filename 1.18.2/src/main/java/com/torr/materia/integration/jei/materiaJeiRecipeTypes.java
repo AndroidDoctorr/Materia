@@ -12,7 +12,9 @@ import com.torr.materia.recipe.IronAnvilRecipe;
 import com.torr.materia.recipe.KilnRecipe;
 import com.torr.materia.recipe.OvenRecipe;
 import com.torr.materia.recipe.StoneAnvilRecipe;
+import com.torr.materia.integration.jei.coke_oven.CokeOvenJeiRecipe;
 import com.torr.materia.integration.jei.water_pot.WaterPotJeiRecipe;
+import com.torr.materia.recipe.FirePitRecipe;
 import mezz.jei.api.recipe.RecipeType;
 
 public final class materiaJeiRecipeTypes {
@@ -21,6 +23,7 @@ public final class materiaJeiRecipeTypes {
     public static final RecipeType<KilnRecipe> KILN = RecipeType.create(materia.MOD_ID, "kiln", KilnRecipe.class);
     public static final RecipeType<AdvancedKilnRecipe> ADVANCED_KILN = RecipeType.create(materia.MOD_ID, "advanced_kiln", AdvancedKilnRecipe.class);
     public static final RecipeType<OvenRecipe> OVEN = RecipeType.create(materia.MOD_ID, "oven", OvenRecipe.class);
+    public static final RecipeType<CokeOvenJeiRecipe> COKE_OVEN = RecipeType.create(materia.MOD_ID, "coke_oven", CokeOvenJeiRecipe.class);
 
     public static final RecipeType<StoneAnvilRecipe> STONE_ANVIL = RecipeType.create(materia.MOD_ID, "stone_anvil", StoneAnvilRecipe.class);
     public static final RecipeType<BronzeAnvilRecipe> BRONZE_ANVIL = RecipeType.create(materia.MOD_ID, "bronze_anvil", BronzeAnvilRecipe.class);
@@ -34,5 +37,6 @@ public final class materiaJeiRecipeTypes {
     public static final RecipeType<FrameLoomJeiRecipe> FRAME_LOOM = RecipeType.create(materia.MOD_ID, "frame_loom", FrameLoomJeiRecipe.class);
     public static final RecipeType<WaterPotJeiRecipe> WATER_POT = RecipeType.create(materia.MOD_ID, "water_pot", WaterPotJeiRecipe.class);
     public static final RecipeType<DryingRackJeiRecipe> DRYING_RACK = RecipeType.create(materia.MOD_ID, "drying_rack", DryingRackJeiRecipe.class);
+    public static final RecipeType<FirePitRecipe> FIRE_PIT = RecipeType.create(materia.MOD_ID, "fire_pit", FirePitRecipe.class);
 }
 

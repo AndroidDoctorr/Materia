@@ -9,5 +9,7 @@
         "count": 1
     },
     "cookingtime": 1600,
-    "experience": 1.0
+    "experience": 1.0,
+    "requires_chimney": true,
+    "requires_bellows": true
 }

@@ -195,6 +195,19 @@ public class AmphoraBlock extends BaseEntityBlock implements SimpleWaterloggedBl
             return InteractionResult.PASS;
         }
 
+        // Normal empty-hand click: open storage UI before lid / liquid handlers (Forge runs item.useOn before this)
+        if (held.isEmpty() && !player.isShiftKeyDown()) {
+            if (!level.isClientSide()) {
+                if (player instanceof ServerPlayer serverPlayer && amphoraEntity.canAcceptSolidItems()) {
+                    NetworkHooks.openScreen(serverPlayer, createMenuProvider(state, level, pos), pos);
+                } else if (amphoraEntity.getStorageMode() == AmphoraBlockEntity.MODE_LIQUID) {
+                    player.displayClientMessage(Component.translatable("message.materia.amphora.liquid_mode"), true);
+                }
+                return InteractionResult.SUCCESS;
+            }
+            return InteractionResult.sidedSuccess(level.isClientSide());
+        }
+
         // Handle lid interactions first
         InteractionResult lidResult = handleLidInteractions(state, level, pos, player, hand, held, amphoraEntity);
         if (lidResult != InteractionResult.PASS) {
@@ -207,14 +220,13 @@ public class AmphoraBlock extends BaseEntityBlock implements SimpleWaterloggedBl
             return liquidResult;
         }
 
-        // Handle GUI opening for solid storage
+        // Shift + empty (or reopen after failed item routing)
         if (!level.isClientSide()) {
-            // Only open GUI if amphora is in solid storage mode or empty (and held item is empty)
-            if (held.isEmpty() && amphoraEntity.canAcceptSolidItems()) {
-                MenuProvider containerProvider = createMenuProvider(state, level, pos);
-                NetworkHooks.openScreen((ServerPlayer) player, containerProvider, pos);
+            if (held.isEmpty() && player instanceof ServerPlayer serverPlayer && amphoraEntity.canAcceptSolidItems()) {
+                NetworkHooks.openScreen(serverPlayer, createMenuProvider(state, level, pos), pos);
                 return InteractionResult.SUCCESS;
-            } else if (amphoraEntity.getStorageMode() == AmphoraBlockEntity.MODE_LIQUID) {
+            }
+            if (held.isEmpty() && amphoraEntity.getStorageMode() == AmphoraBlockEntity.MODE_LIQUID) {
                 player.displayClientMessage(Component.translatable("message.materia.amphora.liquid_mode"), true);
                 return InteractionResult.SUCCESS;
             }

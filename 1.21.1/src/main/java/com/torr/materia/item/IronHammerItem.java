@@ -23,7 +23,7 @@ public class IronHammerItem extends PickaxeItem {
 
     public IronHammerItem(Properties properties) {
         // Iron hammer: mid-tier, tougher than bronze
-        super(ModToolTiers.WROUGHT_IRON, properties.attributes(DiggerItem.createAttributes(ModToolTiers.WROUGHT_IRON, 7.0F, -2.9F)));
+        super(ModToolTiers.WROUGHT_IRON, properties.attributes(HammerKnockback.withHammerKnockback(DiggerItem.createAttributes(ModToolTiers.WROUGHT_IRON, 7.0F, -2.9F))));
     }
 
     @Override
