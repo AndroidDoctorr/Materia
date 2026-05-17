@@ -2,7 +2,7 @@ diff
 error_logs
 META-INF
 build
-reference
+/reference
 .gradle
 .idea
 .vscode
