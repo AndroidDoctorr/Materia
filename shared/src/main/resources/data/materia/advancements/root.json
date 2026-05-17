@@ -1,0 +1,28 @@
+{
+    "display": {
+        "icon": {
+            "item": "materia:hammer_stone"
+        },
+        "title": {
+            "translate": "advancements.materia.root.title"
+        },
+        "description": {
+            "translate": "advancements.materia.root.description"
+        },
+        "background": "materia:textures/gui/advancements/bg.png",
+        "frame": "challenge",
+        "show_toast": false,
+        "announce_to_chat": false,
+        "hidden": true
+    },
+    "criteria": {
+        "entry": {
+            "trigger": "minecraft:tick"
+        }
+    },
+    "requirements": [
+        [
+            "entry"
+        ]
+    ]
+}

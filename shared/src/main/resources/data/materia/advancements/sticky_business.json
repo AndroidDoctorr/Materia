@@ -1,0 +1,21 @@
+{
+    "parent": "materia:the_secret",
+    "criteria": {
+        "latex": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:latex"], "count": {"min": 1}}]
+            }
+        }
+    },
+    "requirements": [["latex"]],
+    "display": {
+        "icon": {"item": "materia:latex"},
+        "title": {"translate": "advancements.materia.sticky_business.title"},
+        "description": {"translate": "advancements.materia.sticky_business.description"},
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "parent": "materia:the_neolithic",
+    "criteria": {
+        "loom": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:frame_loom"], "count": {"min": 1}}]
+            }
+        }
+    },
+    "requirements": [["loom"]],
+    "display": {
+        "icon": {"item": "materia:frame_loom"},
+        "title": {"translate": "advancements.materia.under_the_warp.title"},
+        "description": {"translate": "advancements.materia.under_the_warp.description"},
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    }
+}

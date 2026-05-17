@@ -1,0 +1,21 @@
+{
+    "parent": "materia:the_secret",
+    "criteria": {
+        "spear": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"tag": "materia:spears", "count": {"min": 1}}]
+            }
+        }
+    },
+    "requirements": [["spear"]],
+    "display": {
+        "icon": {"item": "materia:flint_spear"},
+        "title": {"translate": "advancements.materia.pointed_stick.title"},
+        "description": {"translate": "advancements.materia.pointed_stick.description"},
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    }
+}

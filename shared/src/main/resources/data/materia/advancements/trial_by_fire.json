@@ -1,0 +1,21 @@
+{
+    "parent": "materia:the_neolithic",
+    "criteria": {
+        "kiln_block": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:kiln"], "count": {"min": 1}}]
+            }
+        }
+    },
+    "requirements": [["kiln_block"]],
+    "display": {
+        "icon": {"item": "materia:kiln"},
+        "title": {"translate": "advancements.materia.trial_by_fire.title"},
+        "description": {"translate": "advancements.materia.trial_by_fire.description"},
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    }
+}

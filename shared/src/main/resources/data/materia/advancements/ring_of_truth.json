@@ -1,0 +1,21 @@
+{
+    "parent": "materia:the_neolithic",
+    "criteria": {
+        "anvil": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:stone_anvil"], "count": {"min": 1}}]
+            }
+        }
+    },
+    "requirements": [["anvil"]],
+    "display": {
+        "icon": {"item": "materia:stone_anvil"},
+        "title": {"translate": "advancements.materia.ring_of_truth.title"},
+        "description": {"translate": "advancements.materia.ring_of_truth.description"},
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "parent": "materia:the_neolithic",
+    "criteria": {
+        "dye_story": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"tag": "materia:story_purple_dyewares", "count": {"min": 1}}]
+            }
+        }
+    },
+    "requirements": [["dye_story"]],
+    "display": {
+        "icon": {"item": "minecraft:magenta_dye"},
+        "title": {"translate": "advancements.materia.exclusive_purples.title"},
+        "description": {"translate": "advancements.materia.exclusive_purples.description"},
+        "frame": "goal",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    }
+}

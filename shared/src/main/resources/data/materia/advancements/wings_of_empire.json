@@ -1,0 +1,21 @@
+{
+    "parent": "materia:the_bronze_age",
+    "criteria": {
+        "banner": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:aquila_aurea"], "count": {"min": 1}}]
+            }
+        }
+    },
+    "requirements": [["banner"]],
+    "display": {
+        "icon": {"item": "materia:aquila_aurea"},
+        "title": {"translate": "advancements.materia.wings_of_empire.title"},
+        "description": {"translate": "advancements.materia.wings_of_empire.description"},
+        "frame": "goal",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "parent": "materia:trial_by_fire",
+    "criteria": {
+        "quicklime_item": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:quicklime"], "count": {"min": 1}}]
+            }
+        }
+    },
+    "requirements": [["quicklime_item"]],
+    "display": {
+        "icon": {"item": "materia:quicklime"},
+        "title": {"translate": "advancements.materia.speedy_citrus.title"},
+        "description": {"translate": "advancements.materia.speedy_citrus.description"},
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    }
+}

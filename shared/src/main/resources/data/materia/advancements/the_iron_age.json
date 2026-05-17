@@ -1,0 +1,27 @@
+{
+    "parent": "materia:the_bronze_age",
+    "criteria": {
+        "wrought": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:wrought_iron_ingot"], "count": {"min": 1}}]
+            }
+        },
+        "iron_anvil_block": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:iron_anvil"], "count": {"min": 1}}]
+            }
+        }
+    },
+    "requirements": [["wrought", "iron_anvil_block"]],
+    "display": {
+        "icon": {"item": "materia:wrought_iron_ingot"},
+        "title": {"translate": "advancements.materia.the_iron_age.title"},
+        "description": {"translate": "advancements.materia.the_iron_age.description"},
+        "frame": "goal",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    }
+}

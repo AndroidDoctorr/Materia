@@ -101,8 +101,8 @@ public class ModPlacedFeatures {
     public static final RegistryObject<PlacedFeature> BAUXITE_ORE_BLOB_PLACED = PLACED_FEATURES.register("bauxite_ore_blob_placed",
             () -> new PlacedFeature(Holder.direct(ModConfiguredFeatures.BAUXITE_ORE_BLOB.get()),
                     List.of(
-                            // similar frequency to surface patch so blobs sit beneath
-                            RarityFilter.onAverageOnceEvery(16),
+                            // slightly rarer surface bauxite (aluminum) ore blobs
+                            RarityFilter.onAverageOnceEvery(18),
                             InSquarePlacement.spread(),
                             // near-surface range to keep exposed tops
                             HeightRangePlacement.uniform(VerticalAnchor.absolute(58), VerticalAnchor.absolute(120)),

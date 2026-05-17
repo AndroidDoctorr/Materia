@@ -1,0 +1,27 @@
+{
+    "parent": "materia:the_bronze_age",
+    "criteria": {
+        "hold_water_pot": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:water_pot"], "count": {"min": 1}}]
+            }
+        },
+        "hold_table": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["minecraft:crafting_table"], "count": {"min": 1}}]
+            }
+        }
+    },
+    "requirements": [["hold_water_pot"], ["hold_table"]],
+    "display": {
+        "icon": {"item": "minecraft:crafting_table"},
+        "title": {"translate": "advancements.materia.arts_and_crafts.title"},
+        "description": {"translate": "advancements.materia.arts_and_crafts.description"},
+        "frame": "goal",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    }
+}

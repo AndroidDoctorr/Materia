@@ -1,0 +1,11 @@
+{
+    "replace": false,
+    "values": [
+        "materia:flint_spear",
+        "materia:bronze_spear",
+        "materia:iron_spear",
+        "materia:steel_spear",
+        "materia:diamond_spear",
+        "materia:netherite_spear"
+    ]
+}

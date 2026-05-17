@@ -403,7 +403,7 @@ public final class materiaWorldgenBootstrap {
 
         context.register(BAUXITE_ORE_BLOB_PLACED, new PlacedFeature(configured.getOrThrow(BAUXITE_ORE_BLOB),
                 List.of(
-                        RarityFilter.onAverageOnceEvery(16),
+                        RarityFilter.onAverageOnceEvery(18),
                         InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(58), VerticalAnchor.absolute(120)),
                         BiomeFilter.biome()

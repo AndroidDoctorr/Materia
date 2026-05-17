@@ -1,0 +1,27 @@
+{
+    "parent": "materia:the_iron_age",
+    "criteria": {
+        "coke_piece": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:coal_coke"], "count": {"min": 1}}]
+            }
+        },
+        "built_oven": {
+            "trigger": "minecraft:placed_block",
+            "conditions": {
+                "block": "materia:coke_oven"
+            }
+        }
+    },
+    "requirements": [["coke_piece", "built_oven"]],
+    "display": {
+        "icon": {"item": "materia:coal_coke"},
+        "title": {"translate": "advancements.materia.cooked_carbon.title"},
+        "description": {"translate": "advancements.materia.cooked_carbon.description"},
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    }
+}

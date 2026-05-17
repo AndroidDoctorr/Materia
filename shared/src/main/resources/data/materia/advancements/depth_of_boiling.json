@@ -1,0 +1,21 @@
+{
+    "parent": "materia:the_neolithic",
+    "criteria": {
+        "pot": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:water_pot"], "count": {"min": 1}}]
+            }
+        }
+    },
+    "requirements": [["pot"]],
+    "display": {
+        "icon": {"item": "materia:water_pot"},
+        "title": {"translate": "advancements.materia.depth_of_boiling.title"},
+        "description": {"translate": "advancements.materia.depth_of_boiling.description"},
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    }
+}

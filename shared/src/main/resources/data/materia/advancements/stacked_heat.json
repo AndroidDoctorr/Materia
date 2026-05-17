@@ -1,0 +1,33 @@
+{
+    "parent": "materia:cooked_carbon",
+    "criteria": {
+        "blast": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:blast_furnace_kiln"], "count": {"min": 1}}]
+            }
+        },
+        "furnace_kiln": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:furnace_kiln"], "count": {"min": 1}}]
+            }
+        },
+        "chimney_stack": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:furnace_chimney"], "count": {"min": 1}}]
+            }
+        }
+    },
+    "requirements": [["blast", "furnace_kiln", "chimney_stack"]],
+    "display": {
+        "icon": {"item": "materia:blast_furnace_kiln"},
+        "title": {"translate": "advancements.materia.stacked_heat.title"},
+        "description": {"translate": "advancements.materia.stacked_heat.description"},
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    }
+}

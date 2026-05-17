@@ -1,0 +1,21 @@
+{
+    "parent": "materia:the_secret",
+    "criteria": {
+        "bread": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["minecraft:bread"], "count": {"min": 1}}]
+            }
+        }
+    },
+    "requirements": [["bread"]],
+    "display": {
+        "icon": {"item": "minecraft:bread"},
+        "title": {"translate": "advancements.materia.next_circuses.title"},
+        "description": {"translate": "advancements.materia.next_circuses.description"},
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    }
+}

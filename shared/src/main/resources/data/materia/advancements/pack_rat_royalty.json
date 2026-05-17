@@ -1,0 +1,21 @@
+{
+    "parent": "materia:under_the_warp",
+    "criteria": {
+        "sack": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"tag": "materia:sacks_and_bindles", "count": {"min": 1}}]
+            }
+        }
+    },
+    "requirements": [["sack"]],
+    "display": {
+        "icon": {"item": "materia:taupe_sack"},
+        "title": {"translate": "advancements.materia.pack_rat_royalty.title"},
+        "description": {"translate": "advancements.materia.pack_rat_royalty.description"},
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    }
+}

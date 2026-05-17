@@ -1,0 +1,33 @@
+{
+    "parent": "materia:next_circuses",
+    "criteria": {
+        "corn": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:corn_cob"], "count": {"min": 1}}]
+            }
+        },
+        "squash": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:squash"], "count": {"min": 1}}]
+            }
+        },
+        "beans_harvest": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:beans"], "count": {"min": 1}}]
+            }
+        }
+    },
+    "requirements": [["corn"], ["squash"], ["beans_harvest"]],
+    "display": {
+        "icon": {"item": "materia:squash"},
+        "title": {"translate": "advancements.materia.sister_act.title"},
+        "description": {"translate": "advancements.materia.sister_act.description"},
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    }
+}

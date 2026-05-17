@@ -1,0 +1,21 @@
+{
+    "parent": "materia:depth_of_boiling",
+    "criteria": {
+        "jar": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:amphora"], "count": {"min": 1}}]
+            }
+        }
+    },
+    "requirements": [["jar"]],
+    "display": {
+        "icon": {"item": "materia:amphora"},
+        "title": {"translate": "advancements.materia.jar_theology.title"},
+        "description": {"translate": "advancements.materia.jar_theology.description"},
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    }
+}

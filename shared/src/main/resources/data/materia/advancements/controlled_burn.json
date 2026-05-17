@@ -1,0 +1,21 @@
+{
+    "parent": "materia:the_neolithic",
+    "criteria": {
+        "pit": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:fire_pit"], "count": {"min": 1}}]
+            }
+        }
+    },
+    "requirements": [["pit"]],
+    "display": {
+        "icon": {"item": "materia:fire_pit"},
+        "title": {"translate": "advancements.materia.controlled_burn.title"},
+        "description": {"translate": "advancements.materia.controlled_burn.description"},
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    }
+}

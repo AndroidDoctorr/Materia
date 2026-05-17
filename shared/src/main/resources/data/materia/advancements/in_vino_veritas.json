@@ -1,0 +1,21 @@
+{
+    "parent": "materia:jar_theology",
+    "criteria": {
+        "sip": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:wine_bottle"], "count": {"min": 1}}]
+            }
+        }
+    },
+    "requirements": [["sip"]],
+    "display": {
+        "icon": {"item": "materia:wine_bottle"},
+        "title": {"translate": "advancements.materia.in_vino_veritas.title"},
+        "description": {"translate": "advancements.materia.in_vino_veritas.description"},
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    }
+}

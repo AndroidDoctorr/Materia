@@ -1,0 +1,21 @@
+{
+    "parent": "materia:the_secret",
+    "criteria": {
+        "pct": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:primitive_crafting_table"], "count": {"min": 1}}]
+            }
+        }
+    },
+    "requirements": [["pct"]],
+    "display": {
+        "icon": {"item": "materia:primitive_crafting_table"},
+        "title": {"translate": "advancements.materia.the_neolithic.title"},
+        "description": {"translate": "advancements.materia.the_neolithic.description"},
+        "frame": "goal",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    }
+}

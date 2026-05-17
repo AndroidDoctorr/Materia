@@ -1,0 +1,21 @@
+{
+    "parent": "materia:the_iron_age",
+    "criteria": {
+        "cannon_piece": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:cannon"], "count": {"min": 1}}]
+            }
+        }
+    },
+    "requirements": [["cannon_piece"]],
+    "display": {
+        "icon": {"item": "materia:cannon"},
+        "title": {"translate": "advancements.materia.breach_loader.title"},
+        "description": {"translate": "advancements.materia.breach_loader.description"},
+        "frame": "goal",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    }
+}

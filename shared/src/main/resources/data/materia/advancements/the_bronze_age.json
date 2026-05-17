@@ -1,0 +1,21 @@
+{
+    "parent": "materia:trial_by_fire",
+    "criteria": {
+        "bronze": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:bronze_ingot"], "count": {"min": 1}}]
+            }
+        }
+    },
+    "requirements": [["bronze"]],
+    "display": {
+        "icon": {"item": "materia:bronze_ingot"},
+        "title": {"translate": "advancements.materia.the_bronze_age.title"},
+        "description": {"translate": "advancements.materia.the_bronze_age.description"},
+        "frame": "goal",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    }
+}

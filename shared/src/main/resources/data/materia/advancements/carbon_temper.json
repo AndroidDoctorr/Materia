@@ -1,0 +1,21 @@
+{
+    "parent": "materia:stacked_heat",
+    "criteria": {
+        "steel_bar": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["minecraft:iron_ingot"], "count": {"min": 1}}]
+            }
+        }
+    },
+    "requirements": [["steel_bar"]],
+    "display": {
+        "icon": {"item": "minecraft:iron_ingot"},
+        "title": {"translate": "advancements.materia.carbon_temper.title"},
+        "description": {"translate": "advancements.materia.carbon_temper.description"},
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    }
+}

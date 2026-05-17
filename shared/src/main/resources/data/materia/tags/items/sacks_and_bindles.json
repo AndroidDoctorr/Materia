@@ -1,0 +1,29 @@
+{
+    "replace": false,
+    "values": [
+        "materia:white_sack",
+        "materia:orange_sack",
+        "materia:magenta_sack",
+        "materia:light_blue_sack",
+        "materia:yellow_sack",
+        "materia:lime_sack",
+        "materia:pink_sack",
+        "materia:gray_sack",
+        "materia:light_gray_sack",
+        "materia:cyan_sack",
+        "materia:purple_sack",
+        "materia:blue_sack",
+        "materia:brown_sack",
+        "materia:green_sack",
+        "materia:red_sack",
+        "materia:black_sack",
+        "materia:ochre_sack",
+        "materia:red_ochre_sack",
+        "materia:indigo_sack",
+        "materia:olive_sack",
+        "materia:tyrian_purple_sack",
+        "materia:lavender_sack",
+        "materia:charcoal_gray_sack",
+        "materia:taupe_sack"
+    ]
+}

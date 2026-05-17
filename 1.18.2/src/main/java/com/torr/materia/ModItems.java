@@ -1400,7 +1400,7 @@ public class ModItems {
         public static final RegistryObject<Item> WOOD_TONGS = ITEMS.register("wood_tongs",
                 () -> new TongsItem(new Item.Properties()
                                 .tab(net.minecraft.world.item.CreativeModeTab.TAB_TOOLS)
-                                .durability(20))); // Wood tongs
+                                .durability(10))); // Wood tongs
         public static final RegistryObject<Item> BRONZE_TONGS = ITEMS.register("bronze_tongs",
                 () -> new TongsItem(new Item.Properties()
                                 .tab(net.minecraft.world.item.CreativeModeTab.TAB_TOOLS)

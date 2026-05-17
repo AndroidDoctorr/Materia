@@ -1,0 +1,21 @@
+{
+    "parent": "materia:controlled_burn",
+    "criteria": {
+        "tongs": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:wood_tongs"], "count": {"min": 1}}]
+            }
+        }
+    },
+    "requirements": [["tongs"]],
+    "display": {
+        "icon": {"item": "materia:wood_tongs"},
+        "title": {"translate": "advancements.materia.handle_with_care.title"},
+        "description": {"translate": "advancements.materia.handle_with_care.description"},
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    }
+}

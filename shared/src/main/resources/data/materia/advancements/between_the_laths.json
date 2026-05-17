@@ -1,0 +1,21 @@
+{
+    "parent": "materia:the_neolithic",
+    "criteria": {
+        "wattle": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:wattle_and_daub"], "count": {"min": 1}}]
+            }
+        }
+    },
+    "requirements": [["wattle"]],
+    "display": {
+        "icon": {"item": "materia:wattle_and_daub"},
+        "title": {"translate": "advancements.materia.between_the_laths.title"},
+        "description": {"translate": "advancements.materia.between_the_laths.description"},
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    }
+}

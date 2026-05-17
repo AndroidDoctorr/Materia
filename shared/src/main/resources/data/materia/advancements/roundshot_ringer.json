@@ -1,0 +1,30 @@
+{
+    "parent": "materia:breach_loader",
+    "criteria": {
+        "cannonball_kill": {
+            "trigger": "minecraft:player_killed_entity",
+            "conditions": {
+                "killing_blow": [
+                    {
+                        "condition": "minecraft:damage_source_properties",
+                        "predicate": {
+                            "direct_entity": {
+                                "type": "materia:cannonball_projectile"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [["cannonball_kill"]],
+    "display": {
+        "icon": {"item": "materia:iron_cannonball"},
+        "title": {"translate": "advancements.materia.roundshot_ringer.title"},
+        "description": {"translate": "advancements.materia.roundshot_ringer.description"},
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    }
+}

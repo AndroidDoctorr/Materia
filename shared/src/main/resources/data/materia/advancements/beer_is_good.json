@@ -1,0 +1,21 @@
+{
+    "parent": "materia:jar_theology",
+    "criteria": {
+        "tasty": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:beer_bottle"], "count": {"min": 1}}]
+            }
+        }
+    },
+    "requirements": [["tasty"]],
+    "display": {
+        "icon": {"item": "materia:beer_bottle"},
+        "title": {"translate": "advancements.materia.beer_is_good.title"},
+        "description": {"translate": "advancements.materia.beer_is_good.description"},
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    }
+}
