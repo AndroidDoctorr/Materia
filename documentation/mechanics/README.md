@@ -6,6 +6,7 @@ Use this section to document “systems” that affect multiple items/blocks/rec
 
 - [JEI (recommended)](jei.md)
 - [Progression (high-level guide)](progression.md)
+- [Advancements (Materia tab)](advancements.md)
 - [Textiles (overview)](textiles.md)
 - [Heat and fuel overview](heat.md)
 - [Cannons](cannons.md)

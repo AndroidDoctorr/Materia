@@ -2,6 +2,8 @@
 
 This page ties Materia systems together into a high-level “what do I do next?” progression.
 
+For the in-game **Advancements** tab (milestone checklist, not recipe locks), see [Advancements (Materia tab)](advancements.md).
+
 For exact recipes, use JEI:
 
 - [JEI (recommended)](jei.md)

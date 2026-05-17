@@ -27,6 +27,7 @@ Materia is licensed under the **MIT License**. See [`../LICENSE`](../LICENSE).
 - **Mechanics**
   - [Overview](mechanics/README.md)
   - [Progression (high-level guide)](mechanics/progression.md)
+  - [Advancements (Materia tab)](mechanics/advancements.md)
   - [Textiles (overview)](mechanics/textiles.md)
   - [Hot metals](mechanics/hot-metals.md)
   - [Kilns](mechanics/kilns.md)

@@ -2,8 +2,12 @@
 
 All notable changes to **Materia** (mod id: `materia`) will be documented in this file.
 
-## 1.1.0 (2026-04-05)
+## 1.1.0 (2026-05-13)
 
+- **Advancements — Materia tab** (`shared/.../data/materia/advancements/`): progression tree from hammer stone through bronze, iron, steel (as `minecraft:iron_ingot` in Materia progression), kiln stacks, ferment, cannon, bows, weaving, sacks, dyes, Three Sisters crops, bottled wine/beer. Custom trigger for **Roundshot Ringer** (kill credited to a cannonball projectile). English strings under `advancements.materia.*` in `shared/.../lang/en_us.json`. Supporting **`#materia` item tags** include `#materia:spears`, `#materia:sacks_and_bindles`, and `#materia:story_purple_dyewares`.
+- **Diamond-tier upgrades preserve wear:** shaped recipes from **iron-tier** bases (Materia’s steel tools use `minecraft:iron_*`) to diamond tools/armor plus **`materia:diamond_hammer`**, **`materia:diamond_spear`**, and **`materia:diamond_shovel_head`** now copy **fractional durability loss** onto the output (same ratio rule as **`FlintKnifeRecipe`**), fixing a **full-repair exploit** where JSON crafting always spawned pristine items. Implemented via **`DiamondTierUpgradeCraftHandler`** on **`PlayerEvent.ItemCraftedEvent`**; automation that performs crafting **without** that event may still output full durability until handled separately.
+- **Fluid automation — water pot:** **1.19.2** exposes Forge **`IFluidHandler`** and invalidates the fluid optional correctly. **1.20.1** matches **1.21.1** for fluid/item capability layout (**fluid `LazyOptional`**, **`WaterPotFluidHandler`** where used).
+- **Fluid automation — amphora (liquid mode)** (**1.20.1** and **1.21.1** only): **`ModFluids`** registers Forge fluid types/stacks for Materia ferment/cooking fluids (`wine`, `grape_juice`, `olive_oil`, `vinegar`, `beer`, `beer_mash`) so amphora liquid storage pairs with **`IFluidHandler`** for pipes/JEI-compatible **`FluidStack`** types (**`AmphoraFluidHandler`**); no fluid blocks/buckets intended. **1.19.2** stays water-pot-only on the fluid-capability front until a fuller fluid backport.
 - **Optional `materia_compat_recipes` datapack** (`forge:conditional` + `forge:mod_loaded`; no compile-time dependency on other mods)
   - **Create — milling** (in `shared/`): wheat → `materia:flour`; `materia:corn` → `materia:cornmeal` (×2); chance-based `plant_fiber` → `materia:taupe_string`.
   - **Create — mixing:** `forge:flour` + water → `materia:dough`; cornmeal + water → `materia:masa_dough`; egg + sugar + flour + water + `forge:milk` → `materia:batter`. **1.18.2–1.20.1** use Create 0.5–style JSON under each port’s `.../compat/create/mixing/`. **1.21.1** uses Create 6–style JSON (`fluid_stack`, `id` results) under `1.21.1/.../compat/create/mixing/` only — mixing files are **not** in `shared/` so Gradle does not merge duplicate paths with 1.21.1 overrides.
@@ -11,9 +15,9 @@ All notable changes to **Materia** (mod id: `materia`) will be documented in thi
   - **Mekanism:** crusher 4× `plant_fiber` → `taupe_string`; `materia:rock` → 2× `materia:pebble`.
   - **Immersive Engineering:** crusher wheat/corn → flour/cornmeal; no stacked fiber input (IE format); rock → 2× pebble.
   - Compat JSON for milling and most recipes lives under **`shared/.../materia_compat_recipes/`**; earlier duplicate compat trees under version folders were removed where superseded by `shared/`. Keeping Create mixing out of `shared/` for **1.21.1** also fixes Gradle **`processResources`** duplicate-path errors vs per-port mixing files.
-- **`forge:seeds`:** optional `#pamhc2crops:seeds` entry (`required: false`) for Pam’s packs.
-- **Water pot — `WaterPotBlockEntity`:** **1.20.1** fix — fluid `LazyOptional` + non-final item optional (matches **1.21.1**). **1.19.2** — expose `IFluidHandler` and invalidate the fluid optional (was half-wired).
-- **Documentation:** `documentation/mod-compatibility-roadmap.md` (B2, E), `mod-compat-recipes.md`, `testing-1.1.md`, `reference/VERSION_DIFFERENCES.md` (water pot + Create mixing per port), `fluid-pipe-compat.md` (automation / D3 notes).
+- **`forge:seeds`:** optional **`#pamhc2crops:seeds`** entry (`required: false`) for Pam’s packs.
+- **`forge:fiber` / `forge:fibers`** (via `shared/`): include Materia **`plant_fiber`**, **`minecraft:wheat`**, and optional **`immersiveengineering:hemp_fiber`** (`required: false`) so lashings (3× **`#forge:fibers`**) cooperate with IE when present.
+- **Documentation:** roadmap and compat recap (`documentation/mod-compatibility-roadmap.md`, `mod-compat-recipes.md`), **1.1** testing notes (`documentation/testing-1.1.md`, `documentation/testing-results.md`), **per-port quirks** (`documentation/reference/VERSION_DIFFERENCES.md`), **pipes/capabilities** (`documentation/fluid-pipe-compat.md`), and item/mechanics copy updates (for example **`lashing`** / **`plant-fiber`** and **`documentation/mechanics/water-pot.md`** for automation).
 
 ## 1.0.8 (2026-04-05)
 
