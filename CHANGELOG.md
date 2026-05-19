@@ -2,6 +2,10 @@
 
 All notable changes to **Materia** (mod id: `materia`) will be documented in this file.
 
+## 1.1.1
+
+- **`materia:thatch_slope` (thatched stair / roof slopes):** use a dedicated **`ThatchSlopeBlock`** with a **full-cube occlusion shape** (`Shapes.block()`) while keeping vanilla stair **collision / appearance**. This stops **rain** and **skylight** from leaking through the hollow voxels stair shapes leave on inner-corner and rotated layouts—same fix pattern as correcting “wet under a solid-looking roof.”
+
 ## 1.1.0 (2026-05-13)
 
 - **Advancements — Materia tab** (`shared/.../data/materia/advancements/`): progression tree from hammer stone through bronze, iron, steel (as `minecraft:iron_ingot` in Materia progression), kiln stacks, ferment, cannon, bows, weaving, sacks, dyes, Three Sisters crops, bottled wine/beer. Custom trigger for **Roundshot Ringer** (kill credited to a cannonball projectile). English strings under `advancements.materia.*` in `shared/.../lang/en_us.json`. Supporting **`#materia` item tags** include `#materia:spears`, `#materia:sacks_and_bindles`, and `#materia:story_purple_dyewares`.

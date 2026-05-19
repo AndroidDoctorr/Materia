@@ -9,7 +9,7 @@
             "item": "materia:steel_blade"
         },
         "W": {
-            "item": "materia:iron_wire"
+            "tag": "materia:hard_wires"
         },
         "R": {
             "tag": "materia:advanced_bindings"

@@ -496,7 +496,7 @@ public class ModBlocks {
                         () -> new net.minecraft.world.level.block.SlabBlock(
                                 BlockBehaviour.Properties.ofFullCopy(ModBlocks.THATCH.get())));
         public static final RegistryObject<Block> THATCH_SLOPE = registerBlock("thatch_slope",
-                        () -> new net.minecraft.world.level.block.StairBlock(
+                        () -> new com.torr.materia.block.ThatchSlopeBlock(
                                 ModBlocks.THATCH.get().defaultBlockState(),
                                 BlockBehaviour.Properties.ofFullCopy(ModBlocks.THATCH.get())));
         public static final RegistryObject<Block> GUNPOWDER_TRAIL = registerBlockWithCustomItem("gunpowder_trail",
