@@ -1,5 +1,6 @@
 package com.torr.materia.menu;
 
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import com.torr.materia.ModMenuTypes;
 import com.torr.materia.blockentity.BronzeAnvilBlockEntity;
 import net.minecraft.network.FriendlyByteBuf;
@@ -11,14 +12,10 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
-import com.torr.materia.recipe.BronzeAnvilRecipe;
 import com.torr.materia.ModRecipes;
-import java.util.List;
-import java.util.stream.Collectors;
 import com.torr.materia.recipe.BronzeAnvilRecipe;
-import com.torr.materia.ModRecipes;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -39,7 +36,7 @@ public class BronzeAnvilMenu extends AbstractContainerMenu {
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
-        this.blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
+        this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(handler -> {
             // Tool slot 1 (slot 0)
             this.addSlot(new SlotItemHandler(handler, 0, 44, 54));
             // Tool slot 2 (slot 1)
@@ -50,7 +47,7 @@ public class BronzeAnvilMenu extends AbstractContainerMenu {
     }
 
     public List<BronzeAnvilRecipe> getAvailableRecipes() {
-        var opt = blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY);
+        var opt = blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER);
         if (!opt.isPresent()) return java.util.Collections.emptyList();
         var handler = opt.resolve().get();
         ItemStack tool0 = handler.getStackInSlot(0);
@@ -69,7 +66,7 @@ public class BronzeAnvilMenu extends AbstractContainerMenu {
     public boolean clickMenuButton(Player player, int id) {
         List<BronzeAnvilRecipe> recipes = getAvailableRecipes();
         if (id < 0 || id >= recipes.size()) return false;
-        var opt = blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY);
+        var opt = blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER);
         if (!opt.isPresent()) return false;
         var h = opt.resolve().get();
         ItemStack tool0 = h.getStackInSlot(0);
@@ -82,10 +79,10 @@ public class BronzeAnvilMenu extends AbstractContainerMenu {
         if (!r.matchesStacks(metal, tool0, tool1)) return false;
         
         // Check if we have enough items to craft
-        if (metal.getCount() < r.getIngredient().getCount()) return false;
+        if (metal.getCount() < r.getMetalCount()) return false;
 
         // Consume input first
-        h.extractItem(2, r.getIngredient().getCount(), false);
+        h.extractItem(2, r.getMetalCount(), false);
 
         // Damage tools (handle container items properly)
         damageToolSlot(h, 0, tool0, player);

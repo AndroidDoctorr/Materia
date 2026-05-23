@@ -15,10 +15,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import com.torr.materia.recipe.BronzeAnvilRecipe;
 import com.torr.materia.ModRecipes;
-import java.util.List;
-import java.util.stream.Collectors;
-import com.torr.materia.recipe.BronzeAnvilRecipe;
-import com.torr.materia.ModRecipes;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -82,10 +79,10 @@ public class BronzeAnvilMenu extends AbstractContainerMenu {
         if (!r.matchesStacks(metal, tool0, tool1)) return false;
         
         // Check if we have enough items to craft
-        if (metal.getCount() < r.getIngredient().getCount()) return false;
+        if (metal.getCount() < r.getMetalCount()) return false;
 
         // Consume input first
-        h.extractItem(2, r.getIngredient().getCount(), false);
+        h.extractItem(2, r.getMetalCount(), false);
 
         // Damage tools (handle container items properly)
         damageToolSlot(h, 0, tool0, player);

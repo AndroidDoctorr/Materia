@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "materia:tin_nugget",
+    {
+      "id": "mekanism:nugget_tin",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:nugget_tin",
+      "required": false
+    },
+    {
+      "id": "thermal:tin_nugget",
+      "required": false
+    }
+  ]
+}

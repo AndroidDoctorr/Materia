@@ -125,13 +125,13 @@ public class StoneAnvilMenu extends AbstractContainerMenu {
         if (!recipe.matchesStacks(input, tool)) return false;
         
         // Check if we have enough items to craft
-        if (input.getCount() < recipe.getIngredient().getCount()) return false;
+        if (input.getCount() < recipe.getMetalCount()) return false;
 
         ItemStack result = recipe.getResultItem();
         // deliver to player only
 
         // Consume input first
-        handler.extractItem(1, recipe.getIngredient().getCount(), false);
+        handler.extractItem(1, recipe.getMetalCount(), false);
 
         // Damage tool (respect container item behavior if present)
         // If tool defines container item (like StoneHammerItem), replace stack with its container item

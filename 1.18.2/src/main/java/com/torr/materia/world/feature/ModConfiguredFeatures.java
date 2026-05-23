@@ -45,7 +45,7 @@ public class ModConfiguredFeatures {
                         OreConfiguration.target(new BlockMatchTest(Blocks.DIRT), ModBlocks.GRAVEL_TIN.get().defaultBlockState()),
                         OreConfiguration.target(new BlockMatchTest(Blocks.GRAVEL), ModBlocks.GRAVEL_TIN.get().defaultBlockState())
                 );
-                return new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(targets, 18)); // Larger veins, somewhat rare
+                return new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(targets, 18));
             });
 
     // Configure earth under topsoil generation (replaces dirt with earth)

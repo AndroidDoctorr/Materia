@@ -26,13 +26,13 @@ public class ModPlacedFeatures {
     // Common placement for tin gravel - rare but big alluvial deposits
     public static final RegistryObject<PlacedFeature> GRAVEL_TIN_ORE_PLACED = PLACED_FEATURES.register("gravel_tin_ore_placed",
             () -> new PlacedFeature(ModConfiguredFeatures.GRAVEL_TIN_ORE.getHolder().get(),
-                    commonOrePlacement(2, // 2 veins per chunk (rare but findable)
+                    commonOrePlacement(1, // ~half as many attempts per chunk as earlier tuning
                             HeightRangePlacement.uniform(VerticalAnchor.absolute(-20), VerticalAnchor.absolute(80)))));
 
     // River-specific placement (more frequent alluvial deposits)
     public static final RegistryObject<PlacedFeature> GRAVEL_TIN_ORE_RIVER_PLACED = PLACED_FEATURES.register("gravel_tin_ore_river_placed",
             () -> new PlacedFeature(ModConfiguredFeatures.GRAVEL_TIN_ORE.getHolder().get(),
-                    commonOrePlacement(4, // 4 veins per chunk in rivers (more common in water areas)
+                    commonOrePlacement(2, // riverbeds richer than dry land (~half density vs older builds)
                             HeightRangePlacement.uniform(VerticalAnchor.absolute(40), VerticalAnchor.absolute(90)))));
 
     // Earth subsoil placement - replaces dirt in the shallow subsurface layer (1-6 blocks below surface)

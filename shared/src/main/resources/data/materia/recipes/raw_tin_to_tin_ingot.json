@@ -1,7 +1,7 @@
 {
     "type": "materia:kiln",
     "ingredient": {
-        "item": "materia:raw_tin"
+        "tag": "materia:kiln_compatible_raw_tins"
     },
     "result": {
         "item": "materia:tin_nugget",

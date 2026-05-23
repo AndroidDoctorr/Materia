@@ -1,5 +1,6 @@
 package com.torr.materia.menu;
 
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import com.torr.materia.ModMenuTypes;
 import com.torr.materia.blockentity.IronAnvilBlockEntity;
 import net.minecraft.network.FriendlyByteBuf;
@@ -11,9 +12,9 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import com.torr.materia.recipe.IronAnvilRecipe;
+import com.torr.materia.recipe.IronConsumptionPlan;
 import com.torr.materia.ModRecipes;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -35,7 +36,7 @@ public class IronAnvilMenu extends AbstractContainerMenu {
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
-        this.blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
+        this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(handler -> {
             // Tool slot 1 (slot 0)
             this.addSlot(new SlotItemHandler(handler, 0, 34, 54));
             // Tool slot 2 (slot 1)
@@ -50,7 +51,7 @@ public class IronAnvilMenu extends AbstractContainerMenu {
     }
 
     public List<IronAnvilRecipe> getAvailableRecipes() {
-        var opt = blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY);
+        var opt = blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER);
         if (!opt.isPresent()) return java.util.Collections.emptyList();
         var h = opt.resolve().get();
         ItemStack tool0 = h.getStackInSlot(0);
@@ -58,9 +59,9 @@ public class IronAnvilMenu extends AbstractContainerMenu {
         ItemStack tool2 = h.getStackInSlot(2);
         ItemStack a = h.getStackInSlot(3);
         ItemStack b = h.getStackInSlot(4);
-        boolean hotA = a.getCapability(com.torr.materia.capability.HotMetalCapability.HOT_METAL_CAPABILITY).map(c->c.isHot()).orElse(false);
-        boolean hotB = b.isEmpty() || b.getCapability(com.torr.materia.capability.HotMetalCapability.HOT_METAL_CAPABILITY).map(c->c.isHot()).orElse(false);
-        if (a.isEmpty() || !hotA || !hotB) return java.util.Collections.emptyList();
+        boolean aHotOk = a.isEmpty() || isHotMetalStack(a);
+        boolean bHotOk = b.isEmpty() || isHotMetalStack(b);
+        if ((a.isEmpty() && b.isEmpty()) || !aHotOk || !bHotOk) return java.util.Collections.emptyList();
         return this.level.getRecipeManager().getAllRecipesFor(ModRecipes.IRON_ANVIL_TYPE.get()).stream()
                 .map(r->(IronAnvilRecipe)r)
                 .filter(r->r.matchesStacks(a,b,tool0,tool1,tool2))
@@ -72,7 +73,7 @@ public class IronAnvilMenu extends AbstractContainerMenu {
     public boolean clickMenuButton(Player player, int id) {
         List<IronAnvilRecipe> recipes = getAvailableRecipes();
         if (id < 0 || id >= recipes.size()) return false;
-        var opt = blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY);
+        var opt = blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER);
         if (!opt.isPresent()) return false;
         var h = opt.resolve().get();
 
@@ -82,22 +83,22 @@ public class IronAnvilMenu extends AbstractContainerMenu {
         ItemStack a = h.getStackInSlot(3);
         ItemStack b = h.getStackInSlot(4);
 
-        // Temporarily relax validation - only require slot A and one tool
-        if (a.isEmpty() || tool0.isEmpty()) return false;
-        boolean hotA = a.getCapability(com.torr.materia.capability.HotMetalCapability.HOT_METAL_CAPABILITY).map(c->c.isHot()).orElse(false);
-        boolean hotB = b.isEmpty() || b.getCapability(com.torr.materia.capability.HotMetalCapability.HOT_METAL_CAPABILITY).map(c->c.isHot()).orElse(false);
-        if (!hotA || !hotB) return false;
+        // Require at least one metal input slot, one tool, and both nonempty slots hot when used
+        if ((a.isEmpty() && b.isEmpty()) || tool0.isEmpty()) return false;
+        boolean aHotOk = a.isEmpty() || isHotMetalStack(a);
+        boolean bHotOk = b.isEmpty() || isHotMetalStack(b);
+        if (!aHotOk || !bHotOk) return false;
 
         IronAnvilRecipe r = recipes.get(id);
         if (!r.matchesStacks(a,b,tool0,tool1,tool2)) return false;
-        
-        // Check if we have enough items to craft
-        if (a.getCount() < r.getIngredientA().getCount()) return false;
-        if (!r.getIngredientB().isEmpty() && !b.isEmpty() && b.getCount() < r.getIngredientB().getCount()) return false;
+
+        java.util.Optional<IronConsumptionPlan> consumePlan = r.planConsumption(a, b);
+        if (consumePlan.isEmpty()) return false;
+        IronConsumptionPlan p = consumePlan.get();
 
         // Consume inputs first
-        h.extractItem(3, r.getIngredientA().getCount(), false);
-        if (!b.isEmpty()) h.extractItem(4, r.getIngredientB().getCount(), false);
+        h.extractItem(3, p.takeFromSlot3(), false);
+        h.extractItem(4, p.takeFromSlot4(), false);
 
         // Damage tools (handle container items properly)
         damageToolSlot(h, 0, tool0, player);
@@ -123,7 +124,13 @@ public class IronAnvilMenu extends AbstractContainerMenu {
         blockEntity.damageAnvil(recipeName);
         return true;
     }
-    
+
+    private static boolean isHotMetalStack(ItemStack stack) {
+        if (stack.isEmpty()) return false;
+        return stack.getCapability(com.torr.materia.capability.HotMetalCapability.HOT_METAL_CAPABILITY)
+                .map(c -> c.isHot()).orElse(false);
+    }
+
     private void damageToolSlot(net.minecraftforge.items.IItemHandler handler, int slot, ItemStack tool, net.minecraft.world.entity.player.Player player) {
         if (tool.hasCraftingRemainingItem()) {
             // Use crafting remaining item system (like buckets, etc.)

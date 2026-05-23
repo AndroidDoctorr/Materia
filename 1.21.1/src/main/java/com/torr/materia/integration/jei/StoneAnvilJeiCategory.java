@@ -44,8 +44,12 @@ public class StoneAnvilJeiCategory implements IRecipeCategory<StoneAnvilRecipe> 
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, StoneAnvilRecipe recipe, IFocusGroup focuses) {
-        builder.addSlot(RecipeIngredientRole.INPUT, 20, 16)
-                .addItemStack(recipe.getIngredient());
+        var slotMetal = builder.addSlot(RecipeIngredientRole.INPUT, 20, 16);
+        for (ItemStack st : recipe.getMetalIngredient().getItems()) {
+            ItemStack dc = st.copy();
+            dc.setCount(Math.min(64, recipe.getMetalCount()));
+            slotMetal.addIngredient(VanillaTypes.ITEM_STACK, dc);
+        }
 
         builder.addSlot(RecipeIngredientRole.INPUT, 60, 16)
                 .addIngredients(Ingredient.of(recipe.getRequiredToolTag()));

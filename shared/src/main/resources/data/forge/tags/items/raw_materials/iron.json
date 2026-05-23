@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:raw_iron",
+    {
+      "id": "mekanism:raw_iron",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:raw_iron",
+      "required": false
+    },
+    {
+      "id": "thermal:raw_iron",
+      "required": false
+    }
+  ]
+}

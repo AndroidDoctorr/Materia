@@ -1,5 +1,6 @@
 package com.torr.materia.menu;
 
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import com.torr.materia.ModMenuTypes;
 import com.torr.materia.blockentity.StoneAnvilBlockEntity;
 import net.minecraft.network.FriendlyByteBuf;
@@ -11,7 +12,6 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
 import com.torr.materia.recipe.StoneAnvilRecipe;
@@ -37,7 +37,7 @@ public class StoneAnvilMenu extends AbstractContainerMenu {
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
-        this.blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
+        this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(handler -> {
             // Tool slot (slot 0)
             this.addSlot(new SlotItemHandler(handler, 0, 56, 54));
             // Input slot (slot 1)
@@ -48,9 +48,9 @@ public class StoneAnvilMenu extends AbstractContainerMenu {
     // Recipe list (server authoritative, but client can recompute based on slots)
     public List<StoneAnvilRecipe> getAvailableRecipes() {
         // Read slots from TE
-        ItemStack tool = blockEntity.getCapability(net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+        ItemStack tool = blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER)
                 .map(h -> h.getStackInSlot(0)).orElse(ItemStack.EMPTY);
-        ItemStack metal = blockEntity.getCapability(net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+        ItemStack metal = blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER)
                 .map(h -> h.getStackInSlot(1)).orElse(ItemStack.EMPTY);
 
         // Only allow hot input
@@ -112,7 +112,7 @@ public class StoneAnvilMenu extends AbstractContainerMenu {
         StoneAnvilRecipe recipe = recipes.get(id);
 
         // Validate slots
-        var opt = blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY);
+        var opt = blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER);
         if (!opt.isPresent()) return false;
         var handler = opt.resolve().get();
         ItemStack tool = handler.getStackInSlot(0);
@@ -125,13 +125,13 @@ public class StoneAnvilMenu extends AbstractContainerMenu {
         if (!recipe.matchesStacks(input, tool)) return false;
         
         // Check if we have enough items to craft
-        if (input.getCount() < recipe.getIngredient().getCount()) return false;
+        if (input.getCount() < recipe.getMetalCount()) return false;
 
         ItemStack result = recipe.getResultItem();
         // deliver to player only
 
         // Consume input first
-        handler.extractItem(1, recipe.getIngredient().getCount(), false);
+        handler.extractItem(1, recipe.getMetalCount(), false);
 
         // Damage tool (respect container item behavior if present)
         // If tool defines container item (like StoneHammerItem), replace stack with its container item

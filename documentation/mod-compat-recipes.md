@@ -4,6 +4,10 @@ Materia ships a **built-in datapack** `materia_compat_recipes` (registered in `m
 
 Recipes use **`forge:conditional`** + **`forge:mod_loaded`** so they only apply when the target mod is present. There is **no compile-time dependency** on Create, Farmer’s Delight, Mekanism, or Immersive Engineering.
 
+## Core datapack: raw tin interop (`materia_vanilla_overrides` / shared)
+
+The kiln and vanilla smelting/blasting routes that turn raw tin into **`materia:tin_nugget`** / **`materia:tin_ingot`** accept any item in **`#materia:kiln_compatible_raw_tins`** (`shared/.../data/materia/tags/items/kiln_compatible_raw_tins.json`). **`materia:raw_tin`** is required; **`mekanism:raw_tin`**, **`immersiveengineering:raw_tin`**, and **`thermal:raw_tin`** are optional (`required: false`) so Mekanism/IE/Thermal raw drops work in Materia ovens without enabling the compat recipe datapack.
+
 ## Philosophy (early vs late game)
 
 - **Early game:** Materia’s main datapack still defines pacing (stone/bronze feel, kiln substitution, etc.). Compat does not replace that.

@@ -4,6 +4,9 @@ All notable changes to **Materia** (mod id: `materia`) will be documented in thi
 
 ## 1.1.1
 
+- **Mod raw tin → Materia chain (kiln / furnace / blast furnace):** **`#materia:kiln_compatible_raw_tins`** includes **`materia:raw_tin`** plus optional **`mekanism:raw_tin`**, **`immersiveengineering:raw_tin`**, and **`thermal:raw_tin`** (`required: false`). Smelting/blasting/kiln outputs are still **`materia:tin_nugget`** / **`materia:tin_ingot`** as today.
+- **`materia:gravel_tin` (cassiterite) worldgen ~halved frequency** on all supported versions: **`count`** on placed features **2→1** (general biomes) and **4→2** (rivers), so there are roughly **half** as many generation passes per chunk; vein **size stays 18**.
+
 - **`materia:thatch_slope` (thatched stair / roof slopes):** use a dedicated **`ThatchSlopeBlock`** with a **full-cube occlusion shape** (`Shapes.block()`) while keeping vanilla stair **collision / appearance**. This stops **rain** and **skylight** from leaking through the hollow voxels stair shapes leave on inner-corner and rotated layouts—same fix pattern as correcting “wet under a solid-looking roof.”
 
 ## 1.1.0 (2026-05-13)

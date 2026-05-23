@@ -1,0 +1,22 @@
+{
+  "replace": false,
+  "values": [
+    "materia:bauxite",
+    {
+      "id": "immersiveengineering:raw_aluminum",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:raw_bauxite",
+      "required": false
+    },
+    {
+      "id": "thermal:raw_aluminum",
+      "required": false
+    },
+    {
+      "id": "thermal:crushed_raw_aluminum",
+      "required": false
+    }
+  ]
+}

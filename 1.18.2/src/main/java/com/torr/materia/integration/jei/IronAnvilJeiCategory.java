@@ -59,12 +59,20 @@ public class IronAnvilJeiCategory implements IRecipeCategory<IronAnvilRecipe> {
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, IronAnvilRecipe recipe, IFocusGroup focuses) {
-        builder.addSlot(RecipeIngredientRole.INPUT, 16, 16)
-                .addItemStack(recipe.getIngredientA());
+        var slotA = builder.addSlot(RecipeIngredientRole.INPUT, 16, 16);
+        for (ItemStack st : recipe.getMetalIngredientA().getItems()) {
+            ItemStack dc = st.copy();
+            dc.setCount(Math.min(64, recipe.getMetalCountA()));
+            slotA.addIngredient(VanillaTypes.ITEM_STACK, dc);
+        }
 
-        if (!recipe.getIngredientB().isEmpty()) {
-            builder.addSlot(RecipeIngredientRole.INPUT, 16, 40)
-                    .addItemStack(recipe.getIngredientB());
+        if (recipe.requiresSecondMetal()) {
+            var slotB = builder.addSlot(RecipeIngredientRole.INPUT, 16, 40);
+            for (ItemStack st : recipe.getMetalIngredientB().getItems()) {
+                ItemStack dc = st.copy();
+                dc.setCount(Math.min(64, recipe.getMetalCountB()));
+                slotB.addIngredient(VanillaTypes.ITEM_STACK, dc);
+            }
         }
 
         builder.addSlot(RecipeIngredientRole.INPUT, 60, 6)

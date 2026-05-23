@@ -331,10 +331,10 @@ public final class materiaWorldgenBootstrap {
         HolderGetter<ConfiguredFeature<?, ?>> configured = context.lookup(Registries.CONFIGURED_FEATURE);
 
         context.register(GRAVEL_TIN_ORE_PLACED, new PlacedFeature(configured.getOrThrow(GRAVEL_TIN_ORE),
-                commonOrePlacement(2, HeightRangePlacement.uniform(VerticalAnchor.absolute(-20), VerticalAnchor.absolute(80)))));
+                commonOrePlacement(1, HeightRangePlacement.uniform(VerticalAnchor.absolute(-20), VerticalAnchor.absolute(80)))));
 
         context.register(GRAVEL_TIN_ORE_RIVER_PLACED, new PlacedFeature(configured.getOrThrow(GRAVEL_TIN_ORE),
-                commonOrePlacement(4, HeightRangePlacement.uniform(VerticalAnchor.absolute(40), VerticalAnchor.absolute(90)))));
+                commonOrePlacement(2, HeightRangePlacement.uniform(VerticalAnchor.absolute(40), VerticalAnchor.absolute(90)))));
 
         context.register(EARTH_SUBSOIL_PLACED, new PlacedFeature(configured.getOrThrow(EARTH_UNDERSOIL),
                 List.of(

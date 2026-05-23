@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:raw_gold",
+    {
+      "id": "mekanism:raw_gold",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:raw_gold",
+      "required": false
+    },
+    {
+      "id": "thermal:raw_gold",
+      "required": false
+    }
+  ]
+}

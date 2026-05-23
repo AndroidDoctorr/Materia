@@ -44,8 +44,12 @@ public class BronzeAnvilJeiCategory implements IRecipeCategory<BronzeAnvilRecipe
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, BronzeAnvilRecipe recipe, IFocusGroup focuses) {
-        builder.addSlot(RecipeIngredientRole.INPUT, 20, 22)
-                .addItemStack(recipe.getIngredient());
+        var slotMetal = builder.addSlot(RecipeIngredientRole.INPUT, 20, 22);
+        for (ItemStack st : recipe.getMetalIngredient().getItems()) {
+            ItemStack dc = st.copy();
+            dc.setCount(Math.min(64, recipe.getMetalCount()));
+            slotMetal.addIngredient(VanillaTypes.ITEM_STACK, dc);
+        }
 
         builder.addSlot(RecipeIngredientRole.INPUT, 60, 12)
                 .addIngredients(Ingredient.of(recipe.getRequiredToolTag0()));

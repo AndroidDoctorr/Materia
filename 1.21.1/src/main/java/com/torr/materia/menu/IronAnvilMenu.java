@@ -15,8 +15,10 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.items.SlotItemHandler;
 import com.torr.materia.recipe.IronAnvilRecipe;
+import com.torr.materia.recipe.IronConsumptionPlan;
 import com.torr.materia.ModRecipes;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class IronAnvilMenu extends AbstractContainerMenu {
@@ -91,14 +93,14 @@ public class IronAnvilMenu extends AbstractContainerMenu {
         RecipeHolder<IronAnvilRecipe> holder = recipes.get(id);
         IronAnvilRecipe r = holder.value();
         if (!r.matchesStacks(a,b,tool0,tool1,tool2)) return false;
-        
-        // Check if we have enough items to craft
-        if (a.getCount() < r.getIngredientA().getCount()) return false;
-        if (!r.getIngredientB().isEmpty() && !b.isEmpty() && b.getCount() < r.getIngredientB().getCount()) return false;
 
-        // Consume inputs first
-        h.extractItem(3, r.getIngredientA().getCount(), false);
-        if (!b.isEmpty()) h.extractItem(4, r.getIngredientB().getCount(), false);
+        Optional<IronConsumptionPlan> optPlan = r.planConsumption(a, b);
+        if (optPlan.isEmpty()) return false;
+        IronConsumptionPlan plan = optPlan.get();
+        if (plan.takeFromSlot3() > a.getCount() || plan.takeFromSlot4() > b.getCount()) return false;
+
+        h.extractItem(3, plan.takeFromSlot3(), false);
+        h.extractItem(4, plan.takeFromSlot4(), false);
 
         // Damage tools (handle container items properly)
         damageToolSlot(h, 0, tool0, player);
