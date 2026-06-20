@@ -60,9 +60,6 @@ public class StoneAnvilRecipe implements Recipe<CraftingContainer> {
     public TagKey<net.minecraft.world.item.Item> getRequiredToolTag() { return requiredToolTag; }
 
     public static class Serializer extends net.minecraftforge.registries.ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<StoneAnvilRecipe> {
-        public Serializer() {
-            setRegistryName(new net.minecraft.resources.ResourceLocation(com.torr.materia.materia.MOD_ID, "stone_anvil"));
-        }
         @Override
         public StoneAnvilRecipe fromJson(ResourceLocation id, JsonObject json) {
             JsonObject inputObj = GsonHelper.getAsJsonObject(json, "input");

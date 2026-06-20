@@ -1,18 +1,6 @@
 {
   "replace": false,
   "values": [
-    "materia:raw_tin",
-    {
-      "id": "mekanism:raw_tin",
-      "required": false
-    },
-    {
-      "id": "immersiveengineering:raw_tin",
-      "required": false
-    },
-    {
-      "id": "thermal:raw_tin",
-      "required": false
-    }
+    "#forge:raw_materials/tin"
   ]
 }

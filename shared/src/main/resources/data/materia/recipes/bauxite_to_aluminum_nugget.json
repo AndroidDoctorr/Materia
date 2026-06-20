@@ -1,7 +1,7 @@
 {
     "type": "materia:kiln",
     "ingredient": {
-        "item": "materia:bauxite"
+        "tag": "forge:raw_materials/aluminum"
     },
     "result": {
         "item": "materia:aluminum_nugget",

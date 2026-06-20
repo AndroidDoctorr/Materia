@@ -4,10 +4,14 @@ All notable changes to **Materia** (mod id: `materia`) will be documented in thi
 
 ## 1.1.1
 
-- **Mod raw tin → Materia chain (kiln / furnace / blast furnace):** **`#materia:kiln_compatible_raw_tins`** includes **`materia:raw_tin`** plus optional **`mekanism:raw_tin`**, **`immersiveengineering:raw_tin`**, and **`thermal:raw_tin`** (`required: false`). Smelting/blasting/kiln outputs are still **`materia:tin_nugget`** / **`materia:tin_ingot`** as today.
+- **Kiln / advanced kiln / smelting / blasting — Forge metal inputs:** Materia kiln nugget melts, wrought bloom work, wrought ingot kiln, alloy advanced-kiln inputs, steel’s raw iron, and furnace/blast paths for tin / wrought aluminum now accept **`#forge:raw_materials/*`** aligned tags (plus **`#forge:nuggets/tin`** and **`#forge:ingots/{copper,zinc}`** for bronze/brass routes). Outputs remain Materia’s items. **`#materia:kiln_compatible_raw_tins`** aliases **`#forge:raw_materials/tin`**.
+- **`KilnBlockEntity`** brass/bronze slot math and zinc evaporation use the same Forge raw/ingot tags (still counting Materia copper/zinc **nugget** stacks where alloys expect them).
+
 - **`materia:gravel_tin` (cassiterite) worldgen ~halved frequency** on all supported versions: **`count`** on placed features **2→1** (general biomes) and **4→2** (rivers), so there are roughly **half** as many generation passes per chunk; vein **size stays 18**.
 
 - **`materia:thatch_slope` (thatched stair / roof slopes):** use a dedicated **`ThatchSlopeBlock`** with a **full-cube occlusion shape** (`Shapes.block()`) while keeping vanilla stair **collision / appearance**. This stops **rain** and **skylight** from leaking through the hollow voxels stair shapes leave on inner-corner and rotated layouts—same fix pattern as correcting “wet under a solid-looking roof.”
+
+- **Hot metal — quench in water:** item drops tagged **`#materia:heatable_metals`** that are still warm (heated or cooling) **instantly become cold stacks** (`createCooledVersion`) when submerged in vanilla **water**, or when placed in a **water pot slot** while the pot holds water (sizzle FX).
 
 ## 1.1.0 (2026-05-13)
 

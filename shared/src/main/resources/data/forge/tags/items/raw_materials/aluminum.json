@@ -13,10 +13,6 @@
     {
       "id": "thermal:raw_aluminum",
       "required": false
-    },
-    {
-      "id": "thermal:crushed_raw_aluminum",
-      "required": false
     }
   ]
 }

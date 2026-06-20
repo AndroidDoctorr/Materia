@@ -83,8 +83,9 @@ public class IronAnvilMenu extends AbstractContainerMenu {
         ItemStack a = h.getStackInSlot(3);
         ItemStack b = h.getStackInSlot(4);
 
-        // Require at least one metal slot, tools, hot metal where present
-        if ((a.isEmpty() && b.isEmpty()) || tool0.isEmpty()) return false;
+        // Require metal in at least one input slot (slots 4–5) and ≥1 tool; recipe matching distributes tags across slots 1–3
+        if (a.isEmpty() && b.isEmpty()) return false;
+        if (tool0.isEmpty() && tool1.isEmpty() && tool2.isEmpty()) return false;
         boolean aHotOk = a.isEmpty() || isHotMetalStack(a);
         boolean bHotOk = b.isEmpty() || isHotMetalStack(b);
         if (!aHotOk || !bHotOk) return false;

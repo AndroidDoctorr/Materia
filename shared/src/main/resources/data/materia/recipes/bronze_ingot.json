@@ -2,10 +2,10 @@
     "type": "materia:advanced_kiln",
     "group": "bronze_alloy",
     "ingredient1": {
-        "item": "minecraft:raw_copper"
+        "tag": "forge:raw_materials/copper"
     },
     "ingredient2": {
-        "item": "materia:tin_nugget"
+        "tag": "forge:nuggets/tin"
     },
     "result": {
         "item": "materia:bronze_ingot",

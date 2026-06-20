@@ -4,9 +4,11 @@ Materia ships a **built-in datapack** `materia_compat_recipes` (registered in `m
 
 Recipes use **`forge:conditional`** + **`forge:mod_loaded`** so they only apply when the target mod is present. There is **no compile-time dependency** on Create, Farmer’s Delight, Mekanism, or Immersive Engineering.
 
-## Core datapack: raw tin interop (`materia_vanilla_overrides` / shared)
+## Core datapack: metal smelt interop (shared kiln / furnace)
 
-The kiln and vanilla smelting/blasting routes that turn raw tin into **`materia:tin_nugget`** / **`materia:tin_ingot`** accept any item in **`#materia:kiln_compatible_raw_tins`** (`shared/.../data/materia/tags/items/kiln_compatible_raw_tins.json`). **`materia:raw_tin`** is required; **`mekanism:raw_tin`**, **`immersiveengineering:raw_tin`**, and **`thermal:raw_tin`** are optional (`required: false`) so Mekanism/IE/Thermal raw drops work in Materia ovens without enabling the compat recipe datapack.
+Kiln, advanced kiln, vanilla smelting, and blasting routes for **tin, copper, zinc, wrought-iron bloom work, raw gold**, and **aluminum** consume **`#forge:raw_materials/…`** (and **`#forge:nuggets/tin`**, **`#forge:ingots/copper`**, **`#forge:ingots/zinc`** for alloy inputs) defined under **`shared/.../data/forge/tags/items/`**. Optional mod items stay on those Forge tags with **`required: false`**. Materia-centric outputs (`materia:tin_*`, `materia:wrought_*`, `materia:aluminum_*`, etc.) are unchanged.
+
+Legacy **`#materia:kiln_compatible_raw_tins`** (`shared/.../tags/items/kiln_compatible_raw_tins.json`) aliases **`#forge:raw_materials/tin`** so older references keep resolving.
 
 ## Philosophy (early vs late game)
 

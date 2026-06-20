@@ -132,9 +132,6 @@ public class IronAnvilRecipe implements Recipe<CraftingContainer> {
     public TagKey<net.minecraft.world.item.Item> getRequiredToolTag2() { return requiredToolTag2; }
 
     public static class Serializer extends net.minecraftforge.registries.ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<IronAnvilRecipe> {
-        public Serializer() {
-            setRegistryName(new net.minecraft.resources.ResourceLocation(com.torr.materia.materia.MOD_ID, "iron_anvil"));
-        }
         @Override
         public IronAnvilRecipe fromJson(ResourceLocation id, JsonObject json) {
             JsonObject inputAObj = GsonHelper.getAsJsonObject(json, "input_a");

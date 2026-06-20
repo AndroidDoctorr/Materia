@@ -1,7 +1,7 @@
 {
     "type": "minecraft:smelting",
     "ingredient": {
-        "item": "minecraft:raw_iron"
+        "tag": "forge:raw_materials/iron"
     },
     "result": "materia:wrought_iron_ingot",
     "experience": 0.7,

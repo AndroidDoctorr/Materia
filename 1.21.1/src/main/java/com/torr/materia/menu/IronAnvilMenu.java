@@ -61,9 +61,9 @@ public class IronAnvilMenu extends AbstractContainerMenu {
         ItemStack tool2 = h.getStackInSlot(2);
         ItemStack a = h.getStackInSlot(3);
         ItemStack b = h.getStackInSlot(4);
-        boolean hotA = a.getCapability(com.torr.materia.capability.HotMetalCapability.HOT_METAL_CAPABILITY).map(c->c.isHot()).orElse(false);
-        boolean hotB = b.isEmpty() || b.getCapability(com.torr.materia.capability.HotMetalCapability.HOT_METAL_CAPABILITY).map(c->c.isHot()).orElse(false);
-        if (a.isEmpty() || !hotA || !hotB) return java.util.Collections.emptyList();
+        boolean aHotOk = a.isEmpty() || a.getCapability(com.torr.materia.capability.HotMetalCapability.HOT_METAL_CAPABILITY).map(c -> c.isHot()).orElse(false);
+        boolean bHotOk = b.isEmpty() || b.getCapability(com.torr.materia.capability.HotMetalCapability.HOT_METAL_CAPABILITY).map(c -> c.isHot()).orElse(false);
+        if ((a.isEmpty() && b.isEmpty()) || !aHotOk || !bHotOk) return java.util.Collections.emptyList();
         return this.level.getRecipeManager().getAllRecipesFor(ModRecipes.IRON_ANVIL_TYPE.get()).stream()
                 .filter(hh -> hh.value().matchesStacks(a,b,tool0,tool1,tool2))
                 .sorted(java.util.Comparator.comparing(hh -> net.minecraftforge.registries.ForgeRegistries.ITEMS.getKey(hh.value().getResultItem().getItem())))
@@ -84,11 +84,11 @@ public class IronAnvilMenu extends AbstractContainerMenu {
         ItemStack a = h.getStackInSlot(3);
         ItemStack b = h.getStackInSlot(4);
 
-        // Temporarily relax validation - only require slot A and one tool
-        if (a.isEmpty() || tool0.isEmpty()) return false;
-        boolean hotA = a.getCapability(com.torr.materia.capability.HotMetalCapability.HOT_METAL_CAPABILITY).map(c->c.isHot()).orElse(false);
-        boolean hotB = b.isEmpty() || b.getCapability(com.torr.materia.capability.HotMetalCapability.HOT_METAL_CAPABILITY).map(c->c.isHot()).orElse(false);
-        if (!hotA || !hotB) return false;
+        if (a.isEmpty() && b.isEmpty()) return false;
+        if (tool0.isEmpty() && tool1.isEmpty() && tool2.isEmpty()) return false;
+        boolean aHotOk = a.isEmpty() || a.getCapability(com.torr.materia.capability.HotMetalCapability.HOT_METAL_CAPABILITY).map(c -> c.isHot()).orElse(false);
+        boolean bHotOk = b.isEmpty() || b.getCapability(com.torr.materia.capability.HotMetalCapability.HOT_METAL_CAPABILITY).map(c -> c.isHot()).orElse(false);
+        if (!aHotOk || !bHotOk) return false;
 
         RecipeHolder<IronAnvilRecipe> holder = recipes.get(id);
         IronAnvilRecipe r = holder.value();

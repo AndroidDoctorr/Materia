@@ -10,6 +10,7 @@ import com.torr.materia.utils.HotMetalStackingUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraftforge.registries.ForgeRegistries;
 import com.torr.materia.capability.HotMetalCapability;
 import com.torr.materia.menu.KilnMenu;
 import com.torr.materia.recipe.KilnRecipe;
@@ -45,6 +46,15 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
     private static final TagKey<Item> ROUGH_PLANKS = ItemTags.create(new ResourceLocation("materia", "rough_planks"));
     private static final TagKey<Item> SMOOTH_PLANKS = ItemTags.create(new ResourceLocation("materia", "smooth_planks"));
     private static final TagKey<Item> POSTS = ItemTags.create(new ResourceLocation("materia", "posts"));
+
+    private static final TagKey<Item> FORGE_RAW_COPPER =
+            TagKey.create(ForgeRegistries.ITEMS.getRegistryKey(), new ResourceLocation("forge", "raw_materials/copper"));
+    private static final TagKey<Item> FORGE_RAW_ZINC =
+            TagKey.create(ForgeRegistries.ITEMS.getRegistryKey(), new ResourceLocation("forge", "raw_materials/zinc"));
+    private static final TagKey<Item> FORGE_INGOTS_COPPER =
+            TagKey.create(ForgeRegistries.ITEMS.getRegistryKey(), new ResourceLocation("forge", "ingots/copper"));
+    private static final TagKey<Item> FORGE_INGOTS_ZINC =
+            TagKey.create(ForgeRegistries.ITEMS.getRegistryKey(), new ResourceLocation("forge", "ingots/zinc"));
     
     private final ItemStackHandler itemHandler = new ItemStackHandler(4) {
         @Override
@@ -535,7 +545,7 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
             {
                 ItemStack aItem = entity.itemHandler.getStackInSlot(0);
                 ItemStack bItem = entity.itemHandler.getStackInSlot(3);
-                boolean onlyRawZinc = !aItem.isEmpty() && aItem.getItem() == ModItems.RAW_ZINC.get() && bItem.isEmpty();
+                boolean onlyRawZinc = isRawZincStack(aItem) && bItem.isEmpty();
                 if (onlyRawZinc && (entity.isFurnaceType() || entity.getTemperatureTier() == 3)) {
                     entity.itemHandler.extractItem(0, 1, false);
                     return;
@@ -569,7 +579,7 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
             int slotB = 3;
             if (recipe.getResultItem(level.registryAccess()).getItem() == com.torr.materia.ModItems.BRASS_INGOT.get()) {
                 // Need 1 zinc and 2 copper. Support either raw or ingot forms.
-                boolean slotAIsCopper = isCopperItem(entity.itemHandler.getStackInSlot(slotA).getItem());
+                boolean slotAIsCopper = isCopperStack(entity.itemHandler.getStackInSlot(slotA));
                 int copperSlot = slotAIsCopper ? slotA : slotB;
                 int zincSlot   = slotAIsCopper ? slotB : slotA;
 
@@ -631,7 +641,7 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
             // Zinc evaporation: in furnace/blast furnace, or advanced kiln (chimney+bellows), raw zinc-only smelt produces nothing
             {
                 ItemStack in = entity.itemHandler.getStackInSlot(0);
-                if (!in.isEmpty() && in.getItem() == ModItems.RAW_ZINC.get()) {
+                if (isRawZincStack(in)) {
                     if (entity.isFurnaceType() || entity.getTemperatureTier() == 3) {
                         entity.itemHandler.extractItem(0, 1, false);
                         return;
@@ -774,7 +784,7 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
             // Zinc evaporation availability check for furnace/blast furnace or advanced kiln (tier 3)
             ItemStack aItem = entity.itemHandler.getStackInSlot(0);
             ItemStack bItem = entity.itemHandler.getStackInSlot(3);
-            if (!aItem.isEmpty() && aItem.getItem() == ModItems.RAW_ZINC.get() && bItem.isEmpty()) {
+            if (isRawZincStack(aItem) && bItem.isEmpty()) {
                 if (entity.isFurnaceType() || entity.getTemperatureTier() == 3) {
                     return true; // evaporate allowed
                 }
@@ -810,8 +820,8 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
                 // ensure at least 2 copper and 1 zinc across the two input slots (raw or ingot forms)
                 ItemStack a = entity.itemHandler.getStackInSlot(0);
                 ItemStack b = entity.itemHandler.getStackInSlot(3);
-                int copperCount = (isCopperItem(a.getItem()) ? a.getCount() : 0) + (isCopperItem(b.getItem()) ? b.getCount() : 0);
-                int zincCount = (isZincItem(a.getItem()) ? a.getCount() : 0) + (isZincItem(b.getItem()) ? b.getCount() : 0);
+                int copperCount = (isCopperStack(a) ? a.getCount() : 0) + (isCopperStack(b) ? b.getCount() : 0);
+                int zincCount = (isZincStack(a) ? a.getCount() : 0) + (isZincStack(b) ? b.getCount() : 0);
                 return outputOk && copperCount >= 2 && zincCount >= 1;
             }
             return outputOk;
@@ -824,7 +834,7 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
         if (recipe.isPresent()) {
             // Zinc evaporation availability check for furnace/blast furnace or advanced kiln (tier 3)
             ItemStack in = entity.itemHandler.getStackInSlot(0);
-            if (!in.isEmpty() && in.getItem() == ModItems.RAW_ZINC.get()) {
+            if (isRawZincStack(in)) {
                 if (entity.isFurnaceType() || entity.getTemperatureTier() == 3) {
                     return true; // evaporate allowed
                 }
@@ -976,15 +986,23 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
                 || item == com.torr.materia.ModItems.WROUGHT_IRON_NUGGET.get();
     }
 
-    private static boolean isCopperItem(net.minecraft.world.item.Item item) {
-        return item == net.minecraft.world.item.Items.COPPER_INGOT
-                || item == net.minecraft.world.item.Items.RAW_COPPER
-                || item == com.torr.materia.ModItems.COPPER_NUGGET.get();
+    private static boolean isRawZincStack(ItemStack stack) {
+        return !stack.isEmpty() && stack.is(FORGE_RAW_ZINC);
     }
 
-    private static boolean isZincItem(net.minecraft.world.item.Item item) {
-        return item == com.torr.materia.ModItems.ZINC_INGOT.get()
-                || item == com.torr.materia.ModItems.RAW_ZINC.get()
-                || item == com.torr.materia.ModItems.ZINC_NUGGET.get();
+    /** Copper inputs that alloy recipes count toward brass/bronze slot math (#forge copper raw/ingots + Materia copper nugget). */
+    private static boolean isCopperStack(ItemStack stack) {
+        return !stack.isEmpty()
+                && (stack.is(FORGE_RAW_COPPER)
+                || stack.is(FORGE_INGOTS_COPPER)
+                || stack.is(ModItems.COPPER_NUGGET.get()));
+    }
+
+    /** Zinc inputs counted for brass alloys and evaporate checks (#forge zinc raw/ingots + Materia zinc nugget). */
+    private static boolean isZincStack(ItemStack stack) {
+        return !stack.isEmpty()
+                && (stack.is(FORGE_RAW_ZINC)
+                || stack.is(FORGE_INGOTS_ZINC)
+                || stack.is(ModItems.ZINC_NUGGET.get()));
     }
 } 

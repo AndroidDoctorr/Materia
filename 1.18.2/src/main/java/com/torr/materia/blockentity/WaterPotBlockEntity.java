@@ -5,6 +5,7 @@ import com.torr.materia.ModBlocks;
 import com.torr.materia.ModRecipes;
 import com.torr.materia.WaterPotBlock;
 import com.torr.materia.recipe.WaterPotRecipe;
+import com.torr.materia.utils.HotMetalStackingUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
@@ -76,6 +77,8 @@ public class WaterPotBlockEntity extends BlockEntity {
         } else {
             boilTicks = 0;
         }
+
+        tryQuenchMetalInPot();
 
         // Always process recipe; individual recipes decide if boiling is required
         processRecipe(boilingNow);
@@ -161,6 +164,24 @@ public class WaterPotBlockEntity extends BlockEntity {
     
     public boolean hasWater() {
         return waterLevel > 0;
+    }
+
+    /** Cool submerged heatables in-slot when the pot still holds water. */
+    private void tryQuenchMetalInPot() {
+        if (!hasWater()) {
+            return;
+        }
+        ItemStack slot = items.getStackInSlot(0);
+        if (slot.isEmpty()) {
+            return;
+        }
+        HotMetalStackingUtils.quenchHeatableIfHeated(slot).ifPresent(cooled -> {
+            items.setStackInSlot(0, cooled);
+            setChanged();
+            level.playSound(null, worldPosition, SoundEvents.GENERIC_EXTINGUISH_FIRE, SoundSource.BLOCKS,
+                    0.65F, 1.9F + level.random.nextFloat() * 0.1F);
+            level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
+        });
     }
     
     public boolean canAddWater() {

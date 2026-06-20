@@ -13,6 +13,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
 
+import java.util.Optional;
+
 public class HotMetalStackingUtils {
     
     private static final TagKey<Item> HEATABLE_METALS = ItemTags.create(ResourceLocation.fromNamespaceAndPath(materia.MOD_ID, "heatable_metals"));
@@ -165,7 +167,19 @@ public class HotMetalStackingUtils {
         
         return cooledStack;
     }
-    
+
+    /**
+     * If stack is tagged heatable metal and still retains heat timing (including the cool-down tail),
+     * returns a cooled copy identical to container conversion; otherwise empty.
+     */
+    public static Optional<ItemStack> quenchHeatableIfHeated(ItemStack stack) {
+        if (stack.isEmpty() || !stack.is(HEATABLE_METALS)) {
+            return Optional.empty();
+        }
+        return stack.getCapability(HotMetalCapability.HOT_METAL_CAPABILITY).resolve()
+                .flatMap(cap -> cap.getHeatTime() > 0 ? Optional.of(createCooledVersion(stack)) : Optional.empty());
+    }
+
     /**
      * Check and convert cooled items in a container
      */

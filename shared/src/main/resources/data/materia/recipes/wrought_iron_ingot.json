@@ -2,7 +2,7 @@
     "type": "materia:kiln",
     "group": "wrought_iron",
     "ingredient": {
-        "item": "minecraft:raw_iron"
+        "tag": "forge:raw_materials/iron"
     },
     "result": {
         "item": "materia:wrought_iron_ingot",

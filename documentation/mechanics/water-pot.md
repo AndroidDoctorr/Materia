@@ -38,9 +38,16 @@ See also:
 
 - [Earth (and packed mud)](earth-and-packed-mud.md)
 
-## Quenching (tongs)
+## Quenching (hot metals)
 
-If you right-click a water pot with **tongs containing hot metal**, the water pot can be used to quench (cool) the items.
+**Heatable metals** tagged **`#materia:heatable_metals`** that are warm (heated or cooling) snap to fully cold stacks when:
+
+- **`ItemEntity`** drops are **under vanilla water**
+- **`#materia:heatable_metals`** stacks sit in the water pot **item slot** while the pot **has water** (not necessarily boiling)
+
+(This uses the same “strip hot capability” path as gradual cooling.)
+
+If you **right-click a water pot with tongs holding hot metal**, the existing tong-focused quench path still applies—see **[Tongs](../content/items/tongs.md)**.
 
 Related:
 

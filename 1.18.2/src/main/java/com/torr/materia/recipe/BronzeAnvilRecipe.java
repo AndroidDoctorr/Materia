@@ -75,9 +75,6 @@ public class BronzeAnvilRecipe implements Recipe<CraftingContainer> {
     public TagKey<Item> getRequiredToolTag1() { return requiredToolTag1; }
 
     public static class Serializer extends net.minecraftforge.registries.ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<BronzeAnvilRecipe> {
-        public Serializer() {
-            setRegistryName(new net.minecraft.resources.ResourceLocation(materia.MOD_ID, "bronze_anvil"));
-        }
         @Override
         public BronzeAnvilRecipe fromJson(ResourceLocation id, JsonObject json) {
             JsonObject inputObj = GsonHelper.getAsJsonObject(json, "input");

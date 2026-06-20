@@ -2,11 +2,11 @@
     "type": "materia:advanced_kiln",
     "group": "brass_alloy",
     "ingredient1": {
-        "item": "minecraft:raw_copper",
+        "tag": "forge:raw_materials/copper",
         "count": 2
     },
     "ingredient2": {
-        "item": "materia:raw_zinc",
+        "tag": "forge:raw_materials/zinc",
         "count": 1
     },
     "result": {

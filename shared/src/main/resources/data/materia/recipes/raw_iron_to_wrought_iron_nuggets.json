@@ -1,7 +1,7 @@
 {
     "type": "materia:kiln",
     "ingredient": {
-        "item": "minecraft:raw_iron"
+        "tag": "forge:raw_materials/iron"
     },
     "result": {
         "item": "materia:wrought_iron_nugget",

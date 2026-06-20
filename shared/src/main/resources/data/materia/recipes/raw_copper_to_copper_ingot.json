@@ -1,7 +1,7 @@
 {
     "type": "materia:kiln",
     "ingredient": {
-        "item": "minecraft:raw_copper"
+        "tag": "forge:raw_materials/copper"
     },
     "result": {
         "item": "materia:copper_nugget",

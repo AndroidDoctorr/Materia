@@ -2,7 +2,7 @@
     "type": "materia:advanced_kiln",
     "group": "steel",
     "ingredient1": {
-        "item": "minecraft:raw_iron"
+        "tag": "forge:raw_materials/iron"
     },
     "ingredient2": {
         "tag": "minecraft:coals"

@@ -1,10 +1,10 @@
 {
     "type": "materia:advanced_kiln",
     "ingredient1": {
-        "item": "materia:tin_nugget"
+        "tag": "forge:nuggets/tin"
     },
     "ingredient2": {
-        "item": "minecraft:copper_ingot"
+        "tag": "forge:ingots/copper"
     },
     "result": {
         "item": "materia:bronze_ingot",
