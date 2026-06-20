@@ -2,7 +2,7 @@
 
 All notable changes to **Materia** (mod id: `materia`) will be documented in this file.
 
-## 1.1.1
+## 1.1.1 (2026-06-20)
 
 - **Kiln / advanced kiln / smelting / blasting — Forge metal inputs:** Materia kiln nugget melts, wrought bloom work, wrought ingot kiln, alloy advanced-kiln inputs, steel’s raw iron, and furnace/blast paths for tin / wrought aluminum now accept **`#forge:raw_materials/*`** aligned tags (plus **`#forge:nuggets/tin`** and **`#forge:ingots/{copper,zinc}`** for bronze/brass routes). Outputs remain Materia’s items. **`#materia:kiln_compatible_raw_tins`** aliases **`#forge:raw_materials/tin`**.
 - **`KilnBlockEntity`** brass/bronze slot math and zinc evaporation use the same Forge raw/ingot tags (still counting Materia copper/zinc **nugget** stacks where alloys expect them).
