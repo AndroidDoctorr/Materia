@@ -114,6 +114,12 @@ public class ModItems {
         public static final RegistryObject<Item> PEPPER_SEEDS = ITEMS.register("pepper_seeds",
                         () -> new PepperSeedsItem(new Item.Properties()
                                         ));
+        public static final RegistryObject<Item> RICE_SEEDS = ITEMS.register("rice_seeds",
+                        () -> new net.minecraft.world.item.ItemNameBlockItem(ModBlocks.RICE_CROP.get(), new Item.Properties()));
+        public static final RegistryObject<Item> COTTON_SEEDS = ITEMS.register("cotton_seeds",
+                        () -> new net.minecraft.world.item.ItemNameBlockItem(ModBlocks.COTTON_CROP.get(), new Item.Properties()));
+        public static final RegistryObject<Item> TEA_SEEDS = ITEMS.register("tea_seeds",
+                        () -> new net.minecraft.world.item.ItemNameBlockItem(ModBlocks.TEA_BUSH.get(), new Item.Properties()));
 
         // Substances/Materials
         public static final RegistryObject<Item> SAP = ITEMS.register("sap",
@@ -1532,6 +1538,64 @@ public class ModItems {
                                                 .nutrition(3)
                                                 .saturationMod(0.4f)
                                                 .build())));
+        public static final RegistryObject<Item> SHELLED_RICE = ITEMS.register("shelled_rice",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> COOKED_RICE = ITEMS.register("cooked_rice",
+                        () -> new Item(new Item.Properties()
+                                        .food(new net.minecraft.world.food.FoodProperties.Builder()
+                                                .nutrition(6)
+                                                .saturationMod(0.6f)
+                                                .build())));
+        public static final RegistryObject<Item> TEA_LEAVES = ITEMS.register("tea_leaves",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> COTTON = ITEMS.register("cotton",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> BLACK_COTTON = ITEMS.register("black_cotton",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> BLUE_COTTON = ITEMS.register("blue_cotton",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> BROWN_COTTON = ITEMS.register("brown_cotton",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> CHARCOAL_GRAY_COTTON = ITEMS.register("charcoal_gray_cotton",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> CYAN_COTTON = ITEMS.register("cyan_cotton",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> GRAY_COTTON = ITEMS.register("gray_cotton",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> GREEN_COTTON = ITEMS.register("green_cotton",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> INDIGO_COTTON = ITEMS.register("indigo_cotton",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> LAVENDER_COTTON = ITEMS.register("lavender_cotton",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> LIGHT_BLUE_COTTON = ITEMS.register("light_blue_cotton",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> LIGHT_GRAY_COTTON = ITEMS.register("light_gray_cotton",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> LIME_COTTON = ITEMS.register("lime_cotton",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> MAGENTA_COTTON = ITEMS.register("magenta_cotton",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> OCHRE_COTTON = ITEMS.register("ochre_cotton",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> OLIVE_COTTON = ITEMS.register("olive_cotton",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> ORANGE_COTTON = ITEMS.register("orange_cotton",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> PINK_COTTON = ITEMS.register("pink_cotton",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> PURPLE_COTTON = ITEMS.register("purple_cotton",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> RED_COTTON = ITEMS.register("red_cotton",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> RED_OCHRE_COTTON = ITEMS.register("red_ochre_cotton",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> TAUPE_COTTON = ITEMS.register("taupe_cotton",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> TYRIAN_PURPLE_COTTON = ITEMS.register("tyrian_purple_cotton",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> YELLOW_COTTON = ITEMS.register("yellow_cotton",
+                        () -> new Item(new Item.Properties()));
         public static final RegistryObject<Item> CORN = ITEMS.register("corn",
                         () -> new CornItem(new Item.Properties()
                                         ));

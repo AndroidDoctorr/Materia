@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:pink_dye"
+        },
+        {
+            "tag": "materia:cotton"
+        },
+        {
+            "tag": "materia:cotton"
+        },
+        {
+            "tag": "materia:cotton"
+        }
+    ],
+    "result": {
+        "item": "materia:pink_cotton",
+        "count": 3
+    }
+}

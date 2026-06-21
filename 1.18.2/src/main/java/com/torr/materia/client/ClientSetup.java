@@ -87,6 +87,18 @@ public class ClientSetup {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.GRAPE_VINE.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.HOPS_VINE.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.WILD_CORN.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.RICE_CROP.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.COTTON_CROP.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.WILD_RICE.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.WILD_COTTON.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.ESPARTO.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.TEA_BUSH.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.PALM_LEAVES.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.PALM_SAPLING.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.CYPRESS_LEAVES.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.CYPRESS_SAPLING.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.BAOBAB_LEAVES.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.BAOBAB_SAPLING.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.THREE_SISTERS_CROP.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.THREE_SISTERS_CORN_UPPER.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.WATER_POT.get(), RenderType.translucent());
@@ -136,6 +148,7 @@ public class ClientSetup {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.FRAME_LOOM.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.SPINNING_WHEEL.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.AQUILA_AUREA.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.OLIVE_TREE_LEAVES.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.OLIVE_SAPLING.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.WILD_WISTERIA_VINE.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.WISTERIA_VINE.get(), RenderType.cutout());

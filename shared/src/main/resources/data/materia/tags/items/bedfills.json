@@ -2,6 +2,7 @@
     "replace": false,
     "values": [
         "#materia:clumps_of_wool",
-        "materia:bundle"
+        "materia:bundle",
+        "#materia:cotton"
     ]
 }

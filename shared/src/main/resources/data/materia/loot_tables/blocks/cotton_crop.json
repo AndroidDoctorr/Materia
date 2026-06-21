@@ -1,0 +1,116 @@
+{
+    "type": "minecraft:block",
+    "pools": [
+        {
+            "name": "cotton_seeds_pool",
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:cotton_seeds"
+                }
+            ],
+            "conditions": [
+                {
+                    "condition": "minecraft:survives_explosion"
+                }
+            ]
+        },
+        {
+            "name": "cotton_seeds_bonus_age7",
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:cotton_seeds",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 0.0,
+                                "max": 2.0
+                            }
+                        }
+                    ]
+                }
+            ],
+            "conditions": [
+                {
+                    "condition": "minecraft:block_state_property",
+                    "block": "materia:cotton_crop",
+                    "properties": {
+                        "age": "7"
+                    }
+                },
+                {
+                    "condition": "minecraft:survives_explosion"
+                }
+            ]
+        },
+        {
+            "name": "cotton_age7",
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:cotton",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 2.0,
+                                "max": 4.0
+                            }
+                        }
+                    ]
+                }
+            ],
+            "conditions": [
+                {
+                    "condition": "minecraft:block_state_property",
+                    "block": "materia:cotton_crop",
+                    "properties": {
+                        "age": "7"
+                    }
+                },
+                {
+                    "condition": "minecraft:survives_explosion"
+                }
+            ]
+        },
+        {
+            "name": "cotton_age6",
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:cotton",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1.0,
+                                "max": 3.0
+                            }
+                        }
+                    ]
+                }
+            ],
+            "conditions": [
+                {
+                    "condition": "minecraft:block_state_property",
+                    "block": "materia:cotton_crop",
+                    "properties": {
+                        "age": "6"
+                    }
+                },
+                {
+                    "condition": "minecraft:survives_explosion"
+                }
+            ]
+        }
+    ]
+}

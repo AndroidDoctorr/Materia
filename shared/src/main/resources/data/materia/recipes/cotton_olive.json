@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:olive_dye"
+        },
+        {
+            "tag": "materia:cotton"
+        },
+        {
+            "tag": "materia:cotton"
+        },
+        {
+            "tag": "materia:cotton"
+        }
+    ],
+    "result": {
+        "item": "materia:olive_cotton",
+        "count": 3
+    }
+}

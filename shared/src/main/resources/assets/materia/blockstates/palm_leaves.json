@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "facing=north,shape=flat": { "model": "materia:block/palm_leaves_flat", "y": 0 },
+        "facing=east,shape=flat": { "model": "materia:block/palm_leaves_flat", "y": 90 },
+        "facing=south,shape=flat": { "model": "materia:block/palm_leaves_flat", "y": 180 },
+        "facing=west,shape=flat": { "model": "materia:block/palm_leaves_flat", "y": 270 },
+        "facing=north,shape=sloped": { "model": "materia:block/palm_leaves_sloped", "y": 0 },
+        "facing=east,shape=sloped": { "model": "materia:block/palm_leaves_sloped", "y": 90 },
+        "facing=south,shape=sloped": { "model": "materia:block/palm_leaves_sloped", "y": 180 },
+        "facing=west,shape=sloped": { "model": "materia:block/palm_leaves_sloped", "y": 270 }
+    }
+}

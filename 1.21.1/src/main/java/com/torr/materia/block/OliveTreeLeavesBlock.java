@@ -90,4 +90,19 @@ public class OliveTreeLeavesBlock extends LeavesBlock {
         // Then handle normal leaves behavior (decay, etc.)
         super.randomTick(state, level, pos, random);
     }
+
+    @Override
+    public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, net.minecraft.core.Direction direction) {
+        return true;
+    }
+
+    @Override
+    public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, net.minecraft.core.Direction direction) {
+        return 60;
+    }
+
+    @Override
+    public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, net.minecraft.core.Direction direction) {
+        return 30;
+    }
 }

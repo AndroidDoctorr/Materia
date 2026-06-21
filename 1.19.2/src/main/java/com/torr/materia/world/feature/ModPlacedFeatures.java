@@ -177,6 +177,35 @@ public class ModPlacedFeatures {
                             HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR),
                             BiomeFilter.biome())));
 
+
+    public static final RegistryObject<PlacedFeature> WILD_RICE_PLACED = PLACED_FEATURES.register("wild_rice_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.WILD_RICE_PATCH.getHolder().get(),
+                    List.of(RarityFilter.onAverageOnceEvery(40),
+                            InSquarePlacement.spread(),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR),
+                            BiomeFilter.biome())));
+
+    public static final RegistryObject<PlacedFeature> WILD_COTTON_PLACED = PLACED_FEATURES.register("wild_cotton_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.WILD_COTTON_PATCH.getHolder().get(),
+                    List.of(RarityFilter.onAverageOnceEvery(48),
+                            InSquarePlacement.spread(),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR),
+                            BiomeFilter.biome())));
+
+    public static final RegistryObject<PlacedFeature> ESPARTO_PLACED = PLACED_FEATURES.register("esparto_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.ESPARTO_PATCH.getHolder().get(),
+                    List.of(RarityFilter.onAverageOnceEvery(32),
+                            InSquarePlacement.spread(),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
+                            BiomeFilter.biome())));
+
+    public static final RegistryObject<PlacedFeature> TEA_BUSH_PLACED = PLACED_FEATURES.register("tea_bush_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.TEA_BUSH_PATCH.getHolder().get(),
+                    List.of(RarityFilter.onAverageOnceEvery(36),
+                            InSquarePlacement.spread(),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR),
+                            BiomeFilter.biome())));
+
     // Ochre clay placement - rare
     public static final RegistryObject<PlacedFeature> OCHRE_CLAY_PLACED = PLACED_FEATURES.register("ochre_clay_placed",
             () -> new PlacedFeature(ModConfiguredFeatures.OCHRE_CLAY.getHolder().get(),
@@ -301,6 +330,31 @@ public class ModPlacedFeatures {
                             InSquarePlacement.spread(),
                             HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
                             BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.OLIVE_SAPLING.get().defaultBlockState(), BlockPos.ZERO)),
+                            BiomeFilter.biome())));
+
+
+    public static final RegistryObject<PlacedFeature> PALM_TREE_PLACED = PLACED_FEATURES.register("palm_tree_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.PALM_TREE.getHolder().get(),
+                    List.of(RarityFilter.onAverageOnceEvery(20),
+                            InSquarePlacement.spread(),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                            BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.PALM_SAPLING.get().defaultBlockState(), BlockPos.ZERO)),
+                            BiomeFilter.biome())));
+
+    public static final RegistryObject<PlacedFeature> CYPRESS_TREE_PLACED = PLACED_FEATURES.register("cypress_tree_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.CYPRESS_TREE.getHolder().get(),
+                    List.of(RarityFilter.onAverageOnceEvery(28),
+                            InSquarePlacement.spread(),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                            BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.CYPRESS_SAPLING.get().defaultBlockState(), BlockPos.ZERO)),
+                            BiomeFilter.biome())));
+
+    public static final RegistryObject<PlacedFeature> BAOBAB_TREE_PLACED = PLACED_FEATURES.register("baobab_tree_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.BAOBAB_TREE.getHolder().get(),
+                    List.of(RarityFilter.onAverageOnceEvery(48),
+                            InSquarePlacement.spread(),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                            BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.BAOBAB_SAPLING.get().defaultBlockState(), BlockPos.ZERO)),
                             BiomeFilter.biome())));
 
     // Marble vein placement - small individual veins but very common in clusters

@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:rice_seeds"
+        }
+    ],
+    "result": {
+        "item": "materia:shelled_rice",
+        "count": 1
+    }
+}

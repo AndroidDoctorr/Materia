@@ -297,6 +297,15 @@ public class ModBlocks {
         public static final RegistryObject<Block> THREE_SISTERS_CORN_UPPER = BLOCKS.register("three_sisters_corn_upper",
                         () -> new ThreeSistersCornUpperBlock(BlockBehaviour.Properties.of().noCollission()
                                         .instabreak().sound(SoundType.CROP)));
+        public static final RegistryObject<Block> RICE_CROP = BLOCKS.register("rice_crop",
+                        () -> new RiceCropBlock(BlockBehaviour.Properties.of().noCollission()
+                                        .randomTicks().instabreak().sound(SoundType.CROP)));
+        public static final RegistryObject<Block> COTTON_CROP = BLOCKS.register("cotton_crop",
+                        () -> new CottonCropBlock(BlockBehaviour.Properties.of().noCollission()
+                                        .randomTicks().instabreak().sound(SoundType.CROP)));
+        public static final RegistryObject<Block> TEA_BUSH = BLOCKS.register("tea_bush",
+                        () -> new TeaBushBlock(BlockBehaviour.Properties.of().noCollission()
+                                        .randomTicks().instabreak().sound(SoundType.GRASS)));
         public static final RegistryObject<Block> GRAPE_VINE = BLOCKS.register("grape_vine",
                         () -> new GrapeVineBlock(BlockBehaviour.Properties.of().noCollission()
                                         .randomTicks().instabreak().sound(SoundType.CROP)));
@@ -337,6 +346,15 @@ public class ModBlocks {
         public static final RegistryObject<Block> WILD_WISTERIA_VINE = registerBlock("wild_wisteria_vine",
                         () -> new WildWisteriaVineBlock(BlockBehaviour.Properties.of().noCollission().instabreak()
                                         .sound(SoundType.CROP)));
+        public static final RegistryObject<Block> WILD_RICE = registerBlock("wild_rice",
+                        () -> new WildRiceBlock(BlockBehaviour.Properties.of().noCollission().instabreak()
+                                        .sound(SoundType.CROP)));
+        public static final RegistryObject<Block> WILD_COTTON = registerBlock("wild_cotton",
+                        () -> new WildCottonBlock(BlockBehaviour.Properties.of().noCollission().instabreak()
+                                        .sound(SoundType.CROP)));
+        public static final RegistryObject<Block> ESPARTO = registerBlock("esparto",
+                        () -> new EspartoBlock(BlockBehaviour.Properties.of().noCollission().instabreak()
+                                        .sound(SoundType.GRASS)));
         
         // OTHER BLOCKS
         public static final RegistryObject<Block> SAPPED_SPRUCE_LOG = registerBlock("sapped_spruce_log",
@@ -565,7 +583,7 @@ public class ModBlocks {
 
         // Rubber Tree/Wood blocks
         public static final RegistryObject<Block> RUBBER_WOOD_LOG = registerBlock("rubber_wood_log",
-                        () -> new net.minecraft.world.level.block.RotatedPillarBlock(BlockBehaviour.Properties.of()
+                        () -> new com.torr.materia.block.FlammableRotatedPillarBlock(BlockBehaviour.Properties.of()
                                         .strength(2.0f)
                                         .sound(SoundType.WOOD)));
         public static final RegistryObject<Block> RUBBER_TREE_SAPLING = registerBlock("rubber_tree_sapling",
@@ -606,7 +624,7 @@ public class ModBlocks {
 
         // Olive Tree/Wood blocks
         public static final RegistryObject<Block> OLIVE_TREE_LOG = registerBlock("olive_tree_log",
-                        () -> new net.minecraft.world.level.block.RotatedPillarBlock(BlockBehaviour.Properties.of()
+                        () -> new com.torr.materia.block.FlammableRotatedPillarBlock(BlockBehaviour.Properties.of()
                                         .strength(2.0f)
                                         .sound(SoundType.WOOD)));
         public static final RegistryObject<Block> OLIVE_SAPLING = registerBlock("olive_sapling",
@@ -625,6 +643,43 @@ public class ModBlocks {
                                         .isSuffocating((state, world, pos) -> false)
                                         .isViewBlocking((state, world, pos) -> false)));
 
+        // Palm / cypress / baobab (logs only — hew to rough oak planks)
+        public static final RegistryObject<Block> PALM_LOG = registerBlock("palm_log",
+                        () -> new com.torr.materia.block.PalmLogBlock(BlockBehaviour.Properties.of()
+                                        .strength(2.0f).sound(SoundType.WOOD)));
+        public static final RegistryObject<Block> PALM_SAPLING = registerBlock("palm_sapling",
+                        () -> new com.torr.materia.block.PalmSaplingBlock(BlockBehaviour.Properties.of()
+                                        .noCollission().instabreak().sound(SoundType.GRASS).randomTicks()));
+        public static final RegistryObject<Block> PALM_LEAVES = registerBlock("palm_leaves",
+                        () -> new com.torr.materia.block.PalmLeavesBlock(BlockBehaviour.Properties.of()
+                                        .strength(0.2f).randomTicks().sound(SoundType.GRASS).noOcclusion()
+                                        .isValidSpawn((state, world, pos, type) -> false)
+                                        .isSuffocating((state, world, pos) -> false)
+                                        .isViewBlocking((state, world, pos) -> false)));
+        public static final RegistryObject<Block> CYPRESS_LOG = registerBlock("cypress_log",
+                        () -> new com.torr.materia.block.FlammableRotatedPillarBlock(BlockBehaviour.Properties.of()
+                                        .strength(2.0f).sound(SoundType.WOOD)));
+        public static final RegistryObject<Block> CYPRESS_SAPLING = registerBlock("cypress_sapling",
+                        () -> new com.torr.materia.block.CypressSaplingBlock(BlockBehaviour.Properties.of()
+                                        .noCollission().instabreak().sound(SoundType.GRASS).randomTicks()));
+        public static final RegistryObject<Block> CYPRESS_LEAVES = registerBlock("cypress_leaves",
+                        () -> new com.torr.materia.block.CypressLeavesBlock(BlockBehaviour.Properties.of()
+                                        .strength(0.2f).randomTicks().sound(SoundType.GRASS).noOcclusion()
+                                        .isValidSpawn((state, world, pos, type) -> false)
+                                        .isSuffocating((state, world, pos) -> false)
+                                        .isViewBlocking((state, world, pos) -> false)));
+        public static final RegistryObject<Block> BAOBAB_LOG = registerBlock("baobab_log",
+                        () -> new com.torr.materia.block.FlammableRotatedPillarBlock(BlockBehaviour.Properties.of()
+                                        .strength(2.0f).sound(SoundType.WOOD)));
+        public static final RegistryObject<Block> BAOBAB_SAPLING = registerBlock("baobab_sapling",
+                        () -> new com.torr.materia.block.BaobabSaplingBlock(BlockBehaviour.Properties.of()
+                                        .noCollission().instabreak().sound(SoundType.GRASS).randomTicks()));
+        public static final RegistryObject<Block> BAOBAB_LEAVES = registerBlock("baobab_leaves",
+                        () -> new com.torr.materia.block.BaobabLeavesBlock(BlockBehaviour.Properties.of()
+                                        .strength(0.2f).randomTicks().sound(SoundType.GRASS).noOcclusion()
+                                        .isValidSpawn((state, world, pos, type) -> false)
+                                        .isSuffocating((state, world, pos) -> false)
+                                        .isViewBlocking((state, world, pos) -> false)));
 
         // TABLES
         public static final RegistryObject<Block> ACACIA_TABLE = registerBlock("acacia_table",

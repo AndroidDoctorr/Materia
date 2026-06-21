@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:yellow_dye"
+        },
+        {
+            "tag": "materia:cotton"
+        },
+        {
+            "tag": "materia:cotton"
+        },
+        {
+            "tag": "materia:cotton"
+        }
+    ],
+    "result": {
+        "item": "materia:yellow_cotton",
+        "count": 3
+    }
+}

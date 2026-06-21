@@ -2,6 +2,7 @@ package com.torr.materia.datagen.worldgen;
 
 import com.torr.materia.ModBlocks;
 import com.torr.materia.materia;
+import com.torr.materia.world.feature.CypressFoliagePlacer;
 import com.torr.materia.world.feature.ModFeatures;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
@@ -81,6 +82,13 @@ public final class materiaWorldgenBootstrap {
     private static final ResourceKey<ConfiguredFeature<?, ?>> LIMESTONE_SURFACE_BIOME = configured("limestone_surface_biome");
     private static final ResourceKey<ConfiguredFeature<?, ?>> SALTPETER_SAND = configured("saltpeter_sand");
     private static final ResourceKey<ConfiguredFeature<?, ?>> SALTPETER_SANDSTONE = configured("saltpeter_sandstone");
+    private static final ResourceKey<ConfiguredFeature<?, ?>> WILD_RICE_PATCH = configured("wild_rice_patch");
+    private static final ResourceKey<ConfiguredFeature<?, ?>> WILD_COTTON_PATCH = configured("wild_cotton_patch");
+    private static final ResourceKey<ConfiguredFeature<?, ?>> ESPARTO_PATCH = configured("esparto_patch");
+    private static final ResourceKey<ConfiguredFeature<?, ?>> TEA_BUSH_PATCH = configured("tea_bush_patch");
+    private static final ResourceKey<ConfiguredFeature<?, ?>> PALM_TREE = configured("palm_tree");
+    private static final ResourceKey<ConfiguredFeature<?, ?>> CYPRESS_TREE = configured("cypress_tree");
+    private static final ResourceKey<ConfiguredFeature<?, ?>> BAOBAB_TREE = configured("baobab_tree");
 
     // Placed feature keys (match JSON ids)
     private static final ResourceKey<PlacedFeature> GRAVEL_TIN_ORE_PLACED = placed("gravel_tin_ore_placed");
@@ -125,6 +133,13 @@ public final class materiaWorldgenBootstrap {
     private static final ResourceKey<PlacedFeature> LIMESTONE_SURFACE_BIOME_PLACED = placed("limestone_surface_biome_placed");
     private static final ResourceKey<PlacedFeature> SALTPETER_SAND_PLACED = placed("saltpeter_sand_placed");
     private static final ResourceKey<PlacedFeature> SALTPETER_SANDSTONE_PLACED = placed("saltpeter_sandstone_placed");
+    private static final ResourceKey<PlacedFeature> WILD_RICE_PLACED = placed("wild_rice_placed");
+    private static final ResourceKey<PlacedFeature> WILD_COTTON_PLACED = placed("wild_cotton_placed");
+    private static final ResourceKey<PlacedFeature> ESPARTO_PLACED = placed("esparto_placed");
+    private static final ResourceKey<PlacedFeature> TEA_BUSH_PLACED = placed("tea_bush_placed");
+    private static final ResourceKey<PlacedFeature> PALM_TREE_PLACED = placed("palm_tree_placed");
+    private static final ResourceKey<PlacedFeature> CYPRESS_TREE_PLACED = placed("cypress_tree_placed");
+    private static final ResourceKey<PlacedFeature> BAOBAB_TREE_PLACED = placed("baobab_tree_placed");
 
     public static void bootstrapConfiguredFeatures(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         // gravel_tin_ore
@@ -188,6 +203,11 @@ public final class materiaWorldgenBootstrap {
         context.register(WILD_BEANS_PATCH, randomPatch(ModBlocks.WILD_BEANS.get().defaultBlockState(), 32, 6, 2));
         context.register(WILD_PEPPERS_PATCH, randomPatch(ModBlocks.WILD_PEPPERS.get().defaultBlockState(), 32, 6, 2));
         context.register(WILD_CORN_PATCH, randomPatch(ModBlocks.WILD_CORN.get().defaultBlockState(), 32, 6, 2));
+        context.register(WILD_RICE_PATCH, randomPatch(ModBlocks.WILD_RICE.get().defaultBlockState(), 32, 6, 2));
+        context.register(WILD_COTTON_PATCH, randomPatch(ModBlocks.WILD_COTTON.get().defaultBlockState(), 32, 6, 2));
+        context.register(ESPARTO_PATCH, randomPatch(ModBlocks.ESPARTO.get().defaultBlockState(), 24, 5, 2));
+        context.register(TEA_BUSH_PATCH, randomPatch(ModBlocks.TEA_BUSH.get().defaultBlockState(), 16, 4, 2));
+
 
         context.register(WILD_GRAPE_VINE, new ConfiguredFeature<>((Feature<NoneFeatureConfiguration>) ModFeatures.WILD_GRAPE_VINE_FEATURE.get(), NoneFeatureConfiguration.INSTANCE));
         context.register(WILD_WISTERIA_VINE, new ConfiguredFeature<>((Feature<NoneFeatureConfiguration>) ModFeatures.WILD_WISTERIA_VINE_FEATURE.get(), NoneFeatureConfiguration.INSTANCE));
@@ -259,6 +279,19 @@ public final class materiaWorldgenBootstrap {
                 BlockStateProvider.simple(ModBlocks.RUBBER_TREE_LEAVES.get()),
                 new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
                 new TwoLayersFeatureSize(1, 0, 1)
+        ).ignoreVines().dirt(BlockStateProvider.simple(Blocks.DIRT)).build()));
+
+
+        context.register(PALM_TREE, new ConfiguredFeature<>((Feature<NoneFeatureConfiguration>) ModFeatures.PALM_TREE_FEATURE.get(), NoneFeatureConfiguration.INSTANCE));
+
+        context.register(CYPRESS_TREE, new ConfiguredFeature<>((Feature<NoneFeatureConfiguration>) ModFeatures.CYPRESS_TREE_FEATURE.get(), NoneFeatureConfiguration.INSTANCE));
+
+        context.register(BAOBAB_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(ModBlocks.BAOBAB_LOG.get()),
+                new net.minecraft.world.level.levelgen.feature.trunkplacers.GiantTrunkPlacer(10, 4, 2),
+                BlockStateProvider.simple(ModBlocks.BAOBAB_LEAVES.get()),
+                new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(1), 4),
+                new TwoLayersFeatureSize(2, 1, 0)
         ).ignoreVines().dirt(BlockStateProvider.simple(Blocks.DIRT)).build()));
 
         context.register(OLIVE_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
@@ -441,6 +474,16 @@ public final class materiaWorldgenBootstrap {
                 List.of(RarityFilter.onAverageOnceEvery(64), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR), BiomeFilter.biome())));
         context.register(WILD_PEPPERS_PLACED, new PlacedFeature(configured.getOrThrow(WILD_PEPPERS_PATCH),
                 List.of(RarityFilter.onAverageOnceEvery(64), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR), BiomeFilter.biome())));
+
+        context.register(WILD_RICE_PLACED, new PlacedFeature(configured.getOrThrow(WILD_RICE_PATCH),
+                List.of(RarityFilter.onAverageOnceEvery(40), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR), BiomeFilter.biome())));
+        context.register(WILD_COTTON_PLACED, new PlacedFeature(configured.getOrThrow(WILD_COTTON_PATCH),
+                List.of(RarityFilter.onAverageOnceEvery(48), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR), BiomeFilter.biome())));
+        context.register(ESPARTO_PLACED, new PlacedFeature(configured.getOrThrow(ESPARTO_PATCH),
+                List.of(RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES), BiomeFilter.biome())));
+        context.register(TEA_BUSH_PLACED, new PlacedFeature(configured.getOrThrow(TEA_BUSH_PATCH),
+                List.of(RarityFilter.onAverageOnceEvery(36), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR), BiomeFilter.biome())));
+
         context.register(WILD_CORN_PLACED, new PlacedFeature(configured.getOrThrow(WILD_CORN_PATCH),
                 List.of(RarityFilter.onAverageOnceEvery(64), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR), BiomeFilter.biome())));
 
@@ -505,6 +548,17 @@ public final class materiaWorldgenBootstrap {
                         BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.RUBBER_TREE_SAPLING.get().defaultBlockState(), BlockPos.ZERO)),
                         BiomeFilter.biome()
                 )));
+
+
+        context.register(PALM_TREE_PLACED, new PlacedFeature(configured.getOrThrow(PALM_TREE),
+                List.of(RarityFilter.onAverageOnceEvery(20), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.PALM_SAPLING.get().defaultBlockState(), BlockPos.ZERO)), BiomeFilter.biome())));
+        context.register(CYPRESS_TREE_PLACED, new PlacedFeature(configured.getOrThrow(CYPRESS_TREE),
+                List.of(RarityFilter.onAverageOnceEvery(28), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.CYPRESS_SAPLING.get().defaultBlockState(), BlockPos.ZERO)), BiomeFilter.biome())));
+        context.register(BAOBAB_TREE_PLACED, new PlacedFeature(configured.getOrThrow(BAOBAB_TREE),
+                List.of(RarityFilter.onAverageOnceEvery(48), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.BAOBAB_SAPLING.get().defaultBlockState(), BlockPos.ZERO)), BiomeFilter.biome())));
 
         context.register(OLIVE_TREE_PLACED, new PlacedFeature(configured.getOrThrow(OLIVE_TREE),
                 List.of(

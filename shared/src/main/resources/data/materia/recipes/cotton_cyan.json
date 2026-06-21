@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:cyan_dye"
+        },
+        {
+            "tag": "materia:cotton"
+        },
+        {
+            "tag": "materia:cotton"
+        },
+        {
+            "tag": "materia:cotton"
+        }
+    ],
+    "result": {
+        "item": "materia:cyan_cotton",
+        "count": 3
+    }
+}

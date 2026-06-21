@@ -1,0 +1,11 @@
+{
+    "type": "forge:add_features",
+    "biomes": [
+        "#materia:temperate",
+        "#materia:temperate_forest"
+    ],
+    "step": "vegetal_decoration",
+    "features": [
+        "materia:tea_bush_placed"
+    ]
+}

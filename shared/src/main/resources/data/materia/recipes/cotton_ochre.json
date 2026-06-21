@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:ochre"
+        },
+        {
+            "tag": "materia:cotton"
+        },
+        {
+            "tag": "materia:cotton"
+        },
+        {
+            "tag": "materia:cotton"
+        }
+    ],
+    "result": {
+        "item": "materia:ochre_cotton",
+        "count": 3
+    }
+}

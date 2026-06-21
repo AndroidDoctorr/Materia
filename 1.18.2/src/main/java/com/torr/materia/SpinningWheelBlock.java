@@ -138,7 +138,7 @@ public class SpinningWheelBlock extends BaseEntityBlock implements SimpleWaterlo
         ItemStack held = player.getItemInHand(hand);
         if (held.isEmpty() || held.getCount() < 2) return InteractionResult.PASS;
 
-        Item outItem = TextileUtils.getStringItemForClump(held.getItem());
+        Item outItem = TextileUtils.getStringItemForSpinningInput(held.getItem());
         if (outItem == null) return InteractionResult.PASS;
 
         if (!level.isClientSide) {

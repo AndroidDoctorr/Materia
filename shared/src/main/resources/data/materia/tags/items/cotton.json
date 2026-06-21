@@ -1,0 +1,29 @@
+{
+    "replace": false,
+    "values": [
+        "materia:cotton",
+        "materia:black_cotton",
+        "materia:blue_cotton",
+        "materia:brown_cotton",
+        "materia:charcoal_gray_cotton",
+        "materia:cyan_cotton",
+        "materia:gray_cotton",
+        "materia:green_cotton",
+        "materia:indigo_cotton",
+        "materia:lavender_cotton",
+        "materia:light_blue_cotton",
+        "materia:light_gray_cotton",
+        "materia:lime_cotton",
+        "materia:magenta_cotton",
+        "materia:ochre_cotton",
+        "materia:olive_cotton",
+        "materia:orange_cotton",
+        "materia:pink_cotton",
+        "materia:purple_cotton",
+        "materia:red_cotton",
+        "materia:red_ochre_cotton",
+        "materia:taupe_cotton",
+        "materia:tyrian_purple_cotton",
+        "materia:yellow_cotton"
+    ]
+}

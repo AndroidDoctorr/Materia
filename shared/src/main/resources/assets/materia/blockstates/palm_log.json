@@ -1,0 +1,28 @@
+{
+    "variants": {
+        "axis=y,upper=false": {
+            "model": "materia:block/palm_log"
+        },
+        "axis=y,upper=true": {
+            "model": "materia:block/palm_log_upper"
+        },
+        "axis=z,upper=false": {
+            "model": "materia:block/palm_log",
+            "x": 90
+        },
+        "axis=z,upper=true": {
+            "model": "materia:block/palm_log_upper",
+            "x": 90
+        },
+        "axis=x,upper=false": {
+            "model": "materia:block/palm_log",
+            "x": 90,
+            "y": 90
+        },
+        "axis=x,upper=true": {
+            "model": "materia:block/palm_log_upper",
+            "x": 90,
+            "y": 90
+        }
+    }
+}

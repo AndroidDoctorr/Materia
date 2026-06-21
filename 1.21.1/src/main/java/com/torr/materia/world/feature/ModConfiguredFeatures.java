@@ -19,6 +19,7 @@ import net.minecraft.world.level.levelgen.feature.configurations.TreeConfigurati
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.GiantTrunkPlacer;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
@@ -166,6 +167,20 @@ public class ModConfiguredFeatures {
                         new RandomPatchConfiguration(32, 6, 2, placedHolder));
             });
 
+
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> WILD_RICE_PATCH = CONFIGURED_FEATURES.register("wild_rice_patch",
+            () -> randomPatch(ModBlocks.WILD_RICE.get(), 32, 6, 2));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> WILD_COTTON_PATCH = CONFIGURED_FEATURES.register("wild_cotton_patch",
+            () -> randomPatch(ModBlocks.WILD_COTTON.get(), 32, 6, 2));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> ESPARTO_PATCH = CONFIGURED_FEATURES.register("esparto_patch",
+            () -> randomPatch(ModBlocks.ESPARTO.get(), 24, 5, 2));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> TEA_BUSH_PATCH = CONFIGURED_FEATURES.register("tea_bush_patch",
+            () -> randomPatch(ModBlocks.TEA_BUSH.get(), 16, 4, 2));
+
     // Configure wild grape vine feature
     public static final RegistryObject<ConfiguredFeature<?, ?>> WILD_GRAPE_VINE = CONFIGURED_FEATURES.register("wild_grape_vine",
             () -> new ConfiguredFeature<>((Feature<NoneFeatureConfiguration>)ModFeatures.WILD_GRAPE_VINE_FEATURE.get(), NoneFeatureConfiguration.INSTANCE));
@@ -293,6 +308,24 @@ public class ModConfiguredFeatures {
              .dirt(BlockStateProvider.simple(Blocks.DIRT)) // Specify dirt requirement
              .build()));
 
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> PALM_TREE = CONFIGURED_FEATURES.register("palm_tree",
+            () -> new ConfiguredFeature<>((Feature<NoneFeatureConfiguration>) ModFeatures.PALM_TREE_FEATURE.get(),
+                    NoneFeatureConfiguration.INSTANCE));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> CYPRESS_TREE = CONFIGURED_FEATURES.register("cypress_tree",
+            () -> new ConfiguredFeature<>((Feature<NoneFeatureConfiguration>) ModFeatures.CYPRESS_TREE_FEATURE.get(),
+                    NoneFeatureConfiguration.INSTANCE));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> BAOBAB_TREE = CONFIGURED_FEATURES.register("baobab_tree",
+            () -> new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                    BlockStateProvider.simple(ModBlocks.BAOBAB_LOG.get()),
+                    new GiantTrunkPlacer(10, 4, 2),
+                    BlockStateProvider.simple(ModBlocks.BAOBAB_LEAVES.get()),
+                    new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(1), 4),
+                    new TwoLayersFeatureSize(2, 1, 0)
+            ).ignoreVines().dirt(BlockStateProvider.simple(Blocks.DIRT)).build()));
+
     // Very small marble veins - ultra-safe size, no chunk boundary issues possible
     public static final RegistryObject<ConfiguredFeature<?, ?>> MARBLE_VEIN = CONFIGURED_FEATURES.register("marble_vein",
             () -> {
@@ -371,6 +404,16 @@ public class ModConfiguredFeatures {
                 );
                 return new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(targets, 8)); // Smaller patches for sandstone
             });
+
+    private static ConfiguredFeature<RandomPatchConfiguration, ?> randomPatch(net.minecraft.world.level.block.Block block,
+                                                                                int tries, int xz, int y) {
+        ConfiguredFeature<SimpleBlockConfiguration, ?> simple = new ConfiguredFeature<>(Feature.SIMPLE_BLOCK,
+                new SimpleBlockConfiguration(BlockStateProvider.simple(block)));
+        Holder<ConfiguredFeature<?, ?>> simpleHolder = Holder.direct(simple);
+        PlacedFeature placed = new PlacedFeature(simpleHolder, java.util.List.of());
+        Holder<PlacedFeature> placedHolder = Holder.direct(placed);
+        return new ConfiguredFeature<>(Feature.RANDOM_PATCH, new RandomPatchConfiguration(tries, xz, y, placedHolder));
+    }
 
     public static void register(IEventBus eventBus) {
         CONFIGURED_FEATURES.register(eventBus);

@@ -1,0 +1,14 @@
+{
+    "type": "materia:water_pot",
+    "ingredient": {
+        "item": "materia:shelled_rice"
+    },
+    "results": [
+        {
+            "item": "materia:cooked_rice",
+            "count": 1
+        }
+    ],
+    "cookingtime": 160,
+    "requires_boiling": true
+}

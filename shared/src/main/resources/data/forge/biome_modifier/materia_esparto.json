@@ -1,0 +1,11 @@
+{
+    "type": "forge:add_features",
+    "biomes": [
+        "#materia:desert",
+        "#materia:temperate"
+    ],
+    "step": "vegetal_decoration",
+    "features": [
+        "materia:esparto_placed"
+    ]
+}

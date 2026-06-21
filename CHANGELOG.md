@@ -2,6 +2,16 @@
 
 All notable changes to **Materia** (mod id: `materia`) will be documented in this file.
 
+## 1.2.0 (2026-06-20)
+
+- **New plants & trees:** **esparto** (decorative grass; drops plant fiber and wheat seeds like Materia tall grass), **rice** and **cotton** crops (8 growth stages; wild variants use stage-6 art), **tea bush** (4 stages; right-click mature bush for tea leaves, regrows from stage 2), **palm**, **Mediterranean cypress**, and **baobab** trees (log/leaves/sapling only — hew logs to **rough oak planks**). All spawn in appropriate biome tags (desert/temperate esparto, river/warm-wet wild rice, tropical/grassy cotton, temperate tea, beach/tropical palms, temperate cypress, tropical baobab).
+
+- **Rice:** requires a **water source within 2 blocks** to grow; mature crop drops **shelled rice**; **shelled rice** is inedible raw but **cooks to cooked rice** in a boiling water pot (6 nutrition / 0.6 saturation).
+
+- **Cotton:** white **`materia:cotton`** bolls (not taupe like wool clumps); dyeable like wool clumps; spins on **hand spindle** / **spinning wheel** to matching **colored string** (white cotton → white string); included in **`#materia:bedfills`** alongside wool clumps.
+
+- **Palm trees:** straight trunks with **`upper`** log segment texture on the top few blocks; **flat 2D palm leaves** at the crown (diagonal trunk-adjacent leaves deferred).
+
 ## 1.1.1 (2026-06-20)
 
 - **Kiln / advanced kiln / smelting / blasting — Forge metal inputs:** Materia kiln nugget melts, wrought bloom work, wrought ingot kiln, alloy advanced-kiln inputs, steel’s raw iron, and furnace/blast paths for tin / wrought aluminum now accept **`#forge:raw_materials/*`** aligned tags (plus **`#forge:nuggets/tin`** and **`#forge:ingots/{copper,zinc}`** for bronze/brass routes). Outputs remain Materia’s items. **`#materia:kiln_compatible_raw_tins`** aliases **`#forge:raw_materials/tin`**.

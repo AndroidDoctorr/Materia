@@ -60,7 +60,7 @@ public class SpindleItem extends Item {
         ItemStack clump = takeOneWoolClump(player);
         if (clump.isEmpty()) return spindle;
 
-        var outItem = TextileUtils.getStringItemForClump(clump.getItem());
+        var outItem = TextileUtils.getStringItemForSpinningInput(clump.getItem());
         if (outItem == null) return spindle;
 
         ItemStack out = new ItemStack(outItem, 2);
@@ -73,16 +73,16 @@ public class SpindleItem extends Item {
     }
 
     private static boolean hasAnyWoolClump(Player player) {
-        if (TextileUtils.getStringItemForClump(player.getOffhandItem().getItem()) != null) return true;
+        if (TextileUtils.getStringItemForSpinningInput(player.getOffhandItem().getItem()) != null) return true;
         for (ItemStack s : player.getInventory().items) {
-            if (!s.isEmpty() && TextileUtils.getStringItemForClump(s.getItem()) != null) return true;
+            if (!s.isEmpty() && TextileUtils.getStringItemForSpinningInput(s.getItem()) != null) return true;
         }
         return false;
     }
 
     private static ItemStack takeOneWoolClump(Player player) {
         ItemStack offhand = player.getOffhandItem();
-        if (!offhand.isEmpty() && TextileUtils.getStringItemForClump(offhand.getItem()) != null) {
+        if (!offhand.isEmpty() && TextileUtils.getStringItemForSpinningInput(offhand.getItem()) != null) {
             ItemStack taken = offhand.copy();
             taken.setCount(1);
             offhand.shrink(1);
@@ -91,7 +91,7 @@ public class SpindleItem extends Item {
 
         for (int i = 0; i < player.getInventory().items.size(); i++) {
             ItemStack s = player.getInventory().items.get(i);
-            if (!s.isEmpty() && TextileUtils.getStringItemForClump(s.getItem()) != null) {
+            if (!s.isEmpty() && TextileUtils.getStringItemForSpinningInput(s.getItem()) != null) {
                 ItemStack taken = s.copy();
                 taken.setCount(1);
                 s.shrink(1);

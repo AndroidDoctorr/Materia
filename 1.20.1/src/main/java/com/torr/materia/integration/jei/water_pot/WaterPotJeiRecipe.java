@@ -1,7 +1,9 @@
 package com.torr.materia.integration.jei.water_pot;
 
+import com.torr.materia.recipe.WaterPotRecipe;
 import net.minecraft.world.item.ItemStack;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class WaterPotJeiRecipe {
@@ -25,6 +27,23 @@ public class WaterPotJeiRecipe {
 
     public boolean requiresBoiling() {
         return requiresBoiling;
+    }
+
+    public static WaterPotJeiRecipe fromRecipe(WaterPotRecipe recipe) {
+        List<ItemStack> inputs = new ArrayList<>();
+        int count = Math.max(1, recipe.getIngredientCount());
+        for (ItemStack stack : recipe.getIngredient().getItems()) {
+            ItemStack input = stack.copy();
+            input.setCount(count);
+            inputs.add(input);
+        }
+
+        List<ItemStack> outputs = new ArrayList<>();
+        for (ItemStack result : recipe.getResults()) {
+            outputs.add(result.copy());
+        }
+
+        return new WaterPotJeiRecipe(inputs, outputs, recipe.requiresBoiling());
     }
 }
 

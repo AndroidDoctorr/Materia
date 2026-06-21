@@ -26,6 +26,12 @@ public class ModFeatures {
     public static final RegistryObject<Feature<?>> WILD_WISTERIA_VINE_FEATURE = FEATURES.register("wild_wisteria_vine_feature",
             () -> new WildWisteriaVineFeature(com.mojang.serialization.Codec.unit(net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration.INSTANCE)));
 
+    public static final RegistryObject<Feature<?>> PALM_TREE_FEATURE = FEATURES.register("palm_tree_feature",
+            () -> new PalmTreeFeature(com.mojang.serialization.Codec.unit(net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration.INSTANCE)));
+
+    public static final RegistryObject<Feature<?>> CYPRESS_TREE_FEATURE = FEATURES.register("cypress_tree_feature",
+            () -> new CypressTreeFeature(com.mojang.serialization.Codec.unit(net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration.INSTANCE)));
+
     public static void register(IEventBus eventBus) {
         FEATURES.register(eventBus);
     }

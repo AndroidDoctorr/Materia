@@ -15,6 +15,10 @@ public class ModFoliagePlacerTypes {
             FOLIAGE_PLACER_TYPES.register("olive_foliage_placer", 
                     () -> new FoliagePlacerType<>(OliveFoliagePlacer.CODEC));
 
+    public static final RegistryObject<FoliagePlacerType<CypressFoliagePlacer>> CYPRESS_FOLIAGE_PLACER =
+            FOLIAGE_PLACER_TYPES.register("cypress_foliage_placer",
+                    () -> new FoliagePlacerType<>(CypressFoliagePlacer.CODEC));
+
     public static void register(IEventBus eventBus) {
         FOLIAGE_PLACER_TYPES.register(eventBus);
     }

@@ -88,6 +88,9 @@ public class HewingRecipe extends CustomRecipe {
         // Custom mod logs
         if (log.is(ModBlocks.RUBBER_WOOD_LOG.get().asItem())) return new ItemStack(ModItems.ROUGH_RUBBER_WOOD_PLANK.get(), 4);
         if (log.is(ModBlocks.OLIVE_TREE_LOG.get().asItem())) return new ItemStack(ModItems.ROUGH_OAK_PLANK.get(), 4);
+        if (log.is(ModBlocks.PALM_LOG.get().asItem())) return new ItemStack(ModItems.ROUGH_OAK_PLANK.get(), 4);
+        if (log.is(ModBlocks.CYPRESS_LOG.get().asItem())) return new ItemStack(ModItems.ROUGH_OAK_PLANK.get(), 4);
+        if (log.is(ModBlocks.BAOBAB_LOG.get().asItem())) return new ItemStack(ModItems.ROUGH_OAK_PLANK.get(), 4);
         if (log.is(ModBlocks.SAPPED_SPRUCE_LOG.get().asItem())) return new ItemStack(ModItems.ROUGH_SPRUCE_PLANK.get(), 4);
         if (log.is(ModBlocks.TAPPED_RUBBER_WOOD_LOG.get().asItem())) return new ItemStack(ModItems.ROUGH_RUBBER_WOOD_PLANK.get(), 4);
         

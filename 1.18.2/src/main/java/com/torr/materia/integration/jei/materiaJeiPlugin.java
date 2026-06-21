@@ -29,6 +29,7 @@ import com.torr.materia.recipe.FirePitRecipe;
 import com.torr.materia.recipe.OvenRecipe;
 import com.torr.materia.recipe.PrimitiveCraftingTableRecipe;
 import com.torr.materia.recipe.StoneAnvilRecipe;
+import com.torr.materia.recipe.WaterPotRecipe;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.RecipeTypes;
@@ -38,6 +39,7 @@ import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
@@ -139,7 +141,10 @@ public class materiaJeiPlugin implements IModPlugin {
                 new HewingJeiRecipe(Ingredient.of(ModBlocks.RUBBER_WOOD_LOG.get().asItem()), basicAxes, new ItemStack(ModItems.ROUGH_RUBBER_WOOD_PLANK.get(), 4)),
                 new HewingJeiRecipe(Ingredient.of(ModBlocks.TAPPED_RUBBER_WOOD_LOG.get().asItem()), basicAxes, new ItemStack(ModItems.ROUGH_RUBBER_WOOD_PLANK.get(), 4)),
                 new HewingJeiRecipe(Ingredient.of(ModBlocks.SAPPED_SPRUCE_LOG.get().asItem()), basicAxes, new ItemStack(ModItems.ROUGH_SPRUCE_PLANK.get(), 4)),
-                new HewingJeiRecipe(Ingredient.of(ModBlocks.OLIVE_TREE_LOG.get().asItem()), basicAxes, new ItemStack(ModItems.ROUGH_OAK_PLANK.get(), 4))
+                new HewingJeiRecipe(Ingredient.of(ModBlocks.OLIVE_TREE_LOG.get().asItem()), basicAxes, new ItemStack(ModItems.ROUGH_OAK_PLANK.get(), 4)),
+                new HewingJeiRecipe(Ingredient.of(ModBlocks.PALM_LOG.get().asItem()), basicAxes, new ItemStack(ModItems.ROUGH_OAK_PLANK.get(), 4)),
+                new HewingJeiRecipe(Ingredient.of(ModBlocks.CYPRESS_LOG.get().asItem()), basicAxes, new ItemStack(ModItems.ROUGH_OAK_PLANK.get(), 4)),
+                new HewingJeiRecipe(Ingredient.of(ModBlocks.BAOBAB_LOG.get().asItem()), basicAxes, new ItemStack(ModItems.ROUGH_OAK_PLANK.get(), 4))
         );
         registration.addRecipes(materiaJeiRecipeTypes.HEWING, hewing);
 
@@ -184,23 +189,11 @@ public class materiaJeiPlugin implements IModPlugin {
         );
         registration.addRecipes(materiaJeiRecipeTypes.FRAME_LOOM, frameLoom);
 
-        // Water Pot (simple in-place conversions)
-        List<WaterPotJeiRecipe> waterPot = new ArrayList<>();
-        waterPot.add(new WaterPotJeiRecipe(List.of(new ItemStack(Items.BONE)), List.of(new ItemStack(ModItems.GLUE.get())), true));
-        waterPot.add(new WaterPotJeiRecipe(List.of(new ItemStack(ModItems.TANNED_LEATHER.get())), List.of(new ItemStack(ModItems.HARDENED_LEATHER.get())), true));
-        waterPot.add(new WaterPotJeiRecipe(List.of(new ItemStack(ModItems.MUREX_GLAND_BRANDARIS.get())), List.of(new ItemStack(ModItems.BOILED_MUREX_GLAND_BRANDARIS.get())), true));
-        waterPot.add(new WaterPotJeiRecipe(List.of(new ItemStack(ModItems.MUREX_GLAND_TRUNCULUS.get())), List.of(new ItemStack(ModItems.BOILED_MUREX_GLAND_TRUNCULUS.get())), true));
-        waterPot.add(new WaterPotJeiRecipe(List.of(new ItemStack(ModItems.MUREX_GLAND_HAEMASTOMA.get())), List.of(new ItemStack(ModItems.BOILED_MUREX_GLAND_HAEMASTOMA.get())), true));
-        waterPot.add(new WaterPotJeiRecipe(List.of(new ItemStack(ModItems.OAK_BARK.get())), List.of(new ItemStack(ModItems.BOILED_BARK.get())), true));
-
-        // Earth (2x) -> clay + dirt (1.18.x uses a single item, not a tag)
-        waterPot.add(new WaterPotJeiRecipe(
-                List.of(new ItemStack(ModBlocks.EARTH.get(), 2)),
-                List.of(new ItemStack(Items.CLAY_BALL, 4), new ItemStack(Items.DIRT)),
-                false
-        ));
-
-        waterPot.add(new WaterPotJeiRecipe(List.of(new ItemStack(ModItems.PAPER_MIXTURE.get())), List.of(new ItemStack(ModItems.PAPER_PULP.get())), false));
+        // Water Pot recipes from datapack (includes cooked rice, earth→clay, etc.)
+        List<WaterPotRecipe> waterPotRecipes = recipeManager.getAllRecipesFor(ModRecipes.WATER_POT_TYPE);
+        List<WaterPotJeiRecipe> waterPot = waterPotRecipes.stream()
+                .map(WaterPotJeiRecipe::fromRecipe)
+                .toList();
         registration.addRecipes(materiaJeiRecipeTypes.WATER_POT, waterPot);
 
         // Drying Rack
@@ -214,6 +207,7 @@ public class materiaJeiPlugin implements IModPlugin {
         registration.addRecipes(materiaJeiRecipeTypes.DRYING_RACK, dryingRack);
 
         registerMetalworkingJeiTips(registration);
+        registerPlantJeiTips(registration);
     }
 
     @Override
@@ -269,6 +263,44 @@ public class materiaJeiPlugin implements IModPlugin {
                 ),
                 VanillaTypes.ITEM_STACK,
                 new TextComponent("Brass alloy: 2x raw copper + 1x raw zinc.")
+        );
+    }
+
+    private void registerPlantJeiTips(IRecipeRegistration registration) {
+        registration.addIngredientInfo(
+                List.of(
+                        new ItemStack(ModItems.RICE_SEEDS.get()),
+                        new ItemStack(ModBlocks.WILD_RICE.get().asItem()),
+                        new ItemStack(ModItems.SHELLED_RICE.get())
+                ),
+                VanillaTypes.ITEM_STACK,
+                new TranslatableComponent("jei.materia.rice")
+        );
+
+        registration.addIngredientInfo(
+                List.of(
+                        new ItemStack(ModItems.COTTON.get()),
+                        new ItemStack(ModItems.COTTON_SEEDS.get()),
+                        new ItemStack(ModBlocks.COTTON_CROP.get().asItem())
+                ),
+                VanillaTypes.ITEM_STACK,
+                new TranslatableComponent("jei.materia.cotton")
+        );
+
+        registration.addIngredientInfo(
+                List.of(
+                        new ItemStack(ModItems.TEA_SEEDS.get()),
+                        new ItemStack(ModBlocks.TEA_BUSH.get().asItem()),
+                        new ItemStack(ModItems.TEA_LEAVES.get())
+                ),
+                VanillaTypes.ITEM_STACK,
+                new TranslatableComponent("jei.materia.tea_bush")
+        );
+
+        registration.addIngredientInfo(
+                List.of(new ItemStack(ModBlocks.SPINNING_WHEEL.get())),
+                VanillaTypes.ITEM_STACK,
+                new TranslatableComponent("jei.materia.spinning_wheel")
         );
     }
 }
