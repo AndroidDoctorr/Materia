@@ -453,6 +453,17 @@ public class FallingAmphoraEntity extends net.minecraft.world.entity.Entity {
                 itemEntity.setDefaultPickUpDelay();
                 this.level().addFreshEntity(itemEntity);
             }
+        } else if (tempEntity.hasTea()) {
+            int liquidAmount = tempEntity.getLiquidAmount();
+            for (int i = 0; i < liquidAmount; i++) {
+                ItemEntity itemEntity = new ItemEntity(this.level(),
+                    pos.getX() + 0.5 + (this.random.nextDouble() - 0.5) * 0.5,
+                    pos.getY() + 0.5,
+                    pos.getZ() + 0.5 + (this.random.nextDouble() - 0.5) * 0.5,
+                    new ItemStack(ModItems.TEA_CUP.get()));
+                itemEntity.setDefaultPickUpDelay();
+                this.level().addFreshEntity(itemEntity);
+            }
         }
     }
 }

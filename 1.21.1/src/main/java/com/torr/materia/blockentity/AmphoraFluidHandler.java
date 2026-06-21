@@ -174,6 +174,7 @@ public final class AmphoraFluidHandler implements IFluidHandler {
             case "vinegar" -> ModFluids.VINEGAR_STILL.get();
             case "beer" -> ModFluids.BEER_STILL.get();
             case "beer_mash" -> ModFluids.BEER_MASH_STILL.get();
+            case "tea" -> ModFluids.TEA_STILL.get();
             default -> null;
         };
     }
@@ -208,6 +209,9 @@ public final class AmphoraFluidHandler implements IFluidHandler {
         }
         if (fluid.isSame(ModFluids.BEER_MASH_STILL.get())) {
             return "beer_mash";
+        }
+        if (fluid.isSame(ModFluids.TEA_STILL.get())) {
+            return "tea";
         }
         return null;
     }

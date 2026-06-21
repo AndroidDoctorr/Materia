@@ -10,6 +10,7 @@ import com.torr.materia.blockentity.CheeseWheelBlockEntity;
 import com.torr.materia.blockentity.WaterPotBlockEntity;
 import com.torr.materia.blockentity.MilkPotBlockEntity;
 import com.torr.materia.blockentity.BeerPotBlockEntity;
+import com.torr.materia.blockentity.TeaPotBlockEntity;
 import com.torr.materia.blockentity.WinePotBlockEntity;
 import com.torr.materia.blockentity.FishTrapBlockEntity;
 import com.torr.materia.blockentity.TableBlockEntity;
@@ -63,6 +64,10 @@ public class ModBlockEntities {
         public static final RegistryObject<BlockEntityType<BeerPotBlockEntity>> BEER_POT_BLOCK_ENTITY = BLOCK_ENTITIES
                         .register("beer_pot_block_entity", () -> BlockEntityType.Builder.of(BeerPotBlockEntity::new,
                                         ModBlocks.BEER_POT.get()).build(null));
+
+        public static final RegistryObject<BlockEntityType<TeaPotBlockEntity>> TEA_POT_BLOCK_ENTITY = BLOCK_ENTITIES
+                        .register("tea_pot_block_entity", () -> BlockEntityType.Builder.of(TeaPotBlockEntity::new,
+                                        ModBlocks.TEA_POT.get()).build(null));
 
         public static final RegistryObject<BlockEntityType<BriningVatBlockEntity>> BRINING_VAT_BLOCK_ENTITY = BLOCK_ENTITIES
                         .register("brining_vat_block_entity", () -> BlockEntityType.Builder.of(BriningVatBlockEntity::new,

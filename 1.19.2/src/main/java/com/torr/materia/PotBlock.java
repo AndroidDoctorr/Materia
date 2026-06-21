@@ -113,6 +113,70 @@ public class PotBlock extends Block {
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
 
+        // Convert empty pot into a tea pot (from tea cup -> crucible)
+        if (held.is(ModItems.TEA_CUP.get())) {
+            if (!level.isClientSide) {
+                BlockState newState = ModBlocks.TEA_POT.get().defaultBlockState()
+                        .setValue(TeaPotBlock.WATER_LEVEL, 1);
+                level.setBlock(pos, newState, 3);
+                level.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
+
+                ItemStack crucible = new ItemStack(ModItems.CRUCIBLE.get());
+                ItemStack result = ItemUtils.createFilledResult(held, player, crucible);
+                player.setItemInHand(hand, result);
+                return InteractionResult.SUCCESS;
+            }
+            return InteractionResult.sidedSuccess(level.isClientSide);
+        }
+
+        // Convert empty pot into a tea pot (from tea bottle -> empty bottle)
+        if (held.is(ModItems.TEA_BOTTLE.get())) {
+            if (!level.isClientSide) {
+                BlockState newState = ModBlocks.TEA_POT.get().defaultBlockState()
+                        .setValue(TeaPotBlock.WATER_LEVEL, 1);
+                level.setBlock(pos, newState, 3);
+                level.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
+
+                ItemStack emptyBottle = new ItemStack(Items.GLASS_BOTTLE);
+                ItemStack result = ItemUtils.createFilledResult(held, player, emptyBottle);
+                player.setItemInHand(hand, result);
+                return InteractionResult.SUCCESS;
+            }
+            return InteractionResult.sidedSuccess(level.isClientSide);
+        }
+
+        // Convert empty pot into a tea pot (from tea bucket -> empty bucket)
+        if (held.is(ModItems.TEA_BUCKET.get())) {
+            if (!level.isClientSide) {
+                BlockState newState = ModBlocks.TEA_POT.get().defaultBlockState()
+                        .setValue(TeaPotBlock.WATER_LEVEL, 3);
+                level.setBlock(pos, newState, 3);
+                level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
+
+                ItemStack emptyBucket = new ItemStack(Items.BUCKET);
+                ItemStack result = ItemUtils.createFilledResult(held, player, emptyBucket);
+                player.setItemInHand(hand, result);
+                return InteractionResult.SUCCESS;
+            }
+            return InteractionResult.sidedSuccess(level.isClientSide);
+        }
+
+        // Convert empty pot into a tea pot (from tea pot item -> empty pot item)
+        if (held.is(ModItems.TEA_POT.get())) {
+            if (!level.isClientSide) {
+                BlockState newState = ModBlocks.TEA_POT.get().defaultBlockState()
+                        .setValue(TeaPotBlock.WATER_LEVEL, 3);
+                level.setBlock(pos, newState, 3);
+                level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
+
+                ItemStack emptyPot = new ItemStack(ModItems.POT.get());
+                ItemStack result = ItemUtils.createFilledResult(held, player, emptyPot);
+                player.setItemInHand(hand, result);
+                return InteractionResult.SUCCESS;
+            }
+            return InteractionResult.sidedSuccess(level.isClientSide);
+        }
+
         // Convert empty pot into a wine pot (from crucible -> wine cup)
         if (held.is(ModItems.WINE_CUP.get())) {
             if (!level.isClientSide) {

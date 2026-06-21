@@ -14,7 +14,10 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraft.world.level.block.CampfireBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -111,6 +114,10 @@ public class WaterPotBlockEntity extends BlockEntity {
             cookTime = 0;
             return;
         }
+        if (recipe.requiresWater() && !hasWater()) {
+            cookTime = 0;
+            return;
+        }
         if (input.getCount() < recipe.getIngredientCount()) {
             cookTime = 0;
             return;
@@ -123,7 +130,9 @@ public class WaterPotBlockEntity extends BlockEntity {
 
         items.extractItem(0, recipe.getIngredientCount(), false);
         recipe.getResults().forEach(this::spawnOutput);
-        if (recipe.consumesWater()) {
+        if (recipe.getResultBlock() != null) {
+            transformToResultBlock(recipe.getResultBlock());
+        } else if (recipe.consumesWater()) {
             level.setBlock(worldPosition, ModBlocks.POT.get().defaultBlockState(), 3);
         }
 
@@ -143,6 +152,21 @@ public class WaterPotBlockEntity extends BlockEntity {
                 stack);
         entity.setDefaultPickUpDelay();
         level.addFreshEntity(entity);
+    }
+
+    private void transformToResultBlock(ResourceLocation blockId) {
+        if (level == null || level.isClientSide) {
+            return;
+        }
+        Block block = ForgeRegistries.BLOCKS.getValue(blockId);
+        if (block == null) {
+            return;
+        }
+        BlockState newState = block.defaultBlockState();
+        if (newState.hasProperty(WaterPotBlock.WATER_LEVEL)) {
+            newState = newState.setValue(WaterPotBlock.WATER_LEVEL, waterLevel);
+        }
+        level.setBlock(worldPosition, newState, 3);
     }
 
     public ItemStack getRenderStack() {

@@ -31,12 +31,19 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
+
 import javax.annotation.Nullable;
 
 public class WaterPotBlock extends Block implements EntityBlock {
     protected static final VoxelShape POT_SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D);
     public static final BooleanProperty BOILING = BooleanProperty.create("boiling");
     public static final IntegerProperty WATER_LEVEL = IntegerProperty.create("water_level", 0, 3);
+    private static final TagKey<Item> EARTH_BLOCKS = ItemTags.create(new ResourceLocation(materia.MOD_ID, "earth_blocks"));
+    private static final TagKey<Item> WATER_POT_INGREDIENTS = ItemTags.create(new ResourceLocation(materia.MOD_ID, "water_pot_ingredients"));
 
     public WaterPotBlock(Properties properties) {
         super(properties);
@@ -281,10 +288,8 @@ public class WaterPotBlock extends Block implements EntityBlock {
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
 
-        // Check if player is trying to insert an item (bone, tanned leather, murex glands, bark, or earth)
-        if (held.is(Items.BONE) || held.is(ModItems.TANNED_LEATHER.get()) || held.is(ModItems.PAPER_MIXTURE.get()) || held.is(ModItems.OAK_BARK.get()) || held.is(ModBlocks.EARTH.get().asItem()) ||
-            held.is(ModItems.MUREX_GLAND_BRANDARIS.get()) || held.is(ModItems.MUREX_GLAND_TRUNCULUS.get()) || 
-            held.is(ModItems.MUREX_GLAND_HAEMASTOMA.get())) {
+        // Insert boiling / water-pot recipe ingredients (1 slot)
+        if (held.is(WATER_POT_INGREDIENTS) || held.is(EARTH_BLOCKS)) {
             if (!level.isClientSide) {
                 BlockEntity be = level.getBlockEntity(pos);
                 if (be instanceof WaterPotBlockEntity potEntity) {
@@ -292,7 +297,7 @@ public class WaterPotBlock extends Block implements EntityBlock {
                             .getCapability(net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
                             .orElse(null);
                     if (handler != null && handler.getStackInSlot(0).isEmpty()) {
-                        int insertCount = held.is(ModBlocks.EARTH.get().asItem()) ? 2 : held.is(ModItems.PAPER_MIXTURE.get()) ? 1 : 1;
+                        int insertCount = held.is(EARTH_BLOCKS) ? 2 : 1;
                         if (held.getCount() < insertCount) {
                             return InteractionResult.PASS;
                         }

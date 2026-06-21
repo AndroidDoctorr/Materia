@@ -1,0 +1,10 @@
+{
+    "type": "materia:water_pot",
+    "ingredient": {
+        "item": "materia:tea_leaves"
+    },
+    "result_block": "materia:tea_pot",
+    "cookingtime": 160,
+    "requires_boiling": false,
+    "requires_water": true
+}

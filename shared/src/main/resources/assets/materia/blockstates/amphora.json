@@ -30,6 +30,9 @@
         "closed=false,liquid_type=beer": {
             "model": "materia:block/amphora_beer"
         },
+        "closed=false,liquid_type=tea": {
+            "model": "materia:block/amphora_tea"
+        },
         "closed=true,liquid_type=empty": {
             "model": "materia:block/amphora_closed"
         },
@@ -58,6 +61,9 @@
             "model": "materia:block/amphora_closed"
         },
         "closed=true,liquid_type=beer": {
+            "model": "materia:block/amphora_closed"
+        },
+        "closed=true,liquid_type=tea": {
             "model": "materia:block/amphora_closed"
         }
     }

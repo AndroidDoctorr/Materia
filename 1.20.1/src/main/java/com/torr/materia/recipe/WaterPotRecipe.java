@@ -3,7 +3,6 @@ package com.torr.materia.recipe;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.torr.materia.ModRecipes;
-import com.torr.materia.materia;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
@@ -29,10 +28,14 @@ public class WaterPotRecipe implements Recipe<Container> {
     private final int cookingTime;
     private final boolean requiresBoiling;
     private final boolean consumesWater;
+    @Nullable
+    private final ResourceLocation resultBlock;
+    private final boolean requiresWater;
 
     public WaterPotRecipe(ResourceLocation id, Ingredient ingredient, int ingredientCount,
                           NonNullList<ItemStack> results, int cookingTime,
-                          boolean requiresBoiling, boolean consumesWater) {
+                          boolean requiresBoiling, boolean consumesWater,
+                          @Nullable ResourceLocation resultBlock, boolean requiresWater) {
         this.id = id;
         this.ingredient = ingredient;
         this.ingredientCount = ingredientCount;
@@ -40,6 +43,8 @@ public class WaterPotRecipe implements Recipe<Container> {
         this.cookingTime = cookingTime;
         this.requiresBoiling = requiresBoiling;
         this.consumesWater = consumesWater;
+        this.resultBlock = resultBlock;
+        this.requiresWater = requiresWater;
     }
 
     @Override
@@ -69,6 +74,15 @@ public class WaterPotRecipe implements Recipe<Container> {
     public boolean requiresBoiling() { return requiresBoiling; }
     public boolean consumesWater() { return consumesWater; }
 
+    public boolean requiresWater() {
+        return requiresWater || consumesWater || resultBlock != null;
+    }
+
+    @Nullable
+    public ResourceLocation getResultBlock() {
+        return resultBlock;
+    }
+
     @Override
     public ResourceLocation getId() { return id; }
 
@@ -88,22 +102,28 @@ public class WaterPotRecipe implements Recipe<Container> {
             Ingredient ingredient = Ingredient.fromJson(json.get("ingredient"));
             int ingredientCount = GsonHelper.getAsInt(json, "ingredient_count", 1);
 
-            JsonArray resultsArray = GsonHelper.getAsJsonArray(json, "results");
             NonNullList<ItemStack> results = NonNullList.create();
-            for (int i = 0; i < resultsArray.size(); i++) {
-                JsonObject resultObj = resultsArray.get(i).getAsJsonObject();
-                String itemName = GsonHelper.getAsString(resultObj, "item");
-                int count = GsonHelper.getAsInt(resultObj, "count", 1);
-                Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(itemName));
-                if (item != null) results.add(new ItemStack(item, count));
+            if (json.has("results")) {
+                JsonArray resultsArray = GsonHelper.getAsJsonArray(json, "results");
+                for (int i = 0; i < resultsArray.size(); i++) {
+                    JsonObject resultObj = resultsArray.get(i).getAsJsonObject();
+                    String itemName = GsonHelper.getAsString(resultObj, "item");
+                    int count = GsonHelper.getAsInt(resultObj, "count", 1);
+                    Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(itemName));
+                    if (item != null) results.add(new ItemStack(item, count));
+                }
             }
 
             int cookingTime = GsonHelper.getAsInt(json, "cookingtime", 160);
             boolean requiresBoiling = GsonHelper.getAsBoolean(json, "requires_boiling", true);
             boolean consumesWater = GsonHelper.getAsBoolean(json, "consumes_water", false);
+            ResourceLocation resultBlock = json.has("result_block")
+                    ? new ResourceLocation(GsonHelper.getAsString(json, "result_block"))
+                    : null;
+            boolean requiresWater = GsonHelper.getAsBoolean(json, "requires_water", false);
 
             return new WaterPotRecipe(recipeId, ingredient, ingredientCount, results,
-                    cookingTime, requiresBoiling, consumesWater);
+                    cookingTime, requiresBoiling, consumesWater, resultBlock, requiresWater);
         }
 
         @Override
@@ -118,9 +138,11 @@ public class WaterPotRecipe implements Recipe<Container> {
             int cookingTime = buffer.readInt();
             boolean requiresBoiling = buffer.readBoolean();
             boolean consumesWater = buffer.readBoolean();
+            ResourceLocation resultBlock = buffer.readBoolean() ? buffer.readResourceLocation() : null;
+            boolean requiresWater = buffer.readBoolean();
 
             return new WaterPotRecipe(recipeId, ingredient, ingredientCount, results,
-                    cookingTime, requiresBoiling, consumesWater);
+                    cookingTime, requiresBoiling, consumesWater, resultBlock, requiresWater);
         }
 
         @Override
@@ -134,6 +156,11 @@ public class WaterPotRecipe implements Recipe<Container> {
             buffer.writeInt(recipe.cookingTime);
             buffer.writeBoolean(recipe.requiresBoiling);
             buffer.writeBoolean(recipe.consumesWater);
+            buffer.writeBoolean(recipe.resultBlock != null);
+            if (recipe.resultBlock != null) {
+                buffer.writeResourceLocation(recipe.resultBlock);
+            }
+            buffer.writeBoolean(recipe.requiresWater);
         }
     }
 }

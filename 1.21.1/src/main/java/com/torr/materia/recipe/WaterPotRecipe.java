@@ -9,6 +9,7 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingInput;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -17,6 +18,10 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 
+import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Optional;
+
 public class WaterPotRecipe implements Recipe<CraftingInput> {
     private final Ingredient ingredient;
     private final int ingredientCount;
@@ -24,16 +29,22 @@ public class WaterPotRecipe implements Recipe<CraftingInput> {
     private final int cookingTime;
     private final boolean requiresBoiling;
     private final boolean consumesWater;
+    @Nullable
+    private final ResourceLocation resultBlock;
+    private final boolean requiresWater;
 
     public WaterPotRecipe(Ingredient ingredient, int ingredientCount,
                           NonNullList<ItemStack> results, int cookingTime,
-                          boolean requiresBoiling, boolean consumesWater) {
+                          boolean requiresBoiling, boolean consumesWater,
+                          @Nullable ResourceLocation resultBlock, boolean requiresWater) {
         this.ingredient = ingredient;
         this.ingredientCount = ingredientCount;
         this.results = results;
         this.cookingTime = cookingTime;
         this.requiresBoiling = requiresBoiling;
         this.consumesWater = consumesWater;
+        this.resultBlock = resultBlock;
+        this.requiresWater = requiresWater;
     }
 
     @Override
@@ -63,6 +74,15 @@ public class WaterPotRecipe implements Recipe<CraftingInput> {
     public boolean requiresBoiling() { return requiresBoiling; }
     public boolean consumesWater() { return consumesWater; }
 
+    public boolean requiresWater() {
+        return requiresWater || consumesWater || resultBlock != null;
+    }
+
+    @Nullable
+    public ResourceLocation getResultBlock() {
+        return resultBlock;
+    }
+
     @Override
     public RecipeSerializer<?> getSerializer() {
         return ModRecipes.WATER_POT_SERIALIZER.get();
@@ -77,15 +97,18 @@ public class WaterPotRecipe implements Recipe<CraftingInput> {
         private static final MapCodec<WaterPotRecipe> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
                 Ingredient.CODEC.fieldOf("ingredient").forGetter(r -> r.ingredient),
                 Codec.INT.optionalFieldOf("ingredient_count", 1).forGetter(r -> r.ingredientCount),
-                ModRecipeCodecs.ITEM_STACK_OBJECT_CODEC.listOf().fieldOf("results").xmap(list -> {
-                    NonNullList<ItemStack> nn = NonNullList.create();
-                    nn.addAll(list);
-                    return nn;
-                }, list -> list).forGetter(WaterPotRecipe::getResults),
+                ModRecipeCodecs.ITEM_STACK_OBJECT_CODEC.listOf().optionalFieldOf("results", List.of()).forGetter(r -> r.results),
                 Codec.INT.optionalFieldOf("cookingtime", 160).forGetter(r -> r.cookingTime),
                 Codec.BOOL.optionalFieldOf("requires_boiling", true).forGetter(r -> r.requiresBoiling),
-                Codec.BOOL.optionalFieldOf("consumes_water", false).forGetter(r -> r.consumesWater)
-        ).apply(instance, WaterPotRecipe::new));
+                Codec.BOOL.optionalFieldOf("consumes_water", false).forGetter(r -> r.consumesWater),
+                ResourceLocation.CODEC.optionalFieldOf("result_block").forGetter(r -> Optional.ofNullable(r.resultBlock)),
+                Codec.BOOL.optionalFieldOf("requires_water", false).forGetter(r -> r.requiresWater)
+        ).apply(instance, (ingredient, ingredientCount, results, cookingTime, requiresBoiling, consumesWater, resultBlock, requiresWater) -> {
+            NonNullList<ItemStack> nn = NonNullList.create();
+            nn.addAll(results);
+            return new WaterPotRecipe(ingredient, ingredientCount, nn, cookingTime, requiresBoiling, consumesWater,
+                    resultBlock.orElse(null), requiresWater);
+        }));
 
         private static final StreamCodec<RegistryFriendlyByteBuf, WaterPotRecipe> STREAM_CODEC =
                 ByteBufCodecs.fromCodecWithRegistries(CODEC.codec());

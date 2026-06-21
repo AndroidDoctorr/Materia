@@ -185,6 +185,9 @@ public class ModBlocks {
         public static final RegistryObject<Block> BEER_POT = BLOCKS.register("beer_pot",
                         () -> new BeerPotBlock(BlockBehaviour.Properties.of(Material.STONE).strength(0.5f)
                                         .sound(SoundType.STONE).noOcclusion()));
+        public static final RegistryObject<Block> TEA_POT = BLOCKS.register("tea_pot",
+                        () -> new TeaPotBlock(BlockBehaviour.Properties.of(Material.STONE).strength(0.5f)
+                                        .sound(SoundType.STONE).noOcclusion()));
         public static final RegistryObject<Block> LAVA_POT = BLOCKS.register("lava_pot",
                         () -> new PotBlock(BlockBehaviour.Properties.of(Material.STONE).strength(0.5f)
                                         .sound(SoundType.STONE).noOcclusion()));

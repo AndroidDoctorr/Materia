@@ -66,7 +66,8 @@ public class AmphoraBlock extends BaseEntityBlock implements SimpleWaterloggedBl
         GRAPE_JUICE("grape_juice"),
         MILK("milk"),
         BEER_MASH("beer_mash"),
-        BEER("beer");
+        BEER("beer"),
+        TEA("tea");
 
         private final String name;
 
@@ -338,6 +339,35 @@ public class AmphoraBlock extends BaseEntityBlock implements SimpleWaterloggedBl
                     player.setItemInHand(hand, result);
                     updateBlockState(level, pos, amphoraEntity);
                     return InteractionResult.SUCCESS;
+                } else if (amphoraEntity.hasTea() && amphoraEntity.removeLiquid(1)) {
+                    ItemStack teaCup = new ItemStack(ModItems.TEA_CUP.get());
+                    level.playSound(null, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
+                    ItemStack result = ItemUtils.createFilledResult(held, player, teaCup);
+                    player.setItemInHand(hand, result);
+                    updateBlockState(level, pos, amphoraEntity);
+                    return InteractionResult.SUCCESS;
+                }
+            }
+            return InteractionResult.sidedSuccess(level.isClientSide());
+        }
+
+        // Steep tea leaves in water amphora
+        if (held.is(ModItems.TEA_LEAVES.get())) {
+            if (!level.isClientSide()) {
+                if (amphoraEntity.getStorageMode() == AmphoraBlockEntity.MODE_SOLID) {
+                    player.displayClientMessage(Component.translatable("message.materia.amphora.solid_mode"), true);
+                    return InteractionResult.SUCCESS;
+                }
+                if (amphoraEntity.hasLid()) {
+                    player.displayClientMessage(Component.translatable("message.materia.amphora.liquid_mode"), true);
+                    return InteractionResult.SUCCESS;
+                }
+                if (amphoraEntity.trySteepTeaLeaves(held)) {
+                    held.shrink(1);
+                    level.playSound(null, pos, SoundEvents.BREWING_STAND_BREW, SoundSource.BLOCKS, 0.8F, 1.0F);
+                    updateBlockState(level, pos, amphoraEntity);
+                    player.displayClientMessage(Component.translatable("message.materia.amphora.tea_steeped"), true);
+                    return InteractionResult.SUCCESS;
                 }
             }
             return InteractionResult.sidedSuccess(level.isClientSide());
@@ -401,6 +431,13 @@ public class AmphoraBlock extends BaseEntityBlock implements SimpleWaterloggedBl
                     ItemStack milkPot = new ItemStack(ModBlocks.MILK_POT.get());
                     level.playSound(null, pos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
                     ItemStack result = ItemUtils.createFilledResult(held, player, milkPot);
+                    player.setItemInHand(hand, result);
+                    updateBlockState(level, pos, amphoraEntity);
+                    return InteractionResult.SUCCESS;
+                } else if (amphoraEntity.hasTea() && amphoraEntity.getLiquidAmount() >= 3 && amphoraEntity.removeLiquid(3)) {
+                    ItemStack teaPot = new ItemStack(ModItems.TEA_POT.get());
+                    level.playSound(null, pos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
+                    ItemStack result = ItemUtils.createFilledResult(held, player, teaPot);
                     player.setItemInHand(hand, result);
                     updateBlockState(level, pos, amphoraEntity);
                     return InteractionResult.SUCCESS;
@@ -482,6 +519,13 @@ public class AmphoraBlock extends BaseEntityBlock implements SimpleWaterloggedBl
                     ItemStack milkBucket = new ItemStack(Items.MILK_BUCKET);
                     level.playSound(null, pos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
                     ItemStack result = ItemUtils.createFilledResult(held, player, milkBucket);
+                    player.setItemInHand(hand, result);
+                    updateBlockState(level, pos, amphoraEntity);
+                    return InteractionResult.SUCCESS;
+                } else if (amphoraEntity.hasTea() && amphoraEntity.getLiquidAmount() >= 3 && amphoraEntity.removeLiquid(3)) {
+                    ItemStack teaBucket = new ItemStack(ModItems.TEA_BUCKET.get());
+                    level.playSound(null, pos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
+                    ItemStack result = ItemUtils.createFilledResult(held, player, teaBucket);
                     player.setItemInHand(hand, result);
                     updateBlockState(level, pos, amphoraEntity);
                     return InteractionResult.SUCCESS;
@@ -796,6 +840,70 @@ public class AmphoraBlock extends BaseEntityBlock implements SimpleWaterloggedBl
             return InteractionResult.sidedSuccess(level.isClientSide());
         }
 
+        // Tea cup interactions: tea_cup -> crucible (add tea)
+        if (held.is(ModItems.TEA_CUP.get())) {
+            if (!level.isClientSide()) {
+                if (amphoraEntity.canAddTea()) {
+                    amphoraEntity.addTea(1);
+                    ItemStack crucible = new ItemStack(ModItems.CRUCIBLE.get());
+                    level.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
+                    ItemStack result = ItemUtils.createFilledResult(held, player, crucible);
+                    player.setItemInHand(hand, result);
+                    updateBlockState(level, pos, amphoraEntity);
+                    return InteractionResult.SUCCESS;
+                }
+            }
+            return InteractionResult.sidedSuccess(level.isClientSide());
+        }
+
+        // Tea pot interactions: tea_pot -> pot (add 3 bottles worth)
+        if (held.is(ModItems.TEA_POT.get())) {
+            if (!level.isClientSide()) {
+                if (amphoraEntity.canAddTea() && amphoraEntity.getLiquidAmount() <= 6) {
+                    amphoraEntity.addTea(3);
+                    ItemStack pot = new ItemStack(ModItems.POT.get());
+                    level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
+                    ItemStack result = ItemUtils.createFilledResult(held, player, pot);
+                    player.setItemInHand(hand, result);
+                    updateBlockState(level, pos, amphoraEntity);
+                    return InteractionResult.SUCCESS;
+                }
+            }
+            return InteractionResult.sidedSuccess(level.isClientSide());
+        }
+
+        // Tea bucket interactions: tea_bucket -> bucket (add 3 bottles worth)
+        if (held.is(ModItems.TEA_BUCKET.get())) {
+            if (!level.isClientSide()) {
+                if (amphoraEntity.canAddTea() && amphoraEntity.getLiquidAmount() <= 6) {
+                    amphoraEntity.addTea(3);
+                    ItemStack bucket = new ItemStack(Items.BUCKET);
+                    level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
+                    ItemStack result = ItemUtils.createFilledResult(held, player, bucket);
+                    player.setItemInHand(hand, result);
+                    updateBlockState(level, pos, amphoraEntity);
+                    return InteractionResult.SUCCESS;
+                }
+            }
+            return InteractionResult.sidedSuccess(level.isClientSide());
+        }
+
+        // Tea bottle interactions: tea_bottle -> glass_bottle (add 1 bottle worth)
+        if (held.is(ModItems.TEA_BOTTLE.get())) {
+            if (!level.isClientSide()) {
+                if (amphoraEntity.canAddTea()) {
+                    amphoraEntity.addTea(1);
+                    level.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
+                    ItemStack emptyBottle = new ItemStack(Items.GLASS_BOTTLE);
+                    ItemStack result = ItemUtils.createFilledResult(held, player, emptyBottle);
+                    player.setItemInHand(hand, result);
+                    updateBlockState(level, pos, amphoraEntity);
+                    return InteractionResult.SUCCESS;
+                }
+            }
+            return InteractionResult.sidedSuccess(level.isClientSide());
+        }
+
         // Wine bottle interactions: wine_bottle -> glass_bottle (add 1 bottle worth)
         if (held.is(ModItems.WINE_BOTTLE.get())) {
             if (!level.isClientSide()) {
@@ -948,6 +1056,9 @@ public class AmphoraBlock extends BaseEntityBlock implements SimpleWaterloggedBl
                         break;
                     case "beer":
                         newState = newState.setValue(LIQUID_TYPE, LiquidType.BEER);
+                        break;
+                    case "tea":
+                        newState = newState.setValue(LIQUID_TYPE, LiquidType.TEA);
                         break;
                     default:
                         newState = newState.setValue(LIQUID_TYPE, LiquidType.EMPTY);

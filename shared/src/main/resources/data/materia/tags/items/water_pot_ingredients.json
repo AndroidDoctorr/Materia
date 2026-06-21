@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:bone",
+    "materia:tanned_leather",
+    "materia:paper_mixture",
+    "materia:oak_bark",
+    "materia:murex_gland_brandaris",
+    "materia:murex_gland_trunculus",
+    "materia:murex_gland_haemastoma",
+    "materia:tea_leaves",
+    "materia:shelled_rice"
+  ]
+}

@@ -42,6 +42,12 @@ public class WaterPotJeiRecipe {
         for (ItemStack result : recipe.getResults()) {
             outputs.add(result.copy());
         }
+        if (recipe.getResultBlock() != null) {
+            var block = net.minecraftforge.registries.ForgeRegistries.BLOCKS.getValue(recipe.getResultBlock());
+            if (block != null) {
+                outputs.add(new ItemStack(block.asItem()));
+            }
+        }
 
         return new WaterPotJeiRecipe(inputs, outputs, recipe.requiresBoiling());
     }

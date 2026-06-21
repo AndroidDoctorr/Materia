@@ -25,6 +25,7 @@ public final class ModFluids {
     public static final RegistryObject<FluidType> VINEGAR_TYPE = registerType("vinegar", 1010, 1500, 300);
     public static final RegistryObject<FluidType> BEER_TYPE = registerType("beer", 1010, 2000, 285);
     public static final RegistryObject<FluidType> BEER_MASH_TYPE = registerType("beer_mash", 1050, 3500, 300);
+    public static final RegistryObject<FluidType> TEA_TYPE = registerType("tea", 1005, 1800, 320);
 
     private static ForgeFlowingFluid.Properties wineProps;
     private static ForgeFlowingFluid.Properties grapeJuiceProps;
@@ -32,6 +33,7 @@ public final class ModFluids {
     private static ForgeFlowingFluid.Properties vinegarProps;
     private static ForgeFlowingFluid.Properties beerProps;
     private static ForgeFlowingFluid.Properties beerMashProps;
+    private static ForgeFlowingFluid.Properties teaProps;
 
     public static final RegistryObject<FlowingFluid> WINE_FLOWING = FLUIDS.register("wine_flowing",
             () -> new ForgeFlowingFluid.Flowing(wineProps()));
@@ -62,6 +64,11 @@ public final class ModFluids {
             () -> new ForgeFlowingFluid.Flowing(beerMashProps()));
     public static final RegistryObject<FlowingFluid> BEER_MASH_STILL = FLUIDS.register("beer_mash",
             () -> new ForgeFlowingFluid.Source(beerMashProps()));
+
+    public static final RegistryObject<FlowingFluid> TEA_FLOWING = FLUIDS.register("tea_flowing",
+            () -> new ForgeFlowingFluid.Flowing(teaProps()));
+    public static final RegistryObject<FlowingFluid> TEA_STILL = FLUIDS.register("tea",
+            () -> new ForgeFlowingFluid.Source(teaProps()));
 
     private static ForgeFlowingFluid.Properties wineProps() {
         if (wineProps == null) {
@@ -116,6 +123,14 @@ public final class ModFluids {
     public static void register(net.minecraftforge.eventbus.api.IEventBus bus) {
         FLUID_TYPES.register(bus);
         FLUIDS.register(bus);
+    }
+
+
+    private static ForgeFlowingFluid.Properties teaProps() {
+        if (teaProps == null) {
+            teaProps = new ForgeFlowingFluid.Properties(TEA_TYPE::get, TEA_STILL::get, TEA_FLOWING::get);
+        }
+        return teaProps;
     }
 
     private ModFluids() {}

@@ -44,6 +44,7 @@ public class WaterPotBlock extends Block implements EntityBlock {
     public static final BooleanProperty BOILING = BooleanProperty.create("boiling");
     public static final IntegerProperty WATER_LEVEL = IntegerProperty.create("water_level", 0, 3);
     private static final TagKey<Item> EARTH_BLOCKS = ItemTags.create(new ResourceLocation(materia.MOD_ID, "earth_blocks"));
+    private static final TagKey<Item> WATER_POT_INGREDIENTS = ItemTags.create(new ResourceLocation(materia.MOD_ID, "water_pot_ingredients"));
 
     public WaterPotBlock(Properties properties) {
         super(properties);
@@ -288,10 +289,8 @@ public class WaterPotBlock extends Block implements EntityBlock {
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
 
-        // Check if player is trying to insert an item (bone, tanned leather, murex glands, or earth-equivalent)
-        if (held.is(Items.BONE) || held.is(ModItems.TANNED_LEATHER.get()) || held.is(ModItems.PAPER_MIXTURE.get()) || held.is(EARTH_BLOCKS) ||
-            held.is(ModItems.MUREX_GLAND_BRANDARIS.get()) || held.is(ModItems.MUREX_GLAND_TRUNCULUS.get()) || 
-            held.is(ModItems.MUREX_GLAND_HAEMASTOMA.get())) {
+        // Insert boiling / water-pot recipe ingredients (1 slot)
+        if (held.is(WATER_POT_INGREDIENTS) || held.is(EARTH_BLOCKS)) {
             if (!level.isClientSide) {
                 BlockEntity be = level.getBlockEntity(pos);
                 if (be instanceof WaterPotBlockEntity potEntity) {
@@ -299,7 +298,7 @@ public class WaterPotBlock extends Block implements EntityBlock {
                             .getCapability(ForgeCapabilities.ITEM_HANDLER)
                             .orElse(null);
                     if (handler != null && handler.getStackInSlot(0).isEmpty()) {
-                        int insertCount = held.is(EARTH_BLOCKS) ? 2 : held.is(ModItems.PAPER_MIXTURE.get()) ? 1 : 1;
+                        int insertCount = held.is(EARTH_BLOCKS) ? 2 : 1;
                         if (held.getCount() < insertCount) {
                             return InteractionResult.PASS;
                         }

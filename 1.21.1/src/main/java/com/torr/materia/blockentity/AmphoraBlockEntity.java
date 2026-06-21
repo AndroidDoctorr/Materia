@@ -121,6 +121,9 @@ public class AmphoraBlockEntity extends BaseContainerBlockEntity implements Worl
                     case "beer":
                         expectedType = com.torr.materia.AmphoraBlock.LiquidType.BEER;
                         break;
+                    case "tea":
+                        expectedType = com.torr.materia.AmphoraBlock.LiquidType.TEA;
+                        break;
                 }
             }
         }
@@ -344,6 +347,10 @@ public class AmphoraBlockEntity extends BaseContainerBlockEntity implements Worl
         return this.hasLiquid() && "beer".equals(this.liquidType);
     }
 
+    public boolean hasTea() {
+        return this.hasLiquid() && "tea".equals(this.liquidType);
+    }
+
     public int getBeerMashWheat() {
         return this.beerMashWheat;
     }
@@ -442,6 +449,10 @@ public class AmphoraBlockEntity extends BaseContainerBlockEntity implements Worl
         return canAddLiquid("beer");
     }
 
+    public boolean canAddTea() {
+        return canAddLiquid("tea");
+    }
+
     public void addLiquid(String liquidType, int amount) {
         if (!canAddLiquid(liquidType)) return;
         
@@ -480,6 +491,21 @@ public class AmphoraBlockEntity extends BaseContainerBlockEntity implements Worl
 
     public void addBeer(int amount) {
         addLiquid("beer", amount);
+    }
+
+    public void addTea(int amount) {
+        addLiquid("tea", amount);
+    }
+
+    public boolean trySteepTeaLeaves(ItemStack ingredient) {
+        if (this.storageMode == MODE_SOLID) return false;
+        if (this.hasLid()) return false;
+        if (!this.hasWater()) return false;
+        if (!ingredient.is(com.torr.materia.ModItems.TEA_LEAVES.get())) return false;
+        this.liquidType = "tea";
+        this.storageMode = MODE_LIQUID;
+        this.setChanged();
+        return true;
     }
 
     public boolean removeLiquid(int amount) {

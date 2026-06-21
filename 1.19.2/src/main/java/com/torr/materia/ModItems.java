@@ -256,6 +256,19 @@ public class ModItems {
                         () -> new com.torr.materia.item.WineCupItem(new Item.Properties()
                                         .tab(net.minecraft.world.item.CreativeModeTab.TAB_FOOD)
                                         .stacksTo(16)));
+
+        public static final RegistryObject<Item> TEA_POT = ITEMS.register("tea_pot",
+                        () -> new net.minecraft.world.item.BlockItem(ModBlocks.TEA_POT.get(), new Item.Properties()
+                                        .stacksTo(1)));
+        public static final RegistryObject<Item> TEA_BUCKET = ITEMS.register("tea_bucket",
+                        () -> new Item(new Item.Properties()
+                                        .stacksTo(1)));
+        public static final RegistryObject<Item> TEA_CUP = ITEMS.register("tea_cup",
+                        () -> new com.torr.materia.item.TeaCupItem(new Item.Properties()
+                                        .stacksTo(16)));
+        public static final RegistryObject<Item> TEA_BOTTLE = ITEMS.register("tea_bottle",
+                        () -> new com.torr.materia.item.DrinkableBottleItem(new Item.Properties()
+                                        .stacksTo(16)));
         public static final RegistryObject<Item> BEER_BOTTLE = ITEMS.register("beer_bottle",
                         () -> new com.torr.materia.item.AlcoholBottleItem(new Item.Properties()
                                         .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)
