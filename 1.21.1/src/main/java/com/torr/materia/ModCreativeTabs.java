@@ -34,7 +34,8 @@ public class ModCreativeTabs {
     private static final List<String> NEW_TREE_ORDER = List.of(
             "palm_log", "palm_leaves", "palm_sapling",
             "cypress_log", "cypress_leaves", "cypress_sapling",
-            "baobab_log", "baobab_leaves", "baobab_sapling"
+            "baobab_log", "baobab_leaves", "baobab_sapling",
+            "maple_log", "maple_leaves", "maple_sapling"
     );
 
     public static final DeferredRegister<CreativeModeTab> TABS =

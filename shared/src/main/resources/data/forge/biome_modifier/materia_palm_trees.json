@@ -1,9 +1,12 @@
 {
     "type": "forge:add_features",
-    "biomes": [
-        "#materia:beach",
-        "#materia:tropical"
-    ],
+    "biomes": {
+        "type": "forge:or",
+        "values": [
+            "#materia:beach",
+            "#materia:tropical"
+        ]
+    },
     "step": "vegetal_decoration",
     "features": [
         "materia:palm_tree_placed"

@@ -357,6 +357,14 @@ public class ModPlacedFeatures {
                             BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.BAOBAB_SAPLING.get().defaultBlockState(), BlockPos.ZERO)),
                             BiomeFilter.biome())));
 
+    public static final RegistryObject<PlacedFeature> MAPLE_TREE_PLACED = PLACED_FEATURES.register("maple_tree_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.MAPLE_TREE.getHolder().get(),
+                    List.of(RarityFilter.onAverageOnceEvery(24),
+                            InSquarePlacement.spread(),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                            BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.MAPLE_SAPLING.get().defaultBlockState(), BlockPos.ZERO)),
+                            BiomeFilter.biome())));
+
     // Marble vein placement - small individual veins but very common in clusters
     public static final RegistryObject<PlacedFeature> MARBLE_VEIN_RARE_PLACED = PLACED_FEATURES.register("marble_vein_rare_placed",
             () -> new PlacedFeature(Holder.direct(ModConfiguredFeatures.MARBLE_VEIN.get()),

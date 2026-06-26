@@ -1,9 +1,12 @@
 {
     "type": "forge:add_features",
-    "biomes": [
-        "#materia:river",
-        "#materia:warm_wet_surface"
-    ],
+    "biomes": {
+        "type": "forge:or",
+        "values": [
+            "#materia:river",
+            "#materia:warm_wet_surface"
+        ]
+    },
     "step": "vegetal_decoration",
     "features": [
         "materia:wild_rice_placed"

@@ -686,6 +686,18 @@ public class ModBlocks {
                                         .isValidSpawn((state, world, pos, type) -> false)
                                         .isSuffocating((state, world, pos) -> false)
                                         .isViewBlocking((state, world, pos) -> false)));
+        public static final RegistryObject<Block> MAPLE_LOG = registerBlock("maple_log",
+                        () -> new com.torr.materia.block.FlammableRotatedPillarBlock(BlockBehaviour.Properties.of(Material.WOOD)
+                                        .strength(2.0f).sound(SoundType.WOOD)));
+        public static final RegistryObject<Block> MAPLE_SAPLING = registerBlock("maple_sapling",
+                        () -> new com.torr.materia.block.MapleSaplingBlock(BlockBehaviour.Properties.of(Material.PLANT)
+                                        .noCollission().instabreak().sound(SoundType.GRASS).randomTicks()));
+        public static final RegistryObject<Block> MAPLE_LEAVES = registerBlock("maple_leaves",
+                        () -> new com.torr.materia.block.MapleLeavesBlock(BlockBehaviour.Properties.of(Material.LEAVES)
+                                        .strength(0.2f).randomTicks().sound(SoundType.GRASS).noOcclusion()
+                                        .isValidSpawn((state, world, pos, type) -> false)
+                                        .isSuffocating((state, world, pos) -> false)
+                                        .isViewBlocking((state, world, pos) -> false)));
 
 
         // TABLES

@@ -1,9 +1,12 @@
 {
     "type": "forge:add_features",
-    "biomes": [
-        "#materia:temperate",
-        "#materia:temperate_forest"
-    ],
+    "biomes": {
+        "type": "forge:or",
+        "values": [
+            "#materia:temperate",
+            "#materia:temperate_forest"
+        ]
+    },
     "step": "vegetal_decoration",
     "features": [
         "materia:tea_bush_placed"

@@ -141,8 +141,6 @@ public class materia
 
             // Dispenser automation for cannons
             CannonDispenserBehaviors.register();
-
-            ModFlammables.register();
         });
     }
 

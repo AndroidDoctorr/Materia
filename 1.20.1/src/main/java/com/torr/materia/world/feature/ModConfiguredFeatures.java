@@ -324,6 +324,15 @@ public class ModConfiguredFeatures {
                     new TwoLayersFeatureSize(2, 1, 0)
             ).ignoreVines().dirt(BlockStateProvider.simple(Blocks.DIRT)).build()));
 
+    public static final RegistryObject<ConfiguredFeature<?, ?>> MAPLE_TREE = CONFIGURED_FEATURES.register("maple_tree",
+            () -> new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                    BlockStateProvider.simple(ModBlocks.MAPLE_LOG.get()),
+                    new StraightTrunkPlacer(4, 2, 0),
+                    BlockStateProvider.simple(ModBlocks.MAPLE_LEAVES.get()),
+                    new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
+                    new TwoLayersFeatureSize(1, 0, 1)
+            ).ignoreVines().dirt(BlockStateProvider.simple(Blocks.DIRT)).build()));
+
     // Very small marble veins - ultra-safe size, no chunk boundary issues possible
     public static final RegistryObject<ConfiguredFeature<?, ?>> MARBLE_VEIN = CONFIGURED_FEATURES.register("marble_vein",
             () -> {

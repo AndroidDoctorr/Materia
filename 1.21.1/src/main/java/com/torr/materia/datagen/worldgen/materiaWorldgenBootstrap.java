@@ -89,6 +89,7 @@ public final class materiaWorldgenBootstrap {
     private static final ResourceKey<ConfiguredFeature<?, ?>> PALM_TREE = configured("palm_tree");
     private static final ResourceKey<ConfiguredFeature<?, ?>> CYPRESS_TREE = configured("cypress_tree");
     private static final ResourceKey<ConfiguredFeature<?, ?>> BAOBAB_TREE = configured("baobab_tree");
+    private static final ResourceKey<ConfiguredFeature<?, ?>> MAPLE_TREE = configured("maple_tree");
 
     // Placed feature keys (match JSON ids)
     private static final ResourceKey<PlacedFeature> GRAVEL_TIN_ORE_PLACED = placed("gravel_tin_ore_placed");
@@ -140,6 +141,7 @@ public final class materiaWorldgenBootstrap {
     private static final ResourceKey<PlacedFeature> PALM_TREE_PLACED = placed("palm_tree_placed");
     private static final ResourceKey<PlacedFeature> CYPRESS_TREE_PLACED = placed("cypress_tree_placed");
     private static final ResourceKey<PlacedFeature> BAOBAB_TREE_PLACED = placed("baobab_tree_placed");
+    private static final ResourceKey<PlacedFeature> MAPLE_TREE_PLACED = placed("maple_tree_placed");
 
     public static void bootstrapConfiguredFeatures(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         // gravel_tin_ore
@@ -292,6 +294,14 @@ public final class materiaWorldgenBootstrap {
                 BlockStateProvider.simple(ModBlocks.BAOBAB_LEAVES.get()),
                 new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(1), 4),
                 new TwoLayersFeatureSize(2, 1, 0)
+        ).ignoreVines().dirt(BlockStateProvider.simple(Blocks.DIRT)).build()));
+
+        context.register(MAPLE_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(ModBlocks.MAPLE_LOG.get()),
+                new StraightTrunkPlacer(4, 2, 0),
+                BlockStateProvider.simple(ModBlocks.MAPLE_LEAVES.get()),
+                new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
+                new TwoLayersFeatureSize(1, 0, 1)
         ).ignoreVines().dirt(BlockStateProvider.simple(Blocks.DIRT)).build()));
 
         context.register(OLIVE_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
@@ -559,6 +569,10 @@ public final class materiaWorldgenBootstrap {
         context.register(BAOBAB_TREE_PLACED, new PlacedFeature(configured.getOrThrow(BAOBAB_TREE),
                 List.of(RarityFilter.onAverageOnceEvery(48), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
                         BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.BAOBAB_SAPLING.get().defaultBlockState(), BlockPos.ZERO)), BiomeFilter.biome())));
+
+        context.register(MAPLE_TREE_PLACED, new PlacedFeature(configured.getOrThrow(MAPLE_TREE),
+                List.of(RarityFilter.onAverageOnceEvery(24), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.MAPLE_SAPLING.get().defaultBlockState(), BlockPos.ZERO)), BiomeFilter.biome())));
 
         context.register(OLIVE_TREE_PLACED, new PlacedFeature(configured.getOrThrow(OLIVE_TREE),
                 List.of(
