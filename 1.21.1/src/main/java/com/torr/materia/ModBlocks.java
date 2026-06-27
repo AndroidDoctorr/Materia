@@ -111,6 +111,9 @@ public class ModBlocks {
         public static final RegistryObject<Block> SALTPETER_SANDSTONE = registerBlock("saltpeter_sandstone",
                         () -> new Block(BlockBehaviour.Properties.of().strength(0.8f)
                                         .sound(SoundType.STONE)));
+        public static final RegistryObject<Block> SALT_BLOCK = registerBlock("salt_block",
+                        () -> new Block(BlockBehaviour.Properties.of().strength(0.5f)
+                                        .sound(SoundType.SAND)));
 
         // CRAFTING BLOCKS
         public static final RegistryObject<Block> PRIMITIVE_CRAFTING_TABLE = registerBlock("primitive_crafting_table",
