@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SSS",
+        "SSS",
+        "SSS"
+    ],
+    "key": {
+        "S": {
+            "item": "materia:salt"
+        }
+    },
+    "result": {
+        "item": "materia:salt_block",
+        "count": 1
+    }
+}
