@@ -85,6 +85,7 @@ public class ClientSetup {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.WILD_PEPPERS.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.CORN_CROP.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.GRAPE_VINE.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.HOPS_VINE.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.WILD_CORN.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.RICE_CROP.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.COTTON_CROP.get(), RenderType.cutout());
@@ -147,6 +148,7 @@ public class ClientSetup {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.WARPED_JOISTS.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.RUBBER_WOOD_JOISTS.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.WILD_GRAPE_VINE.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.WILD_HOPS_VINE.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.LAVENDER_GLASS.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.FRAME_LOOM.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.SPINNING_WHEEL.get(), RenderType.cutout());
@@ -157,6 +159,7 @@ public class ClientSetup {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.WISTERIA_VINE.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.WISTERIA_HANGING.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.GRAPES_HANGING.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.HOPS_HANGING.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.GUNPOWDER_TRAIL.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.BRINING_VAT.get(), RenderType.translucent());
 

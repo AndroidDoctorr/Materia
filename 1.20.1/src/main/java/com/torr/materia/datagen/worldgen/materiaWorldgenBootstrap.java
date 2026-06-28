@@ -62,6 +62,7 @@ public final class materiaWorldgenBootstrap {
     private static final ResourceKey<ConfiguredFeature<?, ?>> WILD_CORN_PATCH = configured("wild_corn_patch");
     private static final ResourceKey<ConfiguredFeature<?, ?>> WILD_GRAPE_VINE = configured("wild_grape_vine");
     private static final ResourceKey<ConfiguredFeature<?, ?>> WILD_WISTERIA_VINE = configured("wild_wisteria_vine");
+    private static final ResourceKey<ConfiguredFeature<?, ?>> WILD_HOPS_VINE = configured("wild_hops_vine");
     private static final ResourceKey<ConfiguredFeature<?, ?>> INDIGO_PATCH = configured("indigo_patch");
     private static final ResourceKey<ConfiguredFeature<?, ?>> MUREX_SHELL_FEATURE = configured("murex_shell_feature");
     private static final ResourceKey<ConfiguredFeature<?, ?>> CLAM_FEATURE = configured("clam_feature");
@@ -110,6 +111,7 @@ public final class materiaWorldgenBootstrap {
     private static final ResourceKey<PlacedFeature> INDIGO_PLACED = placed("indigo_placed");
     private static final ResourceKey<PlacedFeature> WILD_GRAPE_VINE_PLACED = placed("wild_grape_vine_placed");
     private static final ResourceKey<PlacedFeature> WILD_WISTERIA_VINE_PLACED = placed("wild_wisteria_vine_placed");
+    private static final ResourceKey<PlacedFeature> WILD_HOPS_VINE_PLACED = placed("wild_hops_vine_placed");
     private static final ResourceKey<PlacedFeature> MUREX_SHELL_PLACED = placed("murex_shell_placed");
     private static final ResourceKey<PlacedFeature> CLAM_PLACED = placed("clam_placed");
     private static final ResourceKey<PlacedFeature> MALACHITE_ORE_PLACED = placed("malachite_ore_placed");
@@ -211,6 +213,7 @@ public final class materiaWorldgenBootstrap {
 
         context.register(WILD_GRAPE_VINE, new ConfiguredFeature<>((Feature<NoneFeatureConfiguration>) ModFeatures.WILD_GRAPE_VINE_FEATURE.get(), NoneFeatureConfiguration.INSTANCE));
         context.register(WILD_WISTERIA_VINE, new ConfiguredFeature<>((Feature<NoneFeatureConfiguration>) ModFeatures.WILD_WISTERIA_VINE_FEATURE.get(), NoneFeatureConfiguration.INSTANCE));
+        context.register(WILD_HOPS_VINE, new ConfiguredFeature<>((Feature<NoneFeatureConfiguration>) ModFeatures.WILD_HOPS_VINE_FEATURE.get(), NoneFeatureConfiguration.INSTANCE));
 
         context.register(INDIGO_PATCH, randomPatch(ModBlocks.INDIGO.get().defaultBlockState(), 32, 6, 2));
 
@@ -501,6 +504,8 @@ public final class materiaWorldgenBootstrap {
                 List.of(RarityFilter.onAverageOnceEvery(4), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR), BiomeFilter.biome())));
         context.register(WILD_WISTERIA_VINE_PLACED, new PlacedFeature(configured.getOrThrow(WILD_WISTERIA_VINE),
                 List.of(RarityFilter.onAverageOnceEvery(8), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR), BiomeFilter.biome())));
+        context.register(WILD_HOPS_VINE_PLACED, new PlacedFeature(configured.getOrThrow(WILD_HOPS_VINE),
+                List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR), BiomeFilter.biome())));
 
         context.register(MUREX_SHELL_PLACED, new PlacedFeature(configured.getOrThrow(MUREX_SHELL_FEATURE),
                 List.of(RarityFilter.onAverageOnceEvery(16), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR), BiomeFilter.biome())));

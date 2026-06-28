@@ -23,7 +23,7 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 
 public class PostBlock extends Block {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
@@ -80,27 +80,45 @@ public class PostBlock extends Block {
     }
     
     @Override
-    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
         boolean preventOverlap = materiaCommonConfig.VINES_PREVENT_GRAPE_WISTERIA_OVERLAP.get();
 
-        // Wisteria + grapes should never occupy the same block. If it happens (due to old saves / bugs),
-        // resolve it deterministically to keep the world stable.
-        if (preventOverlap && materiaCommonConfig.VINES_SELF_HEAL_SUPPORT_OVERLAP.get()) {
-            boolean hasGrape = state.getValue(HAS_GRAPE_VINE) || state.getValue(HAS_GRAPES);
-            boolean hasWisteria = state.getValue(HAS_WISTERIA_VINE) || state.getValue(HAS_WISTERIA_FLOWERS);
-            if (hasGrape && hasWisteria) {
-                BlockState fixed = state;
-                if (state.getValue(HAS_GRAPES)) {
-                    fixed = fixed.setValue(HAS_WISTERIA_VINE, false).setValue(HAS_WISTERIA_FLOWERS, false);
-                } else if (state.getValue(HAS_WISTERIA_FLOWERS)) {
-                    fixed = fixed.setValue(HAS_GRAPE_VINE, false).setValue(HAS_GRAPES, false);
-                } else {
-                    // Default: keep grape vine if neither has produced yet
-                    fixed = fixed.setValue(HAS_WISTERIA_VINE, false).setValue(HAS_WISTERIA_FLOWERS, false);
-                }
-                level.setBlock(pos, fixed, 2);
-                state = fixed;
+        boolean hasGrape = state.getValue(HAS_GRAPE_VINE) || state.getValue(HAS_GRAPES);
+        boolean hasHops = state.getValue(HAS_HOPS_VINE) || state.getValue(HAS_HOPS);
+        boolean hasWisteria = state.getValue(HAS_WISTERIA_VINE) || state.getValue(HAS_WISTERIA_FLOWERS);
+
+        int vineTypes = (hasGrape ? 1 : 0) + (hasHops ? 1 : 0) + (hasWisteria ? 1 : 0);
+        if (preventOverlap && materiaCommonConfig.VINES_SELF_HEAL_SUPPORT_OVERLAP.get() && vineTypes > 1) {
+            BlockState fixed = state;
+
+            if (state.getValue(HAS_GRAPES)) {
+                fixed = fixed
+                        .setValue(HAS_HOPS_VINE, false).setValue(HAS_HOPS, false)
+                        .setValue(HAS_WISTERIA_VINE, false).setValue(HAS_WISTERIA_FLOWERS, false);
+            } else if (state.getValue(HAS_HOPS)) {
+                fixed = fixed
+                        .setValue(HAS_GRAPE_VINE, false).setValue(HAS_GRAPES, false)
+                        .setValue(HAS_WISTERIA_VINE, false).setValue(HAS_WISTERIA_FLOWERS, false);
+            } else if (state.getValue(HAS_WISTERIA_FLOWERS)) {
+                fixed = fixed
+                        .setValue(HAS_GRAPE_VINE, false).setValue(HAS_GRAPES, false)
+                        .setValue(HAS_HOPS_VINE, false).setValue(HAS_HOPS, false);
+            } else if (state.getValue(HAS_GRAPE_VINE)) {
+                fixed = fixed
+                        .setValue(HAS_HOPS_VINE, false).setValue(HAS_HOPS, false)
+                        .setValue(HAS_WISTERIA_VINE, false).setValue(HAS_WISTERIA_FLOWERS, false);
+            } else if (state.getValue(HAS_HOPS_VINE)) {
+                fixed = fixed
+                        .setValue(HAS_GRAPE_VINE, false).setValue(HAS_GRAPES, false)
+                        .setValue(HAS_WISTERIA_VINE, false).setValue(HAS_WISTERIA_FLOWERS, false);
+            } else {
+                fixed = fixed
+                        .setValue(HAS_GRAPE_VINE, false).setValue(HAS_GRAPES, false)
+                        .setValue(HAS_HOPS_VINE, false).setValue(HAS_HOPS, false);
             }
+
+            level.setBlock(pos, fixed, 2);
+            state = fixed;
         }
 
         // Handle grape vines
@@ -120,6 +138,26 @@ public class PostBlock extends Block {
                 if (belowState.isAir()) {
                     if (random.nextInt(20) == 0) { // 5% chance per tick
                         level.setBlock(belowPos, com.torr.materia.ModBlocks.GRAPES_HANGING.get().defaultBlockState(), 3);
+                    }
+                }
+            }
+        }
+
+        // Handle hops vines
+        if (state.getValue(HAS_HOPS_VINE)) {
+            if (!state.getValue(HAS_HOPS)) {
+                if (random.nextInt(100) == 0) {
+                    level.setBlock(pos, state.setValue(HAS_HOPS, true), 2);
+                    return;
+                }
+            }
+
+            if (state.getValue(HAS_HOPS)) {
+                BlockPos belowPos = pos.below();
+                BlockState belowState = level.getBlockState(belowPos);
+                if (belowState.isAir()) {
+                    if (random.nextInt(20) == 0) {
+                        level.setBlock(belowPos, com.torr.materia.ModBlocks.HOPS_HANGING.get().defaultBlockState(), 3);
                     }
                 }
             }
@@ -145,7 +183,7 @@ public class PostBlock extends Block {
             }
         }
         
-        if (!state.getValue(HAS_GRAPE_VINE) && !state.getValue(HAS_WISTERIA_VINE)) {
+        if (!state.getValue(HAS_GRAPE_VINE) && !state.getValue(HAS_HOPS_VINE) && !state.getValue(HAS_WISTERIA_VINE)) {
             return;
         }
         
@@ -156,7 +194,7 @@ public class PostBlock extends Block {
         
         // Check nearby positions for other support blocks
         for (Direction direction : Direction.values()) {
-            for (int distance = 1; distance <= 3; distance++) {
+            for (int distance = 1; distance <= 1; distance++) {
                 BlockPos checkPos = pos.relative(direction, distance);
                 BlockState checkState = level.getBlockState(checkPos);
                 Block checkBlock = checkState.getBlock();
@@ -168,40 +206,60 @@ public class PostBlock extends Block {
                         // Spread grape vines
                         if (checkBlock instanceof TrellisBlock
                                 && !checkState.getValue(TrellisBlock.HAS_GRAPE_VINE)
-                                && (!preventOverlap || !checkState.getValue(TrellisBlock.HAS_WISTERIA_VINE))) {
+                                && (!preventOverlap || (!checkState.getValue(TrellisBlock.HAS_HOPS_VINE) && !checkState.getValue(TrellisBlock.HAS_WISTERIA_VINE)))) {
                         BlockState newState = checkState.setValue(TrellisBlock.HAS_GRAPE_VINE, true);
                         level.setBlock(checkPos, newState, 3);
                         return;
                         } else if (checkBlock instanceof PostBlock
                                 && !checkState.getValue(PostBlock.HAS_GRAPE_VINE)
-                                && (!preventOverlap || !checkState.getValue(PostBlock.HAS_WISTERIA_VINE))) {
+                                && (!preventOverlap || (!checkState.getValue(PostBlock.HAS_HOPS_VINE) && !checkState.getValue(PostBlock.HAS_WISTERIA_VINE)))) {
                         BlockState newState = checkState.setValue(PostBlock.HAS_GRAPE_VINE, true);
                         level.setBlock(checkPos, newState, 3);
                         return;
                         } else if (checkBlock instanceof JoistsBlock
                                 && !checkState.getValue(JoistsBlock.HAS_GRAPE_VINE)
-                                && (!preventOverlap || !checkState.getValue(JoistsBlock.HAS_WISTERIA_VINE))) {
+                                && (!preventOverlap || (!checkState.getValue(JoistsBlock.HAS_HOPS_VINE) && !checkState.getValue(JoistsBlock.HAS_WISTERIA_VINE)))) {
                         BlockState newState = checkState.setValue(JoistsBlock.HAS_GRAPE_VINE, true);
                         level.setBlock(checkPos, newState, 3);
                         return;
+                        }
+                    } else if (state.getValue(HAS_HOPS_VINE)) {
+                        if (checkBlock instanceof TrellisBlock
+                                && !checkState.getValue(TrellisBlock.HAS_HOPS_VINE)
+                                && (!preventOverlap || (!checkState.getValue(TrellisBlock.HAS_GRAPE_VINE) && !checkState.getValue(TrellisBlock.HAS_WISTERIA_VINE)))) {
+                            BlockState newState = checkState.setValue(TrellisBlock.HAS_HOPS_VINE, true);
+                            level.setBlock(checkPos, newState, 3);
+                            return;
+                        } else if (checkBlock instanceof PostBlock
+                                && !checkState.getValue(PostBlock.HAS_HOPS_VINE)
+                                && (!preventOverlap || (!checkState.getValue(PostBlock.HAS_GRAPE_VINE) && !checkState.getValue(PostBlock.HAS_WISTERIA_VINE)))) {
+                            BlockState newState = checkState.setValue(PostBlock.HAS_HOPS_VINE, true);
+                            level.setBlock(checkPos, newState, 3);
+                            return;
+                        } else if (checkBlock instanceof JoistsBlock
+                                && !checkState.getValue(JoistsBlock.HAS_HOPS_VINE)
+                                && (!preventOverlap || (!checkState.getValue(JoistsBlock.HAS_GRAPE_VINE) && !checkState.getValue(JoistsBlock.HAS_WISTERIA_VINE)))) {
+                            BlockState newState = checkState.setValue(JoistsBlock.HAS_HOPS_VINE, true);
+                            level.setBlock(checkPos, newState, 3);
+                            return;
                         }
                     } else if (state.getValue(HAS_WISTERIA_VINE)) {
                         // Spread wisteria vines
                         if (checkBlock instanceof TrellisBlock
                                 && !checkState.getValue(TrellisBlock.HAS_WISTERIA_VINE)
-                                && (!preventOverlap || !checkState.getValue(TrellisBlock.HAS_GRAPE_VINE))) {
+                                && (!preventOverlap || (!checkState.getValue(TrellisBlock.HAS_GRAPE_VINE) && !checkState.getValue(TrellisBlock.HAS_HOPS_VINE)))) {
                             BlockState newState = checkState.setValue(TrellisBlock.HAS_WISTERIA_VINE, true);
                             level.setBlock(checkPos, newState, 3);
                             return;
                         } else if (checkBlock instanceof PostBlock
                                 && !checkState.getValue(PostBlock.HAS_WISTERIA_VINE)
-                                && (!preventOverlap || !checkState.getValue(PostBlock.HAS_GRAPE_VINE))) {
+                                && (!preventOverlap || (!checkState.getValue(PostBlock.HAS_GRAPE_VINE) && !checkState.getValue(PostBlock.HAS_HOPS_VINE)))) {
                             BlockState newState = checkState.setValue(PostBlock.HAS_WISTERIA_VINE, true);
                             level.setBlock(checkPos, newState, 3);
                             return;
                         } else if (checkBlock instanceof JoistsBlock
                                 && !checkState.getValue(JoistsBlock.HAS_WISTERIA_VINE)
-                                && (!preventOverlap || !checkState.getValue(JoistsBlock.HAS_GRAPE_VINE))) {
+                                && (!preventOverlap || (!checkState.getValue(JoistsBlock.HAS_GRAPE_VINE) && !checkState.getValue(JoistsBlock.HAS_HOPS_VINE)))) {
                             BlockState newState = checkState.setValue(JoistsBlock.HAS_WISTERIA_VINE, true);
                             level.setBlock(checkPos, newState, 3);
                             return;
@@ -238,6 +296,27 @@ public class PostBlock extends Block {
                 level.setBlock(pos, state.setValue(HAS_GRAPES, false), 2);
             }
             
+            return InteractionResult.sidedSuccess(level.isClientSide);
+        }
+
+        if (state.getValue(HAS_HOPS_VINE) && state.getValue(HAS_HOPS)) {
+            if (!level.isClientSide) {
+                int hopsCount = 2 + level.random.nextInt(3);
+                for (int i = 0; i < hopsCount; i++) {
+                    popResource(level, pos, new ItemStack(ModItems.HOPS.get()));
+                }
+
+                int seedCount = level.random.nextInt(3);
+                for (int i = 0; i < seedCount; i++) {
+                    popResource(level, pos, new ItemStack(ModItems.HOPS_SEEDS.get()));
+                }
+
+                level.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES,
+                              SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
+
+                level.setBlock(pos, state.setValue(HAS_HOPS, false), 2);
+            }
+
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
         

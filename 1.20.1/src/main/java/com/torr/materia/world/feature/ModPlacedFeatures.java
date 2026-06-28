@@ -242,6 +242,13 @@ public class ModPlacedFeatures {
                             HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR),
                             BiomeFilter.biome())));
 
+    public static final RegistryObject<PlacedFeature> WILD_HOPS_VINE_PLACED = PLACED_FEATURES.register("wild_hops_vine_placed",
+            () -> new PlacedFeature(Holder.direct(ModConfiguredFeatures.WILD_HOPS_VINE.get()),
+                    List.of(RarityFilter.onAverageOnceEvery(6),
+                            InSquarePlacement.spread(),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR),
+                            BiomeFilter.biome())));
+
     // Murex shell placement - spawns on beaches
     public static final RegistryObject<PlacedFeature> MUREX_SHELL_PLACED = PLACED_FEATURES.register("murex_shell_placed",
             () -> new PlacedFeature(Holder.direct(ModConfiguredFeatures.MUREX_SHELL_FEATURE.get()),

@@ -103,6 +103,9 @@ public class ModItems {
         public static final RegistryObject<Item> GRAPE_SEEDS = ITEMS.register("grape_seeds",
                         () -> new GrapeSeedsItem(new Item.Properties()
                                         .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)));
+        public static final RegistryObject<Item> HOPS_SEEDS = ITEMS.register("hops_seeds",
+                        () -> new com.torr.materia.item.HopsSeedsItem(new Item.Properties()
+                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)));
         public static final RegistryObject<Item> WISTERIA_SEEDS = ITEMS.register("wisteria_seeds",
                         () -> new com.torr.materia.item.WisteriaSeedsItem(new Item.Properties()
                                         .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)));
@@ -1664,6 +1667,13 @@ public class ModItems {
                                         .food(new net.minecraft.world.food.FoodProperties.Builder()
                                                 .nutrition(2)
                                                 .saturationMod(0.2f)
+                                                .build())));
+        public static final RegistryObject<Item> HOPS = ITEMS.register("hops",
+                        () -> new Item(new Item.Properties()
+                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_FOOD)
+                                        .food(new net.minecraft.world.food.FoodProperties.Builder()
+                                                .nutrition(1)
+                                                .saturationMod(0.1f)
                                                 .build())));
         public static final RegistryObject<Item> CORNMEAL = ITEMS.register("cornmeal",
                         () -> new Item(new Item.Properties()

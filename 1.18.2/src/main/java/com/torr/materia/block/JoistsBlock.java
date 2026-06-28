@@ -193,7 +193,7 @@ public class JoistsBlock extends Block {
         
         // Check nearby positions for other support blocks
         for (Direction direction : Direction.values()) {
-            for (int distance = 1; distance <= 3; distance++) {
+            for (int distance = 1; distance <= 1; distance++) {
                 BlockPos checkPos = pos.relative(direction, distance);
                 BlockState checkState = level.getBlockState(checkPos);
                 Block checkBlock = checkState.getBlock();

@@ -225,6 +225,10 @@ public class AmphoraBlock extends BaseEntityBlock implements SimpleWaterloggedBl
         // Add lid with regular lid item
         if (held.is(ModItems.LID.get())) {
             if (!level.isClientSide() && !amphoraEntity.hasLid()) {
+                if (!amphoraEntity.canApplyLidNow()) {
+                    player.displayClientMessage(amphoraEntity.getMashStatusMessage(), true);
+                    return InteractionResult.SUCCESS;
+                }
                 amphoraEntity.setLid(false); // regular lid
                 held.shrink(1);
                 updateBlockState(level, pos, amphoraEntity);
@@ -239,6 +243,10 @@ public class AmphoraBlock extends BaseEntityBlock implements SimpleWaterloggedBl
         // Add lid with sealed lid item
         if (held.is(ModItems.SEALED_LID.get())) {
             if (!level.isClientSide() && !amphoraEntity.hasLid()) {
+                if (!amphoraEntity.canApplyLidNow()) {
+                    player.displayClientMessage(amphoraEntity.getMashStatusMessage(), true);
+                    return InteractionResult.SUCCESS;
+                }
                 amphoraEntity.setLid(true); // sealed lid
                 held.shrink(1);
                 updateBlockState(level, pos, amphoraEntity);
@@ -333,6 +341,31 @@ public class AmphoraBlock extends BaseEntityBlock implements SimpleWaterloggedBl
                     updateBlockState(level, pos, amphoraEntity);
                     return InteractionResult.SUCCESS;
                 }
+            }
+            return InteractionResult.sidedSuccess(level.isClientSide());
+        }
+
+        // Beer mash ingredient interactions (water + wheat/hops)
+        if (held.is(net.minecraft.world.item.Items.WHEAT) || held.is(ModItems.HOPS.get())) {
+            if (!level.isClientSide()) {
+                if (amphoraEntity.getStorageMode() == AmphoraBlockEntity.MODE_SOLID) {
+                    player.displayClientMessage(Component.translatable("message.materia.amphora.solid_mode"), true);
+                    return InteractionResult.SUCCESS;
+                }
+                if (amphoraEntity.hasLid()) {
+                    player.displayClientMessage(Component.translatable("message.materia.amphora.liquid_mode"), true);
+                    return InteractionResult.SUCCESS;
+                }
+
+                boolean consumed = amphoraEntity.tryAddBeerMashIngredient(held);
+                if (consumed) {
+                    held.shrink(1);
+                    level.playSound(null, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 0.6F, 1.0F);
+                    updateBlockState(level, pos, amphoraEntity);
+                }
+
+                player.displayClientMessage(amphoraEntity.getMashStatusMessage(), true);
+                return InteractionResult.SUCCESS;
             }
             return InteractionResult.sidedSuccess(level.isClientSide());
         }
@@ -1220,6 +1253,15 @@ public class AmphoraBlock extends BaseEntityBlock implements SimpleWaterloggedBl
             if (level.getBlockState(pos).isAir()) {
                 level.setBlock(pos, net.minecraft.world.level.block.Blocks.WATER.defaultBlockState(), 3);
             }
+        } else if (amphoraEntity.hasBeerMash()) {
+            int wheat = amphoraEntity.getBeerMashWheat();
+            int hops = amphoraEntity.getBeerMashHops();
+            for (int i = 0; i < wheat; i++) {
+                Block.popResource(level, pos, new ItemStack(net.minecraft.world.item.Items.WHEAT));
+            }
+            for (int i = 0; i < hops; i++) {
+                Block.popResource(level, pos, new ItemStack(ModItems.HOPS.get()));
+            }
         } else if (amphoraEntity.hasGrapeJuice()) {
             int liquidAmount = amphoraEntity.getLiquidAmount();
             for (int i = 0; i < liquidAmount; i++) {
@@ -1239,6 +1281,11 @@ public class AmphoraBlock extends BaseEntityBlock implements SimpleWaterloggedBl
             int liquidAmount = amphoraEntity.getLiquidAmount();
             for (int i = 0; i < liquidAmount; i++) {
                 Block.popResource(level, pos, new ItemStack(ModItems.WINE_CUP.get()));
+            }
+        } else if (amphoraEntity.hasBeer()) {
+            int liquidAmount = amphoraEntity.getLiquidAmount();
+            for (int i = 0; i < liquidAmount; i++) {
+                Block.popResource(level, pos, new ItemStack(ModItems.BEER_CUP.get()));
             }
         }
     }

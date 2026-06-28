@@ -187,6 +187,9 @@ public class ModConfiguredFeatures {
     public static final RegistryObject<ConfiguredFeature<?, ?>> WILD_WISTERIA_VINE = CONFIGURED_FEATURES.register("wild_wisteria_vine",
             () -> new ConfiguredFeature<>((Feature<NoneFeatureConfiguration>)ModFeatures.WILD_WISTERIA_VINE_FEATURE.get(), NoneFeatureConfiguration.INSTANCE));
 
+    public static final RegistryObject<ConfiguredFeature<?, ?>> WILD_HOPS_VINE = CONFIGURED_FEATURES.register("wild_hops_vine",
+            () -> new ConfiguredFeature<>((Feature<NoneFeatureConfiguration>)ModFeatures.WILD_HOPS_VINE_FEATURE.get(), NoneFeatureConfiguration.INSTANCE));
+
     // Indigo flower patch
     public static final RegistryObject<ConfiguredFeature<?, ?>> INDIGO_PATCH = CONFIGURED_FEATURES.register("indigo_patch",
             () -> {

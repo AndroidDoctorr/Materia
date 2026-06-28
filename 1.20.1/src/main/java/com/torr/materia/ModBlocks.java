@@ -13,6 +13,7 @@ import com.torr.materia.block.TappedRubberTreeLogBlock;
 import com.torr.materia.block.TrellisBlock;
 import com.torr.materia.block.PostBlock;
 import com.torr.materia.block.GrapeVineBlock;
+import com.torr.materia.block.HopsVineBlock;
 import com.torr.materia.block.CannonballPileBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -315,6 +316,9 @@ public class ModBlocks {
         public static final RegistryObject<Block> GRAPE_VINE = BLOCKS.register("grape_vine",
                         () -> new GrapeVineBlock(BlockBehaviour.Properties.of().noCollission()
                                         .randomTicks().instabreak().sound(SoundType.CROP)));
+        public static final RegistryObject<Block> HOPS_VINE = BLOCKS.register("hops_vine",
+                        () -> new HopsVineBlock(BlockBehaviour.Properties.of().noCollission()
+                                        .randomTicks().instabreak().sound(SoundType.CROP)));
         public static final RegistryObject<Block> WISTERIA_VINE = BLOCKS.register("wisteria_vine",
                         () -> new com.torr.materia.block.WisteriaVineBlock(BlockBehaviour.Properties.of().noCollission()
                                         .randomTicks().instabreak().sound(SoundType.CROP)));
@@ -324,6 +328,9 @@ public class ModBlocks {
         public static final RegistryObject<Block> GRAPES_HANGING = registerBlock("grapes_hanging",
                         () -> new com.torr.materia.block.GrapesHangingBlock(BlockBehaviour.Properties.of().noCollission()
                                         .randomTicks().instabreak().sound(SoundType.CROP)));
+        public static final RegistryObject<Block> HOPS_HANGING = registerBlock("hops_hanging",
+                        () -> new com.torr.materia.block.HopsHangingBlock(BlockBehaviour.Properties.of().noCollission()
+                                        .instabreak().sound(SoundType.CROP)));
 
         // WILD PLANTS
         public static final RegistryObject<Block> WILD_FLAX = registerBlock("wild_flax",
@@ -348,6 +355,9 @@ public class ModBlocks {
                                         .sound(SoundType.CROP)));
         public static final RegistryObject<Block> WILD_GRAPE_VINE = registerBlock("wild_grape_vine",
                         () -> new WildGrapeVineBlock(BlockBehaviour.Properties.of().noCollission().instabreak()
+                                        .sound(SoundType.CROP)));
+        public static final RegistryObject<Block> WILD_HOPS_VINE = registerBlock("wild_hops_vine",
+                        () -> new WildHopsVineBlock(BlockBehaviour.Properties.of().noCollission().instabreak()
                                         .sound(SoundType.CROP)));
         public static final RegistryObject<Block> WILD_WISTERIA_VINE = registerBlock("wild_wisteria_vine",
                         () -> new WildWisteriaVineBlock(BlockBehaviour.Properties.of().noCollission().instabreak()

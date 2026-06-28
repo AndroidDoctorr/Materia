@@ -49,6 +49,11 @@ public class AmphoraBlockEntity extends BaseContainerBlockEntity implements Worl
     private int fermentationProgress = 0; // Progress in ticks
     private static final int VINEGAR_FERMENTATION_TIME = 24000; // 20 minutes (20 ticks/sec * 60 sec * 20 min)
     private static final int WINE_FERMENTATION_TIME = 72000; // 60 minutes (sealed fermentation is slower)
+    private static final int BEER_FERMENTATION_TIME = 48000; // 40 minutes
+
+    // Beer mash ingredient tracking
+    private int beerMashWheat = 0; // 0-4
+    private int beerMashHops = 0;  // 0-1
     
     // Forge capabilities
     private LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.values());
@@ -288,6 +293,10 @@ public class AmphoraBlockEntity extends BaseContainerBlockEntity implements Worl
 
     public void setLiquidType(String type) {
         this.liquidType = type;
+        if (!"beer_mash".equals(type)) {
+            this.beerMashWheat = 0;
+            this.beerMashHops = 0;
+        }
         this.setChanged();
     }
 
@@ -321,6 +330,76 @@ public class AmphoraBlockEntity extends BaseContainerBlockEntity implements Worl
 
     public boolean hasTea() {
         return this.hasLiquid() && "tea".equals(this.liquidType);
+    }
+
+    public boolean hasBeerMash() {
+        return this.hasLiquid() && "beer_mash".equals(this.liquidType);
+    }
+
+    public boolean hasBeer() {
+        return this.hasLiquid() && "beer".equals(this.liquidType);
+    }
+
+    public int getBeerMashWheat() {
+        return this.beerMashWheat;
+    }
+
+    public int getBeerMashHops() {
+        return this.beerMashHops;
+    }
+
+    public boolean isBeerMashComplete() {
+        return this.beerMashWheat >= 4 && this.beerMashHops >= 1;
+    }
+
+    public boolean canApplyLidNow() {
+        if (!this.hasBeerMash()) return true;
+        return this.isBeerMashComplete();
+    }
+
+    public Component getMashStatusMessage() {
+        if (this.hasBeerMash()) {
+            return Component.translatable(
+                    "message.materia.amphora.beer_mash_status",
+                    this.beerMashWheat,
+                    this.beerMashHops,
+                    this.isBeerMashComplete()
+                            ? Component.translatable("message.materia.amphora.beer_mash_complete")
+                            : Component.literal("")
+            );
+        }
+        if (this.hasWater()) {
+            return Component.translatable("message.materia.amphora.beer_mash_hint");
+        }
+        return Component.translatable("message.materia.amphora.beer_mash_need_water");
+    }
+
+    public boolean tryAddBeerMashIngredient(ItemStack ingredient) {
+        if (this.storageMode == MODE_SOLID) return false;
+        if (this.hasLid()) return false;
+        if (!this.hasLiquid()) return false;
+        if (!(this.hasWater() || this.hasBeerMash())) return false;
+
+        if (this.hasWater()) {
+            this.liquidType = "beer_mash";
+            this.storageMode = MODE_LIQUID;
+        }
+
+        if (ingredient.is(net.minecraft.world.item.Items.WHEAT)) {
+            if (this.beerMashWheat >= 4) return false;
+            this.beerMashWheat++;
+            this.setChanged();
+            return true;
+        }
+
+        if (ingredient.is(com.torr.materia.ModItems.HOPS.get())) {
+            if (this.beerMashHops >= 1) return false;
+            this.beerMashHops++;
+            this.setChanged();
+            return true;
+        }
+
+        return false;
     }
 
     public boolean canAddLiquid(String liquidType) {
@@ -416,6 +495,8 @@ public class AmphoraBlockEntity extends BaseContainerBlockEntity implements Worl
         if (this.liquidAmount == 0) {
             this.liquidType = "";
             this.storageMode = MODE_EMPTY;
+            this.beerMashWheat = 0;
+            this.beerMashHops = 0;
         }
         
         this.setChanged();
@@ -435,8 +516,8 @@ public class AmphoraBlockEntity extends BaseContainerBlockEntity implements Worl
         this.hasLid = true;
         this.hasSealed = sealed;
         
-        // Start fermentation if we have grape juice
-        if (this.hasGrapeJuice()) {
+        // Start fermentation if recipe is valid
+        if (this.hasGrapeJuice() || (this.hasBeerMash() && this.isBeerMashComplete())) {
             this.startFermentation();
         }
         
@@ -464,6 +545,7 @@ public class AmphoraBlockEntity extends BaseContainerBlockEntity implements Worl
     }
     
     public int getMaxFermentationTime() {
+        if (this.hasBeerMash()) return BEER_FERMENTATION_TIME;
         return this.hasSealed ? WINE_FERMENTATION_TIME : VINEGAR_FERMENTATION_TIME;
     }
     
@@ -473,7 +555,11 @@ public class AmphoraBlockEntity extends BaseContainerBlockEntity implements Worl
     }
     
     public void startFermentation() {
-        if (this.hasGrapeJuice() && this.hasLid()) {
+        boolean canStart =
+                (this.hasGrapeJuice() || (this.hasBeerMash() && this.isBeerMashComplete()))
+                        && this.hasLid();
+
+        if (canStart) {
             this.isFermenting = true;
             this.fermentationProgress = 0;
             this.setChanged();
@@ -499,11 +585,15 @@ public class AmphoraBlockEntity extends BaseContainerBlockEntity implements Worl
         // Check if fermentation is complete
         if (this.fermentationProgress >= getMaxFermentationTime()) {
             // Complete fermentation
-            if (this.hasSealed) {
-                // Sealed lid â†’ wine
+            if (this.hasBeerMash()) {
+                this.liquidType = "beer";
+                this.beerMashWheat = 0;
+                this.beerMashHops = 0;
+            } else if (this.hasSealed) {
+                // Sealed lid → wine
                 this.liquidType = "wine";
             } else {
-                // Regular lid â†’ vinegar
+                // Regular lid → vinegar
                 this.liquidType = "vinegar";
             }
             
@@ -561,6 +651,8 @@ public class AmphoraBlockEntity extends BaseContainerBlockEntity implements Worl
         this.hasSealed = tag.getBoolean("HasSealed");
         this.isFermenting = tag.getBoolean("IsFermenting");
         this.fermentationProgress = tag.getInt("FermentationProgress");
+        this.beerMashWheat = tag.getInt("BeerMashWheat");
+        this.beerMashHops = tag.getInt("BeerMashHops");
     }
 
     @Override
@@ -574,6 +666,8 @@ public class AmphoraBlockEntity extends BaseContainerBlockEntity implements Worl
         tag.putBoolean("HasSealed", this.hasSealed);
         tag.putBoolean("IsFermenting", this.isFermenting);
         tag.putInt("FermentationProgress", this.fermentationProgress);
+        tag.putInt("BeerMashWheat", this.beerMashWheat);
+        tag.putInt("BeerMashHops", this.beerMashHops);
     }
 
     // Forge capabilities
