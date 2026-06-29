@@ -20,7 +20,8 @@
         "Name": "materia:maple_leaves",
         "Properties": {
           "distance": "7",
-          "persistent": "false"
+          "persistent": "false",
+          "waterlogged": "false"
         }
       }
     },

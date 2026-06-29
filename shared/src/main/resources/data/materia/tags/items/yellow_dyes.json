@@ -2,6 +2,7 @@
     "replace": false,
     "values": [
         "minecraft:yellow_dye",
-        "materia:ochre"
+        "materia:ochre",
+        "materia:tan_dye"
     ]
 }

@@ -1,0 +1,7 @@
+﻿{
+    "variants": {
+        "type=bottom": { "model": "materia:block/fig_slab" },
+        "type=top": { "model": "materia:block/fig_slab_top" },
+        "type=double": { "model": "materia:block/fig_planks" }
+    }
+}

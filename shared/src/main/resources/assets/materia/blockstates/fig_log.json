@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "axis=y": { "model": "materia:block/fig_log" },
+        "axis=z": { "model": "materia:block/fig_log", "x": 90 },
+        "axis=x": { "model": "materia:block/fig_log", "x": 90, "y": 90 }
+    }
+}

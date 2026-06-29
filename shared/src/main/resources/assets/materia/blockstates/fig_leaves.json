@@ -1,0 +1,32 @@
+{
+    "variants": {
+        "distance=1,persistent=false,has_figs=false": { "model": "materia:block/fig_leaves" },
+        "distance=1,persistent=false,has_figs=true": { "model": "materia:block/fig_leaves_with_figs" },
+        "distance=1,persistent=true,has_figs=false": { "model": "materia:block/fig_leaves" },
+        "distance=1,persistent=true,has_figs=true": { "model": "materia:block/fig_leaves_with_figs" },
+        "distance=2,persistent=false,has_figs=false": { "model": "materia:block/fig_leaves" },
+        "distance=2,persistent=false,has_figs=true": { "model": "materia:block/fig_leaves_with_figs" },
+        "distance=2,persistent=true,has_figs=false": { "model": "materia:block/fig_leaves" },
+        "distance=2,persistent=true,has_figs=true": { "model": "materia:block/fig_leaves_with_figs" },
+        "distance=3,persistent=false,has_figs=false": { "model": "materia:block/fig_leaves" },
+        "distance=3,persistent=false,has_figs=true": { "model": "materia:block/fig_leaves_with_figs" },
+        "distance=3,persistent=true,has_figs=false": { "model": "materia:block/fig_leaves" },
+        "distance=3,persistent=true,has_figs=true": { "model": "materia:block/fig_leaves_with_figs" },
+        "distance=4,persistent=false,has_figs=false": { "model": "materia:block/fig_leaves" },
+        "distance=4,persistent=false,has_figs=true": { "model": "materia:block/fig_leaves_with_figs" },
+        "distance=4,persistent=true,has_figs=false": { "model": "materia:block/fig_leaves" },
+        "distance=4,persistent=true,has_figs=true": { "model": "materia:block/fig_leaves_with_figs" },
+        "distance=5,persistent=false,has_figs=false": { "model": "materia:block/fig_leaves" },
+        "distance=5,persistent=false,has_figs=true": { "model": "materia:block/fig_leaves_with_figs" },
+        "distance=5,persistent=true,has_figs=false": { "model": "materia:block/fig_leaves" },
+        "distance=5,persistent=true,has_figs=true": { "model": "materia:block/fig_leaves_with_figs" },
+        "distance=6,persistent=false,has_figs=false": { "model": "materia:block/fig_leaves" },
+        "distance=6,persistent=false,has_figs=true": { "model": "materia:block/fig_leaves_with_figs" },
+        "distance=6,persistent=true,has_figs=false": { "model": "materia:block/fig_leaves" },
+        "distance=6,persistent=true,has_figs=true": { "model": "materia:block/fig_leaves_with_figs" },
+        "distance=7,persistent=false,has_figs=false": { "model": "materia:block/fig_leaves" },
+        "distance=7,persistent=false,has_figs=true": { "model": "materia:block/fig_leaves_with_figs" },
+        "distance=7,persistent=true,has_figs=false": { "model": "materia:block/fig_leaves" },
+        "distance=7,persistent=true,has_figs=true": { "model": "materia:block/fig_leaves_with_figs" }
+    }
+}

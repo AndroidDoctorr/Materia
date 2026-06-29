@@ -1,0 +1,37 @@
+﻿{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:verdigris"
+        },
+        {
+            "item": "minecraft:terracotta"
+        },
+        {
+            "item": "minecraft:terracotta"
+        },
+        {
+            "item": "minecraft:terracotta"
+        },
+        {
+            "item": "minecraft:terracotta"
+        },
+        {
+            "item": "minecraft:terracotta"
+        },
+        {
+            "item": "minecraft:terracotta"
+        },
+        {
+            "item": "minecraft:terracotta"
+        },
+        {
+            "item": "minecraft:terracotta"
+        }
+    ],
+    "result": {
+        "item": "materia:teal_terracotta",
+        "count": 8
+    }
+}
+

@@ -44,6 +44,9 @@ public final class TextileUtils {
         if (clump == ModItems.CLUMP_OF_OCHRE_WOOL.get()) return ModItems.OCHRE_STRING.get();
         if (clump == ModItems.CLUMP_OF_RED_OCHRE_WOOL.get()) return ModItems.RED_OCHRE_STRING.get();
         if (clump == ModItems.CLUMP_OF_OLIVE_WOOL.get()) return ModItems.OLIVE_STRING.get();
+        if (clump == ModItems.CLUMP_OF_BURGUNDY_WOOL.get()) return ModItems.BURGUNDY_STRING.get();
+        if (clump == ModItems.CLUMP_OF_TAN_WOOL.get()) return ModItems.TAN_STRING.get();
+        if (clump == ModItems.CLUMP_OF_TEAL_WOOL.get()) return ModItems.TEAL_STRING.get();
         if (clump == ModItems.CLUMP_OF_INDIGO_WOOL.get()) return ModItems.INDIGO_STRING.get();
         if (clump == ModItems.CLUMP_OF_LAVENDER_WOOL.get()) return ModItems.LAVENDER_STRING.get();
         if (clump == ModItems.CLUMP_OF_TYRIAN_PURPLE_WOOL.get()) return ModItems.TYRIAN_PURPLE_STRING.get();
@@ -70,6 +73,9 @@ public final class TextileUtils {
         if (cotton == ModItems.MAGENTA_COTTON.get()) return ModItems.MAGENTA_STRING.get();
         if (cotton == ModItems.OCHRE_COTTON.get()) return ModItems.OCHRE_STRING.get();
         if (cotton == ModItems.OLIVE_COTTON.get()) return ModItems.OLIVE_STRING.get();
+        if (cotton == ModItems.BURGUNDY_COTTON.get()) return ModItems.BURGUNDY_STRING.get();
+        if (cotton == ModItems.TAN_COTTON.get()) return ModItems.TAN_STRING.get();
+        if (cotton == ModItems.TEAL_COTTON.get()) return ModItems.TEAL_STRING.get();
         if (cotton == ModItems.ORANGE_COTTON.get()) return ModItems.ORANGE_STRING.get();
         if (cotton == ModItems.PINK_COTTON.get()) return ModItems.PINK_STRING.get();
         if (cotton == ModItems.PURPLE_COTTON.get()) return ModItems.PURPLE_STRING.get();

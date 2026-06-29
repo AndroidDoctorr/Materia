@@ -1,0 +1,8 @@
+{
+    "type": "forge:add_features",
+    "biomes": "#materia:desert",
+    "step": "vegetal_decoration",
+    "features": [
+        "materia:agave_placed"
+    ]
+}

@@ -1,0 +1,8 @@
+﻿{
+    "parent": "block/stairs",
+    "textures": {
+        "bottom": "materia:block/eucalyptus_planks",
+        "top": "materia:block/eucalyptus_planks",
+        "side": "materia:block/eucalyptus_planks"
+    }
+}

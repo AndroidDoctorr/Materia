@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:burgundy_dye"
+        },
+        {
+            "tag": "materia:clumps_of_wool"
+        },
+        {
+            "tag": "materia:clumps_of_wool"
+        },
+        {
+            "tag": "materia:clumps_of_wool"
+        }
+    ],
+    "result": {
+        "item": "materia:clump_of_burgundy_wool",
+        "count": 3
+    }
+}

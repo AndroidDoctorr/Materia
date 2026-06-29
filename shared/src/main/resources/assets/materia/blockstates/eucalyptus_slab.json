@@ -1,0 +1,7 @@
+﻿{
+    "variants": {
+        "type=bottom": { "model": "materia:block/eucalyptus_slab" },
+        "type=top": { "model": "materia:block/eucalyptus_slab_top" },
+        "type=double": { "model": "materia:block/eucalyptus_planks" }
+    }
+}

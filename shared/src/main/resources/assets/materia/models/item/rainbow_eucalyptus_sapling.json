@@ -1,0 +1,6 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "materia:item/rainbow_eucalyptus_sapling"
+    }
+}

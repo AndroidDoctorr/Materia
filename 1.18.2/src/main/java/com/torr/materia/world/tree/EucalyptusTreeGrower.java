@@ -1,0 +1,17 @@
+package com.torr.materia.world.tree;
+
+import com.torr.materia.world.feature.ModConfiguredFeatures;
+import net.minecraft.core.Holder;
+import net.minecraft.world.level.block.grower.AbstractTreeGrower;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+
+import javax.annotation.Nullable;
+import java.util.Random;
+
+public class EucalyptusTreeGrower extends AbstractTreeGrower {
+    @Nullable
+    @Override
+    protected Holder<? extends ConfiguredFeature<?, ?>> getConfiguredFeature(Random random, boolean largeHive) {
+        return ModConfiguredFeatures.EUCALYPTUS_TREE.getHolder().orElse(null);
+    }
+}

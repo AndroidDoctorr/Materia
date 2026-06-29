@@ -4,6 +4,7 @@ import com.torr.materia.ModBlocks;
 import com.torr.materia.materia;
 import com.torr.materia.world.feature.ModFeatures;
 import com.torr.materia.world.feature.OliveFoliagePlacer;
+import com.torr.materia.world.feature.FigFoliagePlacer;
 import net.minecraft.core.Registry;
 import net.minecraft.data.worldgen.features.OreFeatures;
 import net.minecraft.resources.ResourceLocation;
@@ -17,6 +18,7 @@ import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConf
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.SpruceFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.GiantTrunkPlacer;
 import net.minecraft.util.valueproviders.ConstantInt;
@@ -175,6 +177,9 @@ public class ModConfiguredFeatures {
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> ESPARTO_PATCH = CONFIGURED_FEATURES.register("esparto_patch",
             () -> randomPatch(ModBlocks.ESPARTO.get(), 24, 5, 2));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> AGAVE_PATCH = CONFIGURED_FEATURES.register("agave_patch",
+            () -> randomPatch(ModBlocks.AGAVE.get(), 24, 5, 2));
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> TEA_BUSH_PATCH = CONFIGURED_FEATURES.register("tea_bush_patch",
             () -> randomPatch(ModBlocks.TEA_BUSH.get(), 16, 4, 2));
@@ -335,6 +340,50 @@ public class ModConfiguredFeatures {
                     new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
                     new TwoLayersFeatureSize(1, 0, 1)
             ).ignoreVines().dirt(BlockStateProvider.simple(Blocks.DIRT)).build()));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> FIG_TREE = CONFIGURED_FEATURES.register("fig_tree",
+            () -> new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                    BlockStateProvider.simple(ModBlocks.FIG_LOG.get()),
+                    new StraightTrunkPlacer(3, 2, 1),
+                    BlockStateProvider.simple(ModBlocks.FIG_LEAVES.get()),
+                    new FigFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 2),
+                    new TwoLayersFeatureSize(1, 0, 1)
+            ).ignoreVines().dirt(BlockStateProvider.simple(Blocks.DIRT)).build()));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> CEDAR_TREE = CONFIGURED_FEATURES.register("cedar_tree",
+            () -> new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                    BlockStateProvider.simple(ModBlocks.CEDAR_LOG.get()),
+                    new StraightTrunkPlacer(10, 5, 3),
+                    BlockStateProvider.simple(ModBlocks.CEDAR_LEAVES.get()),
+                    new SpruceFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), ConstantInt.of(1)),
+                    new TwoLayersFeatureSize(2, 1, 4)
+            ).ignoreVines().dirt(BlockStateProvider.simple(Blocks.DIRT)).build()));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> CEDAR_MEGA_TREE = CONFIGURED_FEATURES.register("cedar_mega_tree",
+            () -> new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                    BlockStateProvider.simple(ModBlocks.CEDAR_LOG.get()),
+                    new GiantTrunkPlacer(25, 10, 5),
+                    BlockStateProvider.simple(ModBlocks.CEDAR_LEAVES.get()),
+                    new SpruceFoliagePlacer(ConstantInt.of(4), ConstantInt.of(0), ConstantInt.of(10)),
+                    new TwoLayersFeatureSize(3, 2, 4)
+            ).ignoreVines().dirt(BlockStateProvider.simple(Blocks.DIRT)).build()));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> EUCALYPTUS_TREE = CONFIGURED_FEATURES.register("eucalyptus_tree",
+            () -> new ConfiguredFeature<>((Feature<NoneFeatureConfiguration>) ModFeatures.EUCALYPTUS_TREE_FEATURE.get(),
+                    NoneFeatureConfiguration.INSTANCE));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> RAINBOW_EUCALYPTUS_TREE = CONFIGURED_FEATURES.register("rainbow_eucalyptus_tree",
+            () -> new ConfiguredFeature<>((Feature<NoneFeatureConfiguration>) ModFeatures.RAINBOW_EUCALYPTUS_TREE_FEATURE.get(),
+                    NoneFeatureConfiguration.INSTANCE));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> EUCALYPTUS_GROVE = CONFIGURED_FEATURES.register("eucalyptus_grove",
+            () -> new ConfiguredFeature<>((Feature<NoneFeatureConfiguration>) ModFeatures.EUCALYPTUS_GROVE_FEATURE.get(),
+                    NoneFeatureConfiguration.INSTANCE));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> RAINBOW_EUCALYPTUS_GROVE = CONFIGURED_FEATURES.register("rainbow_eucalyptus_grove",
+            () -> new ConfiguredFeature<>((Feature<NoneFeatureConfiguration>) ModFeatures.RAINBOW_EUCALYPTUS_GROVE_FEATURE.get(),
+                    NoneFeatureConfiguration.INSTANCE));
+
 
     // Very small marble veins - ultra-safe size, no chunk boundary issues possible
     public static final RegistryObject<ConfiguredFeature<?, ?>> MARBLE_VEIN = CONFIGURED_FEATURES.register("marble_vein",

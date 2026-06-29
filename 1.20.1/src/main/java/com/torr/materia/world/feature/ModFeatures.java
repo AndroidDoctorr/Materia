@@ -32,6 +32,18 @@ public class ModFeatures {
     public static final RegistryObject<Feature<?>> CYPRESS_TREE_FEATURE = FEATURES.register("cypress_tree_feature",
             () -> new CypressTreeFeature(com.mojang.serialization.Codec.unit(net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration.INSTANCE)));
 
+    public static final RegistryObject<Feature<?>> EUCALYPTUS_TREE_FEATURE = FEATURES.register("eucalyptus_tree_feature",
+            () -> new EucalyptusTreeFeature(com.mojang.serialization.Codec.unit(net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration.INSTANCE)));
+
+    public static final RegistryObject<Feature<?>> EUCALYPTUS_GROVE_FEATURE = FEATURES.register("eucalyptus_grove_feature",
+            () -> new EucalyptusGroveFeature(com.mojang.serialization.Codec.unit(net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration.INSTANCE), false));
+
+    public static final RegistryObject<Feature<?>> RAINBOW_EUCALYPTUS_GROVE_FEATURE = FEATURES.register("rainbow_eucalyptus_grove_feature",
+            () -> new EucalyptusGroveFeature(com.mojang.serialization.Codec.unit(net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration.INSTANCE), true));
+
+    public static final RegistryObject<Feature<?>> RAINBOW_EUCALYPTUS_TREE_FEATURE = FEATURES.register("rainbow_eucalyptus_tree_feature",
+            () -> new RainbowEucalyptusTreeFeature(com.mojang.serialization.Codec.unit(net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration.INSTANCE)));
+
     public static void register(IEventBus eventBus) {
         FEATURES.register(eventBus);
     }

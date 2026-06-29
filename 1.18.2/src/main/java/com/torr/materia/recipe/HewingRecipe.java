@@ -90,7 +90,12 @@ public class HewingRecipe extends CustomRecipe {
         if (log.is(ModBlocks.PALM_LOG.get().asItem())) return new ItemStack(ModItems.ROUGH_OAK_PLANK.get(), 4);
         if (log.is(ModBlocks.CYPRESS_LOG.get().asItem())) return new ItemStack(ModItems.ROUGH_OAK_PLANK.get(), 4);
         if (log.is(ModBlocks.BAOBAB_LOG.get().asItem())) return new ItemStack(ModItems.ROUGH_OAK_PLANK.get(), 4);
+
         if (log.is(ModBlocks.MAPLE_LOG.get().asItem())) return new ItemStack(ModItems.ROUGH_BIRCH_PLANK.get(), 4);
+        if (log.is(ModBlocks.FIG_LOG.get().asItem())) return new ItemStack(ModItems.ROUGH_FIG_PLANK.get(), 4);
+        if (log.is(ModBlocks.CEDAR_LOG.get().asItem())) return new ItemStack(ModItems.ROUGH_CEDAR_PLANK.get(), 4);
+        if (log.is(ModBlocks.EUCALYPTUS_LOG.get().asItem())) return new ItemStack(ModItems.ROUGH_EUCALYPTUS_PLANK.get(), 4);
+        if (log.is(ModBlocks.RAINBOW_EUCALYPTUS_LOG.get().asItem())) return new ItemStack(ModItems.ROUGH_EUCALYPTUS_PLANK.get(), 4);
         if (log.is(ModBlocks.SAPPED_SPRUCE_LOG.get().asItem())) return new ItemStack(ModItems.ROUGH_SPRUCE_PLANK.get(), 4);
         if (log.is(ModBlocks.TAPPED_RUBBER_WOOD_LOG.get().asItem())) return new ItemStack(ModItems.ROUGH_RUBBER_WOOD_PLANK.get(), 4);
         

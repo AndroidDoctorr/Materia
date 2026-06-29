@@ -1,0 +1,9 @@
+﻿{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [ "PNP", "P P" ],
+    "key": {
+        "P": { "item": "materia:smooth_eucalyptus_plank" },
+        "N": { "tag": "materia:all_nails" }
+    },
+    "result": { "item": "materia:eucalyptus_planks", "count": 1 }
+}

@@ -4,6 +4,7 @@ import com.torr.materia.recipe.WaterPotRecipe;
 import com.torr.materia.recipe.FlintKnifeRecipe;
 import com.torr.materia.recipe.FlintSpearRecipe;
 import com.torr.materia.recipe.StickFromRoughPlankRecipe;
+import com.torr.materia.recipe.VerdigrisRecipe;
 import com.torr.materia.recipe.LeatherArmorDyeRecipe;
 import com.torr.materia.recipe.PrimitiveCraftingTableRecipe;
 import com.torr.materia.recipe.FirePitRecipe;
@@ -59,6 +60,9 @@ public class ModRecipes {
 
     public static final RegistryObject<RecipeSerializer<com.torr.materia.recipe.HewingRecipe>> HEWING_SERIALIZER =
             RECIPE_SERIALIZERS.register("hewing", () -> new SimpleCraftingRecipeSerializer<>(com.torr.materia.recipe.HewingRecipe::new));
+
+    public static final RegistryObject<RecipeSerializer<VerdigrisRecipe>> VERDIGRIS_SERIALIZER =
+            RECIPE_SERIALIZERS.register("verdigris", () -> new SimpleCraftingRecipeSerializer<>(VerdigrisRecipe::new));
 
     public static final RegistryObject<RecipeSerializer<StickFromRoughPlankRecipe>> STICKS_FROM_ROUGH_PLANK_SERIALIZER =
             RECIPE_SERIALIZERS.register("sticks_from_rough_plank", () -> new SimpleCraftingRecipeSerializer<>(StickFromRoughPlankRecipe::new));

@@ -109,6 +109,8 @@ public class CustomBedRenderer implements BlockEntityRenderer<BedBlockEntity> {
             return new Material(Sheets.BED_SHEET, ResourceLocation.fromNamespaceAndPath(materia.MOD_ID, "entity/bed/charcoal_gray"));
         } else if (block == ModBlocks.TAUPE_BED.get()) {
             return new Material(Sheets.BED_SHEET, ResourceLocation.fromNamespaceAndPath(materia.MOD_ID, "entity/bed/taupe"));
+        } else if (block == ModBlocks.TEAL_BED.get()) {
+            return new Material(Sheets.BED_SHEET, ResourceLocation.fromNamespaceAndPath(materia.MOD_ID, "entity/bed/teal"));
         }
         
         // For vanilla beds (and bed-item rendering), use the BedBlockEntity's color
@@ -126,6 +128,7 @@ public class CustomBedRenderer implements BlockEntityRenderer<BedBlockEntity> {
                 || block == ModBlocks.TYRIAN_PURPLE_BED.get()
                 || block == ModBlocks.LAVENDER_BED.get()
                 || block == ModBlocks.CHARCOAL_GRAY_BED.get()
-                || block == ModBlocks.TAUPE_BED.get();
+                || block == ModBlocks.TAUPE_BED.get()
+                || block == ModBlocks.TEAL_BED.get();
     }
 }

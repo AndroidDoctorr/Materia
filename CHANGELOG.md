@@ -2,15 +2,31 @@
 
 All notable changes to **Materia** (mod id: `materia`) will be documented in this file.
 
-## 1.2.0 (2026-06-20)
+## 1.2.0 (in progress)
 
-- **New plants & trees:** **esparto** (decorative grass; drops plant fiber and wheat seeds like Materia tall grass), **rice** and **cotton** crops (8 growth stages; wild variants use stage-6 art), **tea bush** (4 stages; right-click mature bush for tea leaves, regrows from stage 2), **palm**, **Mediterranean cypress**, and **baobab** trees (log/leaves/sapling only — hew logs to **rough oak planks**). All spawn in appropriate biome tags (desert/temperate esparto, river/warm-wet wild rice, tropical/grassy cotton, temperate tea, beach/tropical palms, temperate cypress, tropical baobab).
+- **New plants & trees:** **esparto** (decorative grass; drops plant fiber and wheat seeds like Materia tall grass), **rice** and **cotton** crops (8 growth stages; wild variants use stage-6 art), **tea bush** (4 stages; right-click mature bush for tea leaves, regrows from stage 2), **palm**, **Mediterranean cypress**, **baobab**, **maple**, **fig**, **cedar**, and **eucalyptus** trees. All spawn in appropriate biome tags (desert/temperate esparto, river/warm-wet wild rice, tropical/grassy cotton, temperate tea, beach/tropical palms, temperate cypress, tropical baobab, temperate maple/fig/cedar, eucalyptus groves).
 
 - **Rice:** requires a **water source within 2 blocks** to grow; mature crop drops **shelled rice**; **shelled rice** is inedible raw but **cooks to cooked rice** in a boiling water pot (6 nutrition / 0.6 saturation).
 
 - **Cotton:** white **`materia:cotton`** bolls (not taupe like wool clumps); dyeable like wool clumps; spins on **hand spindle** / **spinning wheel** to matching **colored string** (white cotton → white string); included in **`#materia:bedfills`** alongside wool clumps.
 
 - **Palm trees:** straight trunks with **`upper`** log segment texture on the top few blocks; **flat 2D palm leaves** at the crown (diagonal trunk-adjacent leaves deferred).
+
+- **Fig tree:** temperate worldgen; `has_figs` leaves (harvest `materia:fig`, 20% regrowth); hew `fig_log` → 4× `rough_fig_plank`; `smooth_fig_plank` item.
+
+- **Cedar tree:** spruce-like normal tree + 2×2 mega (`cedar_mega_tree`); temperate / temperate_forest; hew → `rough_cedar_plank`.
+
+- **Eucalyptus:** grove worldgen (3–7 trees, ~8 block radius); tall single-trunk feature for saplings; 5% rainbow log/leaves/sapling groves via separate rare modifier; hew both log types → `rough_eucalyptus_plank`.
+
+- **Agave:** desert random-patch shrub (esparto pattern); places on sand, red sand, coarse dirt, dirt, grass.
+
+- **New dyes:** **verdigris** (vinegar + raw copper, custom recipe), **burgundy** (red + tyrian purple), **tan** (brown + yellow); burgundy/tan/teal textile blocks (wool, glass, concrete, terracotta, candle, cotton, string, wool clumps); teal sack/blanket/bed use verdigris dye.
+
+- **Woodworking:** fig/cedar/eucalyptus **planks, stairs, slabs** (smooth plank + nails); doors/trapdoors skipped.
+
+- **Hewing:** fig/cedar/eucalyptus/rainbow eucalyptus logs; **maple** → `rough_birch_plank` listed in JEI hewing.
+
+- **Docs:** block pages for fig, cedar, eucalyptus, agave; dye pages for verdigris, burgundy, tan.
 
 ## 1.1.1 (2026-06-20)
 

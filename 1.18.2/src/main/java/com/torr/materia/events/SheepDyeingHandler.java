@@ -30,6 +30,9 @@ public class SheepDyeingHandler {
         if (dyeItem == ModItems.RED_OCHRE.get()) return CustomSheepColor.RED_OCHRE;
         if (dyeItem == ModItems.INDIGO_DYE.get()) return CustomSheepColor.INDIGO;
         if (dyeItem == ModItems.OLIVE_DYE.get()) return CustomSheepColor.OLIVE;
+        if (dyeItem == ModItems.BURGUNDY_DYE.get()) return CustomSheepColor.BURGUNDY;
+        if (dyeItem == ModItems.TAN_DYE.get()) return CustomSheepColor.TAN;
+        if (dyeItem == ModItems.VERDIGRIS.get()) return CustomSheepColor.TEAL;
         if (dyeItem == ModItems.TYRIAN_PURPLE_DYE.get()) return CustomSheepColor.TYRIAN_PURPLE;
         if (dyeItem == ModItems.LAVENDER_DYE.get()) return CustomSheepColor.LAVENDER;
         if (dyeItem == ModItems.CHARCOAL_GRAY_DYE.get()) return CustomSheepColor.CHARCOAL_GRAY;
@@ -84,6 +87,9 @@ public class SheepDyeingHandler {
                         case RED_OCHRE -> net.minecraft.world.item.DyeColor.RED;
                         case INDIGO -> net.minecraft.world.item.DyeColor.BLUE;
                         case OLIVE -> net.minecraft.world.item.DyeColor.GREEN;
+                        case BURGUNDY -> net.minecraft.world.item.DyeColor.RED;
+                        case TAN -> net.minecraft.world.item.DyeColor.BROWN;
+                        case TEAL -> net.minecraft.world.item.DyeColor.CYAN;
                         case TYRIAN_PURPLE -> net.minecraft.world.item.DyeColor.PURPLE;
                         case LAVENDER -> net.minecraft.world.item.DyeColor.MAGENTA;
                         case CHARCOAL_GRAY -> net.minecraft.world.item.DyeColor.GRAY;

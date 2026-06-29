@@ -1,0 +1,16 @@
+﻿{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:white_wool"
+        },
+        {
+            "item": "materia:verdigris"
+        }
+    ],
+    "result": {
+        "item": "materia:teal_wool",
+        "count": 1
+    }
+}
+

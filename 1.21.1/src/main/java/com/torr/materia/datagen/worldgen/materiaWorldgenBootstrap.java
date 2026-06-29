@@ -4,6 +4,7 @@ import com.torr.materia.ModBlocks;
 import com.torr.materia.materia;
 import com.torr.materia.world.feature.CypressFoliagePlacer;
 import com.torr.materia.world.feature.ModFeatures;
+import com.torr.materia.world.feature.FigFoliagePlacer;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
@@ -22,8 +23,10 @@ import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConf
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.SpruceFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.GiantTrunkPlacer;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
@@ -90,6 +93,14 @@ public final class materiaWorldgenBootstrap {
     private static final ResourceKey<ConfiguredFeature<?, ?>> CYPRESS_TREE = configured("cypress_tree");
     private static final ResourceKey<ConfiguredFeature<?, ?>> BAOBAB_TREE = configured("baobab_tree");
     private static final ResourceKey<ConfiguredFeature<?, ?>> MAPLE_TREE = configured("maple_tree");
+    private static final ResourceKey<ConfiguredFeature<?, ?>> FIG_TREE = configured("fig_tree");
+    private static final ResourceKey<ConfiguredFeature<?, ?>> CEDAR_TREE = configured("cedar_tree");
+    private static final ResourceKey<ConfiguredFeature<?, ?>> CEDAR_MEGA_TREE = configured("cedar_mega_tree");
+    private static final ResourceKey<ConfiguredFeature<?, ?>> EUCALYPTUS_TREE = configured("eucalyptus_tree");
+    private static final ResourceKey<ConfiguredFeature<?, ?>> RAINBOW_EUCALYPTUS_TREE = configured("rainbow_eucalyptus_tree");
+    private static final ResourceKey<ConfiguredFeature<?, ?>> EUCALYPTUS_GROVE = configured("eucalyptus_grove");
+    private static final ResourceKey<ConfiguredFeature<?, ?>> RAINBOW_EUCALYPTUS_GROVE = configured("rainbow_eucalyptus_grove");
+    private static final ResourceKey<ConfiguredFeature<?, ?>> AGAVE_PATCH = configured("agave_patch");
 
     // Placed feature keys (match JSON ids)
     private static final ResourceKey<PlacedFeature> GRAVEL_TIN_ORE_PLACED = placed("gravel_tin_ore_placed");
@@ -142,6 +153,11 @@ public final class materiaWorldgenBootstrap {
     private static final ResourceKey<PlacedFeature> CYPRESS_TREE_PLACED = placed("cypress_tree_placed");
     private static final ResourceKey<PlacedFeature> BAOBAB_TREE_PLACED = placed("baobab_tree_placed");
     private static final ResourceKey<PlacedFeature> MAPLE_TREE_PLACED = placed("maple_tree_placed");
+    private static final ResourceKey<PlacedFeature> FIG_TREE_PLACED = placed("fig_tree_placed");
+    private static final ResourceKey<PlacedFeature> CEDAR_TREE_PLACED = placed("cedar_tree_placed");
+    private static final ResourceKey<PlacedFeature> EUCALYPTUS_GROVE_PLACED = placed("eucalyptus_grove_placed");
+    private static final ResourceKey<PlacedFeature> RAINBOW_EUCALYPTUS_GROVE_PLACED = placed("rainbow_eucalyptus_grove_placed");
+    private static final ResourceKey<PlacedFeature> AGAVE_PLACED = placed("agave_placed");
 
     public static void bootstrapConfiguredFeatures(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         // gravel_tin_ore
@@ -208,6 +224,7 @@ public final class materiaWorldgenBootstrap {
         context.register(WILD_RICE_PATCH, randomPatch(ModBlocks.WILD_RICE.get().defaultBlockState(), 32, 6, 2));
         context.register(WILD_COTTON_PATCH, randomPatch(ModBlocks.WILD_COTTON.get().defaultBlockState(), 32, 6, 2));
         context.register(ESPARTO_PATCH, randomPatch(ModBlocks.ESPARTO.get().defaultBlockState(), 24, 5, 2));
+        context.register(AGAVE_PATCH, randomPatch(ModBlocks.AGAVE.get().defaultBlockState(), 24, 5, 2));
         context.register(TEA_BUSH_PATCH, randomPatch(ModBlocks.TEA_BUSH.get().defaultBlockState(), 16, 4, 2));
 
 
@@ -303,6 +320,35 @@ public final class materiaWorldgenBootstrap {
                 new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
                 new TwoLayersFeatureSize(1, 0, 1)
         ).ignoreVines().dirt(BlockStateProvider.simple(Blocks.DIRT)).build()));
+
+        context.register(FIG_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(ModBlocks.FIG_LOG.get()),
+                new StraightTrunkPlacer(3, 2, 1),
+                BlockStateProvider.simple(ModBlocks.FIG_LEAVES.get()),
+                new FigFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 2),
+                new TwoLayersFeatureSize(1, 0, 1)
+        ).ignoreVines().dirt(BlockStateProvider.simple(Blocks.DIRT)).build()));
+
+        context.register(CEDAR_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(ModBlocks.CEDAR_LOG.get()),
+                new StraightTrunkPlacer(10, 5, 3),
+                BlockStateProvider.simple(ModBlocks.CEDAR_LEAVES.get()),
+                new SpruceFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), ConstantInt.of(1)),
+                new TwoLayersFeatureSize(2, 1, 4)
+        ).ignoreVines().dirt(BlockStateProvider.simple(Blocks.DIRT)).build()));
+
+        context.register(CEDAR_MEGA_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(ModBlocks.CEDAR_LOG.get()),
+                new GiantTrunkPlacer(25, 10, 5),
+                BlockStateProvider.simple(ModBlocks.CEDAR_LEAVES.get()),
+                new SpruceFoliagePlacer(ConstantInt.of(4), ConstantInt.of(0), ConstantInt.of(10)),
+                new TwoLayersFeatureSize(3, 2, 4)
+        ).ignoreVines().dirt(BlockStateProvider.simple(Blocks.DIRT)).build()));
+
+        context.register(EUCALYPTUS_TREE, new ConfiguredFeature<>((Feature<NoneFeatureConfiguration>) ModFeatures.EUCALYPTUS_TREE_FEATURE.get(), NoneFeatureConfiguration.INSTANCE));
+        context.register(RAINBOW_EUCALYPTUS_TREE, new ConfiguredFeature<>((Feature<NoneFeatureConfiguration>) ModFeatures.RAINBOW_EUCALYPTUS_TREE_FEATURE.get(), NoneFeatureConfiguration.INSTANCE));
+        context.register(EUCALYPTUS_GROVE, new ConfiguredFeature<>((Feature<NoneFeatureConfiguration>) ModFeatures.EUCALYPTUS_GROVE_FEATURE.get(), NoneFeatureConfiguration.INSTANCE));
+        context.register(RAINBOW_EUCALYPTUS_GROVE, new ConfiguredFeature<>((Feature<NoneFeatureConfiguration>) ModFeatures.RAINBOW_EUCALYPTUS_GROVE_FEATURE.get(), NoneFeatureConfiguration.INSTANCE));
 
         context.register(OLIVE_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(ModBlocks.OLIVE_TREE_LOG.get()),
@@ -573,6 +619,25 @@ public final class materiaWorldgenBootstrap {
         context.register(MAPLE_TREE_PLACED, new PlacedFeature(configured.getOrThrow(MAPLE_TREE),
                 List.of(RarityFilter.onAverageOnceEvery(24), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
                         BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.MAPLE_SAPLING.get().defaultBlockState(), BlockPos.ZERO)), BiomeFilter.biome())));
+
+        context.register(FIG_TREE_PLACED, new PlacedFeature(configured.getOrThrow(FIG_TREE),
+                List.of(RarityFilter.onAverageOnceEvery(24), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.FIG_SAPLING.get().defaultBlockState(), BlockPos.ZERO)), BiomeFilter.biome())));
+
+        context.register(CEDAR_TREE_PLACED, new PlacedFeature(configured.getOrThrow(CEDAR_TREE),
+                List.of(RarityFilter.onAverageOnceEvery(20), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.CEDAR_SAPLING.get().defaultBlockState(), BlockPos.ZERO)), BiomeFilter.biome())));
+
+        context.register(EUCALYPTUS_GROVE_PLACED, new PlacedFeature(configured.getOrThrow(EUCALYPTUS_GROVE),
+                List.of(RarityFilter.onAverageOnceEvery(28), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.EUCALYPTUS_SAPLING.get().defaultBlockState(), BlockPos.ZERO)), BiomeFilter.biome())));
+
+        context.register(RAINBOW_EUCALYPTUS_GROVE_PLACED, new PlacedFeature(configured.getOrThrow(RAINBOW_EUCALYPTUS_GROVE),
+                List.of(RarityFilter.onAverageOnceEvery(96), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.RAINBOW_EUCALYPTUS_SAPLING.get().defaultBlockState(), BlockPos.ZERO)), BiomeFilter.biome())));
+
+        context.register(AGAVE_PLACED, new PlacedFeature(configured.getOrThrow(AGAVE_PATCH),
+                List.of(RarityFilter.onAverageOnceEvery(12), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING), BiomeFilter.biome())));
 
         context.register(OLIVE_TREE_PLACED, new PlacedFeature(configured.getOrThrow(OLIVE_TREE),
                 List.of(

@@ -1,0 +1,9 @@
+﻿{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [ "PN ", "PP ", "PPP" ],
+    "key": {
+        "P": { "item": "materia:smooth_fig_plank" },
+        "N": { "tag": "materia:all_nails" }
+    },
+    "result": { "item": "materia:fig_stairs", "count": 1 }
+}

@@ -1,0 +1,8 @@
+{
+    "type": "forge:add_features",
+    "biomes": "#materia:temperate",
+    "step": "vegetal_decoration",
+    "features": [
+        "materia:fig_tree_placed"
+    ]
+}

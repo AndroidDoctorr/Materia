@@ -15,7 +15,7 @@ import java.util.List;
 
 public class ModCreativeTabs {
     private static final List<String> PLANT_AND_CROP_ORDER = List.of(
-            "esparto",
+            "esparto", "agave",
             "wild_rice", "wild_cotton",
             "rice_crop", "cotton_crop", "tea_bush",
             "rice_seeds", "cotton_seeds", "tea_seeds",
@@ -27,6 +27,7 @@ public class ModCreativeTabs {
             "black_cotton", "blue_cotton", "brown_cotton", "charcoal_gray_cotton", "cyan_cotton",
             "gray_cotton", "green_cotton", "indigo_cotton", "lavender_cotton", "light_blue_cotton",
             "light_gray_cotton", "lime_cotton", "magenta_cotton", "ochre_cotton", "olive_cotton",
+            "burgundy_cotton", "tan_cotton", "teal_cotton",
             "orange_cotton", "pink_cotton", "purple_cotton", "red_cotton", "red_ochre_cotton",
             "taupe_cotton", "tyrian_purple_cotton", "yellow_cotton"
     );
@@ -35,7 +36,11 @@ public class ModCreativeTabs {
             "palm_log", "palm_leaves", "palm_sapling",
             "cypress_log", "cypress_leaves", "cypress_sapling",
             "baobab_log", "baobab_leaves", "baobab_sapling",
-            "maple_log", "maple_leaves", "maple_sapling"
+            "maple_log", "maple_leaves", "maple_sapling",
+            "fig_log", "fig_leaves", "fig_sapling", "fig_planks", "fig_stairs", "fig_slab",
+            "cedar_log", "cedar_leaves", "cedar_sapling", "cedar_planks", "cedar_stairs", "cedar_slab",
+            "eucalyptus_log", "rainbow_eucalyptus_log", "eucalyptus_leaves",
+            "eucalyptus_sapling", "rainbow_eucalyptus_sapling", "eucalyptus_planks", "eucalyptus_stairs", "eucalyptus_slab"
     );
 
     public static final DeferredRegister<CreativeModeTab> TABS =

@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:white_wool"
+        },
+        {
+            "item": "materia:burgundy_dye"
+        }
+    ],
+    "result": {
+        "item": "materia:burgundy_wool",
+        "count": 1
+    }
+}

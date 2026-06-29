@@ -199,6 +199,13 @@ public class ModPlacedFeatures {
                             HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
                             BiomeFilter.biome())));
 
+    public static final RegistryObject<PlacedFeature> AGAVE_PLACED = PLACED_FEATURES.register("agave_placed",
+            () -> new PlacedFeature(Holder.direct(ModConfiguredFeatures.AGAVE_PATCH.get()),
+                    List.of(RarityFilter.onAverageOnceEvery(32),
+                            InSquarePlacement.spread(),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
+                            BiomeFilter.biome())));
+
     public static final RegistryObject<PlacedFeature> TEA_BUSH_PLACED = PLACED_FEATURES.register("tea_bush_placed",
             () -> new PlacedFeature(Holder.direct(ModConfiguredFeatures.TEA_BUSH_PATCH.get()),
                     List.of(RarityFilter.onAverageOnceEvery(36),
@@ -369,6 +376,38 @@ public class ModPlacedFeatures {
                             InSquarePlacement.spread(),
                             HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
                             BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.MAPLE_SAPLING.get().defaultBlockState(), BlockPos.ZERO)),
+                            BiomeFilter.biome())));
+
+    public static final RegistryObject<PlacedFeature> FIG_TREE_PLACED = PLACED_FEATURES.register("fig_tree_placed",
+            () -> new PlacedFeature(Holder.direct(ModConfiguredFeatures.FIG_TREE.get()),
+                    List.of(RarityFilter.onAverageOnceEvery(24),
+                            InSquarePlacement.spread(),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                            BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.FIG_SAPLING.get().defaultBlockState(), BlockPos.ZERO)),
+                            BiomeFilter.biome())));
+
+    public static final RegistryObject<PlacedFeature> CEDAR_TREE_PLACED = PLACED_FEATURES.register("cedar_tree_placed",
+            () -> new PlacedFeature(Holder.direct(ModConfiguredFeatures.CEDAR_TREE.get()),
+                    List.of(RarityFilter.onAverageOnceEvery(20),
+                            InSquarePlacement.spread(),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                            BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.CEDAR_SAPLING.get().defaultBlockState(), BlockPos.ZERO)),
+                            BiomeFilter.biome())));
+
+    public static final RegistryObject<PlacedFeature> EUCALYPTUS_GROVE_PLACED = PLACED_FEATURES.register("eucalyptus_grove_placed",
+            () -> new PlacedFeature(Holder.direct(ModConfiguredFeatures.EUCALYPTUS_GROVE.get()),
+                    List.of(RarityFilter.onAverageOnceEvery(28),
+                            InSquarePlacement.spread(),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                            BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.EUCALYPTUS_SAPLING.get().defaultBlockState(), BlockPos.ZERO)),
+                            BiomeFilter.biome())));
+
+    public static final RegistryObject<PlacedFeature> RAINBOW_EUCALYPTUS_GROVE_PLACED = PLACED_FEATURES.register("rainbow_eucalyptus_grove_placed",
+            () -> new PlacedFeature(Holder.direct(ModConfiguredFeatures.RAINBOW_EUCALYPTUS_GROVE.get()),
+                    List.of(RarityFilter.onAverageOnceEvery(96),
+                            InSquarePlacement.spread(),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                            BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.RAINBOW_EUCALYPTUS_SAPLING.get().defaultBlockState(), BlockPos.ZERO)),
                             BiomeFilter.biome())));
 
     // Marble vein placement - small individual veins but very common in clusters

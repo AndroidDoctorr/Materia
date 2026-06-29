@@ -269,6 +269,8 @@ public class ModBlocks {
                         () -> new BedBlock(DyeColor.GRAY, BlockBehaviour.Properties.copy(Blocks.WHITE_BED)));
         public static final RegistryObject<Block> TAUPE_BED = BLOCKS.register("taupe_bed",
                         () -> new BedBlock(DyeColor.BROWN, BlockBehaviour.Properties.copy(Blocks.WHITE_BED)));
+        public static final RegistryObject<Block> TEAL_BED = BLOCKS.register("teal_bed",
+                        () -> new BedBlock(DyeColor.CYAN, BlockBehaviour.Properties.copy(Blocks.WHITE_BED)));
 
         // ANVILS
         public static final RegistryObject<Block> STONE_ANVIL = registerBlock("stone_anvil",
@@ -370,7 +372,10 @@ public class ModBlocks {
         public static final RegistryObject<Block> ESPARTO = registerBlock("esparto",
                         () -> new EspartoBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak()
                                         .sound(SoundType.GRASS)));
-        
+        public static final RegistryObject<Block> AGAVE = registerBlock("agave",
+                        () -> new AgaveBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak()
+                                        .sound(SoundType.GRASS)));
+
         // OTHER BLOCKS
         public static final RegistryObject<Block> SAPPED_SPRUCE_LOG = registerBlock("sapped_spruce_log",
                         () -> new com.torr.materia.block.SappedSpruceLogBlock());
@@ -432,6 +437,53 @@ public class ModBlocks {
                         () -> new Block(BlockBehaviour.Properties.copy(Blocks.GREEN_TERRACOTTA)));
         public static final RegistryObject<Block> OLIVE_CARPET = registerBlock("olive_carpet",
                         () -> new CarpetBlock(BlockBehaviour.Properties.copy(Blocks.GREEN_CARPET)));
+
+        // BURGUNDY BLOCKS
+        public static final RegistryObject<Block> BURGUNDY_WOOL = registerBlock("burgundy_wool",
+                        () -> new Block(BlockBehaviour.Properties.copy(Blocks.RED_WOOL)));
+        public static final RegistryObject<Block> BURGUNDY_GLASS = registerBlock("burgundy_glass",
+                        () -> new net.minecraft.world.level.block.GlassBlock(BlockBehaviour.Properties.copy(Blocks.RED_STAINED_GLASS).noOcclusion()));
+        public static final RegistryObject<Block> BURGUNDY_CONCRETE = registerBlock("burgundy_concrete",
+                        () -> new Block(BlockBehaviour.Properties.copy(Blocks.RED_CONCRETE)));
+        public static final RegistryObject<Block> BURGUNDY_CONCRETE_POWDER = registerBlock("burgundy_concrete_powder",
+                        () -> new net.minecraft.world.level.block.ConcretePowderBlock(ModBlocks.BURGUNDY_CONCRETE.get(),
+                                        BlockBehaviour.Properties.copy(Blocks.RED_CONCRETE_POWDER)));
+        public static final RegistryObject<Block> BURGUNDY_TERRACOTTA = registerBlock("burgundy_terracotta",
+                        () -> new Block(BlockBehaviour.Properties.copy(Blocks.RED_TERRACOTTA)));
+        public static final RegistryObject<Block> BURGUNDY_CANDLE = registerBlock("burgundy_candle",
+                        () -> new net.minecraft.world.level.block.CandleBlock(BlockBehaviour.Properties.copy(Blocks.RED_CANDLE)));
+
+        // TAN BLOCKS
+        public static final RegistryObject<Block> TAN_WOOL = registerBlock("tan_wool",
+                        () -> new Block(BlockBehaviour.Properties.copy(Blocks.BROWN_WOOL)));
+        public static final RegistryObject<Block> TAN_GLASS = registerBlock("tan_glass",
+                        () -> new net.minecraft.world.level.block.GlassBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_STAINED_GLASS).noOcclusion()));
+        public static final RegistryObject<Block> TAN_CONCRETE = registerBlock("tan_concrete",
+                        () -> new Block(BlockBehaviour.Properties.copy(Blocks.BROWN_CONCRETE)));
+        public static final RegistryObject<Block> TAN_CONCRETE_POWDER = registerBlock("tan_concrete_powder",
+                        () -> new net.minecraft.world.level.block.ConcretePowderBlock(ModBlocks.TAN_CONCRETE.get(),
+                                        BlockBehaviour.Properties.copy(Blocks.BROWN_CONCRETE_POWDER)));
+        public static final RegistryObject<Block> TAN_TERRACOTTA = registerBlock("tan_terracotta",
+                        () -> new Block(BlockBehaviour.Properties.copy(Blocks.BROWN_TERRACOTTA)));
+        public static final RegistryObject<Block> TAN_CANDLE = registerBlock("tan_candle",
+                        () -> new net.minecraft.world.level.block.CandleBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_CANDLE)));
+
+        // TEAL (verdigris dye) BLOCKS
+        public static final RegistryObject<Block> TEAL_WOOL = registerBlock("teal_wool",
+                        () -> new Block(BlockBehaviour.Properties.copy(Blocks.CYAN_WOOL)));
+        public static final RegistryObject<Block> TEAL_GLASS = registerBlock("teal_glass",
+                        () -> new net.minecraft.world.level.block.GlassBlock(BlockBehaviour.Properties.copy(Blocks.CYAN_STAINED_GLASS).noOcclusion()));
+        public static final RegistryObject<Block> TEAL_CONCRETE = registerBlock("teal_concrete",
+                        () -> new Block(BlockBehaviour.Properties.copy(Blocks.CYAN_CONCRETE)));
+        public static final RegistryObject<Block> TEAL_CONCRETE_POWDER = registerBlock("teal_concrete_powder",
+                        () -> new net.minecraft.world.level.block.ConcretePowderBlock(ModBlocks.TEAL_CONCRETE.get(),
+                                        BlockBehaviour.Properties.copy(Blocks.CYAN_CONCRETE_POWDER)));
+        public static final RegistryObject<Block> TEAL_TERRACOTTA = registerBlock("teal_terracotta",
+                        () -> new Block(BlockBehaviour.Properties.copy(Blocks.CYAN_TERRACOTTA)));
+        public static final RegistryObject<Block> TEAL_CARPET = registerBlock("teal_carpet",
+                        () -> new CarpetBlock(BlockBehaviour.Properties.copy(Blocks.CYAN_CARPET)));
+        public static final RegistryObject<Block> TEAL_CANDLE = registerBlock("teal_candle",
+                        () -> new net.minecraft.world.level.block.CandleBlock(BlockBehaviour.Properties.copy(Blocks.CYAN_CANDLE)));
 
         // INDIGO BLOCKS
         public static final RegistryObject<Block> INDIGO_WOOL = registerBlock("indigo_wool",
@@ -704,6 +756,64 @@ public class ModBlocks {
                                         .isSuffocating((state, world, pos) -> false)
                                         .isViewBlocking((state, world, pos) -> false)));
 
+
+        // Fig tree
+        public static final RegistryObject<Block> FIG_LOG = registerBlock("fig_log",
+                        () -> new com.torr.materia.block.FlammableRotatedPillarBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(2.0f).sound(SoundType.WOOD)));
+        public static final RegistryObject<Block> FIG_SAPLING = registerBlock("fig_sapling",
+                        () -> new com.torr.materia.block.FigTreeSaplingBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.GRASS).randomTicks()));
+        public static final RegistryObject<Block> FIG_LEAVES = registerBlock("fig_leaves",
+                        () -> new com.torr.materia.block.FigTreeLeavesBlock(BlockBehaviour.Properties.of(Material.LEAVES).strength(0.2f).randomTicks().sound(SoundType.GRASS).noOcclusion().isValidSpawn((state, world, pos, type) -> false).isSuffocating((state, world, pos) -> false).isViewBlocking((state, world, pos) -> false)));
+
+        // Cedar tree
+        public static final RegistryObject<Block> CEDAR_LOG = registerBlock("cedar_log",
+                        () -> new com.torr.materia.block.FlammableRotatedPillarBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(2.0f).sound(SoundType.WOOD)));
+        public static final RegistryObject<Block> CEDAR_SAPLING = registerBlock("cedar_sapling",
+                        () -> new com.torr.materia.block.CedarSaplingBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.GRASS).randomTicks()));
+        public static final RegistryObject<Block> CEDAR_LEAVES = registerBlock("cedar_leaves",
+                        () -> new com.torr.materia.block.CedarLeavesBlock(BlockBehaviour.Properties.of(Material.LEAVES).strength(0.2f).randomTicks().sound(SoundType.GRASS).noOcclusion().isValidSpawn((state, world, pos, type) -> false).isSuffocating((state, world, pos) -> false).isViewBlocking((state, world, pos) -> false)));
+
+        // Eucalyptus
+        public static final RegistryObject<Block> EUCALYPTUS_LOG = registerBlock("eucalyptus_log",
+                        () -> new com.torr.materia.block.FlammableRotatedPillarBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(2.0f).sound(SoundType.WOOD)));
+        public static final RegistryObject<Block> RAINBOW_EUCALYPTUS_LOG = registerBlock("rainbow_eucalyptus_log",
+                        () -> new com.torr.materia.block.FlammableRotatedPillarBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(2.0f).sound(SoundType.WOOD)));
+        public static final RegistryObject<Block> EUCALYPTUS_LEAVES = registerBlock("eucalyptus_leaves",
+                        () -> new com.torr.materia.block.CedarLeavesBlock(BlockBehaviour.Properties.of(Material.LEAVES).strength(0.2f).randomTicks().sound(SoundType.GRASS).noOcclusion().isValidSpawn((state, world, pos, type) -> false).isSuffocating((state, world, pos) -> false).isViewBlocking((state, world, pos) -> false)));
+        public static final RegistryObject<Block> EUCALYPTUS_SAPLING = registerBlock("eucalyptus_sapling",
+                        () -> new com.torr.materia.block.EucalyptusSaplingBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.GRASS).randomTicks()));
+        public static final RegistryObject<Block> RAINBOW_EUCALYPTUS_SAPLING = registerBlock("rainbow_eucalyptus_sapling",
+                        () -> new com.torr.materia.block.RainbowEucalyptusSaplingBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.GRASS).randomTicks()));
+
+        public static final RegistryObject<Block> FIG_PLANKS = registerBlock("fig_planks",
+                        () -> new Block(BlockBehaviour.Properties.of(Material.WOOD).strength(0.5f).sound(SoundType.WOOD).noOcclusion()));
+        public static final RegistryObject<Block> FIG_STAIRS = registerBlock("fig_stairs",
+                        () -> new net.minecraft.world.level.block.StairBlock(
+                                () -> ModBlocks.FIG_PLANKS.get().defaultBlockState(),
+                                BlockBehaviour.Properties.copy(ModBlocks.FIG_PLANKS.get())));
+        public static final RegistryObject<Block> FIG_SLAB = registerBlock("fig_slab",
+                        () -> new net.minecraft.world.level.block.SlabBlock(
+                                BlockBehaviour.Properties.copy(ModBlocks.FIG_PLANKS.get())));
+
+        public static final RegistryObject<Block> CEDAR_PLANKS = registerBlock("cedar_planks",
+                        () -> new Block(BlockBehaviour.Properties.of(Material.WOOD).strength(0.5f).sound(SoundType.WOOD).noOcclusion()));
+        public static final RegistryObject<Block> CEDAR_STAIRS = registerBlock("cedar_stairs",
+                        () -> new net.minecraft.world.level.block.StairBlock(
+                                () -> ModBlocks.CEDAR_PLANKS.get().defaultBlockState(),
+                                BlockBehaviour.Properties.copy(ModBlocks.CEDAR_PLANKS.get())));
+        public static final RegistryObject<Block> CEDAR_SLAB = registerBlock("cedar_slab",
+                        () -> new net.minecraft.world.level.block.SlabBlock(
+                                BlockBehaviour.Properties.copy(ModBlocks.CEDAR_PLANKS.get())));
+
+        public static final RegistryObject<Block> EUCALYPTUS_PLANKS = registerBlock("eucalyptus_planks",
+                        () -> new Block(BlockBehaviour.Properties.of(Material.WOOD).strength(0.5f).sound(SoundType.WOOD).noOcclusion()));
+        public static final RegistryObject<Block> EUCALYPTUS_STAIRS = registerBlock("eucalyptus_stairs",
+                        () -> new net.minecraft.world.level.block.StairBlock(
+                                () -> ModBlocks.EUCALYPTUS_PLANKS.get().defaultBlockState(),
+                                BlockBehaviour.Properties.copy(ModBlocks.EUCALYPTUS_PLANKS.get())));
+        public static final RegistryObject<Block> EUCALYPTUS_SLAB = registerBlock("eucalyptus_slab",
+                        () -> new net.minecraft.world.level.block.SlabBlock(
+                                BlockBehaviour.Properties.copy(ModBlocks.EUCALYPTUS_PLANKS.get())));
 
         // TABLES
         public static final RegistryObject<Block> ACACIA_TABLE = registerBlock("acacia_table",

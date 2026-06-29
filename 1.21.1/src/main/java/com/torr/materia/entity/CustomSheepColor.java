@@ -31,6 +31,9 @@ public enum CustomSheepColor {
     RED_OCHRE(null, ModItems.CLUMP_OF_RED_OCHRE_WOOL, 0xB84018),
     INDIGO(null, ModItems.CLUMP_OF_INDIGO_WOOL, 0x4D3CB0),
     OLIVE(null, ModItems.CLUMP_OF_OLIVE_WOOL, 0x808000),
+    BURGUNDY(null, ModItems.CLUMP_OF_BURGUNDY_WOOL, 0x800020),
+    TAN(null, ModItems.CLUMP_OF_TAN_WOOL, 0xC2B280),
+    TEAL(null, ModItems.CLUMP_OF_TEAL_WOOL, 0x008080),
     TYRIAN_PURPLE(null, ModItems.CLUMP_OF_TYRIAN_PURPLE_WOOL, 0x66023C),
     LAVENDER(null, ModItems.CLUMP_OF_LAVENDER_WOOL, 0xB19CD9),
     CHARCOAL_GRAY(null, ModItems.CLUMP_OF_CHARCOAL_GRAY_WOOL, 0x363332),
@@ -83,6 +86,9 @@ public enum CustomSheepColor {
         if (dyeItem == ModItems.RED_OCHRE.get()) return RED_OCHRE;
         if (dyeItem == ModItems.INDIGO_DYE.get()) return INDIGO;
         if (dyeItem == ModItems.OLIVE_DYE.get()) return OLIVE;
+        if (dyeItem == ModItems.BURGUNDY_DYE.get()) return BURGUNDY;
+        if (dyeItem == ModItems.TAN_DYE.get()) return TAN;
+        if (dyeItem == ModItems.VERDIGRIS.get()) return TEAL;
         if (dyeItem == ModItems.TYRIAN_PURPLE_DYE.get()) return TYRIAN_PURPLE;
         if (dyeItem == ModItems.LAVENDER_DYE.get()) return LAVENDER;
         if (dyeItem == ModItems.CHARCOAL_GRAY_DYE.get()) return CHARCOAL_GRAY;
@@ -121,3 +127,4 @@ public enum CustomSheepColor {
         return null; // Not a vanilla dye
     }
 }
+

@@ -1,0 +1,10 @@
+﻿{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        { "item": "materia:teal_carpet" },
+        { "item": "materia:teal_carpet" },
+        { "tag": "materia:all_needles" },
+        { "tag": "materia:strings" }
+    ],
+    "result": { "item": "materia:teal_blanket", "count": 1 }
+}

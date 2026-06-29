@@ -207,6 +207,12 @@ public class ModItems {
         public static final RegistryObject<Item> LAVENDER_DYE = ITEMS.register("lavender_dye",
                         () -> new Item(new Item.Properties()
                                         ));
+        public static final RegistryObject<Item> VERDIGRIS = ITEMS.register("verdigris",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> BURGUNDY_DYE = ITEMS.register("burgundy_dye",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> TAN_DYE = ITEMS.register("tan_dye",
+                        () -> new Item(new Item.Properties()));
         public static final RegistryObject<Item> REDSTONE_FUEL = ITEMS.register("redstone_fuel",
                         () -> new Item(new Item.Properties()
                                         ));
@@ -885,6 +891,9 @@ public class ModItems {
                         () -> new com.torr.materia.item.SackItem(new Item.Properties()
                                         
                                         .stacksTo(1)));
+        public static final RegistryObject<Item> TEAL_SACK = ITEMS.register("teal_sack",
+                        () -> new com.torr.materia.item.SackItem(new Item.Properties()
+                                        .stacksTo(1)));
         public static final RegistryObject<Item> TYRIAN_PURPLE_SACK = ITEMS.register("tyrian_purple_sack",
                         () -> new com.torr.materia.item.SackItem(new Item.Properties()
                                         
@@ -966,6 +975,8 @@ public class ModItems {
         public static final RegistryObject<Item> OLIVE_BLANKET = ITEMS.register("olive_blanket",
                         () -> new Item(new Item.Properties()
                                         ));
+        public static final RegistryObject<Item> TEAL_BLANKET = ITEMS.register("teal_blanket",
+                        () -> new Item(new Item.Properties()));
         public static final RegistryObject<Item> TYRIAN_PURPLE_BLANKET = ITEMS.register("tyrian_purple_blanket",
                         () -> new Item(new Item.Properties()
                                         ));
@@ -1011,6 +1022,9 @@ public class ModItems {
         public static final RegistryObject<Item> TAUPE_BED = ITEMS.register("taupe_bed",
                         () -> new com.torr.materia.item.CustomBedItem(ModBlocks.TAUPE_BED::get, new Item.Properties()
                                         
+                                        .stacksTo(1)));
+        public static final RegistryObject<Item> TEAL_BED = ITEMS.register("teal_bed",
+                        () -> new com.torr.materia.item.CustomBedItem(ModBlocks.TEAL_BED::get, new Item.Properties()
                                         .stacksTo(1)));
 
         // Crushed items
@@ -1522,6 +1536,18 @@ public class ModItems {
         public static final RegistryObject<Item> SMOOTH_RUBBER_WOOD_PLANKS = ITEMS.register("smooth_rubber_wood_planks",
                         () -> new Item(new Item.Properties()
                                         ));
+        public static final RegistryObject<Item> ROUGH_FIG_PLANK = ITEMS.register("rough_fig_plank",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> SMOOTH_FIG_PLANK = ITEMS.register("smooth_fig_plank",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> ROUGH_CEDAR_PLANK = ITEMS.register("rough_cedar_plank",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> SMOOTH_CEDAR_PLANK = ITEMS.register("smooth_cedar_plank",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> ROUGH_EUCALYPTUS_PLANK = ITEMS.register("rough_eucalyptus_plank",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> SMOOTH_EUCALYPTUS_PLANK = ITEMS.register("smooth_eucalyptus_plank",
+                        () -> new Item(new Item.Properties()));
         
         // Wood Frames
         public static final RegistryObject<Item> WOOD_FRAME = ITEMS.register("wood_frame",
@@ -1568,6 +1594,12 @@ public class ModItems {
                                         .food(new net.minecraft.world.food.FoodProperties.Builder()
                                                 .nutrition(1)
                                                 .saturationModifier(0.1f)
+                                                .build())));
+        public static final RegistryObject<Item> FIG = ITEMS.register("fig",
+                        () -> new Item(new Item.Properties()
+                                        .food(new net.minecraft.world.food.FoodProperties.Builder()
+                                                .nutrition(2)
+                                                .saturationModifier(0.3f)
                                                 .build())));
         public static final RegistryObject<Item> BEANS = ITEMS.register("beans",
                         () -> new BeansItem(new Item.Properties()
@@ -1617,6 +1649,12 @@ public class ModItems {
         public static final RegistryObject<Item> OCHRE_COTTON = ITEMS.register("ochre_cotton",
                         () -> new Item(new Item.Properties()));
         public static final RegistryObject<Item> OLIVE_COTTON = ITEMS.register("olive_cotton",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> BURGUNDY_COTTON = ITEMS.register("burgundy_cotton",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> TAN_COTTON = ITEMS.register("tan_cotton",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> TEAL_COTTON = ITEMS.register("teal_cotton",
                         () -> new Item(new Item.Properties()));
         public static final RegistryObject<Item> ORANGE_COTTON = ITEMS.register("orange_cotton",
                         () -> new Item(new Item.Properties()));
@@ -1843,6 +1881,12 @@ public class ModItems {
         public static final RegistryObject<Item> CLUMP_OF_OLIVE_WOOL = ITEMS.register("clump_of_olive_wool",
                         () -> new Item(new Item.Properties()
                                         ));
+        public static final RegistryObject<Item> CLUMP_OF_BURGUNDY_WOOL = ITEMS.register("clump_of_burgundy_wool",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> CLUMP_OF_TAN_WOOL = ITEMS.register("clump_of_tan_wool",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> CLUMP_OF_TEAL_WOOL = ITEMS.register("clump_of_teal_wool",
+                        () -> new Item(new Item.Properties()));
         public static final RegistryObject<Item> CLUMP_OF_OCHRE_WOOL = ITEMS.register("clump_of_ochre_wool",
                         () -> new Item(new Item.Properties()
                                         ));
@@ -1869,6 +1913,12 @@ public class ModItems {
         public static final RegistryObject<Item> OLIVE_STRING = ITEMS.register("olive_string",
                         () -> new Item(new Item.Properties()
                                         ));
+        public static final RegistryObject<Item> BURGUNDY_STRING = ITEMS.register("burgundy_string",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> TAN_STRING = ITEMS.register("tan_string",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> TEAL_STRING = ITEMS.register("teal_string",
+                        () -> new Item(new Item.Properties()));
         public static final RegistryObject<Item> OCHRE_STRING = ITEMS.register("ochre_string",
                         () -> new Item(new Item.Properties()
                                         ));

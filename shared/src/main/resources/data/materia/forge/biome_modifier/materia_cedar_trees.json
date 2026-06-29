@@ -1,0 +1,14 @@
+{
+    "type": "forge:add_features",
+    "biomes": {
+        "type": "forge:or",
+        "values": [
+            "#materia:temperate",
+            "#materia:temperate_forest"
+        ]
+    },
+    "step": "vegetal_decoration",
+    "features": [
+        "materia:cedar_tree_placed"
+    ]
+}

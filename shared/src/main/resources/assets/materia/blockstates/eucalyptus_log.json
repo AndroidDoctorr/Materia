@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "axis=y": { "model": "materia:block/eucalyptus_log" },
+        "axis=z": { "model": "materia:block/eucalyptus_log", "x": 90 },
+        "axis=x": { "model": "materia:block/eucalyptus_log", "x": 90, "y": 90 }
+    }
+}

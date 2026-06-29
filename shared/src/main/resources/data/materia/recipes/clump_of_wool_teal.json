@@ -1,0 +1,22 @@
+﻿{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:verdigris"
+        },
+        {
+            "tag": "materia:clumps_of_wool"
+        },
+        {
+            "tag": "materia:clumps_of_wool"
+        },
+        {
+            "tag": "materia:clumps_of_wool"
+        }
+    ],
+    "result": {
+        "item": "materia:clump_of_teal_wool",
+        "count": 3
+    }
+}
+

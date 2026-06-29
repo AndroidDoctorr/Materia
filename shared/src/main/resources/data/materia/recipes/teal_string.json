@@ -1,0 +1,16 @@
+﻿{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:clump_of_teal_wool"
+        },
+        {
+            "item": "materia:spindle"
+        }
+    ],
+    "result": {
+        "item": "materia:teal_string",
+        "count": 2
+    }
+}
+

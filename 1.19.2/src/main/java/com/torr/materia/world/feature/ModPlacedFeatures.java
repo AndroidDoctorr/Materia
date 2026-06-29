@@ -192,6 +192,14 @@ public class ModPlacedFeatures {
                             HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR),
                             BiomeFilter.biome())));
 
+
+    public static final RegistryObject<PlacedFeature> AGAVE_PLACED = PLACED_FEATURES.register("agave_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.AGAVE_PATCH.getHolder().get(),
+                    List.of(RarityFilter.onAverageOnceEvery(12),
+                            InSquarePlacement.spread(),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING),
+                            BiomeFilter.biome())));
+
     public static final RegistryObject<PlacedFeature> ESPARTO_PLACED = PLACED_FEATURES.register("esparto_placed",
             () -> new PlacedFeature(ModConfiguredFeatures.ESPARTO_PATCH.getHolder().get(),
                     List.of(RarityFilter.onAverageOnceEvery(32),
@@ -371,6 +379,39 @@ public class ModPlacedFeatures {
                             HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
                             BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.MAPLE_SAPLING.get().defaultBlockState(), BlockPos.ZERO)),
                             BiomeFilter.biome())));
+
+    public static final RegistryObject<PlacedFeature> FIG_TREE_PLACED = PLACED_FEATURES.register("fig_tree_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.FIG_TREE.getHolder().get(),
+                    List.of(RarityFilter.onAverageOnceEvery(24),
+                            InSquarePlacement.spread(),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                            BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.FIG_SAPLING.get().defaultBlockState(), BlockPos.ZERO)),
+                            BiomeFilter.biome())));
+
+    public static final RegistryObject<PlacedFeature> CEDAR_TREE_PLACED = PLACED_FEATURES.register("cedar_tree_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.CEDAR_TREE.getHolder().get(),
+                    List.of(RarityFilter.onAverageOnceEvery(20),
+                            InSquarePlacement.spread(),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                            BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.CEDAR_SAPLING.get().defaultBlockState(), BlockPos.ZERO)),
+                            BiomeFilter.biome())));
+
+    public static final RegistryObject<PlacedFeature> EUCALYPTUS_GROVE_PLACED = PLACED_FEATURES.register("eucalyptus_grove_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.EUCALYPTUS_GROVE.getHolder().get(),
+                    List.of(RarityFilter.onAverageOnceEvery(28),
+                            InSquarePlacement.spread(),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                            BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.EUCALYPTUS_SAPLING.get().defaultBlockState(), BlockPos.ZERO)),
+                            BiomeFilter.biome())));
+
+    public static final RegistryObject<PlacedFeature> RAINBOW_EUCALYPTUS_GROVE_PLACED = PLACED_FEATURES.register("rainbow_eucalyptus_grove_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.RAINBOW_EUCALYPTUS_GROVE.getHolder().get(),
+                    List.of(RarityFilter.onAverageOnceEvery(96),
+                            InSquarePlacement.spread(),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                            BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.RAINBOW_EUCALYPTUS_SAPLING.get().defaultBlockState(), BlockPos.ZERO)),
+                            BiomeFilter.biome())));
+
 
     // Marble vein placement - small individual veins but very common in clusters
     public static final RegistryObject<PlacedFeature> MARBLE_VEIN_RARE_PLACED = PLACED_FEATURES.register("marble_vein_rare_placed",

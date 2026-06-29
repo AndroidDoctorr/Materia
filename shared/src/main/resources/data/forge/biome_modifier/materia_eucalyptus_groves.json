@@ -1,0 +1,14 @@
+{
+    "type": "forge:add_features",
+    "biomes": {
+        "type": "forge:or",
+        "values": [
+            "#materia:temperate",
+            "#materia:tropical"
+        ]
+    },
+    "step": "vegetal_decoration",
+    "features": [
+        "materia:eucalyptus_grove_placed"
+    ]
+}

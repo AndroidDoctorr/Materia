@@ -1,0 +1,9 @@
+﻿{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        { "item": "materia:bed_frame" },
+        { "item": "materia:teal_blanket" },
+        { "item": "materia:mattress" }
+    ],
+    "result": { "item": "materia:teal_bed", "count": 1 }
+}

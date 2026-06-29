@@ -1,0 +1,7 @@
+﻿{
+    "variants": {
+        "type=bottom": { "model": "materia:block/cedar_slab" },
+        "type=top": { "model": "materia:block/cedar_slab_top" },
+        "type=double": { "model": "materia:block/cedar_planks" }
+    }
+}

@@ -1,0 +1,8 @@
+﻿{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        { "item": "materia:rough_cedar_plank" },
+        { "item": "materia:bronze_saw" }
+    ],
+    "result": { "item": "materia:smooth_cedar_plank", "count": 2 }
+}
