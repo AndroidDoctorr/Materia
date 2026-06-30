@@ -1,0 +1,14 @@
+{
+    "type": "materia:water_pot",
+    "ingredient": {
+        "item": "materia:taro"
+    },
+    "results": [
+        {
+            "item": "materia:cooked_taro",
+            "count": 1
+        }
+    ],
+    "cookingtime": 160,
+    "requires_boiling": true
+}

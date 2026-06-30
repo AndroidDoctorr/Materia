@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:cedar_log"
+        },
+        {
+            "tag": "materia:all_saws"
+        }
+    ],
+    "result": {
+        "item": "materia:cedar_post",
+        "count": 4
+    }
+}

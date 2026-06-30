@@ -15,11 +15,11 @@ import java.util.List;
 
 public class ModCreativeTabs {
     private static final List<String> PLANT_AND_CROP_ORDER = List.of(
-            "esparto", "agave",
+            "esparto", "agave", "yucca", "plantain", "reeds",
             "wild_rice", "wild_cotton",
-            "rice_crop", "cotton_crop", "tea_bush",
-            "rice_seeds", "cotton_seeds", "tea_seeds",
-            "shelled_rice", "cooked_rice", "tea_leaves",
+            "rice_crop", "cotton_crop", "tea_bush", "taro_crop",
+            "rice_seeds", "cotton_seeds", "tea_seeds", "taro",
+            "shelled_rice", "cooked_rice", "cooked_taro", "tea_leaves", "fruit_leather",
             "cotton"
     );
 

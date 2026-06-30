@@ -205,6 +205,34 @@ public class ModPlacedFeatures {
                             HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
                             BiomeFilter.biome())));
 
+    public static final RegistryObject<PlacedFeature> YUCCA_PLACED = PLACED_FEATURES.register("yucca_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.YUCCA_CLUSTER.getHolder().get(),
+                    List.of(RarityFilter.onAverageOnceEvery(32),
+                            InSquarePlacement.spread(),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
+                            BiomeFilter.biome())));
+
+    public static final RegistryObject<PlacedFeature> PLANTAIN_PLACED = PLACED_FEATURES.register("plantain_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.PLANTAIN_CLUSTER.getHolder().get(),
+                    List.of(RarityFilter.onAverageOnceEvery(32),
+                            InSquarePlacement.spread(),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
+                            BiomeFilter.biome())));
+
+    public static final RegistryObject<PlacedFeature> REEDS_PLACED = PLACED_FEATURES.register("reeds_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.REEDS_CLUSTER.getHolder().get(),
+                    List.of(RarityFilter.onAverageOnceEvery(24),
+                            InSquarePlacement.spread(),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR),
+                            BiomeFilter.biome())));
+
+    public static final RegistryObject<PlacedFeature> TARO_CROP_PLACED = PLACED_FEATURES.register("taro_crop_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.TARO_PATCH.getHolder().get(),
+                    List.of(RarityFilter.onAverageOnceEvery(32),
+                            InSquarePlacement.spread(),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
+                            BiomeFilter.biome())));
+
     public static final RegistryObject<PlacedFeature> TEA_BUSH_PLACED = PLACED_FEATURES.register("tea_bush_placed",
             () -> new PlacedFeature(ModConfiguredFeatures.TEA_BUSH_PATCH.getHolder().get(),
                     List.of(RarityFilter.onAverageOnceEvery(36),

@@ -7,6 +7,8 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
+import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
+
 public class ModFeatures {
     public static final DeferredRegister<Feature<?>> FEATURES =
             DeferredRegister.create(ForgeRegistries.FEATURES, materia.MOD_ID);
@@ -43,6 +45,15 @@ public class ModFeatures {
 
     public static final RegistryObject<Feature<?>> RAINBOW_EUCALYPTUS_TREE_FEATURE = FEATURES.register("rainbow_eucalyptus_tree_feature",
             () -> new RainbowEucalyptusTreeFeature(com.mojang.serialization.Codec.unit(net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration.INSTANCE)));
+
+    public static final RegistryObject<Feature<?>> TALL_PLANT_CLUSTER_FEATURE = FEATURES.register("tall_plant_cluster_feature",
+            () -> new TallPlantClusterFeature(SimpleBlockConfiguration.CODEC));
+
+    public static final RegistryObject<Feature<?>> REED_CLUSTER_FEATURE = FEATURES.register("reed_cluster_feature",
+            () -> new ReedClusterFeature(com.mojang.serialization.Codec.unit(net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration.INSTANCE)));
+
+    public static final RegistryObject<Feature<?>> TARO_PATCH_FEATURE = FEATURES.register("taro_patch_feature",
+            () -> new TaroPatchFeature(com.mojang.serialization.Codec.unit(net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration.INSTANCE)));
 
     public static void register(IEventBus eventBus) {
         FEATURES.register(eventBus);

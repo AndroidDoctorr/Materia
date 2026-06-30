@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " S ",
+        "PSP"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:fig_post"
+        },
+        "S": {
+            "item": "materia:smooth_fig_plank"
+        }
+    },
+    "result": {
+        "item": "materia:fig_trellis",
+        "count": 1
+    }
+}

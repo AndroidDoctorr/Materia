@@ -70,6 +70,15 @@ Indigo is a separate “tropical” placement:
 
 - `shared/src/main/resources/data/materia/forge/biome_modifier/materia_indigo.json`
 
+1.2.0 crops (rice, cotton, tea, taro) and wild starters:
+
+- Wild rice: `#materia:river`, `#materia:warm_wet_surface` — `materia_wild_rice.json`
+- Wild cotton: `#materia:tropical`, grassy tags — `materia_wild_cotton.json`
+- Tea bush: `#materia:temperate` — `materia_tea_bush.json`
+- Taro patches: `#materia:tropical` — `materia_taro_crop.json` (break for `materia:taro`)
+
+See [Decorative plants](../content/blocks/decorative-plants.md) for yucca, plantain, and reeds worldgen.
+
 ## Food hooks (why these crops matter)
 
 Even before you “do a whole food system write-up”, these crops immediately feed into a few basic chains:

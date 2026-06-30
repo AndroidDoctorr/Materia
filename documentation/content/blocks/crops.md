@@ -118,3 +118,33 @@ Worldgen placement:
 
 - `shared/src/main/resources/data/materia/forge/biome_modifier/materia_indigo.json`
 
+## Rice, cotton, tea, and taro (1.2.0)
+
+See also [decorative plants](decorative-plants.md) for yucca, plantain, and reeds.
+
+### Rice
+
+- **Crop block**: `materia:rice_crop` (8 stages)
+- **Wild block**: `materia:wild_rice` — river and warm-wet biomes
+- **Seed item**: `materia:rice_seeds`
+- Requires **water within 2 blocks** to grow; harvest yields in-hull rice, shell in crafting, boil in a water pot for cooked rice
+
+### Cotton
+
+- **Crop block**: `materia:cotton_crop` (8 stages)
+- **Wild block**: `materia:wild_cotton` — tropical and grassy biomes
+- **Seed item**: `materia:cotton_seeds`; mature crop yields white **`materia:cotton`** (dyeable like wool clumps)
+
+### Tea bush
+
+- **Block**: `materia:tea_bush` (4 stages, not farmland)
+- **Worldgen**: temperate biomes via `materia_tea_bush.json`
+- Right-click a fully grown bush for tea leaves; regrows one stage younger
+
+### Taro
+
+- **Crop block**: `materia:taro_crop` (4 stages)
+- **Item**: `materia:taro` — wild patches in tropical biomes, then farm on farmland or grass
+- **Raw taro** is edible but mildly poisonous (Poison I); **cooked taro** from water pot or oven
+- Drops: `shared/src/main/resources/data/materia/loot_tables/blocks/taro_crop.json`
+

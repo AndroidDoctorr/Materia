@@ -1,0 +1,14 @@
+{
+  "type": "materia:tall_plant_cluster_feature",
+  "config": {
+    "to_place": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "materia:plantain",
+        "Properties": {
+          "half": "lower"
+        }
+      }
+    }
+  }
+}

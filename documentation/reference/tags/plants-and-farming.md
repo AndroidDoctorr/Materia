@@ -19,7 +19,14 @@ Used by: crop systems and recipes that accept “any seed”.
 Used by: recipes that accept reed-like plants (for fiber/structure).
 
 - **Tag JSON**: `shared/src/main/resources/data/materia/tags/items/reeds.json`
-- **Includes**: sugar cane, bamboo
+- **Includes**: sugar cane, bamboo, **`materia:reeds`**
+
+## `#materia:fruits`
+
+Used by: fruit leather and other fruit-based recipes.
+
+- **Tag JSON**: `shared/src/main/resources/data/materia/tags/items/fruits.json`
+- **Includes**: sweet berries, glow berries, apple, **`materia:fig`**
 
 ## `#materia:grape_vine_supports`
 

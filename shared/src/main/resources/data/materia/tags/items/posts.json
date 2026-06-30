@@ -19,6 +19,9 @@
             "required": false
         },
         "materia:dark_oak_post",
-        "materia:rubber_wood_post"
+        "materia:rubber_wood_post",
+        "materia:fig_post",
+        "materia:cedar_post",
+        "materia:eucalyptus_post"
     ]
 }

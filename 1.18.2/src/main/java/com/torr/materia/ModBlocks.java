@@ -376,7 +376,19 @@ public class ModBlocks {
         public static final RegistryObject<Block> AGAVE = registerBlock("agave",
                         () -> new AgaveBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak()
                                         .sound(SoundType.GRASS)));
-
+        public static final RegistryObject<Block> YUCCA = registerBlock("yucca",
+                        () -> new YuccaBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak()
+                                        .sound(SoundType.GRASS)));
+        public static final RegistryObject<Block> PLANTAIN = registerBlock("plantain",
+                        () -> new PlantainBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak()
+                                        .sound(SoundType.GRASS)));
+        public static final RegistryObject<Block> REEDS = registerBlock("reeds",
+                        () -> new ReedsBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak()
+                                        .sound(SoundType.GRASS)));
+        public static final RegistryObject<Block> TARO_CROP = BLOCKS.register("taro_crop",
+                        () -> new TaroCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission()
+                                        .randomTicks().instabreak().sound(SoundType.CROP)));
+        
         // OTHER BLOCKS
         public static final RegistryObject<Block> SAPPED_SPRUCE_LOG = registerBlock("sapped_spruce_log",
                         () -> new com.torr.materia.block.SappedSpruceLogBlock());
@@ -813,6 +825,16 @@ public class ModBlocks {
                         () -> new net.minecraft.world.level.block.SlabBlock(
                                 BlockBehaviour.Properties.copy(ModBlocks.EUCALYPTUS_PLANKS.get())));
 
+        public static final RegistryObject<Block> FIG_POST = registerBlock("fig_post",
+                        () -> new PostBlock(BlockBehaviour.Properties.of().strength(0.5f)
+                                        .sound(SoundType.WOOD).noOcclusion()));
+        public static final RegistryObject<Block> CEDAR_POST = registerBlock("cedar_post",
+                        () -> new PostBlock(BlockBehaviour.Properties.of().strength(0.5f)
+                                        .sound(SoundType.WOOD).noOcclusion()));
+        public static final RegistryObject<Block> EUCALYPTUS_POST = registerBlock("eucalyptus_post",
+                        () -> new PostBlock(BlockBehaviour.Properties.of().strength(0.5f)
+                                        .sound(SoundType.WOOD).noOcclusion()));
+
         // TABLES
         public static final RegistryObject<Block> ACACIA_TABLE = registerBlock("acacia_table",
                         () -> new TableBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(0.5f)
@@ -839,6 +861,15 @@ public class ModBlocks {
                         () -> new TableBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(0.5f)
                                         .sound(SoundType.WOOD).noOcclusion()));
         public static final RegistryObject<Block> RUBBER_WOOD_TABLE = registerBlock("rubber_wood_table",
+                        () -> new TableBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(0.5f)
+                                        .sound(SoundType.WOOD).noOcclusion()));
+        public static final RegistryObject<Block> FIG_TABLE = registerBlock("fig_table",
+                        () -> new TableBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(0.5f)
+                                        .sound(SoundType.WOOD).noOcclusion()));
+        public static final RegistryObject<Block> CEDAR_TABLE = registerBlock("cedar_table",
+                        () -> new TableBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(0.5f)
+                                        .sound(SoundType.WOOD).noOcclusion()));
+        public static final RegistryObject<Block> EUCALYPTUS_TABLE = registerBlock("eucalyptus_table",
                         () -> new TableBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(0.5f)
                                         .sound(SoundType.WOOD).noOcclusion()));
 
@@ -868,6 +899,15 @@ public class ModBlocks {
                         () -> new TrellisBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(0.5f)
                                         .sound(SoundType.WOOD).noOcclusion()));
         public static final RegistryObject<Block> RUBBER_WOOD_TRELLIS = registerBlock("rubber_wood_trellis",
+                        () -> new TrellisBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(0.5f)
+                                        .sound(SoundType.WOOD).noOcclusion()));
+        public static final RegistryObject<Block> FIG_TRELLIS = registerBlock("fig_trellis",
+                        () -> new TrellisBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(0.5f)
+                                        .sound(SoundType.WOOD).noOcclusion()));
+        public static final RegistryObject<Block> CEDAR_TRELLIS = registerBlock("cedar_trellis",
+                        () -> new TrellisBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(0.5f)
+                                        .sound(SoundType.WOOD).noOcclusion()));
+        public static final RegistryObject<Block> EUCALYPTUS_TRELLIS = registerBlock("eucalyptus_trellis",
                         () -> new TrellisBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(0.5f)
                                         .sound(SoundType.WOOD).noOcclusion()));
 

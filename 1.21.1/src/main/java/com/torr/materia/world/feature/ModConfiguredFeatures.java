@@ -183,6 +183,22 @@ public class ModConfiguredFeatures {
     public static final RegistryObject<ConfiguredFeature<?, ?>> AGAVE_PATCH = CONFIGURED_FEATURES.register("agave_patch",
             () -> randomPatch(ModBlocks.AGAVE.get(), 24, 5, 2));
 
+    public static final RegistryObject<ConfiguredFeature<?, ?>> YUCCA_CLUSTER = CONFIGURED_FEATURES.register("yucca_cluster",
+            () -> new ConfiguredFeature<>((Feature<SimpleBlockConfiguration>) ModFeatures.TALL_PLANT_CLUSTER_FEATURE.get(),
+                    new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.YUCCA.get()))));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> PLANTAIN_CLUSTER = CONFIGURED_FEATURES.register("plantain_cluster",
+            () -> new ConfiguredFeature<>((Feature<SimpleBlockConfiguration>) ModFeatures.TALL_PLANT_CLUSTER_FEATURE.get(),
+                    new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.PLANTAIN.get()))));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> REEDS_CLUSTER = CONFIGURED_FEATURES.register("reeds_cluster",
+            () -> new ConfiguredFeature<>((Feature<NoneFeatureConfiguration>) ModFeatures.REED_CLUSTER_FEATURE.get(),
+                    NoneFeatureConfiguration.INSTANCE));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> TARO_PATCH = CONFIGURED_FEATURES.register("taro_patch",
+            () -> new ConfiguredFeature<>((Feature<NoneFeatureConfiguration>) ModFeatures.TARO_PATCH_FEATURE.get(),
+                    NoneFeatureConfiguration.INSTANCE));
+
     public static final RegistryObject<ConfiguredFeature<?, ?>> TEA_BUSH_PATCH = CONFIGURED_FEATURES.register("tea_bush_patch",
             () -> randomPatch(ModBlocks.TEA_BUSH.get(), 16, 4, 2));
 

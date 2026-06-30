@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "half=lower": {
+            "model": "materia:block/plantain_lower"
+        },
+        "half=upper": {
+            "model": "materia:block/plantain_upper"
+        }
+    }
+}

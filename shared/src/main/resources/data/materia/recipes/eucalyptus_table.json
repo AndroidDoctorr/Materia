@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SSS",
+        "PNP",
+        "P P"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:eucalyptus_post"
+        },
+        "S": {
+            "item": "materia:smooth_eucalyptus_plank"
+        },
+        "N": {
+            "tag": "materia:all_nails"
+        }
+    },
+    "result": {
+        "item": "materia:eucalyptus_table",
+        "count": 1
+    }
+}

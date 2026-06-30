@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "half=lower": {
+            "model": "materia:block/yucca_lower"
+        },
+        "half=upper": {
+            "model": "materia:block/yucca_upper"
+        }
+    }
+}

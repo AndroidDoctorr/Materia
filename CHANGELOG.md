@@ -20,13 +20,19 @@ All notable changes to **Materia** (mod id: `materia`) will be documented in thi
 
 - **Agave:** desert random-patch shrub (esparto pattern); places on sand, red sand, coarse dirt, dirt, grass.
 
+- **Decorative plants:** **yucca** (desert + temperate clusters), **plantain** (tropical double-plant clusters), **reeds** (river + warm-wet banks; requires adjacent water), **taro** (tropical patches of semi-mature crop on grass/dirt; break for `materia:taro`, replant on farmland or wild grass). **Raw taro** is edible but applies brief Poison I; **cooked taro** (5 nutrition / 0.6 saturation) from boiling in a water pot over a campfire or baking in an oven.
+
+- **Fruit leather:** shapeless `FFF` from `#materia:fruits` (sweet/glow berries, apple, fig); 5 nutrition / 0.6 saturation.
+
+- **Taro wild spawn fix:** crop survives on grass without crop-block light checks; worldgen replaces short vegetation and uses surface heightmap so patches appear in shaded tropical biomes.
+
 - **New dyes:** **verdigris** (vinegar + raw copper, custom recipe), **burgundy** (red + tyrian purple), **tan** (brown + yellow); burgundy/tan/teal textile blocks (wool, glass, concrete, terracotta, candle, cotton, string, wool clumps); teal sack/blanket/bed use verdigris dye.
 
-- **Woodworking:** fig/cedar/eucalyptus **planks, stairs, slabs** (smooth plank + nails); doors/trapdoors skipped.
+- **Woodworking:** fig/cedar/eucalyptus **planks, stairs, slabs** (smooth plank + nails); **posts, trellises, and tables** for each wood type; doors/trapdoors skipped.
 
 - **Hewing:** fig/cedar/eucalyptus/rainbow eucalyptus logs; **maple** → `rough_birch_plank` listed in JEI hewing.
 
-- **Docs:** block pages for fig, cedar, eucalyptus, agave; dye pages for verdigris, burgundy, tan.
+- **Docs:** block pages for fig, cedar, eucalyptus, agave, and decorative plants (yucca, plantain, reeds, taro); dye pages for verdigris, burgundy, tan.
 
 ## 1.1.1 (2026-06-20)
 

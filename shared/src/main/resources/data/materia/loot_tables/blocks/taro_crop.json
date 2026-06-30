@@ -1,0 +1,52 @@
+{
+    "type": "minecraft:block",
+    "pools": [
+        {
+            "name": "taro_replant_pool",
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:taro"
+                }
+            ],
+            "conditions": [
+                {
+                    "condition": "minecraft:survives_explosion"
+                }
+            ]
+        },
+        {
+            "name": "taro_harvest_pool",
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:taro",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 3.0,
+                                "max": 4.0
+                            }
+                        }
+                    ]
+                }
+            ],
+            "conditions": [
+                {
+                    "condition": "minecraft:block_state_property",
+                    "block": "materia:taro_crop",
+                    "properties": {
+                        "age": "3"
+                    }
+                },
+                {
+                    "condition": "minecraft:survives_explosion"
+                }
+            ]
+        }
+    ]
+}

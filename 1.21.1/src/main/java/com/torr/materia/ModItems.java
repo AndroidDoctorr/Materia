@@ -21,6 +21,7 @@ import com.torr.materia.item.MagnetItem;
 import com.torr.materia.item.DynamiteItem;
 import com.torr.materia.item.BombItem;
 import com.torr.materia.item.CannonballItem;
+import com.torr.materia.item.TaroItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -123,6 +124,8 @@ public class ModItems {
                         () -> new net.minecraft.world.item.ItemNameBlockItem(ModBlocks.COTTON_CROP.get(), new Item.Properties()));
         public static final RegistryObject<Item> TEA_SEEDS = ITEMS.register("tea_seeds",
                         () -> new net.minecraft.world.item.ItemNameBlockItem(ModBlocks.TEA_BUSH.get(), new Item.Properties()));
+        public static final RegistryObject<Item> TARO = ITEMS.register("taro",
+                        () -> new TaroItem(ModBlocks.TARO_CROP.get(), new Item.Properties()));
 
         // Substances/Materials
         public static final RegistryObject<Item> SAP = ITEMS.register("sap",
@@ -1601,6 +1604,12 @@ public class ModItems {
                                                 .nutrition(2)
                                                 .saturationModifier(0.3f)
                                                 .build())));
+        public static final RegistryObject<Item> FRUIT_LEATHER = ITEMS.register("fruit_leather",
+                        () -> new Item(new Item.Properties()
+                                        .food(new net.minecraft.world.food.FoodProperties.Builder()
+                                                .nutrition(5)
+                                                .saturationModifier(0.6f)
+                                                .build())));
         public static final RegistryObject<Item> BEANS = ITEMS.register("beans",
                         () -> new BeansItem(new Item.Properties()
                                         
@@ -1614,6 +1623,12 @@ public class ModItems {
                         () -> new Item(new Item.Properties()
                                         .food(new net.minecraft.world.food.FoodProperties.Builder()
                                                 .nutrition(6)
+                                                .saturationModifier(0.6f)
+                                                .build())));
+        public static final RegistryObject<Item> COOKED_TARO = ITEMS.register("cooked_taro",
+                        () -> new Item(new Item.Properties()
+                                        .food(new net.minecraft.world.food.FoodProperties.Builder()
+                                                .nutrition(5)
                                                 .saturationModifier(0.6f)
                                                 .build())));
         public static final RegistryObject<Item> TEA_LEAVES = ITEMS.register("tea_leaves",

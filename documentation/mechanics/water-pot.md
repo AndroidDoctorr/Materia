@@ -33,6 +33,8 @@ The water pot has simple in-place recipes using its 1-slot inventory:
 - Paper mixture → paper pulp (does not require boiling)
 - Tea leaves → tea pot in place (does not require boiling; water level is preserved)
   - Use a **crucible** on the tea pot to draw a tea cup (same as wine/beer pots)
+- Shelled rice → cooked rice (requires boiling)
+- Raw taro → cooked taro (requires boiling)
 
 Some recipes may change the block (e.g. earth separation replaces the water pot with an empty pot).
 

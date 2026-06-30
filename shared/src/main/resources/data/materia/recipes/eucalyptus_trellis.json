@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " S ",
+        "PSP"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:eucalyptus_post"
+        },
+        "S": {
+            "item": "materia:smooth_eucalyptus_plank"
+        }
+    },
+    "result": {
+        "item": "materia:eucalyptus_trellis",
+        "count": 1
+    }
+}

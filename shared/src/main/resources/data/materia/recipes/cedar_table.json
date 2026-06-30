@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SSS",
+        "PNP",
+        "P P"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:cedar_post"
+        },
+        "S": {
+            "item": "materia:smooth_cedar_plank"
+        },
+        "N": {
+            "tag": "materia:all_nails"
+        }
+    },
+    "result": {
+        "item": "materia:cedar_table",
+        "count": 1
+    }
+}

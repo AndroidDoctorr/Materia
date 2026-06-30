@@ -101,6 +101,10 @@ public class ClientSetup {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.BAOBAB_SAPLING.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.MAPLE_LEAVES.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.AGAVE.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.YUCCA.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.PLANTAIN.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.REEDS.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.TARO_CROP.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.FIG_LEAVES.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.FIG_SAPLING.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.CEDAR_LEAVES.get(), RenderType.cutoutMipped());
@@ -129,6 +133,9 @@ public class ClientSetup {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.RUBBER_TREE_LEAVES.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.RUBBER_TREE_SAPLING.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.RUBBER_WOOD_TRELLIS.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.FIG_TRELLIS.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.CEDAR_TRELLIS.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.EUCALYPTUS_TRELLIS.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.OAK_TRELLIS.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.DARK_OAK_TRELLIS.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.SPRUCE_TRELLIS.get(), RenderType.cutout());
@@ -145,6 +152,9 @@ public class ClientSetup {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.CRIMSON_POST.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.WARPED_POST.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.RUBBER_WOOD_POST.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.FIG_POST.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.CEDAR_POST.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.EUCALYPTUS_POST.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.DARK_OAK_POST.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.OAK_JOISTS.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.DARK_OAK_JOISTS.get(), RenderType.cutout());

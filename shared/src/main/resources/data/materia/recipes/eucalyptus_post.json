@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:eucalyptus_log"
+        },
+        {
+            "tag": "materia:all_saws"
+        }
+    ],
+    "result": {
+        "item": "materia:eucalyptus_post",
+        "count": 4
+    }
+}

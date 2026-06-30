@@ -300,6 +300,16 @@ public class materiaJeiPlugin implements IModPlugin {
         );
 
         registration.addIngredientInfo(
+                List.of(
+                        new ItemStack(ModItems.TARO.get()),
+                        new ItemStack(ModItems.COOKED_TARO.get()),
+                        new ItemStack(ModBlocks.TARO_CROP.get().asItem())
+                ),
+                VanillaTypes.ITEM_STACK,
+                Component.translatable("jei.materia.taro")
+        );
+
+        registration.addIngredientInfo(
                 List.of(new ItemStack(ModBlocks.SPINNING_WHEEL.get())),
                 VanillaTypes.ITEM_STACK,
                 Component.translatable("jei.materia.spinning_wheel")
