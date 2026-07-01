@@ -57,6 +57,7 @@ This section documents Materia blocks. Each block page should include:
 - [Crops (blocks)](crops.md)
 - [Three Sisters crop](three-sisters-crop.md)
 - [Decorative plants (yucca, plantain, reeds, taro)](decorative-plants.md)
+- [Decorative flowers (white lily, bluebonnet, lotus, …)](decorative-flowers.md)
 - [Fig tree](fig-tree.md)
 - [Cedar tree](cedar-tree.md)
 - [Eucalyptus tree](eucalyptus-tree.md)

@@ -38,6 +38,16 @@ This page is “how do I make X dye?” with direct links to the exact recipes.
 
 - [6× tyrian purple blob → tyrian purple dye](../../../shared/src/main/resources/data/materia/recipes/tyrian_purple_dye.json)
 
+## Flower → dye (vanilla + Materia)
+
+See [Flower → dye policy](flower-dyes.md) for the full allowlist and disabled recipes.
+
+Quick Materia sources:
+
+- [Marigold → yellow dye](../../../shared/src/main/resources/data/materia/recipes/yellow_dye_from_marigold.json)
+- [Hibiscus → pink dye](../../../shared/src/main/resources/data/materia/recipes/pink_dye_from_hibiscus.json)
+- [Indigo → indigo dye](../../../shared/src/main/resources/data/materia/recipes/indigo_dye.json)
+
 See also:
 
 - [Tyrian purple chain](tyrian-purple.md)

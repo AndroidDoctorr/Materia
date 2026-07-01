@@ -22,6 +22,16 @@ All notable changes to **Materia** (mod id: `materia`) will be documented in thi
 
 - **Decorative plants:** **yucca** (desert + temperate clusters), **plantain** (tropical double-plant clusters), **reeds** (river + warm-wet banks; requires adjacent water), **taro** (tropical patches of semi-mature crop on grass/dirt; break for `materia:taro`, replant on farmland or wild grass). **Raw taro** is edible but applies brief Poison I; **cooked taro** (5 nutrition / 0.6 saturation) from boiling in a water pot over a campfire or baking in an oven.
 
+- **Decorative flowers (1.2.0):** **white lily** and **bluebonnet** (two-block tall plants), **purple coneflower**, **fuchsia**, **marigold**, and **hibiscus** (single-block cross flowers), and **lotus** (cross flower on a biome-tinted lily pad). Worldgen in river, warm-wet, temperate, grassy, desert, tropical, and temperate-forest biomes as appropriate. **Lotus** places only on **shallow water** (1–2 blocks deep) via custom placement logic; marigold → yellow dye, hibiscus → pink dye.
+
+- **Yucca / plantain rendering:** tall-plant block models now use split **lower/upper** textures so in-world and creative placement show one coherent plant instead of a smushed double texture.
+
+- **Taro harvest:** mature crops (age 3) drop **2–4** taro (was 6–8); immature breaks drop **1** seed.
+
+- **Flower → dye policy:** with **`materia_vanilla_overrides`** enabled, only these vanilla flowers still craft dye directly — **poppy** → pink, **dandelion** → yellow, **cornflower** → light blue, **rose bush** → pink (×2). Materia adds **indigo** → indigo dye, **marigold** → yellow, **hibiscus** → pink. Other vanilla flower→dye recipes are disabled (barrier overrides).
+
+- **Armor rendering:** **bronze** armor uses custom **`bronze_armor_1/2`** layer textures again; **wrought iron** (`materia:iron_*`) uses vanilla **iron_layer_1/2** on all supported versions (fixes purple/black broken armor models).
+
 - **Fruit leather:** shapeless `FFF` from `#materia:fruits` (sweet/glow berries, apple, fig); 5 nutrition / 0.6 saturation.
 
 - **Taro wild spawn fix:** crop survives on grass without crop-block light checks; worldgen replaces short vegetation and uses surface heightmap so patches appear in shaded tropical biomes.
@@ -32,7 +42,7 @@ All notable changes to **Materia** (mod id: `materia`) will be documented in thi
 
 - **Hewing:** fig/cedar/eucalyptus/rainbow eucalyptus logs; **maple** → `rough_birch_plank` listed in JEI hewing.
 
-- **Docs:** block pages for fig, cedar, eucalyptus, agave, and decorative plants (yucca, plantain, reeds, taro); dye pages for verdigris, burgundy, tan.
+- **Docs:** block pages for fig, cedar, eucalyptus, agave, decorative plants (yucca, plantain, reeds, taro), and **decorative flowers**; dye pages for verdigris, burgundy, tan, and **flower→dye policy**; armor texture notes on bronze / wrought iron pages.
 
 ## 1.1.1 (2026-06-20)
 

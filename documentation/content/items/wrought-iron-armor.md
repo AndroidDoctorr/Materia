@@ -18,7 +18,7 @@ Source of truth (stable behavior):
 
 Rendering note:
 
-- In 1.18.2, the worn armor model uses **vanilla iron armor textures** so it renders correctly without custom model textures.
+- Worn armor uses **vanilla iron armor layer textures** (`iron_layer_1.png` / `iron_layer_2.png`) via `IronArmorItem.getArmorTexture()` on all supported versions, so it renders correctly without broken purple/black models.
 
 ## Crafting (recipes)
 

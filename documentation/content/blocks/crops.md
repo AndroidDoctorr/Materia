@@ -120,7 +120,7 @@ Worldgen placement:
 
 ## Rice, cotton, tea, and taro (1.2.0)
 
-See also [decorative plants](decorative-plants.md) for yucca, plantain, and reeds.
+See also [decorative plants](decorative-plants.md) for yucca, plantain, and reeds, and [decorative flowers](decorative-flowers.md) for white lily, bluebonnet, lotus, and other worldgen flowers.
 
 ### Rice
 
@@ -146,5 +146,6 @@ See also [decorative plants](decorative-plants.md) for yucca, plantain, and reed
 - **Crop block**: `materia:taro_crop` (4 stages)
 - **Item**: `materia:taro` — wild patches in tropical biomes, then farm on farmland or grass
 - **Raw taro** is edible but mildly poisonous (Poison I); **cooked taro** from water pot or oven
+- **Mature harvest (age 3):** 2–4 taro; immature breaks drop 1 taro seed
 - Drops: `shared/src/main/resources/data/materia/loot_tables/blocks/taro_crop.json`
 

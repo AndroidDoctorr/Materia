@@ -75,9 +75,9 @@ Indigo is a separate “tropical” placement:
 - Wild rice: `#materia:river`, `#materia:warm_wet_surface` — `materia_wild_rice.json`
 - Wild cotton: `#materia:tropical`, grassy tags — `materia_wild_cotton.json`
 - Tea bush: `#materia:temperate` — `materia_tea_bush.json`
-- Taro patches: `#materia:tropical` — `materia_taro_crop.json` (break for `materia:taro`)
+- Taro patches: `#materia:tropical` — `materia_taro_crop.json` (break for `materia:taro`; mature harvest 2–4)
 
-See [Decorative plants](../content/blocks/decorative-plants.md) for yucca, plantain, and reeds worldgen.
+See [Decorative plants](../content/blocks/decorative-plants.md) for yucca, plantain, and reeds worldgen, and [Decorative flowers](../content/blocks/decorative-flowers.md) for white lily, bluebonnet, lotus, marigold, hibiscus, and related flowers.
 
 ## Food hooks (why these crops matter)
 

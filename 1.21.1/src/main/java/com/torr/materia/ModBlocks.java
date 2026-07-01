@@ -835,6 +835,13 @@ public class ModBlocks {
         public static final RegistryObject<Block> FIG_SLAB = registerBlock("fig_slab",
                         () -> new net.minecraft.world.level.block.SlabBlock(
                                 BlockBehaviour.Properties.ofFullCopy(ModBlocks.FIG_PLANKS.get())));
+        public static final RegistryObject<Block> FIG_FENCE = registerBlock("fig_fence",
+                        () -> new net.minecraft.world.level.block.FenceBlock(
+                                BlockBehaviour.Properties.ofFullCopy(ModBlocks.FIG_PLANKS.get())));
+        public static final RegistryObject<Block> FIG_FENCE_GATE = registerBlock("fig_fence_gate",
+                        () -> new net.minecraft.world.level.block.FenceGateBlock(
+                                net.minecraft.world.level.block.state.properties.WoodType.OAK,
+                                BlockBehaviour.Properties.ofFullCopy(ModBlocks.FIG_PLANKS.get())));
 
         public static final RegistryObject<Block> CEDAR_PLANKS = registerBlock("cedar_planks",
                         () -> new Block(BlockBehaviour.Properties.of().strength(0.5f).sound(SoundType.WOOD).noOcclusion()));
@@ -845,6 +852,13 @@ public class ModBlocks {
         public static final RegistryObject<Block> CEDAR_SLAB = registerBlock("cedar_slab",
                         () -> new net.minecraft.world.level.block.SlabBlock(
                                 BlockBehaviour.Properties.ofFullCopy(ModBlocks.CEDAR_PLANKS.get())));
+        public static final RegistryObject<Block> CEDAR_FENCE = registerBlock("cedar_fence",
+                        () -> new net.minecraft.world.level.block.FenceBlock(
+                                BlockBehaviour.Properties.ofFullCopy(ModBlocks.CEDAR_PLANKS.get())));
+        public static final RegistryObject<Block> CEDAR_FENCE_GATE = registerBlock("cedar_fence_gate",
+                        () -> new net.minecraft.world.level.block.FenceGateBlock(
+                                net.minecraft.world.level.block.state.properties.WoodType.OAK,
+                                BlockBehaviour.Properties.ofFullCopy(ModBlocks.CEDAR_PLANKS.get())));
 
         public static final RegistryObject<Block> EUCALYPTUS_PLANKS = registerBlock("eucalyptus_planks",
                         () -> new Block(BlockBehaviour.Properties.of().strength(0.5f).sound(SoundType.WOOD).noOcclusion()));
@@ -854,6 +868,13 @@ public class ModBlocks {
                                 BlockBehaviour.Properties.ofFullCopy(ModBlocks.EUCALYPTUS_PLANKS.get())));
         public static final RegistryObject<Block> EUCALYPTUS_SLAB = registerBlock("eucalyptus_slab",
                         () -> new net.minecraft.world.level.block.SlabBlock(
+                                BlockBehaviour.Properties.ofFullCopy(ModBlocks.EUCALYPTUS_PLANKS.get())));
+        public static final RegistryObject<Block> EUCALYPTUS_FENCE = registerBlock("eucalyptus_fence",
+                        () -> new net.minecraft.world.level.block.FenceBlock(
+                                BlockBehaviour.Properties.ofFullCopy(ModBlocks.EUCALYPTUS_PLANKS.get())));
+        public static final RegistryObject<Block> EUCALYPTUS_FENCE_GATE = registerBlock("eucalyptus_fence_gate",
+                        () -> new net.minecraft.world.level.block.FenceGateBlock(
+                                net.minecraft.world.level.block.state.properties.WoodType.OAK,
                                 BlockBehaviour.Properties.ofFullCopy(ModBlocks.EUCALYPTUS_PLANKS.get())));
 
         public static final RegistryObject<Block> FIG_POST = registerBlock("fig_post",

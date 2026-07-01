@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "PLP",
+        "PLP"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:rough_fig_plank"
+        },
+        "L": {
+            "tag": "materia:all_wood_joiners"
+        }
+    },
+    "result": {
+        "item": "materia:fig_fence",
+        "count": 1
+    }
+}

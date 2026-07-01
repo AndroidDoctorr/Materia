@@ -4,10 +4,11 @@ Small worldgen plants added in 1.2.0. Most are decorative; taro is also a farmab
 
 ## Yucca
 
-- **Block**: `materia:yucca` — short bush, may place on grass, dirt, coarse dirt, podzol, or sand
+- **Block**: `materia:yucca` — two-block-tall double plant (like plantain)
 - **Worldgen**: `shared/src/main/resources/data/materia/forge/biome_modifier/materia_yucca.json`
 - **Biomes**: `#materia:desert`, `#materia:temperate`
 - **Placement**: clusters of five in a plus or X pattern (`TallPlantClusterFeature`)
+- **Rendering**: uses split **lower/upper** block textures (`yucca_lower`, `yucca_upper`) so the tall plant displays correctly in world and from creative placement
 
 ## Plantain
 
@@ -15,6 +16,7 @@ Small worldgen plants added in 1.2.0. Most are decorative; taro is also a farmab
 - **Worldgen**: `shared/src/main/resources/data/materia/forge/biome_modifier/materia_plantain.json`
 - **Biomes**: `#materia:tropical`
 - **Placement**: same cluster feature as yucca
+- **Rendering**: split **lower/upper** textures (`plantain_lower`, `plantain_upper`)
 
 ## Reeds
 
@@ -29,7 +31,7 @@ Small worldgen plants added in 1.2.0. Most are decorative; taro is also a farmab
 - **Item / seed**: `materia:taro` — plant on farmland or grass/dirt/podzol
 - **Wild spawn**: semi-mature patches (age 2–3) in `#materia:tropical` biomes
   - Biome modifier: `shared/src/main/resources/data/materia/forge/biome_modifier/materia_taro_crop.json`
-  - Break wild plants for at least one taro (replant pool); mature age 3 also yields 3–4 extra
+  - Break wild plants for at least one taro (replant pool); mature age 3 yields **2–4** taro
   - Loot: `shared/src/main/resources/data/materia/loot_tables/blocks/taro_crop.json`
 - **Raw food**: edible but applies brief **Poison I** — cook before eating
 - **Cooked**: `materia:cooked_taro` via water pot (boiling) or oven
@@ -43,6 +45,7 @@ Small worldgen plants added in 1.2.0. Most are decorative; taro is also a farmab
 
 See also:
 
+- [Decorative flowers (white lily, bluebonnet, lotus, …)](decorative-flowers.md)
 - [Crops (blocks)](crops.md)
 - [Crops and farming (mechanics)](../../mechanics/crops.md)
 - [Plants and farming tags](../../reference/tags/plants-and-farming.md)

@@ -21,6 +21,7 @@ See also:
 - [Verdigris](dyes/verdigris.md)
 - [Burgundy](dyes/burgundy.md)
 - [Tan](dyes/tan.md)
+- [Flower → dye policy](dyes/flower-dyes.md)
 
 ## Example recipes
 
@@ -38,3 +39,7 @@ See also:
   - [Recipe JSON](../../shared/src/main/resources/data/materia/recipes/burgundy_dye.json)
 - Tan (brown + yellow):
   - [Recipe JSON](../../shared/src/main/resources/data/materia/recipes/tan_dye.json)
+- Marigold → yellow dye:
+  - [Recipe JSON](../../shared/src/main/resources/data/materia/recipes/yellow_dye_from_marigold.json)
+- Hibiscus → pink dye:
+  - [Recipe JSON](../../shared/src/main/resources/data/materia/recipes/pink_dye_from_hibiscus.json)

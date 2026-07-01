@@ -2,8 +2,8 @@
 
 Materia changes armor progression by:
 
-- adding a full **bronze armor** set
-- adding a “wrought iron” set (registered as `materia:iron_*`)
+- adding a full **bronze armor** set (custom worn textures)
+- adding a “wrought iron” set (registered as `materia:iron_*`; uses vanilla iron armor layers when worn)
 - making some “rare” vanilla armors **craftable** (notably chainmail)
 - pushing vanilla-style armor crafting toward **components** (plates, rivets, straps, buckles)
 

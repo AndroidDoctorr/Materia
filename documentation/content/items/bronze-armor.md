@@ -45,6 +45,15 @@ Bronze armor repairs with:
 
 - `materia:bronze_ingot`
 
+## Rendering
+
+Worn bronze armor uses custom layer textures:
+
+- `shared/src/main/resources/assets/materia/textures/armor/bronze_armor_1.png`
+- `shared/src/main/resources/assets/materia/textures/armor/bronze_armor_2.png`
+
+Implemented via `BronzeArmorItem.getArmorTexture()` on all supported versions.
+
 ## Related
 
 - [Armor (overview)](armor.md)

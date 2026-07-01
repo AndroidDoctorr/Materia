@@ -5,6 +5,7 @@ This section documents Materia’s dye system: custom dyes, how to make them, an
 ## Pages
 
 - [Dye cheat sheet](cheat-sheet.md)
+- [Flower → dye policy](flower-dyes.md)
 - [Indigo and lavender](indigo-lavender.md)
 - [Olive, taupe, and charcoal gray](olive-taupe-gray.md)
 - [Tyrian purple](tyrian-purple.md)
