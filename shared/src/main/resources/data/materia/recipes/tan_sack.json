@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:tan_carpet"
+        },
+        {
+            "tag": "materia:all_needles"
+        },
+        {
+            "tag": "materia:strings"
+        }
+    ],
+    "result": {
+        "item": "materia:tan_sack",
+        "count": 1
+    }
+}

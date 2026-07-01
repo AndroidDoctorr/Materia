@@ -134,7 +134,9 @@ public class materia
                         ModBlocks.LAVENDER_BED.get(),
                         ModBlocks.CHARCOAL_GRAY_BED.get(),
                         ModBlocks.TAUPE_BED.get(),
-                        ModBlocks.TEAL_BED.get()
+                        ModBlocks.TEAL_BED.get(),
+                        ModBlocks.BURGUNDY_BED.get(),
+                        ModBlocks.TAN_BED.get()
                 );
             } catch (Exception e) {
                 LOGGER.error("Failed to extend BlockEntityType.BED valid blocks set for materia custom beds", e);

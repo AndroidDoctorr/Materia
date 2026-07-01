@@ -1,9 +1,17 @@
 {
     "replace": false,
     "values": [
+        "materia:sapped_spruce_log",
+        "materia:tapped_rubber_wood_log",
+        "materia:rubber_wood_log",
+        "materia:olive_tree_log",
         "materia:palm_log",
         "materia:cypress_log",
         "materia:baobab_log",
-        "materia:maple_log"
+        "materia:maple_log",
+        "materia:fig_log",
+        "materia:cedar_log",
+        "materia:eucalyptus_log",
+        "materia:rainbow_eucalyptus_log"
     ]
 }

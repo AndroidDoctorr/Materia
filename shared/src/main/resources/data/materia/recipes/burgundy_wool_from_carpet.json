@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SCS",
+        "CNC",
+        "SCS"
+    ],
+    "key": {
+        "C": {
+            "item": "materia:burgundy_carpet"
+        },
+        "S": {
+            "item": "materia:burgundy_string"
+        },
+        "N": {
+            "tag": "materia:all_needles"
+        }
+    },
+    "result": {
+        "item": "materia:burgundy_wool",
+        "count": 1
+    }
+}

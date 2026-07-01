@@ -75,7 +75,7 @@ public class EucalyptusTreeFeature extends Feature<NoneFeatureConfiguration> {
 
         placeFlatCanopy(level, origin.above(height - 1), leavesBlock, 1 + random.nextInt(2), random);
 
-        refreshLeafDistance(level, origin, height, maxReach + 1);
+        TreeLeafDistanceFix.refresh(level, origin, maxReach + 1, height + 3);
         return true;
     }
 
@@ -113,22 +113,6 @@ public class EucalyptusTreeFeature extends Feature<NoneFeatureConfiguration> {
                     level.setBlock(leafPos, leavesBlock.defaultBlockState()
                             .setValue(LeavesBlock.DISTANCE, 1)
                             .setValue(LeavesBlock.PERSISTENT, false), TREE_BLOCK_FLAGS);
-                }
-            }
-        }
-    }
-
-    private static void refreshLeafDistance(WorldGenLevel level, BlockPos origin, int height, int horizontalReach) {
-        BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
-        int top = origin.getY() + height + 3;
-        for (int y = origin.getY(); y <= top; y++) {
-            for (int x = -horizontalReach; x <= horizontalReach; x++) {
-                for (int z = -horizontalReach; z <= horizontalReach; z++) {
-                    pos.set(origin.getX() + x, y, origin.getZ() + z);
-                    BlockState state = level.getBlockState(pos);
-                    if (state.is(ModBlocks.EUCALYPTUS_LEAVES.get())) {
-                        level.scheduleTick(pos, state.getBlock(), 1);
-                    }
                 }
             }
         }

@@ -903,6 +903,14 @@ public class ModItems {
                         () -> new com.torr.materia.item.SackItem(new Item.Properties()
                                         .tab(net.minecraft.world.item.CreativeModeTab.TAB_TOOLS)
                                         .stacksTo(1)));
+        public static final RegistryObject<Item> BURGUNDY_SACK = ITEMS.register("burgundy_sack",
+                        () -> new com.torr.materia.item.SackItem(new Item.Properties()
+                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_TOOLS)
+                                        .stacksTo(1)));
+        public static final RegistryObject<Item> TAN_SACK = ITEMS.register("tan_sack",
+                        () -> new com.torr.materia.item.SackItem(new Item.Properties()
+                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_TOOLS)
+                                        .stacksTo(1)));
 
         // BLANKETS
         // Vanilla color blankets
@@ -983,6 +991,12 @@ public class ModItems {
         public static final RegistryObject<Item> TAUPE_BLANKET = ITEMS.register("taupe_blanket",
                         () -> new Item(new Item.Properties()
                                         .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)));
+        public static final RegistryObject<Item> BURGUNDY_BLANKET = ITEMS.register("burgundy_blanket",
+                        () -> new Item(new Item.Properties()
+                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)));
+        public static final RegistryObject<Item> TAN_BLANKET = ITEMS.register("tan_blanket",
+                        () -> new Item(new Item.Properties()
+                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)));
 
         // BEDS (custom colors)
         public static final RegistryObject<Item> OCHRE_BED = ITEMS.register("ochre_bed",
@@ -1019,6 +1033,14 @@ public class ModItems {
                                         .stacksTo(1)));
         public static final RegistryObject<Item> TEAL_BED = ITEMS.register("teal_bed",
                         () -> new com.torr.materia.item.CustomBedItem(ModBlocks.TEAL_BED::get, new Item.Properties()
+                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)
+                                        .stacksTo(1)));
+        public static final RegistryObject<Item> BURGUNDY_BED = ITEMS.register("burgundy_bed",
+                        () -> new com.torr.materia.item.CustomBedItem(ModBlocks.BURGUNDY_BED::get, new Item.Properties()
+                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)
+                                        .stacksTo(1)));
+        public static final RegistryObject<Item> TAN_BED = ITEMS.register("tan_bed",
+                        () -> new com.torr.materia.item.CustomBedItem(ModBlocks.TAN_BED::get, new Item.Properties()
                                         .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)
                                         .stacksTo(1)));
 

@@ -271,6 +271,10 @@ public class ModBlocks {
                         () -> new BedBlock(DyeColor.BROWN, BlockBehaviour.Properties.copy(Blocks.WHITE_BED)));
         public static final RegistryObject<Block> TEAL_BED = BLOCKS.register("teal_bed",
                         () -> new BedBlock(DyeColor.CYAN, BlockBehaviour.Properties.copy(Blocks.WHITE_BED)));
+        public static final RegistryObject<Block> BURGUNDY_BED = BLOCKS.register("burgundy_bed",
+                        () -> new BedBlock(DyeColor.RED, BlockBehaviour.Properties.copy(Blocks.WHITE_BED)));
+        public static final RegistryObject<Block> TAN_BED = BLOCKS.register("tan_bed",
+                        () -> new BedBlock(DyeColor.BROWN, BlockBehaviour.Properties.copy(Blocks.WHITE_BED)));
 
         // ANVILS
         public static final RegistryObject<Block> STONE_ANVIL = registerBlock("stone_anvil",
@@ -489,6 +493,8 @@ public class ModBlocks {
                         () -> new Block(BlockBehaviour.Properties.copy(Blocks.RED_TERRACOTTA)));
         public static final RegistryObject<Block> BURGUNDY_CANDLE = registerBlock("burgundy_candle",
                         () -> new net.minecraft.world.level.block.CandleBlock(BlockBehaviour.Properties.copy(Blocks.RED_CANDLE)));
+        public static final RegistryObject<Block> BURGUNDY_CARPET = registerBlock("burgundy_carpet",
+                        () -> new CarpetBlock(BlockBehaviour.Properties.copy(Blocks.RED_CARPET)));
 
         // TAN BLOCKS
         public static final RegistryObject<Block> TAN_WOOL = registerBlock("tan_wool",
@@ -504,6 +510,8 @@ public class ModBlocks {
                         () -> new Block(BlockBehaviour.Properties.copy(Blocks.BROWN_TERRACOTTA)));
         public static final RegistryObject<Block> TAN_CANDLE = registerBlock("tan_candle",
                         () -> new net.minecraft.world.level.block.CandleBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_CANDLE)));
+        public static final RegistryObject<Block> TAN_CARPET = registerBlock("tan_carpet",
+                        () -> new CarpetBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_CARPET)));
 
         // TEAL (verdigris dye) BLOCKS
         public static final RegistryObject<Block> TEAL_WOOL = registerBlock("teal_wool",

@@ -23,7 +23,7 @@ final class TreeLeafDistanceFix {
                         pos.set(origin.getX() + dx, origin.getY() + y, origin.getZ() + dz);
                         BlockState state = level.getBlockState(pos);
 
-                        if (!state.is(ModBlocks.PALM_LEAVES.get()) && !state.is(ModBlocks.CYPRESS_LEAVES.get())) {
+                        if (!isCustomLeaves(state)) {
                             continue;
                         }
 
@@ -59,5 +59,17 @@ final class TreeLeafDistanceFix {
             return state.getValue(LeavesBlock.DISTANCE);
         }
         return state.is(BlockTags.LOGS) ? 0 : 7;
+    }
+
+    private static boolean isCustomLeaves(BlockState state) {
+        return state.is(ModBlocks.RUBBER_TREE_LEAVES.get())
+                || state.is(ModBlocks.OLIVE_TREE_LEAVES.get())
+                || state.is(ModBlocks.PALM_LEAVES.get())
+                || state.is(ModBlocks.CYPRESS_LEAVES.get())
+                || state.is(ModBlocks.BAOBAB_LEAVES.get())
+                || state.is(ModBlocks.MAPLE_LEAVES.get())
+                || state.is(ModBlocks.FIG_LEAVES.get())
+                || state.is(ModBlocks.CEDAR_LEAVES.get())
+                || state.is(ModBlocks.EUCALYPTUS_LEAVES.get());
     }
 }

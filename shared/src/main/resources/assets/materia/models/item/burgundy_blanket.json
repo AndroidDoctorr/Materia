@@ -1,0 +1,6 @@
+{
+    "textures": {
+        "layer0": "materia:item/burgundy_blanket"
+    },
+    "parent": "item/generated"
+}

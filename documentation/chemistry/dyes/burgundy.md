@@ -1,14 +1,14 @@
 ## Burgundy dye
 
-Wine-red subtractive mix of red and tyrian purple.
+Wine-red subtractive mix of red and brown.
 
 ## Recipe
 
-- `minecraft:red_dye` + `materia:tyrian_purple_dye` → 2× `materia:burgundy_dye`
+- `minecraft:red_dye` + `minecraft:brown_dye` → 2× `materia:burgundy_dye`
 
 ## Textile products
 
-Same pattern as olive: cotton, wool clump, wool block, string, stained glass, concrete powder, terracotta, candle.
+Same pattern as lavender: cotton, wool clump, wool block, string, carpet, sack, blanket, bed, stained glass, concrete powder, terracotta, candle.
 
 ## Tags
 
