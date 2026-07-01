@@ -1,9 +1,6 @@
-{
+﻿{
     "type": "minecraft:crafting_shapeless",
     "ingredients": [
-        {
-            "item": "materia:slaked_lime"
-        },
         {
             "item": "minecraft:dandelion"
         }

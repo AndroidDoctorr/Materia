@@ -190,6 +190,29 @@ public class ModConfiguredFeatures {
             () -> new ConfiguredFeature<>((Feature<SimpleBlockConfiguration>) ModFeatures.TALL_PLANT_CLUSTER_FEATURE.get(),
                     new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.PLANTAIN.get()))));
 
+    public static final RegistryObject<ConfiguredFeature<?, ?>> WHITE_LILY_CLUSTER = CONFIGURED_FEATURES.register("white_lily_cluster",
+            () -> new ConfiguredFeature<>((Feature<SimpleBlockConfiguration>) ModFeatures.TALL_PLANT_CLUSTER_FEATURE.get(),
+                    new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.WHITE_LILY.get()))));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> BLUEBONNET_CLUSTER = CONFIGURED_FEATURES.register("bluebonnet_cluster",
+            () -> new ConfiguredFeature<>((Feature<SimpleBlockConfiguration>) ModFeatures.TALL_PLANT_CLUSTER_FEATURE.get(),
+                    new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.BLUEBONNET.get()))));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> PURPLE_CONEFLOWER_PATCH = CONFIGURED_FEATURES.register("purple_coneflower_patch",
+            () -> randomPatch(ModBlocks.PURPLE_CONEFLOWER.get(), 24, 5, 2));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> FUCHSIA_PATCH = CONFIGURED_FEATURES.register("fuchsia_patch",
+            () -> randomPatch(ModBlocks.FUCHSIA.get(), 24, 5, 2));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> MARIGOLD_PATCH = CONFIGURED_FEATURES.register("marigold_patch",
+            () -> randomPatch(ModBlocks.MARIGOLD.get(), 24, 5, 2));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> HIBISCUS_PATCH = CONFIGURED_FEATURES.register("hibiscus_patch",
+            () -> randomPatch(ModBlocks.HIBISCUS.get(), 24, 5, 2));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> LOTUS_PATCH = CONFIGURED_FEATURES.register("lotus_patch",
+            () -> randomPatch(ModBlocks.LOTUS.get(), 16, 4, 1));
+
     public static final RegistryObject<ConfiguredFeature<?, ?>> REEDS_CLUSTER = CONFIGURED_FEATURES.register("reeds_cluster",
             () -> new ConfiguredFeature<>((Feature<NoneFeatureConfiguration>) ModFeatures.REED_CLUSTER_FEATURE.get(),
                     NoneFeatureConfiguration.INSTANCE));

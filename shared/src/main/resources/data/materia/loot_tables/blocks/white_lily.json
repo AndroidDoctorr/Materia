@@ -1,0 +1,19 @@
+﻿{
+    "type": "minecraft:block",
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "white_lily": "materia:white_lily",
+                    "functions": [
+                        {
+                            "function": "minecraft:explosion_decay"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

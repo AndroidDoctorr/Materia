@@ -221,6 +221,55 @@ public class ModPlacedFeatures {
                             HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
                             BiomeFilter.biome())));
 
+    public static final RegistryObject<PlacedFeature> WHITE_LILY_PLACED = PLACED_FEATURES.register("white_lily_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.WHITE_LILY_CLUSTER.getHolder().get(),
+                    List.of(RarityFilter.onAverageOnceEvery(36),
+                            InSquarePlacement.spread(),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
+                            BiomeFilter.biome())));
+
+    public static final RegistryObject<PlacedFeature> BLUEBONNET_PLACED = PLACED_FEATURES.register("bluebonnet_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.BLUEBONNET_CLUSTER.getHolder().get(),
+                    List.of(RarityFilter.onAverageOnceEvery(36),
+                            InSquarePlacement.spread(),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
+                            BiomeFilter.biome())));
+
+    public static final RegistryObject<PlacedFeature> PURPLE_CONEFLOWER_PLACED = PLACED_FEATURES.register("purple_coneflower_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.PURPLE_CONEFLOWER_PATCH.getHolder().get(),
+                    List.of(RarityFilter.onAverageOnceEvery(32),
+                            InSquarePlacement.spread(),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
+                            BiomeFilter.biome())));
+
+    public static final RegistryObject<PlacedFeature> FUCHSIA_PLACED = PLACED_FEATURES.register("fuchsia_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.FUCHSIA_PATCH.getHolder().get(),
+                    List.of(RarityFilter.onAverageOnceEvery(32),
+                            InSquarePlacement.spread(),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
+                            BiomeFilter.biome())));
+
+    public static final RegistryObject<PlacedFeature> MARIGOLD_PLACED = PLACED_FEATURES.register("marigold_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.MARIGOLD_PATCH.getHolder().get(),
+                    List.of(RarityFilter.onAverageOnceEvery(32),
+                            InSquarePlacement.spread(),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
+                            BiomeFilter.biome())));
+
+    public static final RegistryObject<PlacedFeature> HIBISCUS_PLACED = PLACED_FEATURES.register("hibiscus_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.HIBISCUS_PATCH.getHolder().get(),
+                    List.of(RarityFilter.onAverageOnceEvery(32),
+                            InSquarePlacement.spread(),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
+                            BiomeFilter.biome())));
+
+    public static final RegistryObject<PlacedFeature> LOTUS_PLACED = PLACED_FEATURES.register("lotus_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.LOTUS_PATCH.getHolder().get(),
+                    List.of(RarityFilter.onAverageOnceEvery(28),
+                            InSquarePlacement.spread(),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
+                            BiomeFilter.biome())));
+
     public static final RegistryObject<PlacedFeature> REEDS_PLACED = PLACED_FEATURES.register("reeds_placed",
             () -> new PlacedFeature(ModConfiguredFeatures.REEDS_CLUSTER.getHolder().get(),
                     List.of(RarityFilter.onAverageOnceEvery(24),

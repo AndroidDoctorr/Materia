@@ -1,0 +1,6 @@
+﻿{
+    "variants": {
+        "half=lower": { "model": "materia:block/bluebonnet_lower" },
+        "half=upper": { "model": "materia:block/bluebonnet_upper" }
+    }
+}

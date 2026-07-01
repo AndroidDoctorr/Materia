@@ -1,0 +1,6 @@
+﻿{
+    "variants": {
+        "half=lower": { "model": "materia:block/white_lily_lower" },
+        "half=upper": { "model": "materia:block/white_lily_upper" }
+    }
+}

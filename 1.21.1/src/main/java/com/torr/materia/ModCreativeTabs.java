@@ -16,6 +16,7 @@ import java.util.List;
 public class ModCreativeTabs {
     private static final List<String> PLANT_AND_CROP_ORDER = List.of(
             "esparto", "agave", "yucca", "plantain", "reeds",
+            "white_lily", "bluebonnet", "purple_coneflower", "fuchsia", "marigold", "hibiscus", "lotus",
             "wild_rice", "wild_cotton",
             "rice_crop", "cotton_crop", "tea_bush", "taro_crop",
             "rice_seeds", "cotton_seeds", "tea_seeds", "taro",

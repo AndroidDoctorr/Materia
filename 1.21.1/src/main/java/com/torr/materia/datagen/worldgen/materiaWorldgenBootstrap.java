@@ -103,6 +103,13 @@ public final class materiaWorldgenBootstrap {
     private static final ResourceKey<ConfiguredFeature<?, ?>> AGAVE_PATCH = configured("agave_patch");
     private static final ResourceKey<ConfiguredFeature<?, ?>> YUCCA_CLUSTER = configured("yucca_cluster");
     private static final ResourceKey<ConfiguredFeature<?, ?>> PLANTAIN_CLUSTER = configured("plantain_cluster");
+    private static final ResourceKey<ConfiguredFeature<?, ?>> WHITE_LILY_CLUSTER = configured("white_lily_cluster");
+    private static final ResourceKey<ConfiguredFeature<?, ?>> BLUEBONNET_CLUSTER = configured("bluebonnet_cluster");
+    private static final ResourceKey<ConfiguredFeature<?, ?>> PURPLE_CONEFLOWER_PATCH = configured("purple_coneflower_patch");
+    private static final ResourceKey<ConfiguredFeature<?, ?>> FUCHSIA_PATCH = configured("fuchsia_patch");
+    private static final ResourceKey<ConfiguredFeature<?, ?>> MARIGOLD_PATCH = configured("marigold_patch");
+    private static final ResourceKey<ConfiguredFeature<?, ?>> HIBISCUS_PATCH = configured("hibiscus_patch");
+    private static final ResourceKey<ConfiguredFeature<?, ?>> LOTUS_PATCH = configured("lotus_patch");
     private static final ResourceKey<ConfiguredFeature<?, ?>> REEDS_CLUSTER = configured("reeds_cluster");
     private static final ResourceKey<ConfiguredFeature<?, ?>> TARO_PATCH = configured("taro_patch");
 
@@ -164,6 +171,13 @@ public final class materiaWorldgenBootstrap {
     private static final ResourceKey<PlacedFeature> AGAVE_PLACED = placed("agave_placed");
     private static final ResourceKey<PlacedFeature> YUCCA_PLACED = placed("yucca_placed");
     private static final ResourceKey<PlacedFeature> PLANTAIN_PLACED = placed("plantain_placed");
+    private static final ResourceKey<PlacedFeature> WHITE_LILY_PLACED = placed("white_lily_placed");
+    private static final ResourceKey<PlacedFeature> BLUEBONNET_PLACED = placed("bluebonnet_placed");
+    private static final ResourceKey<PlacedFeature> PURPLE_CONEFLOWER_PLACED = placed("purple_coneflower_placed");
+    private static final ResourceKey<PlacedFeature> FUCHSIA_PLACED = placed("fuchsia_placed");
+    private static final ResourceKey<PlacedFeature> MARIGOLD_PLACED = placed("marigold_placed");
+    private static final ResourceKey<PlacedFeature> HIBISCUS_PLACED = placed("hibiscus_placed");
+    private static final ResourceKey<PlacedFeature> LOTUS_PLACED = placed("lotus_placed");
     private static final ResourceKey<PlacedFeature> REEDS_PLACED = placed("reeds_placed");
     private static final ResourceKey<PlacedFeature> TARO_CROP_PLACED = placed("taro_crop_placed");
 
@@ -237,6 +251,15 @@ public final class materiaWorldgenBootstrap {
                 new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.YUCCA.get()))));
         context.register(PLANTAIN_CLUSTER, new ConfiguredFeature<>((Feature<SimpleBlockConfiguration>) ModFeatures.TALL_PLANT_CLUSTER_FEATURE.get(),
                 new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.PLANTAIN.get()))));
+        context.register(WHITE_LILY_CLUSTER, new ConfiguredFeature<>((Feature<SimpleBlockConfiguration>) ModFeatures.TALL_PLANT_CLUSTER_FEATURE.get(),
+                new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.WHITE_LILY.get()))));
+        context.register(BLUEBONNET_CLUSTER, new ConfiguredFeature<>((Feature<SimpleBlockConfiguration>) ModFeatures.TALL_PLANT_CLUSTER_FEATURE.get(),
+                new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.BLUEBONNET.get()))));
+        context.register(PURPLE_CONEFLOWER_PATCH, randomPatch(ModBlocks.PURPLE_CONEFLOWER.get().defaultBlockState(), 24, 5, 2));
+        context.register(FUCHSIA_PATCH, randomPatch(ModBlocks.FUCHSIA.get().defaultBlockState(), 24, 5, 2));
+        context.register(MARIGOLD_PATCH, randomPatch(ModBlocks.MARIGOLD.get().defaultBlockState(), 24, 5, 2));
+        context.register(HIBISCUS_PATCH, randomPatch(ModBlocks.HIBISCUS.get().defaultBlockState(), 24, 5, 2));
+        context.register(LOTUS_PATCH, randomPatch(ModBlocks.LOTUS.get().defaultBlockState(), 16, 4, 1));
         context.register(REEDS_CLUSTER, new ConfiguredFeature<>((Feature<NoneFeatureConfiguration>) ModFeatures.REED_CLUSTER_FEATURE.get(), NoneFeatureConfiguration.INSTANCE));
         context.register(TARO_PATCH, new ConfiguredFeature<>((Feature<NoneFeatureConfiguration>) ModFeatures.TARO_PATCH_FEATURE.get(), NoneFeatureConfiguration.INSTANCE));
         context.register(TEA_BUSH_PATCH, randomPatch(ModBlocks.TEA_BUSH.get().defaultBlockState(), 16, 4, 2));
@@ -657,6 +680,20 @@ public final class materiaWorldgenBootstrap {
                 List.of(RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES), BiomeFilter.biome())));
         context.register(PLANTAIN_PLACED, new PlacedFeature(configured.getOrThrow(PLANTAIN_CLUSTER),
                 List.of(RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES), BiomeFilter.biome())));
+        context.register(WHITE_LILY_PLACED, new PlacedFeature(configured.getOrThrow(WHITE_LILY_CLUSTER),
+                List.of(RarityFilter.onAverageOnceEvery(36), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES), BiomeFilter.biome())));
+        context.register(BLUEBONNET_PLACED, new PlacedFeature(configured.getOrThrow(BLUEBONNET_CLUSTER),
+                List.of(RarityFilter.onAverageOnceEvery(36), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES), BiomeFilter.biome())));
+        context.register(PURPLE_CONEFLOWER_PLACED, new PlacedFeature(configured.getOrThrow(PURPLE_CONEFLOWER_PATCH),
+                List.of(RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES), BiomeFilter.biome())));
+        context.register(FUCHSIA_PLACED, new PlacedFeature(configured.getOrThrow(FUCHSIA_PATCH),
+                List.of(RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES), BiomeFilter.biome())));
+        context.register(MARIGOLD_PLACED, new PlacedFeature(configured.getOrThrow(MARIGOLD_PATCH),
+                List.of(RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES), BiomeFilter.biome())));
+        context.register(HIBISCUS_PLACED, new PlacedFeature(configured.getOrThrow(HIBISCUS_PATCH),
+                List.of(RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES), BiomeFilter.biome())));
+        context.register(LOTUS_PLACED, new PlacedFeature(configured.getOrThrow(LOTUS_PATCH),
+                List.of(RarityFilter.onAverageOnceEvery(28), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES), BiomeFilter.biome())));
         context.register(REEDS_PLACED, new PlacedFeature(configured.getOrThrow(REEDS_CLUSTER),
                 List.of(RarityFilter.onAverageOnceEvery(24), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR), BiomeFilter.biome())));
         context.register(TARO_CROP_PLACED, new PlacedFeature(configured.getOrThrow(TARO_PATCH),

@@ -1,0 +1,6 @@
+﻿{
+    "parent": "minecraft:block/cross",
+    "textures": {
+        "cross": "materia:block/white_lily_lower"
+    }
+}

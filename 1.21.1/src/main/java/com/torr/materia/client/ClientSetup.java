@@ -103,6 +103,13 @@ public class ClientSetup {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.AGAVE.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.YUCCA.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.PLANTAIN.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.WHITE_LILY.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.BLUEBONNET.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.PURPLE_CONEFLOWER.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.FUCHSIA.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.MARIGOLD.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.HIBISCUS.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.LOTUS.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.REEDS.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.TARO_CROP.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.FIG_LEAVES.get(), RenderType.cutoutMipped());
@@ -224,6 +231,16 @@ public class ClientSetup {
                 // Default green color for leaves
                 return 0x48B518;
             }, ModBlocks.RUBBER_TREE_LEAVES.get());
+
+            blockColors.register((state, reader, pos, tintIndex) -> {
+                if (tintIndex != 0) {
+                    return -1;
+                }
+                if (reader != null && pos != null) {
+                    return BiomeColors.getAverageFoliageColor(reader, pos);
+                }
+                return 0x48B518;
+            }, ModBlocks.LOTUS.get());
 
             // Tint the loom fabric (#loom faces with tintindex=0) based on selected carpet color
             blockColors.register((state, reader, pos, tintIndex) -> {

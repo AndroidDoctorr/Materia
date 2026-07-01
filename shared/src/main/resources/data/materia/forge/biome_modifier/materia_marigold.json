@@ -1,0 +1,14 @@
+﻿{
+    "type": "forge:add_features",
+    "biomes": {
+        "type": "forge:or",
+        "values": [
+            "#materia:desert",
+            "#materia:tropical"
+        ]
+    },
+    "step": "vegetal_decoration",
+    "features": [
+        "materia:marigold_placed"
+    ]
+}

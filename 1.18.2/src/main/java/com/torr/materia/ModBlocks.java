@@ -385,6 +385,31 @@ public class ModBlocks {
         public static final RegistryObject<Block> REEDS = registerBlock("reeds",
                         () -> new ReedsBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak()
                                         .sound(SoundType.GRASS)));
+        public static final RegistryObject<Block> WHITE_LILY = registerBlock("white_lily",
+                        () -> new WhiteLilyBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak()
+                                        .sound(SoundType.GRASS)));
+        public static final RegistryObject<Block> BLUEBONNET = registerBlock("bluebonnet",
+                        () -> new BluebonnetBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak()
+                                        .sound(SoundType.GRASS)));
+        public static final RegistryObject<Block> PURPLE_CONEFLOWER = registerBlock("purple_coneflower",
+                        () -> new net.minecraft.world.level.block.FlowerBlock(
+                                        net.minecraft.world.effect.MobEffects.REGENERATION, 0,
+                                        BlockBehaviour.Properties.copy(net.minecraft.world.level.block.Blocks.POPPY)));
+        public static final RegistryObject<Block> FUCHSIA = registerBlock("fuchsia",
+                        () -> new net.minecraft.world.level.block.FlowerBlock(
+                                        net.minecraft.world.effect.MobEffects.NIGHT_VISION, 0,
+                                        BlockBehaviour.Properties.copy(net.minecraft.world.level.block.Blocks.POPPY)));
+        public static final RegistryObject<Block> MARIGOLD = registerBlock("marigold",
+                        () -> new net.minecraft.world.level.block.FlowerBlock(
+                                        net.minecraft.world.effect.MobEffects.SATURATION, 0,
+                                        BlockBehaviour.Properties.copy(net.minecraft.world.level.block.Blocks.POPPY)));
+        public static final RegistryObject<Block> HIBISCUS = registerBlock("hibiscus",
+                        () -> new net.minecraft.world.level.block.FlowerBlock(
+                                        net.minecraft.world.effect.MobEffects.REGENERATION, 0,
+                                        BlockBehaviour.Properties.copy(net.minecraft.world.level.block.Blocks.POPPY)));
+        public static final RegistryObject<Block> LOTUS = registerBlockWithCustomItem("lotus",
+                        () -> new LotusBlock(BlockBehaviour.Properties.copy(net.minecraft.world.level.block.Blocks.LILY_PAD)),
+                        (block) -> new com.torr.materia.item.LotusBlockItem(block, new Item.Properties()));
         public static final RegistryObject<Block> TARO_CROP = BLOCKS.register("taro_crop",
                         () -> new TaroCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission()
                                         .randomTicks().instabreak().sound(SoundType.CROP)));

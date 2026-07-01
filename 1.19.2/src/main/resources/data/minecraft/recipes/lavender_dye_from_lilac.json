@@ -1,12 +1,10 @@
-{
-    "type": "minecraft:crafting_shapeless",
-    "ingredients": [
-        {
-            "item": "minecraft:lilac"
-        }
-    ],
-    "result": {
-        "item": "materia:lavender_dye",
-        "count": 2
-    }
+﻿{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "minecraft:barrier" }
+  ],
+  "result": {
+    "item": "minecraft:barrier",
+    "count": 1
+  }
 }
