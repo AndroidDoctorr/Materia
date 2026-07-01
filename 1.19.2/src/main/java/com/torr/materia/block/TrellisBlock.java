@@ -23,7 +23,7 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import java.util.Random;
+import net.minecraft.util.RandomSource;
 
 public class TrellisBlock extends Block {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
@@ -81,7 +81,7 @@ public class TrellisBlock extends Block {
     }
     
     @Override
-    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         boolean preventOverlap = materiaCommonConfig.VINES_PREVENT_GRAPE_WISTERIA_OVERLAP.get();
 
         // Ensure only one vine type occupies a support block.

@@ -110,9 +110,10 @@ public class ModItems {
         public static final RegistryObject<Item> WISTERIA_SEEDS = ITEMS.register("wisteria_seeds",
                         () -> new com.torr.materia.item.WisteriaSeedsItem(new Item.Properties()
                                         .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)));
-        public static final RegistryObject<Item> HEMP_SEEDS = ITEMS.register("hemp_seeds",
-                        () -> new Item(new Item.Properties()
-                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)));
+        // Planned hemp crop — assets kept; registration disabled until crop exists.
+        // public static final RegistryObject<Item> HEMP_SEEDS = ITEMS.register("hemp_seeds",
+        //                 () -> new Item(new Item.Properties()
+        //                                 .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)));
         public static final RegistryObject<Item> PEPPER_SEEDS = ITEMS.register("pepper_seeds",
                         () -> new PepperSeedsItem(new Item.Properties()
                                         .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)));

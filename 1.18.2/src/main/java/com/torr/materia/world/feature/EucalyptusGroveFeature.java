@@ -2,7 +2,7 @@ package com.torr.materia.world.feature;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
@@ -20,7 +20,7 @@ public class EucalyptusGroveFeature extends Feature<NoneFeatureConfiguration> {
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> context) {
         WorldGenLevel level = context.level();
         BlockPos origin = context.origin();
-        RandomSource random = context.random();
+        Random random = context.random();
 
         int treeCount = 3 + random.nextInt(5);
         boolean placedAny = false;

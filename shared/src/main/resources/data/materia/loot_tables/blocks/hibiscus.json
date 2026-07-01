@@ -6,7 +6,7 @@
             "entries": [
                 {
                     "type": "minecraft:item",
-                    "hibiscus": "materia:hibiscus",
+                    "name": "materia:hibiscus",
                     "functions": [
                         {
                             "function": "minecraft:explosion_decay"

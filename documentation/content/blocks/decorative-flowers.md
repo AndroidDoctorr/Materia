@@ -52,7 +52,7 @@ See also:
 ## Lotus
 
 - **Block**: `materia:lotus` — cross flower model over a **vanilla lily-pad** base tinted with biome foliage green
-- **Worldgen**: `materia_lotus.json` → `materia:lotus_placed` in `#materia:river` and `#materia:warm_wet_surface`
+- **Worldgen**: `materia_lotus.json` → `materia:lotus_placed` in `#materia:river` and `#materia:warm_wet_surface` (custom water-surface feature; shallow water only)
 - **Placement**: **shallow water only** (1–2 blocks deep). Uses `LotusBlock` (`WaterlilyBlock` subclass) plus `LotusBlockItem` so clicking water places the lotus in the air block above the surface.
 - **Model**: `shared/src/main/resources/assets/materia/models/block/lotus.json` — lily pad element (`tintindex: 0`) + lotus cross
 - **Survival**: breaks like a lily pad; cannot be placed on land

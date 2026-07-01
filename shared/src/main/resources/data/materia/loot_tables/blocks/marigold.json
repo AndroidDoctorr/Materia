@@ -6,7 +6,7 @@
             "entries": [
                 {
                     "type": "minecraft:item",
-                    "marigold": "materia:marigold",
+                    "name": "materia:marigold",
                     "functions": [
                         {
                             "function": "minecraft:explosion_decay"

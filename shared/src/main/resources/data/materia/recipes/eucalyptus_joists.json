@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "P P"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:smooth_eucalyptus_plank"
+        }
+    },
+    "result": {
+        "item": "materia:eucalyptus_joists",
+        "count": 1
+    }
+}

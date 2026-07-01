@@ -6,7 +6,7 @@
             "entries": [
                 {
                     "type": "minecraft:item",
-                    "white_lily": "materia:white_lily",
+                    "name": "materia:white_lily",
                     "functions": [
                         {
                             "function": "minecraft:explosion_decay"

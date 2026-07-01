@@ -267,7 +267,7 @@ public class ModPlacedFeatures {
             () -> new PlacedFeature(ModConfiguredFeatures.LOTUS_PATCH.getHolder().get(),
                     List.of(RarityFilter.onAverageOnceEvery(28),
                             InSquarePlacement.spread(),
-                            HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR),
                             BiomeFilter.biome())));
 
     public static final RegistryObject<PlacedFeature> REEDS_PLACED = PLACED_FEATURES.register("reeds_placed",

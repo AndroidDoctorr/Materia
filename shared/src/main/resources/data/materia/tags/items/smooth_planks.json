@@ -23,6 +23,9 @@
             "required": false
         },
         "materia:smooth_dark_oak_planks",
-        "materia:smooth_rubber_wood_planks"
+        "materia:smooth_rubber_wood_planks",
+        "materia:smooth_fig_plank",
+        "materia:smooth_cedar_plank",
+        "materia:smooth_eucalyptus_plank"
     ]
 }

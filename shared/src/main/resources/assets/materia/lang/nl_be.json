@@ -972,6 +972,9 @@
     "block.materia.eucalyptus_slab": "Eucalyptusplaat",
     "block.materia.eucalyptus_fence": "Eucalyptushhek",
     "block.materia.eucalyptus_fence_gate": "Eucalyptushhekpoort",
+    "block.materia.fig_joists": "Vijgenbalken",
+    "block.materia.cedar_joists": "Cederbalken",
+    "block.materia.eucalyptus_joists": "Eucalyptusbalken",
     "item.materia.fig": "Vijg",
     "item.materia.taro": "Taro",
     "item.materia.fruit_leather": "Fruitler",
@@ -1019,5 +1022,7 @@
     "item.materia.fig_sapling": "Vijgenkiemplant",
     "item.materia.cedar_sapling": "Cederkiemplant",
     "item.materia.eucalyptus_sapling": "Eucalyptuskiemplant",
-    "item.materia.rainbow_eucalyptus_sapling": "Regenboog-Eucalyptuskiemplant"
+    "item.materia.rainbow_eucalyptus_sapling": "Regenboog-Eucalyptuskiemplant",
+    "advancements.materia.cotton_pickings.title": "Katoenoogst",
+    "advancements.materia.cotton_pickings.description": "Oogst katoenbolletjes uit het veld. Spin ze tot touw op een spinde of spinnewiel."
 }

@@ -38,10 +38,10 @@ public class ModCreativeTabs {
             "cypress_log", "cypress_leaves", "cypress_sapling",
             "baobab_log", "baobab_leaves", "baobab_sapling",
             "maple_log", "maple_leaves", "maple_sapling",
-            "fig_log", "fig_leaves", "fig_sapling", "fig_planks", "fig_stairs", "fig_slab", "fig_fence", "fig_fence_gate",
-            "cedar_log", "cedar_leaves", "cedar_sapling", "cedar_planks", "cedar_stairs", "cedar_slab", "cedar_fence", "cedar_fence_gate",
+            "fig_log", "fig_leaves", "fig_sapling", "fig_planks", "fig_stairs", "fig_slab", "fig_fence", "fig_fence_gate", "fig_joists",
+            "cedar_log", "cedar_leaves", "cedar_sapling", "cedar_planks", "cedar_stairs", "cedar_slab", "cedar_fence", "cedar_fence_gate", "cedar_joists",
             "eucalyptus_log", "rainbow_eucalyptus_log", "eucalyptus_leaves",
-            "eucalyptus_sapling", "rainbow_eucalyptus_sapling", "eucalyptus_planks", "eucalyptus_stairs", "eucalyptus_slab", "eucalyptus_fence", "eucalyptus_fence_gate"
+            "eucalyptus_sapling", "rainbow_eucalyptus_sapling", "eucalyptus_planks", "eucalyptus_stairs", "eucalyptus_slab", "eucalyptus_fence", "eucalyptus_fence_gate", "eucalyptus_joists"
     );
 
     public static final DeferredRegister<CreativeModeTab> TABS =

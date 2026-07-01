@@ -8,6 +8,9 @@
     "materia:pepper_seeds",
     "materia:beans",
     "materia:corn",
+    "materia:rice_seeds",
+    "materia:cotton_seeds",
+    "materia:tea_seeds",
     {
       "id": "immersiveengineering:hemp_seed",
       "required": false

@@ -26,6 +26,6 @@ public class WhiteLilyBlock extends DoublePlantBlock {
     @Override
     protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
         return state.is(Blocks.GRASS_BLOCK) || state.is(Blocks.DIRT) || state.is(Blocks.COARSE_DIRT)
-                || state.is(Blocks.PODZOL) || state.is(Blocks.MUD) || state.is(Blocks.MUDDY_MANGROVE_ROOTS);
+                || state.is(Blocks.PODZOL);
     }
 }

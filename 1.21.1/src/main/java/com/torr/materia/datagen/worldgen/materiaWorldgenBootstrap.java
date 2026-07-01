@@ -259,7 +259,7 @@ public final class materiaWorldgenBootstrap {
         context.register(FUCHSIA_PATCH, randomPatch(ModBlocks.FUCHSIA.get().defaultBlockState(), 24, 5, 2));
         context.register(MARIGOLD_PATCH, randomPatch(ModBlocks.MARIGOLD.get().defaultBlockState(), 24, 5, 2));
         context.register(HIBISCUS_PATCH, randomPatch(ModBlocks.HIBISCUS.get().defaultBlockState(), 24, 5, 2));
-        context.register(LOTUS_PATCH, randomPatch(ModBlocks.LOTUS.get().defaultBlockState(), 16, 4, 1));
+        context.register(LOTUS_PATCH, new ConfiguredFeature<>((Feature<NoneFeatureConfiguration>) ModFeatures.LOTUS_WATER_PATCH_FEATURE.get(), NoneFeatureConfiguration.INSTANCE));
         context.register(REEDS_CLUSTER, new ConfiguredFeature<>((Feature<NoneFeatureConfiguration>) ModFeatures.REED_CLUSTER_FEATURE.get(), NoneFeatureConfiguration.INSTANCE));
         context.register(TARO_PATCH, new ConfiguredFeature<>((Feature<NoneFeatureConfiguration>) ModFeatures.TARO_PATCH_FEATURE.get(), NoneFeatureConfiguration.INSTANCE));
         context.register(TEA_BUSH_PATCH, randomPatch(ModBlocks.TEA_BUSH.get().defaultBlockState(), 16, 4, 2));
@@ -693,7 +693,7 @@ public final class materiaWorldgenBootstrap {
         context.register(HIBISCUS_PLACED, new PlacedFeature(configured.getOrThrow(HIBISCUS_PATCH),
                 List.of(RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES), BiomeFilter.biome())));
         context.register(LOTUS_PLACED, new PlacedFeature(configured.getOrThrow(LOTUS_PATCH),
-                List.of(RarityFilter.onAverageOnceEvery(28), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES), BiomeFilter.biome())));
+                List.of(RarityFilter.onAverageOnceEvery(28), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR), BiomeFilter.biome())));
         context.register(REEDS_PLACED, new PlacedFeature(configured.getOrThrow(REEDS_CLUSTER),
                 List.of(RarityFilter.onAverageOnceEvery(24), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR), BiomeFilter.biome())));
         context.register(TARO_CROP_PLACED, new PlacedFeature(configured.getOrThrow(TARO_PATCH),

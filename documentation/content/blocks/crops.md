@@ -127,7 +127,7 @@ See also [decorative plants](decorative-plants.md) for yucca, plantain, and reed
 - **Crop block**: `materia:rice_crop` (8 stages)
 - **Wild block**: `materia:wild_rice` — river and warm-wet biomes
 - **Seed item**: `materia:rice_seeds`
-- Requires **water within 2 blocks** to grow; harvest yields in-hull rice, shell in crafting, boil in a water pot for cooked rice
+- Requires **water within 2 blocks** to grow; harvest yields **rice seeds** (more at higher growth stages); craft seeds into **shelled rice** (`shell_rice.json`), then boil in a water pot for **cooked rice**
 
 ### Cotton
 

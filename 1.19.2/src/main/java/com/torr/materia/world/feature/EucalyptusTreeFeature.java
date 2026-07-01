@@ -136,6 +136,6 @@ public class EucalyptusTreeFeature extends Feature<NoneFeatureConfiguration> {
 
     private static boolean canReplace(WorldGenLevel level, BlockPos pos) {
         BlockState state = level.getBlockState(pos);
-        return state.isAir() || state.canBeReplaced();
+        return state.isAir() || state.getMaterial().isReplaceable();
     }
 }

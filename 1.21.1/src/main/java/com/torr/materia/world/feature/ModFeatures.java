@@ -52,6 +52,9 @@ public class ModFeatures {
     public static final RegistryObject<Feature<?>> REED_CLUSTER_FEATURE = FEATURES.register("reed_cluster_feature",
             () -> new ReedClusterFeature(com.mojang.serialization.Codec.unit(net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration.INSTANCE)));
 
+    public static final RegistryObject<Feature<?>> LOTUS_WATER_PATCH_FEATURE = FEATURES.register("lotus_water_patch_feature",
+            () -> new LotusWaterPatchFeature(com.mojang.serialization.Codec.unit(net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration.INSTANCE)));
+
     public static final RegistryObject<Feature<?>> TARO_PATCH_FEATURE = FEATURES.register("taro_patch_feature",
             () -> new TaroPatchFeature(com.mojang.serialization.Codec.unit(net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration.INSTANCE)));
 

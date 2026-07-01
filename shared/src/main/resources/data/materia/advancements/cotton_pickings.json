@@ -1,0 +1,21 @@
+{
+    "parent": "materia:sister_act",
+    "criteria": {
+        "cotton": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:cotton"], "count": {"min": 1}}]
+            }
+        }
+    },
+    "requirements": [["cotton"]],
+    "display": {
+        "icon": {"item": "materia:cotton"},
+        "title": {"translate": "advancements.materia.cotton_pickings.title"},
+        "description": {"translate": "advancements.materia.cotton_pickings.description"},
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    }
+}

@@ -1029,6 +1029,15 @@ public class ModBlocks {
         public static final RegistryObject<Block> RUBBER_WOOD_JOISTS = registerBlock("rubber_wood_joists",
                         () -> new com.torr.materia.block.JoistsBlock(BlockBehaviour.Properties.of().strength(0.5f)
                                         .sound(SoundType.WOOD).noOcclusion()));
+        public static final RegistryObject<Block> FIG_JOISTS = registerBlock("fig_joists",
+                        () -> new com.torr.materia.block.JoistsBlock(BlockBehaviour.Properties.of().strength(0.5f)
+                                        .sound(SoundType.WOOD).noOcclusion()));
+        public static final RegistryObject<Block> CEDAR_JOISTS = registerBlock("cedar_joists",
+                        () -> new com.torr.materia.block.JoistsBlock(BlockBehaviour.Properties.of().strength(0.5f)
+                                        .sound(SoundType.WOOD).noOcclusion()));
+        public static final RegistryObject<Block> EUCALYPTUS_JOISTS = registerBlock("eucalyptus_joists",
+                        () -> new com.torr.materia.block.JoistsBlock(BlockBehaviour.Properties.of().strength(0.5f)
+                                        .sound(SoundType.WOOD).noOcclusion()));
 
         // LOGIC GATES
         public static final RegistryObject<Block> AND_GATE = registerBlock("and_gate",

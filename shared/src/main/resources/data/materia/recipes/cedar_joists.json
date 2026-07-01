@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "P P"
+    ],
+    "key": {
+        "P": {
+            "item": "materia:smooth_cedar_plank"
+        }
+    },
+    "result": {
+        "item": "materia:cedar_joists",
+        "count": 1
+    }
+}

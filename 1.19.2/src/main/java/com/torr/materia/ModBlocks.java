@@ -836,8 +836,7 @@ public class ModBlocks {
                                 BlockBehaviour.Properties.copy(ModBlocks.FIG_PLANKS.get())));
         public static final RegistryObject<Block> FIG_FENCE_GATE = registerBlock("fig_fence_gate",
                         () -> new net.minecraft.world.level.block.FenceGateBlock(
-                                BlockBehaviour.Properties.copy(ModBlocks.FIG_PLANKS.get()),
-                                net.minecraft.world.level.block.state.properties.WoodType.OAK));
+                                BlockBehaviour.Properties.copy(ModBlocks.FIG_PLANKS.get())));
 
         public static final RegistryObject<Block> CEDAR_PLANKS = registerBlock("cedar_planks",
                         () -> new Block(BlockBehaviour.Properties.of(Material.WOOD).strength(0.5f).sound(SoundType.WOOD).noOcclusion()));
@@ -853,8 +852,7 @@ public class ModBlocks {
                                 BlockBehaviour.Properties.copy(ModBlocks.CEDAR_PLANKS.get())));
         public static final RegistryObject<Block> CEDAR_FENCE_GATE = registerBlock("cedar_fence_gate",
                         () -> new net.minecraft.world.level.block.FenceGateBlock(
-                                BlockBehaviour.Properties.copy(ModBlocks.CEDAR_PLANKS.get()),
-                                net.minecraft.world.level.block.state.properties.WoodType.OAK));
+                                BlockBehaviour.Properties.copy(ModBlocks.CEDAR_PLANKS.get())));
 
         public static final RegistryObject<Block> EUCALYPTUS_PLANKS = registerBlock("eucalyptus_planks",
                         () -> new Block(BlockBehaviour.Properties.of(Material.WOOD).strength(0.5f).sound(SoundType.WOOD).noOcclusion()));
@@ -870,17 +868,16 @@ public class ModBlocks {
                                 BlockBehaviour.Properties.copy(ModBlocks.EUCALYPTUS_PLANKS.get())));
         public static final RegistryObject<Block> EUCALYPTUS_FENCE_GATE = registerBlock("eucalyptus_fence_gate",
                         () -> new net.minecraft.world.level.block.FenceGateBlock(
-                                BlockBehaviour.Properties.copy(ModBlocks.EUCALYPTUS_PLANKS.get()),
-                                net.minecraft.world.level.block.state.properties.WoodType.OAK));
+                                BlockBehaviour.Properties.copy(ModBlocks.EUCALYPTUS_PLANKS.get())));
 
         public static final RegistryObject<Block> FIG_POST = registerBlock("fig_post",
-                        () -> new PostBlock(BlockBehaviour.Properties.of().strength(0.5f)
+                        () -> new PostBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(0.5f)
                                         .sound(SoundType.WOOD).noOcclusion()));
         public static final RegistryObject<Block> CEDAR_POST = registerBlock("cedar_post",
-                        () -> new PostBlock(BlockBehaviour.Properties.of().strength(0.5f)
+                        () -> new PostBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(0.5f)
                                         .sound(SoundType.WOOD).noOcclusion()));
         public static final RegistryObject<Block> EUCALYPTUS_POST = registerBlock("eucalyptus_post",
-                        () -> new PostBlock(BlockBehaviour.Properties.of().strength(0.5f)
+                        () -> new PostBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(0.5f)
                                         .sound(SoundType.WOOD).noOcclusion()));
 
         // TABLES
@@ -994,6 +991,15 @@ public class ModBlocks {
                         () -> new com.torr.materia.block.JoistsBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(0.5f)
                                         .sound(SoundType.WOOD).noOcclusion()));
         public static final RegistryObject<Block> RUBBER_WOOD_JOISTS = registerBlock("rubber_wood_joists",
+                        () -> new com.torr.materia.block.JoistsBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(0.5f)
+                                        .sound(SoundType.WOOD).noOcclusion()));
+        public static final RegistryObject<Block> FIG_JOISTS = registerBlock("fig_joists",
+                        () -> new com.torr.materia.block.JoistsBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(0.5f)
+                                        .sound(SoundType.WOOD).noOcclusion()));
+        public static final RegistryObject<Block> CEDAR_JOISTS = registerBlock("cedar_joists",
+                        () -> new com.torr.materia.block.JoistsBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(0.5f)
+                                        .sound(SoundType.WOOD).noOcclusion()));
+        public static final RegistryObject<Block> EUCALYPTUS_JOISTS = registerBlock("eucalyptus_joists",
                         () -> new com.torr.materia.block.JoistsBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(0.5f)
                                         .sound(SoundType.WOOD).noOcclusion()));
 

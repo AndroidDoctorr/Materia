@@ -34,7 +34,7 @@ public class TaroPatchFeature extends Feature<NoneFeatureConfiguration> {
             BlockPos placePos = findSurface(level, candidate);
             if (placePos != null) {
                 BlockState existing = level.getBlockState(placePos);
-                if (!existing.isAir() && !existing.canBeReplaced()) {
+                if (!existing.isAir() && !existing.getMaterial().isReplaceable()) {
                     continue;
                 }
                 int age = 2 + random.nextInt(2);
@@ -59,7 +59,7 @@ public class TaroPatchFeature extends Feature<NoneFeatureConfiguration> {
             BlockState state = level.getBlockState(check);
             BlockState above = level.getBlockState(check.above());
             if ((state.is(Blocks.GRASS_BLOCK) || state.is(Blocks.DIRT) || state.is(Blocks.PODZOL))
-                    && (above.isAir() || above.canBeReplaced())) {
+                    && (above.isAir() || above.getMaterial().isReplaceable())) {
                 return check.above();
             }
         }

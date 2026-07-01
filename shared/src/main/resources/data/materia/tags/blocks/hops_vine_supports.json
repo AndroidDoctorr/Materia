@@ -60,6 +60,9 @@
       "id": "materia:warped_joists",
       "required": false
     },
-    "materia:rubber_wood_joists"
+    "materia:rubber_wood_joists",
+    "materia:fig_joists",
+    "materia:cedar_joists",
+    "materia:eucalyptus_joists"
   ]
 }

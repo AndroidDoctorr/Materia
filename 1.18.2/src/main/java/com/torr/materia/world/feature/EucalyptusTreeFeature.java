@@ -4,7 +4,7 @@ import com.mojang.serialization.Codec;
 import com.torr.materia.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LeavesBlock;
@@ -26,7 +26,7 @@ public class EucalyptusTreeFeature extends Feature<NoneFeatureConfiguration> {
         return placeTree(context.level(), context.origin(), context.random(), false);
     }
 
-    public static boolean placeTree(WorldGenLevel level, BlockPos origin, RandomSource random, boolean rainbow) {
+    public static boolean placeTree(WorldGenLevel level, BlockPos origin, Random random, boolean rainbow) {
         if (!level.getBlockState(origin.below()).isSolidRender(level, origin.below())) {
             return false;
         }
@@ -79,7 +79,7 @@ public class EucalyptusTreeFeature extends Feature<NoneFeatureConfiguration> {
         return true;
     }
 
-    private static int pickOffset(RandomSource random) {
+    private static int pickOffset(Random random) {
         return switch (random.nextInt(3)) {
             case 0 -> -1;
             case 1 -> 0;
@@ -102,7 +102,7 @@ public class EucalyptusTreeFeature extends Feature<NoneFeatureConfiguration> {
         }
     }
 
-    private static void placeFlatCanopy(WorldGenLevel level, BlockPos center, Block leavesBlock, int radius, RandomSource random) {
+    private static void placeFlatCanopy(WorldGenLevel level, BlockPos center, Block leavesBlock, int radius, Random random) {
         for (int x = -radius; x <= radius; x++) {
             for (int z = -radius; z <= radius; z++) {
                 if (x * x + z * z > radius * radius + random.nextInt(2)) {
@@ -136,6 +136,6 @@ public class EucalyptusTreeFeature extends Feature<NoneFeatureConfiguration> {
 
     private static boolean canReplace(WorldGenLevel level, BlockPos pos) {
         BlockState state = level.getBlockState(pos);
-        return state.isAir() || state.canBeReplaced();
+        return state.isAir() || state.getMaterial().isReplaceable();
     }
 }

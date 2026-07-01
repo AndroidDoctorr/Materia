@@ -37,6 +37,7 @@ Most triggers are **`minecraft:inventory_changed`** (“have this in inventory a
 | Pack Rat Royalty | `materia:pack_rat_royalty` | Have any item in **`#materia:sacks_and_bindles`** |
 | Lattice Logistics | `materia:lattice_logistics` | Have `materia:basket` |
 | Sister Act | `materia:sister_act` | Have `materia:corn_cob`, `materia:squash`, and `materia:beans` at least once (three separate criteria; not one harvest tick) |
+| Cotton Pickings | `materia:cotton_pickings` | Have `materia:cotton` (child of Sister Act) |
 | Arts & Crafts | `materia:arts_and_crafts` | **Both:** have `materia:water_pot` **and** `minecraft:crafting_table` |
 | The Iron Age | `materia:the_iron_age` | **Either:** `materia:wrought_iron_ingot` **or** `materia:iron_anvil` |
 | Wings of Empire | `materia:wings_of_empire` | Have `materia:aquila_aurea` |

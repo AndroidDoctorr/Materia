@@ -1,16 +1,17 @@
 package com.torr.materia.world.tree;
 
-import com.torr.materia.materia;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import com.torr.materia.world.feature.ModConfiguredFeatures;
+import net.minecraft.core.Holder;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.grower.AbstractTreeGrower;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 
+import javax.annotation.Nullable;
+
 public class RainbowEucalyptusTreeGrower extends AbstractTreeGrower {
+    @Nullable
     @Override
-    protected ResourceKey<ConfiguredFeature<?, ?>> getConfiguredFeature(RandomSource random, boolean largeHive) {
-        return ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(materia.MOD_ID, "rainbow_eucalyptus_tree"));
+    protected Holder<? extends ConfiguredFeature<?, ?>> getConfiguredFeature(RandomSource random, boolean largeHive) {
+        return ModConfiguredFeatures.RAINBOW_EUCALYPTUS_TREE.getHolder().orElse(null);
     }
 }

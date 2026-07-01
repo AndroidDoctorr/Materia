@@ -6,7 +6,7 @@
             "entries": [
                 {
                     "type": "minecraft:item",
-                    "purple_coneflower": "materia:purple_coneflower",
+                    "name": "materia:purple_coneflower",
                     "functions": [
                         {
                             "function": "minecraft:explosion_decay"

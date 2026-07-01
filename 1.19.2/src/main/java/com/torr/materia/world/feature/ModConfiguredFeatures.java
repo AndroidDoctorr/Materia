@@ -210,7 +210,8 @@ public class ModConfiguredFeatures {
             () -> randomPatch(ModBlocks.HIBISCUS.get(), 24, 5, 2));
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> LOTUS_PATCH = CONFIGURED_FEATURES.register("lotus_patch",
-            () -> randomPatch(ModBlocks.LOTUS.get(), 16, 4, 1));
+            () -> new ConfiguredFeature<>((Feature<NoneFeatureConfiguration>) ModFeatures.LOTUS_WATER_PATCH_FEATURE.get(),
+                    NoneFeatureConfiguration.INSTANCE));
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> REEDS_CLUSTER = CONFIGURED_FEATURES.register("reeds_cluster",
             () -> new ConfiguredFeature<>((Feature<NoneFeatureConfiguration>) ModFeatures.REED_CLUSTER_FEATURE.get(),
