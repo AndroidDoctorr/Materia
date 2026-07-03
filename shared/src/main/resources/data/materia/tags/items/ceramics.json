@@ -4,6 +4,7 @@
         "minecraft:brick",
         "materia:fire_brick",
         "materia:crucible",
+        "materia:clay_roof_tile",
         "materia:terracotta_roof_tile"
     ]
 }

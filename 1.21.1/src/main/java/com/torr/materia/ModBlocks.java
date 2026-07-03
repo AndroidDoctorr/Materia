@@ -620,6 +620,13 @@ public class ModBlocks {
                         () -> new com.torr.materia.block.ThatchSlopeBlock(
                                 ModBlocks.THATCH.get().defaultBlockState(),
                                 BlockBehaviour.Properties.ofFullCopy(ModBlocks.THATCH.get())));
+        public static final RegistryObject<Block> ROOF_TILES = registerBlockWithCustomItem("roof_tiles",
+                        () -> new com.torr.materia.block.RoofTilesBlock(
+                                BlockBehaviour.Properties.of()
+                                        .strength(0.8f)
+                                        .sound(SoundType.DEEPSLATE_TILES)
+                                        .noOcclusion()),
+                        block -> new com.torr.materia.item.RoofTilesBlockItem(block, new Item.Properties(), 8));
         public static final RegistryObject<Block> GUNPOWDER_TRAIL = registerBlockWithCustomItem("gunpowder_trail",
                         () -> new com.torr.materia.block.GunpowderTrailBlock(
                                 BlockBehaviour.Properties.of()

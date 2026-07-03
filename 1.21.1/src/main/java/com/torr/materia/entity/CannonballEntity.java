@@ -17,6 +17,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.server.level.ServerEntity;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -130,6 +131,11 @@ public class CannonballEntity extends ThrowableItemProjectile {
             level.levelEvent(2001, pos, Block.getId(state));
             level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
             Block.popResource(level, pos, new ItemStack(block.asItem(), 1));
+            return;
+        }
+
+        if (block instanceof com.torr.materia.block.RoofTilesBlock && level instanceof ServerLevel serverLevel) {
+            com.torr.materia.block.RoofTilesBlock.onCannonballImpact(serverLevel, pos, state);
             return;
         }
 

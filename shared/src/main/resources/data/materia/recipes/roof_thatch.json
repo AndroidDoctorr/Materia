@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " B",
+        "BF"
+    ],
+    "key": {
+        "B": {
+            "item": "materia:bundle"
+        },
+        "F": {
+            "item": "materia:roof_frame"
+        }
+    },
+    "result": {
+        "item": "materia:thatch_roof",
+        "count": 1
+    }
+}

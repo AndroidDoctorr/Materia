@@ -42,7 +42,9 @@ All notable changes to **Materia** (mod id: `materia`) will be documented in thi
 
 - **Hewing:** fig/cedar/eucalyptus/rainbow eucalyptus logs; **maple** → `rough_birch_plank` listed in JEI hewing.
 
-- **Docs:** block pages for fig, cedar, eucalyptus, agave, decorative plants (yucca, plantain, reeds, taro), and **decorative flowers**; dye pages for verdigris, burgundy, tan, and **flower→dye policy**; armor texture notes on bronze / wrought iron pages.
+- **Docs:** block pages for fig, cedar, eucalyptus, agave, decorative plants (yucca, plantain, reeds, taro), **decorative flowers**, and **roof tiles & thatch roofs**; dye pages for verdigris, burgundy, tan, and **flower→dye policy**; armor texture notes on bronze / wrought iron pages.
+
+- **Roof tiles & thatch roofs:** **roof frame** places empty **`roof_tiles`**. **Tiled roofs:** craft 8 terracotta tiles around a frame → **`roof_tiles`**, or tile by hand. **Thatch roofs:** craft 2 bundles + frame → **`thatch_roof`** item, or bundle twice on a placed frame — both place the same **`roof_tiles`** thatch block. **`thatch_slope`** is **Thatch Stairs** only (bundles + lashing); unrelated to roof frames.
 
 ## 1.1.1 (2026-06-20)
 

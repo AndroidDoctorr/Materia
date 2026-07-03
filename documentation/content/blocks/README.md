@@ -62,3 +62,4 @@ This section documents Materia blocks. Each block page should include:
 - [Cedar tree](cedar-tree.md)
 - [Eucalyptus tree](eucalyptus-tree.md)
 - [Agave](agave.md)
+- [Roof tiles & thatch roofs](roof-tiles.md)

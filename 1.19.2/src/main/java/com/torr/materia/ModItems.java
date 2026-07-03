@@ -350,6 +350,15 @@ public class ModItems {
         public static final RegistryObject<Item> CLAY_BOWL = ITEMS.register("clay_bowl",
                         () -> new Item(new Item.Properties()
                                         .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)));
+        public static final RegistryObject<Item> CLAY_ROOF_TILE = ITEMS.register("clay_roof_tile",
+                        () -> new Item(new Item.Properties()
+                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)));
+        public static final RegistryObject<Item> ROOF_FRAME = ITEMS.register("roof_frame",
+                        () -> new com.torr.materia.item.RoofFrameItem(new Item.Properties()
+                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)));
+        public static final RegistryObject<Item> THATCH_ROOF = ITEMS.register("thatch_roof",
+                        () -> new com.torr.materia.item.ThatchRoofBlockItem(ModBlocks.ROOF_TILES.get(), new Item.Properties()
+                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)));
         public static final RegistryObject<Item> TERRACOTTA_ROOF_TILE = ITEMS.register("terracotta_roof_tile",
                         () -> new Item(new Item.Properties()
                                         .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)));
