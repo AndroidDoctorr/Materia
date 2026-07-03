@@ -10,18 +10,27 @@
     },
     {
       "type": "minecraft:heightmap",
-      "heightmap": "OCEAN_FLOOR"
+      "heightmap": "MOTION_BLOCKING_NO_LEAVES"
     },
     {
       "type": "minecraft:block_predicate_filter",
       "predicate": {
-        "type": "minecraft:would_survive",
-        "state": {
-          "Name": "materia:rock",
-          "Properties": {
-            "waterlogged": "false"
+        "type": "minecraft:all_of",
+        "predicates": [
+          {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:air"
+          },
+          {
+            "type": "minecraft:would_survive",
+            "state": {
+              "Name": "materia:rock",
+              "Properties": {
+                "waterlogged": "false"
+              }
+            }
           }
-        }
+        ]
       }
     },
     {

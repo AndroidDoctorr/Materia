@@ -19,8 +19,8 @@ public final class CypressTreeGrower {
 
     public static final TreeGrower GROWER = new TreeGrower(
             materia.MOD_ID + ":cypress",
-            Optional.of(CYPRESS_TREE),
             Optional.empty(),
+            Optional.of(CYPRESS_TREE),
             Optional.empty()
     );
 }

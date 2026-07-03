@@ -18,9 +18,9 @@ public final class FigTreeGrower {
     );
 
     public static final TreeGrower GROWER = new TreeGrower(
-            materia.MOD_ID + ":fig_tree",
-            Optional.of(FIG_TREE),
+            materia.MOD_ID + ":fig",
             Optional.empty(),
+            Optional.of(FIG_TREE),
             Optional.empty()
     );
 }

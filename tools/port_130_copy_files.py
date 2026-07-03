@@ -204,10 +204,10 @@ public final class {name} {{
 
     public static final TreeGrower GROWER = new TreeGrower(
             materia.MOD_ID + ":{id_suffix}",
-            0.1F,
-            Optional.of({id_suffix.upper()}),
+            0.0F,
             Optional.of({id_suffix.upper()}_MEGA),
             Optional.empty(),
+            Optional.of({id_suffix.upper()}),
             Optional.empty(),
             Optional.empty(),
             Optional.empty()
@@ -235,8 +235,8 @@ public final class {name} {{
 
     public static final TreeGrower GROWER = new TreeGrower(
             materia.MOD_ID + ":{id_suffix}",
-            Optional.of({id_suffix.upper()}),
             Optional.empty(),
+            Optional.of({id_suffix.upper()}),
             Optional.empty()
     );
 }}

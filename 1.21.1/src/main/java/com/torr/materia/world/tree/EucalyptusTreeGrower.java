@@ -18,9 +18,9 @@ public final class EucalyptusTreeGrower {
     );
 
     public static final TreeGrower GROWER = new TreeGrower(
-            materia.MOD_ID + ":eucalyptus_tree",
-            Optional.of(EUCALYPTUS_TREE),
+            materia.MOD_ID + ":eucalyptus",
             Optional.empty(),
+            Optional.of(EUCALYPTUS_TREE),
             Optional.empty()
     );
 }

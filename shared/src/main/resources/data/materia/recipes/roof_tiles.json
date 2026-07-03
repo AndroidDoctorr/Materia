@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "TTT",
+        "TFT",
+        "TTT"
+    ],
+    "key": {
+        "T": {
+            "item": "materia:terracotta_roof_tile"
+        },
+        "F": {
+            "item": "materia:roof_frame"
+        }
+    },
+    "result": {
+        "item": "materia:roof_tiles",
+        "count": 1
+    }
+}

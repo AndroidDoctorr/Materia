@@ -50,7 +50,8 @@ public class ModPlacedFeatures {
             () -> new PlacedFeature(ModConfiguredFeatures.SURFACE_EARTH.getHolder().get(),
                     List.of(RarityFilter.onAverageOnceEvery(4),
                             InSquarePlacement.spread(),
-                            HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
+                            BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE),
                             BiomeFilter.biome())));
 
     // Surface rock placement - spawns on the ocean floor (solid ground under water)
@@ -58,8 +59,10 @@ public class ModPlacedFeatures {
             () -> new PlacedFeature(ModConfiguredFeatures.SURFACE_ROCK.getHolder().get(),
                     List.of(RarityFilter.onAverageOnceEvery(8), // 1 in 8 chance per attempt (increased from 16)
                             InSquarePlacement.spread(),
-                            HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR),
-                            BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.ROCK.get().defaultBlockState(), BlockPos.ZERO)),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
+                            BlockPredicateFilter.forPredicate(BlockPredicate.allOf(
+                            BlockPredicate.ONLY_IN_AIR_PREDICATE,
+                            BlockPredicate.wouldSurvive(ModBlocks.ROCK.get().defaultBlockState(), BlockPos.ZERO))),
                             BiomeFilter.biome())));
 
     // Bauxite surface clusters - warm/wet surface clumps on stone or dirt
@@ -121,8 +124,10 @@ public class ModPlacedFeatures {
             () -> new PlacedFeature(ModConfiguredFeatures.SURFACE_ROCK.getHolder().get(),
                     List.of(RarityFilter.onAverageOnceEvery(2), // 1 in 2 chance (increased from 4 - very common in mountains!)
                             InSquarePlacement.spread(),
-                            HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR),
-                            BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.ROCK.get().defaultBlockState(), BlockPos.ZERO)),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
+                            BlockPredicateFilter.forPredicate(BlockPredicate.allOf(
+                            BlockPredicate.ONLY_IN_AIR_PREDICATE,
+                            BlockPredicate.wouldSurvive(ModBlocks.ROCK.get().defaultBlockState(), BlockPos.ZERO))),
                             BiomeFilter.biome())));
 
     // Enhanced cave rock placement for rocky biomes
@@ -140,7 +145,7 @@ public class ModPlacedFeatures {
             () -> new PlacedFeature(ModConfiguredFeatures.WILD_FLAX_PATCH.getHolder().get(),
                     List.of(RarityFilter.onAverageOnceEvery(32), // 1 patch every 32 chunks on average
                             InSquarePlacement.spread(),
-                            HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
                             BiomeFilter.biome())));
 
     // Wild squash placement – flower-style patches
@@ -148,7 +153,7 @@ public class ModPlacedFeatures {
             () -> new PlacedFeature(ModConfiguredFeatures.WILD_SQUASH_PATCH.getHolder().get(),
                     List.of(RarityFilter.onAverageOnceEvery(64), // 1 patch every 64 chunks on average
                             InSquarePlacement.spread(),
-                            HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
                             BiomeFilter.biome())));
 
     // Wild beans placement – flower-style patches
@@ -156,7 +161,7 @@ public class ModPlacedFeatures {
             () -> new PlacedFeature(ModConfiguredFeatures.WILD_BEANS_PATCH.getHolder().get(),
                     List.of(RarityFilter.onAverageOnceEvery(64), // 1 patch every 64 chunks on average
                             InSquarePlacement.spread(),
-                            HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
                             BiomeFilter.biome())));
 
     // Wild peppers placement – flower-style patches
@@ -164,7 +169,7 @@ public class ModPlacedFeatures {
             () -> new PlacedFeature(ModConfiguredFeatures.WILD_PEPPERS_PATCH.getHolder().get(),
                     List.of(RarityFilter.onAverageOnceEvery(64), // 1 patch every 64 chunks on average
                             InSquarePlacement.spread(),
-                            HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
                             BiomeFilter.biome())));
 
     // Wild corn placement – flower-style patches
@@ -172,7 +177,7 @@ public class ModPlacedFeatures {
             () -> new PlacedFeature(ModConfiguredFeatures.WILD_CORN_PATCH.getHolder().get(),
                     List.of(RarityFilter.onAverageOnceEvery(64), // 1 patch every 64 chunks on average
                             InSquarePlacement.spread(),
-                            HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
                             BiomeFilter.biome())));
 
 
@@ -180,14 +185,14 @@ public class ModPlacedFeatures {
             () -> new PlacedFeature(ModConfiguredFeatures.WILD_RICE_PATCH.getHolder().get(),
                     List.of(RarityFilter.onAverageOnceEvery(40),
                             InSquarePlacement.spread(),
-                            HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
                             BiomeFilter.biome())));
 
     public static final RegistryObject<PlacedFeature> WILD_COTTON_PLACED = PLACED_FEATURES.register("wild_cotton_placed",
             () -> new PlacedFeature(ModConfiguredFeatures.WILD_COTTON_PATCH.getHolder().get(),
                     List.of(RarityFilter.onAverageOnceEvery(48),
                             InSquarePlacement.spread(),
-                            HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
                             BiomeFilter.biome())));
 
 
@@ -286,7 +291,7 @@ public class ModPlacedFeatures {
             () -> new PlacedFeature(ModConfiguredFeatures.TEA_BUSH_PATCH.getHolder().get(),
                     List.of(RarityFilter.onAverageOnceEvery(36),
                             InSquarePlacement.spread(),
-                            HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
                             BiomeFilter.biome())));
 
     // Ochre clay placement - rare
@@ -306,7 +311,7 @@ public class ModPlacedFeatures {
             () -> new PlacedFeature(ModConfiguredFeatures.INDIGO_PATCH.getHolder().get(),
                     List.of(RarityFilter.onAverageOnceEvery(64),
                             InSquarePlacement.spread(),
-                            HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR),
+                            HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
                             BiomeFilter.biome())));
 
     // Wild grape vine placement - spawns on trees in temperate forests

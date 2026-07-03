@@ -1,9 +1,9 @@
 {
     "type": "minecraft:crafting_shaped",
     "pattern": [
-        "PRP",
-        "RFR",
-        "PRP"
+        "PFP",
+        "RJR",
+        "PFP"
     ],
     "key": {
         "P": {

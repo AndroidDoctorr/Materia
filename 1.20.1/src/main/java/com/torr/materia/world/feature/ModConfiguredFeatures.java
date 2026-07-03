@@ -32,6 +32,10 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
+import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
+import net.minecraft.world.level.levelgen.placement.PlacementModifier;
+
 import net.minecraft.core.Holder;
 
 import java.util.List;
@@ -87,7 +91,7 @@ public class ModConfiguredFeatures {
                 ConfiguredFeature<SimpleBlockConfiguration, ?> simple = new ConfiguredFeature<>(Feature.SIMPLE_BLOCK,
                         new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.BAUXITE.get())));
                 Holder<ConfiguredFeature<?, ?>> simpleHolder = Holder.direct(simple);
-                PlacedFeature placed = new PlacedFeature(simpleHolder, java.util.List.of());
+                PlacedFeature placed = new PlacedFeature(simpleHolder, patchBlockPlacement());
                 Holder<PlacedFeature> placedHolder = Holder.direct(placed);
                 return new ConfiguredFeature<>(Feature.RANDOM_PATCH,
                         new RandomPatchConfiguration(6, 4, 0, placedHolder)); // fewer loose chunks per patch
@@ -116,7 +120,7 @@ public class ModConfiguredFeatures {
                 ConfiguredFeature<SimpleBlockConfiguration, ?> simple = new ConfiguredFeature<>(Feature.SIMPLE_BLOCK,
                         new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.WILD_FLAX.get())));
                 Holder<ConfiguredFeature<?, ?>> simpleHolder = Holder.direct(simple);
-                PlacedFeature placed = new PlacedFeature(simpleHolder, java.util.List.of());
+                PlacedFeature placed = new PlacedFeature(simpleHolder, patchBlockPlacement());
                 Holder<PlacedFeature> placedHolder = Holder.direct(placed);
                 return new ConfiguredFeature<>(Feature.RANDOM_PATCH,
                         new RandomPatchConfiguration(32, 6, 2, placedHolder));
@@ -128,7 +132,7 @@ public class ModConfiguredFeatures {
                 ConfiguredFeature<SimpleBlockConfiguration, ?> simple = new ConfiguredFeature<>(Feature.SIMPLE_BLOCK,
                         new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.WILD_SQUASH.get())));
                 Holder<ConfiguredFeature<?, ?>> simpleHolder = Holder.direct(simple);
-                PlacedFeature placed = new PlacedFeature(simpleHolder, java.util.List.of());
+                PlacedFeature placed = new PlacedFeature(simpleHolder, patchBlockPlacement());
                 Holder<PlacedFeature> placedHolder = Holder.direct(placed);
                 return new ConfiguredFeature<>(Feature.RANDOM_PATCH,
                         new RandomPatchConfiguration(32, 6, 2, placedHolder));
@@ -140,7 +144,7 @@ public class ModConfiguredFeatures {
                 ConfiguredFeature<SimpleBlockConfiguration, ?> simple = new ConfiguredFeature<>(Feature.SIMPLE_BLOCK,
                         new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.WILD_BEANS.get())));
                 Holder<ConfiguredFeature<?, ?>> simpleHolder = Holder.direct(simple);
-                PlacedFeature placed = new PlacedFeature(simpleHolder, java.util.List.of());
+                PlacedFeature placed = new PlacedFeature(simpleHolder, patchBlockPlacement());
                 Holder<PlacedFeature> placedHolder = Holder.direct(placed);
                 return new ConfiguredFeature<>(Feature.RANDOM_PATCH,
                         new RandomPatchConfiguration(32, 6, 2, placedHolder));
@@ -152,7 +156,7 @@ public class ModConfiguredFeatures {
                 ConfiguredFeature<SimpleBlockConfiguration, ?> simple = new ConfiguredFeature<>(Feature.SIMPLE_BLOCK,
                         new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.WILD_PEPPERS.get())));
                 Holder<ConfiguredFeature<?, ?>> simpleHolder = Holder.direct(simple);
-                PlacedFeature placed = new PlacedFeature(simpleHolder, java.util.List.of());
+                PlacedFeature placed = new PlacedFeature(simpleHolder, patchBlockPlacement());
                 Holder<PlacedFeature> placedHolder = Holder.direct(placed);
                 return new ConfiguredFeature<>(Feature.RANDOM_PATCH,
                         new RandomPatchConfiguration(32, 6, 2, placedHolder));
@@ -164,7 +168,7 @@ public class ModConfiguredFeatures {
                 ConfiguredFeature<SimpleBlockConfiguration, ?> simple = new ConfiguredFeature<>(Feature.SIMPLE_BLOCK,
                         new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.WILD_CORN.get())));
                 Holder<ConfiguredFeature<?, ?>> simpleHolder = Holder.direct(simple);
-                PlacedFeature placed = new PlacedFeature(simpleHolder, java.util.List.of());
+                PlacedFeature placed = new PlacedFeature(simpleHolder, patchBlockPlacement());
                 Holder<PlacedFeature> placedHolder = Holder.direct(placed);
                 return new ConfiguredFeature<>(Feature.RANDOM_PATCH,
                         new RandomPatchConfiguration(32, 6, 2, placedHolder));
@@ -242,7 +246,7 @@ public class ModConfiguredFeatures {
                 ConfiguredFeature<SimpleBlockConfiguration, ?> simple = new ConfiguredFeature<>(Feature.SIMPLE_BLOCK,
                         new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.INDIGO.get())));
                 Holder<ConfiguredFeature<?, ?>> simpleHolder = Holder.direct(simple);
-                PlacedFeature placed = new PlacedFeature(simpleHolder, java.util.List.of());
+                PlacedFeature placed = new PlacedFeature(simpleHolder, patchBlockPlacement());
                 Holder<PlacedFeature> placedHolder = Holder.direct(placed);
                 return new ConfiguredFeature<>(Feature.RANDOM_PATCH,
                         new RandomPatchConfiguration(32, 6, 2, placedHolder));
@@ -507,12 +511,17 @@ public class ModConfiguredFeatures {
         CONFIGURED_FEATURES.register(eventBus);
     }
 
+    
+    private static java.util.List<PlacementModifier> patchBlockPlacement() {
+        return java.util.List.of(BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE));
+    }
+
     private static ConfiguredFeature<RandomPatchConfiguration, ?> randomPatch(net.minecraft.world.level.block.Block block,
                                                                                 int tries, int xz, int y) {
         ConfiguredFeature<SimpleBlockConfiguration, ?> simple = new ConfiguredFeature<>(Feature.SIMPLE_BLOCK,
                 new SimpleBlockConfiguration(BlockStateProvider.simple(block)));
         Holder<ConfiguredFeature<?, ?>> simpleHolder = Holder.direct(simple);
-        PlacedFeature placed = new PlacedFeature(simpleHolder, java.util.List.of());
+        PlacedFeature placed = new PlacedFeature(simpleHolder, patchBlockPlacement());
         Holder<PlacedFeature> placedHolder = Holder.direct(placed);
         return new ConfiguredFeature<>(Feature.RANDOM_PATCH, new RandomPatchConfiguration(tries, xz, y, placedHolder));
     }

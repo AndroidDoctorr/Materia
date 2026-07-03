@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " SF",
+        "SFJ"
+    ],
+    "key": {
+        "J": {
+            "tag": "materia:all_wood_joiners"
+        },
+        "S": {
+            "tag": "materia:smooth_planks"
+        },
+        "F": {
+            "item": "materia:wood_frame"
+        }
+    },
+    "result": {
+        "item": "materia:roof_frame",
+        "count": 1
+    }
+}

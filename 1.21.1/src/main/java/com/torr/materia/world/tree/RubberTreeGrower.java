@@ -19,8 +19,8 @@ public final class RubberTreeGrower {
 
     public static final TreeGrower GROWER = new TreeGrower(
             materia.MOD_ID + ":rubber",
-            Optional.of(RUBBER_TREE),
             Optional.empty(),
+            Optional.of(RUBBER_TREE),
             Optional.empty()
     );
 }

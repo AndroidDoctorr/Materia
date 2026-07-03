@@ -23,10 +23,10 @@ public final class CedarTreeGrower {
 
     public static final TreeGrower GROWER = new TreeGrower(
             materia.MOD_ID + ":cedar",
-            0.1F,
-            Optional.of(CEDAR_TREE),
+            0.0F,
             Optional.of(CEDAR_MEGA_TREE),
             Optional.empty(),
+            Optional.of(CEDAR_TREE),
             Optional.empty(),
             Optional.empty(),
             Optional.empty()

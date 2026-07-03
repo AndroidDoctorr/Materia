@@ -217,7 +217,7 @@ public final class materiaWorldgenBootstrap {
             ConfiguredFeature<SimpleBlockConfiguration, ?> simple = new ConfiguredFeature<>(Feature.SIMPLE_BLOCK,
                     new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.BAUXITE.get())));
             Holder<ConfiguredFeature<?, ?>> simpleHolder = Holder.direct(simple);
-            PlacedFeature placed = new PlacedFeature(simpleHolder, List.of());
+            PlacedFeature placed = new PlacedFeature(simpleHolder, patchBlockPlacement());
             Holder<PlacedFeature> placedHolder = Holder.direct(placed);
             context.register(BAUXITE_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
                     new RandomPatchConfiguration(6, 4, 0, placedHolder)));
@@ -475,7 +475,8 @@ public final class materiaWorldgenBootstrap {
                 List.of(
                         RarityFilter.onAverageOnceEvery(4),
                         InSquarePlacement.spread(),
-                        HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR),
+                        HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
+                        BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE),
                         BiomeFilter.biome()
                 )));
 
@@ -483,8 +484,10 @@ public final class materiaWorldgenBootstrap {
                 List.of(
                         RarityFilter.onAverageOnceEvery(8),
                         InSquarePlacement.spread(),
-                        HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR),
-                        BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.ROCK.get().defaultBlockState(), BlockPos.ZERO)),
+                        HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
+                        BlockPredicateFilter.forPredicate(BlockPredicate.allOf(
+                                    BlockPredicate.ONLY_IN_AIR_PREDICATE,
+                                    BlockPredicate.wouldSurvive(ModBlocks.ROCK.get().defaultBlockState(), BlockPos.ZERO))),
                         BiomeFilter.biome()
                 )));
 
@@ -492,8 +495,10 @@ public final class materiaWorldgenBootstrap {
                 List.of(
                         RarityFilter.onAverageOnceEvery(2),
                         InSquarePlacement.spread(),
-                        HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR),
-                        BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.ROCK.get().defaultBlockState(), BlockPos.ZERO)),
+                        HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
+                        BlockPredicateFilter.forPredicate(BlockPredicate.allOf(
+                                    BlockPredicate.ONLY_IN_AIR_PREDICATE,
+                                    BlockPredicate.wouldSurvive(ModBlocks.ROCK.get().defaultBlockState(), BlockPos.ZERO))),
                         BiomeFilter.biome()
                 )));
 
@@ -560,28 +565,28 @@ public final class materiaWorldgenBootstrap {
 
         // Wild crops
         context.register(WILD_FLAX_PLACED, new PlacedFeature(configured.getOrThrow(WILD_FLAX_PATCH),
-                List.of(RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR), BiomeFilter.biome())));
+                List.of(RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES), BiomeFilter.biome())));
         context.register(WILD_SQUASH_PLACED, new PlacedFeature(configured.getOrThrow(WILD_SQUASH_PATCH),
-                List.of(RarityFilter.onAverageOnceEvery(64), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR), BiomeFilter.biome())));
+                List.of(RarityFilter.onAverageOnceEvery(64), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES), BiomeFilter.biome())));
         context.register(WILD_BEANS_PLACED, new PlacedFeature(configured.getOrThrow(WILD_BEANS_PATCH),
-                List.of(RarityFilter.onAverageOnceEvery(64), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR), BiomeFilter.biome())));
+                List.of(RarityFilter.onAverageOnceEvery(64), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES), BiomeFilter.biome())));
         context.register(WILD_PEPPERS_PLACED, new PlacedFeature(configured.getOrThrow(WILD_PEPPERS_PATCH),
-                List.of(RarityFilter.onAverageOnceEvery(64), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR), BiomeFilter.biome())));
+                List.of(RarityFilter.onAverageOnceEvery(64), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES), BiomeFilter.biome())));
 
         context.register(WILD_RICE_PLACED, new PlacedFeature(configured.getOrThrow(WILD_RICE_PATCH),
-                List.of(RarityFilter.onAverageOnceEvery(40), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR), BiomeFilter.biome())));
+                List.of(RarityFilter.onAverageOnceEvery(40), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES), BiomeFilter.biome())));
         context.register(WILD_COTTON_PLACED, new PlacedFeature(configured.getOrThrow(WILD_COTTON_PATCH),
-                List.of(RarityFilter.onAverageOnceEvery(48), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR), BiomeFilter.biome())));
+                List.of(RarityFilter.onAverageOnceEvery(48), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES), BiomeFilter.biome())));
         context.register(ESPARTO_PLACED, new PlacedFeature(configured.getOrThrow(ESPARTO_PATCH),
                 List.of(RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES), BiomeFilter.biome())));
         context.register(TEA_BUSH_PLACED, new PlacedFeature(configured.getOrThrow(TEA_BUSH_PATCH),
-                List.of(RarityFilter.onAverageOnceEvery(36), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR), BiomeFilter.biome())));
+                List.of(RarityFilter.onAverageOnceEvery(36), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES), BiomeFilter.biome())));
 
         context.register(WILD_CORN_PLACED, new PlacedFeature(configured.getOrThrow(WILD_CORN_PATCH),
-                List.of(RarityFilter.onAverageOnceEvery(64), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR), BiomeFilter.biome())));
+                List.of(RarityFilter.onAverageOnceEvery(64), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES), BiomeFilter.biome())));
 
         context.register(INDIGO_PLACED, new PlacedFeature(configured.getOrThrow(INDIGO_PATCH),
-                List.of(RarityFilter.onAverageOnceEvery(64), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR), BiomeFilter.biome())));
+                List.of(RarityFilter.onAverageOnceEvery(64), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES), BiomeFilter.biome())));
 
         context.register(WILD_GRAPE_VINE_PLACED, new PlacedFeature(configured.getOrThrow(WILD_GRAPE_VINE),
                 List.of(RarityFilter.onAverageOnceEvery(4), InSquarePlacement.spread(), HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR), BiomeFilter.biome())));
@@ -738,11 +743,16 @@ public final class materiaWorldgenBootstrap {
         return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(materia.MOD_ID, path));
     }
 
+    
+    private static java.util.List<PlacementModifier> patchBlockPlacement() {
+        return java.util.List.of(BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE));
+    }
+
     private static ConfiguredFeature<?, ?> randomPatch(net.minecraft.world.level.block.state.BlockState state, int tries, int xzSpread, int ySpread) {
         ConfiguredFeature<SimpleBlockConfiguration, ?> simple = new ConfiguredFeature<>(Feature.SIMPLE_BLOCK,
                 new SimpleBlockConfiguration(BlockStateProvider.simple(state)));
         Holder<ConfiguredFeature<?, ?>> simpleHolder = Holder.direct(simple);
-        PlacedFeature placed = new PlacedFeature(simpleHolder, List.of());
+        PlacedFeature placed = new PlacedFeature(simpleHolder, patchBlockPlacement());
         Holder<PlacedFeature> placedHolder = Holder.direct(placed);
         return new ConfiguredFeature<>(Feature.RANDOM_PATCH, new RandomPatchConfiguration(tries, xzSpread, ySpread, placedHolder));
     }
