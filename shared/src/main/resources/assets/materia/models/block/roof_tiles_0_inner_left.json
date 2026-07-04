@@ -5,8 +5,8 @@
         "triangle": "materia:block/roof_frame_triangle",
         "tiles": "materia:block/roof_tiles",
         "particle": "minecraft:block/oak_planks",
-        "tiles_x": "materia:block/roof_tiles_corner_right",
-        "tiles_z": "materia:block/roof_tiles_corner_left"
+        "tiles_x": "materia:block/roof_frame_triangle",
+        "tiles_z": "materia:block/roof_frame_triangle"
     },
     "elements": [
         {
@@ -180,9 +180,9 @@
             "faces": {
                 "up": {
                     "uv": [
+                        16,
+                        16,
                         0,
-                        16,
-                        16,
                         0
                     ],
                     "texture": "#tiles_z",
@@ -190,9 +190,9 @@
                 },
                 "down": {
                     "uv": [
-                        16,
-                        16,
                         0,
+                        16,
+                        16,
                         0
                     ],
                     "texture": "#tiles_z",

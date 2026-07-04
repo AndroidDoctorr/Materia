@@ -48,7 +48,7 @@ def corner_texture_pair(stage: int, thatch: bool, shape: str) -> tuple[str, str]
     primary = corner_side(shape)
     secondary = "right" if primary == "left" else "left"
 
-    if "outer" in shape and stage == 0 and not thatch:
+    if stage == 0 and not thatch:
         return TRIANGLE_TEXTURE, TRIANGLE_TEXTURE
 
     return (
@@ -85,6 +85,19 @@ def flip_uv_across_z(element: dict) -> None:
     for face in element["faces"].values():
         u1, v1, u2, v2 = face["uv"]
         face["uv"] = [u2, v1, u1, v2]
+
+
+def compose_uv(*transforms: UvTransform) -> UvTransform:
+    def apply(element: dict) -> None:
+        for transform in transforms:
+            transform(element)
+
+    return apply
+
+
+INNER_Z_UV = compose_uv(rotate_uv_90_ccw, flip_uv_across_z)
+OUTER_Z_UV = flip_uv_across_z
+EMPTY_OUTER_X_UV = compose_uv(rotate_uv_90_ccw, flip_uv_across_z)
 
 
 def slope_along_x(texture_ref: str, uv_transform: UvTransform | None = None) -> dict:
@@ -148,7 +161,7 @@ def corner_model(stage: int, thatch: bool, shape: str) -> dict:
             16,
             -45,
             rotate_uv_180,
-            rotate_uv_90_ccw,
+            INNER_Z_UV,
         )
     if shape == "inner_right":
         return build_corner_model(
@@ -158,9 +171,20 @@ def corner_model(stage: int, thatch: bool, shape: str) -> dict:
             0,
             45,
             rotate_uv_180,
-            rotate_uv_90_ccw,
+            INNER_Z_UV,
         )
     if shape == "outer_left":
+        empty_frame = stage == 0 and not thatch
+        return build_corner_model(
+            ["bottom"],
+            tex_x,
+            tex_z,
+            16,
+            -45,
+            EMPTY_OUTER_X_UV if empty_frame else None,
+            OUTER_Z_UV,
+        )
+    if shape == "outer_right":
         return build_corner_model(
             ["bottom"],
             tex_x,
@@ -168,17 +192,7 @@ def corner_model(stage: int, thatch: bool, shape: str) -> dict:
             0,
             45,
             None,
-            flip_uv_across_z,
-        )
-    if shape == "outer_right":
-        return build_corner_model(
-            ["bottom"],
-            tex_x,
-            tex_z,
-            16,
-            -45,
-            None,
-            flip_uv_across_z,
+            OUTER_Z_UV,
         )
     raise ValueError(shape)
 

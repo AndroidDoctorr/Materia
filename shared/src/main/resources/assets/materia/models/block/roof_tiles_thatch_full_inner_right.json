@@ -135,9 +135,9 @@
                 "up": {
                     "uv": [
                         0,
-                        0,
                         16,
-                        16
+                        16,
+                        0
                     ],
                     "texture": "#tiles_x",
                     "cullface": false
@@ -145,9 +145,9 @@
                 "down": {
                     "uv": [
                         0,
+                        0,
                         16,
-                        16,
-                        0
+                        16
                     ],
                     "texture": "#tiles_x",
                     "cullface": false
@@ -179,6 +179,7 @@
             },
             "faces": {
                 "up": {
+                    "rotation": 90,
                     "uv": [
                         0,
                         16,
@@ -189,6 +190,7 @@
                     "cullface": false
                 },
                 "down": {
+                    "rotation": 90,
                     "uv": [
                         16,
                         16,
