@@ -77,6 +77,8 @@ public class CannonBlockEntity extends BlockEntity {
     @Override
     public void saveAdditional(CompoundTag tag) {
         super.saveAdditional(tag);
+        tag.putFloat("YawDeg", yawDeg);
+        tag.putFloat("PitchDeg", pitchDeg);
         tag.putInt("Powder", powder);
         if (!ammo.isEmpty()) {
             tag.put("Ammo", ammo.save(new CompoundTag()));
@@ -86,7 +88,6 @@ public class CannonBlockEntity extends BlockEntity {
     @Override
     public void load(CompoundTag tag) {
         super.load(tag);
-        // These are transient and only present in update packets / update tags, not persisted to disk.
         if (tag.contains("YawDeg")) yawDeg = tag.getFloat("YawDeg");
         if (tag.contains("PitchDeg")) pitchDeg = tag.getFloat("PitchDeg");
         powder = tag.getInt("Powder");
@@ -96,7 +97,6 @@ public class CannonBlockEntity extends BlockEntity {
     @Override
     public CompoundTag getUpdateTag() {
         CompoundTag tag = new CompoundTag();
-        // Include transient aim for client rendering, but do NOT persist it via saveAdditional()
         tag.putFloat("YawDeg", yawDeg);
         tag.putFloat("PitchDeg", pitchDeg);
 

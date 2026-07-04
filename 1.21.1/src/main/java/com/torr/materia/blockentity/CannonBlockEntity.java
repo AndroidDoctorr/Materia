@@ -78,6 +78,8 @@ public class CannonBlockEntity extends BlockEntity {
     @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider provider) {
         super.saveAdditional(tag, provider);
+        tag.putFloat("YawDeg", yawDeg);
+        tag.putFloat("PitchDeg", pitchDeg);
         tag.putInt("Powder", powder);
         if (!ammo.isEmpty()) {
             tag.put("Ammo", ammo.save(provider, new CompoundTag()));
@@ -87,7 +89,6 @@ public class CannonBlockEntity extends BlockEntity {
     @Override
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider provider) {
         super.loadAdditional(tag, provider);
-        // These are transient and only present in update packets / update tags, not persisted to disk.
         if (tag.contains("YawDeg")) yawDeg = tag.getFloat("YawDeg");
         if (tag.contains("PitchDeg")) pitchDeg = tag.getFloat("PitchDeg");
         powder = tag.getInt("Powder");
@@ -97,7 +98,6 @@ public class CannonBlockEntity extends BlockEntity {
     @Override
     public CompoundTag getUpdateTag(HolderLookup.Provider provider) {
         CompoundTag tag = new CompoundTag();
-        // Include transient aim for client rendering, but do NOT persist it via saveAdditional()
         tag.putFloat("YawDeg", yawDeg);
         tag.putFloat("PitchDeg", pitchDeg);
 
