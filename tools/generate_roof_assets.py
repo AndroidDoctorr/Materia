@@ -1,91 +1,256 @@
 #!/usr/bin/env python3
-"""Generate roof_tiles block models and blockstates from the roof_frame template.
+"""Generate roof_tiles corner models and blockstates.
 
-Block model rotations only accept -45, -22.5, 0, 22.5, or 45 degrees.
-Flip slope direction by moving the rotation origin along the ridge (z=0 vs z=16), not with invalid angles like 315 or -45 on the back pivot.
+Plain straight slope models (roof_tiles_0..8, thatch variants) are hand-maintained.
+This script only emits corner shape variants and blockstates, using the corrected
+slope element from roof_tiles_8.json as the geometry reference.
 """
 import json
+from copy import deepcopy
 from pathlib import Path
+from typing import Callable
 
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "shared" / "src" / "main" / "resources" / "assets" / "materia"
 MODELS = ASSETS / "models" / "block"
 BLOCKSTATES = ASSETS / "blockstates"
 
-TEMPLATE = json.loads((MODELS / "roof_frame.json").read_text(encoding="utf-8"))
-
-STAGE_TEXTURES = {
-    0: "materia:block/roof_tiles_0",
-    1: "materia:block/roof_tiles_1",
-    2: "materia:block/roof_tiles_2",
-    3: "materia:block/roof_tiles_3",
-    4: "materia:block/roof_tiles_4",
-    5: "materia:block/roof_tiles_5",
-    6: "materia:block/roof_tiles_6",
-    7: "materia:block/roof_tiles_7",
-    8: "materia:block/roof_tiles",
-}
-
-THATCH_PARTIAL_TEXTURE = "materia:block/roof_thatch_1"
-THATCH_FULL_TEXTURE = "materia:block/thatch"
+FRAME_TEMPLATE = json.loads((MODELS / "roof_frame.json").read_text(encoding="utf-8"))
+SLOPE_REFERENCE = json.loads((MODELS / "roof_tiles_8.json").read_text(encoding="utf-8"))
+SLOPE_ELEMENT = next(element for element in SLOPE_REFERENCE["elements"] if element["name"] == "roof_tiles")
 
 FACINGS = ["north", "east", "south", "west"]
 Y_ROT = {"north": 0, "east": 90, "south": 180, "west": 270}
+SHAPES = ["straight", "inner_left", "inner_right", "outer_left", "outer_right"]
+TRIANGLE_TEXTURE = "materia:block/roof_frame_triangle"
+
+UvTransform = Callable[[dict], None]
 
 
-def model_for_stage(stage: int) -> dict:
-    model = json.loads(json.dumps(TEMPLATE))
-    model["textures"]["tiles"] = STAGE_TEXTURES[stage]
-    return model
+def corner_side(shape: str) -> str:
+    return "left" if "left" in shape else "right"
 
 
-def model_for_thatch_texture(texture: str) -> dict:
-    model = json.loads(json.dumps(TEMPLATE))
-    model["textures"]["tiles"] = texture
-    return model
+def corner_texture_path(stage: int, thatch: bool, side: str) -> str:
+    if thatch:
+        if stage >= 8:
+            return f"materia:block/roof_thatch_corner_{side}"
+        return f"materia:block/roof_thatch_corner_{side}_1"
 
-
-def model_for_thatch_state(thatch: bool, stage: int) -> str:
-    if not thatch:
-        return f"materia:block/roof_tiles_{stage}"
-    if stage == 0:
-        return "materia:block/roof_tiles_thatch_1"
     if stage >= 8:
-        return "materia:block/roof_tiles_thatch_full"
-    return f"materia:block/roof_tiles_{stage}"
+        return f"materia:block/roof_tiles_corner_{side}"
+    if stage <= 0:
+        return f"materia:block/roof_tiles_corner_{side}"
+    return f"materia:block/roof_tiles_corner_{side}_{stage}"
 
 
-def main() -> None:
+def corner_texture_pair(stage: int, thatch: bool, shape: str) -> tuple[str, str]:
+    primary = corner_side(shape)
+    secondary = "right" if primary == "left" else "left"
+
+    if "outer" in shape and stage == 0 and not thatch:
+        return TRIANGLE_TEXTURE, TRIANGLE_TEXTURE
+
+    return (
+        corner_texture_path(stage, thatch, primary),
+        corner_texture_path(stage, thatch, secondary),
+    )
+
+
+def element_by_name(model: dict, name: str) -> dict:
+    for element in model["elements"]:
+        if element["name"] == name:
+            return element
+    raise KeyError(name)
+
+
+def set_face_texture(element: dict, texture_ref: str) -> None:
+    for face in element["faces"].values():
+        face["texture"] = texture_ref
+
+
+def rotate_uv_180(element: dict) -> None:
+    for face in element["faces"].values():
+        u1, v1, u2, v2 = face["uv"]
+        face["uv"] = [u2, v2, u1, v1]
+
+
+def rotate_uv_90_ccw(element: dict) -> None:
+    for face in element["faces"].values():
+        u1, v1, u2, v2 = face["uv"]
+        face["uv"] = [v2, u1, v1, u2]
+
+
+def flip_uv_across_z(element: dict) -> None:
+    for face in element["faces"].values():
+        u1, v1, u2, v2 = face["uv"]
+        face["uv"] = [u2, v1, u1, v2]
+
+
+def slope_along_x(texture_ref: str, uv_transform: UvTransform | None = None) -> dict:
+    slope = deepcopy(SLOPE_ELEMENT)
+    slope["name"] = "roof_slope_x"
+    set_face_texture(slope, texture_ref)
+    if uv_transform:
+        uv_transform(slope)
+    return slope
+
+
+def slope_along_z(
+    origin_x: int,
+    angle: float,
+    texture_ref: str,
+    uv_transform: UvTransform | None = None,
+) -> dict:
+    slope = deepcopy(SLOPE_ELEMENT)
+    slope["name"] = "roof_slope_z"
+    slope["rotation"] = {
+        "origin": [origin_x, 0, 8],
+        "axis": "z",
+        "angle": angle,
+        "rescale": True,
+    }
+    set_face_texture(slope, texture_ref)
+    if uv_transform:
+        uv_transform(slope)
+    return slope
+
+
+def build_corner_model(
+    frame_names: list[str],
+    tex_x: str,
+    tex_z: str,
+    z_origin: int,
+    z_angle: float,
+    x_uv: UvTransform | None = None,
+    z_uv: UvTransform | None = None,
+) -> dict:
+    model = deepcopy(FRAME_TEMPLATE)
+    model["textures"]["tiles_x"] = tex_x
+    model["textures"]["tiles_z"] = tex_z
+    elements = [deepcopy(element_by_name(FRAME_TEMPLATE, name)) for name in frame_names]
+    elements.append(slope_along_x("#tiles_x", x_uv))
+    elements.append(slope_along_z(z_origin, z_angle, "#tiles_z", z_uv))
+    model["elements"] = elements
+    return model
+
+
+def corner_model(stage: int, thatch: bool, shape: str) -> dict:
+    tex_primary, tex_secondary = corner_texture_pair(stage, thatch, shape)
+    tex_x = tex_secondary
+    tex_z = tex_primary
+
+    if shape == "inner_left":
+        return build_corner_model(
+            ["bottom", "back_side", "left_side"],
+            tex_x,
+            tex_z,
+            16,
+            -45,
+            rotate_uv_180,
+            rotate_uv_90_ccw,
+        )
+    if shape == "inner_right":
+        return build_corner_model(
+            ["bottom", "back_side", "right_side"],
+            tex_x,
+            tex_z,
+            0,
+            45,
+            rotate_uv_180,
+            rotate_uv_90_ccw,
+        )
+    if shape == "outer_left":
+        return build_corner_model(
+            ["bottom"],
+            tex_x,
+            tex_z,
+            0,
+            45,
+            None,
+            flip_uv_across_z,
+        )
+    if shape == "outer_right":
+        return build_corner_model(
+            ["bottom"],
+            tex_x,
+            tex_z,
+            16,
+            -45,
+            None,
+            flip_uv_across_z,
+        )
+    raise ValueError(shape)
+
+
+def write_model(path: Path, model: dict) -> None:
+    path.write_text(json.dumps(model, indent=4) + "\n", encoding="utf-8")
+
+
+def model_id_for_state(thatch: bool, stage: int, shape: str) -> str:
+    if shape == "straight":
+        if not thatch:
+            return f"materia:block/roof_tiles_{stage}"
+        if stage == 0:
+            return "materia:block/roof_tiles_thatch_1"
+        if stage >= 8:
+            return "materia:block/roof_tiles_thatch_full"
+        return f"materia:block/roof_tiles_{stage}"
+
+    suffix = shape
+    if not thatch:
+        return f"materia:block/roof_tiles_{stage}_{suffix}"
+    if stage == 0:
+        return f"materia:block/roof_tiles_thatch_1_{suffix}"
+    if stage >= 8:
+        return f"materia:block/roof_tiles_thatch_full_{suffix}"
+    return f"materia:block/roof_tiles_{stage}_{suffix}"
+
+
+def generate_corner_models() -> None:
     for stage in range(9):
-        path = MODELS / f"roof_tiles_{stage}.json"
-        path.write_text(json.dumps(model_for_stage(stage), indent=4) + "\n", encoding="utf-8")
+        for shape in SHAPES[1:]:
+            write_model(
+                MODELS / f"roof_tiles_{stage}_{shape}.json",
+                corner_model(stage, False, shape),
+            )
 
-    (MODELS / "roof_tiles_thatch_1.json").write_text(
-        json.dumps(model_for_thatch_texture(THATCH_PARTIAL_TEXTURE), indent=4) + "\n",
-        encoding="utf-8",
-    )
-    (MODELS / "roof_tiles_thatch_full.json").write_text(
-        json.dumps(model_for_thatch_texture(THATCH_FULL_TEXTURE), indent=4) + "\n",
-        encoding="utf-8",
-    )
+    for shape in SHAPES[1:]:
+        write_model(
+            MODELS / f"roof_tiles_thatch_1_{shape}.json",
+            corner_model(0, True, shape),
+        )
+        write_model(
+            MODELS / f"roof_tiles_thatch_full_{shape}.json",
+            corner_model(8, True, shape),
+        )
 
-    legacy_thatch_model = MODELS / "roof_tiles_thatch.json"
-    if legacy_thatch_model.exists():
-        legacy_thatch_model.unlink()
 
+def generate_blockstates() -> None:
     variants = {}
     for facing in FACINGS:
         for stage in range(9):
             for thatch in (False, True):
-                key = f"facing={facing},stage={stage},thatch={str(thatch).lower()}"
-                variants[key] = {
-                    "model": model_for_thatch_state(thatch, stage),
-                    "y": Y_ROT[facing],
-                }
+                for shape in SHAPES:
+                    key = (
+                        f"facing={facing},stage={stage},thatch={str(thatch).lower()},"
+                        f"shape={shape}"
+                    )
+                    variants[key] = {
+                        "model": model_id_for_state(thatch, stage, shape),
+                        "y": Y_ROT[facing],
+                    }
 
-    blockstate = {"variants": variants}
-    (BLOCKSTATES / "roof_tiles.json").write_text(json.dumps(blockstate, indent=4) + "\n", encoding="utf-8")
-    print("Generated roof_tiles models (0-8), thatch models, and blockstates")
+    (BLOCKSTATES / "roof_tiles.json").write_text(
+        json.dumps({"variants": variants}, indent=4) + "\n",
+        encoding="utf-8",
+    )
+
+
+def main() -> None:
+    generate_corner_models()
+    generate_blockstates()
+    print("Generated roof_tiles corner models and blockstates (straight models untouched)")
 
 
 if __name__ == "__main__":

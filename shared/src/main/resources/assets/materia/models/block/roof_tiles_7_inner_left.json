@@ -3,8 +3,10 @@
     "textures": {
         "square": "materia:block/roof_frame_square",
         "triangle": "materia:block/roof_frame_triangle",
-        "tiles": "materia:block/roof_tiles_0",
-        "particle": "minecraft:block/oak_planks"
+        "tiles": "materia:block/roof_tiles",
+        "particle": "minecraft:block/oak_planks",
+        "tiles_x": "materia:block/roof_tiles_corner_right_7",
+        "tiles_z": "materia:block/roof_tiles_corner_left_7"
     },
     "elements": [
         {
@@ -30,6 +32,39 @@
                     "texture": "#square"
                 },
                 "up": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#square"
+                }
+            }
+        },
+        {
+            "name": "back_side",
+            "from": [
+                0,
+                0,
+                16
+            ],
+            "to": [
+                16,
+                16,
+                16
+            ],
+            "faces": {
+                "north": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#square"
+                },
+                "south": {
                     "uv": [
                         0,
                         0,
@@ -74,68 +109,94 @@
             }
         },
         {
-            "name": "right_side",
+            "name": "roof_slope_x",
             "from": [
                 0,
                 0,
                 0
             ],
             "to": [
-                0,
                 16,
+                0,
                 16
             ],
+            "shade": false,
+            "rotation": {
+                "origin": [
+                    8,
+                    0,
+                    0
+                ],
+                "axis": "x",
+                "angle": -45,
+                "rescale": true
+            },
             "faces": {
-                "east": {
+                "up": {
                     "uv": [
+                        0,
+                        0,
                         16,
-                        0,
-                        0,
                         16
                     ],
-                    "texture": "#triangle"
+                    "texture": "#tiles_x",
+                    "cullface": false
                 },
-                "west": {
+                "down": {
                     "uv": [
                         0,
-                        0,
                         16,
-                        16
+                        16,
+                        0
                     ],
-                    "texture": "#triangle"
+                    "texture": "#tiles_x",
+                    "cullface": false
                 }
             }
         },
         {
-            "name": "back_side",
+            "name": "roof_slope_z",
             "from": [
                 0,
                 0,
-                16
+                0
             ],
             "to": [
                 16,
-                16,
+                0,
                 16
             ],
+            "shade": false,
+            "rotation": {
+                "origin": [
+                    16,
+                    0,
+                    8
+                ],
+                "axis": "z",
+                "angle": -45,
+                "rescale": true
+            },
             "faces": {
-                "north": {
+                "up": {
                     "uv": [
                         0,
-                        0,
                         16,
-                        16
+                        16,
+                        0
                     ],
-                    "texture": "#square"
+                    "texture": "#tiles_z",
+                    "cullface": false
                 },
-                "south": {
+                "down": {
                     "uv": [
-                        0,
-                        0,
                         16,
-                        16
+                        16,
+                        0,
+                        0
                     ],
-                    "texture": "#square"
+                    "texture": "#tiles_z",
+                    "cullface": false
                 }
             }
         }

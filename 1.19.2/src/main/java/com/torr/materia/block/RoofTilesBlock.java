@@ -23,7 +23,10 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.block.state.properties.StairsShape;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -37,10 +40,11 @@ public class RoofTilesBlock extends Block {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final IntegerProperty STAGE = IntegerProperty.create("stage", 0, 8);
     public static final BooleanProperty THATCH = BooleanProperty.create("thatch");
+    public static final EnumProperty<StairsShape> SHAPE = BlockStateProperties.STAIRS_SHAPE;
 
     private static final float TILE_BREAK_CHANCE = 0.15F;
 
-    private static final VoxelShape SHAPE = Shapes.or(
+    private static final VoxelShape COLLISION_SHAPE = Shapes.or(
             Block.box(0, 0, 0, 16, 16, 16),
             Block.box(0, 0, 0, 16, 8, 16)
     );
@@ -50,12 +54,13 @@ public class RoofTilesBlock extends Block {
         registerDefaultState(stateDefinition.any()
                 .setValue(FACING, Direction.NORTH)
                 .setValue(STAGE, 0)
-                .setValue(THATCH, false));
+                .setValue(THATCH, false)
+                .setValue(SHAPE, StairsShape.STRAIGHT));
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, STAGE, THATCH);
+        builder.add(FACING, STAGE, THATCH, SHAPE);
     }
 
     @Override
@@ -67,15 +72,34 @@ public class RoofTilesBlock extends Block {
             stage = RoofTilesBlockItem.placementStage(stack);
             thatch = RoofTilesBlockItem.placementThatch(stack);
         }
-        return defaultBlockState()
+        BlockPos pos = context.getClickedPos().relative(context.getClickedFace());
+        BlockState state = defaultBlockState()
                 .setValue(FACING, context.getHorizontalDirection().getOpposite())
                 .setValue(STAGE, stage)
-                .setValue(THATCH, thatch);
+                .setValue(THATCH, thatch)
+                .setValue(SHAPE, StairsShape.STRAIGHT);
+        return orientFromNeighbors(state, context.getLevel(), pos);
+    }
+
+    @Override
+    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+        if (direction.getAxis().isHorizontal()) {
+            return state.setValue(SHAPE, computeShape(state, level, pos));
+        }
+        return state;
+    }
+
+    @Override
+    public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean isMoving) {
+        if (!level.isClientSide) {
+            refreshShapeNeighbors(level, pos);
+        }
+        super.onPlace(state, level, pos, oldState, isMoving);
     }
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return SHAPE;
+        return COLLISION_SHAPE;
     }
 
     @Override
@@ -101,11 +125,14 @@ public class RoofTilesBlock extends Block {
                 return InteractionResult.PASS;
             }
             if (!level.isClientSide) {
+                BlockState updated;
                 if (!thatch) {
-                    level.setBlock(pos, state.setValue(THATCH, true), 3);
+                    updated = state.setValue(THATCH, true);
                 } else {
-                    level.setBlock(pos, state.setValue(STAGE, 8), 3);
+                    updated = state.setValue(STAGE, 8);
                 }
+                level.setBlock(pos, updated, 3);
+                refreshShapeNeighbors(level, pos);
                 held.shrink(1);
                 playThatchPlace(level, pos);
             }
@@ -118,6 +145,7 @@ public class RoofTilesBlock extends Block {
 
         if (!level.isClientSide) {
             level.setBlock(pos, state.setValue(STAGE, stage + 1), 3);
+            refreshShapeNeighbors(level, pos);
             held.shrink(1);
             playPotteryScrape(level, pos);
         }
@@ -132,10 +160,12 @@ public class RoofTilesBlock extends Block {
             if (stage >= 8) {
                 Block.popResource(level, pos, new ItemStack(ModItems.BUNDLE.get()));
                 level.setBlock(pos, state.setValue(STAGE, 0), 3);
+                refreshShapeNeighbors(level, pos);
                 playThatchBreak(level, pos);
             } else if (stage == 0) {
                 Block.popResource(level, pos, new ItemStack(ModItems.BUNDLE.get()));
                 level.setBlock(pos, state.setValue(THATCH, false), 3);
+                refreshShapeNeighbors(level, pos);
                 playThatchBreak(level, pos);
             }
             level.levelEvent(2001, pos, Block.getId(state));
@@ -151,6 +181,7 @@ public class RoofTilesBlock extends Block {
         int newStage = Math.max(0, stage - tilesLost);
         dropTiles(level, pos, random, tilesLost);
         level.setBlock(pos, state.setValue(STAGE, newStage), 3);
+        refreshShapeNeighbors(level, pos);
         playPotteryBreak(level, pos);
         level.levelEvent(2001, pos, Block.getId(state));
     }
@@ -165,6 +196,9 @@ public class RoofTilesBlock extends Block {
             }
         }
         super.onRemove(state, level, pos, newState, movedByPiston);
+        if (!level.isClientSide && !state.is(newState.getBlock())) {
+            refreshShapeNeighbors(level, pos);
+        }
     }
 
     @Override
@@ -196,6 +230,75 @@ public class RoofTilesBlock extends Block {
             return true;
         }
         return state.getValue(STAGE) > 0;
+    }
+
+    private static StairsShape computeShape(BlockState state, BlockGetter level, BlockPos pos) {
+        Direction ridge = state.getValue(FACING);
+        Direction descent = ridge.getOpposite();
+
+        BlockState ridgeNeighbor = level.getBlockState(pos.relative(ridge));
+        if (isCompatibleRoof(ridgeNeighbor)) {
+            StairsShape shape = shapeForNeighbor(ridge, ridge, ridgeNeighbor.getValue(FACING));
+            if (shape != StairsShape.STRAIGHT) {
+                return shape;
+            }
+        }
+
+        BlockState descentNeighbor = level.getBlockState(pos.relative(descent));
+        if (isCompatibleRoof(descentNeighbor)) {
+            StairsShape shape = shapeForNeighbor(ridge, descent, descentNeighbor.getValue(FACING));
+            if (shape != StairsShape.STRAIGHT) {
+                return shape;
+            }
+        }
+
+        return StairsShape.STRAIGHT;
+    }
+
+    private static StairsShape shapeForNeighbor(Direction ridge, Direction side, Direction neighborRidge) {
+        if (neighborRidge.getAxis() == ridge.getAxis()) {
+            return StairsShape.STRAIGHT;
+        }
+
+        if (side == ridge) {
+            return neighborRidge == ridge.getCounterClockWise()
+                    ? StairsShape.INNER_RIGHT
+                    : StairsShape.INNER_LEFT;
+        }
+
+        if (side == ridge.getOpposite()) {
+            return neighborRidge == ridge.getCounterClockWise()
+                    ? StairsShape.OUTER_RIGHT
+                    : StairsShape.OUTER_LEFT;
+        }
+
+        return StairsShape.STRAIGHT;
+    }
+
+    private static BlockState orientFromNeighbors(BlockState state, BlockGetter level, BlockPos pos) {
+        return state.setValue(SHAPE, computeShape(state, level, pos));
+    }
+
+    private static boolean isCompatibleRoof(BlockState other) {
+        return other.getBlock() instanceof RoofTilesBlock;
+    }
+
+    private static void refreshShapeNeighbors(Level level, BlockPos pos) {
+        refreshShapeAt(level, pos);
+        for (Direction direction : Direction.Plane.HORIZONTAL) {
+            BlockPos neighborPos = pos.relative(direction);
+            if (level.getBlockState(neighborPos).getBlock() instanceof RoofTilesBlock) {
+                refreshShapeAt(level, neighborPos);
+            }
+        }
+    }
+
+    private static void refreshShapeAt(Level level, BlockPos pos) {
+        BlockState state = level.getBlockState(pos);
+        StairsShape shape = computeShape(state, level, pos);
+        if (state.getValue(SHAPE) != shape) {
+            level.setBlock(pos, state.setValue(SHAPE, shape), 3);
+        }
     }
 
     private static void playPotteryScrape(Level level, BlockPos pos) {

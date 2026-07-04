@@ -51,6 +51,17 @@ Both use the **`roof_tiles`** block (not Thatch Stairs).
 - `thatch_slope.json` — **3× bundle** + **lashing** → **`thatch_slope`** block (**Thatch Stairs**)
 - For free-form stair/corner building only; not part of the roof-frame flow.
 
+## Corners (90° joins)
+
+When two **`roof_tiles`** blocks meet at a right angle, they auto-connect like stairs:
+
+- **Inner corner** — two slopes meet with their backs together (typical L-shaped roof).
+- **Outer corner** — two slopes meet at the open edge of the roof.
+
+Corners only connect to other **`roof_tiles`** blocks (any stage or covering — a bare frame can corner with a thatched one; each block keeps its own texture). Mixed facings on adjacent blocks still stay straight until they meet at 90°.
+
+Models reuse the existing frame/tile/thatch textures with a second slope element; dedicated corner textures can refine the look later.
+
 ## Breaking & cannonballs
 
 - Breaking **`roof_tiles`** drops a **roof frame**, plus tiles or bundles depending on coverage.

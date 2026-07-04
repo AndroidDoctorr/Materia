@@ -1,291 +1,1443 @@
 {
     "variants": {
-        "facing=north,stage=0,thatch=false": {
+        "facing=north,stage=0,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_0",
             "y": 0
         },
-        "facing=north,stage=0,thatch=true": {
+        "facing=north,stage=0,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_0_inner_left",
+            "y": 0
+        },
+        "facing=north,stage=0,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_0_inner_right",
+            "y": 0
+        },
+        "facing=north,stage=0,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_0_outer_left",
+            "y": 0
+        },
+        "facing=north,stage=0,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_0_outer_right",
+            "y": 0
+        },
+        "facing=north,stage=0,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_thatch_1",
             "y": 0
         },
-        "facing=north,stage=1,thatch=false": {
+        "facing=north,stage=0,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_thatch_1_inner_left",
+            "y": 0
+        },
+        "facing=north,stage=0,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_thatch_1_inner_right",
+            "y": 0
+        },
+        "facing=north,stage=0,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_thatch_1_outer_left",
+            "y": 0
+        },
+        "facing=north,stage=0,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_thatch_1_outer_right",
+            "y": 0
+        },
+        "facing=north,stage=1,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_1",
             "y": 0
         },
-        "facing=north,stage=1,thatch=true": {
+        "facing=north,stage=1,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_1_inner_left",
+            "y": 0
+        },
+        "facing=north,stage=1,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_1_inner_right",
+            "y": 0
+        },
+        "facing=north,stage=1,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_1_outer_left",
+            "y": 0
+        },
+        "facing=north,stage=1,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_1_outer_right",
+            "y": 0
+        },
+        "facing=north,stage=1,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_1",
             "y": 0
         },
-        "facing=north,stage=2,thatch=false": {
+        "facing=north,stage=1,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_1_inner_left",
+            "y": 0
+        },
+        "facing=north,stage=1,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_1_inner_right",
+            "y": 0
+        },
+        "facing=north,stage=1,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_1_outer_left",
+            "y": 0
+        },
+        "facing=north,stage=1,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_1_outer_right",
+            "y": 0
+        },
+        "facing=north,stage=2,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_2",
             "y": 0
         },
-        "facing=north,stage=2,thatch=true": {
+        "facing=north,stage=2,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_2_inner_left",
+            "y": 0
+        },
+        "facing=north,stage=2,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_2_inner_right",
+            "y": 0
+        },
+        "facing=north,stage=2,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_2_outer_left",
+            "y": 0
+        },
+        "facing=north,stage=2,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_2_outer_right",
+            "y": 0
+        },
+        "facing=north,stage=2,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_2",
             "y": 0
         },
-        "facing=north,stage=3,thatch=false": {
+        "facing=north,stage=2,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_2_inner_left",
+            "y": 0
+        },
+        "facing=north,stage=2,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_2_inner_right",
+            "y": 0
+        },
+        "facing=north,stage=2,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_2_outer_left",
+            "y": 0
+        },
+        "facing=north,stage=2,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_2_outer_right",
+            "y": 0
+        },
+        "facing=north,stage=3,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_3",
             "y": 0
         },
-        "facing=north,stage=3,thatch=true": {
+        "facing=north,stage=3,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_3_inner_left",
+            "y": 0
+        },
+        "facing=north,stage=3,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_3_inner_right",
+            "y": 0
+        },
+        "facing=north,stage=3,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_3_outer_left",
+            "y": 0
+        },
+        "facing=north,stage=3,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_3_outer_right",
+            "y": 0
+        },
+        "facing=north,stage=3,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_3",
             "y": 0
         },
-        "facing=north,stage=4,thatch=false": {
+        "facing=north,stage=3,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_3_inner_left",
+            "y": 0
+        },
+        "facing=north,stage=3,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_3_inner_right",
+            "y": 0
+        },
+        "facing=north,stage=3,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_3_outer_left",
+            "y": 0
+        },
+        "facing=north,stage=3,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_3_outer_right",
+            "y": 0
+        },
+        "facing=north,stage=4,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_4",
             "y": 0
         },
-        "facing=north,stage=4,thatch=true": {
+        "facing=north,stage=4,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_4_inner_left",
+            "y": 0
+        },
+        "facing=north,stage=4,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_4_inner_right",
+            "y": 0
+        },
+        "facing=north,stage=4,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_4_outer_left",
+            "y": 0
+        },
+        "facing=north,stage=4,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_4_outer_right",
+            "y": 0
+        },
+        "facing=north,stage=4,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_4",
             "y": 0
         },
-        "facing=north,stage=5,thatch=false": {
+        "facing=north,stage=4,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_4_inner_left",
+            "y": 0
+        },
+        "facing=north,stage=4,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_4_inner_right",
+            "y": 0
+        },
+        "facing=north,stage=4,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_4_outer_left",
+            "y": 0
+        },
+        "facing=north,stage=4,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_4_outer_right",
+            "y": 0
+        },
+        "facing=north,stage=5,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_5",
             "y": 0
         },
-        "facing=north,stage=5,thatch=true": {
+        "facing=north,stage=5,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_5_inner_left",
+            "y": 0
+        },
+        "facing=north,stage=5,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_5_inner_right",
+            "y": 0
+        },
+        "facing=north,stage=5,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_5_outer_left",
+            "y": 0
+        },
+        "facing=north,stage=5,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_5_outer_right",
+            "y": 0
+        },
+        "facing=north,stage=5,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_5",
             "y": 0
         },
-        "facing=north,stage=6,thatch=false": {
+        "facing=north,stage=5,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_5_inner_left",
+            "y": 0
+        },
+        "facing=north,stage=5,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_5_inner_right",
+            "y": 0
+        },
+        "facing=north,stage=5,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_5_outer_left",
+            "y": 0
+        },
+        "facing=north,stage=5,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_5_outer_right",
+            "y": 0
+        },
+        "facing=north,stage=6,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_6",
             "y": 0
         },
-        "facing=north,stage=6,thatch=true": {
+        "facing=north,stage=6,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_6_inner_left",
+            "y": 0
+        },
+        "facing=north,stage=6,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_6_inner_right",
+            "y": 0
+        },
+        "facing=north,stage=6,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_6_outer_left",
+            "y": 0
+        },
+        "facing=north,stage=6,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_6_outer_right",
+            "y": 0
+        },
+        "facing=north,stage=6,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_6",
             "y": 0
         },
-        "facing=north,stage=7,thatch=false": {
+        "facing=north,stage=6,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_6_inner_left",
+            "y": 0
+        },
+        "facing=north,stage=6,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_6_inner_right",
+            "y": 0
+        },
+        "facing=north,stage=6,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_6_outer_left",
+            "y": 0
+        },
+        "facing=north,stage=6,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_6_outer_right",
+            "y": 0
+        },
+        "facing=north,stage=7,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_7",
             "y": 0
         },
-        "facing=north,stage=7,thatch=true": {
+        "facing=north,stage=7,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_7_inner_left",
+            "y": 0
+        },
+        "facing=north,stage=7,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_7_inner_right",
+            "y": 0
+        },
+        "facing=north,stage=7,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_7_outer_left",
+            "y": 0
+        },
+        "facing=north,stage=7,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_7_outer_right",
+            "y": 0
+        },
+        "facing=north,stage=7,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_7",
             "y": 0
         },
-        "facing=north,stage=8,thatch=false": {
+        "facing=north,stage=7,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_7_inner_left",
+            "y": 0
+        },
+        "facing=north,stage=7,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_7_inner_right",
+            "y": 0
+        },
+        "facing=north,stage=7,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_7_outer_left",
+            "y": 0
+        },
+        "facing=north,stage=7,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_7_outer_right",
+            "y": 0
+        },
+        "facing=north,stage=8,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_8",
             "y": 0
         },
-        "facing=north,stage=8,thatch=true": {
+        "facing=north,stage=8,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_8_inner_left",
+            "y": 0
+        },
+        "facing=north,stage=8,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_8_inner_right",
+            "y": 0
+        },
+        "facing=north,stage=8,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_8_outer_left",
+            "y": 0
+        },
+        "facing=north,stage=8,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_8_outer_right",
+            "y": 0
+        },
+        "facing=north,stage=8,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_thatch_full",
             "y": 0
         },
-        "facing=east,stage=0,thatch=false": {
+        "facing=north,stage=8,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_thatch_full_inner_left",
+            "y": 0
+        },
+        "facing=north,stage=8,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_thatch_full_inner_right",
+            "y": 0
+        },
+        "facing=north,stage=8,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_thatch_full_outer_left",
+            "y": 0
+        },
+        "facing=north,stage=8,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_thatch_full_outer_right",
+            "y": 0
+        },
+        "facing=east,stage=0,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_0",
             "y": 90
         },
-        "facing=east,stage=0,thatch=true": {
+        "facing=east,stage=0,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_0_inner_left",
+            "y": 90
+        },
+        "facing=east,stage=0,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_0_inner_right",
+            "y": 90
+        },
+        "facing=east,stage=0,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_0_outer_left",
+            "y": 90
+        },
+        "facing=east,stage=0,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_0_outer_right",
+            "y": 90
+        },
+        "facing=east,stage=0,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_thatch_1",
             "y": 90
         },
-        "facing=east,stage=1,thatch=false": {
+        "facing=east,stage=0,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_thatch_1_inner_left",
+            "y": 90
+        },
+        "facing=east,stage=0,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_thatch_1_inner_right",
+            "y": 90
+        },
+        "facing=east,stage=0,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_thatch_1_outer_left",
+            "y": 90
+        },
+        "facing=east,stage=0,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_thatch_1_outer_right",
+            "y": 90
+        },
+        "facing=east,stage=1,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_1",
             "y": 90
         },
-        "facing=east,stage=1,thatch=true": {
+        "facing=east,stage=1,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_1_inner_left",
+            "y": 90
+        },
+        "facing=east,stage=1,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_1_inner_right",
+            "y": 90
+        },
+        "facing=east,stage=1,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_1_outer_left",
+            "y": 90
+        },
+        "facing=east,stage=1,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_1_outer_right",
+            "y": 90
+        },
+        "facing=east,stage=1,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_1",
             "y": 90
         },
-        "facing=east,stage=2,thatch=false": {
+        "facing=east,stage=1,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_1_inner_left",
+            "y": 90
+        },
+        "facing=east,stage=1,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_1_inner_right",
+            "y": 90
+        },
+        "facing=east,stage=1,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_1_outer_left",
+            "y": 90
+        },
+        "facing=east,stage=1,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_1_outer_right",
+            "y": 90
+        },
+        "facing=east,stage=2,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_2",
             "y": 90
         },
-        "facing=east,stage=2,thatch=true": {
+        "facing=east,stage=2,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_2_inner_left",
+            "y": 90
+        },
+        "facing=east,stage=2,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_2_inner_right",
+            "y": 90
+        },
+        "facing=east,stage=2,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_2_outer_left",
+            "y": 90
+        },
+        "facing=east,stage=2,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_2_outer_right",
+            "y": 90
+        },
+        "facing=east,stage=2,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_2",
             "y": 90
         },
-        "facing=east,stage=3,thatch=false": {
+        "facing=east,stage=2,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_2_inner_left",
+            "y": 90
+        },
+        "facing=east,stage=2,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_2_inner_right",
+            "y": 90
+        },
+        "facing=east,stage=2,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_2_outer_left",
+            "y": 90
+        },
+        "facing=east,stage=2,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_2_outer_right",
+            "y": 90
+        },
+        "facing=east,stage=3,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_3",
             "y": 90
         },
-        "facing=east,stage=3,thatch=true": {
+        "facing=east,stage=3,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_3_inner_left",
+            "y": 90
+        },
+        "facing=east,stage=3,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_3_inner_right",
+            "y": 90
+        },
+        "facing=east,stage=3,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_3_outer_left",
+            "y": 90
+        },
+        "facing=east,stage=3,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_3_outer_right",
+            "y": 90
+        },
+        "facing=east,stage=3,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_3",
             "y": 90
         },
-        "facing=east,stage=4,thatch=false": {
+        "facing=east,stage=3,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_3_inner_left",
+            "y": 90
+        },
+        "facing=east,stage=3,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_3_inner_right",
+            "y": 90
+        },
+        "facing=east,stage=3,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_3_outer_left",
+            "y": 90
+        },
+        "facing=east,stage=3,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_3_outer_right",
+            "y": 90
+        },
+        "facing=east,stage=4,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_4",
             "y": 90
         },
-        "facing=east,stage=4,thatch=true": {
+        "facing=east,stage=4,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_4_inner_left",
+            "y": 90
+        },
+        "facing=east,stage=4,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_4_inner_right",
+            "y": 90
+        },
+        "facing=east,stage=4,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_4_outer_left",
+            "y": 90
+        },
+        "facing=east,stage=4,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_4_outer_right",
+            "y": 90
+        },
+        "facing=east,stage=4,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_4",
             "y": 90
         },
-        "facing=east,stage=5,thatch=false": {
+        "facing=east,stage=4,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_4_inner_left",
+            "y": 90
+        },
+        "facing=east,stage=4,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_4_inner_right",
+            "y": 90
+        },
+        "facing=east,stage=4,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_4_outer_left",
+            "y": 90
+        },
+        "facing=east,stage=4,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_4_outer_right",
+            "y": 90
+        },
+        "facing=east,stage=5,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_5",
             "y": 90
         },
-        "facing=east,stage=5,thatch=true": {
+        "facing=east,stage=5,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_5_inner_left",
+            "y": 90
+        },
+        "facing=east,stage=5,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_5_inner_right",
+            "y": 90
+        },
+        "facing=east,stage=5,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_5_outer_left",
+            "y": 90
+        },
+        "facing=east,stage=5,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_5_outer_right",
+            "y": 90
+        },
+        "facing=east,stage=5,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_5",
             "y": 90
         },
-        "facing=east,stage=6,thatch=false": {
+        "facing=east,stage=5,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_5_inner_left",
+            "y": 90
+        },
+        "facing=east,stage=5,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_5_inner_right",
+            "y": 90
+        },
+        "facing=east,stage=5,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_5_outer_left",
+            "y": 90
+        },
+        "facing=east,stage=5,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_5_outer_right",
+            "y": 90
+        },
+        "facing=east,stage=6,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_6",
             "y": 90
         },
-        "facing=east,stage=6,thatch=true": {
+        "facing=east,stage=6,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_6_inner_left",
+            "y": 90
+        },
+        "facing=east,stage=6,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_6_inner_right",
+            "y": 90
+        },
+        "facing=east,stage=6,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_6_outer_left",
+            "y": 90
+        },
+        "facing=east,stage=6,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_6_outer_right",
+            "y": 90
+        },
+        "facing=east,stage=6,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_6",
             "y": 90
         },
-        "facing=east,stage=7,thatch=false": {
+        "facing=east,stage=6,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_6_inner_left",
+            "y": 90
+        },
+        "facing=east,stage=6,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_6_inner_right",
+            "y": 90
+        },
+        "facing=east,stage=6,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_6_outer_left",
+            "y": 90
+        },
+        "facing=east,stage=6,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_6_outer_right",
+            "y": 90
+        },
+        "facing=east,stage=7,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_7",
             "y": 90
         },
-        "facing=east,stage=7,thatch=true": {
+        "facing=east,stage=7,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_7_inner_left",
+            "y": 90
+        },
+        "facing=east,stage=7,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_7_inner_right",
+            "y": 90
+        },
+        "facing=east,stage=7,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_7_outer_left",
+            "y": 90
+        },
+        "facing=east,stage=7,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_7_outer_right",
+            "y": 90
+        },
+        "facing=east,stage=7,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_7",
             "y": 90
         },
-        "facing=east,stage=8,thatch=false": {
+        "facing=east,stage=7,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_7_inner_left",
+            "y": 90
+        },
+        "facing=east,stage=7,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_7_inner_right",
+            "y": 90
+        },
+        "facing=east,stage=7,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_7_outer_left",
+            "y": 90
+        },
+        "facing=east,stage=7,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_7_outer_right",
+            "y": 90
+        },
+        "facing=east,stage=8,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_8",
             "y": 90
         },
-        "facing=east,stage=8,thatch=true": {
+        "facing=east,stage=8,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_8_inner_left",
+            "y": 90
+        },
+        "facing=east,stage=8,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_8_inner_right",
+            "y": 90
+        },
+        "facing=east,stage=8,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_8_outer_left",
+            "y": 90
+        },
+        "facing=east,stage=8,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_8_outer_right",
+            "y": 90
+        },
+        "facing=east,stage=8,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_thatch_full",
             "y": 90
         },
-        "facing=south,stage=0,thatch=false": {
+        "facing=east,stage=8,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_thatch_full_inner_left",
+            "y": 90
+        },
+        "facing=east,stage=8,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_thatch_full_inner_right",
+            "y": 90
+        },
+        "facing=east,stage=8,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_thatch_full_outer_left",
+            "y": 90
+        },
+        "facing=east,stage=8,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_thatch_full_outer_right",
+            "y": 90
+        },
+        "facing=south,stage=0,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_0",
             "y": 180
         },
-        "facing=south,stage=0,thatch=true": {
+        "facing=south,stage=0,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_0_inner_left",
+            "y": 180
+        },
+        "facing=south,stage=0,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_0_inner_right",
+            "y": 180
+        },
+        "facing=south,stage=0,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_0_outer_left",
+            "y": 180
+        },
+        "facing=south,stage=0,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_0_outer_right",
+            "y": 180
+        },
+        "facing=south,stage=0,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_thatch_1",
             "y": 180
         },
-        "facing=south,stage=1,thatch=false": {
+        "facing=south,stage=0,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_thatch_1_inner_left",
+            "y": 180
+        },
+        "facing=south,stage=0,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_thatch_1_inner_right",
+            "y": 180
+        },
+        "facing=south,stage=0,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_thatch_1_outer_left",
+            "y": 180
+        },
+        "facing=south,stage=0,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_thatch_1_outer_right",
+            "y": 180
+        },
+        "facing=south,stage=1,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_1",
             "y": 180
         },
-        "facing=south,stage=1,thatch=true": {
+        "facing=south,stage=1,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_1_inner_left",
+            "y": 180
+        },
+        "facing=south,stage=1,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_1_inner_right",
+            "y": 180
+        },
+        "facing=south,stage=1,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_1_outer_left",
+            "y": 180
+        },
+        "facing=south,stage=1,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_1_outer_right",
+            "y": 180
+        },
+        "facing=south,stage=1,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_1",
             "y": 180
         },
-        "facing=south,stage=2,thatch=false": {
+        "facing=south,stage=1,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_1_inner_left",
+            "y": 180
+        },
+        "facing=south,stage=1,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_1_inner_right",
+            "y": 180
+        },
+        "facing=south,stage=1,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_1_outer_left",
+            "y": 180
+        },
+        "facing=south,stage=1,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_1_outer_right",
+            "y": 180
+        },
+        "facing=south,stage=2,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_2",
             "y": 180
         },
-        "facing=south,stage=2,thatch=true": {
+        "facing=south,stage=2,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_2_inner_left",
+            "y": 180
+        },
+        "facing=south,stage=2,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_2_inner_right",
+            "y": 180
+        },
+        "facing=south,stage=2,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_2_outer_left",
+            "y": 180
+        },
+        "facing=south,stage=2,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_2_outer_right",
+            "y": 180
+        },
+        "facing=south,stage=2,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_2",
             "y": 180
         },
-        "facing=south,stage=3,thatch=false": {
+        "facing=south,stage=2,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_2_inner_left",
+            "y": 180
+        },
+        "facing=south,stage=2,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_2_inner_right",
+            "y": 180
+        },
+        "facing=south,stage=2,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_2_outer_left",
+            "y": 180
+        },
+        "facing=south,stage=2,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_2_outer_right",
+            "y": 180
+        },
+        "facing=south,stage=3,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_3",
             "y": 180
         },
-        "facing=south,stage=3,thatch=true": {
+        "facing=south,stage=3,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_3_inner_left",
+            "y": 180
+        },
+        "facing=south,stage=3,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_3_inner_right",
+            "y": 180
+        },
+        "facing=south,stage=3,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_3_outer_left",
+            "y": 180
+        },
+        "facing=south,stage=3,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_3_outer_right",
+            "y": 180
+        },
+        "facing=south,stage=3,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_3",
             "y": 180
         },
-        "facing=south,stage=4,thatch=false": {
+        "facing=south,stage=3,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_3_inner_left",
+            "y": 180
+        },
+        "facing=south,stage=3,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_3_inner_right",
+            "y": 180
+        },
+        "facing=south,stage=3,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_3_outer_left",
+            "y": 180
+        },
+        "facing=south,stage=3,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_3_outer_right",
+            "y": 180
+        },
+        "facing=south,stage=4,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_4",
             "y": 180
         },
-        "facing=south,stage=4,thatch=true": {
+        "facing=south,stage=4,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_4_inner_left",
+            "y": 180
+        },
+        "facing=south,stage=4,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_4_inner_right",
+            "y": 180
+        },
+        "facing=south,stage=4,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_4_outer_left",
+            "y": 180
+        },
+        "facing=south,stage=4,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_4_outer_right",
+            "y": 180
+        },
+        "facing=south,stage=4,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_4",
             "y": 180
         },
-        "facing=south,stage=5,thatch=false": {
+        "facing=south,stage=4,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_4_inner_left",
+            "y": 180
+        },
+        "facing=south,stage=4,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_4_inner_right",
+            "y": 180
+        },
+        "facing=south,stage=4,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_4_outer_left",
+            "y": 180
+        },
+        "facing=south,stage=4,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_4_outer_right",
+            "y": 180
+        },
+        "facing=south,stage=5,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_5",
             "y": 180
         },
-        "facing=south,stage=5,thatch=true": {
+        "facing=south,stage=5,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_5_inner_left",
+            "y": 180
+        },
+        "facing=south,stage=5,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_5_inner_right",
+            "y": 180
+        },
+        "facing=south,stage=5,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_5_outer_left",
+            "y": 180
+        },
+        "facing=south,stage=5,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_5_outer_right",
+            "y": 180
+        },
+        "facing=south,stage=5,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_5",
             "y": 180
         },
-        "facing=south,stage=6,thatch=false": {
+        "facing=south,stage=5,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_5_inner_left",
+            "y": 180
+        },
+        "facing=south,stage=5,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_5_inner_right",
+            "y": 180
+        },
+        "facing=south,stage=5,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_5_outer_left",
+            "y": 180
+        },
+        "facing=south,stage=5,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_5_outer_right",
+            "y": 180
+        },
+        "facing=south,stage=6,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_6",
             "y": 180
         },
-        "facing=south,stage=6,thatch=true": {
+        "facing=south,stage=6,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_6_inner_left",
+            "y": 180
+        },
+        "facing=south,stage=6,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_6_inner_right",
+            "y": 180
+        },
+        "facing=south,stage=6,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_6_outer_left",
+            "y": 180
+        },
+        "facing=south,stage=6,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_6_outer_right",
+            "y": 180
+        },
+        "facing=south,stage=6,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_6",
             "y": 180
         },
-        "facing=south,stage=7,thatch=false": {
+        "facing=south,stage=6,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_6_inner_left",
+            "y": 180
+        },
+        "facing=south,stage=6,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_6_inner_right",
+            "y": 180
+        },
+        "facing=south,stage=6,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_6_outer_left",
+            "y": 180
+        },
+        "facing=south,stage=6,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_6_outer_right",
+            "y": 180
+        },
+        "facing=south,stage=7,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_7",
             "y": 180
         },
-        "facing=south,stage=7,thatch=true": {
+        "facing=south,stage=7,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_7_inner_left",
+            "y": 180
+        },
+        "facing=south,stage=7,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_7_inner_right",
+            "y": 180
+        },
+        "facing=south,stage=7,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_7_outer_left",
+            "y": 180
+        },
+        "facing=south,stage=7,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_7_outer_right",
+            "y": 180
+        },
+        "facing=south,stage=7,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_7",
             "y": 180
         },
-        "facing=south,stage=8,thatch=false": {
+        "facing=south,stage=7,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_7_inner_left",
+            "y": 180
+        },
+        "facing=south,stage=7,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_7_inner_right",
+            "y": 180
+        },
+        "facing=south,stage=7,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_7_outer_left",
+            "y": 180
+        },
+        "facing=south,stage=7,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_7_outer_right",
+            "y": 180
+        },
+        "facing=south,stage=8,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_8",
             "y": 180
         },
-        "facing=south,stage=8,thatch=true": {
+        "facing=south,stage=8,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_8_inner_left",
+            "y": 180
+        },
+        "facing=south,stage=8,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_8_inner_right",
+            "y": 180
+        },
+        "facing=south,stage=8,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_8_outer_left",
+            "y": 180
+        },
+        "facing=south,stage=8,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_8_outer_right",
+            "y": 180
+        },
+        "facing=south,stage=8,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_thatch_full",
             "y": 180
         },
-        "facing=west,stage=0,thatch=false": {
+        "facing=south,stage=8,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_thatch_full_inner_left",
+            "y": 180
+        },
+        "facing=south,stage=8,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_thatch_full_inner_right",
+            "y": 180
+        },
+        "facing=south,stage=8,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_thatch_full_outer_left",
+            "y": 180
+        },
+        "facing=south,stage=8,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_thatch_full_outer_right",
+            "y": 180
+        },
+        "facing=west,stage=0,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_0",
             "y": 270
         },
-        "facing=west,stage=0,thatch=true": {
+        "facing=west,stage=0,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_0_inner_left",
+            "y": 270
+        },
+        "facing=west,stage=0,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_0_inner_right",
+            "y": 270
+        },
+        "facing=west,stage=0,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_0_outer_left",
+            "y": 270
+        },
+        "facing=west,stage=0,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_0_outer_right",
+            "y": 270
+        },
+        "facing=west,stage=0,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_thatch_1",
             "y": 270
         },
-        "facing=west,stage=1,thatch=false": {
+        "facing=west,stage=0,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_thatch_1_inner_left",
+            "y": 270
+        },
+        "facing=west,stage=0,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_thatch_1_inner_right",
+            "y": 270
+        },
+        "facing=west,stage=0,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_thatch_1_outer_left",
+            "y": 270
+        },
+        "facing=west,stage=0,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_thatch_1_outer_right",
+            "y": 270
+        },
+        "facing=west,stage=1,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_1",
             "y": 270
         },
-        "facing=west,stage=1,thatch=true": {
+        "facing=west,stage=1,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_1_inner_left",
+            "y": 270
+        },
+        "facing=west,stage=1,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_1_inner_right",
+            "y": 270
+        },
+        "facing=west,stage=1,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_1_outer_left",
+            "y": 270
+        },
+        "facing=west,stage=1,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_1_outer_right",
+            "y": 270
+        },
+        "facing=west,stage=1,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_1",
             "y": 270
         },
-        "facing=west,stage=2,thatch=false": {
+        "facing=west,stage=1,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_1_inner_left",
+            "y": 270
+        },
+        "facing=west,stage=1,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_1_inner_right",
+            "y": 270
+        },
+        "facing=west,stage=1,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_1_outer_left",
+            "y": 270
+        },
+        "facing=west,stage=1,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_1_outer_right",
+            "y": 270
+        },
+        "facing=west,stage=2,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_2",
             "y": 270
         },
-        "facing=west,stage=2,thatch=true": {
+        "facing=west,stage=2,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_2_inner_left",
+            "y": 270
+        },
+        "facing=west,stage=2,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_2_inner_right",
+            "y": 270
+        },
+        "facing=west,stage=2,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_2_outer_left",
+            "y": 270
+        },
+        "facing=west,stage=2,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_2_outer_right",
+            "y": 270
+        },
+        "facing=west,stage=2,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_2",
             "y": 270
         },
-        "facing=west,stage=3,thatch=false": {
+        "facing=west,stage=2,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_2_inner_left",
+            "y": 270
+        },
+        "facing=west,stage=2,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_2_inner_right",
+            "y": 270
+        },
+        "facing=west,stage=2,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_2_outer_left",
+            "y": 270
+        },
+        "facing=west,stage=2,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_2_outer_right",
+            "y": 270
+        },
+        "facing=west,stage=3,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_3",
             "y": 270
         },
-        "facing=west,stage=3,thatch=true": {
+        "facing=west,stage=3,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_3_inner_left",
+            "y": 270
+        },
+        "facing=west,stage=3,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_3_inner_right",
+            "y": 270
+        },
+        "facing=west,stage=3,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_3_outer_left",
+            "y": 270
+        },
+        "facing=west,stage=3,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_3_outer_right",
+            "y": 270
+        },
+        "facing=west,stage=3,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_3",
             "y": 270
         },
-        "facing=west,stage=4,thatch=false": {
+        "facing=west,stage=3,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_3_inner_left",
+            "y": 270
+        },
+        "facing=west,stage=3,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_3_inner_right",
+            "y": 270
+        },
+        "facing=west,stage=3,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_3_outer_left",
+            "y": 270
+        },
+        "facing=west,stage=3,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_3_outer_right",
+            "y": 270
+        },
+        "facing=west,stage=4,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_4",
             "y": 270
         },
-        "facing=west,stage=4,thatch=true": {
+        "facing=west,stage=4,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_4_inner_left",
+            "y": 270
+        },
+        "facing=west,stage=4,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_4_inner_right",
+            "y": 270
+        },
+        "facing=west,stage=4,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_4_outer_left",
+            "y": 270
+        },
+        "facing=west,stage=4,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_4_outer_right",
+            "y": 270
+        },
+        "facing=west,stage=4,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_4",
             "y": 270
         },
-        "facing=west,stage=5,thatch=false": {
+        "facing=west,stage=4,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_4_inner_left",
+            "y": 270
+        },
+        "facing=west,stage=4,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_4_inner_right",
+            "y": 270
+        },
+        "facing=west,stage=4,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_4_outer_left",
+            "y": 270
+        },
+        "facing=west,stage=4,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_4_outer_right",
+            "y": 270
+        },
+        "facing=west,stage=5,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_5",
             "y": 270
         },
-        "facing=west,stage=5,thatch=true": {
+        "facing=west,stage=5,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_5_inner_left",
+            "y": 270
+        },
+        "facing=west,stage=5,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_5_inner_right",
+            "y": 270
+        },
+        "facing=west,stage=5,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_5_outer_left",
+            "y": 270
+        },
+        "facing=west,stage=5,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_5_outer_right",
+            "y": 270
+        },
+        "facing=west,stage=5,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_5",
             "y": 270
         },
-        "facing=west,stage=6,thatch=false": {
+        "facing=west,stage=5,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_5_inner_left",
+            "y": 270
+        },
+        "facing=west,stage=5,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_5_inner_right",
+            "y": 270
+        },
+        "facing=west,stage=5,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_5_outer_left",
+            "y": 270
+        },
+        "facing=west,stage=5,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_5_outer_right",
+            "y": 270
+        },
+        "facing=west,stage=6,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_6",
             "y": 270
         },
-        "facing=west,stage=6,thatch=true": {
+        "facing=west,stage=6,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_6_inner_left",
+            "y": 270
+        },
+        "facing=west,stage=6,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_6_inner_right",
+            "y": 270
+        },
+        "facing=west,stage=6,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_6_outer_left",
+            "y": 270
+        },
+        "facing=west,stage=6,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_6_outer_right",
+            "y": 270
+        },
+        "facing=west,stage=6,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_6",
             "y": 270
         },
-        "facing=west,stage=7,thatch=false": {
+        "facing=west,stage=6,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_6_inner_left",
+            "y": 270
+        },
+        "facing=west,stage=6,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_6_inner_right",
+            "y": 270
+        },
+        "facing=west,stage=6,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_6_outer_left",
+            "y": 270
+        },
+        "facing=west,stage=6,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_6_outer_right",
+            "y": 270
+        },
+        "facing=west,stage=7,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_7",
             "y": 270
         },
-        "facing=west,stage=7,thatch=true": {
+        "facing=west,stage=7,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_7_inner_left",
+            "y": 270
+        },
+        "facing=west,stage=7,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_7_inner_right",
+            "y": 270
+        },
+        "facing=west,stage=7,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_7_outer_left",
+            "y": 270
+        },
+        "facing=west,stage=7,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_7_outer_right",
+            "y": 270
+        },
+        "facing=west,stage=7,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_7",
             "y": 270
         },
-        "facing=west,stage=8,thatch=false": {
+        "facing=west,stage=7,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_7_inner_left",
+            "y": 270
+        },
+        "facing=west,stage=7,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_7_inner_right",
+            "y": 270
+        },
+        "facing=west,stage=7,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_7_outer_left",
+            "y": 270
+        },
+        "facing=west,stage=7,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_7_outer_right",
+            "y": 270
+        },
+        "facing=west,stage=8,thatch=false,shape=straight": {
             "model": "materia:block/roof_tiles_8",
             "y": 270
         },
-        "facing=west,stage=8,thatch=true": {
+        "facing=west,stage=8,thatch=false,shape=inner_left": {
+            "model": "materia:block/roof_tiles_8_inner_left",
+            "y": 270
+        },
+        "facing=west,stage=8,thatch=false,shape=inner_right": {
+            "model": "materia:block/roof_tiles_8_inner_right",
+            "y": 270
+        },
+        "facing=west,stage=8,thatch=false,shape=outer_left": {
+            "model": "materia:block/roof_tiles_8_outer_left",
+            "y": 270
+        },
+        "facing=west,stage=8,thatch=false,shape=outer_right": {
+            "model": "materia:block/roof_tiles_8_outer_right",
+            "y": 270
+        },
+        "facing=west,stage=8,thatch=true,shape=straight": {
             "model": "materia:block/roof_tiles_thatch_full",
+            "y": 270
+        },
+        "facing=west,stage=8,thatch=true,shape=inner_left": {
+            "model": "materia:block/roof_tiles_thatch_full_inner_left",
+            "y": 270
+        },
+        "facing=west,stage=8,thatch=true,shape=inner_right": {
+            "model": "materia:block/roof_tiles_thatch_full_inner_right",
+            "y": 270
+        },
+        "facing=west,stage=8,thatch=true,shape=outer_left": {
+            "model": "materia:block/roof_tiles_thatch_full_outer_left",
+            "y": 270
+        },
+        "facing=west,stage=8,thatch=true,shape=outer_right": {
+            "model": "materia:block/roof_tiles_thatch_full_outer_right",
             "y": 270
         }
     }
