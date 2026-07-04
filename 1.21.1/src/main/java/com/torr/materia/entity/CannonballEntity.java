@@ -135,7 +135,7 @@ public class CannonballEntity extends ThrowableItemProjectile {
         }
 
         if (block instanceof com.torr.materia.block.RoofTilesBlock && level instanceof ServerLevel serverLevel) {
-            com.torr.materia.block.RoofTilesBlock.onCannonballImpact(serverLevel, pos, state);
+            com.torr.materia.block.RoofTilesBlock.onCannonballImpact(serverLevel, pos, state, iron);
             return;
         }
 

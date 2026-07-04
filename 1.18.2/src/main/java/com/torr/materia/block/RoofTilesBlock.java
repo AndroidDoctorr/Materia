@@ -29,6 +29,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -53,10 +54,67 @@ public class RoofTilesBlock extends Block {
         EXPLOSION
     }
 
-    private static final VoxelShape COLLISION_SHAPE = Shapes.or(
-            Block.box(0, 0, 0, 16, 16, 16),
-            Block.box(0, 0, 0, 16, 8, 16)
-    );
+    private static VoxelShape buildRidgeWedge(Direction ridge) {
+        VoxelShape shape = Shapes.empty();
+        for (int i = 0; i < 16; i++) {
+            int height = i + 1;
+            switch (ridge) {
+                case SOUTH:
+                    shape = Shapes.or(shape, Block.box(0, 0, i, 16, height, i + 1));
+                    break;
+                case NORTH:
+                    shape = Shapes.or(shape, Block.box(0, 0, 15 - i, 16, height, 15 - i + 1));
+                    break;
+                case EAST:
+                    shape = Shapes.or(shape, Block.box(i, 0, 0, i + 1, height, 16));
+                    break;
+                case WEST:
+                    shape = Shapes.or(shape, Block.box(15 - i, 0, 0, 16 - i, height, 16));
+                    break;
+                default:
+                    break;
+            }
+        }
+        return shape;
+    }
+
+    private static VoxelShape shapeForState(BlockState state) {
+        // FACING points toward the eave; the slope rises toward the opposite (ridge).
+        Direction ridge = state.getValue(FACING).getOpposite();
+        StairsShape shape = state.getValue(SHAPE);
+        VoxelShape result = buildRidgeWedge(ridge);
+        if (shape == StairsShape.STRAIGHT) {
+            return result;
+        }
+
+        Direction crossRidge = null;
+        switch (shape) {
+            case INNER_LEFT:
+            case OUTER_LEFT:
+                crossRidge = ridge.getClockWise();
+                break;
+            case INNER_RIGHT:
+            case OUTER_RIGHT:
+                crossRidge = ridge.getCounterClockWise();
+                break;
+            default:
+                break;
+        }
+        if (crossRidge == null) {
+            return result;
+        }
+        VoxelShape cross = buildRidgeWedge(crossRidge);
+        switch (shape) {
+            case INNER_LEFT:
+            case INNER_RIGHT:
+                return Shapes.or(result, cross);
+            case OUTER_LEFT:
+            case OUTER_RIGHT:
+                return Shapes.join(result, cross, BooleanOp.AND);
+            default:
+                return result;
+        }
+    }
 
     public RoofTilesBlock(Properties properties) {
         super(properties);
@@ -108,7 +166,12 @@ public class RoofTilesBlock extends Block {
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return COLLISION_SHAPE;
+        return shapeForState(state);
+    }
+
+    @Override
+    public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return shapeForState(state);
     }
 
     @Override
@@ -156,15 +219,15 @@ public class RoofTilesBlock extends Block {
         return InteractionResult.sidedSuccess(level.isClientSide());
     }
 
-    public static void onCannonballImpact(ServerLevel level, BlockPos pos, BlockState state) {
-        handleViolentImpact(level, pos, state, TileBreakCause.CANNONBALL);
+    public static void onCannonballImpact(ServerLevel level, BlockPos pos, BlockState state, boolean iron) {
+        handleViolentImpact(level, pos, state, TileBreakCause.CANNONBALL, iron);
     }
 
-    private static void handleViolentImpact(ServerLevel level, BlockPos pos, BlockState state, TileBreakCause cause) {
+    private static void handleViolentImpact(ServerLevel level, BlockPos pos, BlockState state, TileBreakCause cause, boolean alwaysObliterate) {
         boolean thatch = state.getValue(THATCH);
         int stage = state.getValue(STAGE);
         Random random = level.random;
-        boolean obliterate = random.nextFloat() < VIOLENT_OBLITERATE_CHANCE;
+        boolean obliterate = alwaysObliterate || random.nextFloat() < VIOLENT_OBLITERATE_CHANCE;
 
         if (obliterate) {
             destroyRoofViolently(level, pos, state, cause, random);
