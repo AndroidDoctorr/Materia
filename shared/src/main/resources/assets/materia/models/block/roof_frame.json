@@ -3,7 +3,7 @@
     "textures": {
         "square": "materia:block/roof_frame_square",
         "triangle": "materia:block/roof_frame_triangle",
-        "tiles": "materia:block/roof_frame_square",
+        "tiles": "materia:block/roof_tiles_0",
         "particle": "minecraft:block/oak_planks"
     },
     "elements": [
