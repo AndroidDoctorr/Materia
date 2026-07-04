@@ -29,6 +29,7 @@ public class CannonAimScreen extends Screen {
 
     private double lastMouseX;
     private double lastMouseY;
+    private boolean ignoreNextMouseMove;
 
     private float yaw;
     private float pitch;
@@ -46,6 +47,7 @@ public class CannonAimScreen extends Screen {
         super.init();
         lastMouseX = minecraft.mouseHandler.xpos();
         lastMouseY = minecraft.mouseHandler.ypos();
+        ignoreNextMouseMove = true;
 
         if (minecraft.player != null) {
             originalPlayerYaw = minecraft.player.getYRot();
@@ -129,10 +131,23 @@ public class CannonAimScreen extends Screen {
 
     @Override
     public void mouseMoved(double mouseX, double mouseY) {
-        double dx = mouseX - lastMouseX;
-        double dy = mouseY - lastMouseY;
-        lastMouseX = mouseX;
-        lastMouseY = mouseY;
+        double x = minecraft.mouseHandler.xpos();
+        double y = minecraft.mouseHandler.ypos();
+        if (ignoreNextMouseMove) {
+            lastMouseX = x;
+            lastMouseY = y;
+            ignoreNextMouseMove = false;
+            return;
+        }
+
+        double dx = x - lastMouseX;
+        double dy = y - lastMouseY;
+        lastMouseX = x;
+        lastMouseY = y;
+
+        if (dx == 0.0D && dy == 0.0D) {
+            return;
+        }
 
         float sensitivity = 0.25f;
         yaw += (float) dx * sensitivity;

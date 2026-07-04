@@ -166,10 +166,13 @@ public class RoofTilesBlock extends Block {
         RandomSource random = level.getRandom();
         boolean obliterate = random.nextFloat() < VIOLENT_OBLITERATE_CHANCE;
 
+        if (obliterate) {
+            destroyRoofViolently(level, pos, state, cause, random);
+            return;
+        }
+
         if (thatch) {
-            if (obliterate) {
-                level.setBlock(pos, state.setValue(THATCH, false).setValue(STAGE, 0), 3);
-            } else if (stage >= 8) {
+            if (stage >= 8) {
                 level.setBlock(pos, state.setValue(STAGE, 0), 3);
             } else if (stage == 0) {
                 level.setBlock(pos, state.setValue(THATCH, false), 3);
@@ -184,12 +187,29 @@ public class RoofTilesBlock extends Block {
             return;
         }
 
-        int tilesLost = obliterate ? stage : violentTileLoss(stage, random);
+        int tilesLost = violentTileLoss(stage, random);
         dropTileStacks(level, pos, random, tilesLost, cause);
         level.setBlock(pos, state.setValue(STAGE, stage - tilesLost), 3);
         refreshShapeNeighbors(level, pos);
         playPotteryBreak(level, pos);
         level.levelEvent(2001, pos, Block.getId(state));
+    }
+
+    private static void destroyRoofViolently(ServerLevel level, BlockPos pos, BlockState state, TileBreakCause cause, RandomSource random) {
+        boolean thatch = state.getValue(THATCH);
+        int stage = state.getValue(STAGE);
+
+        if (!thatch && stage > 0) {
+            dropTileStacks(level, pos, random, stage, cause);
+        }
+
+        if (thatch) {
+            playThatchBreak(level, pos);
+        } else if (stage > 0) {
+            playPotteryBreak(level, pos);
+        }
+        level.levelEvent(2001, pos, Block.getId(state));
+        level.removeBlock(pos, false);
     }
 
     private static int violentTileLoss(int stage, RandomSource random) {
@@ -314,6 +334,9 @@ public class RoofTilesBlock extends Block {
 
     private static void refreshShapeAt(Level level, BlockPos pos) {
         BlockState state = level.getBlockState(pos);
+        if (!(state.getBlock() instanceof RoofTilesBlock)) {
+            return;
+        }
         StairsShape shape = computeShape(state, level, pos);
         if (state.getValue(SHAPE) != shape) {
             level.setBlock(pos, state.setValue(SHAPE, shape), 3);
