@@ -28,6 +28,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.StairsShape;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -42,7 +43,15 @@ public class RoofTilesBlock extends Block {
     public static final BooleanProperty THATCH = BooleanProperty.create("thatch");
     public static final EnumProperty<StairsShape> SHAPE = BlockStateProperties.STAIRS_SHAPE;
 
-    private static final float TILE_BREAK_CHANCE = 0.15F;
+    private static final float PLAYER_CRUSHED_CHANCE = 0.20F;
+    private static final float PLAYER_VANISH_CHANCE = 0.12F;
+    private static final float VIOLENT_OBLITERATE_CHANCE = 0.5F;
+
+    private enum TileBreakCause {
+        PLAYER,
+        CANNONBALL,
+        EXPLOSION
+    }
 
     private static final VoxelShape COLLISION_SHAPE = Shapes.or(
             Block.box(0, 0, 0, 16, 16, 16),
@@ -148,21 +157,25 @@ public class RoofTilesBlock extends Block {
     }
 
     public static void onCannonballImpact(ServerLevel level, BlockPos pos, BlockState state) {
+        handleViolentImpact(level, pos, state, TileBreakCause.CANNONBALL);
+    }
+
+    private static void handleViolentImpact(ServerLevel level, BlockPos pos, BlockState state, TileBreakCause cause) {
         boolean thatch = state.getValue(THATCH);
         int stage = state.getValue(STAGE);
+        RandomSource random = level.getRandom();
+        boolean obliterate = random.nextFloat() < VIOLENT_OBLITERATE_CHANCE;
 
         if (thatch) {
-            if (stage >= 8) {
-                Block.popResource(level, pos, new ItemStack(ModItems.BUNDLE.get()));
+            if (obliterate) {
+                level.setBlock(pos, state.setValue(THATCH, false).setValue(STAGE, 0), 3);
+            } else if (stage >= 8) {
                 level.setBlock(pos, state.setValue(STAGE, 0), 3);
-                refreshShapeNeighbors(level, pos);
-                playThatchBreak(level, pos);
             } else if (stage == 0) {
-                Block.popResource(level, pos, new ItemStack(ModItems.BUNDLE.get()));
                 level.setBlock(pos, state.setValue(THATCH, false), 3);
-                refreshShapeNeighbors(level, pos);
-                playThatchBreak(level, pos);
             }
+            refreshShapeNeighbors(level, pos);
+            playThatchBreak(level, pos);
             level.levelEvent(2001, pos, Block.getId(state));
             return;
         }
@@ -171,14 +184,19 @@ public class RoofTilesBlock extends Block {
             return;
         }
 
-        RandomSource random = level.getRandom();
-        int tilesLost = 1 + random.nextInt(Math.min(3, stage));
-        int newStage = Math.max(0, stage - tilesLost);
-        dropTiles(level, pos, random, tilesLost);
-        level.setBlock(pos, state.setValue(STAGE, newStage), 3);
+        int tilesLost = obliterate ? stage : violentTileLoss(stage, random);
+        dropTileStacks(level, pos, random, tilesLost, cause);
+        level.setBlock(pos, state.setValue(STAGE, stage - tilesLost), 3);
         refreshShapeNeighbors(level, pos);
         playPotteryBreak(level, pos);
         level.levelEvent(2001, pos, Block.getId(state));
+    }
+
+    private static int violentTileLoss(int stage, RandomSource random) {
+        if (stage < 3) {
+            return stage;
+        }
+        return Math.min(stage, 3 + random.nextInt(stage - 2));
     }
 
     @Override
@@ -201,21 +219,27 @@ public class RoofTilesBlock extends Block {
         List<ItemStack> drops = new ArrayList<>();
         drops.add(new ItemStack(ModItems.ROOF_FRAME.get()));
 
+        TileBreakCause cause = builder.getOptionalParameter(LootContextParams.EXPLOSION_RADIUS) != null
+                ? TileBreakCause.EXPLOSION
+                : TileBreakCause.PLAYER;
+
         boolean thatch = state.getValue(THATCH);
         int stage = state.getValue(STAGE);
 
         if (thatch) {
-            if (stage >= 8) {
-                drops.add(new ItemStack(ModItems.BUNDLE.get(), 2));
-            } else {
-                drops.add(new ItemStack(ModItems.BUNDLE.get()));
+            if (cause == TileBreakCause.PLAYER) {
+                if (stage >= 8) {
+                    drops.add(new ItemStack(ModItems.BUNDLE.get(), 2));
+                } else {
+                    drops.add(new ItemStack(ModItems.BUNDLE.get()));
+                }
             }
             return drops;
         }
 
         if (stage > 0) {
             RandomSource random = builder.getLevel().getRandom();
-            drops.addAll(tileStacksForCount(stage, random));
+            drops.addAll(tileStacksForCount(stage, random, cause));
         }
         return drops;
     }
@@ -312,16 +336,29 @@ public class RoofTilesBlock extends Block {
         level.playSound(null, pos, SoundType.GRASS.getBreakSound(), SoundSource.BLOCKS, 1.0F, 1.0F);
     }
 
-    private static void dropTiles(ServerLevel level, BlockPos pos, RandomSource random, int count) {
-        for (ItemStack stack : tileStacksForCount(count, random)) {
+    private static void dropTileStacks(ServerLevel level, BlockPos pos, RandomSource random, int count, TileBreakCause cause) {
+        for (ItemStack stack : tileStacksForCount(count, random, cause)) {
             Block.popResource(level, pos, stack);
         }
     }
 
-    private static List<ItemStack> tileStacksForCount(int count, RandomSource random) {
+    private static List<ItemStack> tileStacksForCount(int count, RandomSource random, TileBreakCause cause) {
         List<ItemStack> stacks = new ArrayList<>();
+        if (cause == TileBreakCause.CANNONBALL || cause == TileBreakCause.EXPLOSION) {
+            int maxCrushed = Math.max(1, count / 3);
+            int crushedCount = random.nextInt(maxCrushed + 1);
+            for (int i = 0; i < crushedCount; i++) {
+                stacks.add(new ItemStack(ModItems.CRUSHED_CERAMIC.get()));
+            }
+            return stacks;
+        }
+
         for (int i = 0; i < count; i++) {
-            if (random.nextFloat() < TILE_BREAK_CHANCE) {
+            float roll = random.nextFloat();
+            if (roll < PLAYER_VANISH_CHANCE) {
+                continue;
+            }
+            if (roll < PLAYER_VANISH_CHANCE + PLAYER_CRUSHED_CHANCE) {
                 stacks.add(new ItemStack(ModItems.CRUSHED_CERAMIC.get()));
             } else {
                 stacks.add(new ItemStack(ModItems.TERRACOTTA_ROOF_TILE.get()));
