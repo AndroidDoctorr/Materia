@@ -76,6 +76,39 @@
             }
         },
         {
+            "name": "back_side_2",
+            "from": [
+                0,
+                0,
+                0
+            ],
+            "to": [
+                0,
+                16,
+                16
+            ],
+            "faces": {
+                "east": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#square"
+                },
+                "west": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#square"
+                }
+            }
+        },
+        {
             "name": "left_side",
             "from": [
                 16,
@@ -179,20 +212,22 @@
             },
             "faces": {
                 "up": {
+                    "rotation": 270,
                     "uv": [
+                        16,
+                        16,
                         0,
-                        16,
-                        16,
                         0
                     ],
                     "texture": "#tiles_z",
                     "cullface": false
                 },
                 "down": {
+                    "rotation": 270,
                     "uv": [
-                        16,
-                        16,
                         0,
+                        16,
+                        16,
                         0
                     ],
                     "texture": "#tiles_z",

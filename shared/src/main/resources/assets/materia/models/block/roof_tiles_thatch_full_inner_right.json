@@ -76,6 +76,39 @@
             }
         },
         {
+            "name": "back_side_2",
+            "from": [
+                16,
+                0,
+                0
+            ],
+            "to": [
+                16,
+                16,
+                16
+            ],
+            "faces": {
+                "east": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#square"
+                },
+                "west": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#square"
+                }
+            }
+        },
+        {
             "name": "right_side",
             "from": [
                 0,
@@ -135,9 +168,9 @@
                 "up": {
                     "uv": [
                         0,
+                        0,
                         16,
-                        16,
-                        0
+                        16
                     ],
                     "texture": "#tiles_x",
                     "cullface": false
@@ -145,9 +178,9 @@
                 "down": {
                     "uv": [
                         0,
-                        0,
                         16,
-                        16
+                        16,
+                        0
                     ],
                     "texture": "#tiles_x",
                     "cullface": false
@@ -181,9 +214,9 @@
                 "up": {
                     "rotation": 90,
                     "uv": [
+                        16,
+                        16,
                         0,
-                        16,
-                        16,
                         0
                     ],
                     "texture": "#tiles_z",
@@ -192,9 +225,9 @@
                 "down": {
                     "rotation": 90,
                     "uv": [
-                        16,
-                        16,
                         0,
+                        16,
+                        16,
                         0
                     ],
                     "texture": "#tiles_z",

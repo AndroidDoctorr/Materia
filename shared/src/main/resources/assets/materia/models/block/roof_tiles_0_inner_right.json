@@ -76,6 +76,39 @@
             }
         },
         {
+            "name": "back_side",
+            "from": [
+                16,
+                0,
+                0
+            ],
+            "to": [
+                16,
+                16,
+                16
+            ],
+            "faces": {
+                "east": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#square"
+                },
+                "west": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#square"
+                }
+            }
+        },
+        {
             "name": "right_side",
             "from": [
                 0,
@@ -134,9 +167,9 @@
             "faces": {
                 "up": {
                     "uv": [
-                        0,
-                        0,
                         16,
+                        0,
+                        0,
                         16
                     ],
                     "texture": "#tiles_x",
@@ -144,9 +177,9 @@
                 },
                 "down": {
                     "uv": [
+                        16,
+                        16,
                         0,
-                        16,
-                        16,
                         0
                     ],
                     "texture": "#tiles_x",
@@ -180,9 +213,9 @@
             "faces": {
                 "up": {
                     "uv": [
-                        16,
-                        16,
                         0,
+                        16,
+                        16,
                         0
                     ],
                     "texture": "#tiles_z",
@@ -191,9 +224,9 @@
                 "down": {
                     "uv": [
                         0,
+                        0,
                         16,
-                        16,
-                        0
+                        16
                     ],
                     "texture": "#tiles_z",
                     "cullface": false

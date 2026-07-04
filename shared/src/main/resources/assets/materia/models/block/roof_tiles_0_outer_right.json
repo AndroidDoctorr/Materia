@@ -68,9 +68,9 @@
             "faces": {
                 "up": {
                     "uv": [
-                        16,
-                        16,
                         0,
+                        16,
+                        16,
                         0
                     ],
                     "texture": "#tiles_x",
@@ -78,9 +78,9 @@
                 },
                 "down": {
                     "uv": [
+                        0,
+                        0,
                         16,
-                        0,
-                        0,
                         16
                     ],
                     "texture": "#tiles_x",
@@ -114,20 +114,20 @@
             "faces": {
                 "up": {
                     "uv": [
+                        16,
                         0,
-                        16,
-                        16,
-                        0
+                        0,
+                        16
                     ],
                     "texture": "#tiles_z",
                     "cullface": false
                 },
                 "down": {
                     "uv": [
-                        0,
-                        0,
                         16,
-                        16
+                        16,
+                        0,
+                        0
                     ],
                     "texture": "#tiles_z",
                     "cullface": false

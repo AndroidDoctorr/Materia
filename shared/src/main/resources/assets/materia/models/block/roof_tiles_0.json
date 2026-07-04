@@ -3,7 +3,7 @@
     "textures": {
         "square": "materia:block/roof_frame_square",
         "triangle": "materia:block/roof_frame_triangle",
-        "tiles": "materia:block/roof_tiles_0",
+        "tiles": "materia:block/roof_frame_square",
         "particle": "minecraft:block/oak_planks"
     },
     "elements": [
@@ -37,6 +37,52 @@
                         16
                     ],
                     "texture": "#square"
+                }
+            }
+        },
+        {
+            "name": "roof_tiles",
+            "from": [
+                0,
+                0,
+                0
+            ],
+            "to": [
+                16,
+                0,
+                16
+            ],
+            "shade": false,
+            "rotation": {
+                "origin": [
+                    8,
+                    16,
+                    16
+                ],
+                "axis": "x",
+                "angle": -45,
+                "rescale": true
+            },
+            "faces": {
+                "up": {
+                    "uv": [
+                        16,
+                        16,
+                        0,
+                        0
+                    ],
+                    "texture": "#tiles",
+                    "cullface": false
+                },
+                "down": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#tiles",
+                    "cullface": false
                 }
             }
         },
