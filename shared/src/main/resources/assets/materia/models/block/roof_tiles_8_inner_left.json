@@ -3,7 +3,7 @@
     "textures": {
         "square": "materia:block/roof_frame_square",
         "triangle": "materia:block/roof_frame_triangle",
-        "tiles": "materia:block/roof_tiles",
+        "tiles": "materia:block/roof_frame_square",
         "particle": "minecraft:block/oak_planks",
         "tiles_x": "materia:block/roof_tiles_corner_right",
         "tiles_z": "materia:block/roof_tiles_corner_left"
@@ -65,6 +65,39 @@
                     "texture": "#square"
                 },
                 "south": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#square"
+                }
+            }
+        },
+        {
+            "name": "back_side_2",
+            "from": [
+                0,
+                0,
+                0
+            ],
+            "to": [
+                0,
+                16,
+                16
+            ],
+            "faces": {
+                "east": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#square"
+                },
+                "west": {
                     "uv": [
                         0,
                         0,
@@ -179,6 +212,7 @@
             },
             "faces": {
                 "up": {
+                    "rotation": 270,
                     "uv": [
                         16,
                         16,
@@ -189,6 +223,7 @@
                     "cullface": false
                 },
                 "down": {
+                    "rotation": 270,
                     "uv": [
                         0,
                         16,

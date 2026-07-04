@@ -2,13 +2,11 @@
 """Generate roof_tiles corner models and blockstates.
 
 Plain straight slope models (roof_tiles_0..8, thatch variants) are hand-maintained.
-This script only emits corner shape variants and blockstates, using the corrected
-slope element from roof_tiles_8.json as the geometry reference.
+Corner geometry/UVs are copied from the corrected roof_tiles_thatch_full_* models.
 """
 import json
 from copy import deepcopy
 from pathlib import Path
-from typing import Callable
 
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "shared" / "src" / "main" / "resources" / "assets" / "materia"
@@ -16,15 +14,196 @@ MODELS = ASSETS / "models" / "block"
 BLOCKSTATES = ASSETS / "blockstates"
 
 FRAME_TEMPLATE = json.loads((MODELS / "roof_frame.json").read_text(encoding="utf-8"))
-SLOPE_REFERENCE = json.loads((MODELS / "roof_tiles_8.json").read_text(encoding="utf-8"))
-SLOPE_ELEMENT = next(element for element in SLOPE_REFERENCE["elements"] if element["name"] == "roof_tiles")
 
 FACINGS = ["north", "east", "south", "west"]
 Y_ROT = {"north": 0, "east": 90, "south": 180, "west": 270}
 SHAPES = ["straight", "inner_left", "inner_right", "outer_left", "outer_right"]
 TRIANGLE_TEXTURE = "materia:block/roof_frame_triangle"
 
-UvTransform = Callable[[dict], None]
+
+def element_by_name(model: dict, name: str) -> dict:
+    for element in model["elements"]:
+        if element["name"] == name:
+            return element
+    raise KeyError(name)
+
+
+def back_side_2_west() -> dict:
+    return {
+        "name": "back_side_2",
+        "from": [0, 0, 0],
+        "to": [0, 16, 16],
+        "faces": {
+            "east": {"uv": [0, 0, 16, 16], "texture": "#square"},
+            "west": {"uv": [0, 0, 16, 16], "texture": "#square"},
+        },
+    }
+
+
+def back_side_2_east() -> dict:
+    return {
+        "name": "back_side_2",
+        "from": [16, 0, 0],
+        "to": [16, 16, 16],
+        "faces": {
+            "east": {"uv": [0, 0, 16, 16], "texture": "#square"},
+            "west": {"uv": [0, 0, 16, 16], "texture": "#square"},
+        },
+    }
+
+
+def slope_x_inner(texture_ref: str) -> dict:
+    return {
+        "name": "roof_slope_x",
+        "from": [0, 0, 0],
+        "to": [16, 0, 16],
+        "shade": False,
+        "rotation": {
+            "origin": [8, 0, 0],
+            "axis": "x",
+            "angle": -45,
+            "rescale": True,
+        },
+        "faces": {
+            "up": {"uv": [0, 0, 16, 16], "texture": texture_ref, "cullface": False},
+            "down": {"uv": [0, 16, 16, 0], "texture": texture_ref, "cullface": False},
+        },
+    }
+
+
+def slope_x_outer(texture_ref: str) -> dict:
+    return {
+        "name": "roof_slope_x",
+        "from": [0, 0, 0],
+        "to": [16, 0, 16],
+        "shade": False,
+        "rotation": {
+            "origin": [8, 0, 0],
+            "axis": "x",
+            "angle": -45,
+            "rescale": True,
+        },
+        "faces": {
+            "up": {"uv": [16, 16, 0, 0], "texture": texture_ref, "cullface": False},
+            "down": {"uv": [16, 0, 0, 16], "texture": texture_ref, "cullface": False},
+        },
+    }
+
+
+def slope_z_inner_left(texture_ref: str) -> dict:
+    return {
+        "name": "roof_slope_z",
+        "from": [0, 0, 0],
+        "to": [16, 0, 16],
+        "shade": False,
+        "rotation": {
+            "origin": [16, 0, 8],
+            "axis": "z",
+            "angle": -45,
+            "rescale": True,
+        },
+        "faces": {
+            "up": {
+                "rotation": 270,
+                "uv": [16, 16, 0, 0],
+                "texture": texture_ref,
+                "cullface": False,
+            },
+            "down": {
+                "rotation": 270,
+                "uv": [0, 16, 16, 0],
+                "texture": texture_ref,
+                "cullface": False,
+            },
+        },
+    }
+
+
+def slope_z_inner_right(texture_ref: str) -> dict:
+    return {
+        "name": "roof_slope_z",
+        "from": [0, 0, 0],
+        "to": [16, 0, 16],
+        "shade": False,
+        "rotation": {
+            "origin": [0, 0, 8],
+            "axis": "z",
+            "angle": 45,
+            "rescale": True,
+        },
+        "faces": {
+            "up": {
+                "rotation": 90,
+                "uv": [16, 16, 0, 0],
+                "texture": texture_ref,
+                "cullface": False,
+            },
+            "down": {
+                "rotation": 90,
+                "uv": [0, 16, 16, 0],
+                "texture": texture_ref,
+                "cullface": False,
+            },
+        },
+    }
+
+
+def slope_z_outer_left(texture_ref: str) -> dict:
+    return {
+        "name": "roof_slope_z",
+        "from": [0, 0, 0],
+        "to": [16, 0, 16],
+        "shade": False,
+        "rotation": {
+            "origin": [16, 0, 8],
+            "axis": "z",
+            "angle": -45,
+            "rescale": True,
+        },
+        "faces": {
+            "up": {
+                "rotation": 90,
+                "uv": [16, 16, 0, 0],
+                "texture": texture_ref,
+                "cullface": False,
+            },
+            "down": {
+                "rotation": 90,
+                "uv": [0, 16, 16, 0],
+                "texture": texture_ref,
+                "cullface": False,
+            },
+        },
+    }
+
+
+def slope_z_outer_right(texture_ref: str) -> dict:
+    return {
+        "name": "roof_slope_z",
+        "from": [0, 0, 0],
+        "to": [16, 0, 16],
+        "shade": False,
+        "rotation": {
+            "origin": [0, 0, 8],
+            "axis": "z",
+            "angle": 45,
+            "rescale": True,
+        },
+        "faces": {
+            "up": {
+                "rotation": 90,
+                "uv": [0, 0, 16, 16],
+                "texture": texture_ref,
+                "cullface": False,
+            },
+            "down": {
+                "rotation": 90,
+                "uv": [16, 0, 0, 16],
+                "texture": texture_ref,
+                "cullface": False,
+            },
+        },
+    }
 
 
 def corner_side(shape: str) -> str:
@@ -52,149 +231,50 @@ def corner_texture_pair(stage: int, thatch: bool, shape: str) -> tuple[str, str]
         return TRIANGLE_TEXTURE, TRIANGLE_TEXTURE
 
     return (
-        corner_texture_path(stage, thatch, primary),
         corner_texture_path(stage, thatch, secondary),
+        corner_texture_path(stage, thatch, primary),
     )
 
 
-def element_by_name(model: dict, name: str) -> dict:
-    for element in model["elements"]:
-        if element["name"] == name:
-            return element
-    raise KeyError(name)
-
-
-def set_face_texture(element: dict, texture_ref: str) -> None:
-    for face in element["faces"].values():
-        face["texture"] = texture_ref
-
-
-def rotate_uv_180(element: dict) -> None:
-    for face in element["faces"].values():
-        u1, v1, u2, v2 = face["uv"]
-        face["uv"] = [u2, v2, u1, v1]
-
-
-def rotate_uv_90_ccw(element: dict) -> None:
-    for face in element["faces"].values():
-        u1, v1, u2, v2 = face["uv"]
-        face["uv"] = [v2, u1, v1, u2]
-
-
-def flip_uv_across_z(element: dict) -> None:
-    for face in element["faces"].values():
-        u1, v1, u2, v2 = face["uv"]
-        face["uv"] = [u2, v1, u1, v2]
-
-
-def compose_uv(*transforms: UvTransform) -> UvTransform:
-    def apply(element: dict) -> None:
-        for transform in transforms:
-            transform(element)
-
-    return apply
-
-
-INNER_Z_UV = compose_uv(rotate_uv_90_ccw, flip_uv_across_z)
-OUTER_Z_UV = flip_uv_across_z
-EMPTY_OUTER_X_UV = compose_uv(rotate_uv_90_ccw, flip_uv_across_z)
-
-
-def slope_along_x(texture_ref: str, uv_transform: UvTransform | None = None) -> dict:
-    slope = deepcopy(SLOPE_ELEMENT)
-    slope["name"] = "roof_slope_x"
-    set_face_texture(slope, texture_ref)
-    if uv_transform:
-        uv_transform(slope)
-    return slope
-
-
-def slope_along_z(
-    origin_x: int,
-    angle: float,
-    texture_ref: str,
-    uv_transform: UvTransform | None = None,
-) -> dict:
-    slope = deepcopy(SLOPE_ELEMENT)
-    slope["name"] = "roof_slope_z"
-    slope["rotation"] = {
-        "origin": [origin_x, 0, 8],
-        "axis": "z",
-        "angle": angle,
-        "rescale": True,
-    }
-    set_face_texture(slope, texture_ref)
-    if uv_transform:
-        uv_transform(slope)
-    return slope
-
-
-def build_corner_model(
-    frame_names: list[str],
-    tex_x: str,
-    tex_z: str,
-    z_origin: int,
-    z_angle: float,
-    x_uv: UvTransform | None = None,
-    z_uv: UvTransform | None = None,
-) -> dict:
+def build_corner_model(stage: int, thatch: bool, shape: str) -> dict:
+    tex_x_path, tex_z_path = corner_texture_pair(stage, thatch, shape)
     model = deepcopy(FRAME_TEMPLATE)
-    model["textures"]["tiles_x"] = tex_x
-    model["textures"]["tiles_z"] = tex_z
-    elements = [deepcopy(element_by_name(FRAME_TEMPLATE, name)) for name in frame_names]
-    elements.append(slope_along_x("#tiles_x", x_uv))
-    elements.append(slope_along_z(z_origin, z_angle, "#tiles_z", z_uv))
-    model["elements"] = elements
-    return model
+    model["textures"]["tiles_x"] = tex_x_path
+    model["textures"]["tiles_z"] = tex_z_path
 
-
-def corner_model(stage: int, thatch: bool, shape: str) -> dict:
-    tex_primary, tex_secondary = corner_texture_pair(stage, thatch, shape)
-    tex_x = tex_secondary
-    tex_z = tex_primary
+    elements = [deepcopy(element_by_name(FRAME_TEMPLATE, "bottom"))]
 
     if shape == "inner_left":
-        return build_corner_model(
-            ["bottom", "back_side", "left_side"],
-            tex_x,
-            tex_z,
-            16,
-            -45,
-            rotate_uv_180,
-            INNER_Z_UV,
-        )
-    if shape == "inner_right":
-        return build_corner_model(
-            ["bottom", "back_side", "right_side"],
-            tex_x,
-            tex_z,
-            0,
-            45,
-            rotate_uv_180,
-            INNER_Z_UV,
-        )
-    if shape == "outer_left":
-        empty_frame = stage == 0 and not thatch
-        return build_corner_model(
-            ["bottom"],
-            tex_x,
-            tex_z,
-            16,
-            -45,
-            EMPTY_OUTER_X_UV if empty_frame else None,
-            OUTER_Z_UV,
-        )
-    if shape == "outer_right":
-        return build_corner_model(
-            ["bottom"],
-            tex_x,
-            tex_z,
-            0,
-            45,
-            None,
-            OUTER_Z_UV,
-        )
-    raise ValueError(shape)
+        elements.extend([
+            deepcopy(element_by_name(FRAME_TEMPLATE, "back_side")),
+            back_side_2_west(),
+            deepcopy(element_by_name(FRAME_TEMPLATE, "left_side")),
+            slope_x_inner("#tiles_x"),
+            slope_z_inner_left("#tiles_z"),
+        ])
+    elif shape == "inner_right":
+        elements.extend([
+            deepcopy(element_by_name(FRAME_TEMPLATE, "back_side")),
+            back_side_2_east(),
+            deepcopy(element_by_name(FRAME_TEMPLATE, "right_side")),
+            slope_x_inner("#tiles_x"),
+            slope_z_inner_right("#tiles_z"),
+        ])
+    elif shape == "outer_left":
+        elements.extend([
+            slope_x_outer("#tiles_x"),
+            slope_z_outer_left("#tiles_z"),
+        ])
+    elif shape == "outer_right":
+        elements.extend([
+            slope_x_outer("#tiles_x"),
+            slope_z_outer_right("#tiles_z"),
+        ])
+    else:
+        raise ValueError(shape)
+
+    model["elements"] = elements
+    return model
 
 
 def write_model(path: Path, model: dict) -> None:
@@ -226,17 +306,17 @@ def generate_corner_models() -> None:
         for shape in SHAPES[1:]:
             write_model(
                 MODELS / f"roof_tiles_{stage}_{shape}.json",
-                corner_model(stage, False, shape),
+                build_corner_model(stage, False, shape),
             )
 
     for shape in SHAPES[1:]:
         write_model(
             MODELS / f"roof_tiles_thatch_1_{shape}.json",
-            corner_model(0, True, shape),
+            build_corner_model(0, True, shape),
         )
         write_model(
             MODELS / f"roof_tiles_thatch_full_{shape}.json",
-            corner_model(8, True, shape),
+            build_corner_model(8, True, shape),
         )
 
 
