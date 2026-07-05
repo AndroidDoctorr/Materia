@@ -23,6 +23,9 @@ public class BedTextureStitcher {
             event.addSprite(new ResourceLocation(materia.MOD_ID, "entity/bed/lavender"));
             event.addSprite(new ResourceLocation(materia.MOD_ID, "entity/bed/charcoal_gray"));
             event.addSprite(new ResourceLocation(materia.MOD_ID, "entity/bed/taupe"));
+            event.addSprite(new ResourceLocation(materia.MOD_ID, "entity/bed/teal"));
+            event.addSprite(new ResourceLocation(materia.MOD_ID, "entity/bed/burgundy"));
+            event.addSprite(new ResourceLocation(materia.MOD_ID, "entity/bed/tan"));
         }
     }
 }

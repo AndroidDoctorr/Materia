@@ -1,0 +1,68 @@
+{
+    "type": "minecraft:chest",
+    "pools": [
+        {
+            "rolls": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 2
+            },
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:murex_gland_brandaris",
+                    "weight": 3
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:murex_gland_haemastoma",
+                    "weight": 3
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:crushed_shells",
+                    "weight": 6,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1,
+                                "max": 4
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:wine_bottle",
+                    "weight": 5
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:olive_oil_bottle",
+                    "weight": 4
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:grape_juice_bottle",
+                    "weight": 4
+                }
+            ]
+        },
+        {
+            "rolls": {
+                "type": "minecraft:uniform",
+                "min": 0,
+                "max": 1
+            },
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:tyrian_purple_iota",
+                    "weight": 2
+                }
+            ]
+        }
+    ]
+}

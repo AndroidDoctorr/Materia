@@ -3,6 +3,7 @@ package com.torr.materia;
 import com.mojang.serialization.MapCodec;
 import com.torr.materia.loot.AnimalDropModifier;
 import com.torr.materia.loot.GrassFiberModifier;
+import com.torr.materia.loot.InjectLootTableModifier;
 import com.torr.materia.loot.LeafFiberModifier;
 import com.torr.materia.loot.SheepWoolModifier;
 import net.minecraftforge.common.loot.IGlobalLootModifier;
@@ -25,4 +26,7 @@ public class ModLootModifiers {
 
     public static final RegistryObject<MapCodec<? extends IGlobalLootModifier>> GRASS_FIBER_MODIFIER =
             GLM_SERIALIZERS.register("grass_fiber_modifier", () -> GrassFiberModifier.CODEC);
+
+    public static final RegistryObject<MapCodec<? extends IGlobalLootModifier>> INJECT_LOOT_TABLE =
+            GLM_SERIALIZERS.register("inject_loot_table", () -> InjectLootTableModifier.CODEC);
 }

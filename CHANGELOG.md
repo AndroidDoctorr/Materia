@@ -58,6 +58,8 @@ All notable changes to **Materia** (mod id: `materia`) will be documented in thi
 
 - **Cannons:** **aim yaw/pitch** now **persists across world save/load** (stored on the cannon block entity). **Aiming UI:** mouse movement no longer snaps aim on the first move — fine-tuning starts from the cannon’s current angles. **Barrel model (1.20.x):** fixed mirrored horizontal rotation so the rendered barrel tracks aim direction. Sneak-right-click with an empty hand still resets aim to **0° / 0° pitch**.
 
+- **Structure chest loot:** Materia items are **added** to many vanilla structure chests (dungeons, mineshafts, pyramids, jungle temples, strongholds, buried treasure, shipwrecks, woodland mansions, igloos) via Forge **`inject_loot_table`** global loot modifiers — vanilla loot unchanged; themed Materia bonuses (survival teasers, ores/dyes, murex/tyrian hints, sacks/blankets, etc.) at structure-specific **`random_chance`** rolls. See [`documentation/mechanics/structure-chest-loot.md`](documentation/mechanics/structure-chest-loot.md).
+
 ## 1.1.1 (2026-06-20)
 
 - **Kiln / advanced kiln / smelting / blasting — Forge metal inputs:** Materia kiln nugget melts, wrought bloom work, wrought ingot kiln, alloy advanced-kiln inputs, steel’s raw iron, and furnace/blast paths for tin / wrought aluminum now accept **`#forge:raw_materials/*`** aligned tags (plus **`#forge:nuggets/tin`** and **`#forge:ingots/{copper,zinc}`** for bronze/brass routes). Outputs remain Materia’s items. **`#materia:kiln_compatible_raw_tins`** aliases **`#forge:raw_materials/tin`**.

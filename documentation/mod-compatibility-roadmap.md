@@ -274,7 +274,18 @@ Notes:
 - `wild_wisteria_vine` drops wisteria seeds + 50% chance of plant fiber.
 - Pot variants (`water_pot`, `milk_pot`, `beer_pot`, `wine_pot`, `lava_pot`) drop themselves.
 
-### C2) Worldgen friendliness
+### C2) Structure chest loot
+
+- [x] **Additive Materia loot** in vanilla structure chests via Forge **`materia:inject_loot_table`** global loot modifiers (does not replace vanilla tables).
+- [x] **Structures covered:** simple dungeon, abandoned mineshaft, desert pyramid, jungle temple, stronghold (corridor/crossing/library), buried treasure, shipwreck (treasure + supply), woodland mansion, igloo.
+- [x] **Docs:** [`documentation/mechanics/structure-chest-loot.md`](mechanics/structure-chest-loot.md)
+
+Notes:
+- Loot tables: `shared/src/main/resources/data/materia/loot_tables/chests/`
+- Injectors: `shared/src/main/resources/data/materia/loot_modifiers/chests/`
+- Pack makers can override `materia:chests/*` tables or remove entries from `global_loot_modifiers.json`.
+
+### C3) Worldgen friendliness
 
 - [x] **Datapack-driven:** Features and placed features are generated (1.20.1+) or shipped as JSON; biome injection uses Forge **`forge:add_features`** biome modifiers under `shared/.../data/forge/biome_modifier/` (not replacing whole biomes).
 - [x] **Modded overworld biomes:** `materia:overworld` now includes `#minecraft:is_overworld` so ores/surface rules apply in Biomes O’ Plenty / Terralith / etc., not only the vanilla biome list. River vs non-river tin split uses `#minecraft:is_river` plus Forge tag `remove` on `materia:overworld_non_river` (Forge tag extension) so modded rivers match the river placement path.

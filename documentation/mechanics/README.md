@@ -26,6 +26,7 @@ Use this section to document “systems” that affect multiple items/blocks/rec
 - [Tapping](tapping.md)
 - [Earth (and packed mud)](earth-and-packed-mud.md)
 - [Animal drops (bones + fat)](animal-drops.md)
+- [Structure chest loot](structure-chest-loot.md)
 - [Vines (wisteria + grapes)](vines.md)
 - [Axes (early)](axes.md)
 - [Tools in crafting](tools-in-crafting.md)

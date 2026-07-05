@@ -14,6 +14,18 @@
         "materia:horse_animal_fat",
         "materia:horse_bones",
         "materia:leaf_fibers",
-        "materia:grass_fibers"
+        "materia:grass_fibers",
+        "materia:chests/chest_simple_dungeon",
+        "materia:chests/chest_abandoned_mineshaft",
+        "materia:chests/chest_desert_pyramid",
+        "materia:chests/chest_jungle_temple",
+        "materia:chests/chest_stronghold_corridor",
+        "materia:chests/chest_stronghold_crossing",
+        "materia:chests/chest_stronghold_library",
+        "materia:chests/chest_buried_treasure",
+        "materia:chests/chest_shipwreck_treasure",
+        "materia:chests/chest_shipwreck_supply",
+        "materia:chests/chest_woodland_mansion",
+        "materia:chests/chest_igloo_chest"
     ]
 }

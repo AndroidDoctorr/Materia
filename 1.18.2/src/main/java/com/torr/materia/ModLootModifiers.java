@@ -1,6 +1,7 @@
 package com.torr.materia;
 
 import com.torr.materia.loot.AnimalDropModifier;
+import com.torr.materia.loot.InjectLootTableModifier;
 import com.torr.materia.loot.LeafFiberModifier;
 import com.torr.materia.loot.SheepWoolModifier;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
@@ -20,4 +21,7 @@ public class ModLootModifiers {
 
     public static final RegistryObject<GlobalLootModifierSerializer<LeafFiberModifier>> LEAF_FIBER_MODIFIER =
             GLM_SERIALIZERS.register("leaf_fiber_modifier", LeafFiberModifier.Serializer::new);
+
+    public static final RegistryObject<GlobalLootModifierSerializer<InjectLootTableModifier>> INJECT_LOOT_TABLE =
+            GLM_SERIALIZERS.register("inject_loot_table", InjectLootTableModifier.Serializer::new);
 }

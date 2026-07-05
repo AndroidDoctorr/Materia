@@ -1,0 +1,83 @@
+{
+    "type": "minecraft:chest",
+    "pools": [
+        {
+            "rolls": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 2
+            },
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:indigo_dye",
+                    "weight": 5
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:lavender_dye",
+                    "weight": 5
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:verdigris",
+                    "weight": 4
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:ink_cup",
+                    "weight": 4
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:fine_paper_pulp",
+                    "weight": 5,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:paper_frame",
+                    "weight": 4
+                }
+            ]
+        },
+        {
+            "rolls": {
+                "type": "minecraft:uniform",
+                "min": 0,
+                "max": 1
+            },
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:and_gate",
+                    "weight": 2
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:timer",
+                    "weight": 2
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:rs_latch",
+                    "weight": 2
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:tyrian_purple_iota",
+                    "weight": 1
+                }
+            ]
+        }
+    ]
+}
