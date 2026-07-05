@@ -4,7 +4,7 @@
         "type": "forge:or",
         "values": [
             "#materia:desert",
-            "#materia:temperate"
+            "#materia:subtropical"
         ]
     },
     "step": "vegetal_decoration",

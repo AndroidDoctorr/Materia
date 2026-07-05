@@ -1,10 +1,10 @@
-﻿{
+{
     "type": "forge:add_features",
     "biomes": {
         "type": "forge:or",
         "values": [
             "#materia:river",
-            "#materia:warm_wet_surface"
+            "#materia:temperate"
         ]
     },
     "step": "vegetal_decoration",

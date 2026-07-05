@@ -24,12 +24,12 @@ Notes:
 | <img src="../../../shared/src/main/resources/assets/materia/textures/item/popcorn.png" alt="Popcorn" width="16" height="16"> `materia:popcorn` | 4 | 0.5 | Campfire cooking |
 | <img src="../../../shared/src/main/resources/assets/materia/textures/item/grapes.png" alt="Grapes" width="16" height="16"> `materia:grapes` | 2 | 0.2 | From grape vines |
 | <img src="../../../shared/src/main/resources/assets/materia/textures/item/sliced_squash.png" alt="Sliced squash" width="16" height="16"> `materia:sliced_squash` | 1 | 0.2 | Needs cutting tool in recipe |
-| <img src="../../../shared/src/main/resources/assets/materia/textures/item/baked_squash.png" alt="Baked squash" width="16" height="16"> `materia:baked_squash` | 5 | 0.6 | No recipe JSON found yet (see note below) |
+| <img src="../../../shared/src/main/resources/assets/materia/textures/item/baked_squash.png" alt="Baked squash" width="16" height="16"> `materia:baked_squash` | 5 | 0.6 | Oven: `oven_baked_squash.json` (from sliced squash) |
 | <img src="../../../shared/src/main/resources/assets/materia/textures/item/tortilla.png" alt="Tortilla" width="16" height="16"> `materia:tortilla` | 4 | 0.4 | Smelting or campfire cooking |
 | <img src="../../../shared/src/main/resources/assets/materia/textures/item/burrito.png" alt="Burrito" width="16" height="16"> `materia:burrito` | 8 | 0.9 | Tortilla + beans + peppers |
 | <img src="../../../shared/src/main/resources/assets/materia/textures/item/soft_cheese.png" alt="Soft cheese" width="16" height="16"> `materia:soft_cheese` | 3 | 0.4 | Made from milk + vinegar + salt + linen |
-| <img src="../../../shared/src/main/resources/assets/materia/textures/item/porridge.png" alt="Porridge" width="16" height="16"> `materia:porridge` | 7 | 0.8 | No recipe JSON found yet (see note below) |
-| <img src="../../../shared/src/main/resources/assets/materia/textures/item/chili.png" alt="Chili" width="16" height="16"> `materia:chili` | 1 | 0.2 | No recipe JSON found yet (see note below) |
+| <img src="../../../shared/src/main/resources/assets/materia/textures/item/chili.png" alt="Chili" width="16" height="16"> `materia:chili` | 1 | 0.2 | Crafting: `chili.json` (beans + peppers + salt) |
+| <img src="../../../shared/src/main/resources/assets/materia/textures/item/beans_and_rice.png" alt="Beans and rice" width="16" height="16"> `materia:beans_and_rice` | 8 | 0.75 | Crafting: `beans_and_rice.json` (cooked rice + beans) |
 | <img src="../../../shared/src/main/resources/assets/materia/textures/item/salt.png" alt="Salt" width="16" height="16"> `materia:salt` | 1 | 0.1 | `alwaysEat()` (you can eat it even when full) |
 | <img src="../../../shared/src/main/resources/assets/materia/textures/item/flour.png" alt="Flour" width="16" height="16"> `materia:flour` | 1 | 0.1 | Ingredient item, but edible in 1.18.2 |
 
@@ -55,6 +55,13 @@ These are “food chain” ingredients but do not have food properties in 1.18.2
 - Tortilla (campfire): `shared/src/main/resources/data/materia/recipes/tortilla_campfire.json`
 - Burrito: `shared/src/main/resources/data/materia/recipes/burrito.json`
 - Popcorn: `shared/src/main/resources/data/materia/recipes/corn_to_popcorn_campfire.json`
+- Chili: `shared/src/main/resources/data/materia/recipes/chili.json`
+
+### Rice
+
+- Shelled rice: `shared/src/main/resources/data/materia/recipes/shell_rice.json`
+- Cooked rice (water pot): `shared/src/main/resources/data/materia/recipes/water_pot_cooked_rice.json`
+- Beans and rice: `shared/src/main/resources/data/materia/recipes/beans_and_rice.json`
 
 ### Squash processing
 
@@ -79,15 +86,4 @@ Ingredients used:
 - `#materia:vinegar`
 - `materia:salt`
 - `#materia:linens`
-
-## Notes (items without a recipe yet)
-
-As of the current `shared/` datapack state:
-
-- I didn’t find any recipe JSONs that produce:
-  - `materia:baked_squash`
-  - `materia:porridge`
-  - `materia:chili`
-
-Those items are registered in code with food values, but may be “future” or produced by a system not yet expressed as datapack recipes.
 

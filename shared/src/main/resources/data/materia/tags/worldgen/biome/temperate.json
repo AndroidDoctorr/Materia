@@ -4,16 +4,14 @@
     "minecraft:plains",
     "minecraft:sunflower_plains",
     "minecraft:meadow",
-
     "minecraft:forest",
     "minecraft:flower_forest",
     "minecraft:birch_forest",
     "minecraft:old_growth_birch_forest",
     "minecraft:dark_forest",
-    "#minecraft:is_forest",
-    "#minecraft:is_taiga",
-    {"id": "#forge:is_plains", "required": false},
-    {"id": "#forge:is_forest", "required": false}
+    "minecraft:cherry_grove",
+    "minecraft:swamp",
+    "minecraft:windswept_forest",
+    {"id": "#forge:is_plains", "required": false}
   ]
 }
-

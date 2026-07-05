@@ -6,6 +6,8 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -15,11 +17,13 @@ import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 
 /**
- * Drinkable tea cup that can be consumed
- * - Plays drink animation
- * - Returns an empty crucible after drinking (like wine cup)
+ * Drinkable tea cup — light refreshment with a brief speed boost.
  */
 public class TeaCupItem extends Item {
+
+    private static final int FOOD_LEVELS = 2;
+    private static final float SATURATION = 0.3F;
+    private static final int SPEED_DURATION = 600;
 
     public TeaCupItem(Properties properties) {
         super(properties);
@@ -45,9 +49,14 @@ public class TeaCupItem extends Item {
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity user) {
         if (user instanceof Player player) {
             player.awardStat(Stats.ITEM_USED.get(this));
-            level.playSound(null, player.getX(), player.getY(), player.getZ(), 
-                SoundEvents.GENERIC_DRINK, SoundSource.PLAYERS, 1.0F, 1.0F);
-            // Return empty crucible (like drinking from wine cup returns empty crucible)
+            level.playSound(null, player.getX(), player.getY(), player.getZ(),
+                    SoundEvents.GENERIC_DRINK, SoundSource.PLAYERS, 1.0F, 1.0F);
+
+            if (!level.isClientSide) {
+                player.getFoodData().eat(FOOD_LEVELS, SATURATION);
+                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, SPEED_DURATION, 0));
+            }
+
             return ItemUtils.createFilledResult(stack, player, new ItemStack(ModItems.CRUCIBLE.get()));
         }
         return super.finishUsingItem(stack, level, user);

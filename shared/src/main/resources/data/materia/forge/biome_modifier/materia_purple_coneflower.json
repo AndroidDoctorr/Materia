@@ -1,12 +1,6 @@
-﻿{
+{
     "type": "forge:add_features",
-    "biomes": {
-        "type": "forge:or",
-        "values": [
-            "#materia:temperate",
-            "#materia:grassy"
-        ]
-    },
+    "biomes": "#materia:prairie",
     "step": "vegetal_decoration",
     "features": [
         "materia:purple_coneflower_placed"

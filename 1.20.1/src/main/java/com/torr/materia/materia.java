@@ -91,6 +91,7 @@ public class materia
         
         // Creative mode tab (1.20+)
         ModCreativeTabs.TABS.register(modEventBus);
+        modEventBus.addListener(ModCreativeTabs::buildTabContents);
 
         // Register loot modifier serializers
         ModLootModifiers.GLM_SERIALIZERS.register(modEventBus);

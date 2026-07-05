@@ -27,6 +27,7 @@ Early food progression is meant to feel like:
 - Tortilla (smelting): `shared/src/main/resources/data/materia/recipes/tortilla.json`
 - Tortilla (campfire): `shared/src/main/resources/data/materia/recipes/tortilla_campfire.json`
 - Burrito: `shared/src/main/resources/data/materia/recipes/burrito.json` (tortilla + beans + peppers)
+- Beans and rice: `shared/src/main/resources/data/materia/recipes/beans_and_rice.json` (cooked rice + beans)
 
 ### Corn cob → popcorn
 

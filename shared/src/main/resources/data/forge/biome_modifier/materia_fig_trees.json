@@ -1,6 +1,6 @@
 {
     "type": "forge:add_features",
-    "biomes": "#materia:temperate",
+    "biomes": "#materia:subtropical",
     "step": "vegetal_decoration",
     "features": [
         "materia:fig_tree_placed"

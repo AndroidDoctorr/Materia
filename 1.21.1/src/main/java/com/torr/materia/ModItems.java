@@ -1648,6 +1648,12 @@ public class ModItems {
                                                 .nutrition(6)
                                                 .saturationModifier(0.6f)
                                                 .build())));
+        public static final RegistryObject<Item> BEANS_AND_RICE = ITEMS.register("beans_and_rice",
+                        () -> new Item(new Item.Properties()
+                                        .food(new net.minecraft.world.food.FoodProperties.Builder()
+                                                .nutrition(8)
+                                                .saturationModifier(0.75f)
+                                                .build())));
         public static final RegistryObject<Item> COOKED_TARO = ITEMS.register("cooked_taro",
                         () -> new Item(new Item.Properties()
                                         .food(new net.minecraft.world.food.FoodProperties.Builder()
@@ -1812,13 +1818,6 @@ public class ModItems {
         public static final RegistryObject<Item> VINEGAR = ITEMS.register("vinegar",
                         () -> new com.torr.materia.item.LiquidCrucibleItem(new Item.Properties()
                                         ));
-        public static final RegistryObject<Item> PORRIDGE = ITEMS.register("porridge",
-                        () -> new com.torr.materia.item.LiquidCrucibleItem(new Item.Properties()
-                                        
-                                        .food(new net.minecraft.world.food.FoodProperties.Builder()
-                                                .nutrition(7)
-                                                .saturationModifier(0.8f)
-                                                .build())));
         public static final RegistryObject<Item> BURRITO = ITEMS.register("burrito",
                         () -> new Item(new Item.Properties()
                                         

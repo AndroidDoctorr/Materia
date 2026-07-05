@@ -6,7 +6,7 @@ Small worldgen plants added in 1.2.0. Most are decorative; taro is also a farmab
 
 - **Block**: `materia:yucca` — two-block-tall double plant (like plantain)
 - **Worldgen**: `shared/src/main/resources/data/materia/forge/biome_modifier/materia_yucca.json`
-- **Biomes**: `#materia:desert`, `#materia:temperate`
+- **Biomes**: `#materia:desert`, `#materia:subtropical` (Southwest US / Mediterranean grassland)
 - **Placement**: clusters of five in a plus or X pattern (`TallPlantClusterFeature`)
 - **Rendering**: uses split **lower/upper** block textures (`yucca_lower`, `yucca_upper`) so the tall plant displays correctly in world and from creative placement
 

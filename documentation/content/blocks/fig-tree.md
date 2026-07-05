@@ -5,7 +5,7 @@ Fig trees are a temperate worldgen tree with harvestable fruit on the leaves.
 ## Where it generates
 
 - Biome modifier: `shared/src/main/resources/data/materia/forge/biome_modifier/materia_fig_trees.json`
-- Biomes: `#materia:temperate`
+- Biomes: `#materia:subtropical` (Mediterranean and warm temperate)
 
 ## Blocks
 

@@ -5,7 +5,7 @@ Spruce-like conifer with normal and 2×2 mega variants (shift-click sapling for 
 ## Where it generates
 
 - `shared/src/main/resources/data/materia/forge/biome_modifier/materia_cedar_trees.json`
-- Biomes: `#materia:temperate` or `#materia:temperate_forest`
+- Biomes: `#materia:subtropical` or `#materia:temperate_forest` (Mediterranean / warm temperate; not boreal taiga)
 
 ## Blocks
 

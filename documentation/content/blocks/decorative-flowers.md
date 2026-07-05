@@ -11,7 +11,7 @@ See also:
 
 - **Block**: `materia:white_lily` — two-block-tall double plant (`WhiteLilyBlock`)
 - **Worldgen**: `materia_white_lily.json` → `materia:white_lily_placed`
-- **Biomes**: `#materia:river`, `#materia:warm_wet_surface`
+- **Biomes**: `#materia:river`, `#materia:temperate` (temperate pond margins)
 - **Placement**: grass, dirt, coarse dirt, podzol, mud, muddy mangrove roots
 - **Feature**: `TallPlantClusterFeature` (cluster patches)
 
@@ -19,7 +19,7 @@ See also:
 
 - **Block**: `materia:bluebonnet` — two-block-tall double plant (`BluebonnetBlock`)
 - **Worldgen**: `materia_bluebonnet.json` → `materia:bluebonnet_placed`
-- **Biomes**: `#materia:temperate`, `#materia:grassy`
+- **Biomes**: `#materia:prairie` (Great Plains / Texas grassland)
 - **Placement**: same soil list as white lily
 - **Feature**: `TallPlantClusterFeature`
 
@@ -27,7 +27,7 @@ See also:
 
 - **Block**: `materia:purple_coneflower` — single-block cross flower
 - **Worldgen**: `materia_purple_coneflower.json` → `materia:purple_coneflower_placed`
-- **Biomes**: `#materia:temperate`, `#materia:grassy`
+- **Biomes**: `#materia:prairie` (American prairies)
 
 ## Fuchsia
 

@@ -4,6 +4,7 @@
         "type": "forge:or",
         "values": [
             "#materia:temperate",
+            "#materia:temperate_boreal",
             "#materia:temperate_forest"
         ]
     },

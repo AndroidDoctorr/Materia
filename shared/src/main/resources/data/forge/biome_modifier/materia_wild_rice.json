@@ -4,7 +4,8 @@
         "type": "forge:or",
         "values": [
             "#materia:river",
-            "#materia:warm_wet_surface"
+            "#materia:prairie",
+            "#materia:temperate"
         ]
     },
     "step": "vegetal_decoration",

@@ -1,0 +1,79 @@
+{
+    "parent": "materia:exclusive_purples",
+    "criteria": {
+        "olive_dye": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:olive_dye"], "count": {"min": 1}}]
+            }
+        },
+        "indigo_dye": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:indigo_dye"], "count": {"min": 1}}]
+            }
+        },
+        "charcoal_gray_dye": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:charcoal_gray_dye"], "count": {"min": 1}}]
+            }
+        },
+        "taupe_dye": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:taupe_dye"], "count": {"min": 1}}]
+            }
+        },
+        "tyrian_purple_dye": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:tyrian_purple_dye"], "count": {"min": 1}}]
+            }
+        },
+        "lavender_dye": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:lavender_dye"], "count": {"min": 1}}]
+            }
+        },
+        "verdigris": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:verdigris"], "count": {"min": 1}}]
+            }
+        },
+        "burgundy_dye": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:burgundy_dye"], "count": {"min": 1}}]
+            }
+        },
+        "tan_dye": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:tan_dye"], "count": {"min": 1}}]
+            }
+        }
+    },
+    "requirements": [
+        ["olive_dye"],
+        ["indigo_dye"],
+        ["charcoal_gray_dye"],
+        ["taupe_dye"],
+        ["tyrian_purple_dye"],
+        ["lavender_dye"],
+        ["verdigris"],
+        ["burgundy_dye"],
+        ["tan_dye"]
+    ],
+    "display": {
+        "icon": {"item": "materia:verdigris"},
+        "title": {"translate": "advancements.materia.full_spectrum.title"},
+        "description": {"translate": "advancements.materia.full_spectrum.description"},
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    }
+}

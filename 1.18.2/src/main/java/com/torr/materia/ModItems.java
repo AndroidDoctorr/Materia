@@ -1651,6 +1651,13 @@ public class ModItems {
                                                 .nutrition(6)
                                                 .saturationMod(0.6f)
                                                 .build())));
+        public static final RegistryObject<Item> BEANS_AND_RICE = ITEMS.register("beans_and_rice",
+                        () -> new Item(new Item.Properties()
+                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_FOOD)
+                                        .food(new net.minecraft.world.food.FoodProperties.Builder()
+                                                .nutrition(8)
+                                                .saturationMod(0.75f)
+                                                .build())));
         public static final RegistryObject<Item> COOKED_TARO = ITEMS.register("cooked_taro",
                         () -> new Item(new Item.Properties()
                                         .tab(net.minecraft.world.item.CreativeModeTab.TAB_FOOD)
@@ -1844,13 +1851,6 @@ public class ModItems {
         public static final RegistryObject<Item> VINEGAR = ITEMS.register("vinegar",
                         () -> new com.torr.materia.item.LiquidCrucibleItem(new Item.Properties()
                                         .tab(net.minecraft.world.item.CreativeModeTab.TAB_FOOD)));
-        public static final RegistryObject<Item> PORRIDGE = ITEMS.register("porridge",
-                        () -> new com.torr.materia.item.LiquidCrucibleItem(new Item.Properties()
-                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_FOOD)
-                                        .food(new net.minecraft.world.food.FoodProperties.Builder()
-                                                .nutrition(7)
-                                                .saturationMod(0.8f)
-                                                .build())));
         public static final RegistryObject<Item> BURRITO = ITEMS.register("burrito",
                         () -> new Item(new Item.Properties()
                                         .tab(net.minecraft.world.item.CreativeModeTab.TAB_FOOD)
@@ -2071,22 +2071,22 @@ public class ModItems {
         // Instruments and Instrument Parts
         public static final RegistryObject<Item> DRIED_GOURD = ITEMS.register("dried_gourd",
                         () -> new Item(new Item.Properties()
-                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_FOOD)));
+                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)));
         public static final RegistryObject<Item> FIRE_MARACA = ITEMS.register("fire_maraca",
                         () -> new InstrumentItem(new Item.Properties()
-                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_FOOD), ModSounds.FIRE_MARACA));
+                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_TOOLS), ModSounds.FIRE_MARACA));
         public static final RegistryObject<Item> WATER_MARACA = ITEMS.register("water_maraca",
                         () -> new InstrumentItem(new Item.Properties()
-                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_FOOD), ModSounds.WATER_MARACA));
+                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_TOOLS), ModSounds.WATER_MARACA));
         public static final RegistryObject<Item> EARTH_MARACA = ITEMS.register("earth_maraca",
                         () -> new InstrumentItem(new Item.Properties()
-                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_FOOD), ModSounds.EARTH_MARACA));
+                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_TOOLS), ModSounds.EARTH_MARACA));
         public static final RegistryObject<Item> AIR_MARACA = ITEMS.register("air_maraca",
                         () -> new InstrumentItem(new Item.Properties()
-                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_FOOD), ModSounds.AIR_MARACA));
+                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_TOOLS), ModSounds.AIR_MARACA));
         public static final RegistryObject<Item> LIFE_MARACA = ITEMS.register("life_maraca",
                         () -> new InstrumentItem(new Item.Properties()
-                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_FOOD), ModSounds.LIFE_MARACA));
+                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_TOOLS), ModSounds.LIFE_MARACA));
         public static final RegistryObject<Item> DRUM = ITEMS.register("drum",
                         () -> new Item(new Item.Properties()
                                         .tab(net.minecraft.world.item.CreativeModeTab.TAB_TOOLS)));

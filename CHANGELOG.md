@@ -36,7 +36,7 @@ All notable changes to **Materia** (mod id: `materia`) will be documented in thi
 
 - **Taro wild spawn fix:** crop survives on grass without crop-block light checks; worldgen replaces short vegetation and uses surface heightmap so patches appear in shaded tropical biomes.
 
-- **New dyes:** **verdigris** (vinegar + raw copper, custom recipe), **burgundy** (red + tyrian purple), **tan** (brown + yellow); burgundy/tan/teal textile blocks (wool, glass, concrete, terracotta, candle, cotton, string, wool clumps); teal sack/blanket/bed use verdigris dye.
+- **New dyes:** **verdigris** (vinegar + raw copper, custom recipe), **burgundy** (red + brown), **tan** (brown + yellow); burgundy/tan/teal textile blocks (wool, glass, concrete, terracotta, candle, cotton, string, wool clumps); teal sack/blanket/bed use verdigris dye.
 
 - **Woodworking:** fig/cedar/eucalyptus **planks, stairs, slabs** (smooth plank + nails); **posts, trellises, and tables** for each wood type; doors/trapdoors skipped.
 
@@ -44,7 +44,17 @@ All notable changes to **Materia** (mod id: `materia`) will be documented in thi
 
 - **Docs:** block pages for fig, cedar, eucalyptus, agave, decorative plants (yucca, plantain, reeds, taro), **decorative flowers**, and **roof tiles & thatch roofs**; dye pages for verdigris, burgundy, tan, and **flower→dye policy**; armor texture notes on bronze / wrought iron pages.
 
-- **Roof tiles & thatch roofs:** **roof frame** places empty **`roof_tiles`**. **Tiled roofs:** craft 8 terracotta tiles around a frame → **`roof_tiles`**, or tile by hand. **Thatch roofs:** craft 2 bundles + frame → **`thatch_roof`** item, or bundle twice on a placed frame — both place the same **`roof_tiles`** thatch block. **`thatch_slope`** is **Thatch Stairs** only (bundles + lashing); unrelated to roof frames. **Cannonball damage:** violent hits have a **50%** chance to **obliterate** the whole block (frame included) or otherwise strip **at least 3 tiles**; drops differ by break cause — **player** breaks yield a mix of intact **`terracotta_roof_tile`**, **`crushed_ceramic`**, and some lost material, while **cannonball/explosion** breaks are mostly dust with at most ~**1/3** as crushed ceramic (thatch gives no bundles on violent impact). Fixed a crash when obliteration refreshed stair shapes on air.
+- **Roof tiles & thatch roofs:** **roof frame** places empty **`roof_tiles`**. **Tiled roofs:** craft 8 terracotta tiles around a frame → **`roof_tiles`**, or tile by hand. **Thatch roofs:** craft 2 bundles + frame → **`thatch_roof`** item, or bundle twice on a placed frame — both place the same **`roof_tiles`** thatch block. **`thatch_slope`** is **Thatch Stairs** only (bundles + lashing); unrelated to roof frames. **Sloped collision** on roof blocks matches walkable tile/thatch geometry (straight ramps, inner-corner valleys, outer-corner hips). **Cannonball damage:** stone cannonballs **50/50** obliterate vs partial tile loss; **iron cannonballs always obliterate** the whole block (frame included). Violent breaks drop mostly dust with at most ~**1/3** crushed ceramic; player breaks yield a mix of intact tiles, crushed ceramic, and lost material (thatch gives no bundles on violent impact). Fixed a crash when obliteration refreshed stair shapes on air.
+
+- **Food recipes:** **baked squash** (oven, from sliced squash), **chili** (beans + peppers + salt), **beans and rice** (cooked rice + beans).
+
+- **Plant worldgen:** tightened biome tags so warm-climate plants (eucalyptus, fig, olive, cedar, cypress, tea, etc.) no longer spawn in snowy taiga / boreal spruce forests; added `#materia:subtropical`, `#materia:prairie`, and `#materia:temperate_boreal` tags.
+
+- **Tea:** drinking a **tea cup** restores a little hunger and grants brief **Speed I** (30 seconds).
+
+- **Advancements:** **Rainbow Grove** (find rainbow eucalyptus) and **Full Spectrum** (collect every Materia dye).
+
+- **Creative tabs:** Materia items now appear in the appropriate vanilla creative tabs (building blocks, food, tools, etc.) as well as the Materia tab.
 
 - **Cannons:** **aim yaw/pitch** now **persists across world save/load** (stored on the cannon block entity). **Aiming UI:** mouse movement no longer snaps aim on the first move — fine-tuning starts from the cannon’s current angles. **Barrel model (1.20.x):** fixed mirrored horizontal rotation so the rendered barrel tracks aim direction. Sneak-right-click with an empty hand still resets aim to **0° / 0° pitch**.
 

@@ -1,0 +1,27 @@
+{
+    "parent": "materia:cotton_pickings",
+    "criteria": {
+        "rainbow_log": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:rainbow_eucalyptus_log"], "count": {"min": 1}}]
+            }
+        },
+        "rainbow_sapling": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [{"items": ["materia:rainbow_eucalyptus_sapling"], "count": {"min": 1}}]
+            }
+        }
+    },
+    "requirements": [["rainbow_log", "rainbow_sapling"]],
+    "display": {
+        "icon": {"item": "materia:rainbow_eucalyptus_log"},
+        "title": {"translate": "advancements.materia.rainbow_grove.title"},
+        "description": {"translate": "advancements.materia.rainbow_grove.description"},
+        "frame": "goal",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    }
+}

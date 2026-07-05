@@ -12,9 +12,10 @@ Olive trees are a worldgen tree that provides:
 
 ## Where it generates
 
-Olive trees are added to temperate biomes via a biome modifier:
+Olive trees are added to warm Mediterranean-style biomes via a biome modifier:
 
 - `shared/src/main/resources/data/materia/forge/biome_modifier/materia_olive_trees.json`
+- Biomes: `#materia:subtropical`
 
 ## Blocks
 

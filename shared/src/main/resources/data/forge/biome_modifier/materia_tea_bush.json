@@ -3,7 +3,7 @@
     "biomes": {
         "type": "forge:or",
         "values": [
-            "#materia:temperate",
+            "#materia:subtropical",
             "#materia:temperate_forest"
         ]
     },
