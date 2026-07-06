@@ -2,7 +2,29 @@
 
 All notable changes to **Materia** (mod id: `materia`) will be documented in this file.
 
-## 1.2.0 (in progress)
+Planned work is tracked in [`documentation/release-roadmap.md`](documentation/release-roadmap.md).
+
+## Unreleased
+
+### 1.2.3 (TBD)
+
+- See release roadmap — bark uses, willow, fire-setting, airiots (if not shipped in 1.2.2).
+
+### 1.2.2 (planned)
+
+- Wood **doors** and **trapdoors** for new wood types.
+- **Glazed terracotta** for Materia dye colors.
+- More **decorative** blocks (marble, finials, flower boxes).
+- **Cork oak**, **cork**, cork bottles/item frames, **cork board** (notes with red string).
+
+### 1.2.1 (planned)
+
+- **Cannons:** fix E/W vs N/S barrel model rotation (axis-dependent aim yaw sign in BER; firing unchanged).
+- **Rainbow eucalyptus:** leaves from rainbow trees tagged `rainbow=true` → drop rainbow saplings (5% chance, same as normal).
+- **Copper roofs:** copper plate on roof frame (shapeless craft or right-click); vanilla-style oxidation on placed blocks; custom corner textures per stage.
+- **Shingle roofs:** tar/pitch + smooth planks → shingles; 4 shingles + roof frame → shingle roof block; wood scrape sound on placement.
+
+## 1.2.0
 
 - **New plants & trees:** **esparto** (decorative grass; drops plant fiber and wheat seeds like Materia tall grass), **rice** and **cotton** crops (8 growth stages; wild variants use stage-6 art), **tea bush** (4 stages; right-click mature bush for tea leaves, regrows from stage 2), **palm**, **Mediterranean cypress**, **baobab**, **maple**, **fig**, **cedar**, and **eucalyptus** trees. All spawn in appropriate biome tags (desert/temperate esparto, river/warm-wet wild rice, tropical/grassy cotton, temperate tea, beach/tropical palms, temperate cypress, tropical baobab, temperate maple/fig/cedar, eucalyptus groves).
 

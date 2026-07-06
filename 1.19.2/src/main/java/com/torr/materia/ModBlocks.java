@@ -831,7 +831,7 @@ public class ModBlocks {
         public static final RegistryObject<Block> RAINBOW_EUCALYPTUS_LOG = registerBlock("rainbow_eucalyptus_log",
                         () -> new com.torr.materia.block.FlammableRotatedPillarBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(2.0f).sound(SoundType.WOOD)));
         public static final RegistryObject<Block> EUCALYPTUS_LEAVES = registerBlock("eucalyptus_leaves",
-                        () -> new com.torr.materia.block.CedarLeavesBlock(BlockBehaviour.Properties.of(Material.LEAVES).strength(0.2f).randomTicks().sound(SoundType.GRASS).noOcclusion().isValidSpawn((state, world, pos, type) -> false).isSuffocating((state, world, pos) -> false).isViewBlocking((state, world, pos) -> false)));
+                        () -> new com.torr.materia.block.EucalyptusLeavesBlock(BlockBehaviour.Properties.of(Material.LEAVES).strength(0.2f).randomTicks().sound(SoundType.GRASS).noOcclusion().isValidSpawn((state, world, pos, type) -> false).isSuffocating((state, world, pos) -> false).isViewBlocking((state, world, pos) -> false)));
         public static final RegistryObject<Block> EUCALYPTUS_SAPLING = registerBlock("eucalyptus_sapling",
                         () -> new com.torr.materia.block.EucalyptusSaplingBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.GRASS).randomTicks()));
         public static final RegistryObject<Block> RAINBOW_EUCALYPTUS_SAPLING = registerBlock("rainbow_eucalyptus_sapling",

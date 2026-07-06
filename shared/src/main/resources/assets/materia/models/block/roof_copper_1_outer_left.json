@@ -1,0 +1,138 @@
+{
+    "ambientocclusion": false,
+    "textures": {
+        "square": "materia:block/roof_frame_square",
+        "triangle": "materia:block/roof_frame_triangle",
+        "tiles": "materia:block/roof_tiles",
+        "particle": "minecraft:block/exposed_copper",
+        "tiles_x": "materia:block/roof_copper_corner_right_1",
+        "tiles_z": "materia:block/roof_copper_corner_left_1"
+    },
+    "elements": [
+        {
+            "name": "bottom",
+            "from": [
+                0,
+                0,
+                0
+            ],
+            "to": [
+                16,
+                0,
+                16
+            ],
+            "faces": {
+                "down": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#square"
+                },
+                "up": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#square"
+                }
+            }
+        },
+        {
+            "name": "roof_slope_x",
+            "from": [
+                0,
+                0,
+                0
+            ],
+            "to": [
+                16,
+                0,
+                16
+            ],
+            "shade": false,
+            "rotation": {
+                "origin": [
+                    8,
+                    0,
+                    0
+                ],
+                "axis": "x",
+                "angle": -45,
+                "rescale": true
+            },
+            "faces": {
+                "up": {
+                    "uv": [
+                        16,
+                        16,
+                        0,
+                        0
+                    ],
+                    "texture": "#tiles_x",
+                    "cullface": false
+                },
+                "down": {
+                    "uv": [
+                        16,
+                        0,
+                        0,
+                        16
+                    ],
+                    "texture": "#tiles_x",
+                    "cullface": false
+                }
+            }
+        },
+        {
+            "name": "roof_slope_z",
+            "from": [
+                0,
+                0,
+                0
+            ],
+            "to": [
+                16,
+                0,
+                16
+            ],
+            "shade": false,
+            "rotation": {
+                "origin": [
+                    16,
+                    0,
+                    8
+                ],
+                "axis": "z",
+                "angle": -45,
+                "rescale": true
+            },
+            "faces": {
+                "up": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#tiles_z",
+                    "cullface": false
+                },
+                "down": {
+                    "uv": [
+                        0,
+                        16,
+                        16,
+                        0
+                    ],
+                    "texture": "#tiles_z",
+                    "cullface": false
+                }
+            }
+        }
+    ]
+}

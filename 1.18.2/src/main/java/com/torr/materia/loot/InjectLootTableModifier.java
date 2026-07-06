@@ -27,7 +27,8 @@ public class InjectLootTableModifier extends LootModifier {
     @Nonnull
     @Override
     protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
-        if (context.getLevel() instanceof ServerLevel serverLevel) {
+        if (context.getLevel() instanceof ServerLevel) {
+            ServerLevel serverLevel = (ServerLevel) context.getLevel();
             LootTable table = serverLevel.getServer().getLootTables().get(lootTable);
             if (table != null && table != LootTable.EMPTY) {
                 table.getRandomItems(context, generatedLoot::add);

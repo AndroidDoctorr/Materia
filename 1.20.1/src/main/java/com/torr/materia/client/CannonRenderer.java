@@ -19,8 +19,7 @@ public class CannonRenderer implements BlockEntityRenderer<CannonBlockEntity> {
     private static final double PIVOT_Y = 10.0D / 16.0D;
     private static final double PIVOT_Z = 0.5D;
 
-    // Barrel model forward axis is mirrored relative to aim yaw on 1.20.x; negate in render only.
-    private static final float MODEL_YAW_OFFSET_DEG = 0f;
+    private static final float MODEL_FORWARD_OFFSET_DEG = 0f;
 
     private final BlockRenderDispatcher blockRenderer;
 
@@ -40,13 +39,13 @@ public class CannonRenderer implements BlockEntityRenderer<CannonBlockEntity> {
         }
 
         Direction facing = state.getValue(CannonBlock.FACING);
-        float baseModelY = CannonMath.facingToModelY(facing);
         float yaw = be.getYawDeg();
         float pitch = be.getPitchDeg();
 
         poseStack.pushPose();
         poseStack.translate(PIVOT_X, PIVOT_Y, PIVOT_Z);
-        poseStack.mulPose(Axis.YP.rotationDegrees(baseModelY - yaw + MODEL_YAW_OFFSET_DEG));
+        poseStack.mulPose(Axis.YP.rotationDegrees(
+                CannonMath.barrelRenderYawDeg(facing, yaw, MODEL_FORWARD_OFFSET_DEG)));
         poseStack.mulPose(Axis.XP.rotationDegrees(-pitch));
         poseStack.translate(-PIVOT_X, -PIVOT_Y, -PIVOT_Z);
 

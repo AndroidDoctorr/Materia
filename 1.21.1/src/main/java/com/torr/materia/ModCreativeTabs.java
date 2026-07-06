@@ -55,8 +55,8 @@ public class ModCreativeTabs {
     );
 
     private static final List<String> ROOF_ORDER = List.of(
-            "roof_frame", "clay_roof_tile", "terracotta_roof_tile", "roof_tiles", "thatch_roof", "thatch_slope",
-            "crushed_ceramic"
+            "roof_frame", "clay_roof_tile", "terracotta_roof_tile", "roof_tiles", "roof_copper", "shingle", "shingle_roof",
+            "thatch_roof", "thatch_slope", "crushed_ceramic"
     );
 
     private enum TabCategory {

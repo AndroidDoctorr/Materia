@@ -1,6 +1,7 @@
 package com.torr.materia.world.feature;
 
 import com.mojang.serialization.Codec;
+import com.torr.materia.block.EucalyptusLeavesBlock;
 import com.torr.materia.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -67,13 +68,13 @@ public class EucalyptusTreeFeature extends Feature<NoneFeatureConfiguration> {
             int radius = Math.max(1, 3 - canopy / 2 + random.nextInt(2));
             maxReach = Math.max(maxReach, Math.abs(offsetX) + radius);
             maxReach = Math.max(maxReach, Math.abs(offsetZ) + radius);
-            placeFlatCanopy(level, canopyCenter, leavesBlock, radius, random);
+            placeFlatCanopy(level, canopyCenter, leavesBlock, radius, random, rainbow);
             if (random.nextFloat() < 0.65f) {
-                placeFlatCanopy(level, canopyCenter.above(1), leavesBlock, Math.max(1, radius - 1), random);
+                placeFlatCanopy(level, canopyCenter.above(1), leavesBlock, Math.max(1, radius - 1), random, rainbow);
             }
         }
 
-        placeFlatCanopy(level, origin.above(height - 1), leavesBlock, 1 + random.nextInt(2), random);
+        placeFlatCanopy(level, origin.above(height - 1), leavesBlock, 1 + random.nextInt(2), random, rainbow);
 
         TreeLeafDistanceFix.refresh(level, origin, maxReach + 1, height + 3);
         return true;
@@ -102,7 +103,8 @@ public class EucalyptusTreeFeature extends Feature<NoneFeatureConfiguration> {
         }
     }
 
-    private static void placeFlatCanopy(WorldGenLevel level, BlockPos center, Block leavesBlock, int radius, Random random) {
+    private static void placeFlatCanopy(WorldGenLevel level, BlockPos center, Block leavesBlock, int radius, Random random, boolean rainbow) {
+        BlockState leafState = leafState(leavesBlock, rainbow);
         for (int x = -radius; x <= radius; x++) {
             for (int z = -radius; z <= radius; z++) {
                 if (x * x + z * z > radius * radius + random.nextInt(2)) {
@@ -110,12 +112,20 @@ public class EucalyptusTreeFeature extends Feature<NoneFeatureConfiguration> {
                 }
                 BlockPos leafPos = center.offset(x, 0, z);
                 if (canReplace(level, leafPos)) {
-                    level.setBlock(leafPos, leavesBlock.defaultBlockState()
-                            .setValue(LeavesBlock.DISTANCE, 1)
-                            .setValue(LeavesBlock.PERSISTENT, false), TREE_BLOCK_FLAGS);
+                    level.setBlock(leafPos, leafState, TREE_BLOCK_FLAGS);
                 }
             }
         }
+    }
+
+    private static BlockState leafState(Block leavesBlock, boolean rainbow) {
+        BlockState state = leavesBlock.defaultBlockState()
+                .setValue(LeavesBlock.DISTANCE, 1)
+                .setValue(LeavesBlock.PERSISTENT, false);
+        if (rainbow) {
+            state = state.setValue(EucalyptusLeavesBlock.RAINBOW, true);
+        }
+        return state;
     }
 
     private static boolean canReplace(WorldGenLevel level, BlockPos pos) {

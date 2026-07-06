@@ -1,9 +1,5 @@
-#!/usr/bin/env python3
-"""Generate roof_tiles corner models and blockstates.
-
-Plain straight slope models (roof_tiles_0..8, thatch variants) are hand-maintained.
-Corner geometry/UVs are copied from the corrected roof_tiles_thatch_full_* models.
-"""
+﻿#!/usr/bin/env python3
+"""Generate copper/shingle roof block models, roof_tiles blockstates, and item models."""
 import json
 from copy import deepcopy
 from pathlib import Path
@@ -11,340 +7,237 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "shared" / "src" / "main" / "resources" / "assets" / "materia"
 MODELS = ASSETS / "models" / "block"
+ITEM_MODELS = ASSETS / "models" / "item"
 BLOCKSTATES = ASSETS / "blockstates"
-
-FRAME_TEMPLATE = json.loads((MODELS / "roof_frame.json").read_text(encoding="utf-8"))
+BLOCKSTATE_PATH = BLOCKSTATES / "roof_tiles.json"
 
 FACINGS = ["north", "east", "south", "west"]
 Y_ROT = {"north": 0, "east": 90, "south": 180, "west": 270}
 SHAPES = ["straight", "inner_left", "inner_right", "outer_left", "outer_right"]
-TRIANGLE_TEXTURE = "materia:block/roof_frame_triangle"
+CORNER_SHAPES = SHAPES[1:]
+
+COPPER_TILES = [
+    "minecraft:block/copper_block",
+    "minecraft:block/exposed_copper",
+    "minecraft:block/weathered_copper",
+    "minecraft:block/oxidized_copper",
+]
+
+SHINGLE_TILES = {
+    1: "materia:block/shingles_1",
+    2: "materia:block/shingles_2",
+    3: "materia:block/shingles_3",
+    4: "materia:block/shingles",
+}
+
+VARIANT_PROP_ORDER = ["cover_type", "facing", "oxidation", "shape", "stage", "thatch"]
 
 
-def element_by_name(model: dict, name: str) -> dict:
-    for element in model["elements"]:
-        if element["name"] == name:
-            return element
-    raise KeyError(name)
+def load_json(path: Path) -> dict:
+    return json.loads(path.read_text(encoding="utf-8"))
 
 
-def back_side_2_west() -> dict:
-    return {
-        "name": "back_side_2",
-        "from": [0, 0, 0],
-        "to": [0, 16, 16],
-        "faces": {
-            "east": {"uv": [0, 0, 16, 16], "texture": "#square"},
-            "west": {"uv": [0, 0, 16, 16], "texture": "#square"},
-        },
-    }
+def write_json(path: Path, data: dict) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(data, indent=4) + "\n", encoding="utf-8")
 
 
-def back_side_2_east() -> dict:
-    return {
-        "name": "back_side_2",
-        "from": [16, 0, 0],
-        "to": [16, 16, 16],
-        "faces": {
-            "east": {"uv": [0, 0, 16, 16], "texture": "#square"},
-            "west": {"uv": [0, 0, 16, 16], "texture": "#square"},
-        },
-    }
+def copper_corner_suffix(oxidation: int) -> str:
+    return "" if oxidation == 0 else f"_{oxidation}"
 
 
-def slope_x_inner(texture_ref: str) -> dict:
-    return {
-        "name": "roof_slope_x",
-        "from": [0, 0, 0],
-        "to": [16, 0, 16],
-        "shade": False,
-        "rotation": {
-            "origin": [8, 0, 0],
-            "axis": "x",
-            "angle": -45,
-            "rescale": True,
-        },
-        "faces": {
-            "up": {"uv": [0, 0, 16, 16], "texture": texture_ref, "cullface": False},
-            "down": {"uv": [0, 16, 16, 0], "texture": texture_ref, "cullface": False},
-        },
-    }
-
-
-def slope_x_outer(texture_ref: str) -> dict:
-    return {
-        "name": "roof_slope_x",
-        "from": [0, 0, 0],
-        "to": [16, 0, 16],
-        "shade": False,
-        "rotation": {
-            "origin": [8, 0, 0],
-            "axis": "x",
-            "angle": -45,
-            "rescale": True,
-        },
-        "faces": {
-            "up": {"uv": [16, 16, 0, 0], "texture": texture_ref, "cullface": False},
-            "down": {"uv": [16, 0, 0, 16], "texture": texture_ref, "cullface": False},
-        },
-    }
-
-
-def slope_z_inner_left(texture_ref: str) -> dict:
-    return {
-        "name": "roof_slope_z",
-        "from": [0, 0, 0],
-        "to": [16, 0, 16],
-        "shade": False,
-        "rotation": {
-            "origin": [16, 0, 8],
-            "axis": "z",
-            "angle": -45,
-            "rescale": True,
-        },
-        "faces": {
-            "up": {
-                "rotation": 270,
-                "uv": [16, 16, 0, 0],
-                "texture": texture_ref,
-                "cullface": False,
-            },
-            "down": {
-                "rotation": 270,
-                "uv": [0, 16, 16, 0],
-                "texture": texture_ref,
-                "cullface": False,
-            },
-        },
-    }
-
-
-def slope_z_inner_right(texture_ref: str) -> dict:
-    return {
-        "name": "roof_slope_z",
-        "from": [0, 0, 0],
-        "to": [16, 0, 16],
-        "shade": False,
-        "rotation": {
-            "origin": [0, 0, 8],
-            "axis": "z",
-            "angle": 45,
-            "rescale": True,
-        },
-        "faces": {
-            "up": {
-                "rotation": 90,
-                "uv": [16, 16, 0, 0],
-                "texture": texture_ref,
-                "cullface": False,
-            },
-            "down": {
-                "rotation": 90,
-                "uv": [0, 16, 16, 0],
-                "texture": texture_ref,
-                "cullface": False,
-            },
-        },
-    }
-
-
-def slope_z_outer_left(texture_ref: str) -> dict:
-    return {
-        "name": "roof_slope_z",
-        "from": [0, 0, 0],
-        "to": [16, 0, 16],
-        "shade": False,
-        "rotation": {
-            "origin": [16, 0, 8],
-            "axis": "z",
-            "angle": -45,
-            "rescale": True,
-        },
-        "faces": {
-            "up": {
-                "rotation": 90,
-                "uv": [16, 16, 0, 0],
-                "texture": texture_ref,
-                "cullface": False,
-            },
-            "down": {
-                "rotation": 90,
-                "uv": [0, 16, 16, 0],
-                "texture": texture_ref,
-                "cullface": False,
-            },
-        },
-    }
-
-
-def slope_z_outer_right(texture_ref: str) -> dict:
-    return {
-        "name": "roof_slope_z",
-        "from": [0, 0, 0],
-        "to": [16, 0, 16],
-        "shade": False,
-        "rotation": {
-            "origin": [0, 0, 8],
-            "axis": "z",
-            "angle": 45,
-            "rescale": True,
-        },
-        "faces": {
-            "up": {
-                "rotation": 90,
-                "uv": [0, 0, 16, 16],
-                "texture": texture_ref,
-                "cullface": False,
-            },
-            "down": {
-                "rotation": 90,
-                "uv": [16, 0, 0, 16],
-                "texture": texture_ref,
-                "cullface": False,
-            },
-        },
-    }
+def copper_corner_texture(side: str, oxidation: int) -> str:
+    return f"materia:block/roof_copper_corner_{side}{copper_corner_suffix(oxidation)}"
 
 
 def corner_side(shape: str) -> str:
     return "left" if "left" in shape else "right"
 
 
-def corner_texture_path(stage: int, thatch: bool, side: str) -> str:
-    if thatch:
-        if stage >= 8:
-            return f"materia:block/roof_thatch_corner_{side}"
-        return f"materia:block/roof_thatch_corner_{side}_1"
-
-    if stage >= 8:
-        return f"materia:block/roof_tiles_corner_{side}"
-    if stage <= 0:
-        return f"materia:block/roof_tiles_corner_{side}"
-    return f"materia:block/roof_tiles_corner_{side}_{stage}"
-
-
-def corner_texture_pair(stage: int, thatch: bool, shape: str) -> tuple[str, str]:
+def copper_corner_texture_pair(shape: str, oxidation: int) -> tuple[str, str]:
     primary = corner_side(shape)
     secondary = "right" if primary == "left" else "left"
-
-    if stage == 0 and not thatch:
-        return TRIANGLE_TEXTURE, TRIANGLE_TEXTURE
-
     return (
-        corner_texture_path(stage, thatch, secondary),
-        corner_texture_path(stage, thatch, primary),
+        copper_corner_texture(secondary, oxidation),
+        copper_corner_texture(primary, oxidation),
     )
 
 
-def build_corner_model(stage: int, thatch: bool, shape: str) -> dict:
-    tex_x_path, tex_z_path = corner_texture_pair(stage, thatch, shape)
-    model = deepcopy(FRAME_TEMPLATE)
-    model["textures"]["tiles_x"] = tex_x_path
-    model["textures"]["tiles_z"] = tex_z_path
+def shingle_corner_suffix(stage: int) -> str:
+    return "" if stage == 4 else f"_{stage}"
 
-    elements = [deepcopy(element_by_name(FRAME_TEMPLATE, "bottom"))]
 
-    if shape == "inner_left":
-        elements.extend([
-            deepcopy(element_by_name(FRAME_TEMPLATE, "back_side")),
-            back_side_2_west(),
-            deepcopy(element_by_name(FRAME_TEMPLATE, "left_side")),
-            slope_x_inner("#tiles_x"),
-            slope_z_inner_left("#tiles_z"),
-        ])
-    elif shape == "inner_right":
-        elements.extend([
-            deepcopy(element_by_name(FRAME_TEMPLATE, "back_side")),
-            back_side_2_east(),
-            deepcopy(element_by_name(FRAME_TEMPLATE, "right_side")),
-            slope_x_inner("#tiles_x"),
-            slope_z_inner_right("#tiles_z"),
-        ])
-    elif shape == "outer_left":
-        elements.extend([
-            slope_x_outer("#tiles_x"),
-            slope_z_outer_left("#tiles_z"),
-        ])
-    elif shape == "outer_right":
-        elements.extend([
-            slope_x_outer("#tiles_x"),
-            slope_z_outer_right("#tiles_z"),
-        ])
-    else:
-        raise ValueError(shape)
+def shingle_corner_texture(side: str, stage: int) -> str:
+    return f"materia:block/roof_shingles_corner_{side}{shingle_corner_suffix(stage)}"
 
-    model["elements"] = elements
+
+def shingle_corner_texture_pair(shape: str, stage: int) -> tuple[str, str]:
+    primary = corner_side(shape)
+    secondary = "right" if primary == "left" else "left"
+    return (
+        shingle_corner_texture(secondary, stage),
+        shingle_corner_texture(primary, stage),
+    )
+
+
+def variant_key(props: dict[str, str]) -> str:
+    return ",".join(f"{name}={props[name]}" for name in VARIANT_PROP_ORDER if name in props)
+
+
+def parse_variant_key(key: str) -> dict[str, str]:
+    props: dict[str, str] = {}
+    for part in key.split(","):
+        name, value = part.split("=", 1)
+        props[name] = value
+    return props
+
+
+def straight_template() -> dict:
+    return load_json(MODELS / "roof_tiles_0.json")
+
+
+def corner_template(shape: str) -> dict:
+    return load_json(MODELS / f"roof_tiles_0_{shape}.json")
+
+
+def build_straight_model(tiles_texture: str, particle: str) -> dict:
+    model = deepcopy(straight_template())
+    model["textures"]["tiles"] = tiles_texture
+    model["textures"]["particle"] = particle
     return model
 
 
-def write_model(path: Path, model: dict) -> None:
-    path.write_text(json.dumps(model, indent=4) + "\n", encoding="utf-8")
+def build_corner_model(shape: str, tiles_x: str, tiles_z: str, particle: str) -> dict:
+    model = deepcopy(corner_template(shape))
+    model["textures"]["tiles_x"] = tiles_x
+    model["textures"]["tiles_z"] = tiles_z
+    model["textures"]["particle"] = particle
+    return model
 
 
-def model_id_for_state(thatch: bool, stage: int, shape: str) -> str:
+def copper_model_name(oxidation: int, shape: str) -> str:
     if shape == "straight":
-        if not thatch:
-            return f"materia:block/roof_tiles_{stage}"
-        if stage == 0:
-            return "materia:block/roof_tiles_thatch_1"
-        if stage >= 8:
-            return "materia:block/roof_tiles_thatch_full"
-        return f"materia:block/roof_tiles_{stage}"
-
-    suffix = shape
-    if not thatch:
-        return f"materia:block/roof_tiles_{stage}_{suffix}"
-    if stage == 0:
-        return f"materia:block/roof_tiles_thatch_1_{suffix}"
-    if stage >= 8:
-        return f"materia:block/roof_tiles_thatch_full_{suffix}"
-    return f"materia:block/roof_tiles_{stage}_{suffix}"
+        return f"roof_copper_{oxidation}"
+    return f"roof_copper_{oxidation}_{shape}"
 
 
-def generate_corner_models() -> None:
-    for stage in range(9):
-        for shape in SHAPES[1:]:
-            write_model(
-                MODELS / f"roof_tiles_{stage}_{shape}.json",
-                build_corner_model(stage, False, shape),
-            )
-
-    for shape in SHAPES[1:]:
-        write_model(
-            MODELS / f"roof_tiles_thatch_1_{shape}.json",
-            build_corner_model(0, True, shape),
-        )
-        write_model(
-            MODELS / f"roof_tiles_thatch_full_{shape}.json",
-            build_corner_model(8, True, shape),
-        )
+def shingle_model_name(stage: int, shape: str) -> str:
+    if shape == "straight":
+        return f"roof_shingle_{stage}"
+    return f"roof_shingle_{stage}_{shape}"
 
 
-def generate_blockstates() -> None:
-    variants = {}
+def generate_copper_models() -> list[Path]:
+    written: list[Path] = []
+    for oxidation in range(4):
+        tiles = COPPER_TILES[oxidation]
+        particle = tiles
+        for shape in SHAPES:
+            name = copper_model_name(oxidation, shape)
+            path = MODELS / f"{name}.json"
+            if shape == "straight":
+                model = build_straight_model(tiles, particle)
+            else:
+                tex_x, tex_z = copper_corner_texture_pair(shape, oxidation)
+                model = build_corner_model(shape, tex_x, tex_z, particle)
+            write_json(path, model)
+            written.append(path)
+    return written
+
+
+def generate_shingle_models() -> list[Path]:
+    written: list[Path] = []
+    for stage in range(1, 5):
+        tiles = SHINGLE_TILES[stage]
+        for shape in SHAPES:
+            name = shingle_model_name(stage, shape)
+            path = MODELS / f"{name}.json"
+            if shape == "straight":
+                model = build_straight_model(tiles, tiles)
+            else:
+                tex_x, tex_z = shingle_corner_texture_pair(shape, stage)
+                model = build_corner_model(shape, tex_x, tex_z, tiles)
+            write_json(path, model)
+            written.append(path)
+    return written
+
+
+def legacy_variant_key(key: str) -> str:
+    props = parse_variant_key(key)
+    props.setdefault("cover_type", "0")
+    props.setdefault("oxidation", "0")
+    return variant_key(props)
+
+
+def generate_blockstate() -> Path:
+    existing = load_json(BLOCKSTATE_PATH)
+    variants: dict[str, dict] = {}
+
+    for key, value in existing["variants"].items():
+        variants[legacy_variant_key(key)] = value
+
     for facing in FACINGS:
-        for stage in range(9):
-            for thatch in (False, True):
-                for shape in SHAPES:
-                    key = (
-                        f"facing={facing},stage={stage},thatch={str(thatch).lower()},"
-                        f"shape={shape}"
-                    )
-                    variants[key] = {
-                        "model": model_id_for_state(thatch, stage, shape),
-                        "y": Y_ROT[facing],
-                    }
+        y = Y_ROT[facing]
+        for oxidation in range(4):
+            for shape in SHAPES:
+                model = f"materia:block/{copper_model_name(oxidation, shape)}"
+                props = {
+                    "cover_type": "1",
+                    "facing": facing,
+                    "oxidation": str(oxidation),
+                    "shape": shape,
+                    "stage": "0",
+                    "thatch": "false",
+                }
+                variants[variant_key(props)] = {"model": model, "y": y}
 
-    (BLOCKSTATES / "roof_tiles.json").write_text(
-        json.dumps({"variants": variants}, indent=4) + "\n",
-        encoding="utf-8",
-    )
+        for stage in range(1, 5):
+            for shape in SHAPES:
+                model = f"materia:block/{shingle_model_name(stage, shape)}"
+                props = {
+                    "cover_type": "2",
+                    "facing": facing,
+                    "oxidation": "0",
+                    "shape": shape,
+                    "stage": str(stage),
+                    "thatch": "false",
+                }
+                variants[variant_key(props)] = {"model": model, "y": y}
+
+    write_json(BLOCKSTATE_PATH, {"variants": variants})
+    return BLOCKSTATE_PATH
+
+
+def generate_item_models() -> list[Path]:
+    specs = [
+        ("shingle.json", "materia:item/shingle"),
+        ("roof_copper.json", "materia:item/roof_copper"),
+        ("shingle_roof.json", "materia:item/roof_shingles"),
+    ]
+    written: list[Path] = []
+    for filename, texture in specs:
+        path = ITEM_MODELS / filename
+        write_json(
+            path,
+            {
+                "parent": "minecraft:item/generated",
+                "textures": {"layer0": texture},
+            },
+        )
+        written.append(path)
+    return written
 
 
 def main() -> None:
-    generate_corner_models()
-    generate_blockstates()
-    print("Generated roof_tiles corner models and blockstates (straight models untouched)")
+    created: list[Path] = []
+    created.extend(generate_copper_models())
+    created.extend(generate_shingle_models())
+    created.append(generate_blockstate())
+    created.extend(generate_item_models())
+
+    print(f"Wrote {len(created)} files:")
+    for path in created:
+        print(f"  {path.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":

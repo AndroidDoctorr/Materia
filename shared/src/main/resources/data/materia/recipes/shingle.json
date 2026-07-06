@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:tar"
+        },
+        {
+            "item": "materia:tar"
+        },
+        {
+            "tag": "materia:smooth_planks"
+        }
+    ],
+    "result": {
+        "item": "materia:shingle",
+        "count": 4
+    }
+}

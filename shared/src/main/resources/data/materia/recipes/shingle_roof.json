@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:roof_frame"
+        },
+        {
+            "item": "materia:shingle"
+        },
+        {
+            "item": "materia:shingle"
+        },
+        {
+            "item": "materia:shingle"
+        },
+        {
+            "item": "materia:shingle"
+        }
+    ],
+    "result": {
+        "item": "materia:shingle_roof",
+        "count": 1
+    }
+}

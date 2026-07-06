@@ -849,7 +849,7 @@ public class ModBlocks {
                         () -> new com.torr.materia.block.FlammableRotatedPillarBlock(BlockBehaviour.Properties.of()
                                         .strength(2.0f).sound(SoundType.WOOD)));
         public static final RegistryObject<Block> EUCALYPTUS_LEAVES = registerBlock("eucalyptus_leaves",
-                        () -> new com.torr.materia.block.CedarLeavesBlock(BlockBehaviour.Properties.of()
+                        () -> new com.torr.materia.block.EucalyptusLeavesBlock(BlockBehaviour.Properties.of()
                                         .strength(0.2f).randomTicks().sound(SoundType.GRASS).noOcclusion()
                                         .isValidSpawn((state, world, pos, type) -> false)
                                         .isSuffocating((state, world, pos) -> false)

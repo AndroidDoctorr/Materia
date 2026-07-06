@@ -1,12 +1,12 @@
 package com.torr.materia.block;
 
-import com.torr.materia.ModBlocks;
 import com.torr.materia.ModItems;
 import com.torr.materia.ModSounds;
 import com.torr.materia.item.RoofTilesBlockItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
@@ -16,6 +16,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -26,7 +27,6 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.StairsShape;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
@@ -39,11 +39,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RoofTilesBlock extends Block {
+    public static final int COVER_TERRACOTTA = 0;
+    public static final int COVER_COPPER = 1;
+    public static final int COVER_SHINGLE = 2;
+    public static final int SHINGLE_MAX_STAGE = 4;
+
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final IntegerProperty STAGE = IntegerProperty.create("stage", 0, 8);
     public static final BooleanProperty THATCH = BooleanProperty.create("thatch");
     public static final EnumProperty<StairsShape> SHAPE = BlockStateProperties.STAIRS_SHAPE;
+    public static final IntegerProperty COVER_TYPE = IntegerProperty.create("cover_type", 0, 2);
+    public static final IntegerProperty OXIDATION = IntegerProperty.create("oxidation", 0, 3);
 
+    private static final float COPPER_OXIDATION_CHANCE = 0.05688889F;
     private static final float PLAYER_CRUSHED_CHANCE = 0.20F;
     private static final float PLAYER_VANISH_CHANCE = 0.12F;
     private static final float VIOLENT_OBLITERATE_CHANCE = 0.5F;
@@ -71,7 +79,6 @@ public class RoofTilesBlock extends Block {
     }
 
     private static VoxelShape shapeForState(BlockState state) {
-        // FACING points toward the eave; the slope rises toward the opposite (ridge).
         Direction ridge = state.getValue(FACING).getOpposite();
         StairsShape shape = state.getValue(SHAPE);
         VoxelShape result = buildRidgeWedge(ridge);
@@ -101,28 +108,51 @@ public class RoofTilesBlock extends Block {
                 .setValue(FACING, Direction.NORTH)
                 .setValue(STAGE, 0)
                 .setValue(THATCH, false)
-                .setValue(SHAPE, StairsShape.STRAIGHT));
+                .setValue(SHAPE, StairsShape.STRAIGHT)
+                .setValue(COVER_TYPE, COVER_TERRACOTTA)
+                .setValue(OXIDATION, 0));
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, STAGE, THATCH, SHAPE);
+        builder.add(FACING, STAGE, THATCH, SHAPE, COVER_TYPE, OXIDATION);
+    }
+
+    @Override
+    public boolean isRandomlyTicking(BlockState state) {
+        return state.getValue(COVER_TYPE) == COVER_COPPER && state.getValue(OXIDATION) < 3;
+    }
+
+    @Override
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        if (state.getValue(COVER_TYPE) != COVER_COPPER || state.getValue(OXIDATION) >= 3) {
+            return;
+        }
+        if (random.nextFloat() < COPPER_OXIDATION_CHANCE) {
+            level.setBlock(pos, state.setValue(OXIDATION, state.getValue(OXIDATION) + 1), 3);
+        }
     }
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         int stage = 0;
         boolean thatch = false;
+        int coverType = COVER_TERRACOTTA;
+        int oxidation = 0;
         ItemStack stack = context.getItemInHand();
         if (stack.getItem() instanceof RoofTilesBlockItem) {
             stage = RoofTilesBlockItem.placementStage(stack);
             thatch = RoofTilesBlockItem.placementThatch(stack);
+            coverType = RoofTilesBlockItem.placementCoverType(stack);
+            oxidation = RoofTilesBlockItem.placementOxidation(stack);
         }
         BlockPos pos = context.getClickedPos().relative(context.getClickedFace());
         BlockState state = defaultBlockState()
                 .setValue(FACING, context.getHorizontalDirection().getOpposite())
                 .setValue(STAGE, stage)
                 .setValue(THATCH, thatch)
+                .setValue(COVER_TYPE, coverType)
+                .setValue(OXIDATION, oxidation)
                 .setValue(SHAPE, StairsShape.STRAIGHT);
         return orientFromNeighbors(state, context.getLevel(), pos);
     }
@@ -159,24 +189,65 @@ public class RoofTilesBlock extends Block {
     }
 
     private InteractionResult handleUse(BlockState state, Level level, BlockPos pos, ItemStack held) {
+        int coverType = state.getValue(COVER_TYPE);
         int stage = state.getValue(STAGE);
         boolean thatch = state.getValue(THATCH);
+
+        if (coverType == COVER_COPPER) {
+            return InteractionResult.PASS;
+        }
+
+        if (coverType == COVER_SHINGLE) {
+            if (stage >= SHINGLE_MAX_STAGE || !held.is(ModItems.SHINGLE.get())) {
+                return InteractionResult.PASS;
+            }
+            if (!level.isClientSide) {
+                level.setBlock(pos, state.setValue(STAGE, stage + 1), 3);
+                refreshShapeNeighbors(level, pos);
+                held.shrink(1);
+                playWoodScrape(level, pos);
+            }
+            return InteractionResult.sidedSuccess(level.isClientSide());
+        }
+
+        if (stage == 0 && !thatch) {
+            if (held.is(ModItems.COPPER_PLATE.get())) {
+                if (!level.isClientSide) {
+                    level.setBlock(pos, state
+                            .setValue(COVER_TYPE, COVER_COPPER)
+                            .setValue(OXIDATION, 0)
+                            .setValue(STAGE, 0), 3);
+                    refreshShapeNeighbors(level, pos);
+                    held.shrink(1);
+                    playCopperPlace(level, pos);
+                }
+                return InteractionResult.sidedSuccess(level.isClientSide());
+            }
+            if (held.is(ModItems.SHINGLE.get())) {
+                if (!level.isClientSide) {
+                    level.setBlock(pos, state
+                            .setValue(COVER_TYPE, COVER_SHINGLE)
+                            .setValue(STAGE, 1), 3);
+                    refreshShapeNeighbors(level, pos);
+                    held.shrink(1);
+                    playWoodScrape(level, pos);
+                }
+                return InteractionResult.sidedSuccess(level.isClientSide());
+            }
+        }
 
         if (stage >= 8) {
             return InteractionResult.PASS;
         }
 
         if (held.is(ModItems.BUNDLE.get())) {
-            if (stage > 0 && !thatch) {
+            if (stage > 0) {
                 return InteractionResult.PASS;
             }
             if (!level.isClientSide) {
-                BlockState updated;
-                if (!thatch) {
-                    updated = state.setValue(THATCH, true);
-                } else {
-                    updated = state.setValue(STAGE, 8);
-                }
+                BlockState updated = !thatch
+                        ? state.setValue(THATCH, true)
+                        : state.setValue(STAGE, 8);
                 level.setBlock(pos, updated, 3);
                 refreshShapeNeighbors(level, pos);
                 held.shrink(1);
@@ -203,13 +274,32 @@ public class RoofTilesBlock extends Block {
     }
 
     private static void handleViolentImpact(ServerLevel level, BlockPos pos, BlockState state, TileBreakCause cause, boolean alwaysObliterate) {
+        int coverType = state.getValue(COVER_TYPE);
+        if (coverType == COVER_COPPER || alwaysObliterate) {
+            destroyRoofViolently(level, pos, state, cause, level.getRandom());
+            return;
+        }
+
         boolean thatch = state.getValue(THATCH);
         int stage = state.getValue(STAGE);
         RandomSource random = level.getRandom();
-        boolean obliterate = alwaysObliterate || random.nextFloat() < VIOLENT_OBLITERATE_CHANCE;
+        boolean obliterate = random.nextFloat() < VIOLENT_OBLITERATE_CHANCE;
 
         if (obliterate) {
             destroyRoofViolently(level, pos, state, cause, random);
+            return;
+        }
+
+        if (coverType == COVER_SHINGLE) {
+            if (stage <= 0) {
+                return;
+            }
+            int lost = violentTileLoss(stage, random);
+            dropShingleStacks(level, pos, random, lost, cause);
+            level.setBlock(pos, state.setValue(STAGE, stage - lost), 3);
+            refreshShapeNeighbors(level, pos);
+            playWoodScrape(level, pos);
+            level.levelEvent(2001, pos, Block.getId(state));
             return;
         }
 
@@ -238,18 +328,25 @@ public class RoofTilesBlock extends Block {
     }
 
     private static void destroyRoofViolently(ServerLevel level, BlockPos pos, BlockState state, TileBreakCause cause, RandomSource random) {
+        int coverType = state.getValue(COVER_TYPE);
         boolean thatch = state.getValue(THATCH);
         int stage = state.getValue(STAGE);
 
-        if (!thatch && stage > 0) {
+        if (coverType == COVER_COPPER) {
+            if (cause == TileBreakCause.PLAYER) {
+                Block.popResource(level, pos, new ItemStack(ModItems.COPPER_PLATE.get()));
+            }
+            playCopperBreak(level, pos);
+        } else if (coverType == COVER_SHINGLE && stage > 0) {
+            dropShingleStacks(level, pos, random, stage, cause);
+            playWoodScrape(level, pos);
+        } else if (!thatch && stage > 0) {
             dropTileStacks(level, pos, random, stage, cause);
+            playPotteryBreak(level, pos);
+        } else if (thatch) {
+            playThatchBreak(level, pos);
         }
 
-        if (thatch) {
-            playThatchBreak(level, pos);
-        } else if (stage > 0) {
-            playPotteryBreak(level, pos);
-        }
         level.levelEvent(2001, pos, Block.getId(state));
         level.removeBlock(pos, false);
     }
@@ -264,10 +361,16 @@ public class RoofTilesBlock extends Block {
     @Override
     public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
         if (!level.isClientSide && !state.is(newState.getBlock()) && hasRoofCovering(state)) {
-            if (state.getValue(THATCH)) {
-                playThatchBreak(level, pos);
-            } else {
-                playPotteryBreak(level, pos);
+            switch (state.getValue(COVER_TYPE)) {
+                case COVER_COPPER -> playCopperBreak(level, pos);
+                case COVER_SHINGLE -> playWoodScrape(level, pos);
+                default -> {
+                    if (state.getValue(THATCH)) {
+                        playThatchBreak(level, pos);
+                    } else {
+                        playPotteryBreak(level, pos);
+                    }
+                }
             }
         }
         super.onRemove(state, level, pos, newState, movedByPiston);
@@ -285,8 +388,23 @@ public class RoofTilesBlock extends Block {
                 ? TileBreakCause.EXPLOSION
                 : TileBreakCause.PLAYER;
 
+        int coverType = state.getValue(COVER_TYPE);
         boolean thatch = state.getValue(THATCH);
         int stage = state.getValue(STAGE);
+
+        if (coverType == COVER_COPPER) {
+            if (cause == TileBreakCause.PLAYER) {
+                drops.add(new ItemStack(ModItems.COPPER_PLATE.get()));
+            }
+            return drops;
+        }
+
+        if (coverType == COVER_SHINGLE) {
+            if (cause == TileBreakCause.PLAYER && stage > 0) {
+                drops.add(new ItemStack(ModItems.SHINGLE.get(), stage));
+            }
+            return drops;
+        }
 
         if (thatch) {
             if (cause == TileBreakCause.PLAYER) {
@@ -307,10 +425,11 @@ public class RoofTilesBlock extends Block {
     }
 
     private static boolean hasRoofCovering(BlockState state) {
-        if (state.getValue(THATCH)) {
-            return true;
-        }
-        return state.getValue(STAGE) > 0;
+        return switch (state.getValue(COVER_TYPE)) {
+            case COVER_COPPER -> true;
+            case COVER_SHINGLE -> state.getValue(STAGE) > 0;
+            default -> state.getValue(THATCH) || state.getValue(STAGE) > 0;
+        };
     }
 
     private static StairsShape computeShape(BlockState state, BlockGetter level, BlockPos pos) {
@@ -401,10 +520,29 @@ public class RoofTilesBlock extends Block {
         level.playSound(null, pos, SoundType.GRASS.getBreakSound(), SoundSource.BLOCKS, 1.0F, 1.0F);
     }
 
+    private static void playCopperPlace(Level level, BlockPos pos) {
+        level.playSound(null, pos, SoundEvents.ANVIL_USE, SoundSource.BLOCKS, 0.8F, 1.0F);
+    }
+
+    private static void playCopperBreak(Level level, BlockPos pos) {
+        level.playSound(null, pos, SoundEvents.ANVIL_LAND, SoundSource.BLOCKS, 0.6F, 1.1F);
+    }
+
+    private static void playWoodScrape(Level level, BlockPos pos) {
+        level.playSound(null, pos, ModSounds.WOOD_SCRAPE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+    }
+
     private static void dropTileStacks(ServerLevel level, BlockPos pos, RandomSource random, int count, TileBreakCause cause) {
         for (ItemStack stack : tileStacksForCount(count, random, cause)) {
             Block.popResource(level, pos, stack);
         }
+    }
+
+    private static void dropShingleStacks(ServerLevel level, BlockPos pos, RandomSource random, int count, TileBreakCause cause) {
+        if (cause != TileBreakCause.PLAYER) {
+            return;
+        }
+        Block.popResource(level, pos, new ItemStack(ModItems.SHINGLE.get(), count));
     }
 
     private static List<ItemStack> tileStacksForCount(int count, RandomSource random, TileBreakCause cause) {

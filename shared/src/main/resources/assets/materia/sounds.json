@@ -288,5 +288,15 @@
                 "pitch": 1.0
             }
         ]
+    },
+    "block.wood.scrape": {
+        "category": "block",
+        "sounds": [
+            {
+                "name": "materia:wood_scrape",
+                "volume": 1.0,
+                "pitch": 1.0
+            }
+        ]
     }
 }

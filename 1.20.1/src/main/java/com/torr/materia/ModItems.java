@@ -349,6 +349,12 @@ public class ModItems {
         public static final RegistryObject<Item> TERRACOTTA_ROOF_TILE = ITEMS.register("terracotta_roof_tile",
                         () -> new Item(new Item.Properties()
                                         ));
+        public static final RegistryObject<Item> SHINGLE = ITEMS.register("shingle",
+                        () -> new Item(new Item.Properties()));
+        public static final RegistryObject<Item> ROOF_COPPER = ITEMS.register("roof_copper",
+                        () -> new com.torr.materia.item.CopperRoofBlockItem(ModBlocks.ROOF_TILES.get(), new Item.Properties()));
+        public static final RegistryObject<Item> SHINGLE_ROOF = ITEMS.register("shingle_roof",
+                        () -> new com.torr.materia.item.ShingleRoofBlockItem(ModBlocks.ROOF_TILES.get(), new Item.Properties()));
         public static final RegistryObject<Item> GLASS_PUCK = ITEMS.register("glass_puck",
                         () -> new Item(new Item.Properties()
                                         ));

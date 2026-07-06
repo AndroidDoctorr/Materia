@@ -1,0 +1,237 @@
+{
+    "ambientocclusion": false,
+    "textures": {
+        "square": "materia:block/roof_frame_square",
+        "triangle": "materia:block/roof_frame_triangle",
+        "tiles": "materia:block/roof_tiles",
+        "particle": "materia:block/shingles_3",
+        "tiles_x": "materia:block/roof_shingles_corner_left_3",
+        "tiles_z": "materia:block/roof_shingles_corner_right_3"
+    },
+    "elements": [
+        {
+            "name": "bottom",
+            "from": [
+                0,
+                0,
+                0
+            ],
+            "to": [
+                16,
+                0,
+                16
+            ],
+            "faces": {
+                "down": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#square"
+                },
+                "up": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#square"
+                }
+            }
+        },
+        {
+            "name": "back_side",
+            "from": [
+                0,
+                0,
+                16
+            ],
+            "to": [
+                16,
+                16,
+                16
+            ],
+            "faces": {
+                "north": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#square"
+                },
+                "south": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#square"
+                }
+            }
+        },
+        {
+            "name": "back_side",
+            "from": [
+                16,
+                0,
+                0
+            ],
+            "to": [
+                16,
+                16,
+                16
+            ],
+            "faces": {
+                "east": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#square"
+                },
+                "west": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#square"
+                }
+            }
+        },
+        {
+            "name": "right_side",
+            "from": [
+                0,
+                0,
+                0
+            ],
+            "to": [
+                0,
+                16,
+                16
+            ],
+            "faces": {
+                "east": {
+                    "uv": [
+                        16,
+                        0,
+                        0,
+                        16
+                    ],
+                    "texture": "#triangle"
+                },
+                "west": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#triangle"
+                }
+            }
+        },
+        {
+            "name": "roof_slope_x",
+            "from": [
+                0,
+                0,
+                0
+            ],
+            "to": [
+                16,
+                0,
+                16
+            ],
+            "shade": false,
+            "rotation": {
+                "origin": [
+                    8,
+                    0,
+                    0
+                ],
+                "axis": "x",
+                "angle": -45,
+                "rescale": true
+            },
+            "faces": {
+                "up": {
+                    "uv": [
+                        16,
+                        0,
+                        0,
+                        16
+                    ],
+                    "texture": "#tiles_x",
+                    "cullface": false
+                },
+                "down": {
+                    "uv": [
+                        16,
+                        16,
+                        0,
+                        0
+                    ],
+                    "texture": "#tiles_x",
+                    "cullface": false
+                }
+            }
+        },
+        {
+            "name": "roof_slope_z",
+            "from": [
+                0,
+                0,
+                0
+            ],
+            "to": [
+                16,
+                0,
+                16
+            ],
+            "shade": false,
+            "rotation": {
+                "origin": [
+                    0,
+                    0,
+                    8
+                ],
+                "axis": "z",
+                "angle": 45,
+                "rescale": true
+            },
+            "faces": {
+                "up": {
+                    "uv": [
+                        0,
+                        16,
+                        16,
+                        0
+                    ],
+                    "texture": "#tiles_z",
+                    "cullface": false
+                },
+                "down": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#tiles_z",
+                    "cullface": false
+                }
+            }
+        }
+    ]
+}

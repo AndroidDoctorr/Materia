@@ -59,6 +59,65 @@
             ],
             "conditions": [
                 {
+                    "condition": "minecraft:block_state_property",
+                    "block": "materia:eucalyptus_leaves",
+                    "properties": {
+                        "rainbow": "false"
+                    }
+                },
+                {
+                    "condition": "minecraft:inverted",
+                    "term": {
+                        "condition": "minecraft:match_tool",
+                        "predicate": {
+                            "items": [
+                                "minecraft:shears"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "condition": "minecraft:inverted",
+                    "term": {
+                        "condition": "minecraft:match_tool",
+                        "predicate": {
+                            "enchantments": [
+                                {
+                                    "enchantment": "minecraft:silk_touch",
+                                    "levels": {
+                                        "min": 1
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "condition": "minecraft:random_chance",
+                    "chance": 0.05
+                },
+                {
+                    "condition": "minecraft:survives_explosion"
+                }
+            ]
+        },
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:rainbow_eucalyptus_sapling"
+                }
+            ],
+            "conditions": [
+                {
+                    "condition": "minecraft:block_state_property",
+                    "block": "materia:eucalyptus_leaves",
+                    "properties": {
+                        "rainbow": "true"
+                    }
+                },
+                {
                     "condition": "minecraft:inverted",
                     "term": {
                         "condition": "minecraft:match_tool",

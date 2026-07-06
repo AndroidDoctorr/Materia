@@ -131,6 +131,10 @@ public class ModSounds {
             "item.pottery.scrape",
             () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(materia.MOD_ID, "item.pottery.scrape")));
 
+    public static final RegistryObject<SoundEvent> WOOD_SCRAPE = SOUNDS.register(
+            "block.wood.scrape",
+            () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(materia.MOD_ID, "block.wood.scrape")));
+
     public static final RegistryObject<SoundEvent> WICKER_BASKET = SOUNDS.register(
             "item.basket.open",
             () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(materia.MOD_ID, "item.basket.open")));

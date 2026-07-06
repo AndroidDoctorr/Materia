@@ -19,9 +19,8 @@ public class CannonRenderer implements BlockEntityRenderer<CannonBlockEntity> {
     private static final double PIVOT_Y = 10.0D / 16.0D;
     private static final double PIVOT_Z = 0.5D;
 
-    // 1.18.2: the barrel block model's forward is flipped relative to our yawWorld convention.
-    // Compensate here in rendering only (do NOT change firing direction).
-    private static final float MODEL_YAW_OFFSET_DEG = 180f;
+    // Barrel mesh points backward on this port; +180° static correction only (aim sign is separate).
+    private static final float MODEL_FORWARD_OFFSET_DEG = 180f;
 
     private final BlockRenderDispatcher blockRenderer;
 
@@ -41,22 +40,13 @@ public class CannonRenderer implements BlockEntityRenderer<CannonBlockEntity> {
         }
 
         Direction facing = state.getValue(CannonBlock.FACING);
-
-        // Match the blockstate y-rotations used elsewhere (north=0, east=90, south=180, west=270)
-        float baseModelY = CannonMath.facingToModelY(facing);
-
         float yaw = be.getYawDeg();
         float pitch = be.getPitchDeg();
 
         poseStack.pushPose();
-
-        // Rotate barrel around a pivot point above the base
         poseStack.translate(PIVOT_X, PIVOT_Y, PIVOT_Z);
-        // IMPORTANT: PoseStack rotations are applied in local space.
-        // We want yaw to pick the heading, then pitch to tilt towards that heading.
-        // Visual yaw is inverted relative to our yawWorld convention (aiming/firing math),
-        // so negate here to keep the model aligned with the shot direction.
-        poseStack.mulPose(Vector3f.YP.rotationDegrees(baseModelY - yaw + MODEL_YAW_OFFSET_DEG));
+        poseStack.mulPose(Vector3f.YP.rotationDegrees(
+                CannonMath.barrelRenderYawDeg(facing, yaw, MODEL_FORWARD_OFFSET_DEG)));
         poseStack.mulPose(Vector3f.XP.rotationDegrees(-pitch));
         poseStack.translate(-PIVOT_X, -PIVOT_Y, -PIVOT_Z);
 

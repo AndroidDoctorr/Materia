@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -33,9 +34,12 @@ public class InjectLootTableModifier extends LootModifier {
 
     @Override
     protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
-        LootTable table = context.getResolver().getLootTable(lootTable);
-        if (table != LootTable.EMPTY) {
-            table.getRandomItems(context, generatedLoot::add);
+        if (context.getLevel() instanceof ServerLevel) {
+            ServerLevel serverLevel = (ServerLevel) context.getLevel();
+            LootTable table = serverLevel.getServer().getLootTables().get(lootTable);
+            if (table != null && table != LootTable.EMPTY) {
+                table.getRandomItems(context, generatedLoot::add);
+            }
         }
         return generatedLoot;
     }

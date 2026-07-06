@@ -7,8 +7,11 @@ Sloped roof pieces for joist-based builds: a wooden **frame**, optional **terrac
 | Registry id | Display name | What it is |
 |---|---|---|
 | `materia:roof_frame` | Roof Frame | **Item** — places an empty **`roof_tiles`** block |
-| `materia:roof_tiles` | Roof Tiles | **Block + item** — frame roof with tile stages (or craft pre-tiled) |
-| `materia:thatch_roof` | Thatch Roof | **Item** — places a finished **`roof_tiles`** block with full thatch (same block as manual bundle application) |
+| `materia:roof_tiles` | Roof Tiles | **Block + item** — terracotta tile stages on a frame |
+| `materia:roof_copper` | Copper Roof | **Item** — places a **`roof_tiles`** block with full copper sheeting |
+| `materia:shingle` | Shingle | **Item** — one stage of shingle covering (4 = full roof) |
+| `materia:shingle_roof` | Shingle Roof | **Item** — places a fully shingled **`roof_tiles`** block |
+| `materia:thatch_roof` | Thatch Roof | **Item** — places a finished **`roof_tiles`** block with full thatch |
 | `materia:thatch_slope` | Thatch Stairs | **Block** — vanilla **stair** geometry; unrelated to the roof-frame system |
 
 The internal id `thatch_slope` is legacy naming for the stair block only. Player-facing text uses **Thatch Stairs** and **Thatch Roof**.
@@ -50,6 +53,35 @@ Both use the **`roof_tiles`** block (not Thatch Stairs).
 
 - `thatch_slope.json` — **3× bundle** + **lashing** → **`thatch_slope`** block (**Thatch Stairs**)
 - For free-form stair/corner building only; not part of the roof-frame flow.
+
+## Copper roofs
+
+Uses the same **`materia:roof_tiles`** block with **`cover_type=copper`** and **`oxidation=0–3`**.
+
+| Method | How |
+|---|---|
+| **Craft** | `roof_copper.json` — shapeless **`roof_frame` + `copper_plate`** → **`roof_copper`** item |
+| **By hand** | Place **`roof_frame`**, right-click with **`copper_plate`** (plays vanilla **anvil use** sound) |
+
+- Main slope uses vanilla **`copper_block` → `exposed_copper` → `weathered_copper` → `oxidized_copper`** textures.
+- Corner joins use Materia **`roof_copper_corner_*`** triangle textures (four oxidation stages).
+- Placed copper roofs **oxidize over time** via random tick (same chance as vanilla copper blocks).
+- Break (player): **`roof_frame` + `copper_plate`**. Cannonballs always obliterate the whole piece.
+
+## Shingle roofs
+
+Uses **`cover_type=shingle`** with **`stage=1–4`** (one shingle per right-click stage).
+
+| Item / recipe | Notes |
+|---|---|
+| **`shingle`** | `shingle.json` — 2× **`tar`** + any **`#materia:smooth_planks`** → **4× shingle** |
+| | `shingle_from_pitch.json` — same with 2× **`pitch`** instead of tar |
+| **`shingle_roof`** | `shingle_roof.json` — shapeless **4× shingle + roof frame** → full shingle roof item |
+| **By hand** | Place **`roof_frame`**, right-click up to **four times** with **`shingle`** ( **`block.wood.scrape`** sound) |
+
+Main slope uses **`shingles_1` → `shingles_2` → `shingles_3` → `shingles`** per stage (suffix = tile count; no suffix = full roof). Corner joins use **`roof_shingles_corner_*`** with the same numbering.
+
+Player break drops **`roof_frame`** plus **`stage`** shingles (full roof = 4).
 
 ## Corners (90° joins)
 
