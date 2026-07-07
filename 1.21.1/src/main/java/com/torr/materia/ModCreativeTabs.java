@@ -44,14 +44,14 @@ public class ModCreativeTabs {
             "maple_log", "maple_leaves", "maple_sapling",
             "fig_log", "fig_leaves", "fig_sapling",
             "rough_fig_plank", "smooth_fig_plank", "fig_planks", "fig_stairs", "fig_slab",
-            "fig_fence", "fig_fence_gate", "fig_joists", "fig_post", "fig_table", "fig_trellis",
+            "fig_fence", "fig_fence_gate", "fig_door", "fig_trapdoor", "fig_joists", "fig_post", "fig_table", "fig_trellis",
             "cedar_log", "cedar_leaves", "cedar_sapling",
             "rough_cedar_plank", "smooth_cedar_plank", "cedar_planks", "cedar_stairs", "cedar_slab",
-            "cedar_fence", "cedar_fence_gate", "cedar_joists", "cedar_post", "cedar_table", "cedar_trellis",
+            "cedar_fence", "cedar_fence_gate", "cedar_door", "cedar_trapdoor", "cedar_joists", "cedar_post", "cedar_table", "cedar_trellis",
             "eucalyptus_log", "rainbow_eucalyptus_log", "eucalyptus_leaves",
             "eucalyptus_sapling", "rainbow_eucalyptus_sapling",
             "rough_eucalyptus_plank", "smooth_eucalyptus_plank", "eucalyptus_planks", "eucalyptus_stairs", "eucalyptus_slab",
-            "eucalyptus_fence", "eucalyptus_fence_gate", "eucalyptus_joists", "eucalyptus_post", "eucalyptus_table", "eucalyptus_trellis"
+            "eucalyptus_fence", "eucalyptus_fence_gate", "eucalyptus_door", "eucalyptus_trapdoor", "eucalyptus_joists", "eucalyptus_post", "eucalyptus_table", "eucalyptus_trellis"
     );
 
     private static final List<String> ROOF_ORDER = List.of(
@@ -297,6 +297,8 @@ public class ModCreativeTabs {
                 || path.contains("_post")
                 || path.contains("_table")
                 || path.contains("_trellis")
+                || path.endsWith("_door")
+                || path.endsWith("_trapdoor")
                 || path.contains("roof")
                 || path.contains("thatch")
                 || path.contains("wattle")

@@ -6,23 +6,24 @@ Planned work is tracked in [`documentation/release-roadmap.md`](documentation/re
 
 ## Unreleased
 
+### 1.2.2 (planned)
+
+- **Glazed terracotta** for Materia dye colors.
+- More **decorative** blocks (marble, finials, flower boxes).
+- **Cork oak**, **cork**, cork bottles/item frames, **cork board** (notes with red string).
+- **Doors and trapdoors** for remaining Materia wood types (palm, cypress, baobab, maple, etc.).
+
 ### 1.2.3 (TBD)
 
 - See release roadmap — bark uses, willow, fire-setting, airiots (if not shipped in 1.2.2).
 
-### 1.2.2 (planned)
-
-- Wood **doors** and **trapdoors** for new wood types.
-- **Glazed terracotta** for Materia dye colors.
-- More **decorative** blocks (marble, finials, flower boxes).
-- **Cork oak**, **cork**, cork bottles/item frames, **cork board** (notes with red string).
-
-### 1.2.1 (planned)
+## 1.2.1
 
 - **Cannons:** fix E/W vs N/S barrel model rotation (axis-dependent aim yaw sign in BER; firing unchanged).
 - **Rainbow eucalyptus:** leaves from rainbow trees tagged `rainbow=true` → drop rainbow saplings (5% chance, same as normal).
 - **Copper roofs:** copper plate on roof frame (shapeless craft or right-click); vanilla-style oxidation on placed blocks; custom corner textures per stage.
 - **Shingle roofs:** tar/pitch + smooth planks → shingles; 4 shingles + roof frame → shingle roof block; wood scrape sound on placement.
+- **Wood doors and trapdoors:** fig, cedar, eucalyptus, and rubber wood — brass hinge/handle recipes matching vanilla oak pattern.
 
 ## 1.2.0
 

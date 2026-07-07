@@ -195,6 +195,10 @@ public class ClientSetup {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.BRINING_VAT.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.THATCH_SLOPE.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.ROOF_TILES.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.FIG_DOOR.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.FIG_TRAPDOOR.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.RUBBER_WOOD_DOOR.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.RUBBER_WOOD_TRAPDOOR.get(), RenderType.cutout());
 
             // Register water pot BER
             BlockEntityRenderers.register(ModBlockEntities.WATER_POT_BLOCK_ENTITY.get(), WaterPotRenderer::new);

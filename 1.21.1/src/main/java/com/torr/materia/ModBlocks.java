@@ -741,6 +741,14 @@ public class ModBlocks {
                         () -> new net.minecraft.world.level.block.FenceGateBlock(
                                 net.minecraft.world.level.block.state.properties.WoodType.OAK,
                                 BlockBehaviour.Properties.ofFullCopy(ModBlocks.RUBBER_WOOD_PLANKS.get())));
+        public static final RegistryObject<Block> RUBBER_WOOD_DOOR = registerBlock("rubber_wood_door",
+                        () -> new net.minecraft.world.level.block.DoorBlock(
+                                ModBlockSetTypes.RUBBER_WOOD,
+                                BlockBehaviour.Properties.ofFullCopy(ModBlocks.RUBBER_WOOD_PLANKS.get()).strength(3.0F).noOcclusion().ignitedByLava()));
+        public static final RegistryObject<Block> RUBBER_WOOD_TRAPDOOR = registerBlock("rubber_wood_trapdoor",
+                        () -> new net.minecraft.world.level.block.TrapDoorBlock(
+                                ModBlockSetTypes.RUBBER_WOOD,
+                                BlockBehaviour.Properties.ofFullCopy(ModBlocks.RUBBER_WOOD_PLANKS.get()).strength(3.0F).noOcclusion().ignitedByLava()));
 
         // Olive Tree/Wood blocks
         public static final RegistryObject<Block> OLIVE_TREE_LOG = registerBlock("olive_tree_log",
@@ -857,6 +865,14 @@ public class ModBlocks {
                         () -> new net.minecraft.world.level.block.FenceGateBlock(
                                 net.minecraft.world.level.block.state.properties.WoodType.OAK,
                                 BlockBehaviour.Properties.ofFullCopy(ModBlocks.FIG_PLANKS.get())));
+        public static final RegistryObject<Block> FIG_DOOR = registerBlock("fig_door",
+                        () -> new net.minecraft.world.level.block.DoorBlock(
+                                ModBlockSetTypes.FIG,
+                                BlockBehaviour.Properties.ofFullCopy(ModBlocks.FIG_PLANKS.get()).strength(3.0F).noOcclusion().ignitedByLava()));
+        public static final RegistryObject<Block> FIG_TRAPDOOR = registerBlock("fig_trapdoor",
+                        () -> new net.minecraft.world.level.block.TrapDoorBlock(
+                                ModBlockSetTypes.FIG,
+                                BlockBehaviour.Properties.ofFullCopy(ModBlocks.FIG_PLANKS.get()).strength(3.0F).noOcclusion().ignitedByLava()));
 
         public static final RegistryObject<Block> CEDAR_PLANKS = registerBlock("cedar_planks",
                         () -> new Block(BlockBehaviour.Properties.of().strength(0.5f).sound(SoundType.WOOD).noOcclusion()));
@@ -874,6 +890,14 @@ public class ModBlocks {
                         () -> new net.minecraft.world.level.block.FenceGateBlock(
                                 net.minecraft.world.level.block.state.properties.WoodType.OAK,
                                 BlockBehaviour.Properties.ofFullCopy(ModBlocks.CEDAR_PLANKS.get())));
+        public static final RegistryObject<Block> CEDAR_DOOR = registerBlock("cedar_door",
+                        () -> new net.minecraft.world.level.block.DoorBlock(
+                                ModBlockSetTypes.CEDAR,
+                                BlockBehaviour.Properties.ofFullCopy(ModBlocks.CEDAR_PLANKS.get()).strength(3.0F).noOcclusion().ignitedByLava()));
+        public static final RegistryObject<Block> CEDAR_TRAPDOOR = registerBlock("cedar_trapdoor",
+                        () -> new net.minecraft.world.level.block.TrapDoorBlock(
+                                ModBlockSetTypes.CEDAR,
+                                BlockBehaviour.Properties.ofFullCopy(ModBlocks.CEDAR_PLANKS.get()).strength(3.0F).noOcclusion().ignitedByLava()));
 
         public static final RegistryObject<Block> EUCALYPTUS_PLANKS = registerBlock("eucalyptus_planks",
                         () -> new Block(BlockBehaviour.Properties.of().strength(0.5f).sound(SoundType.WOOD).noOcclusion()));
@@ -891,6 +915,14 @@ public class ModBlocks {
                         () -> new net.minecraft.world.level.block.FenceGateBlock(
                                 net.minecraft.world.level.block.state.properties.WoodType.OAK,
                                 BlockBehaviour.Properties.ofFullCopy(ModBlocks.EUCALYPTUS_PLANKS.get())));
+        public static final RegistryObject<Block> EUCALYPTUS_DOOR = registerBlock("eucalyptus_door",
+                        () -> new net.minecraft.world.level.block.DoorBlock(
+                                ModBlockSetTypes.EUCALYPTUS,
+                                BlockBehaviour.Properties.ofFullCopy(ModBlocks.EUCALYPTUS_PLANKS.get()).strength(3.0F).noOcclusion().ignitedByLava()));
+        public static final RegistryObject<Block> EUCALYPTUS_TRAPDOOR = registerBlock("eucalyptus_trapdoor",
+                        () -> new net.minecraft.world.level.block.TrapDoorBlock(
+                                ModBlockSetTypes.EUCALYPTUS,
+                                BlockBehaviour.Properties.ofFullCopy(ModBlocks.EUCALYPTUS_PLANKS.get()).strength(3.0F).noOcclusion().ignitedByLava()));
 
         public static final RegistryObject<Block> FIG_POST = registerBlock("fig_post",
                         () -> new PostBlock(BlockBehaviour.Properties.of().strength(0.5f)

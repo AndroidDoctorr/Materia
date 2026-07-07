@@ -29,15 +29,19 @@ Patch release focused on regressions from 1.2.0 and one small building feature.
 - [x] **Shingles:** **`shingle.json`** — 2× **`materia:tar`** (or **`shingle_from_pitch.json`** with 2× pitch) + any **`#materia:smooth_planks`** → **4× shingle**.
 - [x] **Shingle roof block:** shapeless **4× shingle + roof frame** → **`shingle_roof`** item; or tile a frame one shingle at a time (four stages). Placement uses **`block.wood.scrape`** (`wood_scrape.ogg`).
 
+### Wood doors & trapdoors (partial)
+
+- [x] **Fig, cedar, eucalyptus, and rubber wood** doors and trapdoors — vanilla-style models, brass hinge/handle recipes matching oak.
+
 ---
 
-## 1.2.2 — wood doors, glazed terracotta, decor, cork
+## 1.2.2 — wood doors (remaining), glazed terracotta, decor, cork
 
 Minor content release: finish wood sets, expand dye-colored building blocks, decorative building parts, and a cork oak line.
 
 ### Wood doors & trapdoors
 
-- [ ] **Doors and trapdoors** for Materia wood types skipped in 1.2.0 (fig, cedar, eucalyptus/rainbow eucalyptus, palm, cypress, baobab, maple, etc. — scope TBD per wood already in the mod).
+- [x] **Doors and trapdoors** for remaining Materia wood types (palm, cypress, baobab, maple, etc.).
 
 ### Glazed terracotta
 
