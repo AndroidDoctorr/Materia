@@ -1,12 +1,16 @@
 package com.torr.materia;
 
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
+import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.util.function.Consumer;
 
 /**
  * Forge {@link FluidType} + flowing pair for amphora liquids so pipes can fill/drain alongside bottles.
@@ -19,13 +23,13 @@ public final class ModFluids {
     public static final DeferredRegister<Fluid> FLUIDS =
             DeferredRegister.create(ForgeRegistries.FLUIDS, materia.MOD_ID);
 
-    public static final RegistryObject<FluidType> WINE_TYPE = registerType("wine", 1024, 1200, 300);
-    public static final RegistryObject<FluidType> GRAPE_JUICE_TYPE = registerType("grape_juice", 1030, 1100, 300);
-    public static final RegistryObject<FluidType> OLIVE_OIL_TYPE = registerType("olive_oil", 920, 5000, 300);
-    public static final RegistryObject<FluidType> VINEGAR_TYPE = registerType("vinegar", 1010, 1500, 300);
-    public static final RegistryObject<FluidType> BEER_TYPE = registerType("beer", 1010, 2000, 285);
-    public static final RegistryObject<FluidType> BEER_MASH_TYPE = registerType("beer_mash", 1050, 3500, 300);
-    public static final RegistryObject<FluidType> TEA_TYPE = registerType("tea", 1005, 1800, 320);
+    public static final RegistryObject<FluidType> WINE_TYPE = registerType("wine", 1024, 1200, 300, "wine");
+    public static final RegistryObject<FluidType> GRAPE_JUICE_TYPE = registerType("grape_juice", 1030, 1100, 300, "grape_juice");
+    public static final RegistryObject<FluidType> OLIVE_OIL_TYPE = registerType("olive_oil", 920, 5000, 300, "oil");
+    public static final RegistryObject<FluidType> VINEGAR_TYPE = registerType("vinegar", 1010, 1500, 300, "vinegar");
+    public static final RegistryObject<FluidType> BEER_TYPE = registerType("beer", 1010, 2000, 285, "beer");
+    public static final RegistryObject<FluidType> BEER_MASH_TYPE = registerType("beer_mash", 1050, 3500, 300, "beer_mash");
+    public static final RegistryObject<FluidType> TEA_TYPE = registerType("tea", 1005, 1800, 320, "tea");
 
     private static ForgeFlowingFluid.Properties wineProps;
     private static ForgeFlowingFluid.Properties grapeJuiceProps;
@@ -112,12 +116,28 @@ public final class ModFluids {
         return beerMashProps;
     }
 
-    private static RegistryObject<FluidType> registerType(String name, int density, int viscosity, int temperature) {
+    private static RegistryObject<FluidType> registerType(String name, int density, int viscosity, int temperature, String textureName) {
         return FLUID_TYPES.register(name, () -> new FluidType(FluidType.Properties.create()
                 .descriptionId("fluid_type." + materia.MOD_ID + "." + name)
                 .density(density)
                 .viscosity(viscosity)
-                .temperature(temperature)));
+                .temperature(temperature)) {
+            @Override
+            public void initializeClient(Consumer<IClientFluidTypeExtensions> consumer) {
+                ResourceLocation texture = new ResourceLocation(materia.MOD_ID, "block/" + textureName);
+                consumer.accept(new IClientFluidTypeExtensions() {
+                    @Override
+                    public ResourceLocation getStillTexture() {
+                        return texture;
+                    }
+
+                    @Override
+                    public ResourceLocation getFlowingTexture() {
+                        return texture;
+                    }
+                });
+            }
+        });
     }
 
     public static void register(net.minecraftforge.eventbus.api.IEventBus bus) {
