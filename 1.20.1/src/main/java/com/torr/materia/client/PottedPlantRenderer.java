@@ -50,8 +50,8 @@ public class PottedPlantRenderer {
     public static float[] mapPlanterPoint(Direction facing, float x, float z) {
         return switch (facing) {
             case SOUTH -> new float[]{1f - x, 1f - z};
-            case EAST -> new float[]{z, 1f - x};
-            case WEST -> new float[]{1f - z, x};
+            case EAST -> new float[]{1f - z, x};
+            case WEST -> new float[]{z, 1f - x};
             default -> new float[]{x, z};
         };
     }
