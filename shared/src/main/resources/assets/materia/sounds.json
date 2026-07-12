@@ -298,5 +298,15 @@
                 "pitch": 1.0
             }
         ]
+    },
+    "block.curtains": {
+        "category": "block",
+        "sounds": [
+            {
+                "name": "materia:curtains",
+                "volume": 1.0,
+                "pitch": 1.0
+            }
+        ]
     }
 }

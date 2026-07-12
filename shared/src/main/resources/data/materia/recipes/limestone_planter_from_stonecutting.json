@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+        "item": "materia:limestone"
+    },
+    "result": "materia:limestone_planter",
+    "count": 1
+}

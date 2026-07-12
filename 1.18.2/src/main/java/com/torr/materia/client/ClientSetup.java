@@ -1,5 +1,6 @@
 package com.torr.materia.client;
 
+import com.torr.materia.ModDecorBlocks;
 import com.torr.materia.ModBlocks;
 import com.torr.materia.ModMenuTypes;
 import com.torr.materia.materia;
@@ -75,6 +76,7 @@ public class ClientSetup {
             com.torr.materia.item.BombItem.registerItemProperties();
 
             // Register render layer for transparency
+            ModDecorBlocks.registerRenderLayers(ItemBlockRenderTypes::setRenderLayer);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.FLAX_CROP.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.WILD_FLAX.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.SQUASH_CROP.get(), RenderType.cutout());

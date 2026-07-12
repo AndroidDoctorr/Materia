@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "facing=north": {
+            "model": "materia:block/terracotta_planter",
+            "y": 0
+        },
+        "facing=south": {
+            "model": "materia:block/terracotta_planter",
+            "y": 180
+        },
+        "facing=east": {
+            "model": "materia:block/terracotta_planter",
+            "y": 90
+        },
+        "facing=west": {
+            "model": "materia:block/terracotta_planter",
+            "y": 270
+        }
+    }
+}

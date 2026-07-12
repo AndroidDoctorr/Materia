@@ -670,9 +670,6 @@ public class ModBlocks {
         public static final RegistryObject<Block> FIRE_BRICK_BLOCK = registerBlock("fire_brick_block",
                         () -> new Block(BlockBehaviour.Properties.of(Material.STONE).strength(2.0f)
                                         .sound(SoundType.STONE)));
-        public static final RegistryObject<Block> MARBLE_COLUMN = registerBlock("marble_column",
-                        () -> new Block(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f)
-                                        .sound(SoundType.STONE).noOcclusion()));
         public static final RegistryObject<Block> MARBLE_CARVED = registerBlock("marble_carved",
                         () -> new MarbleCarvedBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f)
                                         .sound(SoundType.STONE).noOcclusion()));
@@ -1084,6 +1081,10 @@ public class ModBlocks {
                                         .sound(SoundType.STONE).noOcclusion()));
 
         // HELPER METHODS
+
+        static <T extends Block> RegistryObject<T> registerDecorBlock(String name, Supplier<T> block) {
+                return registerBlock(name, block);
+        }
 
         private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
                 RegistryObject<T> toReturn = BLOCKS.register(name, block);

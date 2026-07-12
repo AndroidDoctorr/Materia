@@ -63,3 +63,4 @@ This section documents Materia blocks. Each block page should include:
 - [Eucalyptus tree](eucalyptus-tree.md)
 - [Agave](agave.md)
 - [Roof tiles & thatch roofs](roof-tiles.md)
+- [Shutters, curtains, planters & urns](shutters-curtains-planters.md)

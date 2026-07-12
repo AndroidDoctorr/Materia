@@ -1,0 +1,145 @@
+{
+    "ambientocclusion": false,
+    "textures": {
+        "all": "materia:block/birch_shutters",
+        "particle": "materia:block/birch_shutters"
+    },
+    "elements": [
+        {
+            "from": [
+                0,
+                0,
+                8
+            ],
+            "to": [
+                2,
+                16,
+                16
+            ],
+            "faces": {
+                "north": {
+                    "uv": [
+                        1,
+                        0,
+                        2,
+                        16
+                    ],
+                    "texture": "#all"
+                },
+                "south": {
+                    "uv": [
+                        0,
+                        0,
+                        1,
+                        16
+                    ],
+                    "texture": "#all"
+                },
+                "east": {
+                    "uv": [
+                        0,
+                        0,
+                        8,
+                        16
+                    ],
+                    "texture": "#all"
+                },
+                "west": {
+                    "uv": [
+                        0,
+                        0,
+                        8,
+                        16
+                    ],
+                    "texture": "#all"
+                },
+                "up": {
+                    "uv": [
+                        0,
+                        15,
+                        8,
+                        16
+                    ],
+                    "texture": "#all"
+                },
+                "down": {
+                    "uv": [
+                        0,
+                        0,
+                        8,
+                        1
+                    ],
+                    "texture": "#all"
+                }
+            }
+        },
+        {
+            "from": [
+                14,
+                0,
+                8
+            ],
+            "to": [
+                16,
+                16,
+                16
+            ],
+            "faces": {
+                "north": {
+                    "uv": [
+                        14,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#all"
+                },
+                "south": {
+                    "uv": [
+                        15,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#all"
+                },
+                "east": {
+                    "uv": [
+                        8,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#all"
+                },
+                "west": {
+                    "uv": [
+                        8,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#all"
+                },
+                "up": {
+                    "uv": [
+                        8,
+                        15,
+                        16,
+                        16
+                    ],
+                    "texture": "#all"
+                },
+                "down": {
+                    "uv": [
+                        8,
+                        0,
+                        16,
+                        1
+                    ],
+                    "texture": "#all"
+                }
+            }
+        }
+    ]
+}

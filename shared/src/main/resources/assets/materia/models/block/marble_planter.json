@@ -3,6 +3,7 @@
     "textures": {
         "all": "materia:block/marble",
         "dirt": "minecraft:block/dirt",
+        "side": "materia:block/marble_planter",
         "particle": "materia:block/marble"
     },
     "elements": [
@@ -11,12 +12,12 @@
             "from": [
                 1,
                 0,
-                5
+                1
             ],
             "to": [
                 15,
                 7,
-                11
+                7
             ],
             "faces": {
                 "up": {
@@ -44,12 +45,12 @@
             "from": [
                 0,
                 0,
-                11
+                7
             ],
             "to": [
                 16,
                 8,
-                12
+                8
             ],
             "faces": {
                 "north": {
@@ -59,7 +60,7 @@
                         16,
                         8
                     ],
-                    "texture": "#all"
+                    "texture": "#side"
                 },
                 "east": {
                     "uv": [
@@ -77,7 +78,7 @@
                         16,
                         8
                     ],
-                    "texture": "#all"
+                    "texture": "#side"
                 },
                 "west": {
                     "uv": [
@@ -113,12 +114,12 @@
             "from": [
                 0,
                 0,
-                4
+                0
             ],
             "to": [
                 16,
                 8,
-                5
+                1
             ],
             "faces": {
                 "north": {
@@ -128,7 +129,7 @@
                         16,
                         8
                     ],
-                    "texture": "#all"
+                    "texture": "#side"
                 },
                 "east": {
                     "uv": [
@@ -146,7 +147,7 @@
                         16,
                         8
                     ],
-                    "texture": "#all"
+                    "texture": "#side"
                 },
                 "west": {
                     "uv": [
@@ -182,31 +183,31 @@
             "from": [
                 0,
                 0,
-                4
+                0
             ],
             "to": [
                 1,
                 8,
-                12
+                8
             ],
             "faces": {
                 "east": {
                     "uv": [
                         0,
-                        0,
                         8,
-                        8
+                        8,
+                        16
                     ],
-                    "texture": "#all"
+                    "texture": "#side"
                 },
                 "west": {
                     "uv": [
                         0,
-                        0,
                         8,
-                        8
+                        8,
+                        16
                     ],
-                    "texture": "#all"
+                    "texture": "#side"
                 },
                 "up": {
                     "uv": [
@@ -233,31 +234,31 @@
             "from": [
                 15,
                 0,
-                4
+                0
             ],
             "to": [
                 16,
                 8,
-                12
+                8
             ],
             "faces": {
                 "east": {
                     "uv": [
                         0,
-                        0,
                         8,
-                        8
+                        8,
+                        16
                     ],
-                    "texture": "#all"
+                    "texture": "#side"
                 },
                 "west": {
                     "uv": [
                         0,
-                        0,
                         8,
-                        8
+                        8,
+                        16
                     ],
-                    "texture": "#all"
+                    "texture": "#side"
                 },
                 "up": {
                     "uv": [

@@ -9,9 +9,18 @@ Planned work is tracked in [`documentation/release-roadmap.md`](documentation/re
 ### 1.2.2 (planned)
 
 - **Glazed terracotta** for Materia dye colors.
-- More **decorative** blocks (marble, finials, flower boxes).
+- More **decorative** blocks (marble finials, additional flower-box variants).
 - **Cork oak**, **cork**, cork bottles/item frames, **cork board** (notes with red string).
 - **Doors and trapdoors** for remaining Materia wood types (palm, cypress, baobab, maple, etc.).
+
+#### Decorative building (in progress)
+
+- **Shutters:** wall-mounted louvered panels for all Materia wood types (except nether); right-click or redstone toggles open/closed; joiner + stick + smooth-plank recipe (×2).
+- **Curtains:** 26 dye/carpet colors; attach to any face; custom curtain sound; carpet + stick recipe (×2).
+- **Stone planter:** half-slab window box from stonecutter; two `#materia:planter_plants` slots; facing blockstate.
+- **Stone urn:** stonecutter-carved urn; one `#materia:urn_plants` slot (includes tall yucca/plantain); saplings display without growing.
+- **Stone decor:** stonecutter tiles/small bricks/polished variants (stone, marble, limestone, sandstone, blackstone) and **stone balustrade** fence rails.
+- **Shutters (fix):** open-half model UVs — wide panel faces on E/W, thin edge faces on N/S.
 
 ### 1.2.3 (TBD)
 

@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "CSC"
+    ],
+    "key": {
+        "C": {
+            "item": "minecraft:purple_carpet"
+        },
+        "S": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "item": "materia:purple_curtains",
+        "count": 2
+    }
+}

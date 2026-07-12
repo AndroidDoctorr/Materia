@@ -138,4 +138,8 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> WICKER_BASKET = SOUNDS.register(
             "item.basket.open",
             () -> new SoundEvent(new ResourceLocation(materia.MOD_ID, "item.basket.open")));
+
+    public static final RegistryObject<SoundEvent> CURTAINS = SOUNDS.register(
+            "block.curtains",
+            () -> new SoundEvent(new ResourceLocation(materia.MOD_ID, "block.curtains")));
 }

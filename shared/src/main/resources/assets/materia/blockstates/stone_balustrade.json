@@ -1,0 +1,129 @@
+{
+    "multipart": [
+        {
+            "when": {
+                "north": true,
+                "east": true,
+                "south": false,
+                "west": false
+            },
+            "apply": {
+                "model": "materia:block/stone_balustrade_corner",
+                "y": 0,
+                "uvlock": true
+            }
+        },
+        {
+            "when": {
+                "north": true,
+                "west": true,
+                "south": false,
+                "east": false
+            },
+            "apply": {
+                "model": "materia:block/stone_balustrade_corner",
+                "y": 270,
+                "uvlock": true
+            }
+        },
+        {
+            "when": {
+                "south": true,
+                "east": true,
+                "north": false,
+                "west": false
+            },
+            "apply": {
+                "model": "materia:block/stone_balustrade_corner",
+                "y": 90,
+                "uvlock": true
+            }
+        },
+        {
+            "when": {
+                "south": true,
+                "west": true,
+                "north": false,
+                "east": false
+            },
+            "apply": {
+                "model": "materia:block/stone_balustrade_corner",
+                "y": 180,
+                "uvlock": true
+            }
+        },
+        {
+            "when": {
+                "OR": [
+                    {
+                        "north": false,
+                        "east": false
+                    },
+                    {
+                        "north": false,
+                        "west": false
+                    },
+                    {
+                        "south": false,
+                        "east": false
+                    },
+                    {
+                        "south": false,
+                        "west": false
+                    },
+                    {
+                        "north": true,
+                        "south": true
+                    },
+                    {
+                        "east": true,
+                        "west": true
+                    }
+                ]
+            },
+            "apply": {
+                "model": "materia:block/stone_balustrade",
+                "uvlock": true
+            }
+        },
+        {
+            "when": {
+                "north": true
+            },
+            "apply": {
+                "model": "materia:block/stone_balustrade_side",
+                "uvlock": true
+            }
+        },
+        {
+            "when": {
+                "south": true
+            },
+            "apply": {
+                "model": "materia:block/stone_balustrade_side",
+                "y": 180,
+                "uvlock": true
+            }
+        },
+        {
+            "when": {
+                "east": true
+            },
+            "apply": {
+                "model": "materia:block/stone_balustrade_side",
+                "y": 90,
+                "uvlock": true
+            }
+        },
+        {
+            "when": {
+                "west": true
+            },
+            "apply": {
+                "model": "materia:block/stone_balustrade_side",
+                "y": 270,
+                "uvlock": true
+            }
+        }
+    ]
+}

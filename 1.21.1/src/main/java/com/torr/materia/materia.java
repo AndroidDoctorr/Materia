@@ -74,6 +74,7 @@ public class materia
         ModSounds.SOUNDS.register(modEventBus);
         
         // Register the blocks
+        ModDecorBlocks.OAK_SHUTTERS.getId();
         ModBlocks.BLOCKS.register(modEventBus);
         
         // Register world generation features

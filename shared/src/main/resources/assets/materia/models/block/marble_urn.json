@@ -4,7 +4,8 @@
         "all": "materia:block/marble",
         "side": "materia:block/marble_urn_side",
         "dirt": "materia:block/marble_urn_top",
-        "particle": "materia:block/marble"
+        "particle": "materia:block/marble",
+        "top": "materia:block/marble_urn_top"
     },
     "elements": [
         {

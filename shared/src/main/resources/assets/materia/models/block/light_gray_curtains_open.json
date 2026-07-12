@@ -1,0 +1,41 @@
+{
+    "ambientocclusion": false,
+    "textures": {
+        "all": "materia:block/light_gray_curtains_open",
+        "particle": "materia:block/light_gray_curtains_open"
+    },
+    "elements": [
+        {
+            "from": [
+                0,
+                0,
+                14
+            ],
+            "to": [
+                16,
+                16,
+                16
+            ],
+            "faces": {
+                "north": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#all"
+                },
+                "south": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#all"
+                }
+            }
+        }
+    ]
+}

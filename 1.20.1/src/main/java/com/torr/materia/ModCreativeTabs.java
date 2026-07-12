@@ -237,7 +237,11 @@ public class ModCreativeTabs {
                 || path.equals("marigold")
                 || path.equals("hibiscus")
                 || path.equals("fuchsia")
-                || path.equals("purple_coneflower");
+                || path.equals("purple_coneflower")
+                || path.endsWith("_curtains")
+                || path.endsWith("_urn")
+                || path.endsWith("_planter")
+                || path.endsWith("_balustrade");
     }
 
     private static boolean isRedstone(String path) {
@@ -298,6 +302,7 @@ public class ModCreativeTabs {
                 || path.contains("_trellis")
                 || path.endsWith("_door")
                 || path.endsWith("_trapdoor")
+                || path.endsWith("_shutters")
                 || path.contains("roof")
                 || path.contains("thatch")
                 || path.contains("wattle")
@@ -306,6 +311,7 @@ public class ModCreativeTabs {
                 || path.contains("frame")
                 || path.contains("tile")
                 || path.endsWith("_block")
+                || path.endsWith("_column")
                 || path.equals("salt_block");
     }
 

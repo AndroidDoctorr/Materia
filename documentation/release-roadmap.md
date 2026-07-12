@@ -49,9 +49,14 @@ Minor content release: finish wood sets, expand dye-colored building blocks, dec
 
 ### Decorative building
 
-- [ ] **Marble**-themed blocks/items (exact set TBD).
+- [x] **Shutters** — all Materia wood types (12 variants); wall-mounted, toggle open/closed, redstone-aware.
+- [x] **Curtains** — 26 colors; any-face attachment; cutout render + custom sound.
+- [x] **Stone planter** — half-slab planter with two plant slots (`#materia:planter_plants`).
+- [x] **Stone urn** — single tall-plant-capable slot (`#materia:urn_plants`).
+- [x] **Stone balustrade** and stonecutter tile/brick variants (stone, marble, limestone, sandstone, blackstone).
+- [ ] **Marble**-themed blocks/items beyond current stonecutter set (exact scope TBD).
 - [ ] **Finials** and similar roof/detail pieces.
-- [ ] **Flower boxes** (planters / window boxes).
+- [ ] **Flower boxes** — additional variants beyond stone planter (TBD).
 
 ### Cork oak & cork
 

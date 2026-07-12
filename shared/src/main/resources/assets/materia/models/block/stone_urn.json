@@ -3,8 +3,9 @@
     "textures": {
         "all": "minecraft:block/stone",
         "side": "materia:block/stone_urn_side",
-        "dirt": "minecraft:block/stone_urn_top",
-        "particle": "minecraft:block/stone"
+        "dirt": "materia:block/stone_urn_top",
+        "particle": "minecraft:block/stone",
+        "top": "materia:block/stone_urn_top"
     },
     "elements": [
         {

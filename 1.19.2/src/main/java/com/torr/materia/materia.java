@@ -62,6 +62,7 @@ public class materia
         ModSounds.SOUNDS.register(FMLJavaModLoadingContext.get().getModEventBus());
         
         // Register the blocks
+        ModDecorBlocks.OAK_SHUTTERS.getId();
         ModBlocks.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
         
         // Register world generation features
