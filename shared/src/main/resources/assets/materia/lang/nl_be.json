@@ -1123,5 +1123,7 @@
     "block.materia.blackstone_column": "Blackstone Kolom",
     "block.materia.terracotta_urn": "Terracotta Urn",
     "block.materia.terracotta_planter": "Terracotta Plantenbak",
-    "block.materia.stone_column": "Stenen Kolom"
+    "block.materia.stone_column": "Stenen Kolom",
+    "block.materia.marble_cornice": "Marmeren Corniche",
+    "block.materia.marble_bracket": "Marmeren Console"
 }

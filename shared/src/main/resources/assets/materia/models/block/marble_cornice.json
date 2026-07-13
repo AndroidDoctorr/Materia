@@ -2,7 +2,7 @@
     "ambientocclusion": false,
     "textures": {
         "all": "materia:block/marble",
-        "side": "materia:block/marble_cornice_side",
+        "side": "materia:block/marble_bracket",
         "particle": "materia:block/marble"
     },
     "elements": [
@@ -11,12 +11,12 @@
             "from": [
                 0,
                 14,
-                8
+                0
             ],
             "to": [
                 16,
                 16,
-                16
+                8
             ],
             "faces": {
                 "up": {
@@ -80,12 +80,12 @@
             "from": [
                 0,
                 8,
-                14
+                0
             ],
             "to": [
                 16,
                 14,
-                16
+                2
             ],
             "faces": {
                 "down": {
@@ -119,8 +119,8 @@
                     "uv": [
                         0,
                         0,
-                        6,
-                        16
+                        16,
+                        6
                     ],
                     "texture": "#all"
                 },
@@ -128,8 +128,8 @@
                     "uv": [
                         0,
                         0,
-                        6,
-                        16
+                        16,
+                        6
                     ],
                     "texture": "#all"
                 }
@@ -140,12 +140,12 @@
             "from": [
                 0,
                 10,
-                10
+                2
             ],
             "to": [
                 16,
                 14,
-                14
+                6
             ],
             "faces": {
                 "down": {
@@ -160,22 +160,22 @@
                 "east": {
                     "uv": [
                         0,
-                        0,
+                        8,
                         4,
-                        4
+                        12
                     ],
                     "texture": "#side"
                 },
                 "west": {
                     "uv": [
                         0,
-                        0,
+                        8,
                         4,
-                        4
+                        12
                     ],
                     "texture": "#side"
                 },
-                "north": {
+                "south": {
                     "uv": [
                         0,
                         0,

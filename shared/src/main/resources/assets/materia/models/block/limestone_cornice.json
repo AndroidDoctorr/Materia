@@ -1,0 +1,190 @@
+{
+    "ambientocclusion": false,
+    "textures": {
+        "all": "materia:block/limestone",
+        "side": "materia:block/limestone_bracket",
+        "particle": "materia:block/limestone"
+    },
+    "elements": [
+        {
+            "name": "top",
+            "from": [
+                0,
+                14,
+                0
+            ],
+            "to": [
+                16,
+                16,
+                8
+            ],
+            "faces": {
+                "up": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        8
+                    ],
+                    "texture": "#all"
+                },
+                "down": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        8
+                    ],
+                    "texture": "#all"
+                },
+                "east": {
+                    "uv": [
+                        0,
+                        0,
+                        8,
+                        2
+                    ],
+                    "texture": "#all"
+                },
+                "west": {
+                    "uv": [
+                        0,
+                        0,
+                        8,
+                        2
+                    ],
+                    "texture": "#all"
+                },
+                "north": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        2
+                    ],
+                    "texture": "#all"
+                },
+                "south": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        2
+                    ],
+                    "texture": "#all"
+                }
+            }
+        },
+        {
+            "name": "side",
+            "from": [
+                0,
+                8,
+                0
+            ],
+            "to": [
+                16,
+                14,
+                2
+            ],
+            "faces": {
+                "down": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        2
+                    ],
+                    "texture": "#all"
+                },
+                "east": {
+                    "uv": [
+                        0,
+                        0,
+                        2,
+                        6
+                    ],
+                    "texture": "#all"
+                },
+                "west": {
+                    "uv": [
+                        0,
+                        0,
+                        2,
+                        6
+                    ],
+                    "texture": "#all"
+                },
+                "north": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        6
+                    ],
+                    "texture": "#all"
+                },
+                "south": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        6
+                    ],
+                    "texture": "#all"
+                }
+            }
+        },
+        {
+            "name": "middle",
+            "from": [
+                0,
+                10,
+                2
+            ],
+            "to": [
+                16,
+                14,
+                6
+            ],
+            "faces": {
+                "down": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        4
+                    ],
+                    "texture": "#all"
+                },
+                "east": {
+                    "uv": [
+                        0,
+                        8,
+                        4,
+                        12
+                    ],
+                    "texture": "#side"
+                },
+                "west": {
+                    "uv": [
+                        0,
+                        8,
+                        4,
+                        12
+                    ],
+                    "texture": "#side"
+                },
+                "south": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        4
+                    ],
+                    "texture": "#all"
+                }
+            }
+        }
+    ]
+}

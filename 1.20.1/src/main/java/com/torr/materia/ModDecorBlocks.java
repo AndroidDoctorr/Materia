@@ -1,6 +1,8 @@
 package com.torr.materia;
 
 import com.torr.materia.block.BalustradeBlock;
+import com.torr.materia.block.BracketBlock;
+import com.torr.materia.block.CorniceBlock;
 import com.torr.materia.block.CurtainsBlock;
 import com.torr.materia.block.PlanterBlock;
 import com.torr.materia.block.ShutterBlock;
@@ -114,10 +116,29 @@ public final class ModDecorBlocks {
     public static final RegistryObject<Block> SANDSTONE_COLUMN = stoneColumn("sandstone_column");
     public static final RegistryObject<Block> BLACKSTONE_COLUMN = stoneColumn("blackstone_column");
 
+    public static final RegistryObject<Block> MARBLE_CORNICE = cornice("marble_cornice");
+    public static final RegistryObject<Block> MARBLE_BRACKET = bracket("marble_bracket");
+    public static final RegistryObject<Block> LIMESTONE_CORNICE = cornice("limestone_cornice");
+    public static final RegistryObject<Block> LIMESTONE_BRACKET = bracket("limestone_bracket");
+    public static final RegistryObject<Block> STONE_CORNICE = cornice("stone_cornice");
+    public static final RegistryObject<Block> STONE_BRACKET = bracket("stone_bracket");
+    public static final RegistryObject<Block> SANDSTONE_CORNICE = cornice("sandstone_cornice");
+    public static final RegistryObject<Block> SANDSTONE_BRACKET = bracket("sandstone_bracket");
+    public static final RegistryObject<Block> BLACKSTONE_CORNICE = cornice("blackstone_cornice");
+    public static final RegistryObject<Block> BLACKSTONE_BRACKET = bracket("blackstone_bracket");
+
     public static final RegistryObject<Block> STONE_BALUSTRADE = ModBlocks.registerDecorBlock("stone_balustrade",
             () -> new BalustradeBlock(BALUSTRADE_PROPS));
 
     private ModDecorBlocks() {
+    }
+
+    private static RegistryObject<Block> cornice(String name) {
+        return ModBlocks.registerDecorBlock(name, () -> new CorniceBlock(STONE_SCULPTURE_PROPS));
+    }
+
+    private static RegistryObject<Block> bracket(String name) {
+        return ModBlocks.registerDecorBlock(name, () -> new BracketBlock(STONE_SCULPTURE_PROPS));
     }
 
     private static RegistryObject<Block> sculptureUrn(String name) {
@@ -161,6 +182,12 @@ public final class ModDecorBlocks {
         for (RegistryObject<Block> block : ALL_COLUMNS) {
             registrar.accept(block.get(), cutout);
         }
+        for (RegistryObject<Block> block : ALL_CORNICES) {
+            registrar.accept(block.get(), cutout);
+        }
+        for (RegistryObject<Block> block : ALL_BRACKETS) {
+            registrar.accept(block.get(), cutout);
+        }
         registrar.accept(STONE_BALUSTRADE.get(), cutout);
     }
 
@@ -193,6 +220,16 @@ public final class ModDecorBlocks {
     @SuppressWarnings("unchecked")
     private static final RegistryObject<Block>[] ALL_COLUMNS = new RegistryObject[] {
             STONE_COLUMN, MARBLE_COLUMN, LIMESTONE_COLUMN, SANDSTONE_COLUMN, BLACKSTONE_COLUMN
+    };
+
+    @SuppressWarnings("unchecked")
+    private static final RegistryObject<Block>[] ALL_CORNICES = new RegistryObject[] {
+            MARBLE_CORNICE, LIMESTONE_CORNICE, STONE_CORNICE, SANDSTONE_CORNICE, BLACKSTONE_CORNICE
+    };
+
+    @SuppressWarnings("unchecked")
+    private static final RegistryObject<Block>[] ALL_BRACKETS = new RegistryObject[] {
+            MARBLE_BRACKET, LIMESTONE_BRACKET, STONE_BRACKET, SANDSTONE_BRACKET, BLACKSTONE_BRACKET
     };
 
     public static Block[] planterBlocks() {

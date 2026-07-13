@@ -1199,5 +1199,15 @@
     "block.materia.blackstone_column": "Blackstone Column",
     "block.materia.terracotta_urn": "Terracotta Urn",
     "block.materia.terracotta_planter": "Terracotta Planter",
-    "block.materia.stone_column": "Stone Column"
+    "block.materia.stone_column": "Stone Column",
+    "block.materia.marble_cornice": "Marble Cornice",
+    "block.materia.marble_bracket": "Marble Bracket",
+    "block.materia.limestone_cornice": "Limestone Cornice",
+    "block.materia.limestone_bracket": "Limestone Bracket",
+    "block.materia.stone_cornice": "Stone Cornice",
+    "block.materia.stone_bracket": "Stone Bracket",
+    "block.materia.sandstone_cornice": "Sandstone Cornice",
+    "block.materia.sandstone_bracket": "Sandstone Bracket",
+    "block.materia.blackstone_cornice": "Blackstone Cornice",
+    "block.materia.blackstone_bracket": "Blackstone Bracket"
 }

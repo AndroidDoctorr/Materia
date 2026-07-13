@@ -1,0 +1,78 @@
+{
+    "ambientocclusion": false,
+    "textures": {
+        "top": "minecraft:block/terracotta",
+        "side": "materia:block/terracotta_column",
+        "particle": "minecraft:block/terracotta"
+    },
+    "elements": [
+        {
+            "from": [
+                2,
+                0,
+                2
+            ],
+            "to": [
+                14,
+                16,
+                14
+            ],
+            "faces": {
+                "north": {
+                    "uv": [
+                        0,
+                        0,
+                        12,
+                        16
+                    ],
+                    "texture": "#side"
+                },
+                "east": {
+                    "uv": [
+                        0,
+                        0,
+                        12,
+                        16
+                    ],
+                    "texture": "#side"
+                },
+                "south": {
+                    "uv": [
+                        0,
+                        0,
+                        12,
+                        16
+                    ],
+                    "texture": "#side"
+                },
+                "west": {
+                    "uv": [
+                        0,
+                        0,
+                        12,
+                        16
+                    ],
+                    "texture": "#side"
+                },
+                "up": {
+                    "uv": [
+                        0,
+                        0,
+                        12,
+                        10
+                    ],
+                    "texture": "#top"
+                },
+                "down": {
+                    "uv": [
+                        0,
+                        0,
+                        12,
+                        10
+                    ],
+                    "texture": "#top"
+                }
+            }
+        }
+    ]
+}

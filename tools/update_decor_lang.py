@@ -83,6 +83,8 @@ STONE_BLOCKS = [
     ("terracotta_urn", "Terracotta Urn", "Terracotta Urn"),
     ("terracotta_planter", "Terracotta Planter", "Terracotta Plantenbak"),
     ("stone_column", "Stone Column", "Stenen Kolom"),
+    ("marble_cornice", "Marble Cornice", "Marmeren Corniche"),
+    ("marble_bracket", "Marble Bracket", "Marmeren Console"),
 ]
 
 
