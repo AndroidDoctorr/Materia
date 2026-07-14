@@ -20,6 +20,7 @@ Planned work is tracked in [`documentation/release-roadmap.md`](documentation/re
 - **Stone planter:** half-slab window box from stonecutter; two `#materia:planter_plants` slots; facing blockstate.
 - **Stone urn:** stonecutter-carved urn; one `#materia:urn_plants` slot (includes tall yucca/plantain); saplings display without growing.
 - **Stone decor:** stonecutter tiles/small bricks/polished variants (stone, marble, limestone, sandstone, blackstone) and **stone balustrade** fence rails.
+- **Stone trim:** columns and column capitals for stone, limestone, marble, sandstone, blackstone, and terracotta (plain decorative blocks; 3D block item models). **Cornices** and **brackets** for the same six materials (wall-mounted trim; dedicated item textures). All from stonecutter.
 - **Shutters (fix):** open-half model UVs — wide panel faces on E/W, thin edge faces on N/S.
 
 ### 1.2.3 (TBD)

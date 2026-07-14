@@ -1,3 +1,6 @@
 {
-    "parent": "materia:block/limestone_bracket"
+    "parent": "minecraft:item/generated",
+    "textures": {
+        "layer0": "materia:item/limestone_bracket"
+    }
 }

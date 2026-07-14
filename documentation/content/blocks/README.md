@@ -64,3 +64,4 @@ This section documents Materia blocks. Each block page should include:
 - [Agave](agave.md)
 - [Roof tiles & thatch roofs](roof-tiles.md)
 - [Shutters, curtains, planters & urns](shutters-curtains-planters.md)
+- [Stone columns, capitals, cornices & brackets](stone-trim.md)

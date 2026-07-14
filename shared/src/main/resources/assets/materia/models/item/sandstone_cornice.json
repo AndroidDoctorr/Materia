@@ -1,3 +1,6 @@
 {
-    "parent": "materia:block/sandstone_cornice"
+    "parent": "minecraft:item/generated",
+    "textures": {
+        "layer0": "materia:item/sandstone_cornice"
+    }
 }

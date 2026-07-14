@@ -115,6 +115,14 @@ public final class ModDecorBlocks {
     public static final RegistryObject<Block> LIMESTONE_COLUMN = stoneColumn("limestone_column");
     public static final RegistryObject<Block> SANDSTONE_COLUMN = stoneColumn("sandstone_column");
     public static final RegistryObject<Block> BLACKSTONE_COLUMN = stoneColumn("blackstone_column");
+    public static final RegistryObject<Block> TERRACOTTA_COLUMN = stoneColumn("terracotta_column");
+
+    public static final RegistryObject<Block> STONE_COLUMN_CAPITAL = stoneColumn("stone_column_capital");
+    public static final RegistryObject<Block> MARBLE_COLUMN_CAPITAL = stoneColumn("marble_column_capital");
+    public static final RegistryObject<Block> LIMESTONE_COLUMN_CAPITAL = stoneColumn("limestone_column_capital");
+    public static final RegistryObject<Block> SANDSTONE_COLUMN_CAPITAL = stoneColumn("sandstone_column_capital");
+    public static final RegistryObject<Block> BLACKSTONE_COLUMN_CAPITAL = stoneColumn("blackstone_column_capital");
+    public static final RegistryObject<Block> TERRACOTTA_COLUMN_CAPITAL = stoneColumn("terracotta_column_capital");
 
     public static final RegistryObject<Block> MARBLE_CORNICE = cornice("marble_cornice");
     public static final RegistryObject<Block> MARBLE_BRACKET = bracket("marble_bracket");
@@ -126,6 +134,8 @@ public final class ModDecorBlocks {
     public static final RegistryObject<Block> SANDSTONE_BRACKET = bracket("sandstone_bracket");
     public static final RegistryObject<Block> BLACKSTONE_CORNICE = cornice("blackstone_cornice");
     public static final RegistryObject<Block> BLACKSTONE_BRACKET = bracket("blackstone_bracket");
+    public static final RegistryObject<Block> TERRACOTTA_CORNICE = cornice("terracotta_cornice");
+    public static final RegistryObject<Block> TERRACOTTA_BRACKET = bracket("terracotta_bracket");
 
     public static final RegistryObject<Block> STONE_BALUSTRADE = ModBlocks.registerDecorBlock("stone_balustrade",
             () -> new BalustradeBlock(BALUSTRADE_PROPS));
@@ -182,6 +192,9 @@ public final class ModDecorBlocks {
         for (RegistryObject<Block> block : ALL_COLUMNS) {
             registrar.accept(block.get(), cutout);
         }
+        for (RegistryObject<Block> block : ALL_COLUMN_CAPITALS) {
+            registrar.accept(block.get(), cutout);
+        }
         for (RegistryObject<Block> block : ALL_CORNICES) {
             registrar.accept(block.get(), cutout);
         }
@@ -219,17 +232,23 @@ public final class ModDecorBlocks {
 
     @SuppressWarnings("unchecked")
     private static final RegistryObject<Block>[] ALL_COLUMNS = new RegistryObject[] {
-            STONE_COLUMN, MARBLE_COLUMN, LIMESTONE_COLUMN, SANDSTONE_COLUMN, BLACKSTONE_COLUMN
+            STONE_COLUMN, MARBLE_COLUMN, LIMESTONE_COLUMN, SANDSTONE_COLUMN, BLACKSTONE_COLUMN, TERRACOTTA_COLUMN
+    };
+
+    @SuppressWarnings("unchecked")
+    private static final RegistryObject<Block>[] ALL_COLUMN_CAPITALS = new RegistryObject[] {
+            STONE_COLUMN_CAPITAL, MARBLE_COLUMN_CAPITAL, LIMESTONE_COLUMN_CAPITAL, SANDSTONE_COLUMN_CAPITAL,
+            BLACKSTONE_COLUMN_CAPITAL, TERRACOTTA_COLUMN_CAPITAL
     };
 
     @SuppressWarnings("unchecked")
     private static final RegistryObject<Block>[] ALL_CORNICES = new RegistryObject[] {
-            MARBLE_CORNICE, LIMESTONE_CORNICE, STONE_CORNICE, SANDSTONE_CORNICE, BLACKSTONE_CORNICE
+            MARBLE_CORNICE, LIMESTONE_CORNICE, STONE_CORNICE, SANDSTONE_CORNICE, BLACKSTONE_CORNICE, TERRACOTTA_CORNICE
     };
 
     @SuppressWarnings("unchecked")
     private static final RegistryObject<Block>[] ALL_BRACKETS = new RegistryObject[] {
-            MARBLE_BRACKET, LIMESTONE_BRACKET, STONE_BRACKET, SANDSTONE_BRACKET, BLACKSTONE_BRACKET
+            MARBLE_BRACKET, LIMESTONE_BRACKET, STONE_BRACKET, SANDSTONE_BRACKET, BLACKSTONE_BRACKET, TERRACOTTA_BRACKET
     };
 
     public static Block[] planterBlocks() {

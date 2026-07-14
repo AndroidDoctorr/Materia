@@ -1,10 +1,10 @@
 {
     "ambientocclusion": false,
     "textures": {
-        "all": "minecraft:block/smooth_sandstone",
-        "top": "minecraft:block/smooth_sandstone",
+        "all": "minecraft:block/sandstone_top",
+        "top": "minecraft:block/sandstone_top",
         "side": "materia:block/sandstone_column_capital",
-        "particle": "minecraft:block/smooth_sandstone"
+        "particle": "minecraft:block/sandstone_top"
     },
     "elements": [
         {

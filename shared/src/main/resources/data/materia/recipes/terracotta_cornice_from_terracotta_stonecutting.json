@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+        "item": "minecraft:terracotta"
+    },
+    "result": "materia:terracotta_cornice",
+    "count": 1
+}

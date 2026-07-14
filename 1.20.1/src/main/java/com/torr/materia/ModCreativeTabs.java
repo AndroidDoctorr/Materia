@@ -314,6 +314,7 @@ public class ModCreativeTabs {
                 || path.contains("tile")
                 || path.endsWith("_block")
                 || path.endsWith("_column")
+                || path.endsWith("_column_capital")
                 || path.equals("salt_block");
     }
 
