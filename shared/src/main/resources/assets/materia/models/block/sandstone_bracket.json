@@ -1,9 +1,9 @@
 {
     "ambientocclusion": false,
     "textures": {
-        "all": "minecraft:block/sandstone",
+        "all": "minecraft:block/sandstone_top",
         "side": "materia:block/sandstone_bracket",
-        "particle": "minecraft:block/sandstone"
+        "particle": "minecraft:block/sandstone_top"
     },
     "elements": [
         {
