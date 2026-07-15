@@ -25,6 +25,7 @@ Marble has several stonecutter outputs:
 - marble column capital: `materia:marble_column_capital`
   - [Stonecutting recipe JSON](../../../shared/src/main/resources/data/materia/recipes/marble_column_capital_from_marble_stonecutting.json)
 - marble cornice / bracket: see [Stone trim](stone-trim.md)
+- marble bust / body: see [Statues](statues.md)
 - marble bust: `materia:marble_bust`
   - [Stonecutting recipe JSON](../../../shared/src/main/resources/data/materia/recipes/marble_bust_from_marble_stonecutting.json)
 - marble body: `materia:marble_body`

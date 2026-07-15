@@ -2,23 +2,33 @@
 
 This page covers Materia decorative statue blocks.
 
-## Marble statue (body + bust)
+## Stone statue (body + bust)
 
-Marble statues are a two-block composition:
+Two-block classical statues are available for six materials:
 
-- `materia:marble_body`
-- `materia:marble_bust`
+| Material | Body | Bust |
+|----------|------|------|
+| Marble | `materia:marble_body` | `materia:marble_bust` |
+| Stone | `materia:stone_body` | `materia:stone_bust` |
+| Limestone | `materia:limestone_body` | `materia:limestone_bust` |
+| Sandstone | `materia:sandstone_body` | `materia:sandstone_bust` |
+| Blackstone | `materia:blackstone_body` | `materia:blackstone_bust` |
+| Terracotta | `materia:terracotta_body` | `materia:terracotta_bust` |
+
+Each bust uses a material-specific `{material}_face` texture on the carved head; the body uses the base stone texture.
 
 Crafting:
 
-- Both are made from `materia:marble` via **stonecutting**:
-  - `shared/src/main/resources/data/materia/recipes/marble_body_from_marble_stonecutting.json`
-  - `shared/src/main/resources/data/materia/recipes/marble_bust_from_marble_stonecutting.json`
+- Both parts are made from the matching base block via **stonecutting** (`{material}_body_from_{material}_stonecutting.json`, `{material}_bust_from_{material}_stonecutting.json`).
 
 Placement / facing:
 
 - The body faces away from the player when placed.
-- If you place a bust **on top of** a marble body, the bust automatically matches the body’s facing (so the statue stays aligned).
+- If you place a bust **on top of** any statue body, the bust automatically matches the body’s facing (so the statue stays aligned).
+
+Inventory icons render the 3D block model at a 45° angle (same as marble originally).
+
+Asset generator: `tools/generate_statue_assets.py`
 
 ## Aquila Aurea (metal statue)
 
@@ -31,3 +41,4 @@ See:
 ## Related
 
 - [Marble](marble.md)
+- [Metal finials](metal-finials.md)

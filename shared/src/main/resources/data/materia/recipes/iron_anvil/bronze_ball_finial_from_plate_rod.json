@@ -2,11 +2,11 @@
     "type": "materia:iron_anvil",
     "input_a": {
         "item": "materia:bronze_plate",
-        "count": 3
+        "count": 1
     },
     "input_b": {
         "item": "materia:bronze_rod",
-        "count": 3
+        "count": 1
     },
     "tool_tags": [
         "materia:iron_hammers",

@@ -7,13 +7,13 @@
             "model": "materia:block/marble_bust",
             "y": 180
         },
-        "facing=west": {
-            "model": "materia:block/marble_bust",
-            "y": 270
-        },
         "facing=east": {
             "model": "materia:block/marble_bust",
             "y": 90
+        },
+        "facing=west": {
+            "model": "materia:block/marble_bust",
+            "y": 270
         }
     }
 }

@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+        "item": "minecraft:blackstone"
+    },
+    "result": "materia:blackstone_body",
+    "count": 1
+}

@@ -1,9 +1,10 @@
-package com.torr.materia;
+package com.torr.materia.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -12,16 +13,14 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class MarbleBodyBlock extends Block {
+public class StatueBustBlock extends Block {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
-    
-    // Define the shape based on the model - this is a full block for the body
+
     protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);
 
-    public MarbleBodyBlock(Properties properties) {
+    public StatueBustBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any()
-            .setValue(FACING, Direction.NORTH));
+        registerDefaultState(stateDefinition.any().setValue(FACING, Direction.NORTH));
     }
 
     @Override
@@ -31,8 +30,13 @@ public class MarbleBodyBlock extends Block {
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        // Face the opposite direction of where the player is looking (like furnace)
-        return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
+        Level level = context.getLevel();
+        BlockPos belowPos = context.getClickedPos().below();
+        BlockState belowState = level.getBlockState(belowPos);
+        if (belowState.getBlock() instanceof StatueBodyBlock) {
+            return defaultBlockState().setValue(FACING, belowState.getValue(StatueBodyBlock.FACING));
+        }
+        return defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
     }
 
     @Override

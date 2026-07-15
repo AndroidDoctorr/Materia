@@ -2,7 +2,7 @@
     "type": "materia:iron_anvil",
     "input_a": {
         "item": "materia:iron_plate",
-        "count": 3
+        "count": 1
     },
     "input_b": {
         "item": "materia:iron_rod",

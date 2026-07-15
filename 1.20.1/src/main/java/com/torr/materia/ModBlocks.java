@@ -426,11 +426,29 @@ public class ModBlocks {
 
         // DECORATIVE BLOCKS
         public static final RegistryObject<Block> MARBLE_BUST = registerBlock("marble_bust",
-                        () -> new MarbleBustBlock(BlockBehaviour.Properties.of().strength(1.5f)
-                                        .sound(SoundType.STONE).noOcclusion()));
+                        () -> new com.torr.materia.block.StatueBustBlock(statueProps()));
         public static final RegistryObject<Block> MARBLE_BODY = registerBlock("marble_body",
-                        () -> new MarbleBodyBlock(BlockBehaviour.Properties.of().strength(1.5f)
-                                        .sound(SoundType.STONE).noOcclusion()));
+                        () -> new com.torr.materia.block.StatueBodyBlock(statueProps()));
+        public static final RegistryObject<Block> STONE_BUST = registerBlock("stone_bust",
+                        () -> new com.torr.materia.block.StatueBustBlock(statueProps()));
+        public static final RegistryObject<Block> STONE_BODY = registerBlock("stone_body",
+                        () -> new com.torr.materia.block.StatueBodyBlock(statueProps()));
+        public static final RegistryObject<Block> LIMESTONE_BUST = registerBlock("limestone_bust",
+                        () -> new com.torr.materia.block.StatueBustBlock(statueProps()));
+        public static final RegistryObject<Block> LIMESTONE_BODY = registerBlock("limestone_body",
+                        () -> new com.torr.materia.block.StatueBodyBlock(statueProps()));
+        public static final RegistryObject<Block> SANDSTONE_BUST = registerBlock("sandstone_bust",
+                        () -> new com.torr.materia.block.StatueBustBlock(statueProps()));
+        public static final RegistryObject<Block> SANDSTONE_BODY = registerBlock("sandstone_body",
+                        () -> new com.torr.materia.block.StatueBodyBlock(statueProps()));
+        public static final RegistryObject<Block> BLACKSTONE_BUST = registerBlock("blackstone_bust",
+                        () -> new com.torr.materia.block.StatueBustBlock(statueProps()));
+        public static final RegistryObject<Block> BLACKSTONE_BODY = registerBlock("blackstone_body",
+                        () -> new com.torr.materia.block.StatueBodyBlock(statueProps()));
+        public static final RegistryObject<Block> TERRACOTTA_BUST = registerBlock("terracotta_bust",
+                        () -> new com.torr.materia.block.StatueBustBlock(statueProps()));
+        public static final RegistryObject<Block> TERRACOTTA_BODY = registerBlock("terracotta_body",
+                        () -> new com.torr.materia.block.StatueBodyBlock(statueProps()));
         public static final RegistryObject<Block> AQUILA_AUREA = registerBlock("aquila_aurea",
                         () -> new AquilaAureaBlock(BlockBehaviour.Properties.of().strength(1.5f)
                                         .sound(SoundType.STONE).noOcclusion()));
@@ -1125,6 +1143,10 @@ public class ModBlocks {
                                         .sound(SoundType.STONE).noOcclusion()));
 
         // HELPER METHODS
+
+        private static BlockBehaviour.Properties statueProps() {
+                return BlockBehaviour.Properties.of().strength(1.5F).sound(SoundType.STONE).noOcclusion();
+        }
 
         static <T extends Block> RegistryObject<T> registerDecorBlock(String name, Supplier<T> block) {
                 return registerBlock(name, block);

@@ -1,0 +1,19 @@
+{
+    "variants": {
+        "facing=north": {
+            "model": "materia:block/blackstone_body"
+        },
+        "facing=south": {
+            "model": "materia:block/blackstone_body",
+            "y": 180
+        },
+        "facing=east": {
+            "model": "materia:block/blackstone_body",
+            "y": 90
+        },
+        "facing=west": {
+            "model": "materia:block/blackstone_body",
+            "y": 270
+        }
+    }
+}

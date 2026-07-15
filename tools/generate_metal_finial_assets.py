@@ -9,6 +9,14 @@ LOOT = ROOT / "shared" / "src" / "main" / "resources" / "data" / "materia" / "lo
 RECIPES = ROOT / "shared" / "src" / "main" / "resources" / "data" / "materia" / "recipes" / "iron_anvil"
 ITEM_TEXTURES = ASSETS / "textures" / "item"
 
+BLOCK_ITEM_DISPLAY = {
+    "thirdperson_righthand": {"rotation": [0, 45, 0], "translation": [0, 0, 0], "scale": [0.5, 0.5, 0.5]},
+    "firstperson_righthand": {"rotation": [0, 45, 0], "translation": [0, 0, 0], "scale": [0.5, 0.5, 0.5]},
+    "gui": {"rotation": [30, 45, 0], "translation": [0, 0, 0], "scale": [0.625, 0.625, 0.625]},
+    "ground": {"rotation": [0, 0, 0], "translation": [0, 3, 0], "scale": [0.25, 0.25, 0.25]},
+    "fixed": {"rotation": [0, 0, 0], "translation": [0, 0, 0], "scale": [0.5, 0.5, 0.5]},
+}
+
 ANVIL_TOOLS = ["materia:iron_hammers", "materia:iron_tongs", "materia:iron_chisels"]
 
 METAL_INPUTS = {
@@ -65,14 +73,14 @@ def item_model(block_id: str) -> dict:
     icon = ITEM_ICON.get(block_id, block_id)
     if (ITEM_TEXTURES / f"{icon}.png").exists():
         return {"parent": "minecraft:item/generated", "textures": {"layer0": f"materia:item/{icon}"}}
-    return {"parent": f"materia:block/{block_id}_lower"}
+    return {"parent": f"materia:block/{block_id}_lower", "display": BLOCK_ITEM_DISPLAY}
 
 
 def acorn_item_model(block_id: str) -> dict:
     icon = ITEM_ICON.get(block_id, block_id)
     if (ITEM_TEXTURES / f"{icon}.png").exists():
         return {"parent": "minecraft:item/generated", "textures": {"layer0": f"materia:item/{icon}"}}
-    return {"parent": f"materia:block/{block_id}"}
+    return {"parent": f"materia:block/{block_id}", "display": BLOCK_ITEM_DISPLAY}
 
 
 def standard_loot(block_id: str) -> dict:
