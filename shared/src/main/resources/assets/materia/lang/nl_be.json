@@ -1142,5 +1142,14 @@
     "block.materia.blackstone_cornice": "Blackstone Corniche",
     "block.materia.blackstone_bracket": "Blackstone Console",
     "block.materia.terracotta_cornice": "Terracotta Corniche",
-    "block.materia.terracotta_bracket": "Terracotta Console"
+    "block.materia.terracotta_bracket": "Terracotta Console",
+    "block.materia.bronze_spire": "Bronzen Spits",
+    "block.materia.gold_spire": "Gouden Spits",
+    "block.materia.wrought_iron_spire": "Smeedijzeren Spits",
+    "block.materia.bronze_ball_finial": "Bronzen Bolfinial",
+    "block.materia.gold_ball_finial": "Gouden Bolfinial",
+    "block.materia.wrought_iron_ball_finial": "Smeedijzeren Bolfinial",
+    "block.materia.bronze_acorn_finial": "Bronzen Eikel Finial",
+    "block.materia.gold_acorn_finial": "Gouden Eikel Finial",
+    "block.materia.wrought_iron_acorn_finial": "Smeedijzeren Eikel Finial"
 }

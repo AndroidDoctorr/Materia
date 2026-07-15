@@ -243,7 +243,10 @@ public class ModCreativeTabs {
                 || path.endsWith("_planter")
                 || path.endsWith("_balustrade")
                 || path.endsWith("_cornice")
-                || path.endsWith("_bracket");
+                || path.endsWith("_bracket")
+                || path.endsWith("_spire")
+                || path.endsWith("_finial")
+                || path.endsWith("_acorn_finial");
     }
 
     private static boolean isRedstone(String path) {

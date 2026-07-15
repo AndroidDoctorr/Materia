@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "half=lower": {
+            "model": "materia:block/bronze_ball_finial_lower"
+        },
+        "half=upper": {
+            "model": "materia:block/bronze_ball_finial_upper"
+        }
+    }
+}

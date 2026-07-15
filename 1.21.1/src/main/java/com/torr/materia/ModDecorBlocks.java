@@ -4,6 +4,7 @@ import com.torr.materia.block.BalustradeBlock;
 import com.torr.materia.block.BracketBlock;
 import com.torr.materia.block.CorniceBlock;
 import com.torr.materia.block.CurtainsBlock;
+import com.torr.materia.block.FinialBlock;
 import com.torr.materia.block.ShutterBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
@@ -38,6 +39,12 @@ public final class ModDecorBlocks {
             .strength(1.5F)
             .sound(SoundType.STONE)
             .noOcclusion();
+
+    private static final BlockBehaviour.Properties METAL_FINIAL_PROPS = BlockBehaviour.Properties.of()
+            .strength(2.0F)
+            .sound(SoundType.METAL)
+            .noOcclusion()
+            .noCollission();
 
     public static final RegistryObject<Block> OAK_SHUTTERS = shutter("oak_shutters");
     public static final RegistryObject<Block> SPRUCE_SHUTTERS = shutter("spruce_shutters");
@@ -138,6 +145,16 @@ public final class ModDecorBlocks {
     public static final RegistryObject<Block> STONE_BALUSTRADE = ModBlocks.registerDecorBlock("stone_balustrade",
             () -> new BalustradeBlock(BALUSTRADE_PROPS));
 
+    public static final RegistryObject<Block> BRONZE_SPIRE = tallFinial("bronze_spire");
+    public static final RegistryObject<Block> GOLD_SPIRE = tallFinial("gold_spire");
+    public static final RegistryObject<Block> WROUGHT_IRON_SPIRE = tallFinial("wrought_iron_spire");
+    public static final RegistryObject<Block> BRONZE_BALL_FINIAL = tallFinial("bronze_ball_finial");
+    public static final RegistryObject<Block> GOLD_BALL_FINIAL = tallFinial("gold_ball_finial");
+    public static final RegistryObject<Block> WROUGHT_IRON_BALL_FINIAL = tallFinial("wrought_iron_ball_finial");
+    public static final RegistryObject<Block> BRONZE_ACORN_FINIAL = finialCross("bronze_acorn_finial");
+    public static final RegistryObject<Block> GOLD_ACORN_FINIAL = finialCross("gold_acorn_finial");
+    public static final RegistryObject<Block> WROUGHT_IRON_ACORN_FINIAL = finialCross("wrought_iron_acorn_finial");
+
     private ModDecorBlocks() {
     }
 
@@ -151,6 +168,14 @@ public final class ModDecorBlocks {
 
     private static RegistryObject<Block> sculptureBlock(String name) {
         return ModBlocks.registerDecorBlock(name, () -> new Block(STONE_SCULPTURE_PROPS));
+    }
+
+    private static RegistryObject<Block> tallFinial(String name) {
+        return ModBlocks.registerDecorBlock(name, () -> new FinialBlock(METAL_FINIAL_PROPS));
+    }
+
+    private static RegistryObject<Block> finialCross(String name) {
+        return ModBlocks.registerDecorBlock(name, () -> new Block(METAL_FINIAL_PROPS));
     }
 
     private static RegistryObject<Block> shutter(String name) {
@@ -189,6 +214,9 @@ public final class ModDecorBlocks {
             registrar.accept(block.get(), cutout);
         }
         for (RegistryObject<Block> block : ALL_BRACKETS) {
+            registrar.accept(block.get(), cutout);
+        }
+        for (RegistryObject<Block> block : ALL_FINIALS) {
             registrar.accept(block.get(), cutout);
         }
         registrar.accept(STONE_BALUSTRADE.get(), cutout);
@@ -239,5 +267,12 @@ public final class ModDecorBlocks {
     @SuppressWarnings("unchecked")
     private static final RegistryObject<Block>[] ALL_BRACKETS = new RegistryObject[] {
             MARBLE_BRACKET, LIMESTONE_BRACKET, STONE_BRACKET, SANDSTONE_BRACKET, BLACKSTONE_BRACKET, TERRACOTTA_BRACKET
+    };
+
+    @SuppressWarnings("unchecked")
+    private static final RegistryObject<Block>[] ALL_FINIALS = new RegistryObject[] {
+            BRONZE_SPIRE, GOLD_SPIRE, WROUGHT_IRON_SPIRE,
+            BRONZE_BALL_FINIAL, GOLD_BALL_FINIAL, WROUGHT_IRON_BALL_FINIAL,
+            BRONZE_ACORN_FINIAL, GOLD_ACORN_FINIAL, WROUGHT_IRON_ACORN_FINIAL
     };
 }

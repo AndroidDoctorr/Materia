@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "half=lower": {
+            "model": "materia:block/gold_spire_lower"
+        },
+        "half=upper": {
+            "model": "materia:block/gold_spire_upper"
+        }
+    }
+}

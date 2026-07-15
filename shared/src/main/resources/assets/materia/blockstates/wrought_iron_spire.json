@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "half=lower": {
+            "model": "materia:block/wrought_iron_spire_lower"
+        },
+        "half=upper": {
+            "model": "materia:block/wrought_iron_spire_upper"
+        }
+    }
+}

@@ -1218,5 +1218,14 @@
     "block.materia.blackstone_cornice": "Blackstone Cornice",
     "block.materia.blackstone_bracket": "Blackstone Bracket",
     "block.materia.terracotta_cornice": "Terracotta Cornice",
-    "block.materia.terracotta_bracket": "Terracotta Bracket"
+    "block.materia.terracotta_bracket": "Terracotta Bracket",
+    "block.materia.bronze_spire": "Bronze Spire",
+    "block.materia.gold_spire": "Gold Spire",
+    "block.materia.wrought_iron_spire": "Wrought Iron Spire",
+    "block.materia.bronze_ball_finial": "Bronze Ball Finial",
+    "block.materia.gold_ball_finial": "Gold Ball Finial",
+    "block.materia.wrought_iron_ball_finial": "Wrought Iron Ball Finial",
+    "block.materia.bronze_acorn_finial": "Bronze Acorn Finial",
+    "block.materia.gold_acorn_finial": "Gold Acorn Finial",
+    "block.materia.wrought_iron_acorn_finial": "Wrought Iron Acorn Finial"
 }
