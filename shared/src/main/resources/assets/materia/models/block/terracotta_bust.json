@@ -3,6 +3,7 @@
     "textures": {
         "all": "minecraft:block/terracotta",
         "face": "materia:block/terracotta_face",
+        "body": "materia:block/terracotta_body",
         "particle": "minecraft:block/terracotta"
     },
     "elements": [
@@ -21,21 +22,21 @@
             "faces": {
                 "north": {
                     "uv": [
+                        4,
                         0,
-                        0,
-                        8,
+                        12,
                         4
                     ],
-                    "texture": "#all"
+                    "texture": "#body"
                 },
                 "south": {
                     "uv": [
+                        4,
                         0,
-                        0,
-                        8,
+                        12,
                         4
                     ],
-                    "texture": "#all"
+                    "texture": "#body"
                 },
                 "east": {
                     "uv": [
@@ -160,9 +161,9 @@
                 "north": {
                     "uv": [
                         0,
-                        0,
+                        1,
                         8,
-                        10
+                        11
                     ],
                     "texture": "#face"
                 },
@@ -217,12 +218,12 @@
             "name": "nose",
             "from": [
                 7,
-                5,
+                6,
                 3
             ],
             "to": [
                 9,
-                9,
+                10,
                 5
             ],
             "faces": {

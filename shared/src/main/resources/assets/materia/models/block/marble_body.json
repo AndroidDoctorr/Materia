@@ -2,6 +2,7 @@
     "ambientocclusion": false,
     "textures": {
         "all": "materia:block/marble",
+        "body": "materia:block/marble_body",
         "particle": "materia:block/marble"
     },
     "elements": [
@@ -89,28 +90,28 @@
             "faces": {
                 "north": {
                     "uv": [
-                        0,
-                        0,
-                        8,
-                        4
+                        4,
+                        2,
+                        12,
+                        16
                     ],
-                    "texture": "#all"
+                    "texture": "#body"
                 },
                 "south": {
                     "uv": [
-                        0,
-                        0,
-                        8,
-                        4
+                        4,
+                        2,
+                        12,
+                        16
                     ],
-                    "texture": "#all"
+                    "texture": "#body"
                 },
                 "east": {
                     "uv": [
                         0,
                         0,
                         6,
-                        4
+                        14
                     ],
                     "texture": "#all"
                 },
@@ -119,7 +120,7 @@
                         0,
                         0,
                         6,
-                        4
+                        14
                     ],
                     "texture": "#all"
                 },
