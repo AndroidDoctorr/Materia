@@ -25,3 +25,10 @@ Source of truth:
 
 - `shared/src/main/resources/data/materia/loot_tables/blocks/limestone.json`
 
+## Processing (stonecutting)
+
+- limestone stairs: `materia:limestone_stairs`
+  - [Stonecutting recipe JSON](../../../shared/src/main/resources/data/materia/recipes/limestone_stairs_from_stonecutting.json)
+- limestone slab: `materia:limestone_slab` (×2 from one block)
+  - [Stonecutting recipe JSON](../../../shared/src/main/resources/data/materia/recipes/limestone_slab_from_stonecutting.json)
+

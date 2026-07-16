@@ -23,6 +23,8 @@ Planned work is tracked in [`documentation/release-roadmap.md`](documentation/re
 - **Stone trim:** columns and column capitals for stone, limestone, marble, sandstone, blackstone, and terracotta (plain decorative blocks; 3D block item models). **Cornices** and **brackets** for the same six materials (wall-mounted trim; dedicated item textures). All from stonecutter.
 - **Metal finials:** bronze, gold, and wrought iron **spires**, **ball finials**, and **acorn finials** — tall cross models (2-block spire/ball, 1-block acorn); forged on the iron anvil from hot plate + rod with hammer, tongs, and chisel.
 - **Stone statues:** body + bust pairs for stone, limestone, marble, sandstone, blackstone, and terracotta; stonecutter-carved with per-material face textures; bust auto-aligns when stacked on its body.
+- **Wrought iron building:** fence, fence gate, and door forged on the iron anvil (rods + bands for fence/gate; plates + rivets for door; hammer + tongs).
+- **Marble & limestone slabs/stairs:** stonecutter from the base stone block (2 slabs or 1 stair per block).
 - **Shutters (fix):** open-half model UVs — wide panel faces on E/W, thin edge faces on N/S.
 
 ### 1.2.3 (TBD)

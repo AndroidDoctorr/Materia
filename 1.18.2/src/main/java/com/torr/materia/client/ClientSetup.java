@@ -193,6 +193,9 @@ public class ClientSetup {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.THATCH_SLOPE.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.ROOF_TILES.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.FIG_DOOR.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.WROUGHT_IRON_DOOR.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.WROUGHT_IRON_FENCE.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.WROUGHT_IRON_FENCE_GATE.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.FIG_TRAPDOOR.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.RUBBER_WOOD_DOOR.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.RUBBER_WOOD_TRAPDOOR.get(), RenderType.cutout());

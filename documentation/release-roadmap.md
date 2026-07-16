@@ -57,6 +57,8 @@ Minor content release: finish wood sets, expand dye-colored building blocks, dec
 - [x] **Stone columns & capitals** — six materials (stone, limestone, marble, sandstone, blackstone, terracotta); stonecutter; 3D block item models.
 - [x] **Cornices & brackets** — same six materials; wall-mounted trim with corner connection (cornices) or solid backing (brackets); dedicated item textures.
 - [x] **Metal finials** — bronze, gold, wrought iron spires, ball finials, and acorn finials; iron-anvil recipes (plate + rod; hammer/tongs/chisel).
+- [x] **Wrought iron fence, gate & door** — iron-anvil recipes (rods + bands / plates + rivets; hammer + tongs).
+- [x] **Marble & limestone slabs/stairs** — stonecutter from base stone.
 - [ ] **Marble**-themed blocks/items beyond current stonecutter set (exact scope TBD).
 - [ ] **Flower boxes** — additional variants beyond stone planter (TBD).
 

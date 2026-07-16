@@ -1,0 +1,59 @@
+{
+    "ambientocclusion": false,
+    "textures": {
+        "all": "materia:block/wrought_iron_fence",
+        "particle": "materia:block/wrought_iron_fence"
+    },
+    "elements": [
+        {
+            "from": [
+                0,
+                0,
+                7
+            ],
+            "to": [
+                16,
+                16,
+                9
+            ],
+            "faces": {
+                "north": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#all"
+                },
+                "south": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#all"
+                },
+                "east": {
+                    "uv": [
+                        7,
+                        0,
+                        9,
+                        16
+                    ],
+                    "texture": "#all"
+                },
+                "west": {
+                    "uv": [
+                        7,
+                        0,
+                        9,
+                        16
+                    ],
+                    "texture": "#all"
+                }
+            }
+        }
+    ]
+}

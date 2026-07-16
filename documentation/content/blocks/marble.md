@@ -30,6 +30,10 @@ Marble has several stonecutter outputs:
   - [Stonecutting recipe JSON](../../../shared/src/main/resources/data/materia/recipes/marble_bust_from_marble_stonecutting.json)
 - marble body: `materia:marble_body`
   - [Stonecutting recipe JSON](../../../shared/src/main/resources/data/materia/recipes/marble_body_from_marble_stonecutting.json)
+- marble stairs: `materia:marble_stairs`
+  - [Stonecutting recipe JSON](../../../shared/src/main/resources/data/materia/recipes/marble_stairs_from_stonecutting.json)
+- marble slab: `materia:marble_slab` (×2 from one block)
+  - [Stonecutting recipe JSON](../../../shared/src/main/resources/data/materia/recipes/marble_slab_from_stonecutting.json)
 
 ## Statues
 
