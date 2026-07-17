@@ -2,6 +2,7 @@
     "ambientocclusion": false,
     "textures": {
         "all": "minecraft:block/terracotta",
+        "body": "materia:block/terracotta_body",
         "particle": "minecraft:block/terracotta"
     },
     "elements": [
@@ -89,21 +90,21 @@
             "faces": {
                 "north": {
                     "uv": [
-                        0,
-                        0,
-                        8,
-                        4
+                        4,
+                        2,
+                        12,
+                        16
                     ],
-                    "texture": "#all"
+                    "texture": "#body"
                 },
                 "south": {
                     "uv": [
-                        0,
-                        0,
-                        8,
-                        4
+                        4,
+                        2,
+                        12,
+                        16
                     ],
-                    "texture": "#all"
+                    "texture": "#body"
                 },
                 "east": {
                     "uv": [

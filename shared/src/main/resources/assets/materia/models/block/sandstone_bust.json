@@ -1,9 +1,9 @@
 {
     "ambientocclusion": false,
     "textures": {
-        "all": "minecraft:block/sandstone",
+        "all": "minecraft:block/sandstone_top",
         "face": "materia:block/sandstone_face",
-        "particle": "minecraft:block/sandstone"
+        "particle": "minecraft:block/sandstone_top"
     },
     "elements": [
         {
@@ -159,10 +159,10 @@
             "faces": {
                 "north": {
                     "uv": [
-                        0,
-                        0,
-                        8,
-                        10
+                        4,
+                        1,
+                        12,
+                        11
                     ],
                     "texture": "#face"
                 },
@@ -279,6 +279,168 @@
                         2
                     ],
                     "texture": "#all"
+                }
+            }
+        },
+        {
+            "name": "snake_thingy",
+            "from": [
+                7,
+                13,
+                4
+            ],
+            "to": [
+                9,
+                16,
+                5
+            ],
+            "faces": {
+                "north": {
+                    "uv": [
+                        7,
+                        0,
+                        9,
+                        3
+                    ],
+                    "texture": "#face"
+                },
+                "south": {
+                    "uv": [
+                        7,
+                        0,
+                        9,
+                        3
+                    ],
+                    "texture": "#face"
+                },
+                "east": {
+                    "uv": [
+                        8,
+                        0,
+                        9,
+                        3
+                    ],
+                    "texture": "#all"
+                },
+                "west": {
+                    "uv": [
+                        8,
+                        0,
+                        9,
+                        3
+                    ],
+                    "texture": "#all"
+                },
+                "up": {
+                    "uv": [
+                        0,
+                        0,
+                        2,
+                        1
+                    ],
+                    "texture": "#all"
+                },
+                "down": {
+                    "uv": [
+                        0,
+                        0,
+                        2,
+                        1
+                    ],
+                    "texture": "#all"
+                }
+            }
+        },
+        {
+            "name": "beard",
+            "from": [
+                7,
+                2,
+                5
+            ],
+            "to": [
+                9,
+                5,
+                6
+            ],
+            "faces": {
+                "north": {
+                    "uv": [
+                        7,
+                        11,
+                        9,
+                        14
+                    ],
+                    "texture": "#all"
+                },
+                "south": {
+                    "uv": [
+                        7,
+                        11,
+                        9,
+                        14
+                    ],
+                    "texture": "#all"
+                },
+                "east": {
+                    "uv": [
+                        7,
+                        11,
+                        8,
+                        14
+                    ],
+                    "texture": "#all"
+                },
+                "west": {
+                    "uv": [
+                        7,
+                        11,
+                        8,
+                        14
+                    ],
+                    "texture": "#all"
+                },
+                "down": {
+                    "uv": [
+                        7,
+                        11,
+                        9,
+                        12
+                    ],
+                    "texture": "#all"
+                }
+            }
+        },
+        {
+            "name": "headdress",
+            "from": [
+                2,
+                3,
+                8
+            ],
+            "to": [
+                14,
+                16,
+                8
+            ],
+            "faces": {
+                "north": {
+                    "uv": [
+                        2,
+                        0,
+                        14,
+                        13
+                    ],
+                    "texture": "#face"
+                },
+                "south": {
+                    "uv": [
+                        2,
+                        0,
+                        14,
+                        13
+                    ],
+                    "texture": "#face"
                 }
             }
         },

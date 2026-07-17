@@ -1,0 +1,36 @@
+{
+    "variants": {
+        "facing=north,open=false": {
+            "model": "materia:block/wrought_iron_fence_gate",
+            "y": 0
+        },
+        "facing=north,open=true": {
+            "model": "materia:block/wrought_iron_fence_gate_open",
+            "y": 0
+        },
+        "facing=south,open=false": {
+            "model": "materia:block/wrought_iron_fence_gate",
+            "y": 180
+        },
+        "facing=south,open=true": {
+            "model": "materia:block/wrought_iron_fence_gate_open",
+            "y": 180
+        },
+        "facing=east,open=false": {
+            "model": "materia:block/wrought_iron_fence_gate",
+            "y": 90
+        },
+        "facing=east,open=true": {
+            "model": "materia:block/wrought_iron_fence_gate_open",
+            "y": 90
+        },
+        "facing=west,open=false": {
+            "model": "materia:block/wrought_iron_fence_gate",
+            "y": 270
+        },
+        "facing=west,open=true": {
+            "model": "materia:block/wrought_iron_fence_gate_open",
+            "y": 270
+        }
+    }
+}

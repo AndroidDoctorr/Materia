@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "facing=north": {
+            "model": "materia:block/wrought_iron_fence",
+            "y": 0
+        },
+        "facing=south": {
+            "model": "materia:block/wrought_iron_fence",
+            "y": 180
+        },
+        "facing=east": {
+            "model": "materia:block/wrought_iron_fence",
+            "y": 90
+        },
+        "facing=west": {
+            "model": "materia:block/wrought_iron_fence",
+            "y": 270
+        }
+    }
+}

@@ -451,9 +451,13 @@
     "block.materia.cedar_trellis": "Cedar Trellis",
     "block.materia.eucalyptus_trellis": "Eucalyptus Trellis",
     "block.materia.marble": "Marble",
+    "block.materia.marble_stairs": "Marble Stairs",
+    "block.materia.marble_slab": "Marble Slab",
     "block.materia.marble_carved": "Carved Marble",
     "block.materia.marble_column": "Marble Column",
     "block.materia.limestone": "Limestone",
+    "block.materia.limestone_stairs": "Limestone Stairs",
+    "block.materia.limestone_slab": "Limestone Slab",
     "item.materia.pozzolana": "Pozzolana",
     "item.materia.mortar": "Mortar",
     "item.materia.pile_of_sand": "Pile of Sand",
@@ -1237,5 +1241,8 @@
     "block.materia.wrought_iron_ball_finial": "Wrought Iron Ball Finial",
     "block.materia.bronze_acorn_finial": "Bronze Acorn Finial",
     "block.materia.gold_acorn_finial": "Gold Acorn Finial",
-    "block.materia.wrought_iron_acorn_finial": "Wrought Iron Acorn Finial"
+    "block.materia.wrought_iron_acorn_finial": "Wrought Iron Acorn Finial",
+    "block.materia.wrought_iron_fence": "Wrought Iron Fence",
+    "block.materia.wrought_iron_fence_gate": "Wrought Iron Fence Gate",
+    "block.materia.wrought_iron_door": "Wrought Iron Door"
 }

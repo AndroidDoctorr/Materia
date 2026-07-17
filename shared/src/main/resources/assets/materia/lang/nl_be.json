@@ -436,7 +436,11 @@
     "block.materia.cedar_trellis": "Cederlatwerk",
     "block.materia.eucalyptus_trellis": "Eucalyptuslatwerk",
     "block.materia.marble": "Marmer",
+    "block.materia.marble_stairs": "Marmeren Trap",
+    "block.materia.marble_slab": "Marmeren Plaat",
     "block.materia.limestone": "Kalksteen",
+    "block.materia.limestone_stairs": "Kalksteen Trap",
+    "block.materia.limestone_slab": "Kalksteen Plaat",
     "item.materia.pozzolana": "Pozzolaan",
     "item.materia.mortar": "Mortel",
     "item.materia.pile_of_sand": "Hoop Zand",
@@ -1161,5 +1165,8 @@
     "block.materia.wrought_iron_ball_finial": "Smeedijzeren Bolfinial",
     "block.materia.bronze_acorn_finial": "Bronzen Eikel Finial",
     "block.materia.gold_acorn_finial": "Gouden Eikel Finial",
-    "block.materia.wrought_iron_acorn_finial": "Smeedijzeren Eikel Finial"
+    "block.materia.wrought_iron_acorn_finial": "Smeedijzeren Eikel Finial",
+    "block.materia.wrought_iron_fence": "Smeedijzeren Hek",
+    "block.materia.wrought_iron_fence_gate": "Smeedijzeren Hekpoort",
+    "block.materia.wrought_iron_door": "Smeedijzeren Deur"
 }

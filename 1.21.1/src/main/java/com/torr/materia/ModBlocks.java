@@ -96,6 +96,20 @@ public class ModBlocks {
         public static final RegistryObject<Block> LIMESTONE = registerBlock("limestone",
                         () -> new Block(BlockBehaviour.Properties.of().strength(1.5f)
                                         .sound(SoundType.STONE).requiresCorrectToolForDrops().noOcclusion()));
+        public static final RegistryObject<Block> MARBLE_STAIRS = registerBlock("marble_stairs",
+                        () -> new net.minecraft.world.level.block.StairBlock(
+                                ModBlocks.MARBLE.get().defaultBlockState(),
+                                BlockBehaviour.Properties.ofFullCopy(ModBlocks.MARBLE.get())));
+        public static final RegistryObject<Block> MARBLE_SLAB = registerBlock("marble_slab",
+                        () -> new net.minecraft.world.level.block.SlabBlock(
+                                BlockBehaviour.Properties.ofFullCopy(ModBlocks.MARBLE.get())));
+        public static final RegistryObject<Block> LIMESTONE_STAIRS = registerBlock("limestone_stairs",
+                        () -> new net.minecraft.world.level.block.StairBlock(
+                                ModBlocks.LIMESTONE.get().defaultBlockState(),
+                                BlockBehaviour.Properties.ofFullCopy(ModBlocks.LIMESTONE.get())));
+        public static final RegistryObject<Block> LIMESTONE_SLAB = registerBlock("limestone_slab",
+                        () -> new net.minecraft.world.level.block.SlabBlock(
+                                BlockBehaviour.Properties.ofFullCopy(ModBlocks.LIMESTONE.get())));
         public static final RegistryObject<Block> SULFUR_ORE = registerBlock("sulfur_ore",
                         () -> new Block(BlockBehaviour.Properties.of().strength(1.5f)
                                         .sound(SoundType.STONE).requiresCorrectToolForDrops()));
@@ -712,6 +726,16 @@ public class ModBlocks {
         public static final RegistryObject<Block> WROUGHT_IRON_BLOCK = registerBlock("wrought_iron_block",
                         () -> new Block(BlockBehaviour.Properties.of().strength(1.0f)
                                         .sound(SoundType.METAL)));
+        public static final RegistryObject<Block> WROUGHT_IRON_FENCE = registerBlock("wrought_iron_fence",
+                        () -> new com.torr.materia.block.WroughtIronFenceBlock(
+                                BlockBehaviour.Properties.ofFullCopy(ModBlocks.WROUGHT_IRON_BLOCK.get()).noOcclusion()));
+        public static final RegistryObject<Block> WROUGHT_IRON_FENCE_GATE = registerBlock("wrought_iron_fence_gate",
+                        () -> new com.torr.materia.block.WroughtIronFenceGateBlock(
+                                BlockBehaviour.Properties.ofFullCopy(ModBlocks.WROUGHT_IRON_BLOCK.get()).noOcclusion()));
+        public static final RegistryObject<Block> WROUGHT_IRON_DOOR = registerBlock("wrought_iron_door",
+                        () -> new net.minecraft.world.level.block.DoorBlock(
+                                ModBlockSetTypes.WROUGHT_IRON,
+                                BlockBehaviour.Properties.ofFullCopy(ModBlocks.WROUGHT_IRON_BLOCK.get()).strength(5.0F).noOcclusion()));
         public static final RegistryObject<Block> ZINC_BLOCK = registerBlock("zinc_block",
                         () -> new Block(BlockBehaviour.Properties.of().strength(1.0f)
                                         .sound(SoundType.METAL)));
