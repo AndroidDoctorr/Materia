@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SRS",
+        "CSW"
+    ],
+    "key": {
+        "S": {
+            "item": "minecraft:stick"
+        },
+        "C": {
+            "item": "minecraft:pink_carpet"
+        },
+        "W": {
+            "item": "minecraft:white_carpet"
+        },
+        "R": {
+            "item": "materia:rope"
+        }
+    },
+    "result": {
+        "item": "materia:pink_awning",
+        "count": 1
+    }
+}

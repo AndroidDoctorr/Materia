@@ -1,5 +1,6 @@
 package com.torr.materia;
 
+import com.torr.materia.block.AwningBlock;
 import com.torr.materia.block.BalustradeBlock;
 import com.torr.materia.block.BracketBlock;
 import com.torr.materia.block.CorniceBlock;
@@ -22,6 +23,11 @@ public final class ModDecorBlocks {
             .noOcclusion();
 
     private static final BlockBehaviour.Properties CURTAIN_PROPS = BlockBehaviour.Properties.of()
+            .strength(0.5F)
+            .sound(SoundType.WOOL)
+            .noOcclusion();
+
+    private static final BlockBehaviour.Properties AWNING_PROPS = BlockBehaviour.Properties.of()
             .strength(0.5F)
             .sound(SoundType.WOOL)
             .noOcclusion();
@@ -85,6 +91,33 @@ public final class ModDecorBlocks {
     public static final RegistryObject<Block> CHARCOAL_GRAY_CURTAINS = curtains("charcoal_gray_curtains");
     public static final RegistryObject<Block> BURGUNDY_CURTAINS = curtains("burgundy_curtains");
     public static final RegistryObject<Block> TEAL_CURTAINS = curtains("teal_curtains");
+
+    public static final RegistryObject<Block> ORANGE_AWNING = awning("orange_awning");
+    public static final RegistryObject<Block> MAGENTA_AWNING = awning("magenta_awning");
+    public static final RegistryObject<Block> LIGHT_BLUE_AWNING = awning("light_blue_awning");
+    public static final RegistryObject<Block> YELLOW_AWNING = awning("yellow_awning");
+    public static final RegistryObject<Block> LIME_AWNING = awning("lime_awning");
+    public static final RegistryObject<Block> PINK_AWNING = awning("pink_awning");
+    public static final RegistryObject<Block> GRAY_AWNING = awning("gray_awning");
+    public static final RegistryObject<Block> LIGHT_GRAY_AWNING = awning("light_gray_awning");
+    public static final RegistryObject<Block> CYAN_AWNING = awning("cyan_awning");
+    public static final RegistryObject<Block> PURPLE_AWNING = awning("purple_awning");
+    public static final RegistryObject<Block> BLUE_AWNING = awning("blue_awning");
+    public static final RegistryObject<Block> BROWN_AWNING = awning("brown_awning");
+    public static final RegistryObject<Block> GREEN_AWNING = awning("green_awning");
+    public static final RegistryObject<Block> RED_AWNING = awning("red_awning");
+    public static final RegistryObject<Block> BLACK_AWNING = awning("black_awning");
+    public static final RegistryObject<Block> OCHRE_AWNING = awning("ochre_awning");
+    public static final RegistryObject<Block> RED_OCHRE_AWNING = awning("red_ochre_awning");
+    public static final RegistryObject<Block> LAVENDER_AWNING = awning("lavender_awning");
+    public static final RegistryObject<Block> INDIGO_AWNING = awning("indigo_awning");
+    public static final RegistryObject<Block> TYRIAN_PURPLE_AWNING = awning("tyrian_purple_awning");
+    public static final RegistryObject<Block> TAUPE_AWNING = awning("taupe_awning");
+    public static final RegistryObject<Block> OLIVE_AWNING = awning("olive_awning");
+    public static final RegistryObject<Block> CHARCOAL_GRAY_AWNING = awning("charcoal_gray_awning");
+    public static final RegistryObject<Block> BURGUNDY_AWNING = awning("burgundy_awning");
+    public static final RegistryObject<Block> TEAL_AWNING = awning("teal_awning");
+    public static final RegistryObject<Block> TAN_AWNING = awning("tan_awning");
 
     public static final RegistryObject<Block> STONE_TILES = stoneCube("stone_tiles");
     public static final RegistryObject<Block> STONE_BRICKS_SMALL = stoneCube("stone_bricks_small");
@@ -186,6 +219,10 @@ public final class ModDecorBlocks {
         return ModBlocks.registerDecorBlock(name, () -> new CurtainsBlock(CURTAIN_PROPS));
     }
 
+    private static RegistryObject<Block> awning(String name) {
+        return ModBlocks.registerDecorBlock(name, () -> new AwningBlock(AWNING_PROPS));
+    }
+
     private static RegistryObject<Block> stoneCube(String name) {
         return ModBlocks.registerDecorBlock(name, () -> new Block(STONE_DECOR_PROPS));
     }
@@ -196,6 +233,9 @@ public final class ModDecorBlocks {
             registrar.accept(block.get(), cutout);
         }
         for (RegistryObject<Block> block : ALL_CURTAINS) {
+            registrar.accept(block.get(), cutout);
+        }
+        for (RegistryObject<Block> block : ALL_AWNINGS) {
             registrar.accept(block.get(), cutout);
         }
         for (RegistryObject<Block> block : ALL_URNS) {
@@ -235,6 +275,15 @@ public final class ModDecorBlocks {
             PURPLE_CURTAINS, BLUE_CURTAINS, BROWN_CURTAINS, GREEN_CURTAINS, RED_CURTAINS, BLACK_CURTAINS,
             OCHRE_CURTAINS, RED_OCHRE_CURTAINS, LAVENDER_CURTAINS, INDIGO_CURTAINS, TYRIAN_PURPLE_CURTAINS,
             TAUPE_CURTAINS, OLIVE_CURTAINS, CHARCOAL_GRAY_CURTAINS, BURGUNDY_CURTAINS, TEAL_CURTAINS
+    };
+
+    @SuppressWarnings("unchecked")
+    private static final RegistryObject<Block>[] ALL_AWNINGS = new RegistryObject[] {
+            ORANGE_AWNING, MAGENTA_AWNING, LIGHT_BLUE_AWNING, YELLOW_AWNING, LIME_AWNING, PINK_AWNING,
+            GRAY_AWNING, LIGHT_GRAY_AWNING, CYAN_AWNING, PURPLE_AWNING, BLUE_AWNING, BROWN_AWNING,
+            GREEN_AWNING, RED_AWNING, BLACK_AWNING, OCHRE_AWNING, RED_OCHRE_AWNING, LAVENDER_AWNING,
+            INDIGO_AWNING, TYRIAN_PURPLE_AWNING, TAUPE_AWNING, OLIVE_AWNING, CHARCOAL_GRAY_AWNING,
+            BURGUNDY_AWNING, TEAL_AWNING, TAN_AWNING
     };
 
     @SuppressWarnings("unchecked")

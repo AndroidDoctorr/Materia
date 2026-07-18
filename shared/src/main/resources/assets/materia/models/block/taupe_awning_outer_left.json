@@ -1,0 +1,102 @@
+{
+    "ambientocclusion": false,
+    "textures": {
+        "arm": "materia:block/awning_arm",
+        "awning": "materia:block/taupe_awning",
+        "particle": "materia:block/taupe_awning"
+    },
+    "elements": [
+        {
+            "name": "roof_slope_x",
+            "from": [
+                0,
+                0,
+                0
+            ],
+            "to": [
+                16,
+                0,
+                16
+            ],
+            "shade": false,
+            "rotation": {
+                "origin": [
+                    8,
+                    0,
+                    0
+                ],
+                "axis": "x",
+                "angle": -45,
+                "rescale": true
+            },
+            "faces": {
+                "up": {
+                    "uv": [
+                        16,
+                        16,
+                        0,
+                        0
+                    ],
+                    "texture": "#awning",
+                    "cullface": false
+                },
+                "down": {
+                    "uv": [
+                        16,
+                        0,
+                        0,
+                        16
+                    ],
+                    "texture": "#awning",
+                    "cullface": false
+                }
+            }
+        },
+        {
+            "name": "roof_slope_z",
+            "from": [
+                0,
+                0,
+                0
+            ],
+            "to": [
+                16,
+                0,
+                16
+            ],
+            "shade": false,
+            "rotation": {
+                "origin": [
+                    16,
+                    0,
+                    8
+                ],
+                "axis": "z",
+                "angle": -45,
+                "rescale": true
+            },
+            "faces": {
+                "up": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#awning",
+                    "cullface": false
+                },
+                "down": {
+                    "uv": [
+                        0,
+                        16,
+                        16,
+                        0
+                    ],
+                    "texture": "#awning",
+                    "cullface": false
+                }
+            }
+        }
+    ]
+}

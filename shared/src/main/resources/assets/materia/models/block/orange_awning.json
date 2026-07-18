@@ -1,0 +1,122 @@
+{
+    "ambientocclusion": false,
+    "textures": {
+        "arm": "materia:block/awning_arm",
+        "awning": "materia:block/orange_awning",
+        "particle": "materia:block/orange_awning"
+    },
+    "elements": [
+        {
+            "name": "roof_tiles",
+            "from": [
+                0,
+                0,
+                0
+            ],
+            "to": [
+                16,
+                0,
+                16
+            ],
+            "shade": false,
+            "rotation": {
+                "origin": [
+                    8,
+                    0,
+                    0
+                ],
+                "axis": "x",
+                "angle": -45,
+                "rescale": true
+            },
+            "faces": {
+                "up": {
+                    "uv": [
+                        16,
+                        16,
+                        0,
+                        0
+                    ],
+                    "texture": "#awning",
+                    "cullface": false
+                },
+                "down": {
+                    "uv": [
+                        16,
+                        0,
+                        0,
+                        16
+                    ],
+                    "texture": "#awning",
+                    "cullface": false
+                }
+            }
+        },
+        {
+            "name": "left_side",
+            "from": [
+                16,
+                0,
+                0
+            ],
+            "to": [
+                16,
+                16,
+                16
+            ],
+            "faces": {
+                "east": {
+                    "uv": [
+                        16,
+                        0,
+                        0,
+                        16
+                    ],
+                    "texture": "#arm"
+                },
+                "west": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#arm"
+                }
+            }
+        },
+        {
+            "name": "right_side",
+            "from": [
+                0,
+                0,
+                0
+            ],
+            "to": [
+                0,
+                16,
+                16
+            ],
+            "faces": {
+                "east": {
+                    "uv": [
+                        16,
+                        0,
+                        0,
+                        16
+                    ],
+                    "texture": "#arm"
+                },
+                "west": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#arm"
+                }
+            }
+        }
+    ]
+}
