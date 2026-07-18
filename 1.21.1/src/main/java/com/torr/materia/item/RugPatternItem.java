@@ -16,6 +16,10 @@ public class RugPatternItem extends BannerPatternItem {
             TagKey.create(Registries.BANNER_PATTERN, ResourceLocation.fromNamespaceAndPath(materia.MOD_ID, "rug_1"));
     public static final TagKey<BannerPattern> RUG_2_TAG =
             TagKey.create(Registries.BANNER_PATTERN, ResourceLocation.fromNamespaceAndPath(materia.MOD_ID, "rug_2"));
+    public static final TagKey<BannerPattern> RUG_3_TAG =
+            TagKey.create(Registries.BANNER_PATTERN, ResourceLocation.fromNamespaceAndPath(materia.MOD_ID, "rug_3"));
+    public static final TagKey<BannerPattern> RUG_4_TAG =
+            TagKey.create(Registries.BANNER_PATTERN, ResourceLocation.fromNamespaceAndPath(materia.MOD_ID, "rug_4"));
 
     public RugPatternItem(TagKey<BannerPattern> tag, Item.Properties properties) {
         super(tag, properties);

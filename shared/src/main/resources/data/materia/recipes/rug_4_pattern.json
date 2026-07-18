@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:paper"
+        },
+        {
+            "item": "minecraft:gold_nugget"
+        },
+        {
+            "item": "materia:olive"
+        }
+    ],
+    "result": {
+        "item": "materia:rug_4_pattern",
+        "count": 1
+    }
+}

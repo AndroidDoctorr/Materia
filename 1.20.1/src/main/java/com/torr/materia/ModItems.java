@@ -1992,6 +1992,14 @@ public class ModItems {
                         () -> new com.torr.materia.item.RugPatternItem(
                                 com.torr.materia.item.RugPatternItem.RUG_2_TAG,
                                 new Item.Properties().stacksTo(1)));
+        public static final RegistryObject<Item> RUG_3_PATTERN = ITEMS.register("rug_3_pattern",
+                        () -> new com.torr.materia.item.RugPatternItem(
+                                com.torr.materia.item.RugPatternItem.RUG_3_TAG,
+                                new Item.Properties().stacksTo(1)));
+        public static final RegistryObject<Item> RUG_4_PATTERN = ITEMS.register("rug_4_pattern",
+                        () -> new com.torr.materia.item.RugPatternItem(
+                                com.torr.materia.item.RugPatternItem.RUG_4_TAG,
+                                new Item.Properties().stacksTo(1)));
         public static final RegistryObject<Item> GRAY_STRING = ITEMS.register("gray_string",
                         () -> new Item(new Item.Properties()
                                         ));

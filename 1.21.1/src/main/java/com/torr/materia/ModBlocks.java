@@ -1154,6 +1154,20 @@ public class ModBlocks {
         public static final RegistryObject<Block> RUG_2_BLUE = registerRugBlock("rug_2_blue");
         public static final RegistryObject<Block> RUG_2_GREEN = registerRugBlock("rug_2_green");
         public static final RegistryObject<Block> RUG_2_PURPLE = registerRugBlock("rug_2_purple");
+        public static final RegistryObject<Block> RUG_3_RED = registerRugBlock("rug_3_red");
+        public static final RegistryObject<Block> RUG_3_BLUE = registerRugBlock("rug_3_blue");
+        public static final RegistryObject<Block> RUG_3_GREEN = registerRugBlock("rug_3_green");
+        public static final RegistryObject<Block> RUG_3_PURPLE = registerRugBlock("rug_3_purple");
+        public static final RegistryObject<Block> RUG_4_RED = registerRugBlock("rug_4_red");
+        public static final RegistryObject<Block> RUG_4_BLUE = registerRugBlock("rug_4_blue");
+        public static final RegistryObject<Block> RUG_4_GREEN = registerRugBlock("rug_4_green");
+        public static final RegistryObject<Block> RUG_4_PURPLE = registerRugBlock("rug_4_purple");
+        public static final RegistryObject<Block> RUG_5 = registerRugBlock("rug_5");
+        public static final RegistryObject<Block> RUG_6 = registerRugBlock("rug_6");
+        public static final RegistryObject<Block> RUG_7 = registerRugBlock("rug_7");
+        public static final RegistryObject<Block> RUG_8 = registerRugBlock("rug_8");
+        public static final RegistryObject<Block> RUG_9 = registerRugBlock("rug_9");
+        public static final RegistryObject<Block> RUG_10 = registerRugBlock("rug_10");
 
         // HELPER METHODS
 

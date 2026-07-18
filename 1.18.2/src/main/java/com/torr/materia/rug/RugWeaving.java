@@ -20,34 +20,88 @@ public final class RugWeaving {
         if (!base.is(ModItems.RUG_BASE.get())) {
             return Optional.empty();
         }
-        if (pattern.is(ModItems.RUG_1_PATTERN.get())) {
-            return rugFromDye(1, dye.getItem());
+        int patternIndex = patternIndex(pattern);
+        if (patternIndex == 0) {
+            return Optional.empty();
         }
-        if (pattern.is(ModItems.RUG_2_PATTERN.get())) {
-            return rugFromDye(2, dye.getItem());
-        }
-        return Optional.empty();
+        return rugFromDye(patternIndex, dye.getItem());
     }
 
     public static boolean isRugPattern(ItemStack stack) {
-        return stack.is(ModItems.RUG_1_PATTERN.get()) || stack.is(ModItems.RUG_2_PATTERN.get());
+        return patternIndex(stack) != 0;
+    }
+
+    private static int patternIndex(ItemStack pattern) {
+        if (pattern.is(ModItems.RUG_1_PATTERN.get())) {
+            return 1;
+        }
+        if (pattern.is(ModItems.RUG_2_PATTERN.get())) {
+            return 2;
+        }
+        if (pattern.is(ModItems.RUG_3_PATTERN.get())) {
+            return 3;
+        }
+        if (pattern.is(ModItems.RUG_4_PATTERN.get())) {
+            return 4;
+        }
+        return 0;
     }
 
     private static Optional<ItemStack> rugFromDye(int pattern, Item dyeItem) {
         Item rug = null;
         if (isRedFieldDye(dyeItem)) {
-            rug = pattern == 1 ? ModBlocks.RUG_1_RED.get().asItem() : ModBlocks.RUG_2_RED.get().asItem();
+            rug = redRug(pattern);
         } else if (isBlueFieldDye(dyeItem)) {
-            rug = pattern == 1 ? ModBlocks.RUG_1_BLUE.get().asItem() : ModBlocks.RUG_2_BLUE.get().asItem();
+            rug = blueRug(pattern);
         } else if (dyeItem == Items.GREEN_DYE) {
-            rug = pattern == 1 ? ModBlocks.RUG_1_GREEN.get().asItem() : ModBlocks.RUG_2_GREEN.get().asItem();
+            rug = greenRug(pattern);
         } else if (isPurpleFieldDye(dyeItem)) {
-            rug = pattern == 1 ? ModBlocks.RUG_1_PURPLE.get().asItem() : ModBlocks.RUG_2_PURPLE.get().asItem();
+            rug = purpleRug(pattern);
         }
         if (rug == null) {
             return Optional.empty();
         }
         return Optional.of(new ItemStack(rug));
+    }
+
+    private static Item redRug(int pattern) {
+        return switch (pattern) {
+            case 1 -> ModBlocks.RUG_1_RED.get().asItem();
+            case 2 -> ModBlocks.RUG_2_RED.get().asItem();
+            case 3 -> ModBlocks.RUG_3_RED.get().asItem();
+            case 4 -> ModBlocks.RUG_4_RED.get().asItem();
+            default -> null;
+        };
+    }
+
+    private static Item blueRug(int pattern) {
+        return switch (pattern) {
+            case 1 -> ModBlocks.RUG_1_BLUE.get().asItem();
+            case 2 -> ModBlocks.RUG_2_BLUE.get().asItem();
+            case 3 -> ModBlocks.RUG_3_BLUE.get().asItem();
+            case 4 -> ModBlocks.RUG_4_BLUE.get().asItem();
+            default -> null;
+        };
+    }
+
+    private static Item greenRug(int pattern) {
+        return switch (pattern) {
+            case 1 -> ModBlocks.RUG_1_GREEN.get().asItem();
+            case 2 -> ModBlocks.RUG_2_GREEN.get().asItem();
+            case 3 -> ModBlocks.RUG_3_GREEN.get().asItem();
+            case 4 -> ModBlocks.RUG_4_GREEN.get().asItem();
+            default -> null;
+        };
+    }
+
+    private static Item purpleRug(int pattern) {
+        return switch (pattern) {
+            case 1 -> ModBlocks.RUG_1_PURPLE.get().asItem();
+            case 2 -> ModBlocks.RUG_2_PURPLE.get().asItem();
+            case 3 -> ModBlocks.RUG_3_PURPLE.get().asItem();
+            case 4 -> ModBlocks.RUG_4_PURPLE.get().asItem();
+            default -> null;
+        };
     }
 
     public static boolean isRedFieldDye(Item item) {

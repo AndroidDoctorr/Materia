@@ -88,6 +88,32 @@
                     "weight": 1
                 }
             ]
+        },
+        {
+            "rolls": 1,
+            "conditions": [
+                {
+                    "condition": "minecraft:random_chance",
+                    "chance": 0.06
+                }
+            ],
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:rug_8",
+                    "weight": 40
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:rug_9",
+                    "weight": 35
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:rug_10",
+                    "weight": 25
+                }
+            ]
         }
     ]
 }
