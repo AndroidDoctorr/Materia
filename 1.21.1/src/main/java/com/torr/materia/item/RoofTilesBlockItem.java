@@ -2,9 +2,11 @@ package com.torr.materia.item;
 
 import com.torr.materia.block.RoofTilesBlock;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -31,8 +33,8 @@ public class RoofTilesBlockItem extends BlockItem {
         if (stack.getItem() instanceof ThatchRoofBlockItem) {
             return 8;
         }
-        CompoundTag tag = stack.getTag();
-        if (tag != null && tag.contains(STAGE_TAG)) {
+        CompoundTag tag = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
+        if (tag.contains(STAGE_TAG)) {
             return tag.getInt(STAGE_TAG);
         }
         return 8;
@@ -53,15 +55,17 @@ public class RoofTilesBlockItem extends BlockItem {
     }
 
     public static int placementOxidation(ItemStack stack) {
-        CompoundTag tag = stack.getTag();
-        if (tag != null && tag.contains(OXIDATION_TAG)) {
+        CompoundTag tag = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
+        if (tag.contains(OXIDATION_TAG)) {
             return tag.getInt(OXIDATION_TAG);
         }
         return 0;
     }
 
     public static ItemStack withStage(ItemStack stack, int stage) {
-        stack.getOrCreateTag().putInt(STAGE_TAG, stage);
+        CompoundTag tag = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
+        tag.putInt(STAGE_TAG, stage);
+        CustomData.set(DataComponents.CUSTOM_DATA, stack, tag);
         return stack;
     }
 

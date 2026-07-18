@@ -1121,7 +1121,29 @@ public class ModBlocks {
                         () -> new HalfAdderBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.0f)
                                         .sound(SoundType.STONE).noOcclusion()));
 
+        public static final RegistryObject<Block> RUG_1_RED = registerRugBlock("rug_1_red");
+        public static final RegistryObject<Block> RUG_1_BLUE = registerRugBlock("rug_1_blue");
+        public static final RegistryObject<Block> RUG_1_GREEN = registerRugBlock("rug_1_green");
+        public static final RegistryObject<Block> RUG_1_PURPLE = registerRugBlock("rug_1_purple");
+        public static final RegistryObject<Block> RUG_2_RED = registerRugBlock("rug_2_red");
+        public static final RegistryObject<Block> RUG_2_BLUE = registerRugBlock("rug_2_blue");
+        public static final RegistryObject<Block> RUG_2_GREEN = registerRugBlock("rug_2_green");
+        public static final RegistryObject<Block> RUG_2_PURPLE = registerRugBlock("rug_2_purple");
+
         // HELPER METHODS
+
+        private static BlockBehaviour.Properties rugProps() {
+                return BlockBehaviour.Properties.of(Material.WOOL).strength(0.1F).sound(SoundType.WOOL).noOcclusion();
+        }
+
+        private static RegistryObject<Block> registerRugBlock(String name) {
+                RegistryObject<Block> block = BLOCKS.register(name,
+                                () -> new com.torr.materia.block.RugBlock(rugProps()));
+                ModItems.ITEMS.register(name, () -> new com.torr.materia.item.RugItem(block.get(),
+                                new Item.Properties()
+                                                .tab(net.minecraft.world.item.CreativeModeTab.TAB_DECORATIONS)));
+                return block;
+        }
 
         private static BlockBehaviour.Properties statueProps() {
                 return BlockBehaviour.Properties.of(Material.STONE).strength(1.5F).sound(SoundType.STONE).noOcclusion();

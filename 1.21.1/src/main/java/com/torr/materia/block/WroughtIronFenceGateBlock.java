@@ -30,11 +30,11 @@ public class WroughtIronFenceGateBlock extends Block {
     private static final VoxelShape CLOSED_EAST_WEST = Block.box(7, 0, 0, 9, 16, 16);
 
     private static final VoxelShape OPEN_NORTH_SOUTH = Shapes.or(
-            Block.box(0, 0, 0, 7, 16, 9),
-            Block.box(9, 0, 0, 16, 16, 9));
+            Block.box(0, 0, 0, 2, 16, 8),
+            Block.box(14, 0, 0, 16, 16, 8));
     private static final VoxelShape OPEN_EAST_WEST = Shapes.or(
-            Block.box(0, 0, 0, 9, 7, 16),
-            Block.box(0, 9, 0, 9, 16, 16));
+            Block.box(0, 0, 0, 8, 16, 2),
+            Block.box(0, 0, 14, 8, 16, 16));
 
     public WroughtIronFenceGateBlock(Properties properties) {
         super(properties);
@@ -79,8 +79,8 @@ public class WroughtIronFenceGateBlock extends Block {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player,
-                                 InteractionHand hand, BlockHitResult hit) {
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player,
+                                               BlockHitResult hit) {
         if (level.isClientSide) {
             return InteractionResult.SUCCESS;
         }

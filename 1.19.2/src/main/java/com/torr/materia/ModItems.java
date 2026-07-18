@@ -2058,6 +2058,15 @@ public class ModItems {
         public static final RegistryObject<Item> WHITE_STRING = ITEMS.register("white_string",
                         () -> new Item(new Item.Properties()
                                         .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)));
+        public static final RegistryObject<Item> RUG_BASE = ITEMS.register("rug_base",
+                        () -> new com.torr.materia.item.RugBaseItem(new Item.Properties()
+                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_DECORATIONS)));
+        public static final RegistryObject<Item> RUG_1_PATTERN = ITEMS.register("rug_1_pattern",
+                        () -> new com.torr.materia.item.RugPatternItem(new Item.Properties()
+                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_DECORATIONS).stacksTo(1)));
+        public static final RegistryObject<Item> RUG_2_PATTERN = ITEMS.register("rug_2_pattern",
+                        () -> new com.torr.materia.item.RugPatternItem(new Item.Properties()
+                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_DECORATIONS).stacksTo(1)));
         public static final RegistryObject<Item> GRAY_STRING = ITEMS.register("gray_string",
                         () -> new Item(new Item.Properties()
                                         .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)));

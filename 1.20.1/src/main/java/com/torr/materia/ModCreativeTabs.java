@@ -239,6 +239,7 @@ public class ModCreativeTabs {
                 || path.equals("fuchsia")
                 || path.equals("purple_coneflower")
                 || path.endsWith("_curtains")
+                || path.startsWith("rug_")
                 || path.endsWith("_urn")
                 || path.endsWith("_planter")
                 || path.endsWith("_balustrade")

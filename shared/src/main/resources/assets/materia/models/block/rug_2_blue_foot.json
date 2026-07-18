@@ -1,0 +1,82 @@
+{
+    "ambientocclusion": false,
+    "textures": {
+        "rug": "materia:block/rug_2_blue_head",
+        "particle": "materia:block/rug_2_blue_head"
+    },
+    "elements": [
+        {
+            "from": [
+                0,
+                0,
+                0
+            ],
+            "to": [
+                16,
+                1,
+                16
+            ],
+            "faces": {
+                "up": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#rug"
+                },
+                "down": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#rug",
+                    "cullface": "down"
+                },
+                "north": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        1
+                    ],
+                    "texture": "#rug",
+                    "cullface": "north"
+                },
+                "south": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        1
+                    ],
+                    "texture": "#rug",
+                    "cullface": "south"
+                },
+                "west": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        1
+                    ],
+                    "texture": "#rug",
+                    "cullface": "west"
+                },
+                "east": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        1
+                    ],
+                    "texture": "#rug",
+                    "cullface": "east"
+                }
+            }
+        }
+    ]
+}

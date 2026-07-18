@@ -14,6 +14,8 @@ import com.torr.materia.recipe.AdvancedKilnRecipe;
 import com.torr.materia.recipe.StoneAnvilRecipe;
 import com.torr.materia.recipe.BronzeAnvilRecipe;
 import com.torr.materia.recipe.IronAnvilRecipe;
+import com.torr.materia.recipe.RugBaseRecipe;
+import com.torr.materia.recipe.RugWeavingRecipe;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -75,6 +77,12 @@ public class ModRecipes {
             RECIPE_SERIALIZERS.register("iron_anvil", () -> new IronAnvilRecipe.Serializer());
     public static final RegistryObject<RecipeSerializer<WaterPotRecipe>> WATER_POT_SERIALIZER =
             RECIPE_SERIALIZERS.register("water_pot", () -> new WaterPotRecipe.Serializer());
+
+    public static final RegistryObject<RecipeSerializer<RugBaseRecipe>> RUG_BASE_SERIALIZER =
+            RECIPE_SERIALIZERS.register("rug_base", () -> new SimpleCraftingRecipeSerializer<>(RugBaseRecipe::new));
+
+    public static final RegistryObject<RecipeSerializer<RugWeavingRecipe>> RUG_WEAVING_SERIALIZER =
+            RECIPE_SERIALIZERS.register("rug_weaving", () -> new SimpleCraftingRecipeSerializer<>(RugWeavingRecipe::new));
 
     // Recipe types (registered early)
     public static final RegistryObject<RecipeType<FirePitRecipe>> FIRE_PIT_TYPE =

@@ -7,6 +7,7 @@ import com.torr.materia.block.CurtainsBlock;
 import com.torr.materia.block.FinialBlock;
 import com.torr.materia.block.ShutterBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.registries.RegistryObject;
@@ -16,31 +17,31 @@ import net.minecraftforge.registries.RegistryObject;
  */
 public final class ModDecorBlocks {
 
-    private static final BlockBehaviour.Properties SHUTTER_PROPS = BlockBehaviour.Properties.of()
+    private static final BlockBehaviour.Properties SHUTTER_PROPS = BlockBehaviour.Properties.of(Material.WOOD)
             .strength(2.0F)
             .sound(SoundType.WOOD)
             .noOcclusion();
 
-    private static final BlockBehaviour.Properties CURTAIN_PROPS = BlockBehaviour.Properties.of()
+    private static final BlockBehaviour.Properties CURTAIN_PROPS = BlockBehaviour.Properties.of(Material.WOOL)
             .strength(0.5F)
             .sound(SoundType.WOOL)
             .noOcclusion();
 
-    private static final BlockBehaviour.Properties STONE_DECOR_PROPS = BlockBehaviour.Properties.of()
+    private static final BlockBehaviour.Properties STONE_DECOR_PROPS = BlockBehaviour.Properties.of(Material.STONE)
             .strength(1.5F)
             .sound(SoundType.STONE);
 
-    private static final BlockBehaviour.Properties STONE_SCULPTURE_PROPS = BlockBehaviour.Properties.of()
+    private static final BlockBehaviour.Properties STONE_SCULPTURE_PROPS = BlockBehaviour.Properties.of(Material.STONE)
             .strength(1.5F)
             .sound(SoundType.STONE)
             .noOcclusion();
 
-    private static final BlockBehaviour.Properties BALUSTRADE_PROPS = BlockBehaviour.Properties.of()
+    private static final BlockBehaviour.Properties BALUSTRADE_PROPS = BlockBehaviour.Properties.of(Material.STONE)
             .strength(1.5F)
             .sound(SoundType.STONE)
             .noOcclusion();
 
-    private static final BlockBehaviour.Properties METAL_FINIAL_PROPS = BlockBehaviour.Properties.of()
+    private static final BlockBehaviour.Properties METAL_FINIAL_PROPS = BlockBehaviour.Properties.of(Material.METAL)
             .strength(2.0F)
             .sound(SoundType.METAL)
             .noOcclusion()

@@ -238,7 +238,8 @@ public class ModCreativeTabs {
                 || path.equals("marigold")
                 || path.equals("hibiscus")
                 || path.equals("fuchsia")
-                || path.equals("purple_coneflower");
+                || path.equals("purple_coneflower")
+                || path.startsWith("rug_");
     }
 
     private static boolean isRedstone(String path) {

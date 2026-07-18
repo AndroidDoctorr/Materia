@@ -1,0 +1,8 @@
+{
+    "replace": false,
+    "values": [
+        "minecraft:string",
+        "materia:white_string",
+        "materia:taupe_string"
+    ]
+}

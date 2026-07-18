@@ -184,8 +184,15 @@ public class RoofTilesBlock extends Block {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        return handleUse(state, level, pos, player.getItemInHand(hand));
+    protected net.minecraft.world.ItemInteractionResult useItemOn(ItemStack held, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        InteractionResult result = handleUse(state, level, pos, held);
+        if (result == InteractionResult.PASS) {
+            return net.minecraft.world.ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        }
+        if (result == InteractionResult.FAIL) {
+            return net.minecraft.world.ItemInteractionResult.FAIL;
+        }
+        return net.minecraft.world.ItemInteractionResult.sidedSuccess(level.isClientSide());
     }
 
     private InteractionResult handleUse(BlockState state, Level level, BlockPos pos, ItemStack held) {
