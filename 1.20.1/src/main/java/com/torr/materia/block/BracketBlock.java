@@ -20,9 +20,9 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class BracketBlock extends Block {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
-    private static final VoxelShape NORTH = Block.box(5, 0, 0, 11, 16, 8);
+    private static final VoxelShape NORTH = Block.box(5, 0, 0, 11, 16, 16);
     private static final VoxelShape SOUTH = Block.box(5, 0, 8, 11, 16, 16);
-    private static final VoxelShape WEST = Block.box(0, 0, 5, 8, 16, 11);
+    private static final VoxelShape WEST = Block.box(0, 0, 5, 16, 16, 11);
     private static final VoxelShape EAST = Block.box(8, 0, 5, 16, 16, 11);
 
     public BracketBlock(Properties properties) {

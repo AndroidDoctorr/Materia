@@ -1,16 +1,16 @@
 {
     "ambientocclusion": false,
     "textures": {
-        "all": "minecraft:block/terracotta",
-        "side": "materia:block/terracotta_bracket",
-        "particle": "minecraft:block/terracotta"
+        "all": "materia:block/wrought_iron",
+        "side": "materia:block/wrought_iron_bracket",
+        "particle": "materia:block/wrought_iron"
     },
     "elements": [
         {
             "name": "top",
             "from": [
                 5,
-                14,
+                15,
                 0
             ],
             "to": [
@@ -42,7 +42,7 @@
                         0,
                         0,
                         16,
-                        2
+                        1
                     ],
                     "texture": "#all"
                 },
@@ -51,7 +51,7 @@
                         0,
                         0,
                         16,
-                        2
+                        1
                     ],
                     "texture": "#all"
                 },
@@ -60,7 +60,7 @@
                         0,
                         0,
                         6,
-                        2
+                        1
                     ],
                     "texture": "#all"
                 },
@@ -69,7 +69,7 @@
                         0,
                         0,
                         6,
-                        2
+                        1
                     ],
                     "texture": "#all"
                 }
@@ -84,8 +84,8 @@
             ],
             "to": [
                 11,
-                14,
-                2
+                15,
+                1
             ],
             "faces": {
                 "down": {
@@ -93,7 +93,7 @@
                         0,
                         0,
                         6,
-                        2
+                        1
                     ],
                     "texture": "#all"
                 },
@@ -101,8 +101,8 @@
                     "uv": [
                         0,
                         0,
-                        2,
-                        14
+                        1,
+                        15
                     ],
                     "texture": "#all"
                 },
@@ -110,8 +110,8 @@
                     "uv": [
                         0,
                         0,
-                        2,
-                        14
+                        1,
+                        15
                     ],
                     "texture": "#all"
                 },
@@ -120,7 +120,7 @@
                         0,
                         0,
                         6,
-                        16
+                        15
                     ],
                     "texture": "#all"
                 },
@@ -129,7 +129,7 @@
                         0,
                         0,
                         6,
-                        16
+                        15
                     ],
                     "texture": "#all"
                 }
@@ -138,102 +138,33 @@
         {
             "name": "middle",
             "from": [
-                6,
-                6,
-                2
+                8,
+                1,
+                1
             ],
             "to": [
-                10,
-                14,
-                10
+                8,
+                16,
+                16
             ],
             "faces": {
-                "down": {
-                    "uv": [
-                        0,
-                        0,
-                        4,
-                        8
-                    ],
-                    "texture": "#all"
-                },
                 "east": {
                     "uv": [
-                        0,
-                        0,
-                        8,
-                        8
+                        1,
+                        1,
+                        16,
+                        16
                     ],
                     "texture": "#side"
                 },
                 "west": {
                     "uv": [
-                        0,
-                        0,
-                        8,
-                        8
+                        1,
+                        1,
+                        16,
+                        16
                     ],
                     "texture": "#side"
-                },
-                "south": {
-                    "uv": [
-                        0,
-                        0,
-                        4,
-                        8
-                    ],
-                    "texture": "#all"
-                }
-            }
-        },
-        {
-            "name": "middle_2",
-            "from": [
-                6,
-                2,
-                2
-            ],
-            "to": [
-                10,
-                6,
-                6
-            ],
-            "faces": {
-                "down": {
-                    "uv": [
-                        0,
-                        0,
-                        4,
-                        4
-                    ],
-                    "texture": "#all"
-                },
-                "east": {
-                    "uv": [
-                        0,
-                        8,
-                        4,
-                        12
-                    ],
-                    "texture": "#side"
-                },
-                "west": {
-                    "uv": [
-                        0,
-                        8,
-                        4,
-                        12
-                    ],
-                    "texture": "#side"
-                },
-                "south": {
-                    "uv": [
-                        0,
-                        0,
-                        4,
-                        4
-                    ],
-                    "texture": "#all"
                 }
             }
         }
