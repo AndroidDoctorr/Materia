@@ -1,0 +1,15 @@
+{
+    "type": "materia:bronze_anvil",
+    "input": {
+        "item": "materia:iron_wire",
+        "count": 4
+    },
+    "tool_tags": [
+        "materia:bronze_hammers",
+        "materia:iron_tongs"
+    ],
+    "result": {
+        "item": "materia:wrought_iron_grate",
+        "count": 1
+    }
+}

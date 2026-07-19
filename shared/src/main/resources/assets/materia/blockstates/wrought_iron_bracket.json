@@ -1,0 +1,24 @@
+{
+    "variants": {
+        "facing=north": {
+            "model": "materia:block/wrought_iron_bracket",
+            "y": 180,
+            "uvlock": true
+        },
+        "facing=south": {
+            "model": "materia:block/wrought_iron_bracket",
+            "y": 0,
+            "uvlock": true
+        },
+        "facing=east": {
+            "model": "materia:block/wrought_iron_bracket",
+            "y": 270,
+            "uvlock": true
+        },
+        "facing=west": {
+            "model": "materia:block/wrought_iron_bracket",
+            "y": 90,
+            "uvlock": true
+        }
+    }
+}

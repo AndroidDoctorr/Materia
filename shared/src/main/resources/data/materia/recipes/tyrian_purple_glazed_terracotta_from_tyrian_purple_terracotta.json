@@ -1,0 +1,12 @@
+{
+    "type": "materia:kiln",
+    "ingredient": {
+        "item": "materia:tyrian_purple_terracotta"
+    },
+    "result": {
+        "item": "materia:tyrian_purple_glazed_terracotta",
+        "count": 1
+    },
+    "cookingtime": 200,
+    "experience": 0.1
+}

@@ -1,0 +1,12 @@
+{
+    "type": "materia:kiln",
+    "ingredient": {
+        "item": "materia:burgundy_terracotta"
+    },
+    "result": {
+        "item": "materia:burgundy_glazed_terracotta",
+        "count": 1
+    },
+    "cookingtime": 200,
+    "experience": 0.1
+}

@@ -1,9 +1,9 @@
 {
     "ambientocclusion": false,
     "textures": {
-        "all": "materia:block/wrought_iron",
+        "all": "materia:block/wrought_iron_block",
         "side": "materia:block/wrought_iron_bracket",
-        "particle": "materia:block/wrought_iron"
+        "particle": "materia:block/wrought_iron_block"
     },
     "elements": [
         {
@@ -139,20 +139,20 @@
             "name": "middle",
             "from": [
                 8,
-                1,
+                0,
                 1
             ],
             "to": [
                 8,
-                16,
+                15,
                 16
             ],
             "faces": {
                 "east": {
                     "uv": [
-                        1,
-                        1,
                         16,
+                        1,
+                        1,
                         16
                     ],
                     "texture": "#side"

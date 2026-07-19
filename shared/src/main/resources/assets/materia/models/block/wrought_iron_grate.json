@@ -1,0 +1,83 @@
+{
+    "ambientocclusion": false,
+    "textures": {
+        "grate": "materia:block/wrought_iron_grate",
+        "particle": "materia:block/wrought_iron_grate"
+    },
+    "elements": [
+        {
+            "from": [
+                0,
+                0,
+                8
+            ],
+            "to": [
+                16,
+                16,
+                9
+            ],
+            "faces": {
+                "north": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#grate",
+                    "cullface": false
+                },
+                "south": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#grate",
+                    "cullface": false
+                },
+                "east": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#grate",
+                    "cullface": false
+                },
+                "west": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#grate",
+                    "cullface": false
+                },
+                "up": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#grate",
+                    "cullface": false
+                },
+                "down": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#grate",
+                    "cullface": false
+                }
+            }
+        }
+    ]
+}

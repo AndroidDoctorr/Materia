@@ -6,7 +6,7 @@
             "entries": [
                 {
                     "type": "minecraft:item",
-                    "name": "materia:milk_pot"
+                    "name": "materia:pot"
                 }
             ],
             "conditions": [

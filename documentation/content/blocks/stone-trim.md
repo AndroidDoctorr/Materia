@@ -11,13 +11,15 @@ Classical trim and column pieces for stone, limestone, marble, sandstone, blacks
 - **Inventory icon**: rendered from the block model at an angle (not a flat item sprite)
 - **Recipes**: `{material}_column_from_{material}_stonecutting.json` and `{material}_column_capital_from_{material}_stonecutting.json` under `shared/src/main/resources/data/materia/recipes/`
 
-## Cornices and brackets
+## Cornices, brackets, and acorn finials
 
 - **Cornices**: `materia:{material}_cornice` — wall-mounted trim with straight, inner-corner, and outer-corner shapes (same connection rules as vanilla stairs)
 - **Brackets**: `materia:{material}_bracket` — wall-mounted console; requires solid backing
-- **Materials**: same six as columns
+- **Acorn finials**: `materia:{material}_acorn_finial` — single-block cross finial for **stone, limestone, marble, sandstone, and terracotta** (not blackstone)
+- **Materials**: same six as columns for cornices/brackets; five for acorn finials
 - **Inventory icon**: dedicated item textures in `assets/materia/textures/item/`
-- **Asset generator**: `tools/generate_marble_trim_assets.py` (regenerates blockstates, models, loot, and stonecutter recipes for all materials)
+- **Recipes**: stonecutter from the matching base block (`{material}_acorn_finial_from_{material}_stonecutting.json`)
+- **Asset generators**: `tools/generate_marble_trim_assets.py` (cornices/brackets/columns), `tools/generate_stone_finial_assets.py` (stone acorn finials)
 
 ## Related
 

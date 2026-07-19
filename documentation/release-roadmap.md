@@ -56,8 +56,12 @@ Minor content release: finish wood sets, expand dye-colored building blocks, dec
 - [x] **Stone balustrade** and stonecutter tile/brick variants (stone, marble, limestone, sandstone, blackstone).
 - [x] **Stone columns & capitals** — six materials (stone, limestone, marble, sandstone, blackstone, terracotta); stonecutter; 3D block item models.
 - [x] **Cornices & brackets** — same six materials; wall-mounted trim with corner connection (cornices) or solid backing (brackets); dedicated item textures.
-- [x] **Metal finials** — bronze, gold, wrought iron spires, ball finials, and acorn finials; iron-anvil recipes (plate + rod; hammer/tongs/chisel).
-- [x] **Wrought iron fence, gate & door** — iron-anvil recipes (rods + bands / plates + rivets; hammer + tongs).
+- [x] **Stone acorn finials** — stone, limestone, marble, sandstone, terracotta; stonecutter from base block.
+- [x] **Metal finials** — bronze, gold, wrought iron spires, ball finials, and acorn finials; iron-anvil recipes (plate + rod; hammer/tongs/chisel); gold item icons.
+- [x] **Wrought iron fence, gate, door, bracket & grate** — iron-anvil recipes (rods + bands / plates + rivets / band + wire / 4× wire); grate also on bronze anvil.
+- [x] **Floor rugs** — Medallion, Ornate, Rosette, Lattice (loom + patterns); rare loot rugs Dragon–Rainbow.
+- [x] **Awnings** — 26 colors; roof-frame geometry; carpet + rope recipe.
+- [x] **Wrought iron fence gate (fix)** — open collision matches south/east facings.
 - [x] **Marble & limestone slabs/stairs** — stonecutter from base stone.
 - [ ] **Marble**-themed blocks/items beyond current stonecutter set (exact scope TBD).
 - [ ] **Flower boxes** — additional variants beyond stone planter (TBD).

@@ -35,7 +35,7 @@ Recipe files: `shared/src/main/resources/data/materia/recipes/iron_anvil/{metal}
 - **Tall finials** use `FinialBlock` (`DoublePlantBlock`) — place on any block with a solid top face; upper half appears automatically.
 - **Acorn finials** are a single cross-textured block.
 - All finials use **cutout** rendering (transparent texture edges).
-- Inventory icons use dedicated item textures where available; others use the lower block model with **45° GUI rotation** (gold finials included).
+- Inventory icons use dedicated item textures where available (`gold_spire`, `gold_ball_finial`, `gold_acorn`); others use the lower block model with **45° GUI rotation**.
 
 ## Asset generator
 

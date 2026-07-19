@@ -638,6 +638,27 @@ public class ModBlocks {
         public static final RegistryObject<Block> LAVENDER_CARPET = registerBlock("lavender_carpet",
                         () -> new CarpetBlock(BlockBehaviour.Properties.copy(Blocks.PURPLE_CARPET)));
 
+        // GLAZED TERRACOTTA
+        public static final RegistryObject<Block> OCHRE_GLAZED_TERRACOTTA = registerBlock("ochre_glazed_terracotta",
+                        () -> new net.minecraft.world.level.block.GlazedTerracottaBlock(BlockBehaviour.Properties.copy(Blocks.ORANGE_GLAZED_TERRACOTTA)));
+        public static final RegistryObject<Block> RED_OCHRE_GLAZED_TERRACOTTA = registerBlock("red_ochre_glazed_terracotta",
+                        () -> new net.minecraft.world.level.block.GlazedTerracottaBlock(BlockBehaviour.Properties.copy(Blocks.RED_GLAZED_TERRACOTTA)));
+        public static final RegistryObject<Block> OLIVE_GLAZED_TERRACOTTA = registerBlock("olive_glazed_terracotta",
+                        () -> new net.minecraft.world.level.block.GlazedTerracottaBlock(BlockBehaviour.Properties.copy(Blocks.GREEN_GLAZED_TERRACOTTA)));
+        public static final RegistryObject<Block> BURGUNDY_GLAZED_TERRACOTTA = registerBlock("burgundy_glazed_terracotta",
+                        () -> new net.minecraft.world.level.block.GlazedTerracottaBlock(BlockBehaviour.Properties.copy(Blocks.RED_GLAZED_TERRACOTTA)));
+        public static final RegistryObject<Block> TAN_GLAZED_TERRACOTTA = registerBlock("tan_glazed_terracotta",
+                        () -> new net.minecraft.world.level.block.GlazedTerracottaBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_GLAZED_TERRACOTTA)));
+        public static final RegistryObject<Block> TEAL_GLAZED_TERRACOTTA = registerBlock("teal_glazed_terracotta",
+                        () -> new net.minecraft.world.level.block.GlazedTerracottaBlock(BlockBehaviour.Properties.copy(Blocks.CYAN_GLAZED_TERRACOTTA)));
+        public static final RegistryObject<Block> INDIGO_GLAZED_TERRACOTTA = registerBlock("indigo_glazed_terracotta",
+                        () -> new net.minecraft.world.level.block.GlazedTerracottaBlock(BlockBehaviour.Properties.copy(Blocks.BLUE_GLAZED_TERRACOTTA)));
+        public static final RegistryObject<Block> TYRIAN_PURPLE_GLAZED_TERRACOTTA = registerBlock("tyrian_purple_glazed_terracotta",
+                        () -> new net.minecraft.world.level.block.GlazedTerracottaBlock(BlockBehaviour.Properties.copy(Blocks.PURPLE_GLAZED_TERRACOTTA)));
+        public static final RegistryObject<Block> CHARCOAL_GRAY_GLAZED_TERRACOTTA = registerBlock("charcoal_gray_glazed_terracotta",
+                        () -> new net.minecraft.world.level.block.GlazedTerracottaBlock(BlockBehaviour.Properties.copy(Blocks.BLACK_GLAZED_TERRACOTTA)));
+        public static final RegistryObject<Block> TAUPE_GLAZED_TERRACOTTA = registerBlock("taupe_glazed_terracotta",
+                        () -> new net.minecraft.world.level.block.GlazedTerracottaBlock(BlockBehaviour.Properties.copy(Blocks.GRAY_GLAZED_TERRACOTTA)));
         // BUILDING BLOCKS
         public static final RegistryObject<Block> WATTLE_AND_DAUB = registerBlock("wattle_and_daub",
                         () -> new Block(BlockBehaviour.Properties.of().strength(0.5f)
@@ -731,6 +752,9 @@ public class ModBlocks {
                                 BlockBehaviour.Properties.copy(ModBlocks.WROUGHT_IRON_BLOCK.get()).noOcclusion()));
         public static final RegistryObject<Block> WROUGHT_IRON_FENCE_GATE = registerBlock("wrought_iron_fence_gate",
                         () -> new com.torr.materia.block.WroughtIronFenceGateBlock(
+                                BlockBehaviour.Properties.copy(ModBlocks.WROUGHT_IRON_BLOCK.get()).noOcclusion()));
+        public static final RegistryObject<Block> WROUGHT_IRON_GRATE = registerBlock("wrought_iron_grate",
+                        () -> new com.torr.materia.block.WroughtIronGrateBlock(
                                 BlockBehaviour.Properties.copy(ModBlocks.WROUGHT_IRON_BLOCK.get()).noOcclusion()));
         public static final RegistryObject<Block> WROUGHT_IRON_DOOR = registerBlock("wrought_iron_door",
                         () -> new net.minecraft.world.level.block.DoorBlock(

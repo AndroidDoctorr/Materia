@@ -28,6 +28,9 @@ METAL_INPUTS = {
 # block_id -> item texture stem when it differs
 ITEM_ICON = {
     "bronze_ball_finial": "bronze_balls",
+    "gold_ball_finial": "gold_ball_finial",
+    "gold_spire": "gold_spire",
+    "gold_acorn_finial": "gold_acorn",
     "wrought_iron_spire": "wrought_iron_spire",
     "wrought_iron_ball_finial": "wrought_iron_balls",
     "bronze_acorn_finial": "bronze_acorn",

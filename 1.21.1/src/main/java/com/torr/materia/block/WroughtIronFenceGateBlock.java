@@ -29,12 +29,18 @@ public class WroughtIronFenceGateBlock extends Block {
     private static final VoxelShape CLOSED_NORTH_SOUTH = Block.box(0, 0, 7, 16, 16, 9);
     private static final VoxelShape CLOSED_EAST_WEST = Block.box(7, 0, 0, 9, 16, 16);
 
-    private static final VoxelShape OPEN_NORTH_SOUTH = Shapes.or(
+    private static final VoxelShape OPEN_NORTH = Shapes.or(
             Block.box(0, 0, 0, 2, 16, 8),
             Block.box(14, 0, 0, 16, 16, 8));
-    private static final VoxelShape OPEN_EAST_WEST = Shapes.or(
+    private static final VoxelShape OPEN_SOUTH = Shapes.or(
+            Block.box(0, 0, 8, 2, 16, 16),
+            Block.box(14, 0, 8, 16, 16, 16));
+    private static final VoxelShape OPEN_WEST = Shapes.or(
             Block.box(0, 0, 0, 8, 16, 2),
             Block.box(0, 0, 14, 8, 16, 16));
+    private static final VoxelShape OPEN_EAST = Shapes.or(
+            Block.box(8, 0, 0, 16, 16, 2),
+            Block.box(8, 0, 14, 16, 16, 16));
 
     public WroughtIronFenceGateBlock(Properties properties) {
         super(properties);
@@ -66,9 +72,13 @@ public class WroughtIronFenceGateBlock extends Block {
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         Direction facing = state.getValue(FACING);
-        boolean open = state.getValue(OPEN);
-        if (open) {
-            return facing.getAxis() == Direction.Axis.X ? OPEN_EAST_WEST : OPEN_NORTH_SOUTH;
+        if (state.getValue(OPEN)) {
+            return switch (facing) {
+                case SOUTH -> OPEN_SOUTH;
+                case EAST -> OPEN_EAST;
+                case WEST -> OPEN_WEST;
+                default -> OPEN_NORTH;
+            };
         }
         return facing.getAxis() == Direction.Axis.X ? CLOSED_EAST_WEST : CLOSED_NORTH_SOUTH;
     }

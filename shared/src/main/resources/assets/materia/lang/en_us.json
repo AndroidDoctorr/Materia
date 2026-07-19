@@ -1301,5 +1301,22 @@
     "block.materia.rug_7": "Navajo Rug",
     "block.materia.rug_8": "Welcome Rug",
     "block.materia.rug_9": "Agrabah Rug",
-    "block.materia.rug_10": "Rainbow Rug"
+    "block.materia.rug_10": "Rainbow Rug",
+    "block.materia.stone_acorn_finial": "Stone Acorn Finial",
+    "block.materia.limestone_acorn_finial": "Limestone Acorn Finial",
+    "block.materia.marble_acorn_finial": "Marble Acorn Finial",
+    "block.materia.sandstone_acorn_finial": "Sandstone Acorn Finial",
+    "block.materia.terracotta_acorn_finial": "Terracotta Acorn Finial",
+    "block.materia.wrought_iron_bracket": "Wrought Iron Bracket",
+    "block.materia.wrought_iron_grate": "Wrought Iron Grate",
+    "block.materia.ochre_glazed_terracotta": "Ochre Glazed Terracotta",
+    "block.materia.red_ochre_glazed_terracotta": "Red Ochre Glazed Terracotta",
+    "block.materia.olive_glazed_terracotta": "Olive Glazed Terracotta",
+    "block.materia.burgundy_glazed_terracotta": "Burgundy Glazed Terracotta",
+    "block.materia.tan_glazed_terracotta": "Tan Glazed Terracotta",
+    "block.materia.teal_glazed_terracotta": "Teal Glazed Terracotta",
+    "block.materia.indigo_glazed_terracotta": "Indigo Glazed Terracotta",
+    "block.materia.tyrian_purple_glazed_terracotta": "Tyrian Purple Glazed Terracotta",
+    "block.materia.charcoal_gray_glazed_terracotta": "Charcoal Gray Glazed Terracotta",
+    "block.materia.taupe_glazed_terracotta": "Taupe Glazed Terracotta"
 }

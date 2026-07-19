@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:smelting",
+    "ingredient": {
+        "item": "materia:red_ochre_terracotta"
+    },
+    "result": "materia:red_ochre_glazed_terracotta",
+    "experience": 0.1,
+    "cookingtime": 200
+}

@@ -1,27 +1,34 @@
-## Wrought iron fence, gate, and door
+## Wrought iron fence, gate, door, bracket, and grate
 
-Decorative wrought iron building blocks forged on the **iron anvil** — fence rails, a fence gate, and a tall door with the same placement behavior as Materia wood doors.
+Decorative wrought iron building blocks forged on the **iron anvil** (or **bronze anvil** for the grate) — fence rails, a fence gate, a tall door, a wall bracket, and a thin floor/wall grate.
 
 ## Obtaining
 
-All three are shaped on the iron anvil with a **hammer** and **tongs** (hot inputs required):
+| Block | Inputs | Anvil |
+| --- | --- | --- |
+| Wrought iron fence (`materia:wrought_iron_fence`) | 4× `materia:iron_rod` + 2× `materia:iron_band` | Iron |
+| Wrought iron fence gate (`materia:wrought_iron_fence_gate`) | 3× `materia:iron_rod` + 3× `materia:iron_band` | Iron |
+| Wrought iron door (`materia:wrought_iron_door`) | 8× `materia:iron_plate` + 4× `materia:iron_rivets` | Iron |
+| Wrought iron bracket (`materia:wrought_iron_bracket`) | 1× `materia:iron_band` + 1× `materia:iron_wire` | Iron |
+| Wrought iron grate (`materia:wrought_iron_grate`) | 4× `materia:iron_wire` | Iron or bronze |
 
-| Block | Inputs |
-| --- | --- |
-| Wrought iron fence (`materia:wrought_iron_fence`) | 4× `materia:iron_rod` + 2× `materia:iron_band` |
-| Wrought iron fence gate (`materia:wrought_iron_fence_gate`) | 3× `materia:iron_rod` + 3× `materia:iron_band` |
-| Wrought iron door (`materia:wrought_iron_door`) | 8× `materia:iron_plate` + 4× `materia:iron_rivets` |
+All recipes require **hammer** and **tongs** in tool slots (`#materia:iron_hammers`, `#materia:iron_tongs`; bronze hammer also works on the bronze anvil grate recipe).
 
 Recipe JSON:
 
 - [Fence](../../../shared/src/main/resources/data/materia/recipes/iron_anvil/wrought_iron_fence_from_rod_band.json)
 - [Fence gate](../../../shared/src/main/resources/data/materia/recipes/iron_anvil/wrought_iron_fence_gate_from_rod_band.json)
 - [Door](../../../shared/src/main/resources/data/materia/recipes/iron_anvil/wrought_iron_door_from_plate_rivets.json)
+- [Bracket](../../../shared/src/main/resources/data/materia/recipes/iron_anvil/wrought_iron_bracket_from_band_wire.json)
+- [Grate (iron anvil)](../../../shared/src/main/resources/data/materia/recipes/iron_anvil/wrought_iron_grate_from_wire.json)
+- [Grate (bronze anvil)](../../../shared/src/main/resources/data/materia/recipes/bronze_anvil/wrought_iron_grate_from_wire.json)
 
 See also: [Iron anvil](iron-anvil.md)
 
 ## Behavior
 
 - **Fence:** thin centered iron panel (2-pixel thick slab in the block space); each segment is independent — no vanilla fence connection logic.
-- **Gate:** same closed panel as the fence; right-click (or redstone on placement) splits the panel open like shutters, hinged from the center.
+- **Gate:** same closed panel as the fence; right-click (or redstone on placement) splits the panel open like shutters, hinged from the center. Open collision matches the rendered swing direction for all facings.
 - **Door:** two-block tall door; opens on right-click like wood doors.
+- **Bracket:** wall-mounted wrought iron console (same placement rules as stone brackets).
+- **Grate:** always a vertical panel (1 px render, 2 px collision); click any face of a block to mount on that side; N/S vs E/W orientation follows your look direction when placing. Cutout render layer; angled block item icon.

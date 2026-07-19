@@ -54,6 +54,11 @@ public final class ModDecorBlocks {
             .noOcclusion()
             .noCollission();
 
+    private static final BlockBehaviour.Properties WROUGHT_IRON_DECOR_PROPS = BlockBehaviour.Properties.of()
+            .strength(5.0F)
+            .sound(SoundType.METAL)
+            .noOcclusion();
+
     public static final RegistryObject<Block> OAK_SHUTTERS = shutter("oak_shutters");
     public static final RegistryObject<Block> SPRUCE_SHUTTERS = shutter("spruce_shutters");
     public static final RegistryObject<Block> BIRCH_SHUTTERS = shutter("birch_shutters");
@@ -176,6 +181,7 @@ public final class ModDecorBlocks {
     public static final RegistryObject<Block> BLACKSTONE_BRACKET = bracket("blackstone_bracket");
     public static final RegistryObject<Block> TERRACOTTA_CORNICE = cornice("terracotta_cornice");
     public static final RegistryObject<Block> TERRACOTTA_BRACKET = bracket("terracotta_bracket");
+    public static final RegistryObject<Block> WROUGHT_IRON_BRACKET = wroughtIronBracket("wrought_iron_bracket");
 
     public static final RegistryObject<Block> STONE_BALUSTRADE = ModBlocks.registerDecorBlock("stone_balustrade",
             () -> new BalustradeBlock(BALUSTRADE_PROPS));
@@ -190,6 +196,12 @@ public final class ModDecorBlocks {
     public static final RegistryObject<Block> GOLD_ACORN_FINIAL = finialCross("gold_acorn_finial");
     public static final RegistryObject<Block> WROUGHT_IRON_ACORN_FINIAL = finialCross("wrought_iron_acorn_finial");
 
+    public static final RegistryObject<Block> STONE_ACORN_FINIAL = stoneAcornFinial("stone_acorn_finial");
+    public static final RegistryObject<Block> LIMESTONE_ACORN_FINIAL = stoneAcornFinial("limestone_acorn_finial");
+    public static final RegistryObject<Block> MARBLE_ACORN_FINIAL = stoneAcornFinial("marble_acorn_finial");
+    public static final RegistryObject<Block> SANDSTONE_ACORN_FINIAL = stoneAcornFinial("sandstone_acorn_finial");
+    public static final RegistryObject<Block> TERRACOTTA_ACORN_FINIAL = stoneAcornFinial("terracotta_acorn_finial");
+
     private ModDecorBlocks() {
     }
 
@@ -199,6 +211,10 @@ public final class ModDecorBlocks {
 
     private static RegistryObject<Block> bracket(String name) {
         return ModBlocks.registerDecorBlock(name, () -> new BracketBlock(STONE_SCULPTURE_PROPS));
+    }
+
+    private static RegistryObject<Block> wroughtIronBracket(String name) {
+        return ModBlocks.registerDecorBlock(name, () -> new BracketBlock(WROUGHT_IRON_DECOR_PROPS));
     }
 
     private static RegistryObject<Block> sculptureUrn(String name) {
@@ -219,6 +235,10 @@ public final class ModDecorBlocks {
 
     private static RegistryObject<Block> finialCross(String name) {
         return ModBlocks.registerDecorBlock(name, () -> new Block(METAL_FINIAL_PROPS));
+    }
+
+    private static RegistryObject<Block> stoneAcornFinial(String name) {
+        return ModBlocks.registerDecorBlock(name, () -> new Block(STONE_SCULPTURE_PROPS));
     }
 
     private static RegistryObject<Block> shutter(String name) {
@@ -325,14 +345,17 @@ public final class ModDecorBlocks {
 
     @SuppressWarnings("unchecked")
     private static final RegistryObject<Block>[] ALL_BRACKETS = new RegistryObject[] {
-            MARBLE_BRACKET, LIMESTONE_BRACKET, STONE_BRACKET, SANDSTONE_BRACKET, BLACKSTONE_BRACKET, TERRACOTTA_BRACKET
+            MARBLE_BRACKET, LIMESTONE_BRACKET, STONE_BRACKET, SANDSTONE_BRACKET, BLACKSTONE_BRACKET,
+            TERRACOTTA_BRACKET, WROUGHT_IRON_BRACKET
     };
 
     @SuppressWarnings("unchecked")
     private static final RegistryObject<Block>[] ALL_FINIALS = new RegistryObject[] {
             BRONZE_SPIRE, GOLD_SPIRE, WROUGHT_IRON_SPIRE,
             BRONZE_BALL_FINIAL, GOLD_BALL_FINIAL, WROUGHT_IRON_BALL_FINIAL,
-            BRONZE_ACORN_FINIAL, GOLD_ACORN_FINIAL, WROUGHT_IRON_ACORN_FINIAL
+            BRONZE_ACORN_FINIAL, GOLD_ACORN_FINIAL, WROUGHT_IRON_ACORN_FINIAL,
+            STONE_ACORN_FINIAL, LIMESTONE_ACORN_FINIAL, MARBLE_ACORN_FINIAL, SANDSTONE_ACORN_FINIAL,
+            TERRACOTTA_ACORN_FINIAL
     };
 
     public static Block[] planterBlocks() {

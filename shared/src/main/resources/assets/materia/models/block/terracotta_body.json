@@ -91,45 +91,45 @@
                 "north": {
                     "uv": [
                         4,
-                        2,
+                        0,
                         12,
-                        16
+                        14
                     ],
                     "texture": "#body"
                 },
                 "south": {
                     "uv": [
                         4,
-                        2,
+                        0,
                         12,
-                        16
+                        14
                     ],
                     "texture": "#body"
                 },
                 "east": {
                     "uv": [
+                        4,
                         0,
-                        0,
-                        6,
-                        4
+                        10,
+                        14
                     ],
-                    "texture": "#all"
+                    "texture": "#body"
                 },
                 "west": {
                     "uv": [
+                        4,
                         0,
-                        0,
-                        6,
-                        4
+                        10,
+                        14
                     ],
-                    "texture": "#all"
+                    "texture": "#body"
                 },
                 "up": {
                     "uv": [
                         0,
                         0,
-                        4,
-                        4
+                        6,
+                        6
                     ],
                     "texture": "#all"
                 },
@@ -137,8 +137,8 @@
                     "uv": [
                         0,
                         0,
-                        4,
-                        4
+                        6,
+                        6
                     ],
                     "texture": "#all"
                 }
@@ -160,20 +160,20 @@
                 "north": {
                     "uv": [
                         2,
-                        9,
+                        12,
                         14,
-                        13
+                        16
                     ],
-                    "texture": "#all"
+                    "texture": "#body"
                 },
                 "south": {
                     "uv": [
                         2,
-                        9,
+                        12,
                         14,
-                        13
+                        16
                     ],
-                    "texture": "#all"
+                    "texture": "#body"
                 },
                 "east": {
                     "uv": [
@@ -195,21 +195,21 @@
                 },
                 "up": {
                     "uv": [
-                        0,
-                        0,
-                        12,
-                        7
+                        2,
+                        16,
+                        14,
+                        9
                     ],
-                    "texture": "#all"
+                    "texture": "#body"
                 },
                 "down": {
                     "uv": [
-                        0,
-                        0,
+                        2,
                         12,
-                        7
+                        14,
+                        16
                     ],
-                    "texture": "#all"
+                    "texture": "#body"
                 }
             }
         }

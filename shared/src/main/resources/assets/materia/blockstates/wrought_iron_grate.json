@@ -1,0 +1,124 @@
+{
+    "variants": {
+        "attach=up,facing=north": {
+            "model": "materia:block/wrought_iron_grate",
+            "y": 0,
+            "uvlock": true
+        },
+        "attach=up,facing=south": {
+            "model": "materia:block/wrought_iron_grate",
+            "y": 180,
+            "uvlock": true
+        },
+        "attach=up,facing=east": {
+            "model": "materia:block/wrought_iron_grate",
+            "y": 90,
+            "uvlock": true
+        },
+        "attach=up,facing=west": {
+            "model": "materia:block/wrought_iron_grate",
+            "y": 270,
+            "uvlock": true
+        },
+        "attach=down,facing=north": {
+            "model": "materia:block/wrought_iron_grate",
+            "y": 0,
+            "uvlock": true
+        },
+        "attach=down,facing=south": {
+            "model": "materia:block/wrought_iron_grate",
+            "y": 180,
+            "uvlock": true
+        },
+        "attach=down,facing=east": {
+            "model": "materia:block/wrought_iron_grate",
+            "y": 90,
+            "uvlock": true
+        },
+        "attach=down,facing=west": {
+            "model": "materia:block/wrought_iron_grate",
+            "y": 270,
+            "uvlock": true
+        },
+        "attach=north,facing=north": {
+            "model": "materia:block/wrought_iron_grate",
+            "y": 0,
+            "uvlock": true
+        },
+        "attach=north,facing=south": {
+            "model": "materia:block/wrought_iron_grate",
+            "y": 180,
+            "uvlock": true
+        },
+        "attach=north,facing=east": {
+            "model": "materia:block/wrought_iron_grate",
+            "y": 90,
+            "uvlock": true
+        },
+        "attach=north,facing=west": {
+            "model": "materia:block/wrought_iron_grate",
+            "y": 270,
+            "uvlock": true
+        },
+        "attach=south,facing=north": {
+            "model": "materia:block/wrought_iron_grate",
+            "y": 0,
+            "uvlock": true
+        },
+        "attach=south,facing=south": {
+            "model": "materia:block/wrought_iron_grate",
+            "y": 180,
+            "uvlock": true
+        },
+        "attach=south,facing=east": {
+            "model": "materia:block/wrought_iron_grate",
+            "y": 90,
+            "uvlock": true
+        },
+        "attach=south,facing=west": {
+            "model": "materia:block/wrought_iron_grate",
+            "y": 270,
+            "uvlock": true
+        },
+        "attach=east,facing=north": {
+            "model": "materia:block/wrought_iron_grate",
+            "y": 0,
+            "uvlock": true
+        },
+        "attach=east,facing=south": {
+            "model": "materia:block/wrought_iron_grate",
+            "y": 180,
+            "uvlock": true
+        },
+        "attach=east,facing=east": {
+            "model": "materia:block/wrought_iron_grate",
+            "y": 90,
+            "uvlock": true
+        },
+        "attach=east,facing=west": {
+            "model": "materia:block/wrought_iron_grate",
+            "y": 270,
+            "uvlock": true
+        },
+        "attach=west,facing=north": {
+            "model": "materia:block/wrought_iron_grate",
+            "y": 0,
+            "uvlock": true
+        },
+        "attach=west,facing=south": {
+            "model": "materia:block/wrought_iron_grate",
+            "y": 180,
+            "uvlock": true
+        },
+        "attach=west,facing=east": {
+            "model": "materia:block/wrought_iron_grate",
+            "y": 90,
+            "uvlock": true
+        },
+        "attach=west,facing=west": {
+            "model": "materia:block/wrought_iron_grate",
+            "y": 270,
+            "uvlock": true
+        }
+    }
+}
