@@ -3,7 +3,9 @@
     "textures": {
         "arm": "materia:block/awning_arm",
         "awning": "materia:block/red_ochre_awning",
-        "particle": "materia:block/red_ochre_awning"
+        "particle": "materia:block/red_ochre_awning",
+        "awning_x": "materia:block/red_ochre_awning_corner_right",
+        "awning_z": "materia:block/red_ochre_awning_corner_left"
     },
     "elements": [
         {
@@ -70,7 +72,7 @@
                         16,
                         16
                     ],
-                    "texture": "#awning",
+                    "texture": "#awning_x",
                     "cullface": false
                 },
                 "down": {
@@ -80,7 +82,7 @@
                         16,
                         0
                     ],
-                    "texture": "#awning",
+                    "texture": "#awning_x",
                     "cullface": false
                 }
             }
@@ -117,7 +119,7 @@
                         0,
                         0
                     ],
-                    "texture": "#awning",
+                    "texture": "#awning_z",
                     "cullface": false
                 },
                 "down": {
@@ -128,7 +130,7 @@
                         16,
                         0
                     ],
-                    "texture": "#awning",
+                    "texture": "#awning_z",
                     "cullface": false
                 }
             }

@@ -44,14 +44,36 @@ def copy_replace(src: Path, dst: Path, replacements: dict[str, str]) -> None:
     dst.write_text(text, encoding="utf-8")
 
 
-def panel_faces() -> dict:
+def fence_faces() -> dict:
+    """Full-width panel: broad N/S faces, thin E/W edges."""
     return {
         "north": {"uv": [0, 0, 16, 16], "texture": "#all"},
         "south": {"uv": [0, 0, 16, 16], "texture": "#all"},
         "east": {"uv": [7, 0, 9, 16], "texture": "#all"},
         "west": {"uv": [7, 0, 9, 16], "texture": "#all"},
-        "up": {"uv": [0, 7, 16, 9], "texture": "#all"},
-        "down": {"uv": [0, 7, 16, 9], "texture": "#all"},
+    }
+
+
+def fence_thin_faces() -> dict:
+    """2px-wide geometry on every face (center post)."""
+    strip = [7, 0, 9, 16]
+    return {
+        "north": {"uv": strip, "texture": "#all"},
+        "south": {"uv": strip, "texture": "#all"},
+        "east": {"uv": strip, "texture": "#all"},
+        "west": {"uv": strip, "texture": "#all"},
+    }
+
+
+def fence_side_faces() -> dict:
+    """Connection arm: broad E/W sides, thin N/S end caps."""
+    wide = [0, 0, 16, 16]
+    thin = [7, 0, 9, 16]
+    return {
+        "north": {"uv": thin, "texture": "#all"},
+        "south": {"uv": thin, "texture": "#all"},
+        "east": {"uv": wide, "texture": "#all"},
+        "west": {"uv": wide, "texture": "#all"},
     }
 
 
@@ -59,33 +81,85 @@ def thin_panel_model(texture: str) -> dict:
     return {
         "ambientocclusion": False,
         "textures": {"all": f"materia:block/{texture}", "particle": f"materia:block/{texture}"},
-        "elements": [{"from": [0, 0, 7], "to": [16, 16, 9], "faces": panel_faces()}],
+        "elements": [{"from": [0, 0, 7], "to": [16, 16, 9], "faces": fence_faces()}],
     }
+
+
+def thin_post_model(texture: str) -> dict:
+    return {
+        "ambientocclusion": False,
+        "textures": {"all": f"materia:block/{texture}", "particle": f"materia:block/{texture}"},
+        "elements": [{"from": [7, 0, 7], "to": [9, 16, 9], "faces": fence_thin_faces()}],
+    }
+
+
+def thin_side_model(texture: str) -> dict:
+    return {
+        "ambientocclusion": False,
+        "textures": {"all": f"materia:block/{texture}", "particle": f"materia:block/{texture}"},
+        "elements": [{"from": [7, 0, 0], "to": [9, 16, 8], "faces": fence_side_faces()}],
+    }
+
+
+def fence_multipart_blockstate(block_id: str) -> dict:
+    model = f"materia:block/{block_id}"
+    side = f"materia:block/{block_id}_side"
+    post = f"materia:block/{block_id}_post"
+    parts = []
+    for facing, y in FACING_Y.items():
+        parts.append(
+            {
+                "when": {
+                    "north": False,
+                    "south": False,
+                    "east": False,
+                    "west": False,
+                    "facing": facing,
+                },
+                "apply": {"model": model, "y": y},
+            }
+        )
+    parts.extend(
+        [
+            {
+                "when": {
+                    "OR": [
+                        {"north": True},
+                        {"south": True},
+                        {"east": True},
+                        {"west": True},
+                    ]
+                },
+                "apply": {"model": post, "uvlock": True},
+            },
+            {"when": {"north": True}, "apply": {"model": side, "uvlock": True}},
+            {"when": {"south": True}, "apply": {"model": side, "y": 180, "uvlock": True}},
+            {"when": {"east": True}, "apply": {"model": side, "y": 90, "uvlock": True}},
+            {"when": {"west": True}, "apply": {"model": side, "y": 270, "uvlock": True}},
+        ]
+    )
+    return {"multipart": parts}
 
 
 def open_gate_model(texture: str) -> dict:
     wing_a = {
         "from": [0, 0, 0],
-        "to": [7, 16, 9],
+        "to": [2, 16, 8],
         "faces": {
             "north": {"uv": [0, 0, 7, 16], "texture": "#all"},
             "south": {"uv": [0, 0, 7, 16], "texture": "#all"},
-            "east": {"uv": [0, 0, 9, 16], "texture": "#all"},
-            "west": {"uv": [0, 0, 9, 16], "texture": "#all"},
-            "up": {"uv": [0, 0, 7, 9], "texture": "#all"},
-            "down": {"uv": [0, 0, 7, 9], "texture": "#all"},
+            "east": {"uv": [8, 0, 16, 16], "texture": "#all"},
+            "west": {"uv": [0, 0, 8, 16], "texture": "#all"},
         },
     }
     wing_b = {
-        "from": [9, 0, 0],
-        "to": [16, 16, 9],
+        "from": [14, 0, 0],
+        "to": [16, 16, 8],
         "faces": {
-            "north": {"uv": [9, 0, 16, 16], "texture": "#all"},
-            "south": {"uv": [9, 0, 16, 16], "texture": "#all"},
-            "east": {"uv": [0, 0, 9, 16], "texture": "#all"},
-            "west": {"uv": [0, 0, 9, 16], "texture": "#all"},
-            "up": {"uv": [9, 0, 16, 9], "texture": "#all"},
-            "down": {"uv": [9, 0, 16, 9], "texture": "#all"},
+            "north": {"uv": [0, 0, 2, 16], "texture": "#all"},
+            "south": {"uv": [0, 0, 2, 16], "texture": "#all"},
+            "east": {"uv": [8, 0, 16, 16], "texture": "#all"},
+            "west": {"uv": [0, 0, 8, 16], "texture": "#all"},
         },
     }
     return {
@@ -106,15 +180,9 @@ def facing_blockstate(model_closed: str, model_open: str) -> dict:
 def generate_fence() -> None:
     block_id = f"{PREFIX}_fence"
     write_json(MODELS / f"{block_id}.json", thin_panel_model(FENCE_TEX))
-    write_json(
-        ASSETS / "blockstates" / f"{block_id}.json",
-        {
-            "variants": {
-                f"facing={facing}": {"model": f"materia:block/{block_id}", "y": y}
-                for facing, y in FACING_Y.items()
-            }
-        },
-    )
+    write_json(MODELS / f"{block_id}_post.json", thin_post_model(FENCE_TEX))
+    write_json(MODELS / f"{block_id}_side.json", thin_side_model(FENCE_TEX))
+    write_json(ASSETS / "blockstates" / f"{block_id}.json", fence_multipart_blockstate(block_id))
     write_json(ASSETS / "models" / "item" / f"{block_id}.json", {"parent": f"materia:block/{block_id}"})
     write_json(
         LOOT / f"{block_id}.json",
@@ -133,7 +201,7 @@ def generate_fence() -> None:
 
 def generate_gate() -> None:
     block_id = f"{PREFIX}_fence_gate"
-    write_json(MODELS / f"{block_id}.json", thin_panel_model(FENCE_TEX))
+    write_json(MODELS / f"{block_id}.json", thin_panel_model(GATE_TEX))
     write_json(MODELS / f"{block_id}_open.json", open_gate_model(GATE_TEX))
     write_json(
         ASSETS / "blockstates" / f"{block_id}.json",
@@ -228,8 +296,6 @@ def generate_recipes() -> None:
 
 def cleanup_obsolete() -> None:
     obsolete = [
-        f"{PREFIX}_fence_post.json",
-        f"{PREFIX}_fence_side.json",
         f"{PREFIX}_fence_inventory.json",
         f"{PREFIX}_fence_gate_wall.json",
         f"{PREFIX}_fence_gate_wall_open.json",
@@ -246,10 +312,8 @@ def cleanup_obsolete() -> None:
 def main() -> None:
     cleanup_obsolete()
     generate_fence()
-    generate_gate()
-    generate_door()
     generate_recipes()
-    print("Generated wrought iron fence, gate, door assets and iron-anvil recipes.")
+    print("Generated wrought iron fence assets and iron-anvil recipes.")
 
 
 if __name__ == "__main__":
