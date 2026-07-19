@@ -3,7 +3,9 @@
     "textures": {
         "arm": "materia:block/awning_arm",
         "awning": "materia:block/teal_awning",
-        "particle": "materia:block/teal_awning"
+        "particle": "materia:block/teal_awning",
+        "awning_x": "materia:block/teal_awning_corner_left",
+        "awning_z": "materia:block/teal_awning_corner_right"
     },
     "elements": [
         {
@@ -65,22 +67,22 @@
             "faces": {
                 "up": {
                     "uv": [
+                        0,
+                        0,
                         16,
-                        0,
-                        0,
                         16
                     ],
-                    "texture": "#awning",
+                    "texture": "#awning_x",
                     "cullface": false
                 },
                 "down": {
                     "uv": [
-                        16,
-                        16,
                         0,
+                        16,
+                        16,
                         0
                     ],
-                    "texture": "#awning",
+                    "texture": "#awning_x",
                     "cullface": false
                 }
             }
@@ -110,23 +112,25 @@
             },
             "faces": {
                 "up": {
+                    "rotation": 90,
+                    "uv": [
+                        16,
+                        16,
+                        0,
+                        0
+                    ],
+                    "texture": "#awning_z",
+                    "cullface": false
+                },
+                "down": {
+                    "rotation": 90,
                     "uv": [
                         0,
                         16,
                         16,
                         0
                     ],
-                    "texture": "#awning",
-                    "cullface": false
-                },
-                "down": {
-                    "uv": [
-                        0,
-                        0,
-                        16,
-                        16
-                    ],
-                    "texture": "#awning",
+                    "texture": "#awning_z",
                     "cullface": false
                 }
             }

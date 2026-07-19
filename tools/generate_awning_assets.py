@@ -9,13 +9,14 @@ RECIPES = ROOT / "shared" / "src" / "main" / "resources" / "data" / "materia" / 
 LANG_EN = ASSETS / "lang" / "en_us.json"
 LANG_NL = ASSETS / "lang" / "nl_be.json"
 MODELS = ASSETS / "models" / "block"
+TEXTURES = ASSETS / "textures" / "block"
 
 ROOF_VARIANTS = {
     "straight": "roof_tiles_0.json",
-    "inner_left": "roof_tiles_0_inner_left.json",
-    "inner_right": "roof_tiles_0_inner_right.json",
-    "outer_left": "roof_tiles_0_outer_left.json",
-    "outer_right": "roof_tiles_0_outer_right.json",
+    "inner_left": "roof_tiles_1_inner_left.json",
+    "inner_right": "roof_tiles_1_inner_right.json",
+    "outer_left": "roof_tiles_1_outer_left.json",
+    "outer_right": "roof_tiles_1_outer_right.json",
 }
 
 SKIP_ELEMENTS = {"bottom", "back_side", "back_side_2"}
@@ -98,17 +99,42 @@ def load_roof_template(variant: str) -> dict:
     return json.loads((MODELS / ROOF_VARIANTS[variant]).read_text(encoding="utf-8"))
 
 
-def transform_model(template: dict, color: str) -> dict:
+def corner_side(shape: str) -> str:
+    return "left" if "left" in shape else "right"
+
+
+def awning_corner_texture_pair(color: str, shape: str) -> tuple[str, str] | None:
+    if shape == "straight":
+        return None
+    left = TEXTURES / f"{color}_awning_corner_left.png"
+    right = TEXTURES / f"{color}_awning_corner_right.png"
+    if not (left.exists() and right.exists()):
+        return None
+    primary = corner_side(shape)
+    secondary = "right" if primary == "left" else "left"
+    return (
+        f"materia:block/{color}_awning_corner_{secondary}",
+        f"materia:block/{color}_awning_corner_{primary}",
+    )
+
+
+def transform_model(template: dict, color: str, shape: str) -> dict:
     awning_tex = f"materia:block/{color}_awning"
     arm_tex = "materia:block/awning_arm"
+    corner_pair = awning_corner_texture_pair(color, shape)
+
+    textures = {
+        "arm": arm_tex,
+        "awning": awning_tex,
+        "particle": awning_tex,
+    }
+    if corner_pair:
+        textures["awning_x"] = corner_pair[0]
+        textures["awning_z"] = corner_pair[1]
 
     model = {
         "ambientocclusion": template.get("ambientocclusion", False),
-        "textures": {
-            "arm": arm_tex,
-            "awning": awning_tex,
-            "particle": awning_tex,
-        },
+        "textures": textures,
         "elements": [],
     }
 
@@ -121,8 +147,12 @@ def transform_model(template: dict, color: str) -> dict:
             texture = face.get("texture", "")
             if texture in ("#triangle", "#square"):
                 face["texture"] = "#arm"
-            elif texture in ("#tiles", "#tiles_x", "#tiles_z"):
+            elif texture == "#tiles":
                 face["texture"] = "#awning"
+            elif texture == "#tiles_x":
+                face["texture"] = "#awning_x" if corner_pair else "#awning"
+            elif texture == "#tiles_z":
+                face["texture"] = "#awning_z" if corner_pair else "#awning"
         model["elements"].append(copied)
 
     return model
@@ -179,7 +209,7 @@ def main() -> None:
             template = load_roof_template(shape)
             write_json(
                 ASSETS / "models" / "block" / f"{block_id}{suffix}.json",
-                transform_model(template, color),
+                transform_model(template, color, shape),
             )
 
         write_json(ASSETS / "blockstates" / f"{block_id}.json", generate_blockstate(color))
@@ -188,7 +218,8 @@ def main() -> None:
 
         lang_en[f"block.materia.{block_id}"] = display_name(color)
         lang_nl[f"block.materia.{block_id}"] = nl_display_name(color)
-        print(f"Generated {block_id}")
+        corners = "with corner textures" if awning_corner_texture_pair(color, "inner_left") else "flat corners"
+        print(f"Generated {block_id} ({corners})")
 
     merge_lang(LANG_EN, lang_en)
     merge_lang(LANG_NL, lang_nl)

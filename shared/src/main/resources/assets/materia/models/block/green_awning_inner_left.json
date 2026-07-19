@@ -110,6 +110,7 @@
             },
             "faces": {
                 "up": {
+                    "rotation": 270,
                     "uv": [
                         16,
                         16,
@@ -120,11 +121,12 @@
                     "cullface": false
                 },
                 "down": {
+                    "rotation": 270,
                     "uv": [
+                        0,
                         16,
-                        0,
-                        0,
-                        16
+                        16,
+                        0
                     ],
                     "texture": "#awning",
                     "cullface": false

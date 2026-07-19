@@ -77,16 +77,18 @@
             },
             "faces": {
                 "up": {
+                    "rotation": 90,
                     "uv": [
-                        0,
-                        0,
                         16,
-                        16
+                        16,
+                        0,
+                        0
                     ],
                     "texture": "#awning",
                     "cullface": false
                 },
                 "down": {
+                    "rotation": 90,
                     "uv": [
                         0,
                         16,

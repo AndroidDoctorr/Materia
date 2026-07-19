@@ -97,7 +97,7 @@ def straight_template() -> dict:
 
 
 def corner_template(shape: str) -> dict:
-    return load_json(MODELS / f"roof_tiles_0_{shape}.json")
+    return load_json(MODELS / f"roof_tiles_1_{shape}.json")
 
 
 def build_straight_model(tiles_texture: str, particle: str) -> dict:

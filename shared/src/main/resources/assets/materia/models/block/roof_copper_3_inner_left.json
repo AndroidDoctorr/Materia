@@ -3,7 +3,7 @@
     "textures": {
         "square": "materia:block/roof_frame_square",
         "triangle": "materia:block/roof_frame_triangle",
-        "tiles": "materia:block/roof_tiles",
+        "tiles": "materia:block/roof_frame_square",
         "particle": "minecraft:block/oxidized_copper",
         "tiles_x": "materia:block/roof_copper_corner_right_3",
         "tiles_z": "materia:block/roof_copper_corner_left_3"
@@ -212,6 +212,7 @@
             },
             "faces": {
                 "up": {
+                    "rotation": 270,
                     "uv": [
                         16,
                         16,
@@ -222,11 +223,12 @@
                     "cullface": false
                 },
                 "down": {
+                    "rotation": 270,
                     "uv": [
+                        0,
                         16,
-                        0,
-                        0,
-                        16
+                        16,
+                        0
                     ],
                     "texture": "#tiles_z",
                     "cullface": false
