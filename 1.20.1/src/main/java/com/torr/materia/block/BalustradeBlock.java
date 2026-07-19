@@ -86,22 +86,24 @@ public class BalustradeBlock extends Block {
     }
 
     private static BlockState updateConnections(BlockState state, BlockGetter level, BlockPos pos) {
+        Block self = state.getBlock();
         return state
-                .setValue(NORTH, connectsTo(level, pos, Direction.NORTH))
-                .setValue(SOUTH, connectsTo(level, pos, Direction.SOUTH))
-                .setValue(EAST, connectsTo(level, pos, Direction.EAST))
-                .setValue(WEST, connectsTo(level, pos, Direction.WEST));
+                .setValue(NORTH, connectsTo(level, pos, Direction.NORTH, self))
+                .setValue(SOUTH, connectsTo(level, pos, Direction.SOUTH, self))
+                .setValue(EAST, connectsTo(level, pos, Direction.EAST, self))
+                .setValue(WEST, connectsTo(level, pos, Direction.WEST, self));
     }
 
-    private static boolean connectsTo(BlockGetter level, BlockPos pos, Direction direction) {
-        return level.getBlockState(pos.relative(direction)).getBlock() instanceof BalustradeBlock;
+    private static boolean connectsTo(BlockGetter level, BlockPos pos, Direction direction, Block self) {
+        return level.getBlockState(pos.relative(direction)).is(self);
     }
 
     private static void refreshNeighbors(Level level, BlockPos pos) {
         refreshAt(level, pos);
+        Block self = level.getBlockState(pos).getBlock();
         for (Direction direction : Direction.Plane.HORIZONTAL) {
             BlockPos neighborPos = pos.relative(direction);
-            if (level.getBlockState(neighborPos).getBlock() instanceof BalustradeBlock) {
+            if (level.getBlockState(neighborPos).is(self)) {
                 refreshAt(level, neighborPos);
             }
         }

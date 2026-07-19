@@ -1,20 +1,69 @@
 #!/usr/bin/env python3
-"""Generate balustrade multipart models and blockstates from shared element geometry."""
+"""Generate balustrade models, blockstates, items, loot, recipes, and lang from stone templates."""
 import json
 from copy import deepcopy
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "shared" / "src" / "main" / "resources" / "assets" / "materia"
+DATA = ROOT / "shared" / "src" / "main" / "resources" / "data" / "materia"
 MODELS = ASSETS / "models" / "block"
+ITEM_MODELS = ASSETS / "models" / "item"
 BLOCKSTATES = ASSETS / "blockstates"
+RECIPES = DATA / "recipes"
+LOOT = DATA / "loot_tables" / "blocks"
+LANG_EN = ASSETS / "lang" / "en_us.json"
+LANG_NL = ASSETS / "lang" / "nl_be.json"
+
+TEMPLATE_STRAIGHT = MODELS / "stone_balustrade.json"
+TEMPLATE_CORNER = MODELS / "stone_balustrade_corner.json"
 
 BALUSTRADES = [
     {
         "id": "stone_balustrade",
         "texture": "minecraft:block/stone",
+        "ingredient": "minecraft:stone",
+        "display_en": "Stone Balustrade",
+        "display_nl": "Stenen Balustrade",
+    },
+    {
+        "id": "limestone_balustrade",
+        "texture": "materia:block/limestone",
+        "ingredient": "materia:limestone",
+        "display_en": "Limestone Balustrade",
+        "display_nl": "Kalksteen Balustrade",
+    },
+    {
+        "id": "marble_balustrade",
+        "texture": "materia:block/marble",
+        "ingredient": "materia:marble",
+        "display_en": "Marble Balustrade",
+        "display_nl": "Marmeren Balustrade",
+    },
+    {
+        "id": "terracotta_balustrade",
+        "texture": "minecraft:block/terracotta",
+        "ingredient": "minecraft:terracotta",
+        "display_en": "Terracotta Balustrade",
+        "display_nl": "Terracotta Balustrade",
+    },
+    {
+        "id": "blackstone_balustrade",
+        "texture": "minecraft:block/blackstone",
+        "ingredient": "minecraft:blackstone",
+        "display_en": "Blackstone Balustrade",
+        "display_nl": "Blackstone Balustrade",
+    },
+    {
+        "id": "sandstone_balustrade",
+        "texture": "minecraft:block/sandstone",
+        "ingredient": "minecraft:sandstone",
+        "display_en": "Sandstone Balustrade",
+        "display_nl": "Zandsteen Balustrade",
     },
 ]
+
+FACING_Y = {"north": 0, "south": 0, "east": 90, "west": 90}
 
 
 def write_json(path: Path, data: dict) -> None:
@@ -33,12 +82,6 @@ def elements_by_name(model: dict) -> dict[str, dict]:
 def pick(model: dict, names: list[str]) -> list[dict]:
     by_name = elements_by_name(model)
     return [deepcopy(by_name[name]) for name in names]
-
-
-def rename(element: dict, name: str) -> dict:
-    copied = deepcopy(element)
-    copied["name"] = name
-    return copied
 
 
 def post_element(name: str, from_coords: list[int], to_coords: list[int]) -> dict:
@@ -122,13 +165,11 @@ def build_models(straight: dict, corner: dict) -> dict[str, list[dict]]:
         top_element("top_south", [5, 9, 11], [11, 11, 16], south_top_faces()),
     ]
 
-    cross_elements = t_elements + south_leg
-
     return {
         "straight": straight_elements,
         "corner": corner_elements,
         "t": t_elements,
-        "cross": cross_elements,
+        "cross": t_elements + south_leg,
     }
 
 
@@ -138,9 +179,6 @@ def model_for(texture: str, elements: list[dict]) -> dict:
         "textures": {"all": texture, "particle": texture},
         "elements": elements,
     }
-
-
-FACING_Y = {"north": 0, "south": 0, "east": 90, "west": 90}
 
 
 def blockstate_for(block_id: str) -> dict:
@@ -225,27 +263,75 @@ def blockstate_for(block_id: str) -> dict:
     return {"multipart": parts}
 
 
-def generate_balustrade(entry: dict) -> None:
+def item_model(block_id: str) -> dict:
+    return {
+        "parent": "minecraft:item/generated",
+        "textures": {"layer0": f"materia:item/{block_id}"},
+    }
+
+
+def loot_table(block_id: str) -> dict:
+    return {
+        "type": "minecraft:block",
+        "pools": [
+            {
+                "rolls": 1,
+                "entries": [{"type": "minecraft:item", "name": f"materia:{block_id}"}],
+                "conditions": [{"condition": "minecraft:survives_explosion"}],
+            }
+        ],
+    }
+
+
+def stonecutting_recipe(block_id: str, ingredient: str) -> dict:
+    return {
+        "type": "minecraft:stonecutting",
+        "ingredient": {"item": ingredient},
+        "result": f"materia:{block_id}",
+        "count": 1,
+    }
+
+
+def merge_lang(path: Path, entries: dict[str, str]) -> None:
+    data = json.loads(path.read_text(encoding="utf-8"))
+    data.update(entries)
+    path.write_text(json.dumps(data, indent=4, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+def generate_balustrade(entry: dict, parts: dict[str, list[dict]]) -> None:
     block_id = entry["id"]
     texture = entry["texture"]
-    straight_path = MODELS / f"{block_id}.json"
-    corner_path = MODELS / f"{block_id}_corner.json"
 
-    if not straight_path.exists() or not corner_path.exists():
-        raise FileNotFoundError(f"Missing hand-authored straight/corner models for {block_id}")
-
-    parts = build_models(load_model(straight_path), load_model(corner_path))
-    write_json(straight_path, model_for(texture, parts["straight"]))
-    write_json(corner_path, model_for(texture, parts["corner"]))
+    write_json(MODELS / f"{block_id}.json", model_for(texture, parts["straight"]))
+    write_json(MODELS / f"{block_id}_corner.json", model_for(texture, parts["corner"]))
     write_json(MODELS / f"{block_id}_t.json", model_for(texture, parts["t"]))
     write_json(MODELS / f"{block_id}_cross.json", model_for(texture, parts["cross"]))
     write_json(BLOCKSTATES / f"{block_id}.json", blockstate_for(block_id))
-    print(f"Generated {block_id} corner/t/cross models and blockstate")
+    write_json(ITEM_MODELS / f"{block_id}.json", item_model(block_id))
+    write_json(LOOT / f"{block_id}.json", loot_table(block_id))
+    write_json(RECIPES / f"{block_id}_from_stonecutting.json", stonecutting_recipe(block_id, entry["ingredient"]))
+    print(f"Generated {block_id}")
 
 
 def main() -> None:
+    if not TEMPLATE_STRAIGHT.exists() or not TEMPLATE_CORNER.exists():
+        raise FileNotFoundError("Missing stone_balustrade.json or stone_balustrade_corner.json templates")
+
+    parts = build_models(load_model(TEMPLATE_STRAIGHT), load_model(TEMPLATE_CORNER))
+
+    lang_en = {}
+    lang_nl = {}
     for entry in BALUSTRADES:
-        generate_balustrade(entry)
+        generate_balustrade(entry, parts)
+        lang_en[f"block.materia.{entry['id']}"] = entry["display_en"]
+        lang_nl[f"block.materia.{entry['id']}"] = entry["display_nl"]
+
+    merge_lang(LANG_EN, lang_en)
+    merge_lang(LANG_NL, lang_nl)
+
+    side_model = MODELS / "stone_balustrade_side.json"
+    if side_model.exists():
+        side_model.unlink()
 
 
 if __name__ == "__main__":

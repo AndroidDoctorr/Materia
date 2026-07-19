@@ -1318,5 +1318,10 @@
     "block.materia.indigo_glazed_terracotta": "Indigo Glazed Terracotta",
     "block.materia.tyrian_purple_glazed_terracotta": "Tyrian Purple Glazed Terracotta",
     "block.materia.charcoal_gray_glazed_terracotta": "Charcoal Gray Glazed Terracotta",
-    "block.materia.taupe_glazed_terracotta": "Taupe Glazed Terracotta"
+    "block.materia.taupe_glazed_terracotta": "Taupe Glazed Terracotta",
+    "block.materia.limestone_balustrade": "Limestone Balustrade",
+    "block.materia.marble_balustrade": "Marble Balustrade",
+    "block.materia.terracotta_balustrade": "Terracotta Balustrade",
+    "block.materia.blackstone_balustrade": "Blackstone Balustrade",
+    "block.materia.sandstone_balustrade": "Sandstone Balustrade"
 }

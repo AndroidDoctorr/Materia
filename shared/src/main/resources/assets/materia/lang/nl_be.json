@@ -1242,5 +1242,10 @@
     "block.materia.indigo_glazed_terracotta": "Indigo Glazuur Terracotta",
     "block.materia.tyrian_purple_glazed_terracotta": "Tyrisch Paars Glazuur Terracotta",
     "block.materia.charcoal_gray_glazed_terracotta": "Houtskoolgrijs Glazuur Terracotta",
-    "block.materia.taupe_glazed_terracotta": "Taupe Glazuur Terracotta"
+    "block.materia.taupe_glazed_terracotta": "Taupe Glazuur Terracotta",
+    "block.materia.limestone_balustrade": "Kalksteen Balustrade",
+    "block.materia.marble_balustrade": "Marmeren Balustrade",
+    "block.materia.terracotta_balustrade": "Terracotta Balustrade",
+    "block.materia.blackstone_balustrade": "Blackstone Balustrade",
+    "block.materia.sandstone_balustrade": "Zandsteen Balustrade"
 }

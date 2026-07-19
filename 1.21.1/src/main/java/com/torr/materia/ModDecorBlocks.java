@@ -181,8 +181,12 @@ public final class ModDecorBlocks {
     public static final RegistryObject<Block> TERRACOTTA_BRACKET = bracket("terracotta_bracket");
     public static final RegistryObject<Block> WROUGHT_IRON_BRACKET = wroughtIronBracket("wrought_iron_bracket");
 
-    public static final RegistryObject<Block> STONE_BALUSTRADE = ModBlocks.registerDecorBlock("stone_balustrade",
-            () -> new BalustradeBlock(BALUSTRADE_PROPS));
+    public static final RegistryObject<Block> STONE_BALUSTRADE = balustrade("stone_balustrade");
+    public static final RegistryObject<Block> LIMESTONE_BALUSTRADE = balustrade("limestone_balustrade");
+    public static final RegistryObject<Block> MARBLE_BALUSTRADE = balustrade("marble_balustrade");
+    public static final RegistryObject<Block> TERRACOTTA_BALUSTRADE = balustrade("terracotta_balustrade");
+    public static final RegistryObject<Block> BLACKSTONE_BALUSTRADE = balustrade("blackstone_balustrade");
+    public static final RegistryObject<Block> SANDSTONE_BALUSTRADE = balustrade("sandstone_balustrade");
 
     public static final RegistryObject<Block> BRONZE_SPIRE = tallFinial("bronze_spire");
     public static final RegistryObject<Block> GOLD_SPIRE = tallFinial("gold_spire");
@@ -201,6 +205,10 @@ public final class ModDecorBlocks {
     public static final RegistryObject<Block> TERRACOTTA_ACORN_FINIAL = stoneAcornFinial("terracotta_acorn_finial");
 
     private ModDecorBlocks() {
+    }
+
+    private static RegistryObject<Block> balustrade(String name) {
+        return ModBlocks.registerDecorBlock(name, () -> new BalustradeBlock(BALUSTRADE_PROPS));
     }
 
     private static RegistryObject<Block> cornice(String name) {
@@ -279,7 +287,9 @@ public final class ModDecorBlocks {
         for (RegistryObject<Block> block : ALL_FINIALS) {
             registrar.accept(block.get(), cutout);
         }
-        registrar.accept(STONE_BALUSTRADE.get(), cutout);
+        for (RegistryObject<Block> block : ALL_BALUSTRADES) {
+            registrar.accept(block.get(), cutout);
+        }
     }
 
     private static final RegistryObject<Block>[] ALL_SHUTTERS = new RegistryObject[] {
@@ -337,6 +347,12 @@ public final class ModDecorBlocks {
     private static final RegistryObject<Block>[] ALL_BRACKETS = new RegistryObject[] {
             MARBLE_BRACKET, LIMESTONE_BRACKET, STONE_BRACKET, SANDSTONE_BRACKET, BLACKSTONE_BRACKET,
             TERRACOTTA_BRACKET, WROUGHT_IRON_BRACKET
+    };
+
+    @SuppressWarnings("unchecked")
+    private static final RegistryObject<Block>[] ALL_BALUSTRADES = new RegistryObject[] {
+            STONE_BALUSTRADE, LIMESTONE_BALUSTRADE, MARBLE_BALUSTRADE, TERRACOTTA_BALUSTRADE,
+            BLACKSTONE_BALUSTRADE, SANDSTONE_BALUSTRADE
     };
 
     @SuppressWarnings("unchecked")

@@ -117,6 +117,39 @@
                     "texture": "#arm"
                 }
             }
+        },
+        {
+            "name": "hangover",
+            "from": [
+                0,
+                -4,
+                0
+            ],
+            "to": [
+                0,
+                0,
+                16
+            ],
+            "faces": {
+                "north": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        4
+                    ],
+                    "texture": "#arm"
+                },
+                "south": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        4
+                    ],
+                    "texture": "#arm"
+                }
+            }
         }
     ]
 }

@@ -1,0 +1,254 @@
+{
+    "multipart": [
+        {
+            "when": {
+                "north": true,
+                "south": true,
+                "east": true,
+                "west": true
+            },
+            "apply": {
+                "model": "materia:block/marble_balustrade_cross",
+                "uvlock": true
+            }
+        },
+        {
+            "when": {
+                "north": true,
+                "east": true,
+                "west": true,
+                "south": false
+            },
+            "apply": {
+                "model": "materia:block/marble_balustrade_t",
+                "y": 0,
+                "uvlock": true
+            }
+        },
+        {
+            "when": {
+                "north": true,
+                "south": true,
+                "east": true,
+                "west": false
+            },
+            "apply": {
+                "model": "materia:block/marble_balustrade_t",
+                "y": 90,
+                "uvlock": true
+            }
+        },
+        {
+            "when": {
+                "north": false,
+                "south": true,
+                "east": true,
+                "west": true
+            },
+            "apply": {
+                "model": "materia:block/marble_balustrade_t",
+                "y": 180,
+                "uvlock": true
+            }
+        },
+        {
+            "when": {
+                "north": true,
+                "south": true,
+                "west": true,
+                "east": false
+            },
+            "apply": {
+                "model": "materia:block/marble_balustrade_t",
+                "y": 270,
+                "uvlock": true
+            }
+        },
+        {
+            "when": {
+                "north": true,
+                "west": true,
+                "south": false,
+                "east": false
+            },
+            "apply": {
+                "model": "materia:block/marble_balustrade_corner",
+                "y": 0,
+                "uvlock": true
+            }
+        },
+        {
+            "when": {
+                "north": true,
+                "east": true,
+                "south": false,
+                "west": false
+            },
+            "apply": {
+                "model": "materia:block/marble_balustrade_corner",
+                "y": 90,
+                "uvlock": true
+            }
+        },
+        {
+            "when": {
+                "south": true,
+                "east": true,
+                "north": false,
+                "west": false
+            },
+            "apply": {
+                "model": "materia:block/marble_balustrade_corner",
+                "y": 180,
+                "uvlock": true
+            }
+        },
+        {
+            "when": {
+                "south": true,
+                "west": true,
+                "north": false,
+                "east": false
+            },
+            "apply": {
+                "model": "materia:block/marble_balustrade_corner",
+                "y": 270,
+                "uvlock": true
+            }
+        },
+        {
+            "when": {
+                "north": true,
+                "south": true,
+                "east": false,
+                "west": false
+            },
+            "apply": {
+                "model": "materia:block/marble_balustrade",
+                "y": 90,
+                "uvlock": true
+            }
+        },
+        {
+            "when": {
+                "east": true,
+                "west": true,
+                "north": false,
+                "south": false
+            },
+            "apply": {
+                "model": "materia:block/marble_balustrade",
+                "y": 0,
+                "uvlock": true
+            }
+        },
+        {
+            "when": {
+                "north": true,
+                "south": false,
+                "east": false,
+                "west": false
+            },
+            "apply": {
+                "model": "materia:block/marble_balustrade",
+                "y": 90,
+                "uvlock": true
+            }
+        },
+        {
+            "when": {
+                "south": true,
+                "north": false,
+                "east": false,
+                "west": false
+            },
+            "apply": {
+                "model": "materia:block/marble_balustrade",
+                "y": 90,
+                "uvlock": true
+            }
+        },
+        {
+            "when": {
+                "east": true,
+                "north": false,
+                "south": false,
+                "west": false
+            },
+            "apply": {
+                "model": "materia:block/marble_balustrade",
+                "y": 0,
+                "uvlock": true
+            }
+        },
+        {
+            "when": {
+                "west": true,
+                "north": false,
+                "south": false,
+                "east": false
+            },
+            "apply": {
+                "model": "materia:block/marble_balustrade",
+                "y": 0,
+                "uvlock": true
+            }
+        },
+        {
+            "when": {
+                "north": false,
+                "south": false,
+                "east": false,
+                "west": false,
+                "facing": "north"
+            },
+            "apply": {
+                "model": "materia:block/marble_balustrade",
+                "y": 0,
+                "uvlock": true
+            }
+        },
+        {
+            "when": {
+                "north": false,
+                "south": false,
+                "east": false,
+                "west": false,
+                "facing": "south"
+            },
+            "apply": {
+                "model": "materia:block/marble_balustrade",
+                "y": 0,
+                "uvlock": true
+            }
+        },
+        {
+            "when": {
+                "north": false,
+                "south": false,
+                "east": false,
+                "west": false,
+                "facing": "east"
+            },
+            "apply": {
+                "model": "materia:block/marble_balustrade",
+                "y": 90,
+                "uvlock": true
+            }
+        },
+        {
+            "when": {
+                "north": false,
+                "south": false,
+                "east": false,
+                "west": false,
+                "facing": "west"
+            },
+            "apply": {
+                "model": "materia:block/marble_balustrade",
+                "y": 90,
+                "uvlock": true
+            }
+        }
+    ]
+}

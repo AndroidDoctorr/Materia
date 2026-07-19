@@ -1,8 +1,8 @@
 {
     "ambientocclusion": false,
     "textures": {
-        "all": "minecraft:block/stone",
-        "particle": "minecraft:block/stone"
+        "all": "minecraft:block/blackstone",
+        "particle": "minecraft:block/blackstone"
     },
     "elements": [
         {

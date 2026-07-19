@@ -1,8 +1,8 @@
 {
     "ambientocclusion": false,
     "textures": {
-        "all": "minecraft:block/stone",
-        "particle": "minecraft:block/stone"
+        "all": "minecraft:block/terracotta",
+        "particle": "minecraft:block/terracotta"
     },
     "elements": [
         {
@@ -137,14 +137,14 @@
         {
             "name": "right_post",
             "from": [
-                7,
+                11,
                 0,
-                3
+                7
             ],
             "to": [
+                13,
                 9,
-                9,
-                5
+                9
             ],
             "faces": {
                 "north": {
@@ -197,14 +197,14 @@
         {
             "name": "right_post_thick_part",
             "from": [
-                6,
+                10,
                 1,
-                2
+                6
             ],
             "to": [
-                10,
+                14,
                 6,
-                6
+                10
             ],
             "faces": {
                 "north": {
@@ -271,7 +271,7 @@
                 5
             ],
             "to": [
-                11,
+                16,
                 11,
                 11
             ],
@@ -280,7 +280,7 @@
                     "uv": [
                         0,
                         0,
-                        11,
+                        16,
                         2
                     ],
                     "texture": "#all"
@@ -298,7 +298,7 @@
                     "uv": [
                         0,
                         0,
-                        11,
+                        16,
                         2
                     ],
                     "texture": "#all"
@@ -316,7 +316,7 @@
                     "uv": [
                         0,
                         0,
-                        11,
+                        16,
                         6
                     ],
                     "texture": "#all"
@@ -325,76 +325,7 @@
                     "uv": [
                         0,
                         0,
-                        11,
-                        6
-                    ],
-                    "texture": "#all"
-                }
-            }
-        },
-        {
-            "name": "top_2",
-            "from": [
-                5,
-                9,
-                0
-            ],
-            "to": [
-                11,
-                11,
-                5
-            ],
-            "faces": {
-                "north": {
-                    "uv": [
-                        0,
-                        0,
-                        8,
-                        2
-                    ],
-                    "texture": "#all"
-                },
-                "east": {
-                    "uv": [
-                        0,
-                        0,
-                        6,
-                        2
-                    ],
-                    "texture": "#all"
-                },
-                "south": {
-                    "uv": [
-                        0,
-                        0,
-                        8,
-                        2
-                    ],
-                    "texture": "#all"
-                },
-                "west": {
-                    "uv": [
-                        0,
-                        0,
-                        6,
-                        2
-                    ],
-                    "texture": "#all"
-                },
-                "up": {
-                    "uv": [
-                        0,
-                        0,
-                        8,
-                        6
-                    ],
-                    "texture": "#all"
-                },
-                "down": {
-                    "uv": [
-                        0,
-                        0,
-                        8,
+                        16,
                         6
                     ],
                     "texture": "#all"
