@@ -1,9 +1,9 @@
 {
     "ambientocclusion": false,
     "textures": {
-        "all": "minecraft:block/blackstone",
+        "all": "minecraft:block/polished_blackstone",
         "face": "materia:block/blackstone_face",
-        "particle": "minecraft:block/blackstone"
+        "particle": "minecraft:block/polished_blackstone"
     },
     "elements": [
         {
@@ -159,10 +159,10 @@
             "faces": {
                 "north": {
                     "uv": [
-                        4,
-                        1,
-                        12,
-                        11
+                        0,
+                        0,
+                        8,
+                        10
                     ],
                     "texture": "#face"
                 },

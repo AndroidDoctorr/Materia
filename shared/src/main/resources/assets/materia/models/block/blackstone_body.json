@@ -1,8 +1,8 @@
 {
     "ambientocclusion": false,
     "textures": {
-        "all": "minecraft:block/blackstone",
-        "particle": "minecraft:block/blackstone"
+        "all": "minecraft:block/polished_blackstone",
+        "particle": "minecraft:block/polished_blackstone"
     },
     "elements": [
         {
@@ -122,24 +122,6 @@
                         14
                     ],
                     "texture": "#all"
-                },
-                "up": {
-                    "uv": [
-                        0,
-                        0,
-                        8,
-                        6
-                    ],
-                    "texture": "#all"
-                },
-                "down": {
-                    "uv": [
-                        0,
-                        0,
-                        8,
-                        6
-                    ],
-                    "texture": "#all"
                 }
             }
         },
@@ -207,6 +189,30 @@
                         0,
                         12,
                         7
+                    ],
+                    "texture": "#all"
+                }
+            }
+        },
+        {
+            "name": "top_fix",
+            "from": [
+                4,
+                15,
+                11
+            ],
+            "to": [
+                12,
+                16,
+                12
+            ],
+            "faces": {
+                "up": {
+                    "uv": [
+                        0,
+                        9,
+                        6,
+                        10
                     ],
                     "texture": "#all"
                 }
