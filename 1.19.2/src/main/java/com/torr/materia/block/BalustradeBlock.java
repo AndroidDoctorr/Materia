@@ -27,11 +27,11 @@ public class BalustradeBlock extends Block {
     public static final BooleanProperty EAST = BlockStateProperties.EAST;
     public static final BooleanProperty WEST = BlockStateProperties.WEST;
 
-    private static final VoxelShape POST = Block.box(4, 0, 4, 12, 16, 12);
-    private static final VoxelShape ARM_NORTH = Block.box(4, 0, 0, 12, 16, 12);
-    private static final VoxelShape ARM_SOUTH = Block.box(4, 0, 4, 12, 16, 16);
-    private static final VoxelShape ARM_WEST = Block.box(0, 0, 4, 12, 16, 12);
-    private static final VoxelShape ARM_EAST = Block.box(4, 0, 4, 16, 16, 12);
+    private static final VoxelShape POST = Block.box(4, 0, 4, 12, 12, 12);
+    private static final VoxelShape ARM_NORTH = Block.box(4, 0, 0, 12, 12, 12);
+    private static final VoxelShape ARM_SOUTH = Block.box(4, 0, 4, 12, 12, 16);
+    private static final VoxelShape ARM_WEST = Block.box(0, 0, 4, 12, 12, 12);
+    private static final VoxelShape ARM_EAST = Block.box(4, 0, 4, 16, 12, 12);
 
     private static final VoxelShape STRAIGHT_EW = Shapes.or(
             Block.box(3, 0, 7, 5, 9, 9),
