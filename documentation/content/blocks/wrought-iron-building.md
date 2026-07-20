@@ -27,8 +27,13 @@ See also: [Iron anvil](iron-anvil.md)
 
 ## Behavior
 
-- **Fence:** thin centered iron panel (2-pixel thick slab in the block space); each segment is independent — no vanilla fence connection logic.
-- **Gate:** same closed panel as the fence; right-click (or redstone on placement) splits the panel open like shutters, hinged from the center. Open collision matches the rendered swing direction for all facings.
+- **Fence:** thin centered iron panel (2-pixel thick slab in the block space). **Connects to adjacent wrought iron fences only** (not fence gates) with a center post and side arms on connected faces. An isolated segment keeps a **facing** so you can run panels **north–south** or **east–west**. Side-arm UVs use full 16 px width on broad faces and a 2 px strip on thin edges (no squashed texture).
+- **Gate:** same closed panel as the fence; right-click (or redstone on placement) splits the panel open like shutters, hinged from the center. **No fence-style connection** — always a full-width panel when closed. Open collision matches the rendered swing direction for all facings.
 - **Door:** two-block tall door; opens on right-click like wood doors.
 - **Bracket:** wall-mounted wrought iron console (same placement rules as stone brackets).
 - **Grate:** always a vertical panel (1 px render, 2 px collision); click any face of a block to mount on that side; N/S vs E/W orientation follows your look direction when placing. Cutout render layer; angled block item icon.
+
+## Related
+
+- [Iron anvil](iron-anvil.md)
+- [Stone columns, capitals, cornices & brackets](stone-trim.md) — stone brackets (wrought iron bracket uses same wall rules)

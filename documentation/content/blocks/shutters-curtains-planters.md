@@ -39,7 +39,12 @@ Wall-mounted shutters and curtains plus carved-stone planters and urns for Medit
 
 ## Related stone decor
 
-Stonecutter variants (tiles, small bricks, polished/chiseled where textures exist), **`materia:stone_balustrade`** (fence-style rails with corner multipart), and **[columns, capitals, cornices, and brackets](stone-trim.md)** share the same decorative stone set. See recipe files under `shared/src/main/resources/data/materia/recipes/*_from_stonecutting.json`.
+Stonecutter variants (tiles, small bricks, polished/chiseled where textures exist), **[balustrades](balustrades.md)** (six materials; L/T/cross connection), and **[columns, capitals, cornices, and brackets](stone-trim.md)** share the same decorative stone set. See recipe files under `shared/src/main/resources/data/materia/recipes/*_from_stonecutting.json`.
+
+## Related exterior decor
+
+- **[Awnings](awnings.md)** — 26 colors; sloped canopies with roof-style corner joins
+- **[Floor rugs](floor-rugs.md)** — loom-woven and rare loot variants
 
 ## Version note
 

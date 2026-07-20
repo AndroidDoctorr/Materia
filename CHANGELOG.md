@@ -8,27 +8,39 @@ Planned work is tracked in [`documentation/release-roadmap.md`](documentation/re
 
 ### 1.2.2 (planned)
 
-- **Glazed terracotta** for Materia dye colors.
-- More **decorative** blocks (stone acorn finials, wrought iron bracket/grate, additional rug patterns).
+#### Still planned
+
 - **Cork oak**, **cork**, cork bottles/item frames, **cork board** (notes with red string).
-- **Doors and trapdoors** for remaining Materia wood types (palm, cypress, baobab, maple, etc.).
+- **Marble**-themed blocks/items beyond current stonecutter set (exact scope TBD).
+- **Flower boxes** — additional variants beyond stone planter (TBD).
 
-#### Decorative building (in progress)
+#### Wood doors & trapdoors
 
-- **Shutters:** wall-mounted louvered panels for all Materia wood types (except nether); right-click or redstone toggles open/closed; joiner + stick + smooth-plank recipe (×2).
-- **Curtains:** 26 dye/carpet colors; attach to any face; custom curtain sound; carpet + stick recipe (×2).
-- **Awnings:** 26 colors; roof-frame-style sloped canopy with shared arm texture; stick + colored carpet + white carpet + rope recipe; cutout rendering.
-- **Floor rugs:** 2×1 double blocks (foot/head halves). **Medallion** (pattern 1), **Ornate** (2), **Rosette** (3), and **Lattice** (4) in red/blue/green/purple — woven on the loom from rug base + field dye + pattern (patterns crafted from paper + gold nugget + cotton). **Rare rugs** (5–10: Dragon, Diamonds, Navajo, Welcome, Agrabah, Rainbow) are loot-only from dungeon chest tiers (not craftable).
+- **Doors and trapdoors** for remaining Materia wood types (palm, cypress, baobab, maple, etc.) — vanilla-style models and brass hinge/handle recipes matching oak.
+
+#### Glazed terracotta
+
+- Ten Materia dye colors (**ochre**, **red ochre**, **olive**, **burgundy**, **tan**, **teal**, **indigo**, **tyrian purple**, **charcoal gray**, **taupe**) smelted from matching terracotta in Materia kiln (plus vanilla furnace smelting for compatibility).
+
+#### Decorative building
+
+- **Shutters:** wall-mounted louvered panels for all Materia wood types (except nether); right-click or redstone toggles open/closed; joiner + stick + smooth-plank recipe (×2). **Fix:** open-half model UVs — wide panel faces on E/W, thin edge faces on N/S.
+- **Curtains:** 26 dye/carpet colors; upright window placement (same rules as shutters); custom curtain sound; carpet + stick recipe (×2).
+- **Awnings:** 26 colors; roof-frame-style sloped canopy with shared arm texture; **inner/outer corner joins** like roof tiles (straight / inner-left / inner-right / outer-left / outer-right shapes); dedicated **corner triangle textures** per color when art exists; stick + colored carpet + white carpet + rope recipe; cutout rendering.
+- **Floor rugs:** 2×1 double blocks (foot/head halves). **Medallion** (pattern 1), **Ornate** (2), **Rosette** (3), and **Lattice** (4) in red/blue/green/purple — woven on the loom from rug base + field dye + pattern item (patterns: paper + gold nugget + Materia flower; rug base: neutral blanket + 16× white/taupe string). **Rare rugs** (5–10: Dragon, Diamonds, Navajo, Welcome, Agrabah, Rainbow) are loot-only from structure chests (not craftable).
 - **Stone planter:** half-slab window box from stonecutter; two `#materia:planter_plants` slots; facing blockstate.
 - **Stone urn:** stonecutter-carved urn; one `#materia:urn_plants` slot (includes tall yucca/plantain); saplings display without growing.
-- **Stone decor:** stonecutter tiles/small bricks/polished variants (stone, marble, limestone, sandstone, blackstone) and **stone balustrade** fence rails.
-- **Stone trim:** columns and column capitals for stone, limestone, marble, sandstone, blackstone, and terracotta (plain decorative blocks; 3D block item models). **Cornices** and **brackets** for the same six materials (wall-mounted trim; dedicated item textures). **Stone acorn finials** for stone, limestone, marble, sandstone, and terracotta (stonecutter from base block). All from stonecutter except where noted.
-- **Metal finials:** bronze, gold, and wrought iron **spires**, **ball finials**, and **acorn finials** — tall cross models (2-block spire/ball, 1-block acorn); forged on the iron anvil from hot plate + rod with hammer, tongs, and chisel. Gold finials now use dedicated item icons.
+- **Stone decor:** stonecutter tiles/small bricks/polished variants (stone, marble, limestone, sandstone, blackstone).
+- **Balustrades:** **`materia:{material}_balustrade`** for **stone, limestone, marble, terracotta, blackstone, and sandstone** — stonecutter from matching base block; **connect only to the same material**; multipart straight, **L-corner**, **T**, and **4-way** joins; isolated segments keep a **facing** so N/S placement works; dedicated item icons.
+- **Stone trim:** columns and column capitals for stone, limestone, marble, sandstone, blackstone, and terracotta (plain decorative blocks; 3D block item models). **Cornices** and **brackets** for the same six materials (wall-mounted trim; dedicated item textures). **Stone acorn finials** for stone, limestone, marble, sandstone, and terracotta (stonecutter from base block).
+- **Metal finials:** bronze, gold, and wrought iron **spires**, **ball finials**, and **acorn finials** — tall cross models (2-block spire/ball, 1-block acorn); forged on the iron anvil from hot plate + rod with hammer, tongs, and chisel. Gold finials use dedicated item icons.
 - **Stone statues:** body + bust pairs for stone, limestone, marble, sandstone, blackstone, and terracotta; stonecutter-carved with per-material face textures; bust auto-aligns when stacked on its body.
-- **Wrought iron building:** fence, fence gate, door, **bracket**, and **grate** forged on the iron anvil (rods + bands for fence/gate; plates + rivets for door; band + wire + hammer + tongs for bracket; 4× wire + hammer + tongs for grate on iron or bronze anvil). **Fence gate fix:** open collision now matches model rotation for south/east facings. **Grate:** 1-pixel vertical panel (2-pixel collision); mount on any block face; N/S or E/W from placer look direction; cutout render; angled item icon.
-- **Glazed terracotta:** ten Materia dye colors (ochre, red ochre, olive, burgundy, tan, teal, indigo, tyrian purple, charcoal gray, taupe) smelted from matching terracotta in kiln/furnace kiln (and vanilla smelting recipe for compatibility).
+- **Wrought iron building:** fence, fence gate, door, **bracket**, and **grate** forged on the iron anvil (rods + bands for fence/gate; plates + rivets for door; band + wire + hammer + tongs for bracket; 4× wire + hammer + tongs for grate on iron or bronze anvil). **Fence:** thin centered panels that **connect to adjacent wrought iron fences only** (not gates) with post + side arms; isolated segments keep **facing** for N/S vs E/W orientation; side-arm UVs match face width (16 px broad faces, 2 px thin edges). **Fence gate fix:** open collision matches model rotation for south/east facings; gate stays a full-width panel (no fence-style connection). **Grate:** 1-pixel vertical panel (2-pixel collision); mount on any block face; N/S or E/W from placer look direction; cutout render; angled item icon.
 - **Marble & limestone slabs/stairs:** stonecutter from the base stone block (2 slabs or 1 stair per block).
-- **Shutters (fix):** open-half model UVs — wide panel faces on E/W, thin edge faces on N/S.
+
+#### Docs
+
+- Block pages for **balustrades**, **floor rugs**, **awnings**, and **glazed terracotta**; updated **wrought iron building**, **stone trim**, **shutters/curtains/planters**, and **roof tiles** docs for connection/corner behavior.
 
 ### 1.2.3 (TBD)
 

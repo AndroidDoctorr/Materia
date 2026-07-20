@@ -24,4 +24,5 @@ Classical trim and column pieces for stone, limestone, marble, sandstone, blacks
 ## Related
 
 - [Shutters, curtains, planters, and urns](shutters-curtains-planters.md)
+- [Balustrades](balustrades.md)
 - [Marble](marble.md) — worldgen and other marble stonecutter outputs

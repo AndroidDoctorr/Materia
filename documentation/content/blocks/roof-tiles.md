@@ -92,6 +92,8 @@ When two **`roof_tiles`** blocks meet at a right angle, they auto-connect like s
 
 Corners only connect to other **`roof_tiles`** blocks (any stage or covering — a bare frame can corner with a thatched one; each block keeps its own texture). Mixed facings on adjacent blocks still stay straight until they meet at 90°.
 
+**Awnings** use the same inner/outer corner shape rules; see [Awnings](awnings.md).
+
 Models reuse the existing frame/tile/thatch textures with a second slope element; dedicated corner textures can refine the look later.
 
 ## Breaking & cannonballs

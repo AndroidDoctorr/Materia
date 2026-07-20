@@ -45,20 +45,22 @@ Minor content release: finish wood sets, expand dye-colored building blocks, dec
 
 ### Glazed terracotta
 
-- [ ] **Glazed terracotta** for Materia dye colors not covered by vanilla (burgundy, tan, teal, verdigris, extended Torr palette where applicable).
+- [x] **Glazed terracotta** for Materia dye colors not covered by vanilla (burgundy, tan, teal, verdigris palette colors, extended Torr palette where applicable) — ten colors smelted from matching terracotta.
 
 ### Decorative building
 
 - [x] **Shutters** — all Materia wood types (12 variants); wall-mounted, toggle open/closed, redstone-aware.
-- [x] **Curtains** — 26 colors; any-face attachment; cutout render + custom sound.
+- [x] **Curtains** — 26 colors; upright window placement; cutout render + custom sound.
+- [x] **Awnings** — 26 colors; roof-frame geometry with inner/outer corner joins; carpet + rope recipe; corner triangle textures per color.
 - [x] **Stone planter** — half-slab planter with two plant slots (`#materia:planter_plants`).
 - [x] **Stone urn** — single tall-plant-capable slot (`#materia:urn_plants`).
-- [x] **Stone balustrade** and stonecutter tile/brick variants (stone, marble, limestone, sandstone, blackstone).
+- [x] **Balustrades** — stone, limestone, marble, terracotta, blackstone, sandstone; stonecutter; L/T/cross connection with facing on isolated segments; dedicated item icons.
+- [x] **Stonecutter tile/brick variants** (stone, marble, limestone, sandstone, blackstone).
 - [x] **Stone columns & capitals** — six materials (stone, limestone, marble, sandstone, blackstone, terracotta); stonecutter; 3D block item models.
 - [x] **Cornices & brackets** — same six materials; wall-mounted trim with corner connection (cornices) or solid backing (brackets); dedicated item textures.
 - [x] **Stone acorn finials** — stone, limestone, marble, sandstone, terracotta; stonecutter from base block.
 - [x] **Metal finials** — bronze, gold, wrought iron spires, ball finials, and acorn finials; iron-anvil recipes (plate + rod; hammer/tongs/chisel); gold item icons.
-- [x] **Wrought iron fence, gate, door, bracket & grate** — iron-anvil recipes (rods + bands / plates + rivets / band + wire / 4× wire); grate also on bronze anvil.
+- [x] **Wrought iron fence, gate, door, bracket & grate** — iron-anvil recipes (rods + bands / plates + rivets / band + wire / 4× wire); grate also on bronze anvil. Fence connects to other fences only (not gates); gate stays full-width when closed.
 - [x] **Floor rugs** — Medallion, Ornate, Rosette, Lattice (loom + patterns); rare loot rugs Dragon–Rainbow.
 - [x] **Awnings** — 26 colors; roof-frame geometry; carpet + rope recipe.
 - [x] **Wrought iron fence gate (fix)** — open collision matches south/east facings.
