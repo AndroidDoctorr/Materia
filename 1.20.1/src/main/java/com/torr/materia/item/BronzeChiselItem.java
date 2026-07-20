@@ -48,19 +48,17 @@ public class BronzeChiselItem extends Item {
     @Override
     public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity entity) {
         if (entity instanceof Player player && shouldActAsSilkTouch(player, state)) {
-            // Drop the block itself instead of its normal drops
             if (!level.isClientSide) {
-                level.destroyBlock(pos, false); // Don't drop normal items
+                ItemStack drop = new ItemStack(state.getBlock().asItem());
+                level.destroyBlock(pos, false);
                 stack.hurtAndBreak(1, entity, e -> e.broadcastBreakEvent(entity.getUsedItemHand()));
-                // Damage the hammer in offhand too
                 ItemStack offhandItem = player.getOffhandItem();
                 if (offhandItem.getItem() instanceof BronzeHammerItem ||
                     offhandItem.getItem() instanceof IronHammerItem ||
                     offhandItem.getItem() instanceof SteelHammerItem) {
                     offhandItem.hurtAndBreak(1, entity, e -> e.broadcastBreakEvent(InteractionHand.OFF_HAND));
                 }
-                // Drop the block itself
-                popResource(level, pos, new ItemStack(state.getBlock().asItem()));
+                popResource(level, pos, drop);
             }
             return true;
         }
@@ -80,15 +78,13 @@ public class BronzeChiselItem extends Item {
     }
 
     private boolean shouldActAsSilkTouch(Player player, BlockState state) {
-        // Check if player has compatible hammer in offhand (bronze, iron, or steel)
         ItemStack offhandItem = player.getOffhandItem();
-        if (!(offhandItem.getItem() instanceof BronzeHammerItem || 
+        if (!(offhandItem.getItem() instanceof BronzeHammerItem ||
               offhandItem.getItem() instanceof IronHammerItem ||
               offhandItem.getItem() instanceof SteelHammerItem)) {
             return false;
         }
-
-        // Bronze chisel always works on basic stone level blocks
+        // Mosaic block silk-touch harvest disabled — reserved for future Materia Signage mod.
         return isBasicStone(state);
     }
 

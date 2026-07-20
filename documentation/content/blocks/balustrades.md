@@ -1,6 +1,6 @@
 ## Stone balustrades
 
-Low carved stone rail segments for balconies, terraces, and roof edges. Added in the 1.2.2 decorative pass.
+Low carved stone rail segments for balconies, terraces, and roof edges. Added in the 1.3.0 decorative pass.
 
 ## Blocks
 

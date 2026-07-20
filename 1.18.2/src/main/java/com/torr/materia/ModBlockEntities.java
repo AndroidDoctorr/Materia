@@ -140,4 +140,14 @@ public class ModBlockEntities {
                         .register("basket_block_entity",
                                         () -> BlockEntityType.Builder.of(com.torr.materia.blockentity.BasketBlockEntity::new,
                                                         ModBlocks.BASKET.get()).build(null));
+
+        public static final RegistryObject<BlockEntityType<com.torr.materia.blockentity.PlanterBlockEntity>> PLANTER_BLOCK_ENTITY = BLOCK_ENTITIES
+                        .register("planter_block_entity",
+                                        () -> BlockEntityType.Builder.of(com.torr.materia.blockentity.PlanterBlockEntity::new,
+                                                        ModDecorBlocks.planterBlocks()).build(null));
+
+        public static final RegistryObject<BlockEntityType<com.torr.materia.blockentity.UrnBlockEntity>> URN_BLOCK_ENTITY = BLOCK_ENTITIES
+                        .register("urn_block_entity",
+                                        () -> BlockEntityType.Builder.of(com.torr.materia.blockentity.UrnBlockEntity::new,
+                                                        ModDecorBlocks.urnBlocks()).build(null));
 }

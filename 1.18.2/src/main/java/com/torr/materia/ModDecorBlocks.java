@@ -6,7 +6,9 @@ import com.torr.materia.block.BracketBlock;
 import com.torr.materia.block.CorniceBlock;
 import com.torr.materia.block.CurtainsBlock;
 import com.torr.materia.block.FinialBlock;
+import com.torr.materia.block.PlanterBlock;
 import com.torr.materia.block.ShutterBlock;
+import com.torr.materia.block.UrnBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.block.SoundType;
@@ -140,19 +142,19 @@ public final class ModDecorBlocks {
     public static final RegistryObject<Block> SANDSTONE_TILES = stoneCube("sandstone_tiles");
     public static final RegistryObject<Block> BLACKSTONE_TILES = stoneCube("blackstone_tiles");
 
-    public static final RegistryObject<Block> STONE_URN = sculptureBlock("stone_urn");
-    public static final RegistryObject<Block> MARBLE_URN = sculptureBlock("marble_urn");
-    public static final RegistryObject<Block> LIMESTONE_URN = sculptureBlock("limestone_urn");
-    public static final RegistryObject<Block> SANDSTONE_URN = sculptureBlock("sandstone_urn");
-    public static final RegistryObject<Block> BLACKSTONE_URN = sculptureBlock("blackstone_urn");
-    public static final RegistryObject<Block> TERRACOTTA_URN = sculptureBlock("terracotta_urn");
+    public static final RegistryObject<Block> STONE_URN = sculptureUrn("stone_urn");
+    public static final RegistryObject<Block> MARBLE_URN = sculptureUrn("marble_urn");
+    public static final RegistryObject<Block> LIMESTONE_URN = sculptureUrn("limestone_urn");
+    public static final RegistryObject<Block> SANDSTONE_URN = sculptureUrn("sandstone_urn");
+    public static final RegistryObject<Block> BLACKSTONE_URN = sculptureUrn("blackstone_urn");
+    public static final RegistryObject<Block> TERRACOTTA_URN = sculptureUrn("terracotta_urn");
 
-    public static final RegistryObject<Block> STONE_PLANTER = sculptureBlock("stone_planter");
-    public static final RegistryObject<Block> MARBLE_PLANTER = sculptureBlock("marble_planter");
-    public static final RegistryObject<Block> LIMESTONE_PLANTER = sculptureBlock("limestone_planter");
-    public static final RegistryObject<Block> SANDSTONE_PLANTER = sculptureBlock("sandstone_planter");
-    public static final RegistryObject<Block> BLACKSTONE_PLANTER = sculptureBlock("blackstone_planter");
-    public static final RegistryObject<Block> TERRACOTTA_PLANTER = sculptureBlock("terracotta_planter");
+    public static final RegistryObject<Block> STONE_PLANTER = sculpturePlanter("stone_planter");
+    public static final RegistryObject<Block> MARBLE_PLANTER = sculpturePlanter("marble_planter");
+    public static final RegistryObject<Block> LIMESTONE_PLANTER = sculpturePlanter("limestone_planter");
+    public static final RegistryObject<Block> SANDSTONE_PLANTER = sculpturePlanter("sandstone_planter");
+    public static final RegistryObject<Block> BLACKSTONE_PLANTER = sculpturePlanter("blackstone_planter");
+    public static final RegistryObject<Block> TERRACOTTA_PLANTER = sculpturePlanter("terracotta_planter");
 
     public static final RegistryObject<Block> STONE_COLUMN = sculptureBlock("stone_column");
     public static final RegistryObject<Block> MARBLE_COLUMN = sculptureBlock("marble_column");
@@ -226,6 +228,14 @@ public final class ModDecorBlocks {
 
     private static RegistryObject<Block> sculptureBlock(String name) {
         return ModBlocks.registerDecorBlock(name, () -> new Block(STONE_SCULPTURE_PROPS));
+    }
+
+    private static RegistryObject<Block> sculptureUrn(String name) {
+        return ModBlocks.registerDecorBlock(name, () -> new UrnBlock(STONE_SCULPTURE_PROPS));
+    }
+
+    private static RegistryObject<Block> sculpturePlanter(String name) {
+        return ModBlocks.registerDecorBlock(name, () -> new PlanterBlock(STONE_SCULPTURE_PROPS));
     }
 
     private static RegistryObject<Block> tallFinial(String name) {
@@ -364,4 +374,20 @@ public final class ModDecorBlocks {
             STONE_ACORN_FINIAL, LIMESTONE_ACORN_FINIAL, MARBLE_ACORN_FINIAL, SANDSTONE_ACORN_FINIAL,
             TERRACOTTA_ACORN_FINIAL
     };
+
+    public static Block[] planterBlocks() {
+        Block[] blocks = new Block[ALL_PLANTERS.length];
+        for (int i = 0; i < ALL_PLANTERS.length; i++) {
+            blocks[i] = ALL_PLANTERS[i].get();
+        }
+        return blocks;
+    }
+
+    public static Block[] urnBlocks() {
+        Block[] blocks = new Block[ALL_URNS.length];
+        for (int i = 0; i < ALL_URNS.length; i++) {
+            blocks[i] = ALL_URNS[i].get();
+        }
+        return blocks;
+    }
 }

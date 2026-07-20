@@ -148,4 +148,14 @@ public class ModBlockEntities {
                         .register("urn_block_entity",
                                         () -> BlockEntityType.Builder.of(com.torr.materia.blockentity.UrnBlockEntity::new,
                                                         ModDecorBlocks.urnBlocks()).build(null));
+
+        /*
+         * DISABLED — reserved for a separate Materia Signage mod.
+         * Reference implementation: blockentity/MosaicBlockEntity.java (excluded from compile in build.gradle).
+         *
+        public static final RegistryObject<BlockEntityType<com.torr.materia.blockentity.MosaicBlockEntity>> MOSAIC_BLOCK_ENTITY = BLOCK_ENTITIES
+                        .register("mosaic_block_entity",
+                                        () -> BlockEntityType.Builder.of(com.torr.materia.blockentity.MosaicBlockEntity::new,
+                                                        ModDecorBlocks.MOSAIC_BLOCK.get()).build(null));
+         */
 }

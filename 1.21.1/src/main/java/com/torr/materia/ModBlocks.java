@@ -640,25 +640,25 @@ public class ModBlocks {
 
         // GLAZED TERRACOTTA
         public static final RegistryObject<Block> OCHRE_GLAZED_TERRACOTTA = registerBlock("ochre_glazed_terracotta",
-                        () -> new net.minecraft.world.level.block.GlazedTerracottaBlock(BlockBehaviour.Properties.copy(Blocks.ORANGE_GLAZED_TERRACOTTA)));
+                        () -> new net.minecraft.world.level.block.GlazedTerracottaBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.ORANGE_GLAZED_TERRACOTTA)));
         public static final RegistryObject<Block> RED_OCHRE_GLAZED_TERRACOTTA = registerBlock("red_ochre_glazed_terracotta",
-                        () -> new net.minecraft.world.level.block.GlazedTerracottaBlock(BlockBehaviour.Properties.copy(Blocks.RED_GLAZED_TERRACOTTA)));
+                        () -> new net.minecraft.world.level.block.GlazedTerracottaBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.RED_GLAZED_TERRACOTTA)));
         public static final RegistryObject<Block> OLIVE_GLAZED_TERRACOTTA = registerBlock("olive_glazed_terracotta",
-                        () -> new net.minecraft.world.level.block.GlazedTerracottaBlock(BlockBehaviour.Properties.copy(Blocks.GREEN_GLAZED_TERRACOTTA)));
+                        () -> new net.minecraft.world.level.block.GlazedTerracottaBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GREEN_GLAZED_TERRACOTTA)));
         public static final RegistryObject<Block> BURGUNDY_GLAZED_TERRACOTTA = registerBlock("burgundy_glazed_terracotta",
-                        () -> new net.minecraft.world.level.block.GlazedTerracottaBlock(BlockBehaviour.Properties.copy(Blocks.RED_GLAZED_TERRACOTTA)));
+                        () -> new net.minecraft.world.level.block.GlazedTerracottaBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.RED_GLAZED_TERRACOTTA)));
         public static final RegistryObject<Block> TAN_GLAZED_TERRACOTTA = registerBlock("tan_glazed_terracotta",
-                        () -> new net.minecraft.world.level.block.GlazedTerracottaBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_GLAZED_TERRACOTTA)));
+                        () -> new net.minecraft.world.level.block.GlazedTerracottaBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BROWN_GLAZED_TERRACOTTA)));
         public static final RegistryObject<Block> TEAL_GLAZED_TERRACOTTA = registerBlock("teal_glazed_terracotta",
-                        () -> new net.minecraft.world.level.block.GlazedTerracottaBlock(BlockBehaviour.Properties.copy(Blocks.CYAN_GLAZED_TERRACOTTA)));
+                        () -> new net.minecraft.world.level.block.GlazedTerracottaBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CYAN_GLAZED_TERRACOTTA)));
         public static final RegistryObject<Block> INDIGO_GLAZED_TERRACOTTA = registerBlock("indigo_glazed_terracotta",
-                        () -> new net.minecraft.world.level.block.GlazedTerracottaBlock(BlockBehaviour.Properties.copy(Blocks.BLUE_GLAZED_TERRACOTTA)));
+                        () -> new net.minecraft.world.level.block.GlazedTerracottaBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLUE_GLAZED_TERRACOTTA)));
         public static final RegistryObject<Block> TYRIAN_PURPLE_GLAZED_TERRACOTTA = registerBlock("tyrian_purple_glazed_terracotta",
-                        () -> new net.minecraft.world.level.block.GlazedTerracottaBlock(BlockBehaviour.Properties.copy(Blocks.PURPLE_GLAZED_TERRACOTTA)));
+                        () -> new net.minecraft.world.level.block.GlazedTerracottaBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.PURPLE_GLAZED_TERRACOTTA)));
         public static final RegistryObject<Block> CHARCOAL_GRAY_GLAZED_TERRACOTTA = registerBlock("charcoal_gray_glazed_terracotta",
-                        () -> new net.minecraft.world.level.block.GlazedTerracottaBlock(BlockBehaviour.Properties.copy(Blocks.BLACK_GLAZED_TERRACOTTA)));
+                        () -> new net.minecraft.world.level.block.GlazedTerracottaBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACK_GLAZED_TERRACOTTA)));
         public static final RegistryObject<Block> TAUPE_GLAZED_TERRACOTTA = registerBlock("taupe_glazed_terracotta",
-                        () -> new net.minecraft.world.level.block.GlazedTerracottaBlock(BlockBehaviour.Properties.copy(Blocks.GRAY_GLAZED_TERRACOTTA)));
+                        () -> new net.minecraft.world.level.block.GlazedTerracottaBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GRAY_GLAZED_TERRACOTTA)));
         // BUILDING BLOCKS
         public static final RegistryObject<Block> WATTLE_AND_DAUB = registerBlock("wattle_and_daub",
                         () -> new Block(BlockBehaviour.Properties.of().strength(0.5f)

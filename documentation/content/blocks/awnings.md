@@ -1,6 +1,6 @@
 ## Awnings
 
-Sloped fabric canopies for shopfronts and patios. Added in the 1.2.2 decorative pass.
+Sloped fabric canopies for shopfronts and patios. Added in the 1.3.0 decorative pass.
 
 ## Blocks
 

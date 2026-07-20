@@ -68,6 +68,7 @@ This section documents Materia blocks. Each block page should include:
 - [Floor rugs](floor-rugs.md)
 - [Stone balustrades](balustrades.md)
 - [Glazed terracotta (Materia colors)](glazed-terracotta.md)
+- [Mosaic & alphabet blocks (experimental)](mosaic-and-alphabet-blocks.md)
 - [Stone columns, capitals, cornices & brackets](stone-trim.md)
 - [Metal finials](metal-finials.md)
 - [Wrought iron fence, gate, door, bracket & grate](wrought-iron-building.md)

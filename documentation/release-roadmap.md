@@ -1,43 +1,24 @@
 # Release roadmap
 
-Planned work for upcoming Materia releases after **1.2.0**. This is a living checklist — move items to `CHANGELOG.md` when they ship.
+Planned work for upcoming Materia releases after **1.2.0**. The next release is **1.3.0** (architecture update + decor). Patch fixes ship as **1.3.1** only if needed.
 
 For mod-pack compatibility work (tags, optional datapacks, pipes, etc.), see [`mod-compatibility-roadmap.md`](mod-compatibility-roadmap.md).
 
+**Mosaic & alphabet blocks** are planned as a **separate optional mod** (works with or without Materia). Prototype code remains in this repo but is not shipped in Materia.
+
 ---
 
-## 1.2.1 — bug fixes & copper roofs
+## 1.3.0 — architecture update, decor & fixes
 
-Patch release focused on regressions from 1.2.0 and one small building feature.
+Multi-version layout plus the decorative-building pass that was previously split across intermediate version numbers.
 
-### Cannons (again)
+### Bug fixes & roofs
 
 - [x] **E/W vs N/S barrel rotation:** Aim yaw sign in the barrel BER was wrong on E/W (clockwise vs counterclockwise). N/S uses `-yaw`, E/W uses `+yaw`; static mesh offset (+180 on 1.18/1.19) unchanged.
-
-### Rainbow eucalyptus
-
-- [x] **Sapling drops:** Rainbow eucalyptus logs/leaves should drop **`rainbow_eucalyptus_sapling`** (or equivalent) like normal eucalyptus; currently missing or broken.
-
-### Copper roofs
-
-- [x] **Copper roof tiles:** Right-click a placed **`roof_frame`** with a **copper plate** to sheet the slope (anvil hammer sound), or craft **`roof_frame` + `copper_plate`** → **`roof_copper`** item.
-- [x] **Oxidation stages:** Copper roofs weather through four stages (vanilla copper block textures on the slope; custom corner triangle art per stage) via random tick, matching vanilla copper pacing.
-- [x] **Sounds:** copper placement uses **`SoundEvents.ANVIL_USE`**.
-
-### Shingle roofs
-
-- [x] **Shingles:** **`shingle.json`** — 2× **`materia:tar`** (or **`shingle_from_pitch.json`** with 2× pitch) + any **`#materia:smooth_planks`** → **4× shingle**.
-- [x] **Shingle roof block:** shapeless **4× shingle + roof frame** → **`shingle_roof`** item; or tile a frame one shingle at a time (four stages). Placement uses **`block.wood.scrape`** (`wood_scrape.ogg`).
-
-### Wood doors & trapdoors (partial)
-
-- [x] **Fig, cedar, eucalyptus, and rubber wood** doors and trapdoors — vanilla-style models, brass hinge/handle recipes matching oak.
-
----
-
-## 1.2.2 — wood doors (remaining), glazed terracotta, decor, cork
-
-Minor content release: finish wood sets, expand dye-colored building blocks, decorative building parts, and a cork oak line.
+- [x] **Rainbow eucalyptus sapling drops**
+- [x] **Copper roof tiles** — plate on roof frame; four oxidation stages; custom corner art
+- [x] **Shingle roofs** — tar/pitch + smooth planks → shingles; shapeless 4× shingle + roof frame
+- [x] **Fig, cedar, eucalyptus, and rubber wood** doors and trapdoors
 
 ### Wood doors & trapdoors
 
@@ -45,26 +26,15 @@ Minor content release: finish wood sets, expand dye-colored building blocks, dec
 
 ### Glazed terracotta
 
-- [x] **Glazed terracotta** for Materia dye colors not covered by vanilla (burgundy, tan, teal, verdigris palette colors, extended Torr palette where applicable) — ten colors smelted from matching terracotta.
+- [x] **Glazed terracotta** for Materia dye colors not covered by vanilla — ten colors smelted from matching terracotta.
 
 ### Decorative building
 
-- [x] **Shutters** — all Materia wood types (12 variants); wall-mounted, toggle open/closed, redstone-aware.
-- [x] **Curtains** — 26 colors; upright window placement; cutout render + custom sound.
-- [x] **Awnings** — 26 colors; roof-frame geometry with inner/outer corner joins; carpet + rope recipe; corner triangle textures per color.
-- [x] **Stone planter** — half-slab planter with two plant slots (`#materia:planter_plants`).
-- [x] **Stone urn** — single tall-plant-capable slot (`#materia:urn_plants`).
-- [x] **Balustrades** — stone, limestone, marble, terracotta, blackstone, sandstone; stonecutter; L/T/cross connection with facing on isolated segments; dedicated item icons.
-- [x] **Stonecutter tile/brick variants** (stone, marble, limestone, sandstone, blackstone).
-- [x] **Stone columns & capitals** — six materials (stone, limestone, marble, sandstone, blackstone, terracotta); stonecutter; 3D block item models.
-- [x] **Cornices & brackets** — same six materials; wall-mounted trim with corner connection (cornices) or solid backing (brackets); dedicated item textures.
-- [x] **Stone acorn finials** — stone, limestone, marble, sandstone, terracotta; stonecutter from base block.
-- [x] **Metal finials** — bronze, gold, wrought iron spires, ball finials, and acorn finials; iron-anvil recipes (plate + rod; hammer/tongs/chisel); gold item icons.
-- [x] **Wrought iron fence, gate, door, bracket & grate** — iron-anvil recipes (rods + bands / plates + rivets / band + wire / 4× wire); grate also on bronze anvil. Fence connects to other fences only (not gates); gate stays full-width when closed.
-- [x] **Floor rugs** — Medallion, Ornate, Rosette, Lattice (loom + patterns); rare loot rugs Dragon–Rainbow.
-- [x] **Awnings** — 26 colors; roof-frame geometry; carpet + rope recipe.
-- [x] **Wrought iron fence gate (fix)** — open collision matches south/east facings.
-- [x] **Marble & limestone slabs/stairs** — stonecutter from base stone.
+- [x] **Shutters**, **curtains**, **awnings**, **floor rugs**
+- [x] **Stone planter** and **stone urn** (planting on 1.18.2, 1.19.2, and 1.20.1)
+- [x] **Balustrades**, stonecutter tile/brick variants, **columns & capitals**, **cornices & brackets**, **stone & metal finials**
+- [x] **Wrought iron fence, gate, door, bracket & grate**
+- [x] **Marble & limestone slabs/stairs**
 - [ ] **Marble**-themed blocks/items beyond current stonecutter set (exact scope TBD).
 - [ ] **Flower boxes** — additional variants beyond stone planter (TBD).
 
@@ -77,25 +47,28 @@ Minor content release: finish wood sets, expand dye-colored building blocks, dec
 
 ---
 
-## 1.2.2 or 1.2.3 — exploration & whimsy
+## 1.4 — cart (primary focus)
 
-Lower priority or larger-scope ideas; may slip to a later patch.
+Land vehicle update — mainly the **hand cart**, with room for maybe one or two other vehicles or entities, but probably not.
 
-### Bark
+- [ ] **Cart** — design, movement, controls, recipes, and balance pass.
+
+---
+
+## Later (1.?)
+
+Lower priority or larger-scope ideas; version number TBD.
+
+### Exploration & whimsy
 
 - [ ] **Other uses for bark** (beyond current hewing/tapping — crafting, fuel, mulch, insulation, etc.).
-
-### Willow
-
 - [ ] **Willow trees** (biome placement, droopy leaves, wood set pieces as scope allows).
-
-### Early mining / fire
-
 - [ ] **Fire-setting** or similar early mining technique (historical progression hook — design pass needed).
+- [ ] **Air chariots:** boat hull + **phantom membranes** + propulsion item/block; flying boat-style vehicle. Large feature — needs movement, controls, and balance pass.
 
-### Airiots (air chariots)
+### Signage (separate mod)
 
-- [ ] **Air chariots:** boat hull + **phantom membranes** + some propulsion item/block; flying boat-style vehicle. Large feature — needs movement, controls, and balance pass before committing to a version number.
+- [ ] **Mosaic block**, **mosaic stylus**, and **character blocks** — optional companion mod; see [`content/blocks/mosaic-and-alphabet-blocks.md`](content/blocks/mosaic-and-alphabet-blocks.md).
 
 ---
 
@@ -103,4 +76,4 @@ Lower priority or larger-scope ideas; may slip to a later patch.
 
 1. When starting a release branch, copy the relevant section into a **`testing-x.y.z.md`** checklist if needed.
 2. When an item ships, check it off here and add a bullet under **`CHANGELOG.md`** for that version.
-3. If scope grows, split **1.2.2** vs **1.2.3** explicitly in this file rather than letting “maybe” items block a release.
+3. If scope grows, split **1.3.0** vs **1.4** explicitly in this file rather than letting “maybe” items block a release.

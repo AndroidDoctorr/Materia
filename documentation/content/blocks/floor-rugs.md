@@ -1,6 +1,6 @@
 ## Floor rugs
 
-Two-block-long decorative floor rugs (1 wide × 2 long). Added in the 1.2.2 decorative pass.
+Two-block-long decorative floor rugs (1 wide × 2 long). Added in the 1.3.0 decorative pass.
 
 ## Placement
 

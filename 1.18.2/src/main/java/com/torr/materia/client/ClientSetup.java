@@ -193,11 +193,15 @@ public class ClientSetup {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.THATCH_SLOPE.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.ROOF_TILES.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.FIG_DOOR.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.CEDAR_DOOR.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.EUCALYPTUS_DOOR.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.WROUGHT_IRON_DOOR.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.WROUGHT_IRON_FENCE.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.WROUGHT_IRON_FENCE_GATE.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.WROUGHT_IRON_GRATE.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.FIG_TRAPDOOR.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.CEDAR_TRAPDOOR.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.EUCALYPTUS_TRAPDOOR.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.RUBBER_WOOD_DOOR.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.RUBBER_WOOD_TRAPDOOR.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.SANDSTONE_BUST.get(), RenderType.cutout());
@@ -209,6 +213,8 @@ public class ClientSetup {
             BlockEntityRenderers.register(ModBlockEntities.TABLE_BLOCK_ENTITY.get(), TableRenderer::new);
             BlockEntityRenderers.register(ModBlockEntities.CANNON_BLOCK_ENTITY.get(), CannonRenderer::new);
             BlockEntityRenderers.register(ModBlockEntities.SPINNING_WHEEL_BLOCK_ENTITY.get(), SpinningWheelRenderer::new);
+            BlockEntityRenderers.register(ModBlockEntities.PLANTER_BLOCK_ENTITY.get(), PottedPlantRenderer.Planter::new);
+            BlockEntityRenderers.register(ModBlockEntities.URN_BLOCK_ENTITY.get(), PottedPlantRenderer.Urn::new);
             
             // Register custom bed renderer for all beds (handles both custom and vanilla)
             BlockEntityRenderers.register(net.minecraft.world.level.block.entity.BlockEntityType.BED, 

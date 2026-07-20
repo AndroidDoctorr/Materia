@@ -21,7 +21,7 @@ import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.client.color.item.ItemColors;
 import net.minecraft.client.renderer.BiomeColors;
-import com.torr.materia.client.PottedPlantRenderer;
+// import com.torr.materia.client.MosaicRenderer; // reserved for future Materia Signage mod
 import com.torr.materia.client.WaterPotRenderer;
 import com.torr.materia.client.DryingRackRenderer;
 import com.torr.materia.client.TableRenderer;
@@ -215,7 +215,8 @@ public class ClientSetup {
             BlockEntityRenderers.register(ModBlockEntities.SPINNING_WHEEL_BLOCK_ENTITY.get(), SpinningWheelRenderer::new);
             BlockEntityRenderers.register(ModBlockEntities.PLANTER_BLOCK_ENTITY.get(), PottedPlantRenderer.Planter::new);
             BlockEntityRenderers.register(ModBlockEntities.URN_BLOCK_ENTITY.get(), PottedPlantRenderer.Urn::new);
-            
+            // BlockEntityRenderers.register(ModBlockEntities.MOSAIC_BLOCK_ENTITY.get(), MosaicRenderer::new);
+
             // Register custom bed renderer for all beds (handles both custom and vanilla)
             BlockEntityRenderers.register(net.minecraft.world.level.block.entity.BlockEntityType.BED, 
                 com.torr.materia.client.renderer.CustomBedRenderer::new);

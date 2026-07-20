@@ -211,6 +211,8 @@ public class ClientSetup {
             BlockEntityRenderers.register(ModBlockEntities.TABLE_BLOCK_ENTITY.get(), TableRenderer::new);
             BlockEntityRenderers.register(ModBlockEntities.CANNON_BLOCK_ENTITY.get(), CannonRenderer::new);
             BlockEntityRenderers.register(ModBlockEntities.SPINNING_WHEEL_BLOCK_ENTITY.get(), SpinningWheelRenderer::new);
+            BlockEntityRenderers.register(ModBlockEntities.PLANTER_BLOCK_ENTITY.get(), PottedPlantRenderer.Planter::new);
+            BlockEntityRenderers.register(ModBlockEntities.URN_BLOCK_ENTITY.get(), PottedPlantRenderer.Urn::new);
             
             // Register custom bed renderer for all beds (handles both custom and vanilla)
             BlockEntityRenderers.register(net.minecraft.world.level.block.entity.BlockEntityType.BED, 

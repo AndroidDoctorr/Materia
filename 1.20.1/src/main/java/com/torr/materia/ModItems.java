@@ -21,6 +21,7 @@ import com.torr.materia.item.MagnetItem;
 import com.torr.materia.item.DynamiteItem;
 import com.torr.materia.item.BombItem;
 import com.torr.materia.item.CannonballItem;
+// import com.torr.materia.item.MosaicStylusItem; // reserved for future Materia Signage mod
 import com.torr.materia.item.TaroItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
@@ -2197,4 +2198,12 @@ public class ModItems {
         public static final RegistryObject<Item> STRONG_POULTICE = ITEMS.register("strong_poultice",
                         () -> new Item(new Item.Properties()
                                         ));
+
+        /*
+         * DISABLED — reserved for a separate Materia Signage mod.
+         * Reference implementation: item/MosaicStylusItem.java (excluded from compile in build.gradle).
+         *
+        public static final RegistryObject<Item> MOSAIC_STYLUS = ITEMS.register("mosaic_stylus",
+                        () -> new MosaicStylusItem(new Item.Properties().stacksTo(1).durability(128)));
+         */
 }

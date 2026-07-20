@@ -1198,6 +1198,10 @@ public class ModBlocks {
                                         block.get(),
                                         new Item.Properties()
                                                         .tab(net.minecraft.world.item.CreativeModeTab.TAB_BUILDING_BLOCKS)));
+                } else if (name.endsWith("_door")) {
+                        ModItems.ITEMS.register(name, () -> new net.minecraft.world.item.DoubleHighBlockItem(block.get(),
+                                        new Item.Properties()
+                                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_BUILDING_BLOCKS)));
                 } else {
                         ModItems.ITEMS.register(name, () -> new BlockItem(block.get(),
                                         new Item.Properties()

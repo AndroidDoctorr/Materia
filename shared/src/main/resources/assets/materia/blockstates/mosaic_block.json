@@ -1,0 +1,30 @@
+{
+    "variants": {
+        "facing=up": {
+            "model": "materia:block/mosaic_block"
+        },
+        "facing=down": {
+            "model": "materia:block/mosaic_block",
+            "x": 180
+        },
+        "facing=north": {
+            "model": "materia:block/mosaic_block",
+            "x": 90
+        },
+        "facing=south": {
+            "model": "materia:block/mosaic_block",
+            "x": 90,
+            "y": 180
+        },
+        "facing=west": {
+            "model": "materia:block/mosaic_block",
+            "x": 90,
+            "y": 270
+        },
+        "facing=east": {
+            "model": "materia:block/mosaic_block",
+            "x": 90,
+            "y": 90
+        }
+    }
+}

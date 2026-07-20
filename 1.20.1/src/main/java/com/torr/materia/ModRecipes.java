@@ -16,6 +16,8 @@ import com.torr.materia.recipe.BronzeAnvilRecipe;
 import com.torr.materia.recipe.IronAnvilRecipe;
 import com.torr.materia.recipe.RugBaseRecipe;
 import com.torr.materia.recipe.RugWeavingRecipe;
+// import com.torr.materia.recipe.MosaicBlockCraftRecipe; // reserved for future Materia Signage mod
+// import com.torr.materia.recipe.MosaicCopyRecipe; // reserved for future Materia Signage mod
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -83,6 +85,17 @@ public class ModRecipes {
 
     public static final RegistryObject<RecipeSerializer<RugWeavingRecipe>> RUG_WEAVING_SERIALIZER =
             RECIPE_SERIALIZERS.register("rug_weaving", () -> new SimpleCraftingRecipeSerializer<>(RugWeavingRecipe::new));
+
+    /*
+     * DISABLED — reserved for a separate Materia Signage mod.
+     * Reference implementations: recipe/MosaicBlockCraftRecipe.java, recipe/MosaicCopyRecipe.java
+     *
+    public static final RegistryObject<RecipeSerializer<MosaicBlockCraftRecipe>> MOSAIC_BLOCK_CRAFT_SERIALIZER =
+            RECIPE_SERIALIZERS.register("mosaic_block_craft", () -> new SimpleCraftingRecipeSerializer<>(MosaicBlockCraftRecipe::new));
+
+    public static final RegistryObject<RecipeSerializer<MosaicCopyRecipe>> MOSAIC_COPY_SERIALIZER =
+            RECIPE_SERIALIZERS.register("mosaic_copy", () -> new SimpleCraftingRecipeSerializer<>(MosaicCopyRecipe::new));
+     */
 
     // Recipe types (registered early)
     public static final RegistryObject<RecipeType<FirePitRecipe>> FIRE_PIT_TYPE =

@@ -6,13 +6,29 @@ Planned work is tracked in [`documentation/release-roadmap.md`](documentation/re
 
 ## Unreleased
 
-### 1.2.2 (planned)
+## 1.3.0
 
-#### Still planned
+Architecture update after **1.2.0**: multi-version layout (1.18.2–1.21.1), shared assets, and a large decorative-building pass. Patch fixes ship as **1.3.1** only if needed.
+
+#### Architecture
+
+- **Multi-version repo:** shared resources plus per-port Java; decor and recipes ship on all supported Forge versions.
+- **Mosaic & alphabet blocks:** prototype code kept in-repo but **not shipped in Materia** — planned as a separate optional signage mod.
+- **Planter & urn planting:** interactive block entities on **1.18.2**, **1.19.2**, and **1.20.1**.
+
+#### Still planned (may slip past 1.3.0)
 
 - **Cork oak**, **cork**, cork bottles/item frames, **cork board** (notes with red string).
 - **Marble**-themed blocks/items beyond current stonecutter set (exact scope TBD).
 - **Flower boxes** — additional variants beyond stone planter (TBD).
+
+#### Bug fixes & roofs
+
+- **Cannons:** fix E/W vs N/S barrel model rotation (axis-dependent aim yaw sign in BER; firing unchanged).
+- **Rainbow eucalyptus:** leaves from rainbow trees tagged `rainbow=true` → drop rainbow saplings (5% chance, same as normal).
+- **Copper roofs:** copper plate on roof frame (shapeless craft or right-click); vanilla-style oxidation on placed blocks; custom corner textures per stage.
+- **Shingle roofs:** tar/pitch + smooth planks → shingles; 4 shingles + roof frame → shingle roof block; wood scrape sound on placement.
+- **Wood doors and trapdoors:** fig, cedar, eucalyptus, and rubber wood — vanilla-style models, brass hinge/handle recipes matching oak.
 
 #### Wood doors & trapdoors
 
@@ -41,18 +57,12 @@ Planned work is tracked in [`documentation/release-roadmap.md`](documentation/re
 #### Docs
 
 - Block pages for **balustrades**, **floor rugs**, **awnings**, and **glazed terracotta**; updated **wrought iron building**, **stone trim**, **shutters/curtains/planters**, and **roof tiles** docs for connection/corner behavior.
+- Reference page for mosaic & alphabet blocks (separate mod): [`documentation/content/blocks/mosaic-and-alphabet-blocks.md`](documentation/content/blocks/mosaic-and-alphabet-blocks.md)
 
-### 1.2.3 (TBD)
+### 1.4 (planned)
 
-- See release roadmap — bark uses, willow, fire-setting, airiots (if not shipped in 1.2.2).
-
-## 1.2.1
-
-- **Cannons:** fix E/W vs N/S barrel model rotation (axis-dependent aim yaw sign in BER; firing unchanged).
-- **Rainbow eucalyptus:** leaves from rainbow trees tagged `rainbow=true` → drop rainbow saplings (5% chance, same as normal).
-- **Copper roofs:** copper plate on roof frame (shapeless craft or right-click); vanilla-style oxidation on placed blocks; custom corner textures per stage.
-- **Shingle roofs:** tar/pitch + smooth planks → shingles; 4 shingles + roof frame → shingle roof block; wood scrape sound on placement.
-- **Wood doors and trapdoors:** fig, cedar, eucalyptus, and rubber wood — brass hinge/handle recipes matching vanilla oak pattern.
+- **Cart** — primary focus; land vehicle / hand-cart content. Maybe other vehicles or entities, but probably not.
+- See release roadmap — bark uses, willow, fire-setting, airiots, cork (if not shipped in 1.3.0).
 
 ## 1.2.0
 

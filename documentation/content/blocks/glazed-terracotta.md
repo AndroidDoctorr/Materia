@@ -1,6 +1,6 @@
 ## Glazed terracotta
 
-Directional glazed terracotta blocks for Materia dye colors that vanilla does not cover. Added in the 1.2.2 decorative pass.
+Directional glazed terracotta blocks for Materia dye colors that vanilla does not cover. Added in the 1.3.0 decorative pass.
 
 ## Blocks
 

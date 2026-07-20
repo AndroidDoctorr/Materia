@@ -121,6 +121,19 @@ sourceSets.main.resources {
 // (Mod should still run fine without JEI.)
 sourceSets.main.java {
     // JEI integration enabled (optional dependency)
+
+    // Mosaic / character blocks — reference code for a future Materia Signage mod (not compiled into this jar).
+    exclude 'com/torr/materia/block/MosaicBlock.java'
+    exclude 'com/torr/materia/block/AlphabetBlock.java'
+    exclude 'com/torr/materia/blockentity/MosaicBlockEntity.java'
+    exclude 'com/torr/materia/mosaic/**'
+    exclude 'com/torr/materia/item/MosaicBlockItem.java'
+    exclude 'com/torr/materia/item/MosaicStylusItem.java'
+    exclude 'com/torr/materia/item/AlphabetBlockItem.java'
+    exclude 'com/torr/materia/recipe/MosaicBlockCraftRecipe.java'
+    exclude 'com/torr/materia/recipe/MosaicCopyRecipe.java'
+    exclude 'com/torr/materia/client/MosaicRenderer.java'
+    exclude 'com/torr/materia/client/MosaicRenderTypes.java'
 }
 
 repositories {
@@ -176,6 +189,20 @@ tasks.named('processResources', ProcessResources).configure {
             mod_authors: mod_authors, mod_description: mod_description,
     ]
     inputs.properties replaceProperties
+
+    // Mosaic / character blocks — reference assets for a future Materia Signage mod (not shipped in Materia).
+    exclude('assets/materia/blockstates/mosaic_block.json')
+    exclude('assets/materia/blockstates/character_block_*.json')
+    exclude('assets/materia/models/block/mosaic_block.json')
+    exclude('assets/materia/models/block/character_block_*.json')
+    exclude('assets/materia/models/block/alphabet_block_sample.json')
+    exclude('assets/materia/models/item/mosaic_*.json')
+    exclude('assets/materia/models/item/character_block_*.json')
+    exclude('assets/materia/textures/block/characters/**')
+    exclude('data/materia/recipes/mosaic_*.json')
+    exclude('data/materia/recipes/character_block_*.json')
+    exclude('data/materia/loot_tables/blocks/mosaic_block.json')
+    exclude('data/materia/loot_tables/blocks/character_block_*.json')
 
     filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
         expand replaceProperties + [project: project]

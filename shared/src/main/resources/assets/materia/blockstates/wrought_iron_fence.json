@@ -70,7 +70,7 @@
                 ]
             },
             "apply": {
-                "model": "materia:block/wrought_iron_fence_post",
+                "model": "materia:block/wrought_iron_fence",
                 "uvlock": true
             }
         },

@@ -168,6 +168,20 @@ tasks.named('processResources', ProcessResources).configure {
     ]
     inputs.properties replaceProperties
 
+    // Mosaic / character blocks — reference assets for a future Materia Signage mod (not shipped in Materia).
+    exclude('assets/materia/blockstates/mosaic_block.json')
+    exclude('assets/materia/blockstates/character_block_*.json')
+    exclude('assets/materia/models/block/mosaic_block.json')
+    exclude('assets/materia/models/block/character_block_*.json')
+    exclude('assets/materia/models/block/alphabet_block_sample.json')
+    exclude('assets/materia/models/item/mosaic_*.json')
+    exclude('assets/materia/models/item/character_block_*.json')
+    exclude('assets/materia/textures/block/characters/**')
+    exclude('data/materia/recipes/mosaic_*.json')
+    exclude('data/materia/recipes/character_block_*.json')
+    exclude('data/materia/loot_tables/blocks/mosaic_block.json')
+    exclude('data/materia/loot_tables/blocks/character_block_*.json')
+
     filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
         expand replaceProperties + [project: project]
     }

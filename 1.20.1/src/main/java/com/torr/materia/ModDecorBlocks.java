@@ -6,6 +6,8 @@ import com.torr.materia.block.BracketBlock;
 import com.torr.materia.block.CorniceBlock;
 import com.torr.materia.block.CurtainsBlock;
 import com.torr.materia.block.FinialBlock;
+// import com.torr.materia.block.AlphabetBlock; // reserved for future Materia Signage mod
+// import com.torr.materia.block.MosaicBlock; // reserved for future Materia Signage mod
 import com.torr.materia.block.PlanterBlock;
 import com.torr.materia.block.ShutterBlock;
 import com.torr.materia.block.UrnBlock;
@@ -206,6 +208,24 @@ public final class ModDecorBlocks {
     public static final RegistryObject<Block> SANDSTONE_ACORN_FINIAL = stoneAcornFinial("sandstone_acorn_finial");
     public static final RegistryObject<Block> TERRACOTTA_ACORN_FINIAL = stoneAcornFinial("terracotta_acorn_finial");
 
+    /*
+     * DISABLED — reserved for a separate Materia Signage mod.
+     * Reference implementations remain under 1.20.1/src/main/java (excluded from compile in build.gradle).
+     *
+    public static final RegistryObject<Block> MOSAIC_BLOCK = mosaicBlock("mosaic_block");
+
+    public static final RegistryObject<Block> CHARACTER_BLOCK_1 = characterBlock("character_block_1");
+    public static final RegistryObject<Block> CHARACTER_BLOCK_2 = characterBlock("character_block_2");
+    public static final RegistryObject<Block> CHARACTER_BLOCK_3 = characterBlock("character_block_3");
+    public static final RegistryObject<Block> CHARACTER_BLOCK_4 = characterBlock("character_block_4");
+    public static final RegistryObject<Block> CHARACTER_BLOCK_5 = characterBlock("character_block_5");
+    public static final RegistryObject<Block> CHARACTER_BLOCK_6 = characterBlock("character_block_6");
+    public static final RegistryObject<Block> CHARACTER_BLOCK_7 = characterBlock("character_block_7");
+    public static final RegistryObject<Block> CHARACTER_BLOCK_8 = characterBlock("character_block_8");
+    public static final RegistryObject<Block> CHARACTER_BLOCK_9 = characterBlock("character_block_9");
+    public static final RegistryObject<Block> CHARACTER_BLOCK_10 = characterBlock("character_block_10");
+     */
+
     private ModDecorBlocks() {
     }
 
@@ -264,6 +284,20 @@ public final class ModDecorBlocks {
     private static RegistryObject<Block> stoneCube(String name) {
         return ModBlocks.registerDecorBlock(name, () -> new Block(STONE_DECOR_PROPS));
     }
+
+    /*
+    private static RegistryObject<Block> mosaicBlock(String name) {
+        return ModBlocks.registerDecorBlockWithCustomItem(name,
+                () -> new MosaicBlock(STONE_DECOR_PROPS),
+                block -> new com.torr.materia.item.MosaicBlockItem(block, new net.minecraft.world.item.Item.Properties()));
+    }
+
+    private static RegistryObject<Block> characterBlock(String name) {
+        return ModBlocks.registerDecorBlockWithCustomItem(name,
+                () -> new AlphabetBlock(STONE_DECOR_PROPS),
+                block -> new com.torr.materia.item.AlphabetBlockItem(block, new net.minecraft.world.item.Item.Properties()));
+    }
+    */
 
     public static void registerRenderLayers(java.util.function.BiConsumer<Block, net.minecraft.client.renderer.RenderType> registrar) {
         net.minecraft.client.renderer.RenderType cutout = net.minecraft.client.renderer.RenderType.cutout();

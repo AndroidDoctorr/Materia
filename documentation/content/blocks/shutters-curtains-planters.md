@@ -1,6 +1,6 @@
 ## Shutters, curtains, planters, and urns
 
-Wall-mounted shutters and curtains plus carved-stone planters and urns for Mediterranean-style builds. Added in the 1.2.2 decorative pass.
+Wall-mounted shutters and curtains plus carved-stone planters and urns for Mediterranean-style builds. Added in the 1.3.0 decorative pass.
 
 ## Shutters
 
@@ -48,4 +48,4 @@ Stonecutter variants (tiles, small bricks, polished/chiseled where textures exis
 
 ## Version note
 
-Planter and urn block entities (interactive planting) are implemented on **1.20.1**; shutters and curtains are registered on all supported Materia versions.
+Planter and urn block entities (interactive planting) are implemented on **1.18.2**, **1.19.2**, and **1.20.1**. Shutters, curtains, and other decor blocks are registered on all supported versions.

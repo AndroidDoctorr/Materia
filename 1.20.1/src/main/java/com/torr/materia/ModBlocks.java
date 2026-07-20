@@ -1235,6 +1235,11 @@ public class ModBlocks {
                 return registerBlock(name, block);
         }
 
+        static <T extends Block> RegistryObject<T> registerDecorBlockWithCustomItem(String name, Supplier<T> block,
+                        java.util.function.Function<T, Item> itemFactory) {
+                return registerBlockWithCustomItem(name, block, itemFactory);
+        }
+
         private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
                 RegistryObject<T> toReturn = BLOCKS.register(name, block);
                 registerBlockItem(name, toReturn);

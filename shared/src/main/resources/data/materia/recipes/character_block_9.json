@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "C",
+        "M",
+        "C"
+    ],
+    "key": {
+        "C": {
+            "item": "minecraft:white_concrete"
+        },
+        "M": {
+            "item": "materia:slaked_lime"
+        }
+    },
+    "result": {
+        "item": "materia:character_block_9",
+        "count": 2
+    }
+}
