@@ -22,6 +22,7 @@ import com.torr.materia.item.MagnetItem;
 import com.torr.materia.item.DynamiteItem;
 import com.torr.materia.item.BombItem;
 import com.torr.materia.item.PoulticeItem;
+import com.torr.materia.item.CartItem;
 import com.torr.materia.item.CannonballItem;
 import com.torr.materia.item.TaroItem;
 import net.minecraft.world.item.Item;
@@ -2248,6 +2249,9 @@ public class ModItems {
         public static final RegistryObject<Item> MINECART_AXLE = ITEMS.register("minecart_axle",
                         () -> new Item(new Item.Properties()
                                         .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)));
+        public static final RegistryObject<Item> CART = ITEMS.register("cart",
+                        () -> new CartItem(new Item.Properties().stacksTo(1)
+                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_TRANSPORTATION)));
 
         // Healing Poultices
         public static final RegistryObject<Item> OAK_BARK = ITEMS.register("oak_bark",

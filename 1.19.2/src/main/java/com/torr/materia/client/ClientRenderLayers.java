@@ -1,6 +1,7 @@
 package com.torr.materia.client;
 
 import com.torr.materia.materia;
+import com.torr.materia.client.model.CartModel;
 import com.torr.materia.client.renderer.CustomSheepFurLayer;
 import net.minecraft.client.renderer.entity.SheepRenderer;
 import net.minecraft.world.entity.EntityType;
@@ -11,7 +12,12 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = materia.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ClientRenderLayers {
-    
+
+    @SubscribeEvent
+    public static void registerEntityLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        event.registerLayerDefinition(CartModel.LAYER, CartModel::createBodyLayer);
+    }
+
     @SubscribeEvent
     public static void onAddLayers(EntityRenderersEvent.AddLayers event) {
         // Attach our custom wool tint layer to the vanilla sheep renderer
