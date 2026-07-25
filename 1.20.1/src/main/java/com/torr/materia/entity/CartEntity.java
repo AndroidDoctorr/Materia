@@ -54,18 +54,17 @@ public class CartEntity extends Boat {
 
 
 
-    /** Small lift so the rendered hull clears grass (matches {@link com.torr.materia.client.renderer.entity.CartRenderer}). */
-
+    /** Small lift so wheels clear grass (matches {@link com.torr.materia.client.renderer.entity.CartRenderer}). */
     public static final float RENDER_Y_OFFSET = 0.0625F;
 
-
+    /** Wheel radius in blocks — template mesh is 1 block across, scaled in {@link com.torr.materia.client.model.CartModel}. */
+    public static final float WHEEL_RADIUS = 0.375F;
+    /** Wheel thickness along the axle in blocks. */
+    public static final float WHEEL_THICKNESS = 0.0625F;
 
     /** Fraction of the unit render cube used for the floor slab (walls fill the rest). */
-
     public static final float FLOOR_HEIGHT_FRACTION = 0.15F;
-
     /** Wall thickness as a fraction of the unit render cube width/length. */
-
     public static final float WALL_THICKNESS_FRACTION = 0.0625F;
 
 
@@ -226,7 +225,7 @@ public class CartEntity extends Boat {
 
     public double getPassengersRidingOffset() {
 
-        return (double) (RENDER_Y_OFFSET + HEIGHT - 0.25F);
+        return (double) (RENDER_Y_OFFSET + WHEEL_RADIUS + HEIGHT - 0.25F);
 
     }
 
