@@ -25,6 +25,8 @@ public class CartRenderer extends EntityRenderer<CartEntity> {
             new ResourceLocation(materia.MOD_ID, "textures/block/cart_back.png");
     private static final ResourceLocation WHEEL_TEXTURE =
             new ResourceLocation(materia.MOD_ID, "textures/block/cart_wheel.png");
+    private static final ResourceLocation CHEST_TEXTURE =
+            ResourceLocation.fromNamespaceAndPath(materia.MOD_ID, "textures/block/cart_chest.png");
 
     private final CartModel model;
 
@@ -54,6 +56,9 @@ public class CartRenderer extends EntityRenderer<CartEntity> {
                 packedLight, OverlayTexture.NO_OVERLAY);
         this.model.renderDraftArms(poseStack,
                 buffer.getBuffer(RenderType.entityCutoutNoCull(HULL_TEXTURE)),
+                packedLight, OverlayTexture.NO_OVERLAY);
+        this.model.renderChest(poseStack,
+                buffer.getBuffer(RenderType.entityCutoutNoCull(CHEST_TEXTURE)),
                 packedLight, OverlayTexture.NO_OVERLAY);
         this.model.renderWheels(poseStack,
                 buffer.getBuffer(RenderType.entityCutoutNoCull(WHEEL_TEXTURE)),

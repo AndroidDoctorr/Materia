@@ -47,12 +47,19 @@ public class CartModel extends EntityModel<CartEntity> {
     private static final float DRAFT_ARM_Y = BODY_BASE + FLOOR_H + WALL_H * 0.35F;
     private static final float DRAFT_ARM_X = HALF_W * 0.55F;
 
-    private static final float CHEST_W = 7.0F;
-    private static final float CHEST_H = 5.5F;
+    private static final float CHEST_W = 12.0F;
+    private static final float CHEST_BASE_H = 4.0F;
+    private static final float CHEST_LID_H = 2.0F;
     private static final float CHEST_D = 6.0F;
+    private static final float CHEST_LID_OVERHANG = 0.25F;
     private static final float CHEST_X = -CHEST_W * 0.5F;
     private static final float CHEST_Y = BODY_BASE + FLOOR_H;
     private static final float CHEST_Z = HALF_L - WALL_T - CHEST_D - 1.0F;
+    private static final float CHEST_LID_X = CHEST_X - CHEST_LID_OVERHANG;
+    private static final float CHEST_LID_Y = CHEST_Y + CHEST_BASE_H;
+    private static final float CHEST_LID_Z = CHEST_Z - CHEST_LID_OVERHANG;
+    private static final float CHEST_LID_W = CHEST_W + CHEST_LID_OVERHANG * 2.0F;
+    private static final float CHEST_LID_D = CHEST_D + CHEST_LID_OVERHANG * 2.0F;
 
     public final ModelPart root;
     public final ModelPart floor;
@@ -63,7 +70,8 @@ public class CartModel extends EntityModel<CartEntity> {
     public final ModelPart draftArmLeft;
     public final ModelPart draftArmRight;
     public final ModelPart draftCrossbar;
-    public final ModelPart chest;
+    public final ModelPart chestBase;
+    public final ModelPart chestLid;
     public final ModelPart wheelLeftFront;
     public final ModelPart wheelLeftBack;
     public final ModelPart wheelRightFront;
@@ -79,7 +87,8 @@ public class CartModel extends EntityModel<CartEntity> {
         this.draftArmLeft = root.getChild("draft_arm_left");
         this.draftArmRight = root.getChild("draft_arm_right");
         this.draftCrossbar = root.getChild("draft_crossbar");
-        this.chest = root.getChild("chest");
+        this.chestBase = root.getChild("chest_base");
+        this.chestLid = root.getChild("chest_lid");
         this.wheelLeftFront = root.getChild("wheel_left_front");
         this.wheelLeftBack = root.getChild("wheel_left_back");
         this.wheelRightFront = root.getChild("wheel_right_front");
@@ -100,14 +109,14 @@ public class CartModel extends EntityModel<CartEntity> {
         root.addOrReplaceChild(
                 "wall_north_face",
                 CubeListBuilder.create()
-                        .texOffs(4, 0)
+                        .texOffs(6, 0)
                         .addBox(-HALF_W, BODY_BASE + FLOOR_H, -HALF_L, W, WALL_H, WALL_T),
                 PartPose.ZERO);
 
         root.addOrReplaceChild(
                 "wall_south_face",
                 CubeListBuilder.create()
-                        .texOffs(4, 0)
+                        .texOffs(6, 0)
                         .addBox(-HALF_W, BODY_BASE + FLOOR_H, HALF_L - WALL_T, W, WALL_H, WALL_T),
                 PartPose.ZERO);
 
@@ -149,10 +158,16 @@ public class CartModel extends EntityModel<CartEntity> {
                 PartPose.ZERO);
 
         root.addOrReplaceChild(
-                "chest",
+                "chest_base",
                 CubeListBuilder.create()
-                        .texOffs(4, 4)
-                        .addBox(CHEST_X, CHEST_Y, CHEST_Z, CHEST_W, CHEST_H, CHEST_D),
+                        .texOffs(12, 4)
+                        .addBox(CHEST_X, CHEST_Y, CHEST_Z, CHEST_W, CHEST_BASE_H, CHEST_D),
+                PartPose.ZERO);
+        root.addOrReplaceChild(
+                "chest_lid",
+                CubeListBuilder.create()
+                        .texOffs(0, 0)
+                        .addBox(CHEST_LID_X, CHEST_LID_Y, CHEST_LID_Z, CHEST_LID_W, CHEST_LID_H, CHEST_LID_D),
                 PartPose.ZERO);
 
         float halfAxle = WHEEL_T * 0.5F;
@@ -186,7 +201,12 @@ public class CartModel extends EntityModel<CartEntity> {
         floor.render(poseStack, buffer, packedLight, packedOverlay);
         wallWest.render(poseStack, buffer, packedLight, packedOverlay);
         wallEast.render(poseStack, buffer, packedLight, packedOverlay);
-        chest.render(poseStack, buffer, packedLight, packedOverlay);
+    }
+
+    public void renderChest(com.mojang.blaze3d.vertex.PoseStack poseStack,
+            com.mojang.blaze3d.vertex.VertexConsumer buffer, int packedLight, int packedOverlay) {
+        chestBase.render(poseStack, buffer, packedLight, packedOverlay);
+        chestLid.render(poseStack, buffer, packedLight, packedOverlay);
     }
 
     public void renderFront(com.mojang.blaze3d.vertex.PoseStack poseStack,
