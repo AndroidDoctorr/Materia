@@ -12,6 +12,7 @@ import com.torr.materia.client.screen.CokeOvenScreen;
 import com.torr.materia.client.screen.AdvancedKilnScreen;
 import com.torr.materia.client.screen.AmphoraScreen;
 import com.torr.materia.client.screen.BasketScreen;
+import com.torr.materia.client.screen.CartScreen;
 import com.torr.materia.client.screen.SackScreen;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -71,6 +72,7 @@ public class ClientSetup {
             MenuScreens.register(ModMenuTypes.AMPHORA_MENU.get(), AmphoraScreen::new);
             MenuScreens.register(ModMenuTypes.BASKET_MENU.get(), BasketScreen::new);
             MenuScreens.register(ModMenuTypes.SACK_MENU.get(), SackScreen::new);
+            MenuScreens.register(ModMenuTypes.CART_MENU.get(), CartScreen::new);
 
             // Item properties
             com.torr.materia.item.AmphoraItem.registerItemProperties();

@@ -53,14 +53,46 @@ public class CartModel extends EntityModel<CartEntity> {
     private static final float WHEEL_Z_CENTER_BACK = HALF_L - WHEEL_D * 0.5F - 2.0F;
     /** Outward wheel disc — left wheels use this face as-is; right wheels rotate 180° on Y. */
     private static final Set<Direction> WHEEL_DISC_FACE = EnumSet.of(Direction.WEST);
+    /** Front/back wall shells omit the outward face so it can use a separate texture pass. */
+    private static final Set<Direction> WALL_NORTH_OUTER = EnumSet.of(Direction.NORTH);
+    private static final Set<Direction> WALL_NORTH_SHELL = EnumSet.of(Direction.SOUTH, Direction.EAST, Direction.WEST,
+            Direction.UP, Direction.DOWN);
+    private static final Set<Direction> WALL_SOUTH_OUTER = EnumSet.of(Direction.SOUTH);
+    private static final Set<Direction> WALL_SOUTH_SHELL = EnumSet.of(Direction.NORTH, Direction.EAST, Direction.WEST,
+            Direction.UP, Direction.DOWN);
     private static final float WHEEL_PART_SCALE = CartEntity.WHEEL_RADIUS * 2.0F;
+
+    /** Draft arms extend from the front wall (−Z); matches {@link CartEntity#DRAFT_HOOK_FORWARD}. */
+    private static final float DRAFT_ARM_LEN = 5.0F;
+    private static final float DRAFT_ARM_W = 1.5F;
+    private static final float DRAFT_ARM_H = 2.0F;
+    private static final float DRAFT_ARM_Y = BODY_BASE + FLOOR_H + WALL_H * 0.35F;
+    private static final float DRAFT_ARM_X = HALF_W * 0.55F;
+
+    /** Storage chest in the cart bed — visual only (inventory is on the entity). */
+    private static final float CHEST_W = 7.0F;
+    private static final float CHEST_H = 5.5F;
+    private static final float CHEST_D = 6.0F;
+    private static final float CHEST_X = -CHEST_W * 0.5F;
+    private static final float CHEST_Y = BODY_BASE + FLOOR_H;
+    private static final float CHEST_Z = HALF_L - WALL_T - CHEST_D - 1.0F;
 
     public final ModelPart root;
     public final ModelPart floor;
-    public final ModelPart wallNorth;
-    public final ModelPart wallSouth;
+    /** Front wall outer face only (−Z, {@code cart_front.png}). */
+    public final ModelPart wallNorthFace;
+    /** Front wall without the outer face ({@code cart.png}). */
+    public final ModelPart wallNorthShell;
+    /** Back wall outer face only (+Z, {@code cart_back.png}). */
+    public final ModelPart wallSouthFace;
+    /** Back wall without the outer face ({@code cart.png}). */
+    public final ModelPart wallSouthShell;
     public final ModelPart wallWest;
     public final ModelPart wallEast;
+    public final ModelPart draftArmLeft;
+    public final ModelPart draftArmRight;
+    public final ModelPart draftCrossbar;
+    public final ModelPart chest;
     public final ModelPart wheelLeftFront;
     public final ModelPart wheelLeftBack;
     public final ModelPart wheelRightFront;
@@ -69,10 +101,16 @@ public class CartModel extends EntityModel<CartEntity> {
     public CartModel(ModelPart root) {
         this.root = root;
         this.floor = root.getChild("floor");
-        this.wallNorth = root.getChild("wall_north");
-        this.wallSouth = root.getChild("wall_south");
+        this.wallNorthFace = root.getChild("wall_north_face");
+        this.wallNorthShell = root.getChild("wall_north_shell");
+        this.wallSouthFace = root.getChild("wall_south_face");
+        this.wallSouthShell = root.getChild("wall_south_shell");
         this.wallWest = root.getChild("wall_west");
         this.wallEast = root.getChild("wall_east");
+        this.draftArmLeft = root.getChild("draft_arm_left");
+        this.draftArmRight = root.getChild("draft_arm_right");
+        this.draftCrossbar = root.getChild("draft_crossbar");
+        this.chest = root.getChild("chest");
         this.wheelLeftFront = root.getChild("wheel_left_front");
         this.wheelLeftBack = root.getChild("wheel_left_back");
         this.wheelRightFront = root.getChild("wheel_right_front");
@@ -91,17 +129,31 @@ public class CartModel extends EntityModel<CartEntity> {
                 PartPose.ZERO);
 
         root.addOrReplaceChild(
-                "wall_north",
+                "wall_north_shell",
                 CubeListBuilder.create()
                         .texOffs(0, 0)
-                        .addBox(-HALF_W, BODY_BASE + FLOOR_H, -HALF_L, W, WALL_H, WALL_T),
+                        .addBox(-HALF_W, BODY_BASE + FLOOR_H, -HALF_L, W, WALL_H, WALL_T, WALL_NORTH_SHELL),
                 PartPose.ZERO);
 
         root.addOrReplaceChild(
-                "wall_south",
+                "wall_north_face",
+                CubeListBuilder.create()
+                        .texOffs(4, 0)
+                        .addBox(-HALF_W, BODY_BASE + FLOOR_H, -HALF_L, W, WALL_H, WALL_T, WALL_NORTH_OUTER),
+                PartPose.ZERO);
+
+        root.addOrReplaceChild(
+                "wall_south_shell",
                 CubeListBuilder.create()
                         .texOffs(0, 0)
-                        .addBox(-HALF_W, BODY_BASE + FLOOR_H, HALF_L - WALL_T, W, WALL_H, WALL_T),
+                        .addBox(-HALF_W, BODY_BASE + FLOOR_H, HALF_L - WALL_T, W, WALL_H, WALL_T, WALL_SOUTH_SHELL),
+                PartPose.ZERO);
+
+        root.addOrReplaceChild(
+                "wall_south_face",
+                CubeListBuilder.create()
+                        .texOffs(4, 0)
+                        .addBox(-HALF_W, BODY_BASE + FLOOR_H, HALF_L - WALL_T, W, WALL_H, WALL_T, WALL_SOUTH_OUTER),
                 PartPose.ZERO);
 
         root.addOrReplaceChild(
@@ -116,6 +168,36 @@ public class CartModel extends EntityModel<CartEntity> {
                 CubeListBuilder.create()
                         .texOffs(0, 0)
                         .addBox(HALF_W - WALL_T, BODY_BASE + FLOOR_H, -HALF_L + WALL_T, WALL_T, WALL_H, INNER_L),
+                PartPose.ZERO);
+
+        float draftTipZ = -HALF_L - DRAFT_ARM_LEN;
+        root.addOrReplaceChild(
+                "draft_arm_left",
+                CubeListBuilder.create()
+                        .texOffs(0, 0)
+                        .addBox(-DRAFT_ARM_X - DRAFT_ARM_W * 0.5F, DRAFT_ARM_Y, draftTipZ, DRAFT_ARM_W, DRAFT_ARM_H,
+                                DRAFT_ARM_LEN),
+                PartPose.ZERO);
+        root.addOrReplaceChild(
+                "draft_arm_right",
+                CubeListBuilder.create()
+                        .texOffs(0, 0)
+                        .addBox(DRAFT_ARM_X - DRAFT_ARM_W * 0.5F, DRAFT_ARM_Y, draftTipZ, DRAFT_ARM_W, DRAFT_ARM_H,
+                                DRAFT_ARM_LEN),
+                PartPose.ZERO);
+        root.addOrReplaceChild(
+                "draft_crossbar",
+                CubeListBuilder.create()
+                        .texOffs(0, 0)
+                        .addBox(-DRAFT_ARM_X, DRAFT_ARM_Y + DRAFT_ARM_H * 0.25F, draftTipZ - 1.5F, DRAFT_ARM_X * 2.0F,
+                                DRAFT_ARM_H * 0.5F, 1.5F),
+                PartPose.ZERO);
+
+        root.addOrReplaceChild(
+                "chest",
+                CubeListBuilder.create()
+                        .texOffs(4, 4)
+                        .addBox(CHEST_X, CHEST_Y, CHEST_Z, CHEST_W, CHEST_H, CHEST_D),
                 PartPose.ZERO);
 
         float halfAxle = WHEEL_MESH_T * 0.5F;
@@ -159,13 +241,39 @@ public class CartModel extends EntityModel<CartEntity> {
         wheel.zScale = WHEEL_PART_SCALE;
     }
 
-    public void renderHull(com.mojang.blaze3d.vertex.PoseStack poseStack,
+    public void renderHullBody(com.mojang.blaze3d.vertex.PoseStack poseStack,
             com.mojang.blaze3d.vertex.VertexConsumer buffer, int packedLight, int packedOverlay) {
         floor.render(poseStack, buffer, packedLight, packedOverlay);
-        wallNorth.render(poseStack, buffer, packedLight, packedOverlay);
-        wallSouth.render(poseStack, buffer, packedLight, packedOverlay);
+        wallNorthShell.render(poseStack, buffer, packedLight, packedOverlay);
+        wallSouthShell.render(poseStack, buffer, packedLight, packedOverlay);
         wallWest.render(poseStack, buffer, packedLight, packedOverlay);
         wallEast.render(poseStack, buffer, packedLight, packedOverlay);
+        chest.render(poseStack, buffer, packedLight, packedOverlay);
+    }
+
+    public void renderFront(com.mojang.blaze3d.vertex.PoseStack poseStack,
+            com.mojang.blaze3d.vertex.VertexConsumer buffer, int packedLight, int packedOverlay) {
+        wallNorthFace.render(poseStack, buffer, packedLight, packedOverlay);
+    }
+
+    public void renderBack(com.mojang.blaze3d.vertex.PoseStack poseStack,
+            com.mojang.blaze3d.vertex.VertexConsumer buffer, int packedLight, int packedOverlay) {
+        wallSouthFace.render(poseStack, buffer, packedLight, packedOverlay);
+    }
+
+    public void renderDraftArms(com.mojang.blaze3d.vertex.PoseStack poseStack,
+            com.mojang.blaze3d.vertex.VertexConsumer buffer, int packedLight, int packedOverlay) {
+        draftArmLeft.render(poseStack, buffer, packedLight, packedOverlay);
+        draftArmRight.render(poseStack, buffer, packedLight, packedOverlay);
+        draftCrossbar.render(poseStack, buffer, packedLight, packedOverlay);
+    }
+
+    public void renderHull(com.mojang.blaze3d.vertex.PoseStack poseStack,
+            com.mojang.blaze3d.vertex.VertexConsumer buffer, int packedLight, int packedOverlay) {
+        renderHullBody(poseStack, buffer, packedLight, packedOverlay);
+        renderFront(poseStack, buffer, packedLight, packedOverlay);
+        renderBack(poseStack, buffer, packedLight, packedOverlay);
+        renderDraftArms(poseStack, buffer, packedLight, packedOverlay);
     }
 
     public void renderWheels(com.mojang.blaze3d.vertex.PoseStack poseStack,

@@ -19,6 +19,10 @@ public class CartRenderer extends EntityRenderer<CartEntity> {
 
     private static final ResourceLocation HULL_TEXTURE =
             new ResourceLocation(materia.MOD_ID, "textures/block/cart.png");
+    private static final ResourceLocation FRONT_TEXTURE =
+            new ResourceLocation(materia.MOD_ID, "textures/block/cart_front.png");
+    private static final ResourceLocation BACK_TEXTURE =
+            new ResourceLocation(materia.MOD_ID, "textures/block/cart_back.png");
     private static final ResourceLocation WHEEL_TEXTURE =
             new ResourceLocation(materia.MOD_ID, "textures/block/cart_wheel.png");
 
@@ -39,7 +43,16 @@ public class CartRenderer extends EntityRenderer<CartEntity> {
 
         this.model.setupAnim(entity, 0.0F, 0.0F, partialTicks, 0.0F, 0.0F);
 
-        this.model.renderHull(poseStack,
+        this.model.renderHullBody(poseStack,
+                buffer.getBuffer(RenderType.entityCutoutNoCull(HULL_TEXTURE)),
+                packedLight, OverlayTexture.NO_OVERLAY);
+        this.model.renderFront(poseStack,
+                buffer.getBuffer(RenderType.entityCutoutNoCull(FRONT_TEXTURE)),
+                packedLight, OverlayTexture.NO_OVERLAY);
+        this.model.renderBack(poseStack,
+                buffer.getBuffer(RenderType.entityCutoutNoCull(BACK_TEXTURE)),
+                packedLight, OverlayTexture.NO_OVERLAY);
+        this.model.renderDraftArms(poseStack,
                 buffer.getBuffer(RenderType.entityCutoutNoCull(HULL_TEXTURE)),
                 packedLight, OverlayTexture.NO_OVERLAY);
         this.model.renderWheels(poseStack,

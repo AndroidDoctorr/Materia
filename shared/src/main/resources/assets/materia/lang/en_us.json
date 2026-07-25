@@ -800,6 +800,7 @@
     "item.materia.minecart_wheel": "Minecart Wheel",
     "item.materia.cart": "Cart",
     "entity.materia.cart": "Cart",
+    "container.materia.cart": "Cart Storage",
     "block.minecraft.anvil": "Enchantment Anvil",
     "item.materia.bronze_saw_band": "Bronze Saw Band",
     "item.materia.bauxite": "Bauxite",
