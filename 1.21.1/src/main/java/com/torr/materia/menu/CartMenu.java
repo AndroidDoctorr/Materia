@@ -133,6 +133,10 @@ public class CartMenu extends AbstractContainerMenu {
         this.clearContainer(player, this.craftSlots);
     }
 
+    public CartEntity getCart() {
+        return this.cart;
+    }
+
     @Override
     public boolean stillValid(Player player) {
         return this.cart.isChestVehicleStillValid(player);

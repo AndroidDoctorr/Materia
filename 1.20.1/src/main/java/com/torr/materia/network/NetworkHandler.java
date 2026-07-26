@@ -34,5 +34,9 @@ public class NetworkHandler {
             CannonFirePacket::encode,
             CannonFirePacket::new,
             CannonFirePacket::handle);
+        INSTANCE.registerMessage(id++, CartSleepPacket.class,
+            CartSleepPacket::encode,
+            CartSleepPacket::new,
+            CartSleepPacket::handle);
     }
 }

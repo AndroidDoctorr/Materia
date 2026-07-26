@@ -230,14 +230,14 @@ public class CartModel extends EntityModel<CartEntity> {
      */
     private static void addWheel(PartDefinition root, String name, float centerX, float centerZ, boolean faceOutward) {
         PartPose pose = faceOutward
-                ? PartPose.offsetAndRotation(centerX, 0.0F, centerZ, 0.0F, (float) Math.PI, 0.0F)
-                : PartPose.offset(centerX, 0.0F, centerZ);
+                ? PartPose.offsetAndRotation(centerX, BODY_BASE, centerZ, 0.0F, (float) Math.PI, 0.0F)
+                : PartPose.offset(centerX, BODY_BASE, centerZ);
         root.addOrReplaceChild(
                 name,
                 CubeListBuilder.create()
                         .texOffs(0, 0)
-                        .addBox(-WHEEL_MESH_T * 0.5F, 0.0F, -WHEEL_MESH_HALF, WHEEL_MESH_T, WHEEL_MESH_D, WHEEL_MESH_D,
-                                WHEEL_DISC_FACE),
+                        .addBox(-WHEEL_MESH_T * 0.5F, -WHEEL_MESH_HALF, -WHEEL_MESH_HALF, WHEEL_MESH_T, WHEEL_MESH_D,
+                                WHEEL_MESH_D, WHEEL_DISC_FACE),
                 pose);
     }
 
@@ -248,6 +248,11 @@ public class CartModel extends EntityModel<CartEntity> {
         scaleWheel(wheelLeftBack);
         scaleWheel(wheelRightFront);
         scaleWheel(wheelRightBack);
+        float roll = entity.wheelRotation;
+        wheelLeftFront.xRot = roll;
+        wheelLeftBack.xRot = roll;
+        wheelRightFront.xRot = -roll;
+        wheelRightBack.xRot = -roll;
     }
 
     private static void scaleWheel(ModelPart wheel) {

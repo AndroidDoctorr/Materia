@@ -43,6 +43,11 @@ public class CartRenderer extends EntityRenderer<CartEntity> {
         poseStack.mulPose(Vector3f.YP.rotationDegrees(180.0F - entityYaw));
         poseStack.translate(0.0D, CartEntity.RENDER_Y_OFFSET, 0.0D);
 
+        float travel = (float) Math.hypot(entity.getX() - entity.xo, entity.getZ() - entity.zo);
+        if (travel > 0.0F) {
+            entity.wheelRotation -= travel / CartEntity.WHEEL_RADIUS * CartEntity.WHEEL_ROTATION_FACTOR;
+        }
+
         this.model.setupAnim(entity, 0.0F, 0.0F, partialTicks, 0.0F, 0.0F);
 
         this.model.renderHullBody(poseStack,

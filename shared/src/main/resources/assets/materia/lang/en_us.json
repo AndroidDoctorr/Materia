@@ -801,6 +801,7 @@
     "item.materia.cart": "Cart",
     "entity.materia.cart": "Cart",
     "container.materia.cart": "Cart Storage",
+    "gui.materia.cart.sleep": "Sleep",
     "block.minecraft.anvil": "Enchantment Anvil",
     "item.materia.bronze_saw_band": "Bronze Saw Band",
     "item.materia.bauxite": "Bauxite",

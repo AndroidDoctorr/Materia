@@ -5,6 +5,7 @@ package com.torr.materia.entity;
 import com.torr.materia.ModEntities;
 
 import com.torr.materia.ModItems;
+import com.torr.materia.events.CartSleepHandler;
 import com.torr.materia.menu.CartMenu;
 
 import net.minecraft.core.BlockPos;
@@ -17,9 +18,17 @@ import net.minecraft.core.component.DataComponents;
 
 import net.minecraft.nbt.CompoundTag;
 
+import net.minecraft.nbt.ListTag;
+
+import net.minecraft.nbt.StringTag;
+
+import net.minecraft.nbt.Tag;
+
 import net.minecraft.network.chat.Component;
 
 import net.minecraft.resources.ResourceLocation;
+
+import net.minecraft.server.level.ServerLevel;
 
 import net.minecraft.server.level.ServerPlayer;
 
@@ -100,7 +109,9 @@ import net.minecraftforge.items.wrapper.InvWrapper;
 import javax.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.UUID;
 
 
 
@@ -130,6 +141,8 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
     /** Wheel radius in blocks — template mesh is 1 block across, scaled in {@link com.torr.materia.client.model.CartModel}. */
     public static final float WHEEL_RADIUS = 0.375F;
+    /** Visual-only scale for wheel roll vs travel distance (client renderer). */
+    public static final float WHEEL_ROTATION_FACTOR = 0.5F;
     public static final float WHEEL_THICKNESS = 0.0625F;
 
     /** Fraction of the unit render cube used for the floor slab (walls fill the rest). */
@@ -158,10 +171,14 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
     private static final double MAX_GROUND_ALIGN_RISE = 1.05D;
 
     private static final double COAST_DRAG = 0.93D;
-    /** Target blocks/tick per draft pull unit (~0.55 ≈ brisk trot for one horse). */
-    private static final double MAX_SPEED_PER_PULL = 0.55D;
+    /** Target blocks/tick per draft pull unit (~0.25 ≈ steady trot for one horse). */
+    private static final double MAX_SPEED_PER_PULL = 0.25D;
     /** How quickly forward speed catches up to the draft target each tick. */
-    private static final double DRAFT_SPEED_CHASE = 0.4D;
+    private static final double DRAFT_SPEED_CHASE = 0.35D;
+    /** Horizontal speed bleed while the cart is airborne. */
+    private static final double AIR_DRAG = 0.82D;
+    /** Airborne speed cap as a fraction of grounded draft speed. */
+    private static final double AIR_SPEED_FACTOR = 0.55D;
     private static final double MIN_DRAFT_PULL = 0.2D;
     /** Degrees per tick of draft heading change at full strafe input. */
     private static final float DRAFT_TURN_RATE = 2.8F;
@@ -169,11 +186,21 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
     private static final float DRAFT_CART_YAW_CATCHUP = 0.12F;
     /** Blocks ahead of cart center for the lead draft animal. */
     private static final double DRAFT_LEAD_FORWARD = DRAFT_HOOK_FORWARD + 1.25D;
-    private static final double DRAFT_ROW_SPACING = 1.4D;
+    private static final double DRAFT_ROW_SPACING = 2.5D;
     private static final double DRAFT_SIDE_SPREAD = 0.75D;
 
     /** Heading of the leashed draft team; steered with A/D, not player look. */
     private float draftHeading;
+    private boolean draftWasOnGround = true;
+    /** Draft mob UUIDs to re-leash after world load (entity IDs are not stable across saves). */
+    private final List<UUID> pendingDraftTeamRestore = new ArrayList<>();
+    /** Authoritative draft roster persisted in NBT (updated on attach/release, not only at save). */
+    private final List<UUID> savedDraftTeam = new ArrayList<>();
+    /** Ticks to keep retrying draft restore while nearby entities finish loading. */
+    private int draftRestoreGraceTicks;
+
+    /** Client-side wheel roll angle (radians), advanced from travel distance in {@link com.torr.materia.client.renderer.entity.CartRenderer}. */
+    public float wheelRotation;
 
 
 
@@ -371,6 +398,16 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
     }
 
     @Override
+    public void onAddedToWorld() {
+        super.onAddedToWorld();
+        if (!this.level().isClientSide()) {
+            this.draftRestoreGraceTicks = 200;
+            this.pendingDraftTeamRestore.clear();
+            this.pendingDraftTeamRestore.addAll(this.savedDraftTeam);
+        }
+    }
+
+    @Override
 
     public void tick() {
 
@@ -392,9 +429,15 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
             this.undoBoatLandMomentumDrain();
 
+            this.dampenAirborneBoatCarryover();
+
+            this.restoreDraftTeamIfNeeded();
+
             this.applyDraftDrive();
 
             this.positionDraftTeam();
+
+            this.draftWasOnGround = this.onGround();
 
         }
 
@@ -408,7 +451,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
     private void undoBoatLandMomentumDrain() {
 
-        if (this.isInWater() || this.isUnderWater()) {
+        if (this.isInWater() || this.isUnderWater() || this.isCartAirborne()) {
 
             return;
 
@@ -416,7 +459,42 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         Vec3 motion = this.getDeltaMovement();
 
+        if (Math.abs(motion.y) > 0.08D) {
+
+            return;
+
+        }
+
         this.setDeltaMovement(motion.x * 2.0D, motion.y, motion.z * 2.0D);
+
+    }
+
+    /** True when the cart should not receive draft acceleration (cliffs, jumps, boat float carryover). */
+    private boolean isCartAirborne() {
+
+        Vec3 motion = this.getDeltaMovement();
+
+        if (motion.y < -0.03D || motion.y > 0.06D) {
+
+            return true;
+
+        }
+
+        return !this.onGround();
+
+    }
+
+    private void dampenAirborneBoatCarryover() {
+
+        if (!this.isCartAirborne()) {
+
+            return;
+
+        }
+
+        Vec3 motion = this.getDeltaMovement();
+
+        this.setDeltaMovement(motion.x * 0.65D, motion.y, motion.z * 0.65D);
 
     }
 
@@ -460,13 +538,27 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         if (forward > 0.01F && pull >= MIN_DRAFT_PULL) {
 
-            this.accelerateAlongDraftHeading(pull, forward);
+            if (!this.isCartAirborne()) {
 
-        } else {
+                this.accelerateAlongDraftHeading(pull, forward);
+
+                this.clampDraftSpeed(pull);
+
+            } else {
+
+                this.applyAirborneDrag(pull);
+
+            }
+
+        } else if (!this.isCartAirborne()) {
 
             this.suppressBoatPropulsion();
 
             this.applyCoastDrag();
+
+        } else {
+
+            this.applyAirborneDrag(pull);
 
         }
 
@@ -492,9 +584,35 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
     }
 
+    private void applyAirborneDrag(double pull) {
+
+        Vec3 motion = this.getDeltaMovement();
+
+        double hx = motion.x * AIR_DRAG;
+
+        double hz = motion.z * AIR_DRAG;
+
+        double coastCap = MAX_SPEED_PER_PULL * Math.max(pull, MIN_DRAFT_PULL) * AIR_SPEED_FACTOR;
+
+        double horizontalSpeed = Math.hypot(hx, hz);
+
+        if (horizontalSpeed > coastCap && horizontalSpeed > 1.0E-4D) {
+
+            double scale = coastCap / horizontalSpeed;
+
+            hx *= scale;
+
+            hz *= scale;
+
+        }
+
+        this.setDeltaMovement(hx, motion.y, hz);
+
+    }
+
     private void applyCoastDrag() {
 
-        if (this.onGround()) {
+        if (!this.isCartAirborne()) {
 
             Vec3 motion = this.getDeltaMovement();
 
@@ -534,7 +652,13 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         }
 
-        draft.sort((left, right) -> Double.compare(draftPullFor(right), draftPullFor(left)));
+        draft.sort((left, right) -> {
+
+            int cmp = Double.compare(draftPullFor(right), draftPullFor(left));
+
+            return cmp != 0 ? cmp : Integer.compare(left.getId(), right.getId());
+
+        });
 
         return draft;
 
@@ -560,6 +684,14 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         double rightZ = Math.sin(rad);
 
+        Vec3 cartMotion = this.getDeltaMovement();
+
+        double horizSpeed = Math.hypot(cartMotion.x, cartMotion.z);
+
+        Vec3 draftMotion = new Vec3(cartMotion.x, 0.0D, cartMotion.z);
+
+        boolean cartAirborne = this.isCartAirborne();
+
         for (int i = 0; i < draft.size(); i++) {
 
             Mob mob = draft.get(i);
@@ -580,27 +712,57 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
             double tz = this.getZ() + fwdZ * forward + rightZ * side;
 
-            double ty = sampleHighestGroundY(this.level(), tx, this.getY(), tz, this.draftHeading, 0.6F, 0.6F);
+            double ty;
 
-            if (ty == Double.NEGATIVE_INFINITY) {
+            if (cartAirborne) {
 
                 ty = this.getY();
 
+            } else {
+
+                ty = sampleHighestGroundY(this.level(), tx, this.getY(), tz, this.draftHeading, 0.6F, 0.6F);
+
+                if (ty == Double.NEGATIVE_INFINITY) {
+
+                    ty = this.getY();
+
+                }
+
             }
 
-            mob.teleportTo(tx, ty, tz);
-
-            mob.setYRot(this.draftHeading);
+            mob.moveTo(tx, ty, tz, this.draftHeading, mob.getXRot());
 
             mob.setYBodyRot(this.draftHeading);
 
             mob.setYHeadRot(this.draftHeading);
 
-            mob.setDeltaMovement(Vec3.ZERO);
-
-            mob.getNavigation().stop();
+            this.syncDraftMobMotion(mob, horizSpeed, draftMotion);
 
         }
+
+    }
+
+    private void syncDraftMobMotion(Mob mob, double horizSpeed, Vec3 draftMotion) {
+
+        mob.setDeltaMovement(draftMotion);
+
+        mob.setSpeed((float) Mth.clamp(horizSpeed * 4.0D, 0.0D, 1.0D));
+
+        mob.setSprinting(horizSpeed > 0.12D);
+
+        if (mob instanceof AbstractHorse horse) {
+
+            horse.setEating(false);
+
+            if (horizSpeed > 0.05D) {
+
+                horse.setStanding(false);
+
+            }
+
+        }
+
+        mob.getNavigation().stop();
 
     }
 
@@ -638,7 +800,20 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         }
 
-        return pull;
+        return normalizeDraftPull(pull);
+
+    }
+
+    /** Extra draft animals help, but with diminishing returns so teams stay realistic. */
+    private static double normalizeDraftPull(double rawPull) {
+
+        if (rawPull <= 1.0D) {
+
+            return rawPull;
+
+        }
+
+        return 1.0D + (rawPull - 1.0D) * 0.30D;
 
     }
 
@@ -852,6 +1027,62 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
     }
 
+    public static boolean canSleepAt(Level level) {
+
+        if (level.dimensionType().hasFixedTime()) {
+
+            return false;
+
+        }
+
+        long time = level.getDayTime() % 24000L;
+
+        return level.isThundering() || (time >= 12541L && time <= 23992L);
+
+    }
+
+    public void trySleep(Player player) {
+
+        if (player.level().isClientSide()) {
+
+            return;
+
+        }
+
+        if (player.isSleeping() || !canSleepAt(player.level())) {
+
+            return;
+
+        }
+
+        if (!this.isChestVehicleStillValid(player)) {
+
+            return;
+
+        }
+
+        boolean wasRidingCart = player.getVehicle() == this;
+
+        player.closeContainer();
+
+        player.startSleeping(this.blockPosition());
+
+        if (wasRidingCart && !player.isPassenger()) {
+
+            player.startRiding(this, true);
+
+        }
+
+        if (player.level() instanceof ServerLevel serverLevel) {
+
+            serverLevel.updateSleepingPlayerList();
+
+        }
+
+        CartSleepHandler.beginCartSleep(player, this);
+
+    }
+
     @Override
 
     public InteractionResult interact(Player player, InteractionHand hand) {
@@ -934,7 +1165,39 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
                 leashable.dropLeash(true, !player.getAbilities().instabuild);
 
+                this.unregisterDraftMob(entity.getUUID());
+
             }
+
+        }
+
+    }
+
+    private void registerDraftMob(Entity entity) {
+
+        if (!this.savedDraftTeam.contains(entity.getUUID())) {
+
+            this.savedDraftTeam.add(entity.getUUID());
+
+        }
+
+    }
+
+    private void unregisterDraftMob(UUID uuid) {
+
+        this.savedDraftTeam.remove(uuid);
+
+        this.pendingDraftTeamRestore.remove(uuid);
+
+    }
+
+    private void leashDraftMob(Entity entity) {
+
+        if (entity instanceof Leashable leashable) {
+
+            leashable.setLeashedTo(this, true);
+
+            this.registerDraftMob(entity);
 
         }
 
@@ -950,7 +1213,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
                     && isDraftEligible(mob)) {
 
-                leashable.setLeashedTo(this, true);
+                this.leashDraftMob(entity);
 
                 return true;
 
@@ -990,9 +1253,9 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         }
 
-        if (closest instanceof Leashable leashable) {
+        if (closest != null) {
 
-            leashable.setLeashedTo(this, true);
+            this.leashDraftMob(closest);
 
             return true;
 
@@ -1060,6 +1323,8 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         tag.putFloat("DraftHeading", this.draftHeading);
 
+        this.addDraftTeamSaveData(tag);
+
         this.addChestVehicleSaveData(tag);
 
     }
@@ -1072,7 +1337,150 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         this.draftHeading = tag.contains("DraftHeading") ? tag.getFloat("DraftHeading") : this.getYRot();
 
+        this.readDraftTeamSaveData(tag);
+
         this.readChestVehicleSaveData(tag);
+
+    }
+
+    private void addDraftTeamSaveData(CompoundTag tag) {
+
+        this.syncSavedDraftTeamFromWorld();
+
+        ListTag list = new ListTag();
+
+        for (UUID uuid : this.savedDraftTeam) {
+
+            list.add(StringTag.valueOf(uuid.toString()));
+
+        }
+
+        tag.put("DraftTeam", list);
+
+    }
+
+    private void syncSavedDraftTeamFromWorld() {
+
+        for (Mob mob : this.collectDraftMobs()) {
+
+            this.registerDraftMob(mob);
+
+        }
+
+    }
+
+    private void readDraftTeamSaveData(CompoundTag tag) {
+
+        this.savedDraftTeam.clear();
+
+        this.pendingDraftTeamRestore.clear();
+
+        if (tag.contains("DraftTeam", Tag.TAG_LIST)) {
+
+            ListTag list = tag.getList("DraftTeam", Tag.TAG_STRING);
+
+            for (int i = 0; i < list.size(); i++) {
+
+                UUID uuid = UUID.fromString(list.getString(i));
+
+                this.savedDraftTeam.add(uuid);
+
+                this.pendingDraftTeamRestore.add(uuid);
+
+            }
+
+        }
+
+        this.draftRestoreGraceTicks = 200;
+
+    }
+
+    @Nullable
+    private Entity findLoadedDraftEntity(ServerLevel level, UUID uuid) {
+
+        Entity entity = level.getEntity(uuid);
+
+        if (entity != null) {
+
+            return entity;
+
+        }
+
+        for (Mob mob : level.getEntitiesOfClass(Mob.class, this.getBoundingBox().inflate(64.0D))) {
+
+            if (mob.getUUID().equals(uuid)) {
+
+                return mob;
+
+            }
+
+        }
+
+        return null;
+
+    }
+
+    private void restoreDraftTeamIfNeeded() {
+
+        if (this.pendingDraftTeamRestore.isEmpty() || !(this.level() instanceof ServerLevel serverLevel)) {
+
+            return;
+
+        }
+
+        if (this.draftRestoreGraceTicks > 0) {
+
+            this.draftRestoreGraceTicks--;
+
+        }
+
+        Iterator<UUID> iterator = this.pendingDraftTeamRestore.iterator();
+
+        while (iterator.hasNext()) {
+
+            UUID uuid = iterator.next();
+
+            Entity entity = this.findLoadedDraftEntity(serverLevel, uuid);
+
+            if (entity == null) {
+
+                if (this.draftRestoreGraceTicks <= 0) {
+
+                    iterator.remove();
+
+                    this.savedDraftTeam.remove(uuid);
+
+                }
+
+                continue;
+
+            }
+
+            if (!(entity instanceof Mob mob) || !(entity instanceof Leashable leashable)
+
+                    || !mob.isAlive() || !isDraftEligible(mob)) {
+
+                iterator.remove();
+
+                this.savedDraftTeam.remove(uuid);
+
+                continue;
+
+            }
+
+            if (leashable.getLeashHolder() != this) {
+
+                leashable.setLeashedTo(this, true);
+
+            }
+
+            if (leashable.getLeashHolder() == this) {
+
+                iterator.remove();
+
+            }
+
+        }
 
     }
 

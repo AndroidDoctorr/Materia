@@ -181,19 +181,24 @@ public class CartModel extends EntityModel<CartEntity> {
 
     private static void addWheel(PartDefinition root, String name, float centerX, float centerZ, boolean faceOutward) {
         PartPose pose = faceOutward
-                ? PartPose.offsetAndRotation(centerX, 0.0F, centerZ, 0.0F, (float) Math.PI, 0.0F)
-                : PartPose.offset(centerX, 0.0F, centerZ);
+                ? PartPose.offsetAndRotation(centerX, BODY_BASE, centerZ, 0.0F, (float) Math.PI, 0.0F)
+                : PartPose.offset(centerX, BODY_BASE, centerZ);
         root.addOrReplaceChild(
                 name,
                 CubeListBuilder.create()
                         .texOffs(0, 0)
-                        .addBox(-WHEEL_T * 0.5F, 0.0F, -WHEEL_HALF, WHEEL_T, WHEEL_D, WHEEL_D),
+                        .addBox(-WHEEL_T * 0.5F, -WHEEL_HALF, -WHEEL_HALF, WHEEL_T, WHEEL_D, WHEEL_D),
                 pose);
     }
 
     @Override
     public void setupAnim(CartEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks,
             float netHeadYaw, float headPitch) {
+        float roll = entity.wheelRotation;
+        wheelLeftFront.xRot = roll;
+        wheelLeftBack.xRot = roll;
+        wheelRightFront.xRot = -roll;
+        wheelRightBack.xRot = -roll;
     }
 
     public void renderHullBody(com.mojang.blaze3d.vertex.PoseStack poseStack,
