@@ -2,6 +2,7 @@ diff
 error_logs
 META-INF
 build
+tools
 /reference
 .gradle
 .idea

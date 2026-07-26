@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+        "item": "minecraft:stone"
+    },
+    "result": "materia:stone_column_base",
+    "count": 1
+}

@@ -74,6 +74,7 @@ Keep this section short. Add only “worth knowing” deltas that change progres
 ### 1.21.1 (in progress)
 
 - Branch is actively evolving; expect drift until stabilized
+- **Stone urn & planter:** registered as plain decorative blocks on 1.21.1 (no `UrnBlock` / `PlanterBlock` planting GUI yet). Interactive planting remains on **1.18.2**, **1.19.2**, and **1.20.1** only.
 - **Create mixing (compat pack):** uses **Create 6**–style JSON (`fluid_stack`, `id` results) and lives only under **`1.21.1/.../compat/create/mixing/`** — not in `shared/`, to avoid clashing with older Create recipe codecs pulled in from `shared/`.
 
 ## Where to write version notes

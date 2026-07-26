@@ -2,10 +2,7 @@
     "multipart": [
         {
             "when": {
-                "north": false,
-                "south": false,
-                "east": false,
-                "west": false,
+                "shape": "panel",
                 "facing": "north"
             },
             "apply": {
@@ -15,10 +12,7 @@
         },
         {
             "when": {
-                "north": false,
-                "south": false,
-                "east": false,
-                "west": false,
+                "shape": "panel",
                 "facing": "south"
             },
             "apply": {
@@ -28,10 +22,7 @@
         },
         {
             "when": {
-                "north": false,
-                "south": false,
-                "east": false,
-                "west": false,
+                "shape": "panel",
                 "facing": "east"
             },
             "apply": {
@@ -41,10 +32,7 @@
         },
         {
             "when": {
-                "north": false,
-                "south": false,
-                "east": false,
-                "west": false,
+                "shape": "panel",
                 "facing": "west"
             },
             "apply": {
@@ -54,28 +42,36 @@
         },
         {
             "when": {
-                "OR": [
-                    {
-                        "north": true
-                    },
-                    {
-                        "south": true
-                    },
-                    {
-                        "east": true
-                    },
-                    {
-                        "west": true
-                    }
-                ]
+                "shape": "straight_ns"
             },
             "apply": {
                 "model": "materia:block/wrought_iron_fence",
+                "y": 90,
                 "uvlock": true
             }
         },
         {
             "when": {
+                "shape": "straight_ew"
+            },
+            "apply": {
+                "model": "materia:block/wrought_iron_fence",
+                "y": 0,
+                "uvlock": true
+            }
+        },
+        {
+            "when": {
+                "shape": "junction"
+            },
+            "apply": {
+                "model": "materia:block/wrought_iron_fence_post",
+                "uvlock": true
+            }
+        },
+        {
+            "when": {
+                "shape": "junction",
                 "north": true
             },
             "apply": {
@@ -85,6 +81,7 @@
         },
         {
             "when": {
+                "shape": "junction",
                 "south": true
             },
             "apply": {
@@ -95,6 +92,7 @@
         },
         {
             "when": {
+                "shape": "junction",
                 "east": true
             },
             "apply": {
@@ -105,6 +103,7 @@
         },
         {
             "when": {
+                "shape": "junction",
                 "west": true
             },
             "apply": {

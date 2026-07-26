@@ -26,6 +26,10 @@ Balustrades use custom connection logic (not vanilla `FenceBlock`):
 
 Collision follows the visible rails (posts, arms, and straight rail geometry).
 
+## Water
+
+Balustrades are **not** washed away by flowing water (override `canBeReplaced` for fluids).
+
 ## Inventory icons
 
 Each material uses a dedicated item texture (`assets/materia/textures/item/{material}_balustrade.png`), not the block model snapshot.

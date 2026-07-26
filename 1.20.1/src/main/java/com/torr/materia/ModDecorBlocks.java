@@ -6,6 +6,7 @@ import com.torr.materia.block.BracketBlock;
 import com.torr.materia.block.CorniceBlock;
 import com.torr.materia.block.CurtainsBlock;
 import com.torr.materia.block.FinialBlock;
+import com.torr.materia.block.MetalFinialCrossBlock;
 // import com.torr.materia.block.AlphabetBlock; // reserved for future Materia Signage mod
 // import com.torr.materia.block.MosaicBlock; // reserved for future Materia Signage mod
 import com.torr.materia.block.PlanterBlock;
@@ -53,8 +54,7 @@ public final class ModDecorBlocks {
     private static final BlockBehaviour.Properties METAL_FINIAL_PROPS = BlockBehaviour.Properties.of()
             .strength(2.0F)
             .sound(SoundType.METAL)
-            .noOcclusion()
-            .noCollission();
+            .noOcclusion();
 
     private static final BlockBehaviour.Properties WROUGHT_IRON_DECOR_PROPS = BlockBehaviour.Properties.of()
             .strength(5.0F)
@@ -171,6 +171,13 @@ public final class ModDecorBlocks {
     public static final RegistryObject<Block> BLACKSTONE_COLUMN_CAPITAL = stoneColumn("blackstone_column_capital");
     public static final RegistryObject<Block> TERRACOTTA_COLUMN_CAPITAL = stoneColumn("terracotta_column_capital");
 
+    public static final RegistryObject<Block> STONE_COLUMN_BASE = stoneColumn("stone_column_base");
+    public static final RegistryObject<Block> MARBLE_COLUMN_BASE = stoneColumn("marble_column_base");
+    public static final RegistryObject<Block> LIMESTONE_COLUMN_BASE = stoneColumn("limestone_column_base");
+    public static final RegistryObject<Block> SANDSTONE_COLUMN_BASE = stoneColumn("sandstone_column_base");
+    public static final RegistryObject<Block> BLACKSTONE_COLUMN_BASE = stoneColumn("blackstone_column_base");
+    public static final RegistryObject<Block> TERRACOTTA_COLUMN_BASE = stoneColumn("terracotta_column_base");
+
     public static final RegistryObject<Block> MARBLE_CORNICE = cornice("marble_cornice");
     public static final RegistryObject<Block> MARBLE_BRACKET = bracket("marble_bracket");
     public static final RegistryObject<Block> LIMESTONE_CORNICE = cornice("limestone_cornice");
@@ -262,7 +269,7 @@ public final class ModDecorBlocks {
     }
 
     private static RegistryObject<Block> finialCross(String name) {
-        return ModBlocks.registerDecorBlock(name, () -> new Block(METAL_FINIAL_PROPS));
+        return ModBlocks.registerDecorBlock(name, () -> new MetalFinialCrossBlock(METAL_FINIAL_PROPS));
     }
 
     private static RegistryObject<Block> stoneAcornFinial(String name) {
@@ -320,6 +327,9 @@ public final class ModDecorBlocks {
             registrar.accept(block.get(), cutout);
         }
         for (RegistryObject<Block> block : ALL_COLUMN_CAPITALS) {
+            registrar.accept(block.get(), cutout);
+        }
+        for (RegistryObject<Block> block : ALL_COLUMN_BASES) {
             registrar.accept(block.get(), cutout);
         }
         for (RegistryObject<Block> block : ALL_CORNICES) {
@@ -380,6 +390,12 @@ public final class ModDecorBlocks {
     private static final RegistryObject<Block>[] ALL_COLUMN_CAPITALS = new RegistryObject[] {
             STONE_COLUMN_CAPITAL, MARBLE_COLUMN_CAPITAL, LIMESTONE_COLUMN_CAPITAL, SANDSTONE_COLUMN_CAPITAL,
             BLACKSTONE_COLUMN_CAPITAL, TERRACOTTA_COLUMN_CAPITAL
+    };
+
+    @SuppressWarnings("unchecked")
+    private static final RegistryObject<Block>[] ALL_COLUMN_BASES = new RegistryObject[] {
+            STONE_COLUMN_BASE, MARBLE_COLUMN_BASE, LIMESTONE_COLUMN_BASE, SANDSTONE_COLUMN_BASE,
+            BLACKSTONE_COLUMN_BASE, TERRACOTTA_COLUMN_BASE
     };
 
     @SuppressWarnings("unchecked")

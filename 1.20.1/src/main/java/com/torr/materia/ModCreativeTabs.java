@@ -321,6 +321,7 @@ public class ModCreativeTabs {
                 || path.endsWith("_block")
                 || path.endsWith("_column")
                 || path.endsWith("_column_capital")
+                || path.endsWith("_column_base")
                 || path.equals("salt_block");
     }
 

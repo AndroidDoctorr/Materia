@@ -1,0 +1,138 @@
+{
+    "ambientocclusion": false,
+    "textures": {
+        "all": "minecraft:block/polished_blackstone",
+        "top": "minecraft:block/polished_blackstone",
+        "side": "materia:block/blackstone_column_base",
+        "particle": "minecraft:block/polished_blackstone"
+    },
+    "elements": [
+        {
+            "from": [
+                0,
+                0,
+                0
+            ],
+            "to": [
+                16,
+                8,
+                16
+            ],
+            "faces": {
+                "north": {
+                    "uv": [
+                        0,
+                        8,
+                        16,
+                        16
+                    ],
+                    "texture": "#side"
+                },
+                "east": {
+                    "uv": [
+                        0,
+                        8,
+                        16,
+                        16
+                    ],
+                    "texture": "#side"
+                },
+                "south": {
+                    "uv": [
+                        0,
+                        8,
+                        16,
+                        16
+                    ],
+                    "texture": "#side"
+                },
+                "west": {
+                    "uv": [
+                        0,
+                        8,
+                        16,
+                        16
+                    ],
+                    "texture": "#side"
+                },
+                "up": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#top"
+                },
+                "down": {
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "texture": "#top"
+                }
+            }
+        },
+        {
+            "from": [
+                2,
+                8,
+                2
+            ],
+            "to": [
+                14,
+                16,
+                14
+            ],
+            "faces": {
+                "north": {
+                    "uv": [
+                        2,
+                        0,
+                        14,
+                        8
+                    ],
+                    "texture": "#side"
+                },
+                "east": {
+                    "uv": [
+                        2,
+                        0,
+                        14,
+                        8
+                    ],
+                    "texture": "#side"
+                },
+                "south": {
+                    "uv": [
+                        2,
+                        0,
+                        14,
+                        8
+                    ],
+                    "texture": "#side"
+                },
+                "west": {
+                    "uv": [
+                        2,
+                        0,
+                        14,
+                        8
+                    ],
+                    "texture": "#side"
+                },
+                "up": {
+                    "uv": [
+                        2,
+                        2,
+                        14,
+                        14
+                    ],
+                    "texture": "#top"
+                }
+            }
+        }
+    ]
+}

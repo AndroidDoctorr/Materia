@@ -32,8 +32,9 @@ Multi-version layout plus the decorative-building pass that was previously split
 
 - [x] **Shutters**, **curtains**, **awnings**, **floor rugs**
 - [x] **Stone planter** and **stone urn** (planting on 1.18.2, 1.19.2, and 1.20.1)
-- [x] **Balustrades**, stonecutter tile/brick variants, **columns & capitals**, **cornices & brackets**, **stone & metal finials**
+- [x] **Balustrades**, stonecutter tile/brick variants, **columns, bases & capitals**, **cornices & brackets**, **stone & metal finials**
 - [x] **Wrought iron fence, gate, door, bracket & grate**
+- [x] **Decor polish:** wrought iron fence connection/orientation fixes; 1.5-block fence/gate collision with vanilla-style 1-block outline; water wash-away fix for iron fences, balustrades, and metal finials
 - [x] **Marble & limestone slabs/stairs**
 - [ ] **Marble**-themed blocks/items beyond current stonecutter set (exact scope TBD).
 - [ ] **Flower boxes** — additional variants beyond stone planter (TBD).

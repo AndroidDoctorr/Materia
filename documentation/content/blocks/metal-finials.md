@@ -33,9 +33,13 @@ Recipe files: `shared/src/main/resources/data/materia/recipes/iron_anvil/{metal}
 ## Placement & rendering
 
 - **Tall finials** use `FinialBlock` (`DoublePlantBlock`) — place on any block with a solid top face; upper half appears automatically.
-- **Acorn finials** are a single cross-textured block.
+- **Acorn finials** use `MetalFinialCrossBlock` — single cross-textured block with a small center collision box.
 - All finials use **cutout** rendering (transparent texture edges).
 - Inventory icons use dedicated item textures where available (`gold_spire`, `gold_ball_finial`, `gold_acorn`); others use the lower block model with **45° GUI rotation**.
+
+## Water
+
+Metal finials (spires, ball finials, and acorn finials) are **not** washed away by flowing water. They use small solid collision voxels and `canBeReplaced(Fluid) → false` so water cannot treat them as replaceable plants.
 
 ## Asset generator
 

@@ -6,6 +6,16 @@ Planned work is tracked in [`documentation/release-roadmap.md`](documentation/re
 
 ## Unreleased
 
+#### Decorative building (1.3.x polish)
+
+- **Column bases:** `materia:{material}_column_base` for stone, limestone, marble, sandstone, blackstone, and terracotta — stonecutter from matching base block; stacks under columns like capitals stack above.
+- **Wrought iron fence & gate:** connection logic rewrite — straight runs use a single oriented panel; corners/T-junctions use post + arms; connects to **fence gates** as well as other fences; neighbor refresh on place/break. **Jump height** matches vanilla wood fences (1.5-block collision). **Outline vs collision** split like vanilla (`getShape` / `getVisualShape` at 1 block; `getCollisionShape` at 1.5 blocks).
+- **Water wash-away fix:** wrought iron fences/gates, balustrades, and metal finials (spires, ball finials, acorn finials) no longer break when flowing water passes through; finials use solid collision voxels instead of `noCollision` props.
+
+#### Docs
+
+- Updated **stone trim**, **wrought iron building**, **balustrades**, and **metal finials** pages; release roadmap checklist extended for column bases and decor fixes.
+
 ## 1.3.0
 
 Architecture update after **1.2.0**: multi-version layout (1.18.2–1.21.1), shared assets, and a large decorative-building pass. Patch fixes ship as **1.3.1** only if needed.
