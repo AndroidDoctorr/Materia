@@ -7,13 +7,16 @@ import com.torr.materia.menu.CartMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.StringTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
 import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
@@ -39,6 +42,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
@@ -85,15 +89,19 @@ public class CartEntity extends Boat implements Container, MenuProvider {
     private static final double LEASH_TRANSFER_RANGE = 8.0D;
     private static final double MAX_GROUND_ALIGN_RISE = 1.05D;
     private static final double COAST_DRAG = 0.93D;
-    /** Target blocks/tick per draft pull unit (~0.25 ≈ steady trot for one horse). */
-    private static final double MAX_SPEED_PER_PULL = 0.25D;
+    /** Target blocks/tick per draft pull unit at full W input on flat ground. */
+    private static final double MAX_SPEED_PER_PULL = 0.40D;
     /** How quickly forward speed catches up to the draft target each tick. */
-    private static final double DRAFT_SPEED_CHASE = 0.35D;
+    private static final double DRAFT_SPEED_CHASE = 0.48D;
     /** Horizontal speed bleed while the cart is airborne. */
     private static final double AIR_DRAG = 0.82D;
     /** Airborne speed cap as a fraction of grounded draft speed. */
     private static final double AIR_SPEED_FACTOR = 0.55D;
     private static final double MIN_DRAFT_PULL = 0.2D;
+    /** Speed multiplier on smooth surfaces (paths, planks, paved stone). */
+    private static final double FAST_SURFACE_SPEED_FACTOR = 2.0D;
+    private static final TagKey<Block> CART_FAST_SURFACES = TagKey.create(
+            Registry.BLOCK_REGISTRY, new ResourceLocation("materia", "cart_fast_surfaces"));
     /** Degrees per tick of draft heading change at full strafe input. */
     private static final float DRAFT_TURN_RATE = 2.8F;
     /** How quickly cart yaw catches up to the draft team heading. */
@@ -187,7 +195,7 @@ public class CartEntity extends Boat implements Container, MenuProvider {
 
     @Override
     protected boolean canAddPassenger(Entity passenger) {
-        return passenger instanceof Player && super.canAddPassenger(passenger);
+        return passenger instanceof Player && this.getPassengers().isEmpty() && super.canAddPassenger(passenger);
     }
 
     /**
@@ -288,10 +296,11 @@ public class CartEntity extends Boat implements Container, MenuProvider {
         this.setYRot(cartYaw);
         double pull = this.computeDraftPull();
         float forward = driver.zza;
+        double surfaceFactor = this.getSurfaceSpeedFactor();
         if (forward > 0.01F && pull >= MIN_DRAFT_PULL) {
             if (!this.isCartAirborne()) {
-                this.accelerateAlongDraftHeading(pull, forward);
-                this.clampDraftSpeed(pull);
+                this.accelerateAlongDraftHeading(pull, forward, surfaceFactor);
+                this.clampDraftSpeed(pull, surfaceFactor);
             } else {
                 this.applyAirborneDrag(pull);
             }
@@ -303,11 +312,11 @@ public class CartEntity extends Boat implements Container, MenuProvider {
         }
     }
 
-    private void accelerateAlongDraftHeading(double pull, float forward) {
+    private void accelerateAlongDraftHeading(double pull, float forward, double surfaceFactor) {
         float rad = this.draftHeading * ((float) Math.PI / 180F);
         double fwdX = -Math.sin(rad);
         double fwdZ = Math.cos(rad);
-        double targetSpeed = MAX_SPEED_PER_PULL * pull * forward;
+        double targetSpeed = MAX_SPEED_PER_PULL * pull * forward * surfaceFactor;
         Vec3 motion = this.getDeltaMovement();
         double along = motion.x * fwdX + motion.z * fwdZ;
         along = along + (targetSpeed - along) * DRAFT_SPEED_CHASE;
@@ -412,14 +421,47 @@ public class CartEntity extends Boat implements Container, MenuProvider {
         mob.getNavigation().stop();
     }
 
-    private void clampDraftSpeed(double pull) {
-        double maxSpeed = MAX_SPEED_PER_PULL * pull;
+    private void clampDraftSpeed(double pull, double surfaceFactor) {
+        double maxSpeed = MAX_SPEED_PER_PULL * pull * surfaceFactor;
         Vec3 motion = this.getDeltaMovement();
         double horizontalSpeed = Math.hypot(motion.x, motion.z);
         if (horizontalSpeed > maxSpeed && horizontalSpeed > 1.0E-4D) {
             double scale = maxSpeed / horizontalSpeed;
             this.setDeltaMovement(motion.x * scale, motion.y, motion.z * scale);
         }
+    }
+
+    /** Blend speed from 1x on rough ground up to {@link #FAST_SURFACE_SPEED_FACTOR} on smooth surfaces. */
+    private double getSurfaceSpeedFactor() {
+        if (this.level.isClientSide) {
+            return 1.0D;
+        }
+        double x = this.getX();
+        double y = this.getY();
+        double z = this.getZ();
+        float halfW = WIDTH * 0.5F;
+        float halfL = LENGTH * 0.5F;
+        float rad = this.getYRot() * ((float) Math.PI / 180F);
+        float sin = Mth.sin(rad);
+        float cos = Mth.cos(rad);
+        float[][] samples = {
+                { -halfW, -halfL }, { halfW, -halfL }, { halfW, halfL }, { -halfW, halfL }, { 0.0F, 0.0F }
+        };
+        int smooth = 0;
+        int probeY = Mth.floor(y - 0.0625D);
+        for (float[] sample : samples) {
+            double wx = x + (double) (sample[0] * cos - sample[1] * sin);
+            double wz = z + (double) (sample[0] * sin + sample[1] * cos);
+            BlockPos pos = new BlockPos(Mth.floor(wx), probeY, Mth.floor(wz));
+            if (this.level.getBlockState(pos).is(CART_FAST_SURFACES)) {
+                smooth++;
+            }
+        }
+        if (smooth == 0) {
+            return 1.0D;
+        }
+        double blend = (double) smooth / samples.length;
+        return 1.0D + blend * (FAST_SURFACE_SPEED_FACTOR - 1.0D);
     }
 
     private double computeDraftPull() {
@@ -437,7 +479,7 @@ public class CartEntity extends Boat implements Container, MenuProvider {
         if (rawPull <= 1.0D) {
             return rawPull;
         }
-        return 1.0D + (rawPull - 1.0D) * 0.30D;
+        return 1.0D + (rawPull - 1.0D) * 0.55D;
     }
 
     private static boolean isDraftEligible(Mob mob) {
@@ -472,9 +514,14 @@ public class CartEntity extends Boat implements Container, MenuProvider {
         if (this.level.isClientSide) {
             return;
         }
+        boolean keptPlayer = false;
         for (Entity passenger : this.getPassengers()) {
             if (!(passenger instanceof Player)) {
                 passenger.stopRiding();
+            } else if (keptPlayer) {
+                passenger.stopRiding();
+            } else {
+                keptPlayer = true;
             }
         }
     }
