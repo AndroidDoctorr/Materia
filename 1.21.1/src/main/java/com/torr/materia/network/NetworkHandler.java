@@ -38,5 +38,11 @@ public class NetworkHandler {
                 .decoder(CannonFirePacket::new)
                 .consumerMainThread(CannonFirePacket::handle)
                 .add();
+
+        INSTANCE.messageBuilder(CartSleepPacket.class)
+                .encoder(CartSleepPacket::encode)
+                .decoder(CartSleepPacket::new)
+                .consumerMainThread(CartSleepPacket::handle)
+                .add();
     }
 }

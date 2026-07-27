@@ -20,6 +20,7 @@ import com.torr.materia.item.PaperFrameItem;
 import com.torr.materia.item.MagnetItem;
 import com.torr.materia.item.DynamiteItem;
 import com.torr.materia.item.BombItem;
+import com.torr.materia.item.CartItem;
 import com.torr.materia.item.CannonballItem;
 // import com.torr.materia.item.MosaicStylusItem; // reserved for future Materia Signage mod
 import com.torr.materia.item.TaroItem;
@@ -2181,6 +2182,8 @@ public class ModItems {
         public static final RegistryObject<Item> MINECART_AXLE = ITEMS.register("minecart_axle",
                         () -> new Item(new Item.Properties()
                                         ));
+        public static final RegistryObject<Item> CART = ITEMS.register("cart",
+                        () -> new CartItem(new Item.Properties().stacksTo(1)));
                                         
         // Healing Poultices
         public static final RegistryObject<Item> OAK_BARK = ITEMS.register("oak_bark",

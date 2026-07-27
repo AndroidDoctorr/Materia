@@ -12,6 +12,7 @@ import com.torr.materia.client.screen.CokeOvenScreen;
 import com.torr.materia.client.screen.AdvancedKilnScreen;
 import com.torr.materia.client.screen.AmphoraScreen;
 import com.torr.materia.client.screen.BasketScreen;
+import com.torr.materia.client.screen.CartScreen;
 import com.torr.materia.client.screen.SackScreen;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -37,6 +38,7 @@ import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import com.torr.materia.ModEntities;
 import com.torr.materia.client.renderer.FlintSpearRenderer;
 import com.torr.materia.client.renderer.MetalArrowRenderer;
+import com.torr.materia.client.renderer.entity.CartRenderer;
 import com.torr.materia.client.renderer.entity.FallingAmphoraRenderer;
 import com.torr.materia.client.translation.ConditionalTranslationManager;
 import com.torr.materia.blockentity.FrameLoomBlockEntity;
@@ -68,6 +70,7 @@ public class ClientSetup {
             MenuScreens.register(ModMenuTypes.AMPHORA_MENU.get(), AmphoraScreen::new);
             MenuScreens.register(ModMenuTypes.BASKET_MENU.get(), BasketScreen::new);
             MenuScreens.register(ModMenuTypes.SACK_MENU.get(), SackScreen::new);
+            MenuScreens.register(ModMenuTypes.CART_MENU.get(), CartScreen::new);
 
             // Item properties
             com.torr.materia.item.AmphoraItem.registerItemProperties();
@@ -328,6 +331,8 @@ public class ClientSetup {
                 ModEntities.SHRAPNEL_PROJECTILE.get(), ThrownItemRenderer::new);
             net.minecraft.client.renderer.entity.EntityRenderers.register(
                 ModEntities.METAL_ARROW.get(), MetalArrowRenderer::new);
+            net.minecraft.client.renderer.entity.EntityRenderers.register(
+                ModEntities.CART.get(), CartRenderer::new);
 
             // Sheep layer is now added via EntityRenderersEvent.AddLayers in ClientRenderLayers
             

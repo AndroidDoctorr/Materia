@@ -60,4 +60,7 @@ public class ModMenuTypes {
     
     public static final RegistryObject<MenuType<com.torr.materia.menu.SackMenu>> SACK_MENU =
             MENUS.register("sack_menu", () -> IForgeMenuType.create(com.torr.materia.menu.SackMenu::new));
-} 
+
+    public static final RegistryObject<MenuType<com.torr.materia.menu.CartMenu>> CART_MENU =
+            MENUS.register("cart_menu", () -> IForgeMenuType.create(com.torr.materia.menu.CartMenu::new));
+}

@@ -1,5 +1,6 @@
 package com.torr.materia;
 
+import com.torr.materia.entity.CartEntity;
 import com.torr.materia.entity.RockEntity;
 import com.torr.materia.entity.FallingAmphoraEntity;
 import com.torr.materia.entity.DynamiteEntity;
@@ -99,6 +100,14 @@ public class ModEntities {
                     .clientTrackingRange(4)
                     .updateInterval(20)
                     .build("metal_arrow"));
+
+    public static final RegistryObject<EntityType<CartEntity>> CART = ENTITIES.register(
+            "cart",
+            () -> EntityType.Builder.<CartEntity>of(CartEntity::new, MobCategory.MISC)
+                    .sized(CartEntity.LENGTH, CartEntity.HEIGHT)
+                    .clientTrackingRange(10)
+                    .updateInterval(1)
+                    .build("cart"));
 }
 
 
