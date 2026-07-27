@@ -87,7 +87,10 @@ public class WroughtIronFenceGateBlock extends Block {
     @Override
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
         BlockPos below = pos.below();
-        return level.getBlockState(below).isFaceSturdy(level, below, Direction.UP);
+        BlockState belowState = level.getBlockState(below);
+        return belowState.isFaceSturdy(level, below, Direction.UP)
+                || belowState.getBlock() instanceof WroughtIronFenceBlock
+                || belowState.getBlock() instanceof WroughtIronFenceGateBlock;
     }
 
     @Override

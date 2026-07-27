@@ -246,7 +246,8 @@ public final class ModDecorBlocks {
     }
 
     private static RegistryObject<Block> tallFinial(String name) {
-        return ModBlocks.registerDecorBlock(name, () -> new FinialBlock(METAL_FINIAL_PROPS));
+        return ModBlocks.registerDecorBlock(name, () -> new FinialBlock(
+                METAL_FINIAL_PROPS.offsetType(BlockBehaviour.OffsetType.NONE)));
     }
 
     private static RegistryObject<Block> finialCross(String name) {
