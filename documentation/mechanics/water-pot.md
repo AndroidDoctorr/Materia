@@ -44,14 +44,17 @@ See also:
 
 ## Quenching (hot metals)
 
-**Heatable metals** tagged **`#materia:heatable_metals`** that are warm (heated or cooling) snap to fully cold stacks when:
+Heated **`#materia:heatable_metals`** cool to a fully cold stack when you **right-click** with them in hand on:
 
-- **`ItemEntity`** drops are **under vanilla water**
-- **`#materia:heatable_metals`** stacks sit in the water pot **item slot** while the pot **has water** (not necessarily boiling)
+- a **water source block**
+- a **water pot** that still has water
+- a **filled water cauldron** (uses one cauldron layer per quench)
 
-(This uses the same “strip hot capability” path as gradual cooling.)
+Dropping hot metal into water **does not** quench it automatically.
 
-If you **right-click a water pot with tongs holding hot metal**, the existing tong-focused quench path still applies—see **[Tongs](../content/items/tongs.md)**.
+If you **right-click a water pot with tongs holding hot metal**, the tong quench path still applies — see **[Tongs](../content/items/tongs.md)**.
+
+Implementation: `HotMetalQuenchInteractionHandler` (per version under `.../events/`).
 
 Related:
 

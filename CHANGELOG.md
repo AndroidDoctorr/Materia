@@ -16,9 +16,39 @@ Planned work is tracked in [`documentation/release-roadmap.md`](documentation/re
 
 - Updated **stone trim**, **wrought iron building**, **balustrades**, and **metal finials** pages; release roadmap checklist extended for column bases and decor fixes.
 
+## 1.3.2
+
+Patch release: hot-metal quenching UX, loot compatibility, and torch crafting.
+
+#### Hot metals
+
+- **Quenching is player-initiated:** heated `#materia:heatable_metals` no longer cool automatically when dropped in water (follow-up to **1.3.1** performance work).
+- **Right-click quench** with hot metal in hand on a **water source block**, a **water pot with water**, or a **filled water cauldron** (cauldron loses one layer per quench).
+- **Tongs → water pot** quenching unchanged.
+
+#### Compatibility
+
+- **Mob loot modifiers** (bones, fat, gut, sheep wool clumps) now require the matching **vanilla entity loot table** via `forge:loot_table_id` (e.g. `minecraft:entities/cow`), so modded mobs that use custom loot tables are not affected.
+
+#### Items
+
+- **Animal fat** added to `#materia:torch_fuels` — craft torches with fat + stick (alongside pitch and tar).
+
+#### Docs
+
+- Updated **water pot**, **hot metals**, **animal drops**, **animal fat**, and compatibility notes for quenching and loot gating.
+
+## 1.3.1
+
+Patch release: server TPS fix for hot-metal quenching.
+
+#### Performance
+
+- **Hot metal quench:** `HotMetalQuenchHandler` no longer scans every `ItemEntity` in the world each tick (via a ±30M-block AABB per dimension). Only heated metal drops are tracked and checked — fixes severe server lag when many items exist.
+
 ## 1.3.0
 
-Architecture update after **1.2.0**: multi-version layout (1.18.2–1.21.1), shared assets, and a large decorative-building pass. Patch fixes ship as **1.3.1** only if needed.
+Architecture update after **1.2.0**: multi-version layout (1.18.2–1.21.1), shared assets, and a large decorative-building pass. Patch fixes: **1.3.1** (quench lag), **1.3.2** (quench UX, loot compat, torch fat).
 
 #### Architecture
 

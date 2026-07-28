@@ -15,6 +15,7 @@ Reference:
 ## What it’s used for
 
 - Lamp oils (`#materia:lamp_oils`)
+- Torch fuels (`#materia:torch_fuels`) — craft torches with a stick (vanilla torch recipe uses this tag instead of coal)
 - Lipids (`#materia:lipids`)
 - Leather finishes (`#materia:leather_finishes`)
 - Bone meal recipe (`minecraft:bone_meal`) uses fat + calcite:
@@ -22,6 +23,6 @@ Reference:
 
 Tag references:
 
-- [Liquids and containers](../../reference/tags/liquids-and-containers.md)
+- [Liquids and containers](../../reference/tags/liquids-and-containers.md) (`#materia:lamp_oils`, `#materia:torch_fuels`)
 - [Bindings and adhesives](../../reference/tags/bindings-and-adhesives.md)
 

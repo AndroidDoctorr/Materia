@@ -40,6 +40,8 @@ Tongs can store up to **64 total items** internally.
 - **Furnace / blast furnace output**: right-click to extract hot metal (shift extracts more)
 - **Anvil input slots**: right-click to place hot metal (shift places more)
 - **Water pot**: right-click to quench/cool hot metals inside the tongs
+
+You can also quench hot metal held **directly in hand** by right-clicking a water source, water pot, or filled cauldron (see [Hot metals](../../mechanics/hot-metals.md)).
 - **Chest**: right-click to dump contents into a chest (shift dumps more)
 - **In the air (not sneaking)**: right-click to move cold items into your inventory
 

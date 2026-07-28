@@ -1,6 +1,6 @@
 # Release roadmap
 
-Planned work for upcoming Materia releases after **1.2.0**. The next release is **1.3.0** (architecture update + decor). Patch fixes ship as **1.3.1** only if needed.
+Planned work for upcoming Materia releases after **1.2.0**. The next release is **1.3.0** (architecture update + decor). Patch fixes: **1.3.1** (hot-metal quench lag), **1.3.2** (quench UX, loot compat, torch fat).
 
 For mod-pack compatibility work (tags, optional datapacks, pipes, etc.), see [`mod-compatibility-roadmap.md`](mod-compatibility-roadmap.md).
 

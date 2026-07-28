@@ -18,13 +18,15 @@ When you’re taking damage you’ll also briefly catch fire and see smoke effec
 
 ## How to handle hot metal safely
 
-Use **tongs** to handle hot metal.
+Use **tongs** to handle hot metal safely.
 
 With tongs you can:
 
 - **Extract** hot metal from kiln/furnace outputs
 - **Place** hot metal into anvil input slots
-- **Quench** hot items in a water pot
+- **Quench** hot items via a water pot (right-click while tongs hold hot metal)
+
+To quench without tongs, **right-click** a water source, water pot, or filled cauldron while holding hot metal in your main hand.
 
 Related:
 

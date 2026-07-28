@@ -285,6 +285,13 @@ Notes:
 - Injectors: `shared/src/main/resources/data/materia/loot_modifiers/chests/`
 - Pack makers can override `materia:chests/*` tables or remove entries from `global_loot_modifiers.json`.
 
+### C2b) Passive mob drops (1.3.2+)
+
+- [x] **Additive** bones / fat / gut via `materia:animal_drop_modifier` on cow, pig, sheep, and horse.
+- [x] **Sheep wool clumps** replace vanilla wool blocks on kill via `materia:sheep_wool_modifier`.
+- [x] **Vanilla loot table gate:** all mob modifiers require **`forge:loot_table_id`** matching the vanilla entity table (e.g. `minecraft:entities/cow`) so modded mobs with custom loot tables are unaffected.
+- [x] **Docs:** [`documentation/mechanics/animal-drops.md`](mechanics/animal-drops.md)
+
 ### C3) Worldgen friendliness
 
 - [x] **Datapack-driven:** Features and placed features are generated (1.20.1+) or shipped as JSON; biome injection uses Forge **`forge:add_features`** biome modifiers under `shared/.../data/forge/biome_modifier/` (not replacing whole biomes).

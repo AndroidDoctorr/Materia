@@ -27,7 +27,7 @@ If you place a water pot block as an item, it starts full (level 3).
 - Turn crucible into water cup (and back)
 - Fill/empty with bottles and buckets
 - Boil certain inputs into outputs (glue, hardened leather, etc.)
-- Quench hot metal items held in tongs
+- Quench hot metal (right-click with hot metal in hand, or use tongs)
 
 ## Vanilla-compatible transfers (water)
 
@@ -62,9 +62,11 @@ The water pot uses a 1-slot inventory for simple processing:
   - Accepts `#materia:earth_blocks` (Earth in 1.18.2; packed mud in newer versions)
 - Paper mixture → paper pulp (does not require boiling)
 
-## Quenching (tongs)
+## Quenching (hot metals)
 
-If you right-click a water pot with **tongs containing hot metal**, the water pot can quench/cool the items.
+Right-click a **water source**, **water pot with water**, or **filled cauldron** while holding **hot metal** in your main hand to quench it.
+
+Right-click with **tongs containing hot metal** to quench through the tongs slot (same as before).
 
 Related:
 

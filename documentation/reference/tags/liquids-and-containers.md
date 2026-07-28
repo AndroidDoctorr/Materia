@@ -172,6 +172,18 @@ Related:
 - [Oil lamp (block)](../../content/blocks/oil-lamp.md)
 - [Olive oil](../../content/items/olive-oil.md)
 
+### `#materia:torch_fuels`
+
+Used by: Materia’s **vanilla torch recipe override** (stick + fuel → 2× `minecraft:torch`).
+
+- **Tag JSON**: `shared/src/main/resources/data/materia/tags/items/torch_fuels.json`
+- **Includes**: `materia:animal_fat`, `materia:pitch`, `materia:tar`
+- **Recipe**: `shared/src/main/resources/data/materia/datapacks/materia_vanilla_overrides/data/minecraft/recipes/torch.json` (and per-version copies on 1.18.2 / 1.19.2)
+
+Related:
+
+- [Animal fat](../../content/items/animal-fat.md)
+
 ### `#materia:lamp_wicks`
 
 Used by: recipes that accept “any wick-like fiber”.

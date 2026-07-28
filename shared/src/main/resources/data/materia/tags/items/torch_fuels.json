@@ -1,6 +1,7 @@
 {
     "replace": false,
     "values": [
+        "materia:animal_fat",
         "materia:pitch",
         "materia:tar"
     ]

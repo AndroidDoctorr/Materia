@@ -11,6 +11,7 @@ Source of truth:
 
 These drops only apply when all conditions are met:
 
+- **Vanilla entity loot table** (`forge:loot_table_id`, e.g. `minecraft:entities/cow`) — modded mobs that use their own loot tables are skipped
 - **Killed by player** (`minecraft:killed_by_player`)
 - **Correct mob type** (cow/pig/sheep/horse)
 - **Random chance** per-kill (varies by mob and drop)
@@ -42,7 +43,7 @@ All values here are pulled from the `shared/` loot modifier JSONs.
 
 Related (sheep-only):
 
-- Wool clumps (see: [Wool clumps](../content/items/wool-clumps.md))
+- Wool clumps replace vanilla wool blocks on kill when the vanilla sheep loot table is used (see: [Wool clumps](../content/items/wool-clumps.md))
 
 ### Horse
 
@@ -59,6 +60,7 @@ Animal fat is used as:
 
 - a **lipid** (poultices, dyes, etc.): `#materia:lipids`
 - a possible **lamp oil**: `#materia:lamp_oils`
+- a **torch fuel**: `#materia:torch_fuels` (stick + fuel → 2× torch; same recipe as pitch/tar)
 - a **leather finish** ingredient: [`#materia:leather_finishes`](../reference/tags/bindings-and-adhesives.md#materialeather_finishes)
 
 References:
