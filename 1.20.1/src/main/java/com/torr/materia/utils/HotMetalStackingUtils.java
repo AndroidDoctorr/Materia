@@ -169,12 +169,20 @@ public class HotMetalStackingUtils {
      * If stack is tagged heatable metal and still retains heat timing (including the cool-down tail),
      * returns a cooled copy identical to container conversion; otherwise empty.
      */
-    public static Optional<ItemStack> quenchHeatableIfHeated(ItemStack stack) {
+    public static boolean isHeatedHeatableMetal(ItemStack stack) {
         if (stack.isEmpty() || !stack.is(HEATABLE_METALS)) {
-            return Optional.empty();
+            return false;
         }
         return stack.getCapability(HotMetalCapability.HOT_METAL_CAPABILITY).resolve()
-                .flatMap(cap -> cap.getHeatTime() > 0 ? Optional.of(createCooledVersion(stack)) : Optional.empty());
+                .map(cap -> cap.getHeatTime() > 0)
+                .orElse(false);
+    }
+
+    public static Optional<ItemStack> quenchHeatableIfHeated(ItemStack stack) {
+        if (!isHeatedHeatableMetal(stack)) {
+            return Optional.empty();
+        }
+        return Optional.of(createCooledVersion(stack));
     }
 
     /**
