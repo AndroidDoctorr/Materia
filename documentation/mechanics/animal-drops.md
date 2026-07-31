@@ -11,7 +11,7 @@ Source of truth:
 
 These drops only apply when all conditions are met:
 
-- **Vanilla entity loot table** (`forge:loot_table_id`, e.g. `minecraft:entities/cow`) — modded mobs that use their own loot tables are skipped
+- **Vanilla entity loot table** — checked in Java via `VanillaEntityLootTables` (matches `minecraft:entities/{mob}` and, for sheep, color sub-tables like `minecraft:entities/sheep/white`). Modded mobs that use their own loot tables are skipped.
 - **Killed by player** (`minecraft:killed_by_player`)
 - **Correct mob type** (cow/pig/sheep/horse)
 - **Random chance** per-kill (varies by mob and drop)
@@ -43,7 +43,7 @@ All values here are pulled from the `shared/` loot modifier JSONs.
 
 Related (sheep-only):
 
-- Wool clumps replace vanilla wool blocks on kill when the vanilla sheep loot table is used (see: [Wool clumps](../content/items/wool-clumps.md))
+- Wool clumps (see: [Wool clumps](../content/items/wool-clumps.md)) — replace vanilla wool on kill from vanilla sheep loot tables, including per-color tables like `minecraft:entities/sheep/white`
 
 ### Horse
 

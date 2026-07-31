@@ -18,7 +18,7 @@ Source of truth (stable behavior):
 
 ### From sheep drops
 
-When a sheep would drop wool blocks from the **vanilla sheep loot table**, that wool is replaced by clumps:
+When a sheep would drop wool blocks from a **vanilla sheep loot table** (including per-color tables like `minecraft:entities/sheep/white`), that wool is replaced by clumps:
 
 - 1–3 clumps, matching vanilla “wool amount” expectations
 - supports vanilla colors plus your custom sheep colors (capability-driven)

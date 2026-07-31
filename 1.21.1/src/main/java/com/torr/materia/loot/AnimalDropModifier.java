@@ -19,6 +19,7 @@ import java.util.List;
  * Loot modifier for adding animal drops (bones and fat)
  */
 public class AnimalDropModifier extends LootModifier {
+    private final String vanillaEntity;
     private final Item item;
     private final int minCount;
     private final int maxCount;
@@ -37,12 +38,14 @@ public class AnimalDropModifier extends LootModifier {
         ).apply(inst, ItemEntry::new));
     }
 
-    public static final MapCodec<AnimalDropModifier> CODEC = RecordCodecBuilder.mapCodec(inst -> codecStart(inst).and(
-            ItemEntry.CODEC.fieldOf("item").forGetter(m -> new ItemEntry(m.item, new CountRange(m.minCount, m.maxCount)))
-    ).apply(inst, (conditions, entry) -> new AnimalDropModifier(conditions, entry.item(), entry.count().min(), entry.count().max())));
+    public static final MapCodec<AnimalDropModifier> CODEC = RecordCodecBuilder.mapCodec(inst -> codecStart(inst)
+            .and(Codec.STRING.fieldOf("vanilla_entity").forGetter((AnimalDropModifier m) -> m.vanillaEntity))
+            .and(ItemEntry.CODEC.fieldOf("item").forGetter((AnimalDropModifier m) -> new ItemEntry(m.item, new CountRange(m.minCount, m.maxCount))))
+            .apply(inst, (conditions, vanillaEntity, entry) -> new AnimalDropModifier(conditions, vanillaEntity, entry.item(), entry.count().min(), entry.count().max())));
     
-    protected AnimalDropModifier(LootItemCondition[] conditionsIn, Item item, int minCount, int maxCount) {
+    protected AnimalDropModifier(LootItemCondition[] conditionsIn, String vanillaEntity, Item item, int minCount, int maxCount) {
         super(conditionsIn);
+        this.vanillaEntity = vanillaEntity;
         this.item = item;
         this.minCount = minCount;
         this.maxCount = maxCount;
@@ -55,6 +58,10 @@ public class AnimalDropModifier extends LootModifier {
 
     @Override
     protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
+        if (!VanillaEntityLootTables.matchesVanillaEntityLoot(context, vanillaEntity)) {
+            return generatedLoot;
+        }
+
         // Get random count between min and max (inclusive)
         // Only called when all JSON conditions are met (including random_chance)
         int count = minCount + context.getRandom().nextInt(maxCount - minCount + 1);

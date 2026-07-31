@@ -289,7 +289,7 @@ Notes:
 
 - [x] **Additive** bones / fat / gut via `materia:animal_drop_modifier` on cow, pig, sheep, and horse.
 - [x] **Sheep wool clumps** replace vanilla wool blocks on kill via `materia:sheep_wool_modifier`.
-- [x] **Vanilla loot table gate:** all mob modifiers require **`forge:loot_table_id`** matching the vanilla entity table (e.g. `minecraft:entities/cow`) so modded mobs with custom loot tables are unaffected.
+- [x] **Vanilla loot table gate:** mob modifiers require a vanilla `minecraft:entities/...` table (Java helper also matches sheep color sub-tables such as `entities/sheep/white`).
 - [x] **Docs:** [`documentation/mechanics/animal-drops.md`](mechanics/animal-drops.md)
 
 ### C3) Worldgen friendliness
