@@ -18,12 +18,14 @@ import java.util.List;
  * Loot modifier for adding animal drops (bones and fat)
  */
 public class AnimalDropModifier extends LootModifier {
+    private final String vanillaEntity;
     private final Item item;
     private final int minCount;
     private final int maxCount;
     
-    protected AnimalDropModifier(LootItemCondition[] conditionsIn, Item item, int minCount, int maxCount) {
+    protected AnimalDropModifier(LootItemCondition[] conditionsIn, String vanillaEntity, Item item, int minCount, int maxCount) {
         super(conditionsIn);
+        this.vanillaEntity = vanillaEntity;
         this.item = item;
         this.minCount = minCount;
         this.maxCount = maxCount;
@@ -32,6 +34,10 @@ public class AnimalDropModifier extends LootModifier {
     @Nonnull
     @Override
     protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
+        if (!VanillaEntityLootTables.matchesVanillaEntityLoot(context, vanillaEntity)) {
+            return generatedLoot;
+        }
+
         // Get random count between min and max (inclusive)
         // Only called when all JSON conditions are met (including random_chance)
         int count = minCount + context.getRandom().nextInt(maxCount - minCount + 1);
@@ -45,6 +51,7 @@ public class AnimalDropModifier extends LootModifier {
     public static class Serializer extends GlobalLootModifierSerializer<AnimalDropModifier> {
         @Override
         public AnimalDropModifier read(ResourceLocation name, JsonObject object, LootItemCondition[] conditionsIn) {
+            String vanillaEntity = GsonHelper.getAsString(object, "vanilla_entity");
             JsonObject itemObj = GsonHelper.getAsJsonObject(object, "item");
             String itemName = GsonHelper.getAsString(itemObj, "item");
             Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(itemName));
@@ -53,12 +60,13 @@ public class AnimalDropModifier extends LootModifier {
             int minCount = GsonHelper.getAsInt(countObj, "min", 1);
             int maxCount = GsonHelper.getAsInt(countObj, "max", 1);
             
-            return new AnimalDropModifier(conditionsIn, item, minCount, maxCount);
+            return new AnimalDropModifier(conditionsIn, vanillaEntity, item, minCount, maxCount);
         }
 
         @Override
         public JsonObject write(AnimalDropModifier instance) {
             JsonObject json = makeConditions(instance.conditions);
+            json.addProperty("vanilla_entity", instance.vanillaEntity);
             
             JsonObject itemObj = new JsonObject();
             itemObj.addProperty("item", ForgeRegistries.ITEMS.getKey(instance.item).toString());

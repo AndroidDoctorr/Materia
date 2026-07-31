@@ -2,10 +2,6 @@
     "type": "materia:sheep_wool_modifier",
     "conditions": [
         {
-            "condition": "forge:loot_table_id",
-            "loot_table_id": "minecraft:entities/sheep"
-        },
-        {
             "condition": "minecraft:entity_properties",
             "entity": "this",
             "predicate": {

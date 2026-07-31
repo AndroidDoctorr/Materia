@@ -28,7 +28,8 @@ Patch release: hot-metal quenching UX, loot compatibility, and torch crafting.
 
 #### Compatibility
 
-- **Mob loot modifiers** (bones, fat, gut, sheep wool clumps) now require the matching **vanilla entity loot table** via `forge:loot_table_id` (e.g. `minecraft:entities/cow`), so modded mobs that use custom loot tables are not affected.
+- **Mob loot modifiers** (bones, fat, gut, sheep wool clumps) only apply on **vanilla entity loot tables** (`minecraft:entities/...`, including sheep color sub-tables such as `entities/sheep/white`), so modded mobs with custom loot tables are not affected.
+- **Fix:** sheep wool clumps again replace wool blocks — the earlier `forge:loot_table_id` JSON gate matched only `minecraft:entities/sheep`, but vanilla wool drops roll from per-color tables like `minecraft:entities/sheep/white`.
 
 #### Items
 

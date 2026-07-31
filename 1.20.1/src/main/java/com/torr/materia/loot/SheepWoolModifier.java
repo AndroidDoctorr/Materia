@@ -40,8 +40,23 @@ public class SheepWoolModifier extends LootModifier {
 
     @Override
     protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
+        if (!VanillaEntityLootTables.matchesVanillaEntityLoot(context, "sheep")) {
+            return generatedLoot;
+        }
+
         // Get the sheep entity from the loot context
         if (context.getParamOrNull(LootContextParams.THIS_ENTITY) instanceof Sheep sheep) {
+            boolean hadWool = false;
+            for (ItemStack stack : generatedLoot) {
+                if (isWoolBlock(stack.getItem())) {
+                    hadWool = true;
+                    break;
+                }
+            }
+            if (!hadWool) {
+                return generatedLoot;
+            }
+
             // Remove all wool blocks from the loot
             generatedLoot.removeIf(stack -> isWoolBlock(stack.getItem()));
             
