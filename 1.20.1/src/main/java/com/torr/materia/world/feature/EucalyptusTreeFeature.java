@@ -1,14 +1,12 @@
 package com.torr.materia.world.feature;
 
 import com.mojang.serialization.Codec;
-import com.torr.materia.block.EucalyptusLeavesBlock;
 import com.torr.materia.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -24,26 +22,25 @@ public class EucalyptusTreeFeature extends Feature<NoneFeatureConfiguration> {
 
     @Override
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> context) {
-        return placeTree(context.level(), context.origin(), context.random(), false);
+        return placeTree(context.level(), context.origin(), context.random(),
+                ModBlocks.EUCALYPTUS_LOG.get(), ModBlocks.EUCALYPTUS_LEAVES.get());
     }
 
-    public static boolean placeTree(WorldGenLevel level, BlockPos origin, RandomSource random, boolean rainbow) {
+    public static boolean placeTree(WorldGenLevel level, BlockPos origin, RandomSource random, Block logBlock, Block leavesBlock) {
         if (!level.getBlockState(origin.below()).isSolidRender(level, origin.below())) {
             return false;
         }
 
-        Block logBlock = rainbow ? ModBlocks.RAINBOW_EUCALYPTUS_LOG.get() : ModBlocks.EUCALYPTUS_LOG.get();
-        Block leavesBlock = ModBlocks.EUCALYPTUS_LEAVES.get();
+        BlockState leafState = leavesBlock.defaultBlockState();
 
         int height = 14 + random.nextInt(7);
         BlockPos.MutableBlockPos pos = origin.mutable();
 
         for (int i = 0; i < height; i++) {
-            if (!canReplace(level, pos)) {
+            if (!level.isEmptyBlock(pos)) {
                 return false;
             }
-            level.setBlock(pos, logBlock.defaultBlockState()
-                    .setValue(BlockStateProperties.AXIS, Direction.Axis.Y), TREE_BLOCK_FLAGS);
+            placeLog(level, pos, logBlock, Direction.Axis.Y);
             pos.move(Direction.UP);
         }
 
@@ -60,21 +57,18 @@ public class EucalyptusTreeFeature extends Feature<NoneFeatureConfiguration> {
             }
 
             BlockPos trunkPos = origin.above(trunkY);
-            BlockPos canopyCenter = trunkPos.offset(offsetX, 0, offsetZ);
+            BlockPos branchTip = trunkPos.offset(offsetX, 0, offsetZ);
             if (offsetX != 0 || offsetZ != 0) {
-                placeBranch(level, trunkPos, canopyCenter, logBlock);
+                placeBranch(level, trunkPos, branchTip, logBlock);
             }
 
             int radius = Math.max(1, 3 - canopy / 2 + random.nextInt(2));
             maxReach = Math.max(maxReach, Math.abs(offsetX) + radius);
             maxReach = Math.max(maxReach, Math.abs(offsetZ) + radius);
-            placeFlatCanopy(level, canopyCenter, leavesBlock, radius, random, rainbow);
-            if (random.nextFloat() < 0.65f) {
-                placeFlatCanopy(level, canopyCenter.above(1), leavesBlock, Math.max(1, radius - 1), random, rainbow);
-            }
+            placeBranchCanopy(level, branchTip, leafState, radius, random);
         }
 
-        placeFlatCanopy(level, origin.above(height - 1), leavesBlock, 1 + random.nextInt(2), random, rainbow);
+        placeBranchCanopy(level, origin.above(height - 1), leafState, 1 + random.nextInt(2), random);
 
         TreeLeafDistanceFix.refresh(level, origin, maxReach + 1, height + 3);
         return true;
@@ -95,41 +89,42 @@ public class EucalyptusTreeFeature extends Feature<NoneFeatureConfiguration> {
             int dz = Integer.signum(to.getZ() - current.getZ());
             Direction.Axis axis = dx != 0 ? Direction.Axis.X : Direction.Axis.Z;
             BlockPos next = current.offset(dx, 0, dz);
-            if (canReplace(level, next)) {
-                level.setBlock(next, logBlock.defaultBlockState()
-                        .setValue(BlockStateProperties.AXIS, axis), TREE_BLOCK_FLAGS);
-            }
+            placeLog(level, next, logBlock, axis);
             current = next;
         }
     }
 
-    private static void placeFlatCanopy(WorldGenLevel level, BlockPos center, Block leavesBlock, int radius, RandomSource random, boolean rainbow) {
-        BlockState leafState = leafState(leavesBlock, rainbow);
+    /** Vertical leaf puff above the branch tip. */
+    private static void placeBranchCanopy(WorldGenLevel level, BlockPos branchTip, BlockState leafState, int radius, RandomSource random) {
+        BlockPos canopyBase = branchTip.above(1);
+        placeLeaves(level, canopyBase, leafState);
+
         for (int x = -radius; x <= radius; x++) {
             for (int z = -radius; z <= radius; z++) {
+                if (x == 0 && z == 0) {
+                    continue;
+                }
                 if (x * x + z * z > radius * radius + random.nextInt(2)) {
                     continue;
                 }
-                BlockPos leafPos = center.offset(x, 0, z);
-                if (canReplace(level, leafPos)) {
-                    level.setBlock(leafPos, leafState, TREE_BLOCK_FLAGS);
+                placeLeaves(level, canopyBase.offset(x, 0, z), leafState);
+                if (random.nextFloat() < 0.55f) {
+                    placeLeaves(level, canopyBase.offset(x, 1, z), leafState);
                 }
             }
         }
     }
 
-    private static BlockState leafState(Block leavesBlock, boolean rainbow) {
-        BlockState state = leavesBlock.defaultBlockState()
-                .setValue(LeavesBlock.DISTANCE, 1)
-                .setValue(LeavesBlock.PERSISTENT, false);
-        if (rainbow) {
-            state = state.setValue(EucalyptusLeavesBlock.RAINBOW, true);
+    private static void placeLog(WorldGenLevel level, BlockPos pos, Block logBlock, Direction.Axis axis) {
+        if (level.isEmptyBlock(pos) || level.getBlockState(pos).canBeReplaced()) {
+            level.setBlock(pos, logBlock.defaultBlockState()
+                    .setValue(BlockStateProperties.AXIS, axis), TREE_BLOCK_FLAGS);
         }
-        return state;
     }
 
-    private static boolean canReplace(WorldGenLevel level, BlockPos pos) {
-        BlockState state = level.getBlockState(pos);
-        return state.isAir() || state.canBeReplaced();
+    private static void placeLeaves(WorldGenLevel level, BlockPos pos, BlockState leafState) {
+        if (level.isEmptyBlock(pos) || level.getBlockState(pos).canBeReplaced()) {
+            level.setBlock(pos, leafState, TREE_BLOCK_FLAGS);
+        }
     }
 }

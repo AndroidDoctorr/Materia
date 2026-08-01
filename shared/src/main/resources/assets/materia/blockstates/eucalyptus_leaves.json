@@ -1,87 +1,45 @@
 {
     "variants": {
-        "distance=1,persistent=false,rainbow=false": {
+        "distance=1,persistent=false": {
             "model": "materia:block/eucalyptus_leaves"
         },
-        "distance=1,persistent=false,rainbow=true": {
+        "distance=1,persistent=true": {
             "model": "materia:block/eucalyptus_leaves"
         },
-        "distance=1,persistent=true,rainbow=false": {
+        "distance=2,persistent=false": {
             "model": "materia:block/eucalyptus_leaves"
         },
-        "distance=1,persistent=true,rainbow=true": {
+        "distance=2,persistent=true": {
             "model": "materia:block/eucalyptus_leaves"
         },
-        "distance=2,persistent=false,rainbow=false": {
+        "distance=3,persistent=false": {
             "model": "materia:block/eucalyptus_leaves"
         },
-        "distance=2,persistent=false,rainbow=true": {
+        "distance=3,persistent=true": {
             "model": "materia:block/eucalyptus_leaves"
         },
-        "distance=2,persistent=true,rainbow=false": {
+        "distance=4,persistent=false": {
             "model": "materia:block/eucalyptus_leaves"
         },
-        "distance=2,persistent=true,rainbow=true": {
+        "distance=4,persistent=true": {
             "model": "materia:block/eucalyptus_leaves"
         },
-        "distance=3,persistent=false,rainbow=false": {
+        "distance=5,persistent=false": {
             "model": "materia:block/eucalyptus_leaves"
         },
-        "distance=3,persistent=false,rainbow=true": {
+        "distance=5,persistent=true": {
             "model": "materia:block/eucalyptus_leaves"
         },
-        "distance=3,persistent=true,rainbow=false": {
+        "distance=6,persistent=false": {
             "model": "materia:block/eucalyptus_leaves"
         },
-        "distance=3,persistent=true,rainbow=true": {
+        "distance=6,persistent=true": {
             "model": "materia:block/eucalyptus_leaves"
         },
-        "distance=4,persistent=false,rainbow=false": {
+        "distance=7,persistent=false": {
             "model": "materia:block/eucalyptus_leaves"
         },
-        "distance=4,persistent=false,rainbow=true": {
-            "model": "materia:block/eucalyptus_leaves"
-        },
-        "distance=4,persistent=true,rainbow=false": {
-            "model": "materia:block/eucalyptus_leaves"
-        },
-        "distance=4,persistent=true,rainbow=true": {
-            "model": "materia:block/eucalyptus_leaves"
-        },
-        "distance=5,persistent=false,rainbow=false": {
-            "model": "materia:block/eucalyptus_leaves"
-        },
-        "distance=5,persistent=false,rainbow=true": {
-            "model": "materia:block/eucalyptus_leaves"
-        },
-        "distance=5,persistent=true,rainbow=false": {
-            "model": "materia:block/eucalyptus_leaves"
-        },
-        "distance=5,persistent=true,rainbow=true": {
-            "model": "materia:block/eucalyptus_leaves"
-        },
-        "distance=6,persistent=false,rainbow=false": {
-            "model": "materia:block/eucalyptus_leaves"
-        },
-        "distance=6,persistent=false,rainbow=true": {
-            "model": "materia:block/eucalyptus_leaves"
-        },
-        "distance=6,persistent=true,rainbow=false": {
-            "model": "materia:block/eucalyptus_leaves"
-        },
-        "distance=6,persistent=true,rainbow=true": {
-            "model": "materia:block/eucalyptus_leaves"
-        },
-        "distance=7,persistent=false,rainbow=false": {
-            "model": "materia:block/eucalyptus_leaves"
-        },
-        "distance=7,persistent=false,rainbow=true": {
-            "model": "materia:block/eucalyptus_leaves"
-        },
-        "distance=7,persistent=true,rainbow=false": {
-            "model": "materia:block/eucalyptus_leaves"
-        },
-        "distance=7,persistent=true,rainbow=true": {
+        "distance=7,persistent=true": {
             "model": "materia:block/eucalyptus_leaves"
         }
     }

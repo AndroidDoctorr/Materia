@@ -10,7 +10,7 @@ Tall jungle-style trees that generate in groves. Rare rainbow eucalyptus groves 
 ## Blocks
 
 - Logs: `materia:eucalyptus_log`, `materia:rainbow_eucalyptus_log`
-- Leaves: `materia:eucalyptus_leaves`
+- Leaves: `materia:eucalyptus_leaves`, `materia:rainbow_eucalyptus_leaves` (same texture; separate blocks)
 - Saplings: `materia:eucalyptus_sapling`, `materia:rainbow_eucalyptus_sapling`
 
 Both log types hew to 4× `materia:rough_eucalyptus_plank`.

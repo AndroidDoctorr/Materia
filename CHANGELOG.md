@@ -16,6 +16,15 @@ Planned work is tracked in [`documentation/release-roadmap.md`](documentation/re
 
 - Updated **stone trim**, **wrought iron building**, **balustrades**, and **metal finials** pages; release roadmap checklist extended for column bases and decor fixes.
 
+## 1.3.3
+
+Patch release: eucalyptus worldgen fix.
+
+#### Worldgen
+
+- **Fix:** eucalyptus tree foliage uses branch-tip canopies; leaf block and placement now match other mod leaves (same `LeavesBlock` setup and cypress-style worldgen placement).
+- **Rainbow eucalyptus:** separate `rainbow_eucalyptus_leaves` block (same texture as regular leaves); rainbow trees place rainbow logs + rainbow leaves and drop rainbow saplings.
+
 ## 1.3.2
 
 Patch release: hot-metal quenching UX, loot compatibility, and torch crafting.

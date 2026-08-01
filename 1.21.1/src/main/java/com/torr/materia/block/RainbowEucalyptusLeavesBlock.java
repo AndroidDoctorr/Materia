@@ -6,8 +6,8 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class EucalyptusLeavesBlock extends LeavesBlock {
-    public EucalyptusLeavesBlock(Properties properties) {
+public class RainbowEucalyptusLeavesBlock extends LeavesBlock {
+    public RainbowEucalyptusLeavesBlock(Properties properties) {
         super(properties);
     }
 
