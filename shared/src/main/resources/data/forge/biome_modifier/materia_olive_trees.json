@@ -1,8 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#materia:subtropical",
-  "step": "vegetal_decoration",
-  "features": [
-    "materia:olive_tree_placed"
-  ]
-}
