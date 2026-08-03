@@ -24,6 +24,11 @@ Patch release: eucalyptus worldgen fix.
 
 - **Fix:** eucalyptus tree foliage uses branch-tip canopies; leaf block and placement now match other mod leaves (same `LeavesBlock` setup and cypress-style worldgen placement).
 - **Rainbow eucalyptus:** separate `rainbow_eucalyptus_leaves` block (same texture as regular leaves); rainbow trees place rainbow logs + rainbow leaves and drop rainbow saplings.
+- **Fix:** surface worldgen (earth, rocks, bauxite, trees, etc.) no longer samples height at chunk corners before spreading horizontally; removed duplicate biome modifier JSON registration and disabled legacy 1.18.2 `BiomeLoadingEvent` injection.
+- **Fix:** surface rocks no longer spawn on water — placement rejects aquatic blocks below/at position, and surface rocks no longer generate in ocean/river/beach biomes.
+- **Fix:** river surface earth no longer spawns floating above water; dry-land checks match surface rocks.
+- **Change:** earth subsoil now uses a column-scan feature that replaces dirt and clay below ~1 block of topsoil across the overworld (replacing the old ore-based placement that rarely hit dirt columns).
+- **Change:** doubled surface/cave rock spawn rates; rocks and bauxite chunks now require solid ground below (fixes mid-air and over-water placement).
 
 ## 1.3.2
 

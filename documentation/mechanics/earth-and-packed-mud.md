@@ -11,8 +11,8 @@ In newer Minecraft versions, **packed mud** is treated as interchangeable with E
 
 Worldgen note:
 
-- In `shared/`, Earth is added to river biomes via:
-  - `shared/src/main/resources/data/materia/forge/biome_modifier/materia_surface_earth_river.json`
+- Earth subsoil uses `materia:earth_subsoil_feature` via `materia:earth_subsoil_placed` in all overworld biomes (`materia_overworld_underground_ores_common.json`).
+- Each placement scans every column in the chunk, preserving only the surface block (~1m topsoil including grass), and converts all deeper dirt/clay to Earth (lush caves skipped).
 
 ## Earth vs packed mud (interchangeability)
 

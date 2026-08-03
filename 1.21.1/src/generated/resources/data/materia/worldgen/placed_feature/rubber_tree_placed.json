@@ -6,11 +6,11 @@
       "chance": 20
     },
     {
-      "type": "minecraft:in_square"
-    },
-    {
       "type": "minecraft:heightmap",
       "heightmap": "WORLD_SURFACE_WG"
+    },
+    {
+      "type": "minecraft:in_square"
     },
     {
       "type": "minecraft:block_predicate_filter",
