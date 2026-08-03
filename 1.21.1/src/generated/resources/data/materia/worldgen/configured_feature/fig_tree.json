@@ -20,9 +20,8 @@
         "Name": "materia:fig_leaves",
         "Properties": {
           "distance": "7",
-          "has_olives": "false",
-          "persistent": "false",
-          "waterlogged": "true"
+          "has_figs": "false",
+          "persistent": "false"
         }
       }
     },

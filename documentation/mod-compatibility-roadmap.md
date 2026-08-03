@@ -294,7 +294,7 @@ Notes:
 
 ### C3) Worldgen friendliness
 
-- [x] **Datapack-driven:** Features and placed features are generated (1.20.1+) or shipped as JSON; biome injection uses Forge **`forge:add_features`** biome modifiers under `shared/.../data/forge/biome_modifier/` (not replacing whole biomes).
+- [x] **Datapack-driven:** Features and placed features are generated (1.20.1+) or registered in Java (1.18.2 / 1.19.2); biome injection uses Forge **`forge:add_features`** biome modifiers under `shared/.../data/materia/forge/biome_modifier/` (1.19.2+). **1.18.2** uses **`BiomeLoadingEvent`** instead (see [Version differences — worldgen wiring](reference/VERSION_DIFFERENCES.md#worldgen-wiring-how-features-reach-biomes)).
 - [x] **Modded overworld biomes:** `materia:overworld` now includes `#minecraft:is_overworld` so ores/surface rules apply in Biomes O’ Plenty / Terralith / etc., not only the vanilla biome list. River vs non-river tin split uses `#minecraft:is_river` plus Forge tag `remove` on `materia:overworld_non_river` (Forge tag extension) so modded rivers match the river placement path.
 - [x] **Broader biome tags:** Grassy/temperate/tropical/desert/beach/rocky/warm_wet/temperate_forest tags include Mojang biome tags (`#minecraft:is_forest`, `#minecraft:is_jungle`, etc.) and optional `forge:` / `c:` entries with `"required": false` so missing tags in older packs do not fail loading.
 - [ ] **Per-feature toggles:** Not wired to config yet — use datapack overrides or disable specific biome modifiers in a pack. Granular config hooks are a later improvement (see A2).

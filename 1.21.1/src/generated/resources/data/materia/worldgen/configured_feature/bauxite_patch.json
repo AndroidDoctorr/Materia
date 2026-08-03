@@ -3,7 +3,7 @@
   "config": {
     "feature": {
       "feature": {
-        "type": "minecraft:simple_block",
+        "type": "materia:loose_ground_block",
         "config": {
           "to_place": {
             "type": "minecraft:simple_state_provider",
@@ -16,15 +16,7 @@
           }
         }
       },
-      "placement": [
-        {
-          "type": "minecraft:block_predicate_filter",
-          "predicate": {
-            "type": "minecraft:matching_blocks",
-            "blocks": "minecraft:air"
-          }
-        }
-      ]
+      "placement": []
     },
     "tries": 6,
     "xz_spread": 4,

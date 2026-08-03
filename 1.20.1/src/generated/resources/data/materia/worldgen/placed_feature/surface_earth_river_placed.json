@@ -6,17 +6,59 @@
       "chance": 4
     },
     {
-      "type": "minecraft:in_square"
-    },
-    {
       "type": "minecraft:heightmap",
       "heightmap": "MOTION_BLOCKING_NO_LEAVES"
     },
     {
+      "type": "minecraft:in_square"
+    },
+    {
       "type": "minecraft:block_predicate_filter",
       "predicate": {
-        "type": "minecraft:matching_blocks",
-        "blocks": "minecraft:air"
+        "type": "minecraft:all_of",
+        "predicates": [
+          {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:air"
+          },
+          {
+            "type": "minecraft:would_survive",
+            "state": {
+              "Name": "materia:earth"
+            }
+          },
+          {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:matching_blocks",
+              "blocks": [
+                "minecraft:water",
+                "minecraft:kelp",
+                "minecraft:kelp_plant",
+                "minecraft:seagrass",
+                "minecraft:tall_seagrass"
+              ]
+            }
+          },
+          {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:matching_blocks",
+              "blocks": [
+                "minecraft:water",
+                "minecraft:kelp",
+                "minecraft:kelp_plant",
+                "minecraft:seagrass",
+                "minecraft:tall_seagrass"
+              ],
+              "offset": [
+                0,
+                -1,
+                0
+              ]
+            }
+          }
+        ]
       }
     },
     {

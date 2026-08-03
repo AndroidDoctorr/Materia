@@ -1,8 +1,0 @@
-{
-    "type": "forge:add_features",
-    "biomes": "#materia:tropical",
-    "step": "vegetal_decoration",
-    "features": [
-        "materia:rainbow_eucalyptus_grove_placed"
-    ]
-}

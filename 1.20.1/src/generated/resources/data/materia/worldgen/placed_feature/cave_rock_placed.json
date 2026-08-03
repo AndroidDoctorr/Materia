@@ -3,7 +3,7 @@
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 8
+      "count": 32
     },
     {
       "type": "minecraft:in_square"
@@ -13,7 +13,7 @@
       "height": {
         "type": "minecraft:uniform",
         "max_inclusive": {
-          "absolute": 50
+          "absolute": 64
         },
         "min_inclusive": {
           "above_bottom": 0
@@ -31,11 +31,6 @@
       "target_condition": {
         "type": "minecraft:solid"
       }
-    },
-    {
-      "type": "minecraft:random_offset",
-      "xz_spread": 0,
-      "y_spread": 1
     },
     {
       "type": "minecraft:biome"

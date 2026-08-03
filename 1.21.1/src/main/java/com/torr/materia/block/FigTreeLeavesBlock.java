@@ -21,7 +21,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.util.RandomSource;
 
 public class FigTreeLeavesBlock extends LeavesBlock {
-    public static final BooleanProperty HAS_FIGS = BooleanProperty.create("has_olives");
+    public static final BooleanProperty HAS_FIGS = BooleanProperty.create("has_figs");
 
     public FigTreeLeavesBlock(Properties properties) {
         super(properties);

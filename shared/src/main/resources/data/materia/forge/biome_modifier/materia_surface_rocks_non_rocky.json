@@ -1,0 +1,8 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#materia:overworld_land_non_rocky",
+  "step": "underground_decoration",
+  "features": [
+    "materia:surface_rock_placed"
+  ]
+}

@@ -58,6 +58,12 @@ public class ModFeatures {
     public static final RegistryObject<Feature<?>> TARO_PATCH_FEATURE = FEATURES.register("taro_patch_feature",
             () -> new TaroPatchFeature(com.mojang.serialization.Codec.unit(net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration.INSTANCE)));
 
+    public static final RegistryObject<Feature<?>> EARTH_SUBSOIL_FEATURE = FEATURES.register("earth_subsoil_feature",
+            () -> new EarthSubsoilFeature(com.mojang.serialization.Codec.unit(net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration.INSTANCE)));
+
+    public static final RegistryObject<Feature<?>> LOOSE_GROUND_BLOCK_FEATURE = FEATURES.register("loose_ground_block",
+            () -> new LooseGroundBlockFeature(SimpleBlockConfiguration.CODEC));
+
     public static void register(IEventBus eventBus) {
         FEATURES.register(eventBus);
     }
