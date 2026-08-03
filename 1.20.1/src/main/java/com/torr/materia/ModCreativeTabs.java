@@ -47,7 +47,7 @@ public class ModCreativeTabs {
             "cedar_log", "cedar_leaves", "cedar_sapling",
             "rough_cedar_plank", "smooth_cedar_plank", "cedar_planks", "cedar_stairs", "cedar_slab",
             "cedar_fence", "cedar_fence_gate", "cedar_door", "cedar_trapdoor", "cedar_joists", "cedar_post", "cedar_table", "cedar_trellis",
-            "eucalyptus_log", "rainbow_eucalyptus_log", "eucalyptus_leaves",
+            "eucalyptus_log", "rainbow_eucalyptus_log", "eucalyptus_leaves", "rainbow_eucalyptus_leaves",
             "eucalyptus_sapling", "rainbow_eucalyptus_sapling",
             "rough_eucalyptus_plank", "smooth_eucalyptus_plank", "eucalyptus_planks", "eucalyptus_stairs", "eucalyptus_slab",
             "eucalyptus_fence", "eucalyptus_fence_gate", "eucalyptus_door", "eucalyptus_trapdoor", "eucalyptus_joists", "eucalyptus_post", "eucalyptus_table", "eucalyptus_trellis"

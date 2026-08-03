@@ -194,30 +194,24 @@ public final class materiaWorldgenBootstrap {
         )));
 
         // earth_undersoil
-        context.register(EARTH_UNDERSOIL, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(
-                List.of(
-                        OreConfiguration.target(new BlockMatchTest(Blocks.DIRT), ModBlocks.EARTH.get().defaultBlockState()),
-                        OreConfiguration.target(new BlockMatchTest(Blocks.COARSE_DIRT), ModBlocks.EARTH.get().defaultBlockState()),
-                        OreConfiguration.target(new BlockMatchTest(Blocks.ROOTED_DIRT), ModBlocks.EARTH.get().defaultBlockState())
-                ),
-                33
-        )));
+        context.register(EARTH_UNDERSOIL, new ConfiguredFeature<>((Feature<NoneFeatureConfiguration>) ModFeatures.EARTH_SUBSOIL_FEATURE.get(),
+                NoneFeatureConfiguration.INSTANCE));
 
         context.register(SURFACE_EARTH, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK,
                 new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.EARTH.get()))));
 
-        context.register(SURFACE_ROCK, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK,
+        context.register(SURFACE_ROCK, new ConfiguredFeature<>((Feature<SimpleBlockConfiguration>) ModFeatures.LOOSE_GROUND_BLOCK_FEATURE.get(),
                 new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.ROCK.get()))));
 
-        context.register(CAVE_ROCK, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK,
+        context.register(CAVE_ROCK, new ConfiguredFeature<>((Feature<SimpleBlockConfiguration>) ModFeatures.LOOSE_GROUND_BLOCK_FEATURE.get(),
                 new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.ROCK.get()))));
 
-        // bauxite_patch (random patch over simple block)
+        // bauxite_patch (random patch over loose ground block)
         {
-            ConfiguredFeature<SimpleBlockConfiguration, ?> simple = new ConfiguredFeature<>(Feature.SIMPLE_BLOCK,
+            ConfiguredFeature<SimpleBlockConfiguration, ?> simple = new ConfiguredFeature<>((Feature<SimpleBlockConfiguration>) ModFeatures.LOOSE_GROUND_BLOCK_FEATURE.get(),
                     new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.BAUXITE.get())));
             Holder<ConfiguredFeature<?, ?>> simpleHolder = Holder.direct(simple);
-            PlacedFeature placed = new PlacedFeature(simpleHolder, patchBlockPlacement());
+            PlacedFeature placed = new PlacedFeature(simpleHolder, List.of());
             Holder<PlacedFeature> placedHolder = Holder.direct(placed);
             context.register(BAUXITE_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH,
                     new RandomPatchConfiguration(6, 4, 0, placedHolder)));
@@ -464,74 +458,53 @@ public final class materiaWorldgenBootstrap {
 
         context.register(EARTH_SUBSOIL_PLACED, new PlacedFeature(configured.getOrThrow(EARTH_UNDERSOIL),
                 List.of(
-                        CountPlacement.of(64),
-                        InSquarePlacement.spread(),
-                        HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR),
-                        RandomOffsetPlacement.vertical(net.minecraft.util.valueproviders.UniformInt.of(-6, -1)),
+                        CountPlacement.of(1),
                         BiomeFilter.biome()
                 )));
 
         context.register(SURFACE_EARTH_RIVER_PLACED, new PlacedFeature(configured.getOrThrow(SURFACE_EARTH),
                 List.of(
                         RarityFilter.onAverageOnceEvery(4),
-                        InSquarePlacement.spread(),
                         HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
-                        BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE),
+                        InSquarePlacement.spread(),
+                        BlockPredicateFilter.forPredicate(surfaceEarthPlacementPredicate()),
                         BiomeFilter.biome()
                 )));
 
         context.register(SURFACE_ROCK_PLACED, new PlacedFeature(configured.getOrThrow(SURFACE_ROCK),
                 List.of(
-                        RarityFilter.onAverageOnceEvery(8),
-                        InSquarePlacement.spread(),
+                        RarityFilter.onAverageOnceEvery(3),
                         HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
-                        BlockPredicateFilter.forPredicate(BlockPredicate.allOf(
-                                    BlockPredicate.ONLY_IN_AIR_PREDICATE,
-                                    BlockPredicate.wouldSurvive(ModBlocks.ROCK.get().defaultBlockState(), BlockPos.ZERO))),
+                        InSquarePlacement.spread(),
                         BiomeFilter.biome()
                 )));
 
         context.register(SURFACE_ROCK_ROCKY_PLACED, new PlacedFeature(configured.getOrThrow(SURFACE_ROCK),
                 List.of(
-                        RarityFilter.onAverageOnceEvery(2),
-                        InSquarePlacement.spread(),
+                        RarityFilter.onAverageOnceEvery(1),
                         HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
-                        BlockPredicateFilter.forPredicate(BlockPredicate.allOf(
-                                    BlockPredicate.ONLY_IN_AIR_PREDICATE,
-                                    BlockPredicate.wouldSurvive(ModBlocks.ROCK.get().defaultBlockState(), BlockPos.ZERO))),
+                        InSquarePlacement.spread(),
                         BiomeFilter.biome()
                 )));
 
         context.register(BAUXITE_PATCH_PLACED, new PlacedFeature(configured.getOrThrow(BAUXITE_PATCH),
                 List.of(
                         RarityFilter.onAverageOnceEvery(16),
-                        InSquarePlacement.spread(),
+                        BlockPredicateFilter.forPredicate(notAquaticSurfacePredicate()),
                         HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
-                        BlockPredicateFilter.forPredicate(BlockPredicate.allOf(
-                                BlockPredicate.wouldSurvive(ModBlocks.BAUXITE.get().defaultBlockState(), BlockPos.ZERO),
-                                BlockPredicate.not(BlockPredicate.matchesBlocks(BlockPos.ZERO, List.of(
-                                        Blocks.WATER, Blocks.KELP, Blocks.KELP_PLANT, Blocks.SEAGRASS, Blocks.TALL_SEAGRASS))),
-                                BlockPredicate.not(BlockPredicate.matchesBlocks(new BlockPos(0, -1, 0), List.of(
-                                        Blocks.WATER, Blocks.KELP, Blocks.KELP_PLANT, Blocks.SEAGRASS, Blocks.TALL_SEAGRASS))),
-                                BlockPredicate.not(BlockPredicate.matchesTag(new BlockPos(0, -1, 0), BlockTags.LEAVES))
-                        )),
+                        InSquarePlacement.spread(),
                         BiomeFilter.biome()
                 )));
 
         context.register(BAUXITE_PATCH_ON_ORE_PLACED, new PlacedFeature(configured.getOrThrow(BAUXITE_PATCH),
                 List.of(
                         RarityFilter.onAverageOnceEvery(8),
-                        InSquarePlacement.spread(),
-                        HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR),
                         BlockPredicateFilter.forPredicate(BlockPredicate.allOf(
-                                BlockPredicate.ONLY_IN_AIR_PREDICATE,
-                                BlockPredicate.not(BlockPredicate.matchesBlocks(BlockPos.ZERO, List.of(
-                                        Blocks.WATER, Blocks.KELP, Blocks.KELP_PLANT, Blocks.SEAGRASS, Blocks.TALL_SEAGRASS))),
-                                BlockPredicate.not(BlockPredicate.matchesBlocks(new BlockPos(0, -1, 0), List.of(
-                                        Blocks.WATER, Blocks.KELP, Blocks.KELP_PLANT, Blocks.SEAGRASS, Blocks.TALL_SEAGRASS))),
-                                BlockPredicate.wouldSurvive(ModBlocks.BAUXITE.get().defaultBlockState(), BlockPos.ZERO),
+                                notAquaticSurfacePredicate(),
                                 BlockPredicate.matchesBlocks(new BlockPos(0, -1, 0), List.of(ModBlocks.BAUXITE_ORE.get()))
                         )),
+                        HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
+                        InSquarePlacement.spread(),
                         BiomeFilter.biome()
                 )));
 
@@ -545,21 +518,19 @@ public final class materiaWorldgenBootstrap {
 
         context.register(CAVE_ROCK_PLACED, new PlacedFeature(configured.getOrThrow(CAVE_ROCK),
                 List.of(
-                        CountPlacement.of(8),
+                        CountPlacement.of(32),
                         InSquarePlacement.spread(),
-                        HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(50)),
+                        HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(64)),
                         EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.ONLY_IN_AIR_PREDICATE, 12),
-                        RandomOffsetPlacement.vertical(net.minecraft.util.valueproviders.ConstantInt.of(1)),
                         BiomeFilter.biome()
                 )));
 
         context.register(CAVE_ROCK_ROCKY_PLACED, new PlacedFeature(configured.getOrThrow(CAVE_ROCK),
                 List.of(
-                        CountPlacement.of(15),
+                        CountPlacement.of(48),
                         InSquarePlacement.spread(),
-                        HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(50)),
+                        HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(64)),
                         EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.ONLY_IN_AIR_PREDICATE, 12),
-                        RandomOffsetPlacement.vertical(net.minecraft.util.valueproviders.ConstantInt.of(1)),
                         BiomeFilter.biome()
                 )));
 
@@ -641,8 +612,8 @@ public final class materiaWorldgenBootstrap {
         context.register(RUBBER_TREE_PLACED, new PlacedFeature(configured.getOrThrow(RUBBER_TREE),
                 List.of(
                         RarityFilter.onAverageOnceEvery(20),
-                        InSquarePlacement.spread(),
                         HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        InSquarePlacement.spread(),
                         BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.RUBBER_TREE_SAPLING.get().defaultBlockState(), BlockPos.ZERO)),
                         BiomeFilter.biome()
                 )));
@@ -707,8 +678,8 @@ public final class materiaWorldgenBootstrap {
         context.register(OLIVE_TREE_PLACED, new PlacedFeature(configured.getOrThrow(OLIVE_TREE),
                 List.of(
                         RarityFilter.onAverageOnceEvery(24),
-                        InSquarePlacement.spread(),
                         HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        InSquarePlacement.spread(),
                         BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.OLIVE_SAPLING.get().defaultBlockState(), BlockPos.ZERO)),
                         BiomeFilter.biome()
                 )));
@@ -763,6 +734,24 @@ public final class materiaWorldgenBootstrap {
 
     private static List<PlacementModifier> commonOrePlacement(int count, PlacementModifier height) {
         return orePlacement(CountPlacement.of(count), height);
+    }
+
+    private static BlockPredicate surfaceEarthPlacementPredicate() {
+        return BlockPredicate.allOf(
+                BlockPredicate.ONLY_IN_AIR_PREDICATE,
+                BlockPredicate.wouldSurvive(ModBlocks.EARTH.get().defaultBlockState(), BlockPos.ZERO),
+                BlockPredicate.not(BlockPredicate.matchesBlocks(BlockPos.ZERO, List.of(
+                        Blocks.WATER, Blocks.KELP, Blocks.KELP_PLANT, Blocks.SEAGRASS, Blocks.TALL_SEAGRASS))),
+                BlockPredicate.not(BlockPredicate.matchesBlocks(new BlockPos(0, -1, 0), List.of(
+                        Blocks.WATER, Blocks.KELP, Blocks.KELP_PLANT, Blocks.SEAGRASS, Blocks.TALL_SEAGRASS))));
+    }
+
+    private static BlockPredicate notAquaticSurfacePredicate() {
+        return BlockPredicate.allOf(
+                BlockPredicate.not(BlockPredicate.matchesBlocks(BlockPos.ZERO, List.of(
+                        Blocks.WATER, Blocks.KELP, Blocks.KELP_PLANT, Blocks.SEAGRASS, Blocks.TALL_SEAGRASS))),
+                BlockPredicate.not(BlockPredicate.matchesBlocks(new BlockPos(0, -1, 0), List.of(
+                        Blocks.WATER, Blocks.KELP, Blocks.KELP_PLANT, Blocks.SEAGRASS, Blocks.TALL_SEAGRASS))));
     }
 }
 

@@ -4,6 +4,7 @@ import com.torr.materia.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -72,6 +73,7 @@ final class TreeLeafDistanceFix {
                 || state.is(ModBlocks.MAPLE_LEAVES.get())
                 || state.is(ModBlocks.FIG_LEAVES.get())
                 || state.is(ModBlocks.CEDAR_LEAVES.get())
-                || state.is(ModBlocks.EUCALYPTUS_LEAVES.get());
+                || state.is(ModBlocks.EUCALYPTUS_LEAVES.get())
+                || state.is(ModBlocks.RAINBOW_EUCALYPTUS_LEAVES.get());
     }
 }

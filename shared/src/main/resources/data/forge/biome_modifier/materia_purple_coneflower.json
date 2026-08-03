@@ -1,8 +1,0 @@
-{
-    "type": "forge:add_features",
-    "biomes": "#materia:prairie",
-    "step": "vegetal_decoration",
-    "features": [
-        "materia:purple_coneflower_placed"
-    ]
-}

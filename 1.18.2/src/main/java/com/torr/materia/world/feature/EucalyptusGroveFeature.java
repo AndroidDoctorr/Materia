@@ -1,9 +1,11 @@
 package com.torr.materia.world.feature;
 
 import com.mojang.serialization.Codec;
+import com.torr.materia.ModBlocks;
 import net.minecraft.core.BlockPos;
 import java.util.Random;
 import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
@@ -22,6 +24,9 @@ public class EucalyptusGroveFeature extends Feature<NoneFeatureConfiguration> {
         BlockPos origin = context.origin();
         Random random = context.random();
 
+        Block logBlock = rainbowGrove ? ModBlocks.RAINBOW_EUCALYPTUS_LOG.get() : ModBlocks.EUCALYPTUS_LOG.get();
+        Block leavesBlock = rainbowGrove ? ModBlocks.RAINBOW_EUCALYPTUS_LEAVES.get() : ModBlocks.EUCALYPTUS_LEAVES.get();
+
         int treeCount = 3 + random.nextInt(5);
         boolean placedAny = false;
 
@@ -29,7 +34,7 @@ public class EucalyptusGroveFeature extends Feature<NoneFeatureConfiguration> {
             int offsetX = random.nextInt(17) - 8;
             int offsetZ = random.nextInt(17) - 8;
             BlockPos treePos = origin.offset(offsetX, 0, offsetZ);
-            if (EucalyptusTreeFeature.placeTree(level, treePos, random, rainbowGrove)) {
+            if (EucalyptusTreeFeature.placeTree(level, treePos, random, logBlock, leavesBlock)) {
                 placedAny = true;
             }
         }

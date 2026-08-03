@@ -35,6 +35,8 @@ import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 
 import java.util.List;
@@ -57,17 +59,10 @@ public class ModConfiguredFeatures {
                 return new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(targets, 18)); // Larger veins, somewhat rare
             });
 
-    // Configure earth under topsoil generation (replaces dirt with earth)
+    // Configure earth subsoil (column scan below preserved topsoil)
     public static final RegistryObject<ConfiguredFeature<?, ?>> EARTH_UNDERSOIL = CONFIGURED_FEATURES.register("earth_undersoil",
-            () -> {
-                List<OreConfiguration.TargetBlockState> targets = List.of(
-                        OreConfiguration.target(new BlockMatchTest(Blocks.DIRT), ModBlocks.EARTH.get().defaultBlockState()),
-                        OreConfiguration.target(new BlockMatchTest(Blocks.COARSE_DIRT), ModBlocks.EARTH.get().defaultBlockState()),
-                        OreConfiguration.target(new BlockMatchTest(Blocks.ROOTED_DIRT), ModBlocks.EARTH.get().defaultBlockState())
-                );
-                // Vein size 33 gives roughly ~2x dirt vein size
-                return new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(targets, 33));
-            });
+            () -> new ConfiguredFeature<>((Feature<NoneFeatureConfiguration>) ModFeatures.EARTH_SUBSOIL_FEATURE.get(),
+                    NoneFeatureConfiguration.INSTANCE));
 
     // Configure surface earth generation (for riverbeds, etc.)
     public static final RegistryObject<ConfiguredFeature<?, ?>> SURFACE_EARTH = CONFIGURED_FEATURES.register("surface_earth",
@@ -76,21 +71,21 @@ public class ModConfiguredFeatures {
 
     // Configure surface rock generation
     public static final RegistryObject<ConfiguredFeature<?, ?>> SURFACE_ROCK = CONFIGURED_FEATURES.register("surface_rock",
-            () -> new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, 
+            () -> new ConfiguredFeature<>((Feature<SimpleBlockConfiguration>) ModFeatures.LOOSE_GROUND_BLOCK_FEATURE.get(),
                     new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.ROCK.get()))));
 
     // Configure cave rock generation  
     public static final RegistryObject<ConfiguredFeature<?, ?>> CAVE_ROCK = CONFIGURED_FEATURES.register("cave_rock",
-            () -> new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, 
+            () -> new ConfiguredFeature<>((Feature<SimpleBlockConfiguration>) ModFeatures.LOOSE_GROUND_BLOCK_FEATURE.get(),
                     new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.ROCK.get()))));
 
     // Configure bauxite surface clumps - small clustered patches
     public static final RegistryObject<ConfiguredFeature<?, ?>> BAUXITE_PATCH = CONFIGURED_FEATURES.register("bauxite_patch",
             () -> {
-                ConfiguredFeature<SimpleBlockConfiguration, ?> simple = new ConfiguredFeature<>(Feature.SIMPLE_BLOCK,
+                ConfiguredFeature<SimpleBlockConfiguration, ?> simple = new ConfiguredFeature<>((Feature<SimpleBlockConfiguration>) ModFeatures.LOOSE_GROUND_BLOCK_FEATURE.get(),
                         new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.BAUXITE.get())));
                 Holder<ConfiguredFeature<?, ?>> simpleHolder = Holder.direct(simple);
-                PlacedFeature placed = new PlacedFeature(simpleHolder, patchBlockPlacement());
+                PlacedFeature placed = new PlacedFeature(simpleHolder, List.of());
                 Holder<PlacedFeature> placedHolder = Holder.direct(placed);
                 return new ConfiguredFeature<>(Feature.RANDOM_PATCH,
                         new RandomPatchConfiguration(6, 4, 0, placedHolder)); // fewer loose chunks per patch

@@ -15,6 +15,9 @@ Materia groups biomes for plant and tree worldgen. Tags live under `shared/src/m
 | `#materia:warm_wet_surface` | Humid lowland tropics/subtropics | jungle, mangrove swamp, savanna |
 | `#materia:beach` | Coast | beach, stony shore |
 | `#materia:grassy` | Broad farmland/grass starter crops | plains, forests, savannas, jungles |
+| `#materia:overworld_land_non_rocky` | Dry land surface rocks (excludes ocean/river/beach) | plains, forests, savannas, badlands, windswept hills, … |
+| `#materia:overworld_non_rocky` | Cave rocks + some ores | most overworld except `#materia:rocky` mountains |
+| `#materia:rocky` | High surface/cave rock rates, magnetite boost | windswept hills, badlands, stony peaks, … |
 
 **Note:** `#materia:temperate` deliberately excludes `#minecraft:is_taiga` and `#minecraft:is_forest`, which previously pulled eucalyptus and other warm-climate plants into snowy spruce taiga.
 
@@ -22,4 +25,6 @@ See also:
 
 - [Decorative plants](../content/blocks/decorative-plants.md)
 - [Decorative flowers](../content/blocks/decorative-flowers.md)
+- [Rock](../content/blocks/rock.md)
+- [Version differences — worldgen wiring](../VERSION_DIFFERENCES.md#worldgen-wiring-how-features-reach-biomes)
 - [Crops and farming (mechanics)](../mechanics/crops.md)
