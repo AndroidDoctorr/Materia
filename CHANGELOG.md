@@ -6,6 +6,13 @@ Planned work is tracked in [`documentation/release-roadmap.md`](documentation/re
 
 ## Unreleased
 
+#### Worldgen (multi-version parity)
+
+- **1.18.2:** Restored **`BiomeLoadingEvent`** injection in `ModWorldEvents.java`, mirroring shared biome modifier rules via `#materia:*` biome tags. Biome modifier JSON stays **excluded** from the 1.18 jar (Forge JSON modifiers are not the wiring path on this port). The 1.3.3 change that disabled the Java hook left 1.18 worlds with no Materia features.
+- **1.19.2:** Surface/cave rocks and bauxite surface clumps use **`LooseGroundBlockFeature`** so loose blocks sit on solid ground (not mid-air or over water). Non-rocky **surface rock** rate is **~1 per 2 chunks** via Java `ModPlacedFeatures` + shared biome modifiers.
+- **1.20.1 / 1.21.1:** Worldgen JSON under `src/generated/resources/data/materia/worldgen/` is regenerated from the Java bootstrap (`runData` on 1.20.1, copied to 1.21.1). Generated placed features **override** optional Java registration on these ports — keep JSON in sync after bootstrap changes. Non-rocky surface rock rate **~1 per 3 chunks** in generated JSON.
+- **Fix (1.21.1):** `FigTreeLeavesBlock` registered its fruit flag as **`has_olives`** instead of **`has_figs`**, so blockstates/models did not match (purple/black leaves). Olive leaves correctly use `has_olives` in both Java and JSON; fig leaves must use **`has_figs`** everywhere.
+
 #### Decorative building (1.3.x polish)
 
 - **Column bases:** `materia:{material}_column_base` for stone, limestone, marble, sandstone, blackstone, and terracotta — stonecutter from matching base block; stacks under columns like capitals stack above.
@@ -15,6 +22,7 @@ Planned work is tracked in [`documentation/release-roadmap.md`](documentation/re
 #### Docs
 
 - Updated **stone trim**, **wrought iron building**, **balustrades**, and **metal finials** pages; release roadmap checklist extended for column bases and decor fixes.
+- Updated **worldgen parity** notes: `VERSION_DIFFERENCES.md`, [Rock](documentation/content/blocks/rock.md), [Fig tree](documentation/content/blocks/fig-tree.md), [Worldgen biome tags](documentation/reference/tags/worldgen-biomes.md).
 
 ## 1.3.3
 

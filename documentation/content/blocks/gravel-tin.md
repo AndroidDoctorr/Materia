@@ -10,10 +10,14 @@ Tin gravel is a natural “alluvial” ore deposit. It’s one of the main early
 
 ## Where it generates
 
-In 1.18.2, tin gravel is added as worldgen “veins per chunk”, with extra frequency in rivers and beaches:
+**1.18.2:** `1.18.2/src/main/java/com/torr/materia/world/ModWorldEvents.java` (`BiomeLoadingEvent` — river vs non-river split).
 
-- `1.18.2/src/main/java/com/torr/materia/world/ModWorldEvents.java`
-- `1.18.2/src/main/java/com/torr/materia/world/feature/ModPlacedFeatures.java`
+**1.19.2+:** shared biome modifiers:
+
+- `shared/src/main/resources/data/materia/forge/biome_modifier/materia_tin_gravel_non_river.json`
+- `shared/src/main/resources/data/materia/forge/biome_modifier/materia_tin_gravel_river.json`
+
+Placed features: `{port}/.../ModPlacedFeatures.java` (`gravel_tin_ore_placed`, `gravel_tin_ore_river_placed`).
 
 Practical tip:
 
