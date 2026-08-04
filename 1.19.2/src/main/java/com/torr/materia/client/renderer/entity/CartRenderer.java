@@ -1,7 +1,7 @@
 package com.torr.materia.client.renderer.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
+import com.mojang.math.Vector3f;
 import com.torr.materia.client.model.CartModel;
 import com.torr.materia.entity.CartEntity;
 import com.torr.materia.materia;
@@ -40,7 +40,7 @@ public class CartRenderer extends EntityRenderer<CartEntity> {
     public void render(CartEntity entity, float entityYaw, float partialTicks, PoseStack poseStack,
             MultiBufferSource buffer, int packedLight) {
         poseStack.pushPose();
-        poseStack.mulPose(Axis.YP.rotationDegrees(180.0F - entityYaw));
+        poseStack.mulPose(Vector3f.YP.rotationDegrees(180.0F - entityYaw));
         poseStack.translate(0.0D, CartEntity.RENDER_Y_OFFSET, 0.0D);
 
         float travel = (float) Math.hypot(entity.getX() - entity.xo, entity.getZ() - entity.zo);

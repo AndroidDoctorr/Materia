@@ -1,0 +1,36 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:cart_base"
+        },
+        {
+            "item": "materia:cart_cover"
+        },
+        {
+            "item": "minecraft:crafting_table"
+        },
+        {
+            "item": "minecraft:chest"
+        },
+        {
+            "tag": "materia:all_beds"
+        },
+        {
+            "item": "materia:wooden_wheel"
+        },
+        {
+            "item": "materia:wooden_wheel"
+        },
+        {
+            "item": "materia:wooden_wheel"
+        },
+        {
+            "item": "materia:wooden_wheel"
+        }
+    ],
+    "result": {
+        "item": "materia:cart",
+        "count": 1
+    }
+}

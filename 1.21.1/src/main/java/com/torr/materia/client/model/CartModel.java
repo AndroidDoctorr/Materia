@@ -25,7 +25,7 @@ import java.util.Set;
 public class CartModel extends EntityModel<CartEntity> {
 
     public static final ModelLayerLocation LAYER = new ModelLayerLocation(
-            new ResourceLocation(materia.MOD_ID, "cart"), "main");
+            ResourceLocation.fromNamespaceAndPath(materia.MOD_ID, "cart"), "main");
 
     private static final int TEX_W = 16;
     private static final int TEX_H = 16;
@@ -311,8 +311,7 @@ public class CartModel extends EntityModel<CartEntity> {
 
     @Override
     public void renderToBuffer(com.mojang.blaze3d.vertex.PoseStack poseStack,
-            com.mojang.blaze3d.vertex.VertexConsumer buffer, int packedLight, int packedOverlay, float red,
-            float green, float blue, float alpha) {
+            com.mojang.blaze3d.vertex.VertexConsumer buffer, int packedLight, int packedOverlay, int color) {
         renderHull(poseStack, buffer, packedLight, packedOverlay);
         renderWheels(poseStack, buffer, packedLight, packedOverlay);
     }

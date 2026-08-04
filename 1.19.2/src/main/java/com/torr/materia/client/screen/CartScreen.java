@@ -36,11 +36,13 @@ public class CartScreen extends AbstractContainerScreen<CartMenu> {
     protected void init() {
         super.init();
         this.titleLabelX = (this.imageWidth - this.font.width(this.title)) / 2;
-        this.sleepButton = this.addRenderableWidget(Button.builder(
+        this.sleepButton = this.addWidget(new Button(
+                this.leftPos + SLEEP_BUTTON_X,
+                this.topPos + SLEEP_BUTTON_Y,
+                SLEEP_BUTTON_W,
+                SLEEP_BUTTON_H,
                 Component.translatable("gui.materia.cart.sleep"),
-                btn -> NetworkHandler.INSTANCE.sendToServer(new CartSleepPacket(this.menu.getCart().getId())))
-                .bounds(this.leftPos + SLEEP_BUTTON_X, this.topPos + SLEEP_BUTTON_Y, SLEEP_BUTTON_W, SLEEP_BUTTON_H)
-                .build());
+                btn -> NetworkHandler.INSTANCE.sendToServer(new CartSleepPacket(this.menu.getCart().getId()))));
         this.updateSleepButton();
     }
 
@@ -54,7 +56,7 @@ public class CartScreen extends AbstractContainerScreen<CartMenu> {
         if (this.sleepButton == null || this.minecraft == null || this.minecraft.player == null) {
             return;
         }
-        this.sleepButton.active = CartEntity.canSleepAt(this.minecraft.player.level());
+        this.sleepButton.active = CartEntity.canSleepAt(this.minecraft.player.level);
     }
 
     @Override

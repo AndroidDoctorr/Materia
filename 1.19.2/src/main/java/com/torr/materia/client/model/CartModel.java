@@ -10,11 +10,7 @@ import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
-
-import java.util.EnumSet;
-import java.util.Set;
 
 /**
  * Cart hull + wheels in 1/16-block units (16 units = 1 block). Matches {@link CartEntity} footprint.
@@ -52,14 +48,6 @@ public class CartModel extends EntityModel<CartEntity> {
     private static final float WHEEL_Z_CENTER_FRONT = -HALF_L + WHEEL_D * 0.5F + 2.0F;
     private static final float WHEEL_Z_CENTER_BACK = HALF_L - WHEEL_D * 0.5F - 2.0F;
     /** Outward wheel disc — left wheels use this face as-is; right wheels rotate 180° on Y. */
-    private static final Set<Direction> WHEEL_DISC_FACE = EnumSet.of(Direction.WEST);
-    /** Front/back wall shells omit the outward face so it can use a separate texture pass. */
-    private static final Set<Direction> WALL_NORTH_OUTER = EnumSet.of(Direction.NORTH);
-    private static final Set<Direction> WALL_NORTH_SHELL = EnumSet.of(Direction.SOUTH, Direction.EAST, Direction.WEST,
-            Direction.UP, Direction.DOWN);
-    private static final Set<Direction> WALL_SOUTH_OUTER = EnumSet.of(Direction.SOUTH);
-    private static final Set<Direction> WALL_SOUTH_SHELL = EnumSet.of(Direction.NORTH, Direction.EAST, Direction.WEST,
-            Direction.UP, Direction.DOWN);
     private static final float WHEEL_PART_SCALE = CartEntity.WHEEL_RADIUS * 2.0F;
 
     /** Draft arms extend from the front wall (−Z); matches {@link CartEntity#DRAFT_HOOK_FORWARD}. */
@@ -86,14 +74,10 @@ public class CartModel extends EntityModel<CartEntity> {
 
     public final ModelPart root;
     public final ModelPart floor;
-    /** Front wall outer face only (−Z, {@code cart_front.png}). */
+    /** Front wall (−Z, {@code cart_front.png} in a separate pass). */
     public final ModelPart wallNorthFace;
-    /** Front wall without the outer face ({@code cart.png}). */
-    public final ModelPart wallNorthShell;
-    /** Back wall outer face only (+Z, {@code cart_back.png}). */
+    /** Back wall (+Z, {@code cart_back.png} in a separate pass). */
     public final ModelPart wallSouthFace;
-    /** Back wall without the outer face ({@code cart.png}). */
-    public final ModelPart wallSouthShell;
     public final ModelPart wallWest;
     public final ModelPart wallEast;
     public final ModelPart draftArmLeft;
@@ -110,9 +94,7 @@ public class CartModel extends EntityModel<CartEntity> {
         this.root = root;
         this.floor = root.getChild("floor");
         this.wallNorthFace = root.getChild("wall_north_face");
-        this.wallNorthShell = root.getChild("wall_north_shell");
         this.wallSouthFace = root.getChild("wall_south_face");
-        this.wallSouthShell = root.getChild("wall_south_shell");
         this.wallWest = root.getChild("wall_west");
         this.wallEast = root.getChild("wall_east");
         this.draftArmLeft = root.getChild("draft_arm_left");
@@ -138,31 +120,17 @@ public class CartModel extends EntityModel<CartEntity> {
                 PartPose.ZERO);
 
         root.addOrReplaceChild(
-                "wall_north_shell",
-                CubeListBuilder.create()
-                        .texOffs(0, 0)
-                        .addBox(-HALF_W, BODY_BASE + FLOOR_H, -HALF_L, W, WALL_H, WALL_T, WALL_NORTH_SHELL),
-                PartPose.ZERO);
-
-        root.addOrReplaceChild(
                 "wall_north_face",
                 CubeListBuilder.create()
                         .texOffs(6, 0)
-                        .addBox(-HALF_W, BODY_BASE + FLOOR_H, -HALF_L, W, WALL_H, WALL_T, WALL_NORTH_OUTER),
-                PartPose.ZERO);
-
-        root.addOrReplaceChild(
-                "wall_south_shell",
-                CubeListBuilder.create()
-                        .texOffs(0, 0)
-                        .addBox(-HALF_W, BODY_BASE + FLOOR_H, HALF_L - WALL_T, W, WALL_H, WALL_T, WALL_SOUTH_SHELL),
+                        .addBox(-HALF_W, BODY_BASE + FLOOR_H, -HALF_L, W, WALL_H, WALL_T),
                 PartPose.ZERO);
 
         root.addOrReplaceChild(
                 "wall_south_face",
                 CubeListBuilder.create()
                         .texOffs(6, 0)
-                        .addBox(-HALF_W, BODY_BASE + FLOOR_H, HALF_L - WALL_T, W, WALL_H, WALL_T, WALL_SOUTH_OUTER),
+                        .addBox(-HALF_W, BODY_BASE + FLOOR_H, HALF_L - WALL_T, W, WALL_H, WALL_T),
                 PartPose.ZERO);
 
         root.addOrReplaceChild(
@@ -237,7 +205,7 @@ public class CartModel extends EntityModel<CartEntity> {
                 CubeListBuilder.create()
                         .texOffs(0, 0)
                         .addBox(-WHEEL_MESH_T * 0.5F, -WHEEL_MESH_HALF, -WHEEL_MESH_HALF, WHEEL_MESH_T, WHEEL_MESH_D,
-                                WHEEL_MESH_D, WHEEL_DISC_FACE),
+                                WHEEL_MESH_D),
                 pose);
     }
 
@@ -264,8 +232,6 @@ public class CartModel extends EntityModel<CartEntity> {
     public void renderHullBody(com.mojang.blaze3d.vertex.PoseStack poseStack,
             com.mojang.blaze3d.vertex.VertexConsumer buffer, int packedLight, int packedOverlay) {
         floor.render(poseStack, buffer, packedLight, packedOverlay);
-        wallNorthShell.render(poseStack, buffer, packedLight, packedOverlay);
-        wallSouthShell.render(poseStack, buffer, packedLight, packedOverlay);
         wallWest.render(poseStack, buffer, packedLight, packedOverlay);
         wallEast.render(poseStack, buffer, packedLight, packedOverlay);
     }

@@ -28,6 +28,7 @@ import net.minecraft.nbt.Tag;
 
 import net.minecraft.network.chat.Component;
 
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 
 import net.minecraft.server.level.ServerLevel;
@@ -95,6 +96,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 
 import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.storage.loot.LootTable;
 
 import net.minecraft.world.phys.AABB;
 
@@ -107,8 +109,6 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 
 import net.minecraftforge.fluids.FluidType;
-
-import net.minecraftforge.network.NetworkHooks;
 
 import net.minecraftforge.items.wrapper.InvWrapper;
 
@@ -166,7 +166,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
     @Nullable
 
-    private ResourceLocation lootTable;
+    private ResourceKey<LootTable> lootTable;
 
     private long lootTableSeed;
 
@@ -217,8 +217,6 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
     public CartEntity(EntityType<? extends CartEntity> type, Level level) {
 
         super(type, level);
-
-        this.setMaxUpStep(STEP_HEIGHT);
 
         this.draftHeading = this.getYRot();
 
@@ -364,9 +362,9 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
     @Override
 
-    public double getPassengersRidingOffset() {
+    public float maxUpStep() {
 
-        return (double) (RENDER_Y_OFFSET + WHEEL_RADIUS + HEIGHT - 0.25F);
+        return STEP_HEIGHT;
 
     }
 
@@ -1096,7 +1094,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
     @Override
 
-    protected Vec3 getLeashOffset() {
+    public Vec3 getLeashOffset() {
 
         float rad = getYRot() * ((float) Math.PI / 180F);
 
@@ -1356,7 +1354,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         if (!tag.isEmpty()) {
 
-            this.readChestVehicleSaveData(tag);
+            this.readChestVehicleSaveData(tag, this.registryAccess());
 
         }
 
@@ -1380,7 +1378,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
                 CompoundTag tag = new CompoundTag();
 
-                this.addChestVehicleSaveData(tag);
+                this.addChestVehicleSaveData(tag, this.registryAccess());
 
                 drop.set(DataComponents.CUSTOM_DATA, CustomData.of(tag));
 
@@ -1410,7 +1408,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         this.addDraftTeamSaveData(tag);
 
-        this.addChestVehicleSaveData(tag);
+        this.addChestVehicleSaveData(tag, this.registryAccess());
 
     }
 
@@ -1424,7 +1422,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         this.readDraftTeamSaveData(tag);
 
-        this.readChestVehicleSaveData(tag);
+        this.readChestVehicleSaveData(tag, this.registryAccess());
 
     }
 
@@ -1575,7 +1573,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         if (player instanceof ServerPlayer serverPlayer) {
 
-            NetworkHooks.openScreen(serverPlayer, this, buf -> buf.writeVarInt(this.getId()));
+            serverPlayer.openMenu(this, buf -> buf.writeVarInt(this.getId()));
 
         }
 
@@ -1703,7 +1701,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
     @Nullable
 
-    public ResourceLocation getLootTable() {
+    public ResourceKey<LootTable> getLootTable() {
 
         return this.lootTable;
 
@@ -1711,7 +1709,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
     @Override
 
-    public void setLootTable(@Nullable ResourceLocation lootTable) {
+    public void setLootTable(@Nullable ResourceKey<LootTable> lootTable) {
 
         this.lootTable = lootTable;
 

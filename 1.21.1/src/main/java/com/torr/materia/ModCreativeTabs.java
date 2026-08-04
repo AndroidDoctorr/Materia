@@ -196,6 +196,8 @@ public class ModCreativeTabs {
                 || path.contains("_drums")
                 || path.contains("lashing")
                 || path.equals("cart")
+                || path.equals("cart_base")
+                || path.equals("cart_cover")
                 || path.equals("crucible");
     }
 

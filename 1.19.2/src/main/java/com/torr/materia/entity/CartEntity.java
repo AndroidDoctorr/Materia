@@ -14,7 +14,7 @@ import net.minecraft.core.Direction;
 
 import net.minecraft.core.NonNullList;
 
-import net.minecraft.core.registries.Registries;
+import net.minecraft.core.Registry;
 
 import net.minecraft.nbt.CompoundTag;
 
@@ -183,7 +183,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
     /** Speed multiplier on smooth surfaces (paths, planks, paved stone). */
     private static final double FAST_SURFACE_SPEED_FACTOR = 2.0D;
     private static final TagKey<Block> CART_FAST_SURFACES = TagKey.create(
-            Registries.BLOCK, new ResourceLocation("materia", "cart_fast_surfaces"));
+            Registry.BLOCK_REGISTRY, new ResourceLocation("materia", "cart_fast_surfaces"));
     /** Degrees per tick of draft heading change at full strafe input. */
     private static final float DRAFT_TURN_RATE = 2.8F;
     /** How quickly cart yaw catches up to the draft team heading. */
@@ -212,7 +212,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         super(type, level);
 
-        this.setMaxUpStep(STEP_HEIGHT);
+        this.maxUpStep = STEP_HEIGHT;
 
         this.draftHeading = this.getYRot();
 
@@ -404,7 +404,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
     @Override
     public void onAddedToWorld() {
         super.onAddedToWorld();
-        if (!this.level().isClientSide()) {
+        if (!this.level.isClientSide) {
             this.draftRestoreGraceTicks = 200;
             this.pendingDraftTeamRestore.clear();
             this.pendingDraftTeamRestore.addAll(this.savedDraftTeam);
@@ -429,7 +429,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         }
 
-        if (!this.level().isClientSide()) {
+        if (!this.level.isClientSide) {
 
             this.undoBoatLandMomentumDrain();
 
@@ -441,11 +441,11 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
             this.positionDraftTeam();
 
-            this.draftWasOnGround = this.onGround();
+            this.draftWasOnGround = this.onGround;
 
         }
 
-        if (!this.level().isClientSide() && this.isControlledByLocalInstance()) {
+        if (!this.level.isClientSide && this.isControlledByLocalInstance()) {
 
             alignToGroundUnderFootprint();
 
@@ -484,7 +484,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         }
 
-        return !this.onGround();
+        return !this.onGround;
 
     }
 
@@ -646,7 +646,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         List<Mob> draft = new ArrayList<>();
 
-        for (Mob mob : this.level().getEntitiesOfClass(Mob.class, this.getBoundingBox().inflate(LEASH_TRANSFER_RANGE))) {
+        for (Mob mob : this.level.getEntitiesOfClass(Mob.class, this.getBoundingBox().inflate(LEASH_TRANSFER_RANGE))) {
 
             if (mob.isLeashed() && mob.getLeashHolder() == this && isDraftEligible(mob)) {
 
@@ -724,7 +724,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
             } else {
 
-                ty = sampleHighestGroundY(this.level(), tx, this.getY(), tz, this.draftHeading, 0.6F, 0.6F);
+                ty = sampleHighestGroundY(this.level, tx, this.getY(), tz, this.draftHeading, 0.6F, 0.6F);
 
                 if (ty == Double.NEGATIVE_INFINITY) {
 
@@ -791,7 +791,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
     /** Blend speed from 1x on rough ground up to {@link #FAST_SURFACE_SPEED_FACTOR} on smooth surfaces. */
     private double getSurfaceSpeedFactor() {
 
-        if (this.level().isClientSide()) {
+        if (this.level.isClientSide) {
 
             return 1.0D;
 
@@ -829,9 +829,9 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
             double wz = z + (double) (sample[0] * sin + sample[1] * cos);
 
-            BlockPos pos = BlockPos.containing(wx, probeY, wz);
+            BlockPos pos = new BlockPos(Mth.floor(wx), probeY, Mth.floor(wz));
 
-            if (this.level().getBlockState(pos).is(CART_FAST_SURFACES)) {
+            if (this.level.getBlockState(pos).is(CART_FAST_SURFACES)) {
 
                 smooth++;
 
@@ -855,7 +855,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         double pull = 0.0D;
 
-        for (Mob mob : this.level().getEntitiesOfClass(Mob.class, this.getBoundingBox().inflate(LEASH_TRANSFER_RANGE))) {
+        for (Mob mob : this.level.getEntitiesOfClass(Mob.class, this.getBoundingBox().inflate(LEASH_TRANSFER_RANGE))) {
 
             if (mob.isLeashed() && mob.getLeashHolder() == this && isDraftEligible(mob)) {
 
@@ -936,7 +936,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
     private void ejectNonPlayerPassengers() {
 
-        if (this.level().isClientSide()) {
+        if (this.level.isClientSide) {
 
             return;
 
@@ -966,7 +966,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
     private void alignToGroundUnderFootprint() {
 
-        double groundY = sampleHighestGroundY(this.level(), getX(), getY(), getZ(), getYRot(), WIDTH, LENGTH);
+        double groundY = sampleHighestGroundY(this.level, getX(), getY(), getZ(), getYRot(), WIDTH, LENGTH);
 
         if (groundY == Double.NEGATIVE_INFINITY) {
 
@@ -1086,7 +1086,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
     @Override
 
-    protected Vec3 getLeashOffset() {
+    public Vec3 getLeashOffset() {
 
         float rad = getYRot() * ((float) Math.PI / 180F);
 
@@ -1118,13 +1118,13 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
     public void trySleep(Player player) {
 
-        if (player.level().isClientSide()) {
+        if (player.level.isClientSide) {
 
             return;
 
         }
 
-        if (player.isSleeping() || !canSleepAt(player.level())) {
+        if (player.isSleeping() || !canSleepAt(player.level)) {
 
             return;
 
@@ -1148,7 +1148,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         }
 
-        if (player.level() instanceof ServerLevel serverLevel) {
+        if (player.level instanceof ServerLevel serverLevel) {
 
             serverLevel.updateSleepingPlayerList();
 
@@ -1166,19 +1166,19 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         if (player.isShiftKeyDown() && this.hasLeashedDraftTeam()) {
 
-            if (!this.level().isClientSide()) {
+            if (!this.level.isClientSide) {
 
                 this.releaseLeashedMobs(player);
 
             }
 
-            return InteractionResult.sidedSuccess(this.level().isClientSide());
+            return InteractionResult.sidedSuccess(this.level.isClientSide);
 
         }
 
         if (stack.is(Items.LEAD)) {
 
-            if (!this.level().isClientSide()) {
+            if (!this.level.isClientSide) {
 
                 if (player.isShiftKeyDown()) {
 
@@ -1202,13 +1202,13 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
             }
 
-            return InteractionResult.sidedSuccess(this.level().isClientSide());
+            return InteractionResult.sidedSuccess(this.level.isClientSide);
 
         }
 
         if (player.isSecondaryUseActive()) {
 
-            return this.interactWithContainerVehicle(player);
+            return this.interactWithChestVehicle((event, entity) -> this.gameEvent(event, entity), player);
 
         }
 
@@ -1218,7 +1218,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
     private boolean hasLeashedDraftTeam() {
 
-        for (Mob mob : this.level().getEntitiesOfClass(Mob.class, this.getBoundingBox().inflate(LEASH_TRANSFER_RANGE))) {
+        for (Mob mob : this.level.getEntitiesOfClass(Mob.class, this.getBoundingBox().inflate(LEASH_TRANSFER_RANGE))) {
 
             if (mob.getLeashHolder() == this) {
 
@@ -1234,7 +1234,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
     private void releaseLeashedMobs(Player player) {
 
-        for (Mob mob : this.level().getEntitiesOfClass(Mob.class, this.getBoundingBox().inflate(LEASH_TRANSFER_RANGE))) {
+        for (Mob mob : this.level.getEntitiesOfClass(Mob.class, this.getBoundingBox().inflate(LEASH_TRANSFER_RANGE))) {
 
             if (mob.getLeashHolder() == this) {
 
@@ -1276,7 +1276,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
     private boolean transferPlayerLeashedMob(Player player) {
 
-        for (Mob mob : this.level().getEntitiesOfClass(Mob.class, this.getBoundingBox().inflate(LEASH_TRANSFER_RANGE))) {
+        for (Mob mob : this.level.getEntitiesOfClass(Mob.class, this.getBoundingBox().inflate(LEASH_TRANSFER_RANGE))) {
 
             if (mob.isLeashed() && mob.getLeashHolder() == player && isDraftEligible(mob)) {
 
@@ -1298,7 +1298,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         double closestDistSq = Double.MAX_VALUE;
 
-        for (Mob mob : this.level().getEntitiesOfClass(Mob.class, this.getBoundingBox().inflate(LEASH_TRANSFER_RANGE))) {
+        for (Mob mob : this.level.getEntitiesOfClass(Mob.class, this.getBoundingBox().inflate(LEASH_TRANSFER_RANGE))) {
 
             if (!mob.canBeLeashed(player) || !isDraftEligible(mob)) {
 
@@ -1344,7 +1344,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
     protected void destroy(DamageSource source) {
 
-        if (this.level().getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
+        if (this.level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
 
             ItemStack drop = new ItemStack(this.getDropItem());
 
@@ -1481,7 +1481,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
     private void restoreDraftTeamIfNeeded() {
 
-        if (this.pendingDraftTeamRestore.isEmpty() || !(this.level() instanceof ServerLevel serverLevel)) {
+        if (this.pendingDraftTeamRestore.isEmpty() || !(this.level instanceof ServerLevel serverLevel)) {
 
             return;
 
@@ -1551,7 +1551,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         }
 
-        if (!player.level().isClientSide()) {
+        if (!player.level.isClientSide) {
 
             this.gameEvent(GameEvent.CONTAINER_OPEN, player);
 
@@ -1563,7 +1563,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
     public void stopOpen(Player player) {
 
-        this.level().gameEvent(GameEvent.CONTAINER_CLOSE, this.position(), GameEvent.Context.of(player));
+        this.level.gameEvent(GameEvent.CONTAINER_CLOSE, this.position(), GameEvent.Context.of(player));
 
     }
 

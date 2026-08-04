@@ -24,7 +24,7 @@ public class CartSleepHandler {
     private static final Map<UUID, Integer> playerSleepDelay = new ConcurrentHashMap<>();
 
     public static void beginCartSleep(Player player, CartEntity cart) {
-        if (player.level().isClientSide()) {
+        if (player.level.isClientSide) {
             return;
         }
         playerSleepDelay.put(player.getUUID(), CART_SLEEP_DELAY_TICKS);
@@ -44,7 +44,7 @@ public class CartSleepHandler {
     @SubscribeEvent
     public static void onSleepingTimeCheck(SleepingTimeCheckEvent event) {
         Player player = event.getEntity();
-        if (isSleepingOnCart(player) && CartEntity.canSleepAt(player.level())) {
+        if (isSleepingOnCart(player) && CartEntity.canSleepAt(player.level)) {
             event.setResult(Event.Result.ALLOW);
         }
     }
@@ -55,7 +55,7 @@ public class CartSleepHandler {
             return;
         }
         Player player = event.player;
-        if (player == null || player.level().isClientSide()) {
+        if (player == null || player.level.isClientSide) {
             return;
         }
         Integer ticks = playerSleepDelay.get(player.getUUID());
@@ -68,7 +68,7 @@ public class CartSleepHandler {
         }
         ticks -= 1;
         if (ticks <= 0) {
-            if (player.level() instanceof ServerLevel serverLevel) {
+            if (player.level instanceof ServerLevel serverLevel) {
                 long currentTime = serverLevel.getDayTime();
                 long timeToMorning = 24000L - (currentTime % 24000L);
                 if (timeToMorning > 12000L) {
@@ -87,7 +87,7 @@ public class CartSleepHandler {
 
     @SubscribeEvent
     public static void onPlayerWakeUp(PlayerWakeUpEvent event) {
-        if (event.getEntity().level().isClientSide()) {
+        if (event.getEntity().level.isClientSide) {
             return;
         }
         playerSleepDelay.remove(event.getEntity().getUUID());

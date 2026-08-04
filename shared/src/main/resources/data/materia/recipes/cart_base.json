@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "PNP",
+        "PNP",
+        "PPP"
+    ],
+    "key": {
+        "P": {
+            "tag": "materia:smooth_planks"
+        },
+        "N": {
+            "tag": "materia:all_nails"
+        },
+        "S": {
+            "tag": "materia:sealants"
+        }
+    },
+    "result": {
+        "item": "materia:cart_base",
+        "count": 1
+    }
+}

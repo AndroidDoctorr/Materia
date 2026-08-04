@@ -2249,6 +2249,12 @@ public class ModItems {
         public static final RegistryObject<Item> MINECART_AXLE = ITEMS.register("minecart_axle",
                         () -> new Item(new Item.Properties()
                                         .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)));
+        public static final RegistryObject<Item> CART_BASE = ITEMS.register("cart_base",
+                        () -> new Item(new Item.Properties()
+                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)));
+        public static final RegistryObject<Item> CART_COVER = ITEMS.register("cart_cover",
+                        () -> new Item(new Item.Properties()
+                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)));
         public static final RegistryObject<Item> CART = ITEMS.register("cart",
                         () -> new CartItem(new Item.Properties().stacksTo(1)
                                         .tab(net.minecraft.world.item.CreativeModeTab.TAB_TRANSPORTATION)));

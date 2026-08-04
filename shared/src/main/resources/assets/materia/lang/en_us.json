@@ -798,6 +798,8 @@
     "block.materia.taupe_carpet": "Taupe Carpet",
     "item.materia.minecart_axle": "Minecart Axle",
     "item.materia.minecart_wheel": "Minecart Wheel",
+    "item.materia.cart_base": "Cart Base",
+    "item.materia.cart_cover": "Cart Cover",
     "item.materia.cart": "Cart",
     "entity.materia.cart": "Cart",
     "container.materia.cart": "Cart Storage",

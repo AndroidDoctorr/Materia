@@ -18,13 +18,13 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class CartRenderer extends EntityRenderer<CartEntity> {
 
     private static final ResourceLocation HULL_TEXTURE =
-            new ResourceLocation(materia.MOD_ID, "textures/block/cart.png");
+            ResourceLocation.fromNamespaceAndPath(materia.MOD_ID, "textures/block/cart.png");
     private static final ResourceLocation FRONT_TEXTURE =
-            new ResourceLocation(materia.MOD_ID, "textures/block/cart_front.png");
+            ResourceLocation.fromNamespaceAndPath(materia.MOD_ID, "textures/block/cart_front.png");
     private static final ResourceLocation BACK_TEXTURE =
-            new ResourceLocation(materia.MOD_ID, "textures/block/cart_back.png");
+            ResourceLocation.fromNamespaceAndPath(materia.MOD_ID, "textures/block/cart_back.png");
     private static final ResourceLocation WHEEL_TEXTURE =
-            new ResourceLocation(materia.MOD_ID, "textures/block/cart_wheel.png");
+            ResourceLocation.fromNamespaceAndPath(materia.MOD_ID, "textures/block/cart_wheel.png");
     private static final ResourceLocation CHEST_TEXTURE =
             ResourceLocation.fromNamespaceAndPath(materia.MOD_ID, "textures/block/cart_chest.png");
 

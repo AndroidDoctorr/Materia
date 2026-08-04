@@ -53,7 +53,7 @@ public class CartMenu extends AbstractContainerMenu {
         this.cart = cart;
         this.player = playerInventory.player;
 
-        if (cart.getLootTable() != null && !playerInventory.player.level().isClientSide()) {
+        if (cart.getLootTable() != null && !playerInventory.player.level.isClientSide) {
             cart.unpackChestVehicleLootTable(playerInventory.player);
         }
 
@@ -83,7 +83,7 @@ public class CartMenu extends AbstractContainerMenu {
     }
 
     private static CartEntity getCart(Inventory inventory, int entityId) {
-        Entity entity = inventory.player.level().getEntity(entityId);
+        Entity entity = inventory.player.level.getEntity(entityId);
         if (entity instanceof CartEntity cart) {
             return cart;
         }
@@ -108,7 +108,7 @@ public class CartMenu extends AbstractContainerMenu {
 
     @Override
     public void slotsChanged(Container container) {
-        slotChangedCraftingGrid(this, player.level(), player, craftSlots, resultSlots);
+        slotChangedCraftingGrid(this, player.level, player, craftSlots, resultSlots);
     }
 
     @Override
@@ -138,7 +138,7 @@ public class CartMenu extends AbstractContainerMenu {
         itemstack = stack.copy();
 
         if (index == RESULT_SLOT) {
-            stack.getItem().onCraftedBy(stack, player.level(), player);
+            stack.getItem().onCraftedBy(stack, player.level, player);
             if (!this.moveItemStackTo(stack, INV_SLOT_START, HOTBAR_SLOT_END, true)) {
                 return ItemStack.EMPTY;
             }
