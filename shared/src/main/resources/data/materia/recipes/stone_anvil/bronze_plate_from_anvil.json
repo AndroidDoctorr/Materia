@@ -3,7 +3,7 @@
     "input": {
         "item": "materia:bronze_ingot"
     },
-    "tool_tag": "materia:bronze_hammers",
+    "tool_tag": "materia:all_hammers",
     "result": {
         "item": "materia:bronze_plate",
         "count": 1

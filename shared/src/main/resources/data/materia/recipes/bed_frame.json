@@ -1,9 +1,9 @@
 {
     "type": "minecraft:crafting_shaped",
     "pattern": [
-        "PFP",
-        "RJR",
-        "PFP"
+        "PJP",
+        "RFR",
+        "PJP"
     ],
     "key": {
         "P": {
@@ -14,6 +14,9 @@
         },
         "F": {
             "item": "materia:wood_frame"
+        },
+        "J": {
+            "tag": "materia:all_wood_joiners"
         }
     },
     "result": {

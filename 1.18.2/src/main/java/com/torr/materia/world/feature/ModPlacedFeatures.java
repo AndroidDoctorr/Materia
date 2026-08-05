@@ -57,7 +57,7 @@ public class ModPlacedFeatures {
     // Surface rock placement - dry land biomes only (see overworld_land_non_rocky tag)
     public static final RegistryObject<PlacedFeature> SURFACE_ROCK_PLACED = PLACED_FEATURES.register("surface_rock_placed",
             () -> new PlacedFeature(ModConfiguredFeatures.SURFACE_ROCK.getHolder().get(),
-                    List.of(RarityFilter.onAverageOnceEvery(2),
+                    List.of(RarityFilter.onAverageOnceEvery(1),
                             HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
                             InSquarePlacement.spread(),
                             BiomeFilter.biome())));
