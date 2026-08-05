@@ -473,7 +473,7 @@ public final class materiaWorldgenBootstrap {
 
         context.register(SURFACE_ROCK_PLACED, new PlacedFeature(configured.getOrThrow(SURFACE_ROCK),
                 List.of(
-                        RarityFilter.onAverageOnceEvery(3),
+                        RarityFilter.onAverageOnceEvery(2),
                         HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
                         InSquarePlacement.spread(),
                         BiomeFilter.biome()

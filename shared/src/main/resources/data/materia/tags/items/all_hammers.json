@@ -1,6 +1,7 @@
 {
     "replace": false,
     "values": [
-        "#forge:tools/hammers"
+        "#forge:tools/hammers",
+        "#materia:bronze_hammers"
     ]
 }

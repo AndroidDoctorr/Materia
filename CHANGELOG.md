@@ -6,11 +6,16 @@ Planned work is tracked in [`documentation/release-roadmap.md`](documentation/re
 
 ## Unreleased
 
+## 1.3.4
+
+Patch release: worldgen parity, decor polish, and recipe fixes.
+
 #### Worldgen (multi-version parity)
 
 - **1.18.2:** Restored **`BiomeLoadingEvent`** injection in `ModWorldEvents.java`, mirroring shared biome modifier rules via `#materia:*` biome tags. Biome modifier JSON stays **excluded** from the 1.18 jar (Forge JSON modifiers are not the wiring path on this port). The 1.3.3 change that disabled the Java hook left 1.18 worlds with no Materia features.
-- **1.19.2:** Surface/cave rocks and bauxite surface clumps use **`LooseGroundBlockFeature`** so loose blocks sit on solid ground (not mid-air or over water). Non-rocky **surface rock** rate is **~1 per 2 chunks** via Java `ModPlacedFeatures` + shared biome modifiers.
-- **1.20.1 / 1.21.1:** Worldgen JSON under `src/generated/resources/data/materia/worldgen/` is regenerated from the Java bootstrap (`runData` on 1.20.1, copied to 1.21.1). Generated placed features **override** optional Java registration on these ports — keep JSON in sync after bootstrap changes. Non-rocky surface rock rate **~1 per 3 chunks** in generated JSON.
+- **1.19.2:** Surface/cave rocks and bauxite surface clumps use **`LooseGroundBlockFeature`** so loose blocks sit on solid ground (not mid-air or over water). Non-rocky **surface rock** rate is **~1 per chunk** via Java `ModPlacedFeatures` + shared biome modifiers.
+- **1.20.1 / 1.21.1:** Worldgen JSON under `src/generated/resources/data/materia/worldgen/` is regenerated from the Java bootstrap (`runData` on 1.20.1, copied to 1.21.1). Generated placed features **override** optional Java registration on these ports — keep JSON in sync after bootstrap changes. Non-rocky surface rock rate **~1 per 2 chunks** in generated JSON.
+- **Change:** **Doubled** surface rock spawn rate in non-hills biomes (plains, etc.); rocky/hills rates unchanged.
 - **Fix (1.21.1):** `FigTreeLeavesBlock` registered its fruit flag as **`has_olives`** instead of **`has_figs`**, so blockstates/models did not match (purple/black leaves). Olive leaves correctly use `has_olives` in both Java and JSON; fig leaves must use **`has_figs`** everywhere.
 
 #### Decorative building (1.3.x polish)
@@ -18,6 +23,11 @@ Planned work is tracked in [`documentation/release-roadmap.md`](documentation/re
 - **Column bases:** `materia:{material}_column_base` for stone, limestone, marble, sandstone, blackstone, and terracotta — stonecutter from matching base block; stacks under columns like capitals stack above.
 - **Wrought iron fence & gate:** connection logic rewrite — straight runs use a single oriented panel; corners/T-junctions use post + arms; connects to **fence gates** as well as other fences; neighbor refresh on place/break. **Jump height** matches vanilla wood fences (1.5-block collision). **Outline vs collision** split like vanilla (`getShape` / `getVisualShape` at 1 block; `getCollisionShape` at 1.5 blocks).
 - **Water wash-away fix:** wrought iron fences/gates, balustrades, and metal finials (spires, ball finials, acorn finials) no longer break when flowing water passes through; finials use solid collision voxels instead of `noCollision` props.
+
+#### Recipes
+
+- **Fix:** **bed frame** shaped recipe — wood **joiners** on the corners (replacing wood frames there); wood frame stays in the center row.
+- **Fix:** **bronze plate** on stone and iron anvils accepts **`#materia:all_hammers`** (tag now includes **`#materia:bronze_hammers`** as well as Forge hammers). Removed obsolete **`test_bronze_plate`** dev recipe.
 
 #### Docs
 
