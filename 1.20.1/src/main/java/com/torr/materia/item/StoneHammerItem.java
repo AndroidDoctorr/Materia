@@ -56,11 +56,9 @@ public class StoneHammerItem extends PickaxeItem {
 
     @Override
     public boolean isCorrectToolForDrops(BlockState state) {
-        if (state.is(ModBlocks.LIMESTONE.get())) {
-            return true;
-        }
-        if (state.is(Blocks.CALCITE)) {
-            return true;
+        // Limestone and calcite drop from mineBlock as calcite powder instead of blocks.
+        if (state.is(ModBlocks.LIMESTONE.get()) || state.is(Blocks.CALCITE)) {
+            return false;
         }
         // Allow soft sulfur variants
         if (state.is(ModBlocks.SULFUR_ORE.get()) || state.is(ModBlocks.TUFF_SULFUR_ORE.get())) {
@@ -83,14 +81,8 @@ public class StoneHammerItem extends PickaxeItem {
 
     @Override
     public float getDestroySpeed(ItemStack stack, BlockState state) {
-        if (state.is(ModBlocks.MALACHITE.get())) {
-            return super.getDestroySpeed(stack, state);
-        }
-        if (state.is(ModBlocks.LIMESTONE.get())) {
-            return super.getDestroySpeed(stack, state);
-        }
-        if (state.is(Blocks.CALCITE)) {
-            return super.getDestroySpeed(stack, state);
+        if (state.is(ModBlocks.MALACHITE.get()) || state.is(ModBlocks.LIMESTONE.get()) || state.is(Blocks.CALCITE)) {
+            return this.speed;
         }
         if (state.is(ModBlocks.SULFUR_ORE.get()) || state.is(ModBlocks.TUFF_SULFUR_ORE.get())) {
             return super.getDestroySpeed(stack, state);
@@ -105,8 +97,8 @@ public class StoneHammerItem extends PickaxeItem {
     @Override
     public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity entity) {
         if (!level.isClientSide) {
-            // Crush calcite to powder
-            if (state.is(Blocks.CALCITE)) {
+            // Crush calcite and limestone to powder
+            if (state.is(Blocks.CALCITE) || state.is(ModBlocks.LIMESTONE.get())) {
                 level.destroyBlock(pos, false);
                 Block.popResource(level, pos, new ItemStack(ModItems.CALCITE_POWDER.get(), 2));
                 stack.hurtAndBreak(1, entity, e -> e.broadcastBreakEvent(entity.getUsedItemHand()));

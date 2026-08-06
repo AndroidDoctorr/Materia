@@ -6,6 +6,14 @@ Planned work is tracked in [`documentation/release-roadmap.md`](documentation/re
 
 ## Unreleased
 
+## 1.3.5
+
+Patch release: stone hammer mining fix.
+
+#### Tools
+
+- **Fix:** **stone hammer** (`materia:stone_hammer`) again harvests **raw copper** from malachite, and crushes **limestone** and **calcite** into **2× calcite powder** (not the blocks). `#materia:all_hammers` now includes **`#materia:stone_hammers`** and Forge hammer tags; pickaxe mining tags for malachite/limestone moved to **shared** so 1.19+ match 1.18.2 behavior.
+
 ## 1.3.4
 
 Patch release: worldgen parity, decor polish, and recipe fixes.

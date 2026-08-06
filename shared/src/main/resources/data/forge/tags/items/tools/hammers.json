@@ -1,6 +1,11 @@
 {
-  "replace": false,
-  "values": [
-    "#materia:stone_hammers"
-  ]
+    "replace": false,
+    "values": [
+        "materia:stone_hammer",
+        "materia:bronze_hammer",
+        "materia:iron_hammer",
+        "materia:steel_hammer",
+        "materia:diamond_hammer",
+        "materia:netherite_hammer"
+    ]
 }

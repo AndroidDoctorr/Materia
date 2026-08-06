@@ -2,6 +2,8 @@
     "replace": false,
     "values": [
         "#forge:tools/hammers",
-        "#materia:bronze_hammers"
+        "#materia:stone_hammers",
+        "materia:diamond_hammer",
+        "materia:netherite_hammer"
     ]
 }
