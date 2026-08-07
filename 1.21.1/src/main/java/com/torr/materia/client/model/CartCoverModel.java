@@ -18,7 +18,7 @@ import java.util.Set;
 
 /**
  * Fabric cover over the cart bed — 1.25×1.25×2 blocks with 0.125 overhang per side.
- * Atlas {@code textures/entity/taupe_cart_cover.png} (32×32):
+ * Atlas {@code textures/entity/taupe_cart_cover.png} (40×40):
  * upper-left 16×16 = front/back, right half = sides + top.
  */
 public class CartCoverModel extends EntityModel<CartEntity> {
@@ -26,8 +26,8 @@ public class CartCoverModel extends EntityModel<CartEntity> {
     public static final ModelLayerLocation LAYER = new ModelLayerLocation(
             ResourceLocation.fromNamespaceAndPath(materia.MOD_ID, "cart_cover"), "main");
 
-    private static final int COVER_TEX_W = 32;
-    private static final int COVER_TEX_H = 32;
+    private static final int COVER_TEX_W = 40;
+    private static final int COVER_TEX_H = 40;
 
     private static final float U = 16.0F;
     private static final float COVER_OVERHANG = 0.125F;
@@ -65,37 +65,33 @@ public class CartCoverModel extends EntityModel<CartEntity> {
         MeshDefinition mesh = new MeshDefinition();
         PartDefinition root = mesh.getRoot();
 
-        // Front (−Z): upper-left quadrant, V flipped via texOffs(0, 16)
         root.addOrReplaceChild(
                 "cover_front",
                 CubeListBuilder.create()
-                        .texOffs(0, 16)
+                        .texOffs(0, 0)
                         .addBox(-HALF_COVER_W, COVER_Y, -HALF_COVER_L, COVER_W, COVER_H, SHELL, FACE_NORTH),
                 PartPose.ZERO);
 
-        // Back (+Z): same art as front
         root.addOrReplaceChild(
                 "cover_back",
                 CubeListBuilder.create()
-                        .texOffs(0, 16)
-                        .addBox(-HALF_COVER_W, COVER_Y, HALF_COVER_L - SHELL, COVER_W, COVER_H, SHELL, FACE_SOUTH),
+                        .texOffs(20, 0)
+                        .addBox(-HALF_COVER_W, COVER_Y, HALF_COVER_L, COVER_W, COVER_H, SHELL, FACE_SOUTH),
                 PartPose.ZERO);
 
-        // Left / right sides: right half of atlas
         root.addOrReplaceChild(
                 "cover_west",
                 CubeListBuilder.create()
-                        .texOffs(16, 0)
+                        .texOffs(0, 28)
                         .addBox(-HALF_COVER_W, COVER_Y, -HALF_COVER_L, SHELL, COVER_H, COVER_L, FACE_WEST),
                 PartPose.ZERO);
         root.addOrReplaceChild(
                 "cover_east",
                 CubeListBuilder.create()
-                        .texOffs(16, 0)
+                        .texOffs(8, 28)
                         .addBox(HALF_COVER_W - SHELL, COVER_Y, -HALF_COVER_L, SHELL, COVER_H, COVER_L, FACE_EAST),
                 PartPose.ZERO);
 
-        // Top: UV rotated 90° via a Y-axis pivot (same footprint, different texture orientation)
         PartDefinition topPivot = root.addOrReplaceChild(
                 "cover_top_pivot",
                 CubeListBuilder.create(),
@@ -103,7 +99,7 @@ public class CartCoverModel extends EntityModel<CartEntity> {
         topPivot.addOrReplaceChild(
                 "cover_top",
                 CubeListBuilder.create()
-                        .texOffs(16, 0)
+                        .texOffs(28, 20)
                         .addBox(-HALF_COVER_L, 0.0F, -HALF_COVER_W, COVER_L, SHELL, COVER_W, FACE_UP),
                 PartPose.rotation(0.0F, (float) (-Math.PI / 2.0), 0.0F));
 
