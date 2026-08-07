@@ -1,6 +1,8 @@
 package com.torr.materia.client;
 
 import com.torr.materia.materia;
+import com.torr.materia.client.model.CartCoverModel;
+import com.torr.materia.client.model.CartLanternModel;
 import com.torr.materia.client.model.CartModel;
 import com.torr.materia.client.renderer.CustomSheepFurLayer;
 import net.minecraft.client.renderer.entity.SheepRenderer;
@@ -16,6 +18,8 @@ public class ClientRenderLayers {
     @SubscribeEvent
     public static void registerEntityLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(CartModel.LAYER, CartModel::createBodyLayer);
+        event.registerLayerDefinition(CartCoverModel.LAYER, CartCoverModel::createBodyLayer);
+        event.registerLayerDefinition(CartLanternModel.LAYER, CartLanternModel::createBodyLayer);
     }
 
     @SubscribeEvent

@@ -38,5 +38,9 @@ public class NetworkHandler {
             CartSleepPacket::encode,
             CartSleepPacket::new,
             CartSleepPacket::handle);
+        INSTANCE.registerMessage(id++, CartSleepVisualPacket.class,
+            CartSleepVisualPacket::encode,
+            CartSleepVisualPacket::new,
+            CartSleepVisualPacket::handle);
     }
 }

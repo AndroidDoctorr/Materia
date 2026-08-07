@@ -2,6 +2,8 @@ package com.torr.materia.client.renderer.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
+import com.torr.materia.client.model.CartCoverModel;
+import com.torr.materia.client.model.CartLanternModel;
 import com.torr.materia.client.model.CartModel;
 import com.torr.materia.entity.CartEntity;
 import com.torr.materia.materia;
@@ -27,12 +29,20 @@ public class CartRenderer extends EntityRenderer<CartEntity> {
             new ResourceLocation(materia.MOD_ID, "textures/block/cart_wheel.png");
     private static final ResourceLocation CHEST_TEXTURE =
             new ResourceLocation(materia.MOD_ID, "textures/block/cart_chest.png");
+    private static final ResourceLocation COVER_TEXTURE =
+            new ResourceLocation(materia.MOD_ID, "textures/entity/taupe_cart_cover.png");
+    private static final ResourceLocation LANTERN_TEXTURE =
+            new ResourceLocation(materia.MOD_ID, "textures/entity/cart_lantern.png");
 
     private final CartModel model;
+    private final CartCoverModel coverModel;
+    private final CartLanternModel lanternModel;
 
     public CartRenderer(EntityRendererProvider.Context context) {
         super(context);
         this.model = new CartModel(context.bakeLayer(CartModel.LAYER));
+        this.coverModel = new CartCoverModel(context.bakeLayer(CartCoverModel.LAYER));
+        this.lanternModel = new CartLanternModel(context.bakeLayer(CartLanternModel.LAYER));
         this.shadowRadius = CartEntity.shadowRadius();
     }
 
@@ -68,6 +78,18 @@ public class CartRenderer extends EntityRenderer<CartEntity> {
         this.model.renderWheels(poseStack,
                 buffer.getBuffer(RenderType.entityCutoutNoCull(WHEEL_TEXTURE)),
                 packedLight, OverlayTexture.NO_OVERLAY);
+
+        if (entity.hasCover()) {
+            this.coverModel.renderCover(poseStack,
+                    buffer.getBuffer(RenderType.entityCutoutNoCull(COVER_TEXTURE)),
+                    packedLight, OverlayTexture.NO_OVERLAY);
+        }
+        if (entity.hasLantern()) {
+            int lanternLight = CartEntity.canSleepAt(entity.level) ? 15728880 : packedLight;
+            this.lanternModel.renderLantern(poseStack,
+                    buffer.getBuffer(RenderType.entityCutoutNoCull(LANTERN_TEXTURE)),
+                    lanternLight, OverlayTexture.NO_OVERLAY);
+        }
 
         poseStack.popPose();
         super.render(entity, entityYaw, partialTicks, poseStack, buffer, packedLight);

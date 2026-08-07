@@ -28,6 +28,12 @@ import net.minecraft.nbt.Tag;
 
 import net.minecraft.network.chat.Component;
 
+import net.minecraft.network.syncher.EntityDataAccessor;
+
+import net.minecraft.network.syncher.EntityDataSerializers;
+
+import net.minecraft.network.syncher.SynchedEntityData;
+
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 
@@ -46,6 +52,8 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 
 import net.minecraft.world.entity.Entity;
+
+import net.minecraft.world.entity.EntityDimensions;
 
 import net.minecraft.world.entity.EntityType;
 
@@ -91,6 +99,10 @@ import net.minecraft.world.level.Level;
 
 import net.minecraft.world.level.block.Block;
 
+import net.minecraft.world.level.block.Blocks;
+
+import net.minecraft.world.level.block.LightBlock;
+
 import net.minecraft.world.level.block.state.BlockState;
 
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -131,6 +143,15 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
     public static final int CHEST_SLOTS = 27;
 
+    public static final float MAX_HEALTH = 60.0F;
+
+    private static final EntityDataAccessor<Boolean> DATA_HAS_COVER =
+            SynchedEntityData.defineId(CartEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> DATA_HAS_LANTERN =
+            SynchedEntityData.defineId(CartEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Integer> DATA_HEALTH =
+            SynchedEntityData.defineId(CartEntity.class, EntityDataSerializers.INT);
+
     /** World-space footprint (blocks). Length runs along entity facing (+Z when yaw = 0). */
 
     public static final float WIDTH = 1.0F;
@@ -159,6 +180,9 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
     /** Blocks forward of entity center to the draft hitch (front wall + arms). */
     public static final float DRAFT_HOOK_FORWARD = LENGTH * 0.5F + 6.5F / 16.0F;
     public static final float DRAFT_HOOK_HEIGHT = RENDER_Y_OFFSET + WHEEL_RADIUS + HEIGHT * 0.55F;
+
+    /** How far forward (entity facing) the rider and sleep point sit from center. */
+    public static final float PASSENGER_FORWARD_OFFSET = 0.25F;
 
     private static final double LEASH_TRANSFER_RANGE = 8.0D;
 
@@ -212,6 +236,9 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
     /** Client-side wheel roll angle (radians), advanced from travel distance in {@link com.torr.materia.client.renderer.entity.CartRenderer}. */
     public float wheelRotation;
 
+    @Nullable
+    private BlockPos lanternLightPos;
+
 
 
     public CartEntity(EntityType<? extends CartEntity> type, Level level) {
@@ -220,6 +247,42 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         this.draftHeading = this.getYRot();
 
+    }
+
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(DATA_HAS_COVER, false);
+        builder.define(DATA_HAS_LANTERN, false);
+        builder.define(DATA_HEALTH, (int) (MAX_HEALTH * 10.0F));
+    }
+
+    public boolean hasCover() {
+        return this.entityData.get(DATA_HAS_COVER);
+    }
+
+    public void setHasCover(boolean hasCover) {
+        this.entityData.set(DATA_HAS_COVER, hasCover);
+    }
+
+    public boolean hasLantern() {
+        return this.entityData.get(DATA_HAS_LANTERN);
+    }
+
+    public void setHasLantern(boolean hasLantern) {
+        this.entityData.set(DATA_HAS_LANTERN, hasLantern);
+        if (!hasLantern) {
+            this.clearLanternLight();
+        }
+    }
+
+    public float getCartHealth() {
+        return this.entityData.get(DATA_HEALTH) / 10.0F;
+    }
+
+    public void setCartHealth(float health) {
+        int scaled = Mth.clamp((int) (health * 10.0F), 0, (int) (MAX_HEALTH * 10.0F));
+        this.entityData.set(DATA_HEALTH, scaled);
     }
 
 
@@ -360,6 +423,29 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
 
 
+    protected Vec3 getPassengerSeatOffset() {
+        Vec3 forward = this.getForward();
+        return new Vec3(
+                forward.x * PASSENGER_FORWARD_OFFSET,
+                0.0D,
+                forward.z * PASSENGER_FORWARD_OFFSET);
+    }
+
+    /** How far the rider drops when lying down in the cart bed. */
+    private static final double CART_SLEEP_Y_OFFSET = 0.45D;
+
+    @Override
+    public Vec3 getPassengerAttachmentPoint(Entity passenger, EntityDimensions dimensions, float partialTicks) {
+        Vec3 seat = this.getPassengerSeatOffset();
+        Vec3 base = super.getPassengerAttachmentPoint(passenger, dimensions, partialTicks);
+        if (passenger instanceof Player player && CartSleepHandler.shouldSkipPassengerPositioning(player)) {
+            return base.add(seat.x, -CART_SLEEP_Y_OFFSET, seat.z);
+        }
+        return base.add(seat.x, -0.25, seat.z);
+    }
+
+
+
     @Override
 
     public float maxUpStep() {
@@ -446,6 +532,8 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
             this.positionDraftTeam();
 
             this.draftWasOnGround = this.onGround();
+
+            this.updateLanternLight();
 
         }
 
@@ -1124,6 +1212,37 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
     }
 
+    private void updateLanternLight() {
+        if (this.level().isClientSide()) {
+            return;
+        }
+        if (!this.hasLantern() || !canSleepAt(this.level())) {
+            this.clearLanternLight();
+            return;
+        }
+        Vec3 forward = this.getForward();
+        BlockPos target = BlockPos.containing(
+                this.getX() + forward.x * DRAFT_HOOK_FORWARD * 0.85D,
+                this.getY() + 0.85D,
+                this.getZ() + forward.z * DRAFT_HOOK_FORWARD * 0.85D);
+        if (this.lanternLightPos != null && this.lanternLightPos.equals(target)
+                && this.level().getBlockState(this.lanternLightPos).is(Blocks.LIGHT)) {
+            return;
+        }
+        this.clearLanternLight();
+        BlockState lightState = Blocks.LIGHT.defaultBlockState().setValue(LightBlock.LEVEL, 12);
+        if (this.level().getBlockState(target).isAir() && this.level().setBlock(target, lightState, 3)) {
+            this.lanternLightPos = target;
+        }
+    }
+
+    private void clearLanternLight() {
+        if (this.lanternLightPos != null && this.level().getBlockState(this.lanternLightPos).is(Blocks.LIGHT)) {
+            this.level().removeBlock(this.lanternLightPos, false);
+        }
+        this.lanternLightPos = null;
+    }
+
     public void trySleep(Player player) {
 
         if (player.level().isClientSide()) {
@@ -1132,7 +1251,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         }
 
-        if (player.isSleeping() || !canSleepAt(player.level())) {
+        if (CartSleepHandler.isCartSleeping(player) || !canSleepAt(player.level())) {
 
             return;
 
@@ -1144,23 +1263,13 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         }
 
-        boolean wasRidingCart = player.getVehicle() == this;
+        if (player.getVehicle() != this) {
+
+            return;
+
+        }
 
         player.closeContainer();
-
-        player.startSleeping(this.blockPosition());
-
-        if (wasRidingCart && !player.isPassenger()) {
-
-            player.startRiding(this, true);
-
-        }
-
-        if (player.level() instanceof ServerLevel serverLevel) {
-
-            serverLevel.updateSleepingPlayerList();
-
-        }
 
         CartSleepHandler.beginCartSleep(player, this);
 
@@ -1171,6 +1280,29 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
     public InteractionResult interact(Player player, InteractionHand hand) {
 
         ItemStack stack = player.getItemInHand(hand);
+
+        if (!player.isSecondaryUseActive() && !stack.is(Items.LEAD)) {
+            if (stack.is(ModItems.CART_COVER.get()) && !this.hasCover()) {
+                if (!this.level().isClientSide()) {
+                    this.setHasCover(true);
+                    if (!player.getAbilities().instabuild) {
+                        stack.shrink(1);
+                    }
+                    this.gameEvent(GameEvent.ENTITY_INTERACT, player);
+                }
+                return InteractionResult.sidedSuccess(this.level().isClientSide());
+            }
+            if (stack.is(Items.LANTERN) && !this.hasLantern()) {
+                if (!this.level().isClientSide()) {
+                    this.setHasLantern(true);
+                    if (!player.getAbilities().instabuild) {
+                        stack.shrink(1);
+                    }
+                    this.gameEvent(GameEvent.ENTITY_INTERACT, player);
+                }
+                return InteractionResult.sidedSuccess(this.level().isClientSide());
+            }
+        }
 
         if (player.isShiftKeyDown() && this.hasLeashedDraftTeam()) {
 
@@ -1361,10 +1493,38 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
     }
 
     @Override
+    public boolean hurt(DamageSource source, float amount) {
+        if (this.isInvulnerableTo(source) || this.isRemoved()) {
+            return false;
+        }
+        if (this.level().isClientSide()) {
+            return false;
+        }
+        this.setCartHealth(this.getCartHealth() - amount);
+        this.setHurtTime(10);
+        this.markHurt();
+        if (this.getCartHealth() <= 0.0F) {
+            this.destroy(source);
+            this.discard();
+        }
+        return true;
+    }
 
+    private void dropAttachmentItems() {
+        if (this.hasCover()) {
+            this.spawnAtLocation(new ItemStack(ModItems.CART_COVER.get()));
+        }
+        if (this.hasLantern()) {
+            this.spawnAtLocation(new ItemStack(Items.LANTERN));
+        }
+    }
+
+    @Override
     protected void destroy(DamageSource source) {
 
         if (this.level().getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
+
+            this.dropAttachmentItems();
 
             ItemStack drop = new ItemStack(this.getDropItem());
 
@@ -1394,6 +1554,8 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
     public void remove(Entity.RemovalReason reason) {
 
+        this.clearLanternLight();
+
         super.remove(reason);
 
     }
@@ -1405,6 +1567,12 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
         super.addAdditionalSaveData(tag);
 
         tag.putFloat("DraftHeading", this.draftHeading);
+
+        tag.putBoolean("HasCover", this.hasCover());
+
+        tag.putBoolean("HasLantern", this.hasLantern());
+
+        tag.putFloat("CartHealth", this.getCartHealth());
 
         this.addDraftTeamSaveData(tag);
 
@@ -1419,6 +1587,16 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
         super.readAdditionalSaveData(tag);
 
         this.draftHeading = tag.contains("DraftHeading") ? tag.getFloat("DraftHeading") : this.getYRot();
+
+        if (tag.contains("HasCover")) {
+            this.setHasCover(tag.getBoolean("HasCover"));
+        }
+        if (tag.contains("HasLantern")) {
+            this.setHasLantern(tag.getBoolean("HasLantern"));
+        }
+        if (tag.contains("CartHealth")) {
+            this.setCartHealth(tag.getFloat("CartHealth"));
+        }
 
         this.readDraftTeamSaveData(tag);
 

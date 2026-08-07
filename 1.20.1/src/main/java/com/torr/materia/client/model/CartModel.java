@@ -106,6 +106,15 @@ public class CartModel extends EntityModel<CartEntity> {
     public final ModelPart wheelRightFront;
     public final ModelPart wheelRightBack;
 
+    /** Cover top Y in model units — shared with {@link CartCoverModel}. */
+    public static float coverTopY() {
+        float wheelD = CartEntity.WHEEL_RADIUS * 2.0F * U;
+        float bodyBase = wheelD * 0.5F;
+        float floorH = H * CartEntity.FLOOR_HEIGHT_FRACTION;
+        float wallH = H - floorH;
+        return bodyBase + floorH + wallH + 1.25F * U;
+    }
+
     public CartModel(ModelPart root) {
         this.root = root;
         this.floor = root.getChild("floor");

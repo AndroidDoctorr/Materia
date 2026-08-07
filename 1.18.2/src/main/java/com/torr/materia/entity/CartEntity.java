@@ -13,6 +13,9 @@ import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.StringTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -43,6 +46,8 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LightBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
@@ -66,6 +71,15 @@ import java.util.UUID;
 public class CartEntity extends Boat implements Container, MenuProvider {
 
     public static final int CHEST_SLOTS = 27;
+    public static final float MAX_HEALTH = 60.0F;
+
+    private static final EntityDataAccessor<Boolean> DATA_HAS_COVER =
+            SynchedEntityData.defineId(CartEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> DATA_HAS_LANTERN =
+            SynchedEntityData.defineId(CartEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Integer> DATA_HEALTH =
+            SynchedEntityData.defineId(CartEntity.class, EntityDataSerializers.INT);
+
     /** World-space footprint (blocks). Length runs along entity facing (+Z when yaw = 0). */
     public static final float WIDTH = 1.0F;
     public static final float LENGTH = 2.0F;
@@ -85,6 +99,9 @@ public class CartEntity extends Boat implements Container, MenuProvider {
     /** Blocks forward of entity center to the draft hitch (front wall + arms). */
     public static final float DRAFT_HOOK_FORWARD = LENGTH * 0.5F + 6.5F / 16.0F;
     public static final float DRAFT_HOOK_HEIGHT = RENDER_Y_OFFSET + WHEEL_RADIUS + HEIGHT * 0.55F;
+
+    /** How far forward (entity facing) the rider and sleep point sit from center. */
+    public static final float PASSENGER_FORWARD_OFFSET = 0.25F;
 
     private static final double LEASH_TRANSFER_RANGE = 8.0D;
     private static final double MAX_GROUND_ALIGN_RISE = 1.05D;
@@ -121,12 +138,51 @@ public class CartEntity extends Boat implements Container, MenuProvider {
     /** Client-side wheel roll angle (radians), advanced from travel distance in {@link com.torr.materia.client.renderer.entity.CartRenderer}. */
     public float wheelRotation;
 
+    @Nullable
+    private BlockPos lanternLightPos;
+
     private NonNullList<ItemStack> itemStacks = NonNullList.withSize(CHEST_SLOTS, ItemStack.EMPTY);
     private LazyOptional<?> itemHandler = LazyOptional.of(() -> new InvWrapper(this));
 
     public CartEntity(EntityType<? extends CartEntity> type, Level level) {
         super(type, level);
         this.draftHeading = this.getYRot();
+    }
+
+    @Override
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        this.entityData.define(DATA_HAS_COVER, false);
+        this.entityData.define(DATA_HAS_LANTERN, false);
+        this.entityData.define(DATA_HEALTH, (int) (MAX_HEALTH * 10.0F));
+    }
+
+    public boolean hasCover() {
+        return this.entityData.get(DATA_HAS_COVER);
+    }
+
+    public void setHasCover(boolean hasCover) {
+        this.entityData.set(DATA_HAS_COVER, hasCover);
+    }
+
+    public boolean hasLantern() {
+        return this.entityData.get(DATA_HAS_LANTERN);
+    }
+
+    public void setHasLantern(boolean hasLantern) {
+        this.entityData.set(DATA_HAS_LANTERN, hasLantern);
+        if (!hasLantern) {
+            this.clearLanternLight();
+        }
+    }
+
+    public float getCartHealth() {
+        return this.entityData.get(DATA_HEALTH) / 10.0F;
+    }
+
+    public void setCartHealth(float health) {
+        int scaled = Mth.clamp((int) (health * 10.0F), 0, (int) (MAX_HEALTH * 10.0F));
+        this.entityData.set(DATA_HEALTH, scaled);
     }
 
     public CartEntity(Level level, double x, double y, double z) {
@@ -190,7 +246,50 @@ public class CartEntity extends Boat implements Container, MenuProvider {
 
     @Override
     public double getPassengersRidingOffset() {
-        return (double) (RENDER_Y_OFFSET + WHEEL_RADIUS + HEIGHT - 0.25F);
+        return (double) (RENDER_Y_OFFSET + WHEEL_RADIUS + HEIGHT - 0.50F);
+    }
+
+    protected Vec3 getPassengerSeatOffset() {
+        Vec3 forward = this.getForward();
+        return new Vec3(
+                forward.x * PASSENGER_FORWARD_OFFSET,
+                0.0D,
+                forward.z * PASSENGER_FORWARD_OFFSET);
+    }
+
+    protected BlockPos getSleepBlockPos() {
+        Vec3 offset = this.getPassengerSeatOffset();
+        return new BlockPos(
+                Mth.floor(this.getX() + offset.x),
+                Mth.floor(this.getY()),
+                Mth.floor(this.getZ() + offset.z));
+    }
+
+    /** How far the rider drops when lying down in the cart bed. */
+    private static final double CART_SLEEP_Y_OFFSET = 0.45D;
+
+    private void applyPassengerSeatOffset() {
+        if (this.getPassengers().isEmpty()) {
+            return;
+        }
+        Vec3 seat = this.getPassengerSeatOffset();
+        for (Entity passenger : this.getPassengers()) {
+            if (passenger instanceof Player player
+                    && CartSleepHandler.shouldSkipPassengerPositioning(player)) {
+                double y = this.getY() + this.getPassengersRidingOffset() + passenger.getMyRidingOffset()
+                        - CART_SLEEP_Y_OFFSET;
+                float yaw = this.getYRot();
+                passenger.setPos(this.getX() + seat.x, y, this.getZ() + seat.z);
+                passenger.setYRot(yaw);
+                passenger.setYBodyRot(yaw);
+                passenger.setYHeadRot(yaw);
+                continue;
+            }
+            passenger.setPos(
+                    this.getX() + seat.x,
+                    this.getY() + this.getPassengersRidingOffset() + passenger.getMyRidingOffset(),
+                    this.getZ() + seat.z);
+        }
     }
 
     @Override
@@ -243,10 +342,13 @@ public class CartEntity extends Boat implements Container, MenuProvider {
             this.applyDraftDrive();
             this.positionDraftTeam();
             this.draftWasOnGround = this.onGround;
+
+            this.updateLanternLight();
         }
         if (!this.level.isClientSide && this.isControlledByLocalInstance()) {
             alignToGroundUnderFootprint();
         }
+        this.applyPassengerSeatOffset();
     }
 
     private void undoBoatLandMomentumDrain() {
@@ -606,31 +708,79 @@ public class CartEntity extends Boat implements Container, MenuProvider {
         return level.isThundering() || (time >= 12541L && time <= 23992L);
     }
 
+    private void updateLanternLight() {
+        if (this.level.isClientSide) {
+            return;
+        }
+        if (!this.hasLantern() || !canSleepAt(this.level)) {
+            this.clearLanternLight();
+            return;
+        }
+        Vec3 forward = this.getForward();
+        BlockPos target = new BlockPos(
+                Mth.floor(this.getX() + forward.x * DRAFT_HOOK_FORWARD * 0.85D),
+                Mth.floor(this.getY() + 0.85D),
+                Mth.floor(this.getZ() + forward.z * DRAFT_HOOK_FORWARD * 0.85D));
+        if (this.lanternLightPos != null && this.lanternLightPos.equals(target)
+                && this.level.getBlockState(this.lanternLightPos).is(Blocks.LIGHT)) {
+            return;
+        }
+        this.clearLanternLight();
+        BlockState lightState = Blocks.LIGHT.defaultBlockState().setValue(LightBlock.LEVEL, 12);
+        if (this.level.getBlockState(target).isAir() && this.level.setBlock(target, lightState, 3)) {
+            this.lanternLightPos = target;
+        }
+    }
+
+    private void clearLanternLight() {
+        if (this.lanternLightPos != null && this.level.getBlockState(this.lanternLightPos).is(Blocks.LIGHT)) {
+            this.level.removeBlock(this.lanternLightPos, false);
+        }
+        this.lanternLightPos = null;
+    }
+
     public void trySleep(Player player) {
         if (player.level.isClientSide) {
             return;
         }
-        if (player.isSleeping() || !canSleepAt(player.level)) {
+        if (CartSleepHandler.isCartSleeping(player) || !canSleepAt(player.level)) {
             return;
         }
         if (!this.stillValid(player)) {
             return;
         }
-        boolean wasRidingCart = player.getVehicle() == this;
+        if (player.getVehicle() != this) {
+            return;
+        }
         player.closeContainer();
-        player.startSleeping(this.blockPosition());
-        if (wasRidingCart && !player.isPassenger()) {
-            player.startRiding(this, true);
-        }
-        if (player.level instanceof ServerLevel serverLevel) {
-            serverLevel.updateSleepingPlayerList();
-        }
         CartSleepHandler.beginCartSleep(player, this);
     }
 
     @Override
     public InteractionResult interact(Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
+        if (!player.isSecondaryUseActive() && !stack.is(Items.LEAD)) {
+            if (stack.is(ModItems.CART_COVER.get()) && !this.hasCover()) {
+                if (!this.level.isClientSide) {
+                    this.setHasCover(true);
+                    if (!player.getAbilities().instabuild) {
+                        stack.shrink(1);
+                    }
+                    this.gameEvent(GameEvent.ENTITY_INTERACT, player);
+                }
+                return InteractionResult.sidedSuccess(this.level.isClientSide);
+            }
+            if (stack.is(Items.LANTERN) && !this.hasLantern()) {
+                if (!this.level.isClientSide) {
+                    this.setHasLantern(true);
+                    if (!player.getAbilities().instabuild) {
+                        stack.shrink(1);
+                    }
+                    this.gameEvent(GameEvent.ENTITY_INTERACT, player);
+                }
+                return InteractionResult.sidedSuccess(this.level.isClientSide);
+            }
+        }
         if (player.isShiftKeyDown() && this.hasLeashedDraftTeam()) {
             if (!this.level.isClientSide) {
                 this.releaseLeashedMobs(player);
@@ -736,28 +886,37 @@ public class CartEntity extends Boat implements Container, MenuProvider {
 
     @Override
     public boolean hurt(DamageSource source, float amount) {
-        if (this.isInvulnerableTo(source)) {
+        if (this.isInvulnerableTo(source) || this.isRemoved()) {
             return false;
         }
-        if (!this.level.isClientSide && !this.isRemoved()) {
-            this.setHurtDir(-this.getHurtDir());
-            this.setHurtTime(10);
-            this.setDamage(this.getDamage() + amount * 10.0F);
-            this.markHurt();
-            this.gameEvent(GameEvent.ENTITY_DAMAGED, source.getEntity());
-            boolean creative = source.getEntity() instanceof Player player && player.getAbilities().instabuild;
-            if (creative || this.getDamage() > 40.0F) {
-                if (!creative && this.level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
-                    this.spawnCartDrop();
-                }
-                this.discard();
+        if (this.level.isClientSide) {
+            return false;
+        }
+        this.setHurtDir(-this.getHurtDir());
+        this.setCartHealth(this.getCartHealth() - amount);
+        this.setHurtTime(10);
+        this.markHurt();
+        this.gameEvent(GameEvent.ENTITY_DAMAGED, source.getEntity());
+        if (this.getCartHealth() <= 0.0F) {
+            if (this.level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
+                this.spawnCartDrop();
             }
-            return true;
+            this.discard();
         }
         return true;
     }
 
+    private void dropAttachmentItems() {
+        if (this.hasCover()) {
+            this.spawnAtLocation(new ItemStack(ModItems.CART_COVER.get()));
+        }
+        if (this.hasLantern()) {
+            this.spawnAtLocation(new ItemStack(Items.LANTERN));
+        }
+    }
+
     private void spawnCartDrop() {
+        this.dropAttachmentItems();
         ItemStack drop = new ItemStack(this.getDropItem());
         if (this.hasCustomName()) {
             drop.setHoverName(this.getCustomName());
@@ -770,6 +929,7 @@ public class CartEntity extends Boat implements Container, MenuProvider {
 
     @Override
     public void remove(Entity.RemovalReason reason) {
+        this.clearLanternLight();
         super.remove(reason);
     }
 
@@ -777,6 +937,9 @@ public class CartEntity extends Boat implements Container, MenuProvider {
     protected void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
         tag.putFloat("DraftHeading", this.draftHeading);
+        tag.putBoolean("HasCover", this.hasCover());
+        tag.putBoolean("HasLantern", this.hasLantern());
+        tag.putFloat("CartHealth", this.getCartHealth());
         this.addDraftTeamSaveData(tag);
         ContainerHelper.saveAllItems(tag, this.itemStacks);
     }
@@ -785,6 +948,15 @@ public class CartEntity extends Boat implements Container, MenuProvider {
     protected void readAdditionalSaveData(CompoundTag tag) {
         super.readAdditionalSaveData(tag);
         this.draftHeading = tag.contains("DraftHeading") ? tag.getFloat("DraftHeading") : this.getYRot();
+        if (tag.contains("HasCover")) {
+            this.setHasCover(tag.getBoolean("HasCover"));
+        }
+        if (tag.contains("HasLantern")) {
+            this.setHasLantern(tag.getBoolean("HasLantern"));
+        }
+        if (tag.contains("CartHealth")) {
+            this.setCartHealth(tag.getFloat("CartHealth"));
+        }
         this.readDraftTeamSaveData(tag);
         this.itemStacks = NonNullList.withSize(CHEST_SLOTS, ItemStack.EMPTY);
         ContainerHelper.loadAllItems(tag, this.itemStacks);

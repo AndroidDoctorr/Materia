@@ -44,5 +44,11 @@ public class NetworkHandler {
                 .decoder(CartSleepPacket::new)
                 .consumerMainThread(CartSleepPacket::handle)
                 .add();
+
+        INSTANCE.messageBuilder(CartSleepVisualPacket.class)
+                .encoder(CartSleepVisualPacket::encode)
+                .decoder(CartSleepVisualPacket::new)
+                .consumerMainThread(CartSleepVisualPacket::handle)
+                .add();
     }
 }
