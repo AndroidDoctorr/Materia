@@ -21,6 +21,8 @@ import com.torr.materia.item.MagnetItem;
 import com.torr.materia.item.DynamiteItem;
 import com.torr.materia.item.BombItem;
 import com.torr.materia.item.PoulticeItem;
+import com.torr.materia.item.CartCoverItem;
+import com.torr.materia.item.CartCoverColor;
 import com.torr.materia.item.CartItem;
 import com.torr.materia.item.CannonballItem;
 import com.torr.materia.item.TaroItem;
@@ -2257,9 +2259,14 @@ public class ModItems {
         public static final RegistryObject<Item> CART_BASE = ITEMS.register("cart_base",
                         () -> new Item(new Item.Properties()
                                         .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)));
-        public static final RegistryObject<Item> CART_COVER = ITEMS.register("cart_cover",
-                        () -> new Item(new Item.Properties()
-                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)));
+        static {
+                ModCartCovers.registerAll();
+        }
+        /** Legacy id; same item as {@link CartCoverColor#WHITE}. */
+        public static final RegistryObject<Item> CART_COVER = ModCartCovers.get(CartCoverColor.WHITE);
+        public static RegistryObject<Item> getCartCover(CartCoverColor color) {
+                return ModCartCovers.get(color);
+        }
         public static final RegistryObject<Item> CART = ITEMS.register("cart",
                         () -> new CartItem(new Item.Properties().stacksTo(1)
                                         .tab(net.minecraft.world.item.CreativeModeTab.TAB_TRANSPORTATION)));

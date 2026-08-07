@@ -29,8 +29,6 @@ public class CartRenderer extends EntityRenderer<CartEntity> {
             ResourceLocation.fromNamespaceAndPath(materia.MOD_ID, "textures/block/cart_wheel.png");
     private static final ResourceLocation CHEST_TEXTURE =
             ResourceLocation.fromNamespaceAndPath(materia.MOD_ID, "textures/block/cart_chest.png");
-    private static final ResourceLocation COVER_TEXTURE =
-            ResourceLocation.fromNamespaceAndPath(materia.MOD_ID, "textures/entity/taupe_cart_cover.png");
     private static final ResourceLocation LANTERN_TEXTURE =
             ResourceLocation.fromNamespaceAndPath(materia.MOD_ID, "textures/entity/cart_lantern.png");
 
@@ -79,11 +77,9 @@ public class CartRenderer extends EntityRenderer<CartEntity> {
                 buffer.getBuffer(RenderType.entityCutoutNoCull(WHEEL_TEXTURE)),
                 packedLight, OverlayTexture.NO_OVERLAY);
 
-        if (entity.hasCover()) {
-            this.coverModel.renderCover(poseStack,
-                    buffer.getBuffer(RenderType.entityCutoutNoCull(COVER_TEXTURE)),
-                    packedLight, OverlayTexture.NO_OVERLAY);
-        }
+        entity.getCoverColor().ifPresent(color -> this.coverModel.renderCover(poseStack,
+                buffer.getBuffer(RenderType.entityCutoutNoCull(color.getEntityTexture())),
+                packedLight, OverlayTexture.NO_OVERLAY));
         if (entity.hasLantern()) {
             int lanternLight = CartEntity.canSleepAt(entity.level()) ? 15728880 : packedLight;
             this.lanternModel.renderLantern(poseStack,

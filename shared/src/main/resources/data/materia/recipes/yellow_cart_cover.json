@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "BIB",
+        "RIR",
+        "BIB"
+    ],
+    "key": {
+        "R": {
+            "item": "materia:rope"
+        },
+        "B": {
+            "item": "materia:yellow_blanket"
+        },
+        "I": {
+            "tag": "materia:all_bands"
+        }
+    },
+    "result": {
+        "item": "materia:yellow_cart_cover",
+        "count": 1
+    }
+}

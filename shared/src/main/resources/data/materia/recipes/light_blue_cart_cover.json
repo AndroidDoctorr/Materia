@@ -10,14 +10,14 @@
             "item": "materia:rope"
         },
         "B": {
-            "item": "materia:white_blanket"
+            "item": "materia:light_blue_blanket"
         },
         "I": {
             "tag": "materia:all_bands"
         }
     },
     "result": {
-        "item": "materia:cart_cover",
+        "item": "materia:light_blue_cart_cover",
         "count": 1
     }
 }

@@ -60,10 +60,6 @@ public class CartRenderer extends EntityRenderer<CartEntity> {
 
             new ResourceLocation(materia.MOD_ID, "textures/block/cart_chest.png");
 
-    private static final ResourceLocation COVER_TEXTURE =
-
-            new ResourceLocation(materia.MOD_ID, "textures/entity/taupe_cart_cover.png");
-
     private static final ResourceLocation LANTERN_TEXTURE =
 
             new ResourceLocation(materia.MOD_ID, "textures/entity/cart_lantern.png");
@@ -160,15 +156,9 @@ public class CartRenderer extends EntityRenderer<CartEntity> {
 
 
 
-        if (entity.hasCover()) {
-
-            this.coverModel.renderCover(poseStack,
-
-                    buffer.getBuffer(RenderType.entityCutoutNoCull(COVER_TEXTURE)),
-
-                    packedLight, OverlayTexture.NO_OVERLAY);
-
-        }
+        entity.getCoverColor().ifPresent(color -> this.coverModel.renderCover(poseStack,
+                buffer.getBuffer(RenderType.entityCutoutNoCull(color.getEntityTexture())),
+                packedLight, OverlayTexture.NO_OVERLAY));
 
         if (entity.hasLantern()) {
 

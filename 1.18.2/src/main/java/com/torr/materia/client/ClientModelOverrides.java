@@ -1,5 +1,6 @@
 package com.torr.materia.client;
 
+import com.torr.materia.item.CartCoverColor;
 import com.torr.materia.materia;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.client.resources.model.ModelResourceLocation;
@@ -28,6 +29,9 @@ public class ClientModelOverrides {
         ForgeModelBakery.addSpecialModel(new ResourceLocation(materia.MOD_ID, "item/steel_axe"));
         ForgeModelBakery.addSpecialModel(new ResourceLocation(materia.MOD_ID, "item/steel_pickaxe"));
         ForgeModelBakery.addSpecialModel(new ResourceLocation(materia.MOD_ID, "item/steel_shovel"));
+        for (CartCoverColor color : CartCoverColor.values()) {
+            ForgeModelBakery.addSpecialModel(new ResourceLocation(materia.MOD_ID, "item/" + color.getItemId()));
+        }
     }
 
     @SubscribeEvent

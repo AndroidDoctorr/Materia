@@ -20,6 +20,8 @@ import com.torr.materia.item.PaperFrameItem;
 import com.torr.materia.item.MagnetItem;
 import com.torr.materia.item.DynamiteItem;
 import com.torr.materia.item.BombItem;
+import com.torr.materia.item.CartCoverItem;
+import com.torr.materia.item.CartCoverColor;
 import com.torr.materia.item.CartItem;
 import com.torr.materia.item.CannonballItem;
 // import com.torr.materia.item.MosaicStylusItem; // reserved for future Materia Signage mod
@@ -2185,9 +2187,14 @@ public class ModItems {
         public static final RegistryObject<Item> CART_BASE = ITEMS.register("cart_base",
                         () -> new Item(new Item.Properties()
                                         ));
-        public static final RegistryObject<Item> CART_COVER = ITEMS.register("cart_cover",
-                        () -> new Item(new Item.Properties()
-                                        ));
+        static {
+                ModCartCovers.registerAll();
+        }
+        /** Legacy id; same item as {@link CartCoverColor#WHITE}. */
+        public static final RegistryObject<Item> CART_COVER = ModCartCovers.get(CartCoverColor.WHITE);
+        public static RegistryObject<Item> getCartCover(CartCoverColor color) {
+                return ModCartCovers.get(color);
+        }
         public static final RegistryObject<Item> CART = ITEMS.register("cart",
                         () -> new CartItem(new Item.Properties().stacksTo(1)));
                                         

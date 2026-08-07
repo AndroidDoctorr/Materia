@@ -1,0 +1,32 @@
+{
+    "replace": false,
+    "values": [
+        "materia:white_cart_cover",
+        "materia:orange_cart_cover",
+        "materia:magenta_cart_cover",
+        "materia:light_blue_cart_cover",
+        "materia:yellow_cart_cover",
+        "materia:lime_cart_cover",
+        "materia:pink_cart_cover",
+        "materia:gray_cart_cover",
+        "materia:light_gray_cart_cover",
+        "materia:cyan_cart_cover",
+        "materia:purple_cart_cover",
+        "materia:blue_cart_cover",
+        "materia:brown_cart_cover",
+        "materia:green_cart_cover",
+        "materia:red_cart_cover",
+        "materia:black_cart_cover",
+        "materia:ochre_cart_cover",
+        "materia:red_ochre_cart_cover",
+        "materia:indigo_cart_cover",
+        "materia:olive_cart_cover",
+        "materia:teal_cart_cover",
+        "materia:tyrian_purple_cart_cover",
+        "materia:lavender_cart_cover",
+        "materia:charcoal_gray_cart_cover",
+        "materia:taupe_cart_cover",
+        "materia:burgundy_cart_cover",
+        "materia:tan_cart_cover"
+    ]
+}

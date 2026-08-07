@@ -196,7 +196,7 @@ public class ModCreativeTabs {
                 || path.contains("lashing")
                 || path.equals("cart")
                 || path.equals("cart_base")
-                || path.equals("cart_cover")
+                || path.endsWith("_cart_cover")
                 || path.equals("crucible");
     }
 
@@ -224,6 +224,7 @@ public class ModCreativeTabs {
                 || path.endsWith("_candle")
                 || path.endsWith("_carpet")
                 || path.endsWith("_blanket")
+                || path.endsWith("_cart_cover")
                 || path.endsWith("_bed")
                 || path.endsWith("_cotton");
     }

@@ -6,6 +6,8 @@ import com.torr.materia.ModEntities;
 
 import com.torr.materia.ModItems;
 import com.torr.materia.events.CartSleepHandler;
+import com.torr.materia.item.CartCoverColor;
+import com.torr.materia.item.CartCoverItem;
 import com.torr.materia.menu.CartMenu;
 
 import net.minecraft.core.BlockPos;
@@ -145,8 +147,8 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
     public static final float MAX_HEALTH = 60.0F;
 
-    private static final EntityDataAccessor<Boolean> DATA_HAS_COVER =
-            SynchedEntityData.defineId(CartEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Integer> DATA_COVER_COLOR =
+            SynchedEntityData.defineId(CartEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> DATA_HAS_LANTERN =
             SynchedEntityData.defineId(CartEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> DATA_HEALTH =
@@ -252,17 +254,21 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
-        builder.define(DATA_HAS_COVER, false);
+        builder.define(DATA_COVER_COLOR, 0);
         builder.define(DATA_HAS_LANTERN, false);
         builder.define(DATA_HEALTH, (int) (MAX_HEALTH * 10.0F));
     }
 
     public boolean hasCover() {
-        return this.entityData.get(DATA_HAS_COVER);
+        return this.getCoverColor().isPresent();
     }
 
-    public void setHasCover(boolean hasCover) {
-        this.entityData.set(DATA_HAS_COVER, hasCover);
+    public java.util.Optional<CartCoverColor> getCoverColor() {
+        return CartCoverColor.fromNetworkId(this.entityData.get(DATA_COVER_COLOR));
+    }
+
+    public void setCoverColor(CartCoverColor color) {
+        this.entityData.set(DATA_COVER_COLOR, color == null ? 0 : color.networkId());
     }
 
     public boolean hasLantern() {
@@ -1282,9 +1288,10 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
         ItemStack stack = player.getItemInHand(hand);
 
         if (!player.isSecondaryUseActive() && !stack.is(Items.LEAD)) {
-            if (stack.is(ModItems.CART_COVER.get()) && !this.hasCover()) {
+            CartCoverColor coverColor = CartCoverItem.getColor(stack);
+            if (coverColor != null && !this.hasCover()) {
                 if (!this.level().isClientSide()) {
-                    this.setHasCover(true);
+                    this.setCoverColor(coverColor);
                     if (!player.getAbilities().instabuild) {
                         stack.shrink(1);
                     }
@@ -1511,9 +1518,8 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
     }
 
     private void dropAttachmentItems() {
-        if (this.hasCover()) {
-            this.spawnAtLocation(new ItemStack(ModItems.CART_COVER.get()));
-        }
+        this.getCoverColor().ifPresent(color ->
+                this.spawnAtLocation(new ItemStack(ModItems.getCartCover(color).get())));
         if (this.hasLantern()) {
             this.spawnAtLocation(new ItemStack(Items.LANTERN));
         }
@@ -1568,7 +1574,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         tag.putFloat("DraftHeading", this.draftHeading);
 
-        tag.putBoolean("HasCover", this.hasCover());
+        this.getCoverColor().ifPresent(color -> tag.putString("CoverColor", color.getId()));
 
         tag.putBoolean("HasLantern", this.hasLantern());
 
@@ -1588,8 +1594,10 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         this.draftHeading = tag.contains("DraftHeading") ? tag.getFloat("DraftHeading") : this.getYRot();
 
-        if (tag.contains("HasCover")) {
-            this.setHasCover(tag.getBoolean("HasCover"));
+        if (tag.contains("CoverColor")) {
+            CartCoverColor.fromId(tag.getString("CoverColor")).ifPresent(this::setCoverColor);
+        } else if (tag.contains("HasCover") && tag.getBoolean("HasCover")) {
+            this.setCoverColor(CartCoverColor.TAUPE);
         }
         if (tag.contains("HasLantern")) {
             this.setHasLantern(tag.getBoolean("HasLantern"));

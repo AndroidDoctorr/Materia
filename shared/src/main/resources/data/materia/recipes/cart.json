@@ -5,7 +5,7 @@
             "item": "materia:cart_base"
         },
         {
-            "item": "materia:cart_cover"
+            "tag": "materia:cart_covers"
         },
         {
             "item": "minecraft:crafting_table"
