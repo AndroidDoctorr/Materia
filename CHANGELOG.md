@@ -6,6 +6,18 @@ Planned work is tracked in [`documentation/release-roadmap.md`](documentation/re
 
 ## Unreleased
 
+## 1.3.6
+
+Patch release: Forge 52.1.0 compatibility (1.21.1) and version docs.
+
+#### Client (1.21.1)
+
+- **Fix:** Game no longer crashes on Forge **52.1.0** during mod loading (`AddGuiOverlayLayersEvent` missing). Tongs hotbar count overlay still requires Forge **52.1.2+**; tongs gameplay is unchanged on older 1.21.1 Forge builds.
+
+#### Docs
+
+- Documented **Forge compatibility** per Minecraft port in [`documentation/reference/VERSIONS.md`](documentation/reference/VERSIONS.md) and [`documentation/getting-started/INSTALLATION.md`](documentation/getting-started/INSTALLATION.md).
+
 ## 1.3.5
 
 Patch release: stone hammer mining fix.

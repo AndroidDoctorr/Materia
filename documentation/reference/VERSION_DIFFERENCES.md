@@ -88,9 +88,10 @@ Keep this section short. Add only “worth knowing” deltas that change progres
 - **Water pot / amphora liquids:** full Forge fluid stack behavior as documented in [Fluid and pipe compatibility](../fluid-pipe-compat.md).
 - **Create mixing (compat pack):** JSON under **`1.20.1/.../compat/create/mixing/`** (Create 0.5–style).
 
-### 1.21.1 (in progress)
+### 1.21.1
 
 - Branch is actively evolving; expect drift until stabilized
+- **Forge:** loads on **52.1.0+**; **52.1.2+** recommended (tongs hotbar overlay needs `AddGuiOverlayLayersEvent`). Dev target **52.1.9**. Details: [Versions — Forge ranges](VERSIONS.md#supported-minecraft--forge-ranges).
 - **Worldgen:** same generated-JSON model as 1.20.1 (sync from 1.20.1 `runData` when bootstrap changes).
 - **Stone urn & planter:** registered as plain decorative blocks on 1.21.1 (no `UrnBlock` / `PlanterBlock` planting GUI yet). Interactive planting remains on **1.18.2**, **1.19.2**, and **1.20.1** only.
 - **Create mixing (compat pack):** uses **Create 6**–style JSON (`fluid_stack`, `id` results) and lives only under **`1.21.1/.../compat/create/mixing/`** — not in `shared/`, to avoid clashing with older Create recipe codecs pulled in from `shared/`.
