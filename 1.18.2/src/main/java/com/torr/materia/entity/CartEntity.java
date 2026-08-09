@@ -130,9 +130,23 @@ public class CartEntity extends Boat implements Container, MenuProvider {
     private static final double FAST_SURFACE_SPEED_FACTOR = 2.0D;
     private static final TagKey<Block> CART_FAST_SURFACES = TagKey.create(
             Registry.BLOCK_REGISTRY, new ResourceLocation("materia", "cart_fast_surfaces"));
-    private static final TagKey<Block> CART_SMOOTH_SURFACES = TagKey.create(
-            Registry.BLOCK_REGISTRY, new ResourceLocation("materia", "cart_smooth_surfaces"));
-    private static final int MOVE_SOUND_INTERVAL = 10;
+    private static final TagKey<Block> CART_SURFACE_SNOW = TagKey.create(
+            Registry.BLOCK_REGISTRY, new ResourceLocation("materia", "cart_surface_snow"));
+    private static final TagKey<Block> CART_SURFACE_SAND = TagKey.create(
+            Registry.BLOCK_REGISTRY, new ResourceLocation("materia", "cart_surface_sand"));
+    private static final TagKey<Block> CART_SURFACE_GRAVEL = TagKey.create(
+            Registry.BLOCK_REGISTRY, new ResourceLocation("materia", "cart_surface_gravel"));
+    private static final TagKey<Block> CART_SURFACE_GRASS = TagKey.create(
+            Registry.BLOCK_REGISTRY, new ResourceLocation("materia", "cart_surface_grass"));
+    private static final TagKey<Block> CART_SURFACE_DIRT = TagKey.create(
+            Registry.BLOCK_REGISTRY, new ResourceLocation("materia", "cart_surface_dirt"));
+    private static final TagKey<Block> CART_SURFACE_COBBLE = TagKey.create(
+            Registry.BLOCK_REGISTRY, new ResourceLocation("materia", "cart_surface_cobble"));
+    private static final TagKey<Block> CART_SURFACE_WOOD = TagKey.create(
+            Registry.BLOCK_REGISTRY, new ResourceLocation("materia", "cart_surface_wood"));
+    private static final TagKey<Block> CART_SURFACE_STONE = TagKey.create(
+            Registry.BLOCK_REGISTRY, new ResourceLocation("materia", "cart_surface_stone"));
+    private static final int MOVE_SOUND_INTERVAL = 58;
     private static final double MOVE_SOUND_MIN_SPEED = 0.03D;
     /** Degrees per tick of draft heading change at full strafe input. */
     private static final float DRAFT_TURN_RATE = 2.8F;
@@ -154,6 +168,13 @@ public class CartEntity extends Boat implements Container, MenuProvider {
     public float wheelRotation;
 
     private int moveSoundTicks;
+
+    @Nullable
+    private CartMoveSurface lastMoveSurface;
+
+    private enum CartMoveSurface {
+        STONE, COBBLE, GRAVEL, WOOD, GRASS, SAND, DIRT, SNOW
+    }
 
     @Nullable
     private BlockPos lanternLightPos;
@@ -622,29 +643,87 @@ public class CartEntity extends Boat implements Container, MenuProvider {
         return hits;
     }
 
-    private boolean isMostlySmoothSurface() {
-        return this.countFootprintBlocksInTag(CART_SMOOTH_SURFACES) >= 3;
+    private CartMoveSurface classifyMoveSurface(BlockState state) {
+        if (state.is(CART_SURFACE_SNOW)) return CartMoveSurface.SNOW;
+        if (state.is(CART_SURFACE_SAND)) return CartMoveSurface.SAND;
+        if (state.is(CART_SURFACE_GRAVEL)) return CartMoveSurface.GRAVEL;
+        if (state.is(CART_SURFACE_GRASS)) return CartMoveSurface.GRASS;
+        if (state.is(CART_SURFACE_DIRT)) return CartMoveSurface.DIRT;
+        if (state.is(CART_SURFACE_COBBLE)) return CartMoveSurface.COBBLE;
+        if (state.is(CART_SURFACE_WOOD)) return CartMoveSurface.WOOD;
+        if (state.is(CART_SURFACE_STONE)) return CartMoveSurface.STONE;
+        return CartMoveSurface.DIRT;
+    }
+
+    private CartMoveSurface sampleDominantMoveSurface() {
+        double x = this.getX();
+        double y = this.getY();
+        double z = this.getZ();
+        float halfW = WIDTH * 0.5F;
+        float halfL = LENGTH * 0.5F;
+        float rad = this.getYRot() * ((float) Math.PI / 180F);
+        float sin = Mth.sin(rad);
+        float cos = Mth.cos(rad);
+        float[][] samples = {
+                { -halfW, -halfL }, { halfW, -halfL }, { halfW, halfL }, { -halfW, halfL }, { 0.0F, 0.0F }
+        };
+        int[] counts = new int[CartMoveSurface.values().length];
+        int probeY = Mth.floor(y - 0.0625D);
+        for (float[] sample : samples) {
+            double wx = x + (double) (sample[0] * cos - sample[1] * sin);
+            double wz = z + (double) (sample[0] * sin + sample[1] * cos);
+            BlockPos pos = new BlockPos(Mth.floor(wx), probeY, Mth.floor(wz));
+            CartMoveSurface surface = this.classifyMoveSurface(this.level.getBlockState(pos));
+            counts[surface.ordinal()]++;
+        }
+        int bestIndex = 0;
+        int bestCount = 0;
+        for (int i = 0; i < counts.length; i++) {
+            if (counts[i] > bestCount) {
+                bestCount = counts[i];
+                bestIndex = i;
+            }
+        }
+        return bestCount > 0 ? CartMoveSurface.values()[bestIndex] : CartMoveSurface.DIRT;
+    }
+
+    private static SoundEvent resolveMoveSound(CartMoveSurface surface) {
+        return switch (surface) {
+            case STONE -> ModSounds.CART_MOVE_STONE.get();
+            case COBBLE -> ModSounds.CART_MOVE_COBBLE.get();
+            case GRAVEL -> ModSounds.CART_MOVE_GRAVEL.get();
+            case WOOD -> ModSounds.CART_MOVE_WOOD.get();
+            case GRASS -> ModSounds.CART_MOVE_GRASS.get();
+            case SAND -> ModSounds.CART_MOVE_SAND.get();
+            case DIRT -> ModSounds.CART_MOVE_DIRT.get();
+            case SNOW -> ModSounds.CART_MOVE_SNOW.get();
+        };
     }
 
     private void tickMovementSounds() {
         if (this.isInWater() || this.isUnderWater() || !this.onGround) {
             this.moveSoundTicks = 0;
+            this.lastMoveSurface = null;
             return;
         }
         Vec3 motion = this.getDeltaMovement();
         double speed = Math.hypot(motion.x, motion.z);
         if (speed < MOVE_SOUND_MIN_SPEED) {
             this.moveSoundTicks = 0;
+            this.lastMoveSurface = null;
             return;
         }
+        CartMoveSurface surface = this.sampleDominantMoveSurface();
+        if (this.lastMoveSurface != null && this.lastMoveSurface != surface) {
+            this.moveSoundTicks = MOVE_SOUND_INTERVAL;
+        }
+        this.lastMoveSurface = surface;
         this.moveSoundTicks++;
         if (this.moveSoundTicks < MOVE_SOUND_INTERVAL) {
             return;
         }
         this.moveSoundTicks = 0;
-        SoundEvent sound = this.isMostlySmoothSurface()
-                ? ModSounds.CART_MOVE_SMOOTH.get()
-                : ModSounds.CART_MOVE_ROUGH.get();
+        SoundEvent sound = resolveMoveSound(surface);
         float volume = Mth.clamp((float) (speed * 2.5D), 0.15F, 0.9F);
         float pitch = 0.9F + Mth.clamp((float) (speed * 0.5D), 0.0F, 0.2F);
         this.level.playSound(null, this.getX(), this.getY(), this.getZ(), sound, SoundSource.NEUTRAL, volume, pitch);

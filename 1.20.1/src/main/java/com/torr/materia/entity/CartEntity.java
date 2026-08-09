@@ -154,7 +154,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
     public static final float LENGTH = 2.0F;
 
-    public static final float HEIGHT = 0.5F;
+    public static final float HEIGHT = 0.75F;
 
 
 
@@ -212,10 +212,24 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
     private static final double FAST_SURFACE_SPEED_FACTOR = 2.0D;
     private static final TagKey<Block> CART_FAST_SURFACES = TagKey.create(
             Registries.BLOCK, new ResourceLocation("materia", "cart_fast_surfaces"));
-    /** Paved / wooden surfaces that sound smooth when the cart rolls over them. */
-    private static final TagKey<Block> CART_SMOOTH_SURFACES = TagKey.create(
-            Registries.BLOCK, new ResourceLocation("materia", "cart_smooth_surfaces"));
-    private static final int MOVE_SOUND_INTERVAL = 10;
+    private static final TagKey<Block> CART_SURFACE_SNOW = TagKey.create(
+            Registries.BLOCK, new ResourceLocation("materia", "cart_surface_snow"));
+    private static final TagKey<Block> CART_SURFACE_SAND = TagKey.create(
+            Registries.BLOCK, new ResourceLocation("materia", "cart_surface_sand"));
+    private static final TagKey<Block> CART_SURFACE_GRAVEL = TagKey.create(
+            Registries.BLOCK, new ResourceLocation("materia", "cart_surface_gravel"));
+    private static final TagKey<Block> CART_SURFACE_GRASS = TagKey.create(
+            Registries.BLOCK, new ResourceLocation("materia", "cart_surface_grass"));
+    private static final TagKey<Block> CART_SURFACE_DIRT = TagKey.create(
+            Registries.BLOCK, new ResourceLocation("materia", "cart_surface_dirt"));
+    private static final TagKey<Block> CART_SURFACE_COBBLE = TagKey.create(
+            Registries.BLOCK, new ResourceLocation("materia", "cart_surface_cobble"));
+    private static final TagKey<Block> CART_SURFACE_WOOD = TagKey.create(
+            Registries.BLOCK, new ResourceLocation("materia", "cart_surface_wood"));
+    private static final TagKey<Block> CART_SURFACE_STONE = TagKey.create(
+            Registries.BLOCK, new ResourceLocation("materia", "cart_surface_stone"));
+    /** Matches 3s movement clips (58 ticks ≈ 2.9s at 20 TPS). */
+    private static final int MOVE_SOUND_INTERVAL = 58;
     private static final double MOVE_SOUND_MIN_SPEED = 0.03D;
     /** Degrees per tick of draft heading change at full strafe input. */
     private static final float DRAFT_TURN_RATE = 2.8F;
@@ -240,6 +254,13 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
     public float wheelRotation;
 
     private int moveSoundTicks;
+
+    @Nullable
+    private CartMoveSurface lastMoveSurface;
+
+    private enum CartMoveSurface {
+        STONE, COBBLE, GRAVEL, WOOD, GRASS, SAND, DIRT, SNOW
+    }
 
     @Nullable
     private BlockPos lanternLightPos;
@@ -1002,10 +1023,77 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
     }
 
-    private boolean isMostlySmoothSurface() {
+    private CartMoveSurface classifyMoveSurface(BlockState state) {
+        if (state.is(CART_SURFACE_SNOW)) {
+            return CartMoveSurface.SNOW;
+        }
+        if (state.is(CART_SURFACE_SAND)) {
+            return CartMoveSurface.SAND;
+        }
+        if (state.is(CART_SURFACE_GRAVEL)) {
+            return CartMoveSurface.GRAVEL;
+        }
+        if (state.is(CART_SURFACE_GRASS)) {
+            return CartMoveSurface.GRASS;
+        }
+        if (state.is(CART_SURFACE_DIRT)) {
+            return CartMoveSurface.DIRT;
+        }
+        if (state.is(CART_SURFACE_COBBLE)) {
+            return CartMoveSurface.COBBLE;
+        }
+        if (state.is(CART_SURFACE_WOOD)) {
+            return CartMoveSurface.WOOD;
+        }
+        if (state.is(CART_SURFACE_STONE)) {
+            return CartMoveSurface.STONE;
+        }
+        return CartMoveSurface.DIRT;
+    }
 
-        return this.countFootprintBlocksInTag(CART_SMOOTH_SURFACES) >= 3;
+    private CartMoveSurface sampleDominantMoveSurface() {
+        double x = this.getX();
+        double y = this.getY();
+        double z = this.getZ();
+        float halfW = WIDTH * 0.5F;
+        float halfL = LENGTH * 0.5F;
+        float rad = this.getYRot() * ((float) Math.PI / 180F);
+        float sin = Mth.sin(rad);
+        float cos = Mth.cos(rad);
+        float[][] samples = {
+                { -halfW, -halfL }, { halfW, -halfL }, { halfW, halfL }, { -halfW, halfL }, { 0.0F, 0.0F }
+        };
+        int[] counts = new int[CartMoveSurface.values().length];
+        int probeY = Mth.floor(y - 0.0625D);
+        for (float[] sample : samples) {
+            double wx = x + (double) (sample[0] * cos - sample[1] * sin);
+            double wz = z + (double) (sample[0] * sin + sample[1] * cos);
+            BlockPos pos = BlockPos.containing(wx, probeY, wz);
+            CartMoveSurface surface = this.classifyMoveSurface(this.level().getBlockState(pos));
+            counts[surface.ordinal()]++;
+        }
+        int bestIndex = 0;
+        int bestCount = 0;
+        for (int i = 0; i < counts.length; i++) {
+            if (counts[i] > bestCount) {
+                bestCount = counts[i];
+                bestIndex = i;
+            }
+        }
+        return bestCount > 0 ? CartMoveSurface.values()[bestIndex] : CartMoveSurface.DIRT;
+    }
 
+    private static SoundEvent resolveMoveSound(CartMoveSurface surface) {
+        return switch (surface) {
+            case STONE -> ModSounds.CART_MOVE_STONE.get();
+            case COBBLE -> ModSounds.CART_MOVE_COBBLE.get();
+            case GRAVEL -> ModSounds.CART_MOVE_GRAVEL.get();
+            case WOOD -> ModSounds.CART_MOVE_WOOD.get();
+            case GRASS -> ModSounds.CART_MOVE_GRASS.get();
+            case SAND -> ModSounds.CART_MOVE_SAND.get();
+            case DIRT -> ModSounds.CART_MOVE_DIRT.get();
+            case SNOW -> ModSounds.CART_MOVE_SNOW.get();
+        };
     }
 
     private void tickMovementSounds() {
@@ -1013,6 +1101,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
         if (this.isInWater() || this.isUnderWater() || !this.onGround()) {
 
             this.moveSoundTicks = 0;
+            this.lastMoveSurface = null;
 
             return;
 
@@ -1025,10 +1114,21 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
         if (speed < MOVE_SOUND_MIN_SPEED) {
 
             this.moveSoundTicks = 0;
+            this.lastMoveSurface = null;
 
             return;
 
         }
+
+        CartMoveSurface surface = this.sampleDominantMoveSurface();
+
+        if (this.lastMoveSurface != null && this.lastMoveSurface != surface) {
+
+            this.moveSoundTicks = MOVE_SOUND_INTERVAL;
+
+        }
+
+        this.lastMoveSurface = surface;
 
         this.moveSoundTicks++;
 
@@ -1040,9 +1140,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         this.moveSoundTicks = 0;
 
-        SoundEvent sound = this.isMostlySmoothSurface()
-                ? ModSounds.CART_MOVE_SMOOTH.get()
-                : ModSounds.CART_MOVE_ROUGH.get();
+        SoundEvent sound = resolveMoveSound(surface);
 
         float volume = Mth.clamp((float) (speed * 2.5D), 0.15F, 0.9F);
 

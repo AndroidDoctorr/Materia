@@ -1,0 +1,16 @@
+{
+    "replace": false,
+    "values": [
+        "#minecraft:planks",
+        "#minecraft:logs",
+        "#minecraft:wooden_slabs",
+        "minecraft:bamboo_block",
+        "minecraft:bamboo_planks",
+        "minecraft:bamboo_mosaic",
+        "minecraft:bamboo_mosaic_slab",
+        "materia:fig_planks",
+        "materia:cedar_planks",
+        "materia:eucalyptus_planks",
+        "materia:rubber_wood_planks"
+    ]
+}

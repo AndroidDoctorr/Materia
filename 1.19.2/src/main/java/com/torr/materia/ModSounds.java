@@ -143,11 +143,39 @@ public class ModSounds {
             "block.curtains",
             () -> new SoundEvent(new ResourceLocation(materia.MOD_ID, "block.curtains")));
 
-    public static final RegistryObject<SoundEvent> CART_MOVE_SMOOTH = SOUNDS.register(
-            "entity.cart.move_smooth",
-            () -> new SoundEvent(new ResourceLocation(materia.MOD_ID, "entity.cart.move_smooth")));
+    public static final RegistryObject<SoundEvent> CART_MOVE_STONE = SOUNDS.register(
+            "entity.cart.move_stone",
+            () -> new SoundEvent(new ResourceLocation(materia.MOD_ID, "entity.cart.move_stone")));
 
-    public static final RegistryObject<SoundEvent> CART_MOVE_ROUGH = SOUNDS.register(
-            "entity.cart.move_rough",
-            () -> new SoundEvent(new ResourceLocation(materia.MOD_ID, "entity.cart.move_rough")));
+    public static final RegistryObject<SoundEvent> CART_MOVE_COBBLE = SOUNDS.register(
+            "entity.cart.move_cobble",
+            () -> new SoundEvent(new ResourceLocation(materia.MOD_ID, "entity.cart.move_cobble")));
+
+    public static final RegistryObject<SoundEvent> CART_MOVE_GRAVEL = SOUNDS.register(
+            "entity.cart.move_gravel",
+            () -> new SoundEvent(new ResourceLocation(materia.MOD_ID, "entity.cart.move_gravel")));
+
+    public static final RegistryObject<SoundEvent> CART_MOVE_WOOD = SOUNDS.register(
+            "entity.cart.move_wood",
+            () -> new SoundEvent(new ResourceLocation(materia.MOD_ID, "entity.cart.move_wood")));
+
+    public static final RegistryObject<SoundEvent> CART_MOVE_GRASS = SOUNDS.register(
+            "entity.cart.move_grass",
+            () -> new SoundEvent(new ResourceLocation(materia.MOD_ID, "entity.cart.move_grass")));
+
+    public static final RegistryObject<SoundEvent> CART_MOVE_SAND = SOUNDS.register(
+            "entity.cart.move_sand",
+            () -> new SoundEvent(new ResourceLocation(materia.MOD_ID, "entity.cart.move_sand")));
+
+    public static final RegistryObject<SoundEvent> CART_MOVE_DIRT = SOUNDS.register(
+            "entity.cart.move_dirt",
+            () -> new SoundEvent(new ResourceLocation(materia.MOD_ID, "entity.cart.move_dirt")));
+
+    public static final RegistryObject<SoundEvent> CART_MOVE_SNOW = SOUNDS.register(
+            "entity.cart.move_snow",
+            () -> new SoundEvent(new ResourceLocation(materia.MOD_ID, "entity.cart.move_snow")));
+
+    public static final RegistryObject<SoundEvent> CART_MOVE_WATER = SOUNDS.register(
+            "entity.cart.move_water",
+            () -> new SoundEvent(new ResourceLocation(materia.MOD_ID, "entity.cart.move_water")));
 }

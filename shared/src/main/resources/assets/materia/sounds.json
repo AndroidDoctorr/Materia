@@ -309,24 +309,40 @@
             }
         ]
     },
-    "entity.cart.move_smooth": {
+    "entity.cart.move_stone": {
         "category": "neutral",
-        "sounds": [
-            {
-                "name": "materia:cart_smooth",
-                "volume": 0.8,
-                "pitch": 1.0
-            }
-        ]
+        "sounds": [{ "name": "materia:cart_stone", "volume": 0.8, "pitch": 1.0 }]
     },
-    "entity.cart.move_rough": {
+    "entity.cart.move_cobble": {
         "category": "neutral",
-        "sounds": [
-            {
-                "name": "materia:cart_rough",
-                "volume": 0.8,
-                "pitch": 1.0
-            }
-        ]
+        "sounds": [{ "name": "materia:cart_cobble", "volume": 0.8, "pitch": 1.0 }]
+    },
+    "entity.cart.move_gravel": {
+        "category": "neutral",
+        "sounds": [{ "name": "materia:cart_gravel", "volume": 0.8, "pitch": 1.0 }]
+    },
+    "entity.cart.move_wood": {
+        "category": "neutral",
+        "sounds": [{ "name": "materia:cart_wood", "volume": 0.8, "pitch": 1.0 }]
+    },
+    "entity.cart.move_grass": {
+        "category": "neutral",
+        "sounds": [{ "name": "materia:cart_grass", "volume": 0.8, "pitch": 1.0 }]
+    },
+    "entity.cart.move_sand": {
+        "category": "neutral",
+        "sounds": [{ "name": "materia:cart_sand", "volume": 0.8, "pitch": 1.0 }]
+    },
+    "entity.cart.move_dirt": {
+        "category": "neutral",
+        "sounds": [{ "name": "materia:cart_dirt", "volume": 0.8, "pitch": 1.0 }]
+    },
+    "entity.cart.move_snow": {
+        "category": "neutral",
+        "sounds": [{ "name": "materia:cart_snow", "volume": 0.8, "pitch": 1.0 }]
+    },
+    "entity.cart.move_water": {
+        "category": "neutral",
+        "sounds": [{ "name": "materia:cart_water", "volume": 0.8, "pitch": 1.0 }]
     }
 }
