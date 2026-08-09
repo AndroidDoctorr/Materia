@@ -131,13 +131,6 @@ import java.util.List;
 import java.util.UUID;
 
 
-
-/**
-
- * Land cart prototype: boat steering for now, with cart-sized collision and land movement.
-
- */
-
 public class CartEntity extends Boat implements HasCustomInventoryScreen, ContainerEntity {
 
     public static final int CHEST_SLOTS = 27;
@@ -159,7 +152,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
     public static final float LENGTH = 2.0F;
 
-    public static final float HEIGHT = 0.75F;
+    public static final float HEIGHT = 0.5F;
 
 
 
@@ -183,7 +176,8 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
     public static final float DRAFT_HOOK_HEIGHT = RENDER_Y_OFFSET + WHEEL_RADIUS + HEIGHT * 0.55F;
 
     /** How far forward (entity facing) the rider sits from center. */
-    public static final float PASSENGER_FORWARD_OFFSET = 0.25F;
+    public static final float DRIVER_FORWARD_OFFSET = 1.25F;
+    public static final float DRIVER_VERTICAL_OFFSET = 0.75F;
 
     private static final double LEASH_TRANSFER_RANGE = 8.0D;
 
@@ -480,37 +474,39 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
     protected Vec3 getPassengerSeatOffset() {
         Vec3 forward = this.getForward();
         return new Vec3(
-                forward.x * PASSENGER_FORWARD_OFFSET,
-                0.0D,
-                forward.z * PASSENGER_FORWARD_OFFSET);
+                forward.x * DRIVER_FORWARD_OFFSET,
+                forward.y * DRIVER_VERTICAL_OFFSET,
+                forward.z * DRIVER_FORWARD_OFFSET);
     }
 
     /** How far the rider drops when lying down in the cart bed. */
-    private static final double CART_SLEEP_Y_OFFSET = 0.45D;
+    private static final double CART_SLEEP_Y_OFFSET = 0.25D;
+    private static final double CART_SLEEP_Z_OFFSET = 1.0D;
 
     @Override
-    protected void positionRider(Entity passenger, MoveFunction callback) {
-        if (passenger instanceof Player player && CartSleepHandler.shouldSkipPassengerPositioning(player)) {
+    protected void positionRider(Entity driver, MoveFunction callback) {
+        if (driver instanceof Player player && CartSleepHandler.shouldSkipPassengerPositioning(player)) {
             Vec3 seat = this.getPassengerSeatOffset();
-            double y = this.getY() + this.getPassengersRidingOffset() + passenger.getMyRidingOffset()
+            double y = this.getY() + this.getPassengersRidingOffset() + driver.getMyRidingOffset()
                     - CART_SLEEP_Y_OFFSET;
+            double z = this.getZ() + seat.z - CART_SLEEP_Z_OFFSET;
             float yaw = this.getYRot();
-            callback.accept(passenger, this.getX() + seat.x, y, this.getZ() + seat.z);
-            passenger.setYRot(yaw);
-            passenger.setYBodyRot(yaw);
-            passenger.setYHeadRot(yaw);
+            callback.accept(driver, this.getX() + seat.x, y, z);
+            driver.setYRot(yaw);
+            driver.setYBodyRot(yaw);
+            driver.setYHeadRot(yaw);
             return;
         }
         Vec3 seat = this.getPassengerSeatOffset();
-        super.positionRider(passenger, (entity, x, y, z) ->
+        super.positionRider(driver, (entity, x, y, z) ->
                 callback.accept(entity, x + seat.x, y, z + seat.z));
     }
 
     @Override
 
-    protected boolean canAddPassenger(Entity passenger) {
+    protected boolean canAddPassenger(Entity driver) {
 
-        return passenger instanceof Player && this.getPassengers().isEmpty() && super.canAddPassenger(passenger);
+        return driver instanceof Player && this.getPassengers().isEmpty() && super.canAddPassenger(driver);
 
     }
 
@@ -525,8 +521,8 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
     @Nullable
     private LivingEntity getDriver() {
-        for (Entity passenger : this.getPassengers()) {
-            if (passenger instanceof Player player) {
+        for (Entity driver : this.getPassengers()) {
+            if (driver instanceof Player player) {
                 return player;
             }
         }
@@ -1080,15 +1076,15 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         boolean keptPlayer = false;
 
-        for (Entity passenger : this.getPassengers()) {
+        for (Entity driver : this.getPassengers()) {
 
-            if (!(passenger instanceof Player)) {
+            if (!(driver instanceof Player)) {
 
-                passenger.stopRiding();
+                driver.stopRiding();
 
             } else if (keptPlayer) {
 
-                passenger.stopRiding();
+                driver.stopRiding();
 
             } else {
 
@@ -1208,7 +1204,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
     @Override
 
-    public Vec3 getDismountLocationForPassenger(net.minecraft.world.entity.LivingEntity passenger) {
+    public Vec3 getDismountLocationForPassenger(net.minecraft.world.entity.LivingEntity driver) {
 
         float rad = getYRot() * ((float) Math.PI / 180F);
 

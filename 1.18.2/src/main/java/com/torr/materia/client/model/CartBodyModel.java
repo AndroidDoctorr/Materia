@@ -33,24 +33,24 @@ public class CartBodyModel extends EntityModel<CartEntity> {
     private static final int BACK_V = 0;
 
     private static final float U = 16.0F;
-    private static final float W = CartEntity.WIDTH * U;
-    private static final float H = CartEntity.HEIGHT * U;
-    private static final float L = CartEntity.LENGTH * U;
-    private static final float HALF_W = W * 0.5F;
-    private static final float HALF_L = L * 0.5F;
-    private static final float FLOOR_H = H * CartEntity.FLOOR_HEIGHT_FRACTION;
-    private static final float WALL_H = H - FLOOR_H;
-    private static final float WALL_T = W * CartEntity.WALL_THICKNESS_FRACTION;
-    private static final float INNER_L = L - 2.0F * WALL_T;
+    private static final float W = CartEntity.WIDTH * U;        // 16.0
+    private static final float H = CartEntity.HEIGHT * U;       // 12.0
+    private static final float L = CartEntity.LENGTH * U;       // 32.0
+    private static final float HALF_W = W * 0.5F;               // 8.0
+    private static final float HALF_L = L * 0.5F;               // 16.0
+    private static final float FLOOR_H = H * CartEntity.FLOOR_HEIGHT_FRACTION; // 4.0
+    private static final float WALL_H = H - FLOOR_H; // 8.0
+    private static final float WALL_T = W * CartEntity.WALL_THICKNESS_FRACTION; // 2.0
+    private static final float INNER_L = L - 2.0F * WALL_T; // 28.0
 
-    private static final float WHEEL_D = CartEntity.WHEEL_RADIUS * 2.0F * U;
-    private static final float BODY_BASE = WHEEL_D * 0.5F;
+    private static final float WHEEL_D = CartEntity.WHEEL_RADIUS * 2.0F * U; // 0.375F * 2.0F * 16 = 12.0
+    private static final float BODY_BASE = WHEEL_D * 0.5F; // 12.0 * 0.5F = 6.0
 
     private static final float DRAFT_ARM_LEN = 5.0F;
     private static final float DRAFT_ARM_W = 1.5F;
     private static final float DRAFT_ARM_H = 2.0F;
-    private static final float DRAFT_ARM_Y = BODY_BASE + FLOOR_H + WALL_H * 0.35F;
-    private static final float DRAFT_ARM_X = HALF_W * 0.55F;
+    private static final float DRAFT_ARM_Y = BODY_BASE + FLOOR_H + WALL_H * 0.35F; // 10.0
+    private static final float DRAFT_ARM_X = HALF_W * 0.55F; // 8.0 * 0.55F = 4.4
 
     public final ModelPart floor;
     public final ModelPart wallNorthFace;
@@ -111,7 +111,7 @@ public class CartBodyModel extends EntityModel<CartEntity> {
                         .addBox(HALF_W - WALL_T, BODY_BASE + FLOOR_H, -HALF_L + WALL_T, WALL_T, WALL_H, INNER_L),
                 PartPose.ZERO);
 
-        float draftTipZ = -HALF_L - DRAFT_ARM_LEN;
+        float draftTipZ = -HALF_L - DRAFT_ARM_LEN; // -16.0 - 5.0 = -21.0
         root.addOrReplaceChild(
                 "draft_arm_left",
                 CubeListBuilder.create()
@@ -132,6 +132,14 @@ public class CartBodyModel extends EntityModel<CartEntity> {
                         .texOffs(HULL_U, HULL_V)
                         .addBox(-DRAFT_ARM_X, DRAFT_ARM_Y + DRAFT_ARM_H * 0.25F, draftTipZ - 1.5F, DRAFT_ARM_X * 2.0F,
                                 DRAFT_ARM_H * 0.5F, 1.5F),
+                PartPose.ZERO);
+
+        root.addOrReplaceChild(
+                "seat",
+                CubeListBuilder.create()
+                        .texOffs(HULL_U, HULL_V)
+                        .addBox(-HALF_W, 17.0F, -22.0F,
+                                W, 1.0F, 6.0F),
                 PartPose.ZERO);
 
         return LayerDefinition.create(mesh, TEX_W, TEX_H);

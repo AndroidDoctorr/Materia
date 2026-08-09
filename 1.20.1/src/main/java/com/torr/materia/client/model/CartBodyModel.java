@@ -87,6 +87,7 @@ public class CartBodyModel extends EntityModel<CartEntity> {
     public final ModelPart draftArmLeft;
     public final ModelPart draftArmRight;
     public final ModelPart draftCrossbar;
+    public final ModelPart seat;
 
     public CartBodyModel(ModelPart root) {
         this.floor = root.getChild("floor");
@@ -99,6 +100,7 @@ public class CartBodyModel extends EntityModel<CartEntity> {
         this.draftArmLeft = root.getChild("draft_arm_left");
         this.draftArmRight = root.getChild("draft_arm_right");
         this.draftCrossbar = root.getChild("draft_crossbar");
+        this.seat = root.getChild("seat");
     }
 
     public static LayerDefinition createBodyLayer() {
@@ -177,6 +179,14 @@ public class CartBodyModel extends EntityModel<CartEntity> {
                                 DRAFT_ARM_H * 0.5F, 1.5F),
                 PartPose.ZERO);
 
+        root.addOrReplaceChild(
+                "seat",
+                CubeListBuilder.create()
+                        .texOffs(HULL_U, HULL_V)
+                        .addBox(-HALF_W, 17.0F, -22.0F,
+                                W, 1.0F, 6.0F),
+                PartPose.ZERO);
+
         return LayerDefinition.create(mesh, TEX_W, TEX_H);
     }
 
@@ -192,6 +202,7 @@ public class CartBodyModel extends EntityModel<CartEntity> {
         wallSouthShell.render(poseStack, buffer, packedLight, packedOverlay);
         wallWest.render(poseStack, buffer, packedLight, packedOverlay);
         wallEast.render(poseStack, buffer, packedLight, packedOverlay);
+        seat.render(poseStack, buffer, packedLight, packedOverlay);
     }
 
     public void renderFront(com.mojang.blaze3d.vertex.PoseStack poseStack,

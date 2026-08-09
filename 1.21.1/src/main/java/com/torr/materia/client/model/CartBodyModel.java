@@ -173,6 +173,14 @@ public class CartBodyModel extends EntityModel<CartEntity> {
                                 DRAFT_ARM_H * 0.5F, 1.5F),
                 PartPose.ZERO);
 
+        root.addOrReplaceChild(
+                "seat",
+                CubeListBuilder.create()
+                        .texOffs(HULL_U, HULL_V)
+                        .addBox(-HALF_W, 17.0F, -22.0F,
+                                W, 1.0F, 6.0F),
+                PartPose.ZERO);
+
         return LayerDefinition.create(mesh, TEX_W, TEX_H);
     }
 
