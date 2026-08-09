@@ -61,7 +61,11 @@ public class CartItem extends Item {
         CartEntity cart = new CartEntity(level, x, y, z);
         cart.setWoodType(this.woodType);
         cart.loadInventoryFromItem(stack);
-        cart.setCartHealth(cart.getMaxHealth());
+        if (stack.hasTag() && stack.getTag().contains("CartHealth")) {
+            cart.setCartHealth(stack.getTag().getFloat("CartHealth"));
+        } else {
+            cart.setCartHealth(cart.getMaxHealth());
+        }
         if (!level.noCollision(cart, cart.getBoundingBox().inflate(-0.1D))) {
             return InteractionResultHolder.fail(stack);
         }

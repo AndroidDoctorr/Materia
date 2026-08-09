@@ -836,12 +836,6 @@ public class CartEntity extends Boat implements Container, MenuProvider {
                 return InteractionResult.sidedSuccess(this.level.isClientSide);
             }
         }
-        if (player.isShiftKeyDown() && this.hasLeashedDraftTeam()) {
-            if (!this.level.isClientSide) {
-                this.releaseLeashedMobs(player);
-            }
-            return InteractionResult.sidedSuccess(this.level.isClientSide);
-        }
         if (stack.is(Items.LEAD)) {
             if (!this.level.isClientSide) {
                 if (player.isShiftKeyDown()) {
@@ -857,15 +851,79 @@ public class CartEntity extends Boat implements Container, MenuProvider {
             }
             return InteractionResult.sidedSuccess(this.level.isClientSide);
         }
-        if (player.isSecondaryUseActive()) {
+        if (player.isShiftKeyDown() && player.getVehicle() != this) {
+            InteractionResult dismantle = this.tryDismantleInteraction(player);
+            if (dismantle != InteractionResult.PASS) {
+                return InteractionResult.sidedSuccess(this.level.isClientSide);
+            }
+        }
+        if (player.getVehicle() == this && !player.isShiftKeyDown() && stack.isEmpty()) {
             if (!this.level.isClientSide && player instanceof ServerPlayer serverPlayer) {
                 NetworkHooks.openGui(serverPlayer, this, buf -> buf.writeVarInt(this.getId()));
                 this.gameEvent(GameEvent.CONTAINER_OPEN, player);
-                return InteractionResult.CONSUME;
             }
-            return InteractionResult.SUCCESS;
+            return InteractionResult.sidedSuccess(this.level.isClientSide);
         }
         return super.interact(player, hand);
+    }
+
+    private InteractionResult tryDismantleInteraction(Player player) {
+        if (this.level.isClientSide) {
+            return InteractionResult.SUCCESS;
+        }
+        if (this.hasLeashedDraftTeam()) {
+            this.releaseLeashedMobs(player);
+            this.level.playSound(null, this.blockPosition(), SoundEvents.LEASH_KNOT_BREAK, SoundSource.PLAYERS, 1.0F,
+                    1.0F);
+            this.gameEvent(GameEvent.ENTITY_INTERACT, player);
+            return InteractionResult.SUCCESS;
+        }
+        if (this.hasCover()) {
+            CartCoverColor color = this.getCoverColor().orElse(CartCoverColor.WHITE);
+            this.setCoverColor(null);
+            this.giveOrDropItem(player, new ItemStack(ModItems.getCartCover(color).get()));
+            this.level.playSound(null, this.blockPosition(), SoundEvents.WOOL_PLACE, SoundSource.PLAYERS, 0.8F, 1.0F);
+            this.gameEvent(GameEvent.ENTITY_INTERACT, player);
+            return InteractionResult.SUCCESS;
+        }
+        if (this.hasLantern()) {
+            this.setHasLantern(false);
+            this.giveOrDropItem(player, new ItemStack(Items.LANTERN));
+            this.level.playSound(null, this.blockPosition(), SoundEvents.LANTERN_PLACE, SoundSource.BLOCKS, 1.0F,
+                    1.0F);
+            this.gameEvent(GameEvent.ENTITY_INTERACT, player);
+            return InteractionResult.SUCCESS;
+        }
+        if (this.tryPickUp(player)) {
+            return InteractionResult.SUCCESS;
+        }
+        return InteractionResult.PASS;
+    }
+
+    private void giveOrDropItem(Player player, ItemStack stack) {
+        if (!player.getInventory().add(stack)) {
+            this.spawnAtLocation(stack);
+        }
+    }
+
+    private boolean tryPickUp(Player player) {
+        if (!this.getPassengers().isEmpty()) {
+            return false;
+        }
+        ItemStack stack = new ItemStack(this.getDropItem());
+        if (this.hasCustomName()) {
+            stack.setHoverName(this.getCustomName());
+        }
+        CompoundTag tag = stack.getOrCreateTag();
+        if (!this.isEmpty()) {
+            ContainerHelper.saveAllItems(tag, this.itemStacks);
+        }
+        tag.putFloat("CartHealth", this.getCartHealth());
+        this.giveOrDropItem(player, stack);
+        this.gameEvent(GameEvent.ENTITY_INTERACT, player);
+        this.level.playSound(null, this.blockPosition(), SoundEvents.WOOD_PLACE, SoundSource.PLAYERS, 0.9F, 1.0F);
+        this.discard();
+        return true;
     }
 
     private boolean hasLeashedDraftTeam() {
