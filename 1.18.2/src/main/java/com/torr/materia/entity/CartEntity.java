@@ -3,6 +3,7 @@ package com.torr.materia.entity;
 import com.torr.materia.ModCarts;
 import com.torr.materia.ModEntities;
 import com.torr.materia.ModItems;
+import com.torr.materia.ModSounds;
 import com.torr.materia.events.CartSleepHandler;
 import com.torr.materia.item.CartCoverColor;
 import com.torr.materia.item.CartCoverItem;
@@ -25,6 +26,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Container;
@@ -128,6 +130,10 @@ public class CartEntity extends Boat implements Container, MenuProvider {
     private static final double FAST_SURFACE_SPEED_FACTOR = 2.0D;
     private static final TagKey<Block> CART_FAST_SURFACES = TagKey.create(
             Registry.BLOCK_REGISTRY, new ResourceLocation("materia", "cart_fast_surfaces"));
+    private static final TagKey<Block> CART_SMOOTH_SURFACES = TagKey.create(
+            Registry.BLOCK_REGISTRY, new ResourceLocation("materia", "cart_smooth_surfaces"));
+    private static final int MOVE_SOUND_INTERVAL = 10;
+    private static final double MOVE_SOUND_MIN_SPEED = 0.03D;
     /** Degrees per tick of draft heading change at full strafe input. */
     private static final float DRAFT_TURN_RATE = 2.8F;
     /** How quickly cart yaw catches up to the draft team heading. */
@@ -146,6 +152,8 @@ public class CartEntity extends Boat implements Container, MenuProvider {
     private int draftRestoreGraceTicks;
     /** Client-side wheel roll angle (radians), advanced from travel distance in {@link com.torr.materia.client.renderer.entity.CartRenderer}. */
     public float wheelRotation;
+
+    private int moveSoundTicks;
 
     @Nullable
     private BlockPos lanternLightPos;
@@ -386,6 +394,7 @@ public class CartEntity extends Boat implements Container, MenuProvider {
             this.draftWasOnGround = this.onGround;
 
             this.updateLanternLight();
+            this.tickMovementSounds();
         }
         if (!this.level.isClientSide && this.isControlledByLocalInstance()) {
             alignToGroundUnderFootprint();
@@ -580,6 +589,15 @@ public class CartEntity extends Boat implements Container, MenuProvider {
         if (this.level.isClientSide) {
             return 1.0D;
         }
+        int smooth = this.countFootprintBlocksInTag(CART_FAST_SURFACES);
+        if (smooth == 0) {
+            return 1.0D;
+        }
+        double blend = (double) smooth / 5.0D;
+        return 1.0D + blend * (FAST_SURFACE_SPEED_FACTOR - 1.0D);
+    }
+
+    private int countFootprintBlocksInTag(TagKey<Block> tag) {
         double x = this.getX();
         double y = this.getY();
         double z = this.getZ();
@@ -591,21 +609,45 @@ public class CartEntity extends Boat implements Container, MenuProvider {
         float[][] samples = {
                 { -halfW, -halfL }, { halfW, -halfL }, { halfW, halfL }, { -halfW, halfL }, { 0.0F, 0.0F }
         };
-        int smooth = 0;
+        int hits = 0;
         int probeY = Mth.floor(y - 0.0625D);
         for (float[] sample : samples) {
             double wx = x + (double) (sample[0] * cos - sample[1] * sin);
             double wz = z + (double) (sample[0] * sin + sample[1] * cos);
             BlockPos pos = new BlockPos(Mth.floor(wx), probeY, Mth.floor(wz));
-            if (this.level.getBlockState(pos).is(CART_FAST_SURFACES)) {
-                smooth++;
+            if (this.level.getBlockState(pos).is(tag)) {
+                hits++;
             }
         }
-        if (smooth == 0) {
-            return 1.0D;
+        return hits;
+    }
+
+    private boolean isMostlySmoothSurface() {
+        return this.countFootprintBlocksInTag(CART_SMOOTH_SURFACES) >= 3;
+    }
+
+    private void tickMovementSounds() {
+        if (this.isInWater() || this.isUnderWater() || !this.onGround) {
+            this.moveSoundTicks = 0;
+            return;
         }
-        double blend = (double) smooth / samples.length;
-        return 1.0D + blend * (FAST_SURFACE_SPEED_FACTOR - 1.0D);
+        Vec3 motion = this.getDeltaMovement();
+        double speed = Math.hypot(motion.x, motion.z);
+        if (speed < MOVE_SOUND_MIN_SPEED) {
+            this.moveSoundTicks = 0;
+            return;
+        }
+        this.moveSoundTicks++;
+        if (this.moveSoundTicks < MOVE_SOUND_INTERVAL) {
+            return;
+        }
+        this.moveSoundTicks = 0;
+        SoundEvent sound = this.isMostlySmoothSurface()
+                ? ModSounds.CART_MOVE_SMOOTH.get()
+                : ModSounds.CART_MOVE_ROUGH.get();
+        float volume = Mth.clamp((float) (speed * 2.5D), 0.15F, 0.9F);
+        float pitch = 0.9F + Mth.clamp((float) (speed * 0.5D), 0.0F, 0.2F);
+        this.level.playSound(null, this.getX(), this.getY(), this.getZ(), sound, SoundSource.NEUTRAL, volume, pitch);
     }
 
     private double computeDraftPull() {

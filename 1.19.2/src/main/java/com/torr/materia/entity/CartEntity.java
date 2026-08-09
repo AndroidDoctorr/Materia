@@ -7,6 +7,7 @@ import com.torr.materia.ModCarts;
 import com.torr.materia.ModEntities;
 
 import com.torr.materia.ModItems;
+import com.torr.materia.ModSounds;
 import com.torr.materia.events.CartSleepHandler;
 import com.torr.materia.item.CartCoverColor;
 import com.torr.materia.item.CartCoverItem;
@@ -46,6 +47,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.TagKey;
 
 import net.minecraft.util.Mth;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 
@@ -216,6 +218,10 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
     private static final double FAST_SURFACE_SPEED_FACTOR = 2.0D;
     private static final TagKey<Block> CART_FAST_SURFACES = TagKey.create(
             Registry.BLOCK_REGISTRY, new ResourceLocation("materia", "cart_fast_surfaces"));
+    private static final TagKey<Block> CART_SMOOTH_SURFACES = TagKey.create(
+            Registry.BLOCK_REGISTRY, new ResourceLocation("materia", "cart_smooth_surfaces"));
+    private static final int MOVE_SOUND_INTERVAL = 10;
+    private static final double MOVE_SOUND_MIN_SPEED = 0.03D;
     /** Degrees per tick of draft heading change at full strafe input. */
     private static final float DRAFT_TURN_RATE = 2.8F;
     /** How quickly cart yaw catches up to the draft team heading. */
@@ -237,6 +243,8 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
     /** Client-side wheel roll angle (radians), advanced from travel distance in {@link com.torr.materia.client.renderer.entity.CartRenderer}. */
     public float wheelRotation;
+
+    private int moveSoundTicks;
 
     @Nullable
     private BlockPos lanternLightPos;
@@ -487,25 +495,29 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
     /** How far the rider drops when lying down in the cart bed. */
     private static final double CART_SLEEP_Y_OFFSET = 0.25D;
-    private static final double CART_SLEEP_Z_OFFSET = 1.0D;
 
-    @Override
-    protected void positionRider(Entity driver, MoveFunction callback) {
-        if (driver instanceof Player player && CartSleepHandler.shouldSkipPassengerPositioning(player)) {
-            Vec3 seat = this.getPassengerSeatOffset();
-            double y = this.getY() + this.getPassengersRidingOffset() + driver.getMyRidingOffset()
-                    - CART_SLEEP_Y_OFFSET;
-            double z = this.getZ() + seat.z - CART_SLEEP_Z_OFFSET;
-            float yaw = this.getYRot();
-            callback.accept(driver, this.getX() + seat.x, y, z);
-            driver.setYRot(yaw);
-            driver.setYBodyRot(yaw);
-            driver.setYHeadRot(yaw);
+    private void applyPassengerSeatOffset() {
+        if (this.getPassengers().isEmpty()) {
             return;
         }
         Vec3 seat = this.getPassengerSeatOffset();
-        super.positionRider(driver, (entity, x, y, z) ->
-                callback.accept(entity, x + seat.x, y, z + seat.z));
+        for (Entity passenger : this.getPassengers()) {
+            if (passenger instanceof Player player
+                    && CartSleepHandler.shouldSkipPassengerPositioning(player)) {
+                double y = this.getY() + this.getPassengersRidingOffset() + passenger.getMyRidingOffset()
+                        - CART_SLEEP_Y_OFFSET;
+                float yaw = this.getYRot();
+                passenger.setPos(this.getX() + seat.x, y, this.getZ() + seat.z);
+                passenger.setYRot(yaw);
+                passenger.setYBodyRot(yaw);
+                passenger.setYHeadRot(yaw);
+                continue;
+            }
+            passenger.setPos(
+                    this.getX() + seat.x,
+                    this.getY() + this.getPassengersRidingOffset() + passenger.getMyRidingOffset(),
+                    this.getZ() + seat.z);
+        }
     }
 
     protected BlockPos getSleepBlockPos() {
@@ -561,6 +573,8 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         ejectNonPlayerPassengers();
 
+        this.applyPassengerSeatOffset();
+
         float yaw = getYRot();
 
         if (Float.isNaN(lastCollisionYaw) || Math.abs(yaw - lastCollisionYaw) > 0.01F) {
@@ -586,6 +600,8 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
             this.draftWasOnGround = this.onGround;
 
             this.updateLanternLight();
+
+            this.tickMovementSounds();
 
         }
 
@@ -943,6 +959,22 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         }
 
+        int smooth = this.countFootprintBlocksInTag(CART_FAST_SURFACES);
+
+        if (smooth == 0) {
+
+            return 1.0D;
+
+        }
+
+        double blend = (double) smooth / 5.0D;
+
+        return 1.0D + blend * (FAST_SURFACE_SPEED_FACTOR - 1.0D);
+
+    }
+
+    private int countFootprintBlocksInTag(TagKey<Block> tag) {
+
         double x = this.getX();
 
         double y = this.getY();
@@ -965,7 +997,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         };
 
-        int smooth = 0;
+        int hits = 0;
 
         int probeY = Mth.floor(y - 0.0625D);
 
@@ -977,23 +1009,65 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
             BlockPos pos = new BlockPos(Mth.floor(wx), probeY, Mth.floor(wz));
 
-            if (this.level.getBlockState(pos).is(CART_FAST_SURFACES)) {
+            if (this.level.getBlockState(pos).is(tag)) {
 
-                smooth++;
+                hits++;
 
             }
 
         }
 
-        if (smooth == 0) {
+        return hits;
 
-            return 1.0D;
+    }
+
+    private boolean isMostlySmoothSurface() {
+
+        return this.countFootprintBlocksInTag(CART_SMOOTH_SURFACES) >= 3;
+
+    }
+
+    private void tickMovementSounds() {
+
+        if (this.isInWater() || this.isUnderWater() || !this.onGround) {
+
+            this.moveSoundTicks = 0;
+
+            return;
 
         }
 
-        double blend = (double) smooth / samples.length;
+        Vec3 motion = this.getDeltaMovement();
 
-        return 1.0D + blend * (FAST_SURFACE_SPEED_FACTOR - 1.0D);
+        double speed = Math.hypot(motion.x, motion.z);
+
+        if (speed < MOVE_SOUND_MIN_SPEED) {
+
+            this.moveSoundTicks = 0;
+
+            return;
+
+        }
+
+        this.moveSoundTicks++;
+
+        if (this.moveSoundTicks < MOVE_SOUND_INTERVAL) {
+
+            return;
+
+        }
+
+        this.moveSoundTicks = 0;
+
+        SoundEvent sound = this.isMostlySmoothSurface()
+                ? ModSounds.CART_MOVE_SMOOTH.get()
+                : ModSounds.CART_MOVE_ROUGH.get();
+
+        float volume = Mth.clamp((float) (speed * 2.5D), 0.15F, 0.9F);
+
+        float pitch = 0.9F + Mth.clamp((float) (speed * 0.5D), 0.0F, 0.2F);
+
+        this.level.playSound(null, this.getX(), this.getY(), this.getZ(), sound, SoundSource.NEUTRAL, volume, pitch);
 
     }
 

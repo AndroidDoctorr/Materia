@@ -308,5 +308,25 @@
                 "pitch": 1.0
             }
         ]
+    },
+    "entity.cart.move_smooth": {
+        "category": "neutral",
+        "sounds": [
+            {
+                "name": "materia:cart_smooth",
+                "volume": 0.8,
+                "pitch": 1.0
+            }
+        ]
+    },
+    "entity.cart.move_rough": {
+        "category": "neutral",
+        "sounds": [
+            {
+                "name": "materia:cart_rough",
+                "volume": 0.8,
+                "pitch": 1.0
+            }
+        ]
     }
 }

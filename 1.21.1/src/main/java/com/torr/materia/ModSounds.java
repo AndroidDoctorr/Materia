@@ -142,4 +142,12 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> CURTAINS = SOUNDS.register(
             "block.curtains",
             () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(materia.MOD_ID, "block.curtains")));
+
+    public static final RegistryObject<SoundEvent> CART_MOVE_SMOOTH = SOUNDS.register(
+            "entity.cart.move_smooth",
+            () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(materia.MOD_ID, "entity.cart.move_smooth")));
+
+    public static final RegistryObject<SoundEvent> CART_MOVE_ROUGH = SOUNDS.register(
+            "entity.cart.move_rough",
+            () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(materia.MOD_ID, "entity.cart.move_rough")));
 }
