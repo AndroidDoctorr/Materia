@@ -24,6 +24,7 @@ import com.torr.materia.item.PoulticeItem;
 import com.torr.materia.item.CartCoverItem;
 import com.torr.materia.item.CartCoverColor;
 import com.torr.materia.item.CartItem;
+import com.torr.materia.item.CartWoodType;
 import com.torr.materia.item.CannonballItem;
 import com.torr.materia.item.TaroItem;
 import net.minecraft.world.item.Item;
@@ -2250,26 +2251,32 @@ public class ModItems {
         public static final RegistryObject<Item> WOODEN_WHEEL = ITEMS.register("wooden_wheel",
                         () -> new Item(new Item.Properties()
                                         .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)));
+        public static final RegistryObject<Item> CART_WHEEL = ITEMS.register("cart_wheel",
+                        () -> new Item(new Item.Properties()
+                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)));
         public static final RegistryObject<Item> MINECART_WHEEL = ITEMS.register("minecart_wheel",
                         () -> new Item(new Item.Properties()
                                         .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)));
         public static final RegistryObject<Item> MINECART_AXLE = ITEMS.register("minecart_axle",
                         () -> new Item(new Item.Properties()
                                         .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)));
-        public static final RegistryObject<Item> CART_BASE = ITEMS.register("cart_base",
-                        () -> new Item(new Item.Properties()
-                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)));
         static {
                 ModCartCovers.registerAll();
+                ModCarts.registerAll();
         }
         /** Legacy id; same item as {@link CartCoverColor#WHITE}. */
         public static final RegistryObject<Item> CART_COVER = ModCartCovers.get(CartCoverColor.WHITE);
         public static RegistryObject<Item> getCartCover(CartCoverColor color) {
                 return ModCartCovers.get(color);
         }
-        public static final RegistryObject<Item> CART = ITEMS.register("cart",
-                        () -> new CartItem(new Item.Properties().stacksTo(1)
-                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_TRANSPORTATION)));
+        /** Code alias for {@link CartWoodType#OAK} cart ({@code materia:oak_cart}). */
+        public static final RegistryObject<Item> CART = ModCarts.get(CartWoodType.OAK);
+        public static RegistryObject<Item> getCart(CartWoodType wood) {
+                return ModCarts.get(wood);
+        }
+        public static RegistryObject<Item> getCartBase(CartWoodType wood) {
+                return ModCarts.getBase(wood);
+        }
 
         // Healing Poultices
         public static final RegistryObject<Item> OAK_BARK = ITEMS.register("oak_bark",

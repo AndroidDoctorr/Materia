@@ -32,7 +32,7 @@ public class CartMountHealthOverlay {
         int height = minecraft.getWindow().getGuiScaledHeight();
         int left = width / 2 - 91;
         int top = height - 32 + 3;
-        float ratio = Mth.clamp(cart.getCartHealth() / CartEntity.MAX_HEALTH, 0.0F, 1.0F);
+        float ratio = cart.getHealthRatio();
         int filled = (int) (ratio * 183.0F);
 
         RenderSystem.setShader(GameRenderer::getPositionTexShader);

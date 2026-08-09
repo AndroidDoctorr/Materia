@@ -21,12 +21,10 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class CartRenderer extends EntityRenderer<CartEntity> {
 
-    private static final ResourceLocation BODY_TEXTURE =
-            new ResourceLocation(materia.MOD_ID, "textures/entity/oak_cart.png");
     private static final ResourceLocation WHEEL_TEXTURE =
-            new ResourceLocation(materia.MOD_ID, "textures/block/cart_wheel.png");
+            new ResourceLocation(materia.MOD_ID, "textures/entity/cart_wheel.png");
     private static final ResourceLocation CHEST_TEXTURE =
-            new ResourceLocation(materia.MOD_ID, "textures/block/cart_chest.png");
+            new ResourceLocation(materia.MOD_ID, "textures/entity/cart_chest.png");
     private static final ResourceLocation LANTERN_TEXTURE =
             new ResourceLocation(materia.MOD_ID, "textures/entity/cart_lantern.png");
 
@@ -56,9 +54,11 @@ public class CartRenderer extends EntityRenderer<CartEntity> {
             entity.wheelRotation -= travel / CartEntity.WHEEL_RADIUS * CartEntity.WHEEL_ROTATION_FACTOR;
         }
 
+        ResourceLocation bodyTexture = entity.getWoodType().getEntityTexture();
+
         this.model.setupAnim(entity, 0.0F, 0.0F, partialTicks, 0.0F, 0.0F);
 
-        VertexConsumer bodyBuffer = buffer.getBuffer(RenderType.entityCutoutNoCull(BODY_TEXTURE));
+        VertexConsumer bodyBuffer = buffer.getBuffer(RenderType.entityCutoutNoCull(bodyTexture));
         this.bodyModel.renderHullBody(poseStack, bodyBuffer, packedLight, OverlayTexture.NO_OVERLAY);
         this.bodyModel.renderFront(poseStack, bodyBuffer, packedLight, OverlayTexture.NO_OVERLAY);
         this.bodyModel.renderBack(poseStack, bodyBuffer, packedLight, OverlayTexture.NO_OVERLAY);
@@ -87,6 +87,6 @@ public class CartRenderer extends EntityRenderer<CartEntity> {
 
     @Override
     public ResourceLocation getTextureLocation(CartEntity entity) {
-        return BODY_TEXTURE;
+        return entity.getWoodType().getEntityTexture();
     }
 }

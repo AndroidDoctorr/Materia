@@ -13,8 +13,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 /**
- * Shows cart durability as a horse-style jump bar while the local player is riding.
- * Only visible to the mounted player (client-side check).
+ * Horse-style mount bar while riding a cart. Bar width is always the same;
+ * fill shows current HP as a percentage of that cart's wood-type max health.
  */
 @Mod.EventBusSubscriber(modid = materia.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CartMountHealthOverlay {
@@ -37,7 +37,7 @@ public class CartMountHealthOverlay {
         int height = minecraft.getWindow().getGuiScaledHeight();
         int left = width / 2 - 91;
         int top = height - 32 + 3;
-        float ratio = Mth.clamp(cart.getCartHealth() / CartEntity.MAX_HEALTH, 0.0F, 1.0F);
+        float ratio = cart.getHealthRatio();
         int filled = (int) (ratio * 183.0F);
 
         graphics.blit(GUI_ICONS, left, top, 0, 84, 182, 5);

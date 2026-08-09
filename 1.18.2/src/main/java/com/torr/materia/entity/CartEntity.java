@@ -1,10 +1,12 @@
 package com.torr.materia.entity;
 
+import com.torr.materia.ModCarts;
 import com.torr.materia.ModEntities;
 import com.torr.materia.ModItems;
 import com.torr.materia.events.CartSleepHandler;
 import com.torr.materia.item.CartCoverColor;
 import com.torr.materia.item.CartCoverItem;
+import com.torr.materia.item.CartWoodType;
 import com.torr.materia.menu.CartMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -23,6 +25,8 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.InteractionHand;
@@ -80,6 +84,8 @@ public class CartEntity extends Boat implements Container, MenuProvider {
     private static final EntityDataAccessor<Boolean> DATA_HAS_LANTERN =
             SynchedEntityData.defineId(CartEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> DATA_HEALTH =
+            SynchedEntityData.defineId(CartEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> DATA_WOOD_TYPE =
             SynchedEntityData.defineId(CartEntity.class, EntityDataSerializers.INT);
 
     /** World-space footprint (blocks). Length runs along entity facing (+Z when yaw = 0). */
@@ -156,7 +162,35 @@ public class CartEntity extends Boat implements Container, MenuProvider {
         super.defineSynchedData();
         this.entityData.define(DATA_COVER_COLOR, 0);
         this.entityData.define(DATA_HAS_LANTERN, false);
-        this.entityData.define(DATA_HEALTH, (int) (MAX_HEALTH * 10.0F));
+        this.entityData.define(DATA_HEALTH, (int) (CartWoodType.OAK.getMaxHealth() * 10.0F));
+        this.entityData.define(DATA_WOOD_TYPE, CartWoodType.OAK.networkId());
+    }
+
+    public CartWoodType getWoodType() {
+        return CartWoodType.fromNetworkId(this.entityData.get(DATA_WOOD_TYPE));
+    }
+
+    public void setWoodType(CartWoodType woodType) {
+        CartWoodType resolved = woodType == null ? CartWoodType.OAK : woodType;
+        this.entityData.set(DATA_WOOD_TYPE, resolved.networkId());
+        this.setCartHealth(Mth.clamp(this.getCartHealth(), 0.0F, resolved.getMaxHealth()));
+    }
+
+    public float getMaxHealth() {
+        return this.getWoodType().getMaxHealth();
+    }
+
+    /** Current health as 0–1 for UI; same bar width at full HP regardless of wood type. */
+    public float getHealthRatio() {
+        float max = this.getMaxHealth();
+        if (max <= 0.0F) {
+            return 0.0F;
+        }
+        return Mth.clamp(this.getCartHealth() / max, 0.0F, 1.0F);
+    }
+
+    public float getMassFactor() {
+        return this.getWoodType().getMassFactor();
     }
 
     public boolean hasCover() {
@@ -187,7 +221,7 @@ public class CartEntity extends Boat implements Container, MenuProvider {
     }
 
     public void setCartHealth(float health) {
-        int scaled = Mth.clamp((int) (health * 10.0F), 0, (int) (MAX_HEALTH * 10.0F));
+        int scaled = Mth.clamp((int) (health * 10.0F), 0, (int) (this.getMaxHealth() * 10.0F));
         this.entityData.set(DATA_HEALTH, scaled);
     }
 
@@ -202,7 +236,7 @@ public class CartEntity extends Boat implements Container, MenuProvider {
 
     @Override
     public Item getDropItem() {
-        return ModItems.CART.get();
+        return ModCarts.get(this.getWoodType()).get();
     }
 
     @Override
@@ -424,10 +458,11 @@ public class CartEntity extends Boat implements Container, MenuProvider {
         float rad = this.draftHeading * ((float) Math.PI / 180F);
         double fwdX = -Math.sin(rad);
         double fwdZ = Math.cos(rad);
-        double targetSpeed = MAX_SPEED_PER_PULL * pull * forward * surfaceFactor;
+        double mass = this.getMassFactor();
+        double targetSpeed = MAX_SPEED_PER_PULL * pull * forward * surfaceFactor / mass;
         Vec3 motion = this.getDeltaMovement();
         double along = motion.x * fwdX + motion.z * fwdZ;
-        along = along + (targetSpeed - along) * DRAFT_SPEED_CHASE;
+        along = along + (targetSpeed - along) * (DRAFT_SPEED_CHASE / mass);
         this.setDeltaMovement(fwdX * along, motion.y, fwdZ * along);
     }
 
@@ -435,7 +470,7 @@ public class CartEntity extends Boat implements Container, MenuProvider {
         Vec3 motion = this.getDeltaMovement();
         double hx = motion.x * AIR_DRAG;
         double hz = motion.z * AIR_DRAG;
-        double coastCap = MAX_SPEED_PER_PULL * Math.max(pull, MIN_DRAFT_PULL) * AIR_SPEED_FACTOR;
+        double coastCap = MAX_SPEED_PER_PULL * Math.max(pull, MIN_DRAFT_PULL) * AIR_SPEED_FACTOR / this.getMassFactor();
         double horizontalSpeed = Math.hypot(hx, hz);
         if (horizontalSpeed > coastCap && horizontalSpeed > 1.0E-4D) {
             double scale = coastCap / horizontalSpeed;
@@ -530,7 +565,7 @@ public class CartEntity extends Boat implements Container, MenuProvider {
     }
 
     private void clampDraftSpeed(double pull, double surfaceFactor) {
-        double maxSpeed = MAX_SPEED_PER_PULL * pull * surfaceFactor;
+        double maxSpeed = MAX_SPEED_PER_PULL * pull * surfaceFactor / this.getMassFactor();
         Vec3 motion = this.getDeltaMovement();
         double horizontalSpeed = Math.hypot(motion.x, motion.z);
         if (horizontalSpeed > maxSpeed && horizontalSpeed > 1.0E-4D) {
@@ -787,6 +822,19 @@ public class CartEntity extends Boat implements Container, MenuProvider {
                 }
                 return InteractionResult.sidedSuccess(this.level.isClientSide);
             }
+            if (this.getWoodType().isRepairItem(stack)
+                    && this.getCartHealth() < this.getMaxHealth() - 0.05F) {
+                if (!this.level.isClientSide) {
+                    this.setCartHealth(this.getCartHealth() + CartWoodType.REPAIR_AMOUNT);
+                    if (!player.getAbilities().instabuild) {
+                        stack.shrink(1);
+                    }
+                    this.gameEvent(GameEvent.ENTITY_INTERACT, player);
+                    this.level.playSound(null, this.blockPosition(), SoundEvents.WOOD_PLACE, SoundSource.PLAYERS,
+                            0.8F, 1.0F);
+                }
+                return InteractionResult.sidedSuccess(this.level.isClientSide);
+            }
         }
         if (player.isShiftKeyDown() && this.hasLeashedDraftTeam()) {
             if (!this.level.isClientSide) {
@@ -899,6 +947,10 @@ public class CartEntity extends Boat implements Container, MenuProvider {
         if (this.level.isClientSide) {
             return false;
         }
+        amount = this.getWoodType().applyDamageAmount(source, amount);
+        if (amount <= 0.0F) {
+            return false;
+        }
         this.setHurtDir(-this.getHurtDir());
         this.setCartHealth(this.getCartHealth() - amount);
         this.setHurtTime(10);
@@ -946,6 +998,7 @@ public class CartEntity extends Boat implements Container, MenuProvider {
         this.getCoverColor().ifPresent(color -> tag.putString("CoverColor", color.getId()));
         tag.putBoolean("HasLantern", this.hasLantern());
         tag.putFloat("CartHealth", this.getCartHealth());
+        tag.putString("WoodType", this.getWoodType().getId());
         this.addDraftTeamSaveData(tag);
         ContainerHelper.saveAllItems(tag, this.itemStacks);
     }
@@ -961,6 +1014,9 @@ public class CartEntity extends Boat implements Container, MenuProvider {
         }
         if (tag.contains("HasLantern")) {
             this.setHasLantern(tag.getBoolean("HasLantern"));
+        }
+        if (tag.contains("WoodType")) {
+            CartWoodType.fromId(tag.getString("WoodType")).ifPresent(this::setWoodType);
         }
         if (tag.contains("CartHealth")) {
             this.setCartHealth(tag.getFloat("CartHealth"));

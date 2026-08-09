@@ -23,8 +23,22 @@ import java.util.List;
 
 public class CartItem extends Item {
 
-    public CartItem(Properties properties) {
+    private final CartWoodType woodType;
+
+    public CartItem(CartWoodType woodType, Properties properties) {
         super(properties);
+        this.woodType = woodType;
+    }
+
+    public CartWoodType getWoodType() {
+        return this.woodType;
+    }
+
+    public static CartWoodType getWoodType(ItemStack stack) {
+        if (stack.getItem() instanceof CartItem cartItem) {
+            return cartItem.getWoodType();
+        }
+        return CartWoodType.OAK;
     }
 
     @Override
@@ -45,7 +59,9 @@ public class CartItem extends Item {
         }
 
         CartEntity cart = new CartEntity(level, x, y, z);
+        cart.setWoodType(this.woodType);
         cart.loadInventoryFromItem(stack);
+        cart.setCartHealth(cart.getMaxHealth());
         if (!level.noCollision(cart, cart.getBoundingBox().inflate(-0.1D))) {
             return InteractionResultHolder.fail(stack);
         }

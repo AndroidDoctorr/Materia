@@ -1,0 +1,33 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:jungle_cart_base"
+        },
+        {
+            "item": "minecraft:crafting_table"
+        },
+        {
+            "item": "minecraft:chest"
+        },
+        {
+            "tag": "materia:all_beds"
+        },
+        {
+            "item": "materia:cart_wheel"
+        },
+        {
+            "item": "materia:cart_wheel"
+        },
+        {
+            "item": "materia:cart_wheel"
+        },
+        {
+            "item": "materia:cart_wheel"
+        }
+    ],
+    "result": {
+        "item": "materia:jungle_cart",
+        "count": 1
+    }
+}

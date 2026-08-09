@@ -47,7 +47,7 @@ public class CartBodyModel extends EntityModel<CartEntity> {
     private static final int FRONT_U = 6;
     private static final int FRONT_V = TILE;
     /** Cross-layout SOUTH starts at u+dx; 16+16=32 → third tile (tools). */
-    private static final int BACK_U = TILE - 4;
+    private static final int BACK_U = TILE - 1;
     private static final int BACK_V = 0;
 
     private static final float U = 16.0F;
@@ -108,21 +108,21 @@ public class CartBodyModel extends EntityModel<CartEntity> {
         root.addOrReplaceChild(
                 "floor",
                 CubeListBuilder.create()
-                        .texOffs(HULL_U, HULL_V)
+                        .texOffs(18, 18)
                         .addBox(-HALF_W, BODY_BASE, -HALF_L, W, FLOOR_H, L),
                 PartPose.ZERO);
 
         root.addOrReplaceChild(
                 "wall_north_shell",
                 CubeListBuilder.create()
-                        .texOffs(HULL_U, HULL_V)
+                        .texOffs(10, HULL_V)
                         .addBox(-HALF_W, BODY_BASE + FLOOR_H, -HALF_L, W, WALL_H, WALL_T, WALL_NORTH_SHELL),
                 PartPose.ZERO);
 
         root.addOrReplaceChild(
                 "wall_north_face",
                 CubeListBuilder.create()
-                        .texOffs(FRONT_U, FRONT_V)
+                        .texOffs(10, HULL_V)
                         .addBox(-HALF_W, BODY_BASE + FLOOR_H, -HALF_L, W, WALL_H, WALL_T, WALL_NORTH_OUTER),
                 PartPose.ZERO);
 
@@ -143,14 +143,14 @@ public class CartBodyModel extends EntityModel<CartEntity> {
         root.addOrReplaceChild(
                 "wall_west",
                 CubeListBuilder.create()
-                        .texOffs(HULL_U, HULL_V)
+                        .texOffs(HULL_U + 3, HULL_V + 3)
                         .addBox(-HALF_W, BODY_BASE + FLOOR_H, -HALF_L + WALL_T, WALL_T, WALL_H, INNER_L),
                 PartPose.ZERO);
 
         root.addOrReplaceChild(
                 "wall_east",
                 CubeListBuilder.create()
-                        .texOffs(HULL_U, HULL_V)
+                        .texOffs(HULL_U + 2, HULL_V + 3)
                         .addBox(HALF_W - WALL_T, BODY_BASE + FLOOR_H, -HALF_L + WALL_T, WALL_T, WALL_H, INNER_L),
                 PartPose.ZERO);
 

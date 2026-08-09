@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "PNP",
+        "PNP",
+        "PPP"
+    ],
+    "key": {
+        "P": {
+            "item": "minecraft:pale_oak_planks"
+        },
+        "N": {
+            "tag": "materia:all_nails"
+        }
+    },
+    "result": {
+        "item": "materia:pale_oak_cart_base",
+        "count": 1
+    }
+}
