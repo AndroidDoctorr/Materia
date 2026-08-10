@@ -6,6 +6,14 @@ Planned work is tracked in [`documentation/release-roadmap.md`](documentation/re
 
 ## Unreleased
 
+## 1.3.7
+
+Patch release: clay roof tile recipe fix.
+
+#### Recipes
+
+- **Fix:** **clay roof tile** no longer conflicts with **clay bowl** — both used shapeless **1× clay ball**. Clay roof tiles are now crafted with **2 clay balls** in a row (shaped) for **2 tiles** (`clay_roof_tile.json`).
+
 ## 1.3.6
 
 Patch release: Forge 52.1.0 compatibility (1.21.1) and version docs.
