@@ -37,7 +37,7 @@ Right-click a solid face (typically atop joists) with a **roof frame** to place 
 
 ### Tile pipeline
 
-- `clay_roof_tile.json` — clay ball → **clay roof tile**
+- `clay_roof_tile.json` — **2 clay balls** in a row → **2 clay roof tiles** (shaped; avoids collision with **clay bowl**)
 - `clay_roof_tile_to_terracotta.json` — kiln → **terracotta roof tile**
 
 ## Thatch roof — two methods
