@@ -1,0 +1,47 @@
+{
+    "type": "minecraft:entity",
+    "random_sequence": "materia:entities/cart",
+    "pools": [
+        {
+            "rolls": 2,
+            "conditions": [
+                {
+                    "condition": "minecraft:survives_explosion"
+                }
+            ],
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:cart_wheel",
+                    "conditions": [
+                        {
+                            "condition": "minecraft:random_chance",
+                            "chance": 0.5
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "rolls": 2,
+            "conditions": [
+                {
+                    "condition": "minecraft:survives_explosion"
+                }
+            ],
+            "entries": [
+                {
+                    "type": "minecraft:tag",
+                    "name": "materia:all_nails",
+                    "expand": true,
+                    "conditions": [
+                        {
+                            "condition": "minecraft:random_chance",
+                            "chance": 0.35
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

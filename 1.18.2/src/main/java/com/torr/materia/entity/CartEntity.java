@@ -9,6 +9,7 @@ import com.torr.materia.item.CartCoverColor;
 import com.torr.materia.item.CartCoverItem;
 import com.torr.materia.item.CartWoodType;
 import com.torr.materia.menu.CartMenu;
+import com.torr.materia.materia;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
@@ -58,6 +59,10 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LightBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -65,6 +70,7 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.wrapper.InvWrapper;
 import net.minecraftforge.network.NetworkHooks;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
 
@@ -112,7 +118,7 @@ public class CartEntity extends Boat implements Container, MenuProvider {
 
     /** Blocks forward of entity center to the driver seat; vertical component follows cart pitch. */
     public static final float DRIVER_FORWARD_OFFSET = 1.25F;
-    public static final float DRIVER_VERTICAL_OFFSET = 0.75F;
+    public static final float DRIVER_VERTICAL_OFFSET = 1.0F;
 
     private static final double LEASH_TRANSFER_RANGE = 8.0D;
     private static final double MAX_GROUND_ALIGN_RISE = 1.05D;
@@ -146,8 +152,16 @@ public class CartEntity extends Boat implements Container, MenuProvider {
             Registry.BLOCK_REGISTRY, new ResourceLocation("materia", "cart_surface_wood"));
     private static final TagKey<Block> CART_SURFACE_STONE = TagKey.create(
             Registry.BLOCK_REGISTRY, new ResourceLocation("materia", "cart_surface_stone"));
-    private static final int MOVE_SOUND_INTERVAL = 58;
+    /** 3s rolling clips; replay slightly early so loops overlap without a gap. */
+    private static final int MOVE_SOUND_INTERVAL = 54;
+    private static final int DRAFT_SOUND_MIN_INTERVAL = 8;
+    private static final int DRAFT_SOUND_MAX_INTERVAL = 18;
     private static final double MOVE_SOUND_MIN_SPEED = 0.03D;
+    private static final double DRAFT_GALLOP_MIN_SPEED = 0.095D;
+    private static final ResourceLocation CART_DESTROY_LOOT =
+            new ResourceLocation(materia.MOD_ID, "entities/cart");
+    private static final float COVER_DESTROY_DROP_CHANCE = 0.85F;
+    private static final float LANTERN_DESTROY_DROP_CHANCE = 0.75F;
     /** Degrees per tick of draft heading change at full strafe input. */
     private static final float DRAFT_TURN_RATE = 2.8F;
     /** How quickly cart yaw catches up to the draft team heading. */
@@ -169,11 +183,13 @@ public class CartEntity extends Boat implements Container, MenuProvider {
 
     private int moveSoundTicks;
 
+    private int draftSoundTicks;
+
     @Nullable
     private CartMoveSurface lastMoveSurface;
 
     private enum CartMoveSurface {
-        STONE, COBBLE, GRAVEL, WOOD, GRASS, SAND, DIRT, SNOW
+        STONE, COBBLE, GRAVEL, WOOD, GRASS, SAND, DIRT, SNOW, WATER
     }
 
     @Nullable
@@ -416,6 +432,7 @@ public class CartEntity extends Boat implements Container, MenuProvider {
 
             this.updateLanternLight();
             this.tickMovementSounds();
+            this.tickDraftSounds();
         }
         if (!this.level.isClientSide && this.isControlledByLocalInstance()) {
             alignToGroundUnderFootprint();
@@ -697,15 +714,18 @@ public class CartEntity extends Boat implements Container, MenuProvider {
             case SAND -> ModSounds.CART_MOVE_SAND.get();
             case DIRT -> ModSounds.CART_MOVE_DIRT.get();
             case SNOW -> ModSounds.CART_MOVE_SNOW.get();
+            case WATER -> ModSounds.CART_MOVE_WATER.get();
         };
     }
 
+    private void playMoveSound(CartMoveSurface surface, double speed) {
+        SoundEvent sound = resolveMoveSound(surface);
+        float volume = Mth.clamp((float) (speed * 2.5D), 0.15F, 0.9F);
+        float pitch = 0.9F + Mth.clamp((float) (speed * 0.5D), 0.0F, 0.2F);
+        this.level.playSound(null, this.getX(), this.getY(), this.getZ(), sound, SoundSource.NEUTRAL, volume, pitch);
+    }
+
     private void tickMovementSounds() {
-        if (this.isInWater() || this.isUnderWater() || !this.onGround) {
-            this.moveSoundTicks = 0;
-            this.lastMoveSurface = null;
-            return;
-        }
         Vec3 motion = this.getDeltaMovement();
         double speed = Math.hypot(motion.x, motion.z);
         if (speed < MOVE_SOUND_MIN_SPEED) {
@@ -713,19 +733,61 @@ public class CartEntity extends Boat implements Container, MenuProvider {
             this.lastMoveSurface = null;
             return;
         }
-        CartMoveSurface surface = this.sampleDominantMoveSurface();
-        if (this.lastMoveSurface != null && this.lastMoveSurface != surface) {
-            this.moveSoundTicks = MOVE_SOUND_INTERVAL;
+        boolean inWater = this.isInWater();
+        if (!inWater && (!this.onGround || this.isUnderWater())) {
+            this.moveSoundTicks = 0;
+            this.lastMoveSurface = null;
+            return;
         }
+        CartMoveSurface surface = inWater ? CartMoveSurface.WATER : this.sampleDominantMoveSurface();
+        boolean playNow = this.lastMoveSurface == null || this.lastMoveSurface != surface;
         this.lastMoveSurface = surface;
         this.moveSoundTicks++;
-        if (this.moveSoundTicks < MOVE_SOUND_INTERVAL) {
+        if (!playNow && this.moveSoundTicks < MOVE_SOUND_INTERVAL) {
             return;
         }
         this.moveSoundTicks = 0;
-        SoundEvent sound = resolveMoveSound(surface);
-        float volume = Mth.clamp((float) (speed * 2.5D), 0.15F, 0.9F);
-        float pitch = 0.9F + Mth.clamp((float) (speed * 0.5D), 0.0F, 0.2F);
+        this.playMoveSound(surface, speed);
+    }
+
+    private int computeDraftSoundInterval(double speed) {
+        return Mth.clamp((int) Math.round(20.0D - speed * 80.0D), DRAFT_SOUND_MIN_INTERVAL, DRAFT_SOUND_MAX_INTERVAL);
+    }
+
+    private void tickDraftSounds() {
+        if (this.isInWater() || this.isUnderWater() || !this.onGround) {
+            this.draftSoundTicks = 0;
+            return;
+        }
+        List<Mob> draft = this.collectDraftMobs();
+        int equines = 0;
+        for (Mob mob : draft) {
+            if (mob instanceof AbstractHorse) {
+                equines++;
+            }
+        }
+        if (equines == 0) {
+            this.draftSoundTicks = 0;
+            return;
+        }
+        Vec3 motion = this.getDeltaMovement();
+        double speed = Math.hypot(motion.x, motion.z);
+        if (speed < MOVE_SOUND_MIN_SPEED) {
+            this.draftSoundTicks = 0;
+            return;
+        }
+        int interval = this.computeDraftSoundInterval(speed);
+        this.draftSoundTicks++;
+        if (this.draftSoundTicks < interval) {
+            return;
+        }
+        this.draftSoundTicks = 0;
+        SoundEvent sound = speed >= DRAFT_GALLOP_MIN_SPEED
+                ? SoundEvents.HORSE_GALLOP
+                : SoundEvents.HORSE_STEP;
+        float volume = Mth.clamp(0.22F + equines * 0.12F, 0.22F, 0.85F);
+        float pitch = 0.88F + Mth.clamp((float) (speed * 0.4D), 0.0F, 0.18F)
+                + (this.random.nextFloat() - 0.5F) * 0.06F;
         this.level.playSound(null, this.getX(), this.getY(), this.getZ(), sound, SoundSource.NEUTRAL, volume, pitch);
     }
 
@@ -1138,31 +1200,67 @@ public class CartEntity extends Boat implements Container, MenuProvider {
         this.gameEvent(GameEvent.ENTITY_DAMAGED, source.getEntity());
         if (this.getCartHealth() <= 0.0F) {
             if (this.level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
-                this.spawnCartDrop();
+                this.dropDestroyLoot(source);
             }
             this.discard();
         }
         return true;
     }
 
-    private void dropAttachmentItems() {
-        this.getCoverColor().ifPresent(color ->
-                this.spawnAtLocation(new ItemStack(ModItems.getCartCover(color).get())));
-        if (this.hasLantern()) {
-            this.spawnAtLocation(new ItemStack(Items.LANTERN));
+    private void dropDestroyLoot(DamageSource source) {
+        this.dropChestContents();
+        this.rollDestroyLootTable(source);
+        this.dropDestroyWoodSalvage();
+        this.dropDestroyAttachments();
+    }
+
+    private void dropChestContents() {
+        for (ItemStack stack : this.itemStacks) {
+            if (!stack.isEmpty()) {
+                this.spawnAtLocation(stack);
+            }
+        }
+        this.clearContent();
+    }
+
+    private void rollDestroyLootTable(DamageSource source) {
+        if (!(this.level instanceof ServerLevel serverLevel)) {
+            return;
+        }
+        LootTable table = serverLevel.getServer().getLootTables().get(CART_DESTROY_LOOT);
+        LootContext context = new LootContext.Builder(serverLevel)
+                .withParameter(LootContextParams.THIS_ENTITY, this)
+                .withParameter(LootContextParams.ORIGIN, this.position())
+                .withParameter(LootContextParams.DAMAGE_SOURCE, source)
+                .create(LootContextParamSets.ENTITY);
+        for (ItemStack stack : table.getRandomItems(context)) {
+            this.spawnAtLocation(stack);
         }
     }
 
-    private void spawnCartDrop() {
-        this.dropAttachmentItems();
-        ItemStack drop = new ItemStack(this.getDropItem());
-        if (this.hasCustomName()) {
-            drop.setHoverName(this.getCustomName());
+    private void dropDestroyWoodSalvage() {
+        String plankId = this.getWoodType().getSmoothPlankItemId();
+        if (plankId == null) {
+            return;
         }
-        if (!this.isEmpty()) {
-            ContainerHelper.saveAllItems(drop.getOrCreateTag(), this.itemStacks);
+        ResourceLocation id = plankId.contains(":")
+                ? new ResourceLocation(plankId)
+                : new ResourceLocation(materia.MOD_ID, plankId);
+        Item plank = ForgeRegistries.ITEMS.getValue(id);
+        if (plank == null || plank == Items.AIR) {
+            return;
         }
-        this.spawnAtLocation(drop);
+        this.spawnAtLocation(new ItemStack(plank, 2 + this.random.nextInt(3)));
+    }
+
+    private void dropDestroyAttachments() {
+        if (this.hasCover() && this.random.nextFloat() < COVER_DESTROY_DROP_CHANCE) {
+            this.getCoverColor().ifPresent(color ->
+                    this.spawnAtLocation(new ItemStack(ModItems.getCartCover(color).get())));
+        }
+        if (this.hasLantern() && this.random.nextFloat() < LANTERN_DESTROY_DROP_CHANCE) {
+            this.spawnAtLocation(new ItemStack(Items.LANTERN));
+        }
     }
 
     @Override
