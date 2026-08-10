@@ -1,7 +1,7 @@
 {
     "type": "minecraft:crafting_shaped",
     "pattern": [
-        "CC"
+        "CCC"
     ],
     "key": {
         "C": {
@@ -10,6 +10,6 @@
     },
     "result": {
         "item": "materia:clay_roof_tile",
-        "count": 2
+        "count": 3
     }
 }
