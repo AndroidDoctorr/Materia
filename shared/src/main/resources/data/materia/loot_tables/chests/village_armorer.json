@@ -1,0 +1,59 @@
+{
+    "type": "minecraft:chest",
+    "pools": [
+        {
+            "rolls": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 2
+            },
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:bronze_nails",
+                    "weight": 8,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 2,
+                                "max": 8
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:iron_nails",
+                    "weight": 4,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1,
+                                "max": 4
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:iron_band",
+                    "weight": 3,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1,
+                                "max": 2
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

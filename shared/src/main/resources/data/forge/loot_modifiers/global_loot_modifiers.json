@@ -26,6 +26,22 @@
         "materia:chests/chest_shipwreck_treasure",
         "materia:chests/chest_shipwreck_supply",
         "materia:chests/chest_woodland_mansion",
-        "materia:chests/chest_igloo_chest"
+        "materia:chests/chest_igloo_chest",
+        "materia:chests/chest_village_plains_house",
+        "materia:chests/chest_village_desert_house",
+        "materia:chests/chest_village_savanna_house",
+        "materia:chests/chest_village_snowy_house",
+        "materia:chests/chest_village_taiga_house",
+        "materia:chests/chest_village_fletcher",
+        "materia:chests/chest_village_shepherd",
+        "materia:chests/chest_village_butcher",
+        "materia:chests/chest_village_fisher",
+        "materia:chests/chest_village_mason",
+        "materia:chests/chest_village_toolsmith",
+        "materia:chests/chest_village_weaponsmith",
+        "materia:chests/chest_village_armorer",
+        "materia:chests/chest_village_tannery",
+        "materia:chests/chest_village_cartographer",
+        "materia:chests/chest_village_temple"
     ]
 }

@@ -1,0 +1,74 @@
+{
+    "type": "minecraft:chest",
+    "pools": [
+        {
+            "rolls": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 2
+            },
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:plant_fiber",
+                    "weight": 8,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 2,
+                                "max": 4
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:lashing",
+                    "weight": 7,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1,
+                                "max": 2
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:flax_seeds",
+                    "weight": 5,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1,
+                                "max": 2
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "materia:cotton_seeds",
+                    "weight": 5,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1,
+                                "max": 2
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

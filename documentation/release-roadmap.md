@@ -1,6 +1,6 @@
 # Release roadmap
 
-Planned work for upcoming Materia releases after **1.2.0**. The next release is **1.3.0** (architecture update + decor). Patch fixes: **1.3.1** (hot-metal quench lag), **1.3.2** (quench UX, loot compat, torch fat).
+Planned work for upcoming Materia releases after **1.2.0**. **1.4.0** shipped the hand cart and village chest loot. Patch fixes before that: **1.3.1** (hot-metal quench lag), **1.3.2** (quench UX, loot compat, torch fat), **1.3.3–1.3.5** (worldgen/decor/recipe fixes).
 
 For mod-pack compatibility work (tags, optional datapacks, pipes, etc.), see [`mod-compatibility-roadmap.md`](mod-compatibility-roadmap.md).
 
@@ -48,11 +48,14 @@ Multi-version layout plus the decorative-building pass that was previously split
 
 ---
 
-## 1.4 — cart (primary focus)
+## 1.4.0 — cart (shipped)
 
-Land vehicle update — mainly the **hand cart**, with room for maybe one or two other vehicles or entities, but probably not.
+Land vehicle update — mainly the **hand cart**.
 
-- [ ] **Cart** — design, movement, controls, recipes, and balance pass.
+- [x] **Hand cart** — draft-pulled entity, storage, wood variants, cover/lantern, sleep, phantom shelter, dismantle vs destroy loot, surface/water sounds, draft hoof sounds.
+- [x] **Village chest loot** — 16 building-specific injectors at 70% (see [Structure chest loot](mechanics/structure-chest-loot.md)).
+- [ ] **Cart sound polish** — instant stop when cart halts (deferred; rolling clips may be split into segments later).
+- [ ] **Villager / wandering trader trades** for Materia goods (needs Java, not JSON-only on 1.20.1 Forge).
 
 ---
 
@@ -77,4 +80,4 @@ Lower priority or larger-scope ideas; version number TBD.
 
 1. When starting a release branch, copy the relevant section into a **`testing-x.y.z.md`** checklist if needed.
 2. When an item ships, check it off here and add a bullet under **`CHANGELOG.md`** for that version.
-3. If scope grows, split **1.3.0** vs **1.4** explicitly in this file rather than letting “maybe” items block a release.
+3. If scope grows, split releases explicitly in this file rather than letting “maybe” items block a ship.

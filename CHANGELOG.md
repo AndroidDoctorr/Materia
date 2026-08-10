@@ -6,6 +6,29 @@ Planned work is tracked in [`documentation/release-roadmap.md`](documentation/re
 
 ## Unreleased
 
+## 1.4.0
+
+Land vehicle update — hand cart, village chest loot, and cart polish.
+
+#### Hand cart
+
+- **Cart entity** — draft-pulled wheeled chest (27 slots); mount and steer with W/A/D; leashed animals provide pull (horses, llamas, livestock, etc.) with diminishing returns for large teams.
+- **Wood variants** — per-wood cart items and bases (vanilla + Materia woods); hull stats vary by wood type (mass, toughness, fire vulnerability).
+- **Crafting** — cart base (smooth planks + nails), shapeless assembly (base, crafting table, chest, bed, four cart wheels); **cart wheel** from wooden wheel + iron band.
+- **Cover & lantern** — apply dyed cart covers and lanterns in-world; covered carts shelter riders from **phantoms** (spawn block, targeting, and nearby spawn cancel).
+- **Cart sleep** — sleep from cart inventory while mounted at night/thunder (custom pose; no vanilla bed dismount).
+- **Dismantle** — sneak-use strips draft team → cover → lantern → full cart pickup (preserves chest NBT and health).
+- **Destroy loot** — breaking the cart spills chest contents, rolls `materia:entities/cart` (wheels/nails), drops 2–4 smooth planks, and may return cover (85%) / lantern (75%); does **not** drop the assembled cart item.
+- **Sounds** — surface-specific wheel rolling (~2.7s loop, immediate play on start/surface change, water clip when fording); speed-scaled horse hoof sounds for draft teams.
+
+#### Structure loot
+
+- **Village chest injectors** — 16 building-specific pools at **70%** chance (house biomes share `village_house`; profession chests get themed tables). Early survival items only — no mansion/rug/dungeon-tier rewards.
+
+#### Docs
+
+- New **[Hand cart](documentation/mechanics/cart.md)** page; **[Structure chest loot](documentation/mechanics/structure-chest-loot.md)** updated for village tables.
+
 ## 1.3.5
 
 Patch release: stone hammer mining fix.

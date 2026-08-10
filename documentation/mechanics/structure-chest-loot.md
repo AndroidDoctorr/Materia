@@ -36,7 +36,32 @@ This is intentionally **additive**, not a replacement — players still get vani
 | `minecraft:chests/woodland_mansion` | `materia:chests/woodland_mansion` | 85% |
 | `minecraft:chests/igloo_chest` | `materia:chests/igloo` | 80% |
 
-Modifier JSON paths follow `shared/.../loot_modifiers/chests/chest_<name>.json`.
+### Village chests (70% each)
+
+Village buildings use **separate Materia pools** — one loot table per building theme, injected into the matching vanilla village chest table. All village injectors use **70%** chance (slightly lower than dungeons so villages stay early-game, not jackpot chests).
+
+| Vanilla loot table | Materia loot table |
+|---|---|
+| `minecraft:chests/village/village_plains_house` | `materia:chests/village_house` |
+| `minecraft:chests/village/village_desert_house` | `materia:chests/village_house` |
+| `minecraft:chests/village/village_savanna_house` | `materia:chests/village_house` |
+| `minecraft:chests/village/village_snowy_house` | `materia:chests/village_house` |
+| `minecraft:chests/village/village_taiga_house` | `materia:chests/village_house` |
+| `minecraft:chests/village/village_fletcher` | `materia:chests/village_fletcher` |
+| `minecraft:chests/village/village_shepherd` | `materia:chests/village_shepherd` |
+| `minecraft:chests/village/village_butcher` | `materia:chests/village_butcher` |
+| `minecraft:chests/village/village_fisher` | `materia:chests/village_fisher` |
+| `minecraft:chests/village/village_mason` | `materia:chests/village_mason` |
+| `minecraft:chests/village/village_toolsmith` | `materia:chests/village_toolsmith` |
+| `minecraft:chests/village/village_weaponsmith` | `materia:chests/village_weaponsmith` |
+| `minecraft:chests/village/village_armorer` | `materia:chests/village_armorer` |
+| `minecraft:chests/village/village_tannery` | `materia:chests/village_tannery` |
+| `minecraft:chests/village/village_cartographer` | `materia:chests/village_cartographer` |
+| `minecraft:chests/village/village_temple` | `materia:chests/village_temple` |
+
+Modifier JSON paths follow `shared/.../loot_modifiers/chests/chest_<name>.json` (village files prefixed `chest_village_`).
+
+**Village design intent:** basic survival teasers only — fiber, rope, lashing, pebbles, seeds, salt, early tools, poultices, bedroll, nails, gut — **no** rugs, mansion decor, tyrian purple, or other late-game dungeon rewards.
 
 ## What can appear (by theme)
 
@@ -80,6 +105,54 @@ Decorative/storage: dyed **sacks** and **blankets** (lavender, ochre, indigo, ta
 
 Cold survival: **bedroll**, **animal fat**, **taupe/lavender blanket**; bonus **burrito**, **beans and rice**, **baked squash**.
 
+### Village house — `village_house.json`
+
+Shared by plains/desert/savanna/snowy/taiga house chests: **plant fiber**, **pebble**, **lashing**; bonus pool **bedroll**, **weak poultice**.
+
+### Village fletcher — `village_fletcher.json`
+
+**Plant fiber**, **rope**, **lashing**, **flax seeds**.
+
+### Village shepherd — `village_shepherd.json`
+
+**Plant fiber**, **lashing**, **flax seeds**, **cotton seeds**.
+
+### Village butcher — `village_butcher.json`
+
+**Animal fat**, **beans**, **peppers**, **salt**.
+
+### Village fisher — `village_fisher.json`
+
+**Salt**, **crushed shells**, **plant fiber**, **rope**.
+
+### Village mason — `village_mason.json`
+
+**Pebble**, **rough oak plank**, **knapped flint**.
+
+### Village toolsmith — `village_toolsmith.json`
+
+**Knapped flint**, **pebble**, **bronze nails**, **iron nails**; rare **flint knife**, **hand axe**.
+
+### Village weaponsmith — `village_weaponsmith.json`
+
+**Knapped flint**, **flint knife**, **hand axe**, **pebble**.
+
+### Village armorer — `village_armorer.json`
+
+**Bronze nails**, **iron nails**, **iron band**.
+
+### Village tannery — `village_tannery.json`
+
+**Lashing**, **rope**, **animal gut**, **clean gut**.
+
+### Village cartographer — `village_cartographer.json`
+
+**Bedroll**, **weak poultice**, **esparto**, **plant fiber**.
+
+### Village temple — `village_temple.json`
+
+**Weak poultice**, **medium poultice**, **bedroll**.
+
 ## Design notes
 
 - **No full bronze/iron armor or steel tools** in these tables — those would bypass Materia’s age gates.
@@ -89,6 +162,7 @@ Cold survival: **bedroll**, **animal fat**, **taupe/lavender blanket**; bonus **
 
 ## Related
 
+- [Hand cart](cart.md) — travel vehicle; village loot supplies early cart/cover materials
 - [Animal drops (bones + fat)](animal-drops.md) — other global loot modifiers
 - [Healing poultices](../content/items/healing-poultices.md)
 - [Sacks](../content/items/sacks.md)
