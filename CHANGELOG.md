@@ -6,7 +6,6 @@ Planned work is tracked in [`documentation/release-roadmap.md`](documentation/re
 
 ## Unreleased
 
-<<<<<<< HEAD
 ## 1.4.0
 
 Land vehicle update — hand cart, village chest loot, and cart polish.
@@ -29,7 +28,7 @@ Land vehicle update — hand cart, village chest loot, and cart polish.
 #### Docs
 
 - New **[Hand cart](documentation/mechanics/cart.md)** page; **[Structure chest loot](documentation/mechanics/structure-chest-loot.md)** updated for village tables.
-=======
+
 ## 1.3.7
 
 Patch release: clay roof tile recipe fix.
@@ -49,7 +48,7 @@ Patch release: Forge 52.1.0 compatibility (1.21.1) and version docs.
 #### Docs
 
 - Documented **Forge compatibility** per Minecraft port in [`documentation/reference/VERSIONS.md`](documentation/reference/VERSIONS.md) and [`documentation/getting-started/INSTALLATION.md`](documentation/getting-started/INSTALLATION.md).
->>>>>>> main
+
 
 ## 1.3.5
 
