@@ -4,7 +4,14 @@ Saws are woodworking tools for precision cutting.
 
 ## Bronze saw
 
+- Item page: [Bronze saw](../items/bronze-saw.md)
 - [Recipe JSON](../../../../shared/src/main/resources/data/materia/recipes/bronze_saw.json)
+
+## Iron saw
+
+- Item page: [Iron saw](../items/iron-saw.md)
+- [Recipe JSON](../../../../shared/src/main/resources/data/materia/recipes/iron_saw.json)
+- **400** durability (wrought iron tier)
 
 ## Saws are excluded from hewing
 

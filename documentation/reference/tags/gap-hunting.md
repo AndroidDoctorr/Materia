@@ -23,7 +23,7 @@ Tag JSON lives in:
 
 Each tag has a `values` list that may contain:
 
-- direct items (`"materia:bronze_saw"`)
+- direct items (prefer `#materia:all_saws` over `"materia:bronze_saw"`)
 - other tags (`"#materia:all_nails"`)
 - optional items (objects with `"required": false`) for cross-version compatibility
 

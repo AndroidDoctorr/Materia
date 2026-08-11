@@ -1,8 +1,8 @@
-﻿{
+{
     "type": "minecraft:crafting_shapeless",
     "ingredients": [
         { "item": "materia:rough_fig_plank" },
-        { "item": "materia:bronze_saw" }
+        { "tag": "materia:all_saws" }
     ],
     "result": { "item": "materia:smooth_fig_plank", "count": 2 }
 }

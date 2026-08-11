@@ -1,5 +1,7 @@
 package com.torr.materia;
 
+import com.torr.materia.util.MateriaBuckets;
+
 import com.torr.materia.blockentity.AmphoraBlockEntity;
 import com.torr.materia.entity.FallingAmphoraEntity;
 import net.minecraft.core.BlockPos;
@@ -482,11 +484,11 @@ public class AmphoraBlock extends BaseEntityBlock implements SimpleWaterloggedBl
         }
 
         // Bucket interactions: water bucket -> bucket (add 3 bottles worth), bucket -> water bucket (take 3 bottles worth)
-        if (held.is(Items.WATER_BUCKET)) {
+        if (MateriaBuckets.isWaterBucket(held)) {
             if (!level.isClientSide()) {
                 if (amphoraEntity.canAddWater() && amphoraEntity.getLiquidAmount() <= 6) { // Can fit 3 more
                     amphoraEntity.addWater(3);
-                    ItemStack bucket = new ItemStack(Items.BUCKET);
+                    ItemStack bucket = MateriaBuckets.emptyBucketFrom(held);
                     level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
                     ItemStack result = ItemUtils.createFilledResult(held, player, bucket);
                     player.setItemInHand(hand, result);
@@ -497,52 +499,52 @@ public class AmphoraBlock extends BaseEntityBlock implements SimpleWaterloggedBl
             return InteractionResult.sidedSuccess(level.isClientSide());
         }
 
-        if (held.is(Items.BUCKET)) {
+        if (MateriaBuckets.isEmptyBucket(held)) {
             if (!level.isClientSide()) {
                 if (amphoraEntity.hasWater() && amphoraEntity.getLiquidAmount() >= 3 && amphoraEntity.removeLiquid(3)) {
-                    ItemStack waterBucket = new ItemStack(Items.WATER_BUCKET);
+                    ItemStack waterBucket = MateriaBuckets.waterBucketFrom(held);
                     level.playSound(null, pos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
                     ItemStack result = ItemUtils.createFilledResult(held, player, waterBucket);
                     player.setItemInHand(hand, result);
                     updateBlockState(level, pos, amphoraEntity);
                     return InteractionResult.SUCCESS;
                 } else if (amphoraEntity.hasGrapeJuice() && amphoraEntity.getLiquidAmount() >= 3 && amphoraEntity.removeLiquid(3)) {
-                    ItemStack grapeJuiceBucket = new ItemStack(ModItems.GRAPE_JUICE_BUCKET.get());
+                    ItemStack grapeJuiceBucket = MateriaBuckets.grapeJuiceBucketFrom(held);
                     level.playSound(null, pos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
                     ItemStack result = ItemUtils.createFilledResult(held, player, grapeJuiceBucket);
                     player.setItemInHand(hand, result);
                     updateBlockState(level, pos, amphoraEntity);
                     return InteractionResult.SUCCESS;
                 } else if (amphoraEntity.hasOliveOil() && amphoraEntity.getLiquidAmount() >= 3 && amphoraEntity.removeLiquid(3)) {
-                    ItemStack oliveOilBucket = new ItemStack(ModItems.OLIVE_OIL_BUCKET.get());
+                    ItemStack oliveOilBucket = MateriaBuckets.oliveOilBucketFrom(held);
                     level.playSound(null, pos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
                     ItemStack result = ItemUtils.createFilledResult(held, player, oliveOilBucket);
                     player.setItemInHand(hand, result);
                     updateBlockState(level, pos, amphoraEntity);
                     return InteractionResult.SUCCESS;
                 } else if (amphoraEntity.hasVinegar() && amphoraEntity.getLiquidAmount() >= 3 && amphoraEntity.removeLiquid(3)) {
-                    ItemStack vinegarBucket = new ItemStack(ModItems.VINEGAR_BUCKET.get());
+                    ItemStack vinegarBucket = MateriaBuckets.vinegarBucketFrom(held);
                     level.playSound(null, pos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
                     ItemStack result = ItemUtils.createFilledResult(held, player, vinegarBucket);
                     player.setItemInHand(hand, result);
                     updateBlockState(level, pos, amphoraEntity);
                     return InteractionResult.SUCCESS;
                 } else if (amphoraEntity.hasWine() && amphoraEntity.getLiquidAmount() >= 3 && amphoraEntity.removeLiquid(3)) {
-                    ItemStack wineBucket = new ItemStack(ModItems.WINE_BUCKET.get());
+                    ItemStack wineBucket = MateriaBuckets.wineBucketFrom(held);
                     level.playSound(null, pos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
                     ItemStack result = ItemUtils.createFilledResult(held, player, wineBucket);
                     player.setItemInHand(hand, result);
                     updateBlockState(level, pos, amphoraEntity);
                     return InteractionResult.SUCCESS;
                 } else if (amphoraEntity.hasMilk() && amphoraEntity.getLiquidAmount() >= 3 && amphoraEntity.removeLiquid(3)) {
-                    ItemStack milkBucket = new ItemStack(Items.MILK_BUCKET);
+                    ItemStack milkBucket = MateriaBuckets.milkBucketFrom(held);
                     level.playSound(null, pos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
                     ItemStack result = ItemUtils.createFilledResult(held, player, milkBucket);
                     player.setItemInHand(hand, result);
                     updateBlockState(level, pos, amphoraEntity);
                     return InteractionResult.SUCCESS;
                 } else if (amphoraEntity.hasTea() && amphoraEntity.getLiquidAmount() >= 3 && amphoraEntity.removeLiquid(3)) {
-                    ItemStack teaBucket = new ItemStack(ModItems.TEA_BUCKET.get());
+                    ItemStack teaBucket = MateriaBuckets.teaBucketFrom(held);
                     level.playSound(null, pos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
                     ItemStack result = ItemUtils.createFilledResult(held, player, teaBucket);
                     player.setItemInHand(hand, result);
@@ -652,11 +654,11 @@ public class AmphoraBlock extends BaseEntityBlock implements SimpleWaterloggedBl
         }
 
         // Grape juice bucket interactions: grape_juice_bucket -> bucket (add 3 bottles worth)
-        if (held.is(ModItems.GRAPE_JUICE_BUCKET.get())) {
+        if (MateriaBuckets.isGrapeJuiceBucket(held)) {
             if (!level.isClientSide()) {
                 if (amphoraEntity.canAddGrapeJuice() && amphoraEntity.getLiquidAmount() <= 6) { // Can fit 3 more
                     amphoraEntity.addGrapeJuice(3);
-                    ItemStack bucket = new ItemStack(Items.BUCKET);
+                    ItemStack bucket = MateriaBuckets.emptyBucketFrom(held);
                     level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
                     ItemStack result = ItemUtils.createFilledResult(held, player, bucket);
                     player.setItemInHand(hand, result);
@@ -716,11 +718,11 @@ public class AmphoraBlock extends BaseEntityBlock implements SimpleWaterloggedBl
         }
 
         // Olive oil bucket interactions: olive_oil_bucket -> bucket (add 3 bottles worth)
-        if (held.is(ModItems.OLIVE_OIL_BUCKET.get())) {
+        if (MateriaBuckets.isOliveOilBucket(held)) {
             if (!level.isClientSide()) {
                 if (amphoraEntity.canAddOliveOil() && amphoraEntity.getLiquidAmount() <= 6) { // Can fit 3 more
                     amphoraEntity.addOliveOil(3);
-                    ItemStack bucket = new ItemStack(Items.BUCKET);
+                    ItemStack bucket = MateriaBuckets.emptyBucketFrom(held);
                     level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
                     ItemStack result = ItemUtils.createFilledResult(held, player, bucket);
                     player.setItemInHand(hand, result);
@@ -780,11 +782,11 @@ public class AmphoraBlock extends BaseEntityBlock implements SimpleWaterloggedBl
         }
 
         // Vinegar bucket interactions: vinegar_bucket -> bucket (add 3 bottles worth)
-        if (held.is(ModItems.VINEGAR_BUCKET.get())) {
+        if (MateriaBuckets.isVinegarBucket(held)) {
             if (!level.isClientSide()) {
                 if (amphoraEntity.canAddVinegar() && amphoraEntity.getLiquidAmount() <= 6) { // Can fit 3 more
                     amphoraEntity.addVinegar(3);
-                    ItemStack bucket = new ItemStack(Items.BUCKET);
+                    ItemStack bucket = MateriaBuckets.emptyBucketFrom(held);
                     level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
                     ItemStack result = ItemUtils.createFilledResult(held, player, bucket);
                     player.setItemInHand(hand, result);
@@ -844,11 +846,11 @@ public class AmphoraBlock extends BaseEntityBlock implements SimpleWaterloggedBl
         }
 
         // Wine bucket interactions: wine_bucket -> bucket (add 3 bottles worth)
-        if (held.is(ModItems.WINE_BUCKET.get())) {
+        if (MateriaBuckets.isWineBucket(held)) {
             if (!level.isClientSide()) {
                 if (amphoraEntity.canAddWine() && amphoraEntity.getLiquidAmount() <= 6) { // Can fit 3 more
                     amphoraEntity.addWine(3);
-                    ItemStack bucket = new ItemStack(Items.BUCKET);
+                    ItemStack bucket = MateriaBuckets.emptyBucketFrom(held);
                     level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
                     ItemStack result = ItemUtils.createFilledResult(held, player, bucket);
                     player.setItemInHand(hand, result);
@@ -892,11 +894,11 @@ public class AmphoraBlock extends BaseEntityBlock implements SimpleWaterloggedBl
         }
 
         // Tea bucket interactions: tea_bucket -> bucket (add 3 bottles worth)
-        if (held.is(ModItems.TEA_BUCKET.get())) {
+        if (MateriaBuckets.isTeaBucket(held)) {
             if (!level.isClientSide()) {
                 if (amphoraEntity.canAddTea() && amphoraEntity.getLiquidAmount() <= 6) {
                     amphoraEntity.addTea(3);
-                    ItemStack bucket = new ItemStack(Items.BUCKET);
+                    ItemStack bucket = MateriaBuckets.emptyBucketFrom(held);
                     level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
                     ItemStack result = ItemUtils.createFilledResult(held, player, bucket);
                     player.setItemInHand(hand, result);
@@ -972,11 +974,11 @@ public class AmphoraBlock extends BaseEntityBlock implements SimpleWaterloggedBl
         }
 
         // Milk bucket interactions: vanilla milk_bucket -> bucket (add 3 bottles worth)
-        if (held.is(Items.MILK_BUCKET)) {
+        if (MateriaBuckets.isMilkBucket(held)) {
             if (!level.isClientSide()) {
                 if (amphoraEntity.canAddMilk() && amphoraEntity.getLiquidAmount() <= 6) { // Can fit 3 more
                     amphoraEntity.addMilk(3);
-                    ItemStack bucket = new ItemStack(Items.BUCKET);
+                    ItemStack bucket = MateriaBuckets.emptyBucketFrom(held);
                     level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
                     ItemStack result = ItemUtils.createFilledResult(held, player, bucket);
                     player.setItemInHand(hand, result);
@@ -1012,29 +1014,29 @@ public class AmphoraBlock extends BaseEntityBlock implements SimpleWaterloggedBl
                stack.is(ModItems.WATER_CUP.get()) ||
                stack.is(ModItems.POT.get()) ||
                stack.is(ModItems.WATER_POT.get()) ||
-               stack.is(Items.BUCKET) ||
-               stack.is(Items.WATER_BUCKET) ||
+               MateriaBuckets.isEmptyBucket(stack) ||
+               MateriaBuckets.isWaterBucket(stack) ||
                stack.is(Items.GLASS_BOTTLE) ||
                stack.is(Items.POTION) ||
                stack.is(ModItems.GRAPE_JUICE.get()) ||
                stack.is(ModItems.GRAPE_JUICE_POT.get()) ||
-               stack.is(ModItems.GRAPE_JUICE_BUCKET.get()) ||
+               MateriaBuckets.isGrapeJuiceBucket(stack) ||
                stack.is(ModItems.GRAPE_JUICE_BOTTLE.get()) ||
                stack.is(ModItems.OLIVE_OIL.get()) ||
                stack.is(ModItems.OLIVE_OIL_POT.get()) ||
-               stack.is(ModItems.OLIVE_OIL_BUCKET.get()) ||
+               MateriaBuckets.isOliveOilBucket(stack) ||
                stack.is(ModItems.OLIVE_OIL_BOTTLE.get()) ||
                stack.is(ModItems.VINEGAR.get()) ||
                stack.is(ModItems.VINEGAR_POT.get()) ||
-               stack.is(ModItems.VINEGAR_BUCKET.get()) ||
+               MateriaBuckets.isVinegarBucket(stack) ||
                stack.is(ModItems.VINEGAR_BOTTLE.get()) ||
                stack.is(ModItems.WINE_CUP.get()) ||
                stack.is(ModItems.WINE_POT.get()) ||
-               stack.is(ModItems.WINE_BUCKET.get()) ||
+               MateriaBuckets.isWineBucket(stack) ||
                stack.is(ModItems.WINE_BOTTLE.get()) ||
                stack.is(ModItems.MILK_CUP.get()) ||
                stack.is(ModBlocks.MILK_POT.get().asItem()) ||
-               stack.is(Items.MILK_BUCKET) ||
+               MateriaBuckets.isMilkBucket(stack) ||
                stack.is(ModItems.MILK_BOTTLE.get());
     }
 

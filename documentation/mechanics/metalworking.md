@@ -91,6 +91,10 @@ This pattern shows how “plate + chisel + hammer” becomes cutting tools.
   - `materia:iron_plate` → `materia:iron_sawblade`
   - `shared/src/main/resources/data/materia/recipes/iron_anvil/iron_sawblade_from_plate.json`
   - Tools (3 slots): `#materia:iron_hammers` + `#materia:iron_hammers` + `#materia:iron_chisels`
+- Iron saw band (for the assembled iron saw):
+  - `materia:iron_plate` → `materia:iron_saw_band`
+  - `shared/src/main/resources/data/materia/recipes/iron_anvil/iron_saw_band_from_plate.json`
+  - Tools: `#materia:iron_hammers` + `#materia:iron_chisels`
 
 ## Example loop: nails
 

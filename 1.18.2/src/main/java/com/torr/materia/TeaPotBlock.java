@@ -1,5 +1,7 @@
 package com.torr.materia;
 
+import com.torr.materia.util.MateriaBuckets;
+
 import com.torr.materia.blockentity.TeaPotBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -89,13 +91,13 @@ public class TeaPotBlock extends Block implements EntityBlock {
         }
 
         // Empty bucket: take a full tea bucket (only when full)
-        if (held.is(Items.BUCKET)) {
+        if (MateriaBuckets.isEmptyBucket(held)) {
             if (!level.isClientSide) {
                 BlockEntity be = level.getBlockEntity(pos);
                 if (be instanceof TeaPotBlockEntity potEntity && potEntity.getTeaLevel() == 3) {
                     potEntity.setTeaLevel(0);
                     level.playSound(null, pos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
-                    ItemStack teaBucket = new ItemStack(ModItems.TEA_BUCKET.get());
+                    ItemStack teaBucket = MateriaBuckets.teaBucketFrom(held);
                     ItemStack result = ItemUtils.createFilledResult(held, player, teaBucket);
                     player.setItemInHand(hand, result);
                     level.setBlock(pos, ModBlocks.POT.get().defaultBlockState(), 3);
@@ -138,13 +140,13 @@ public class TeaPotBlock extends Block implements EntityBlock {
         }
 
         // Tea bucket: fill to full
-        if (held.is(ModItems.TEA_BUCKET.get())) {
+        if (MateriaBuckets.isTeaBucket(held)) {
             if (!level.isClientSide) {
                 BlockEntity be = level.getBlockEntity(pos);
                 if (be instanceof TeaPotBlockEntity potEntity && potEntity.canAddTea()) {
                     potEntity.setTeaLevel(3);
                     level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
-                    ItemStack emptyBucket = new ItemStack(Items.BUCKET);
+                    ItemStack emptyBucket = MateriaBuckets.emptyBucketFrom(held);
                     ItemStack result = ItemUtils.createFilledResult(held, player, emptyBucket);
                     player.setItemInHand(hand, result);
                     return InteractionResult.SUCCESS;

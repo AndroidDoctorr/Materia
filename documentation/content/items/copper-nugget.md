@@ -24,4 +24,5 @@ Raw copper sources:
 
 - [Kilns](../../mechanics/kilns.md)
 - [Anvils](../../mechanics/anvils.md) (stone anvil is an early consolidation tool)
+- [Copper bucket](copper-bucket.md) (early bucket once you have copper plate)
 

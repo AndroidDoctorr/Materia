@@ -25,9 +25,16 @@ Land vehicle update — hand cart, village chest loot, and cart polish.
 
 - **Village chest injectors** — 16 building-specific pools at **70%** chance (house biomes share `village_house`; profession chests get themed tables). Early survival items only — no mansion/rug/dungeon-tier rewards.
 
+#### Tools & containers
+
+- **Iron saw** (`materia:iron_saw`) — wrought-iron saw with **400** durability (bronze saw remains **300**). Crafted from **iron saw band** + handle + adhesive; band from **iron plate** on the iron anvil. Included in `#forge:tools/saws` / `#materia:all_saws`.
+- **Smooth planks** — all `smooth_*` recipes now require `#materia:all_saws` instead of hard-coding `materia:bronze_saw`, so iron and bronze saws both work.
+- **Copper bucket** (`materia:copper_bucket`) — early bucket from **copper wire** + `#materia:soft_plates` + sealant; behaves like a vanilla bucket (water, milk, pot/amphora transfers) with matching filled copper variants (`copper_bucket_water`, `_milk`, `_wine`, etc.). **Iron bucket** (`minecraft:bucket`) remains the hard-plate tier via `recipes/bucket.json`.
+
 #### Docs
 
 - New **[Hand cart](documentation/mechanics/cart.md)** page; **[Structure chest loot](documentation/mechanics/structure-chest-loot.md)** updated for village tables.
+- New **[Iron saw](documentation/content/items/iron-saw.md)** and **[Copper bucket](documentation/content/items/copper-bucket.md)** pages; **[Metalworking](documentation/mechanics/metalworking.md)**, **[Liquids and containers](documentation/reference/tags/liquids-and-containers.md)**, and saw tag docs updated.
 
 ## 1.3.7
 

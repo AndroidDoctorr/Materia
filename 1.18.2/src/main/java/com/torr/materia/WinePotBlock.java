@@ -1,5 +1,7 @@
 package com.torr.materia;
 
+import com.torr.materia.util.MateriaBuckets;
+
 import com.torr.materia.blockentity.WinePotBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -89,13 +91,13 @@ public class WinePotBlock extends Block implements EntityBlock {
         }
 
         // Empty bucket: take a full wine bucket (only when full)
-        if (held.is(Items.BUCKET)) {
+        if (MateriaBuckets.isEmptyBucket(held)) {
             if (!level.isClientSide) {
                 BlockEntity be = level.getBlockEntity(pos);
                 if (be instanceof WinePotBlockEntity potEntity && potEntity.getWineLevel() == 3) {
                     potEntity.setWineLevel(0);
                     level.playSound(null, pos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
-                    ItemStack wineBucket = new ItemStack(ModItems.WINE_BUCKET.get());
+                    ItemStack wineBucket = MateriaBuckets.wineBucketFrom(held);
                     ItemStack result = ItemUtils.createFilledResult(held, player, wineBucket);
                     player.setItemInHand(hand, result);
                     level.setBlock(pos, ModBlocks.POT.get().defaultBlockState(), 3);
@@ -138,13 +140,13 @@ public class WinePotBlock extends Block implements EntityBlock {
         }
 
         // Wine bucket: fill to full
-        if (held.is(ModItems.WINE_BUCKET.get())) {
+        if (MateriaBuckets.isWineBucket(held)) {
             if (!level.isClientSide) {
                 BlockEntity be = level.getBlockEntity(pos);
                 if (be instanceof WinePotBlockEntity potEntity && potEntity.canAddWine()) {
                     potEntity.setWineLevel(3);
                     level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
-                    ItemStack emptyBucket = new ItemStack(Items.BUCKET);
+                    ItemStack emptyBucket = MateriaBuckets.emptyBucketFrom(held);
                     ItemStack result = ItemUtils.createFilledResult(held, player, emptyBucket);
                     player.setItemInHand(hand, result);
                     return InteractionResult.SUCCESS;

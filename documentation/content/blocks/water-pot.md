@@ -17,7 +17,7 @@ You typically create a water pot by filling an empty [Pot](pot.md) in-world:
 
 - 1× [Water cup](../items/water-cup.md) (**+1 level**)
 - 1× vanilla **water bottle** (**+1 level**)
-- 1× vanilla **water bucket** (**set to full / +3 levels**)
+- 1× vanilla **water bucket** or **`materia:copper_bucket_water`** (**set to full / +3 levels**)
 - Sneak-transfer with a **cauldron above** (moves up to 3 levels)
 
 If you place a water pot block as an item, it starts full (level 3).
@@ -40,8 +40,8 @@ These transfers are designed to feel like vanilla container interactions:
   - Glass bottle takes 1 level and becomes a vanilla water bottle
   - Vanilla water bottle adds 1 level and becomes a glass bottle
 - **Bucket ⇄ water bucket**
-  - Empty bucket takes all 3 levels (only when full)
-  - Water bucket fills to full (3 levels)
+  - Empty `minecraft:bucket` or `materia:copper_bucket` takes all 3 levels (only when full)
+  - Water bucket or `materia:copper_bucket_water` fills to full (3 levels)
 - **Cauldron ⇄ water pot** (sneak-transfer)
   - Transfers 1–3 levels between a cauldron above the pot and the pot itself
 

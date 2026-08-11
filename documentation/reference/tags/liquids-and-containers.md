@@ -18,6 +18,7 @@ Related content pages:
 - [Crucible](../../content/items/crucible.md)
 - [Water cup](../../content/items/water-cup.md)
 - [Milk cup](../../content/items/milk-cup.md)
+- [Copper bucket](../../content/items/copper-bucket.md)
 - [Pot (empty)](../../content/blocks/pot.md)
 - [Water pot (block)](../../content/blocks/water-pot.md)
 - [Milk pot (block)](../../content/blocks/milk-pot.md)
@@ -28,6 +29,7 @@ The intended mental model is:
 
 - Any place that accepts a **cup/crucible** should also accept **vanilla glass bottles (water bottles)** for water-type transfers.
 - Any place that accepts a **pot** should behave like a **bucket** and (for water) interact sensibly with **cauldrons**.
+- **`minecraft:bucket`** and **`materia:copper_bucket`** are interchangeable wherever bucket interactions are implemented (water, milk, amphora/pot fluids); each family keeps its own empty/filled items.
 
 If something breaks that expectation, it’s a good “possible code gap” to investigate.
 
@@ -44,11 +46,12 @@ If something breaks that expectation, it’s a good “possible code gap” to i
     - water cup (1 unit)
     - vanilla water bottle (1 unit)
     - vanilla water bucket (3 units)
+    - `materia:copper_bucket_water` (3 units)
     - sneak-use with a cauldron above (pulls up to 3 layers)
 - **Water pot ⇄ vanilla bottles/buckets/cauldrons**
   - Water pot supports:
     - `minecraft:glass_bottle` ⇄ water bottle (1 level)
-    - `minecraft:bucket` ⇄ water bucket (3 levels)
+    - `minecraft:bucket` or `materia:copper_bucket` ⇄ water bucket / `materia:copper_bucket_water` (3 levels)
     - sneak-transfer with cauldron above (both directions)
 
 ### Milk transfers
@@ -56,7 +59,7 @@ If something breaks that expectation, it’s a good “possible code gap” to i
 - **Milk pot ⇄ vanilla bottles/buckets**
   - Milk pot supports:
     - `minecraft:glass_bottle` ⇄ `materia:milk_bottle` (1 level)
-    - `minecraft:bucket` ⇄ `minecraft:milk_bucket` (3 levels)
+    - `minecraft:bucket` or `materia:copper_bucket` ⇄ `minecraft:milk_bucket` / `materia:copper_bucket_milk` (3 levels)
 - **Milk pot ⇄ crucible**
   - `materia:crucible` ⇄ `materia:milk_cup` (1 level)
 
@@ -96,13 +99,13 @@ Legend:
 
 | Liquid | 1 unit (cup/bottle) | 3 units (pot/bucket) | Pot block | Notes |
 |---|---|---|---|---|
-| Water | [Water cup](../../content/items/water-cup.md), vanilla water bottle | vanilla water bucket | [Water pot](../../content/blocks/water-pot.md) | Also supports cauldron transfer |
-| Milk | [Milk cup](../../content/items/milk-cup.md), `materia:milk_bottle` | vanilla milk bucket | [Milk pot](../../content/blocks/milk-pot.md) | Bottle is modded; bucket is vanilla |
-| Grape juice | `materia:grape_juice`, `materia:grape_juice_bottle` | `materia:grape_juice_pot`, `materia:grape_juice_bucket` | — | Typically transferred via amphora |
-| Vinegar | `materia:vinegar`, `materia:vinegar_bottle` | `materia:vinegar_pot`, `materia:vinegar_bucket` | — | Typically transferred via amphora |
-| Wine | `materia:wine_cup`, `materia:wine_bottle` | `materia:wine_pot`, `materia:wine_bucket` | `materia:wine_pot` | Also has a placeable serving pot |
-| Beer | `materia:beer_cup`, `materia:beer_bottle` | `materia:beer_pot`, `materia:beer_bucket` | `materia:beer_pot` | Brewed via amphora (mash → beer) |
-| Olive oil | `materia:olive_oil`, `materia:olive_oil_bottle` | `materia:olive_oil_pot`, `materia:olive_oil_bucket` | — | Typically transferred via amphora |
+| Water | [Water cup](../../content/items/water-cup.md), vanilla water bottle | vanilla water bucket, [Copper bucket (water)](../../content/items/copper-bucket.md) | [Water pot](../../content/blocks/water-pot.md) | Also supports cauldron transfer |
+| Milk | [Milk cup](../../content/items/milk-cup.md), `materia:milk_bottle` | vanilla milk bucket, `materia:copper_bucket_milk` | [Milk pot](../../content/blocks/milk-pot.md) | Bottle is modded; bucket is vanilla or copper |
+| Grape juice | `materia:grape_juice`, `materia:grape_juice_bottle` | `materia:grape_juice_pot`, `materia:grape_juice_bucket`, `materia:copper_bucket_grape_juice` | — | Typically transferred via amphora |
+| Vinegar | `materia:vinegar`, `materia:vinegar_bottle` | `materia:vinegar_pot`, `materia:vinegar_bucket`, `materia:copper_bucket_vinegar` | — | Typically transferred via amphora |
+| Wine | `materia:wine_cup`, `materia:wine_bottle` | `materia:wine_pot`, `materia:wine_bucket`, `materia:copper_bucket_wine` | `materia:wine_pot` | Also has a placeable serving pot |
+| Beer | `materia:beer_cup`, `materia:beer_bottle` | `materia:beer_pot`, `materia:beer_bucket`, `materia:copper_bucket_beer` | `materia:beer_pot` | Brewed via amphora (mash → beer) |
+| Olive oil | `materia:olive_oil`, `materia:olive_oil_bottle` | `materia:olive_oil_pot`, `materia:olive_oil_bucket`, `materia:copper_bucket_olive_oil` | — | Typically transferred via amphora |
 | Ink | `materia:ink_cup`, `materia:ink_bottle` | — | — | Used as an ingredient/container, not a world pot |
 | Lava | — | vanilla lava bucket, `materia:lava_pot` | — | Amphora can store lava, but pot block parity isn’t defined |
 

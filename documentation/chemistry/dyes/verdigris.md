@@ -7,7 +7,7 @@ Copper carbonate green pigment from vinegar + raw copper. Colored textile and bu
 Custom crafting (`materia:verdigris`):
 
 - `#materia:vinegar` + `#forge:raw_materials/copper` (or `minecraft:raw_copper`) → `materia:verdigris`
-- Returns the empty vessel: clay bowl for `materia:vinegar`, glass bottle for `materia:vinegar_bottle`, pot/bucket when those forms are used
+- Returns the empty vessel: clay bowl for `materia:vinegar`, glass bottle for `materia:vinegar_bottle`, pot/bucket when those forms are used (`materia:vinegar_bucket` → `minecraft:bucket`, `materia:copper_bucket_vinegar` → `materia:copper_bucket`)
 
 ## Teal products
 

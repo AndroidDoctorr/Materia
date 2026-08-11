@@ -20,7 +20,7 @@ An empty pot can be converted into a **water pot** by:
 
 - using a [Water cup](../items/water-cup.md) on it (1 unit)
 - using a vanilla **water bottle** on it (1 unit)
-- using a vanilla **water bucket** on it (3 units)
+- using a vanilla **water bucket** or **`materia:copper_bucket_water`** on it (3 units)
 - sneak-using with a **cauldron above** (pulls up to 3 layers)
 
 See: [Water pot (mechanic)](../../mechanics/water-pot.md)
@@ -36,8 +36,8 @@ An empty pot can also be converted into a **beer pot** or **wine pot** (the plac
   - `materia:beer_bottle` → beer pot (level 1), returns **glass bottle**
   - `materia:wine_bottle` → wine pot (level 1), returns **glass bottle**
 - **From bucket** (3 units)
-  - `materia:beer_bucket` → beer pot (level 3), returns **bucket**
-  - `materia:wine_bucket` → wine pot (level 3), returns **bucket**
+  - `materia:beer_bucket` or `materia:copper_bucket_beer` → beer pot (level 3), returns matching **empty bucket**
+  - `materia:wine_bucket` or `materia:copper_bucket_wine` → wine pot (level 3), returns matching **empty bucket**
 - **From pot item** (3 units)
   - `materia:beer_pot` (item) → beer pot (level 3), returns **empty pot item**
   - `materia:wine_pot` (item) → wine pot (level 3), returns **empty pot item**

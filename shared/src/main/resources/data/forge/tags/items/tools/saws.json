@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "materia:bronze_saw"
+    "materia:bronze_saw",
+    "materia:iron_saw"
   ]
 }

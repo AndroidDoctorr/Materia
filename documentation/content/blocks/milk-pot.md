@@ -24,8 +24,8 @@ The milk pot supports:
 - **Crucible → milk cup** (takes 1 level)
 - **Glass bottle → milk bottle** (takes 1 level)
 - **Milk bottle → glass bottle** (adds 1 level)
-- **Milk bucket → bucket** (fills to 3)
-- **Bucket → milk bucket** (takes 3, only when full)
+- **Milk bucket → empty bucket** (fills to 3) — `minecraft:milk_bucket` or `materia:copper_bucket_milk` → `minecraft:bucket` or `materia:copper_bucket`
+- **Empty bucket → milk bucket** (takes 3, only when full)
 
 Related item pages:
 

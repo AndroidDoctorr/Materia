@@ -1,5 +1,7 @@
 package com.torr.materia;
 
+import com.torr.materia.util.MateriaBuckets;
+
 import com.torr.materia.blockentity.MilkPotBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
@@ -115,7 +117,7 @@ public class MilkPotBlock extends Block implements EntityBlock {
         }
 
         // Bucket interactions: vanilla milk bucket fills pot to full, empty bucket takes full pot
-        if (held.is(Items.MILK_BUCKET)) {
+        if (MateriaBuckets.isMilkBucket(held)) {
             if (!level.isClientSide) {
                 BlockEntity be = level.getBlockEntity(pos);
                 if (be instanceof MilkPotBlockEntity potEntity) {
@@ -125,7 +127,7 @@ public class MilkPotBlock extends Block implements EntityBlock {
 
                         // Sound and replace with empty bucket
                         level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
-                        ItemStack emptyBucket = new ItemStack(Items.BUCKET);
+                        ItemStack emptyBucket = MateriaBuckets.emptyBucketFrom(held);
                         ItemStack result = ItemUtils.createFilledResult(held, player, emptyBucket);
                         player.setItemInHand(hand, result);
                         return InteractionResult.SUCCESS;
@@ -135,7 +137,7 @@ public class MilkPotBlock extends Block implements EntityBlock {
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
 
-        if (held.is(Items.BUCKET)) {
+        if (MateriaBuckets.isEmptyBucket(held)) {
             if (!level.isClientSide) {
                 BlockEntity be = level.getBlockEntity(pos);
                 if (be instanceof MilkPotBlockEntity potEntity) {
@@ -144,7 +146,7 @@ public class MilkPotBlock extends Block implements EntityBlock {
                         potEntity.setMilkLevel(0);
 
                         level.playSound(null, pos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
-                        ItemStack milkBucket = new ItemStack(Items.MILK_BUCKET);
+                        ItemStack milkBucket = MateriaBuckets.milkBucketFrom(held);
                         ItemStack result = ItemUtils.createFilledResult(held, player, milkBucket);
                         player.setItemInHand(hand, result);
                         return InteractionResult.SUCCESS;

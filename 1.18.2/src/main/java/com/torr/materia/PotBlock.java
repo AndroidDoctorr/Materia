@@ -1,5 +1,7 @@
 package com.torr.materia;
 
+import com.torr.materia.util.MateriaBuckets;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -82,14 +84,14 @@ public class PotBlock extends Block {
         }
 
         // Convert empty pot into a beer pot (from bucket -> empty bucket)
-        if (held.is(ModItems.BEER_BUCKET.get())) {
+        if (MateriaBuckets.isBeerBucket(held)) {
             if (!level.isClientSide) {
                 BlockState newState = ModBlocks.BEER_POT.get().defaultBlockState()
                         .setValue(BeerPotBlock.WATER_LEVEL, 3);
                 level.setBlock(pos, newState, 3);
                 level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
 
-                ItemStack emptyBucket = new ItemStack(Items.BUCKET);
+                ItemStack emptyBucket = MateriaBuckets.emptyBucketFrom(held);
                 ItemStack result = ItemUtils.createFilledResult(held, player, emptyBucket);
                 player.setItemInHand(hand, result);
                 return InteractionResult.SUCCESS;
@@ -146,14 +148,14 @@ public class PotBlock extends Block {
         }
 
         // Convert empty pot into a tea pot (from tea bucket -> empty bucket)
-        if (held.is(ModItems.TEA_BUCKET.get())) {
+        if (MateriaBuckets.isTeaBucket(held)) {
             if (!level.isClientSide) {
                 BlockState newState = ModBlocks.TEA_POT.get().defaultBlockState()
                         .setValue(TeaPotBlock.WATER_LEVEL, 3);
                 level.setBlock(pos, newState, 3);
                 level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
 
-                ItemStack emptyBucket = new ItemStack(Items.BUCKET);
+                ItemStack emptyBucket = MateriaBuckets.emptyBucketFrom(held);
                 ItemStack result = ItemUtils.createFilledResult(held, player, emptyBucket);
                 player.setItemInHand(hand, result);
                 return InteractionResult.SUCCESS;
@@ -211,14 +213,14 @@ public class PotBlock extends Block {
         }
 
         // Convert empty pot into a wine pot (from bucket -> empty bucket)
-        if (held.is(ModItems.WINE_BUCKET.get())) {
+        if (MateriaBuckets.isWineBucket(held)) {
             if (!level.isClientSide) {
                 BlockState newState = ModBlocks.WINE_POT.get().defaultBlockState()
                         .setValue(WinePotBlock.WATER_LEVEL, 3);
                 level.setBlock(pos, newState, 3);
                 level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
 
-                ItemStack emptyBucket = new ItemStack(Items.BUCKET);
+                ItemStack emptyBucket = MateriaBuckets.emptyBucketFrom(held);
                 ItemStack result = ItemUtils.createFilledResult(held, player, emptyBucket);
                 player.setItemInHand(hand, result);
                 return InteractionResult.SUCCESS;
@@ -264,7 +266,7 @@ public class PotBlock extends Block {
         }
 
         // Water bucket fills empty pot to full and converts to WaterPot
-        if (held.is(Items.WATER_BUCKET)) {
+        if (MateriaBuckets.isWaterBucket(held)) {
             if (!level.isClientSide) {
                 BlockState newState = ModBlocks.WATER_POT.get().defaultBlockState()
                         .setValue(WaterPotBlock.WATER_LEVEL, 3)
@@ -272,7 +274,7 @@ public class PotBlock extends Block {
                 level.setBlock(pos, newState, 3);
                 level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
 
-                ItemStack emptyBucket = new ItemStack(Items.BUCKET);
+                ItemStack emptyBucket = MateriaBuckets.emptyBucketFrom(held);
                 ItemStack result = ItemUtils.createFilledResult(held, player, emptyBucket);
                 player.setItemInHand(hand, result);
                 return InteractionResult.SUCCESS;

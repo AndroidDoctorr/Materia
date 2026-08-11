@@ -1,6 +1,7 @@
 package com.torr.materia.recipe;
 
 import com.torr.materia.ModItems;
+import com.torr.materia.util.MateriaBuckets;
 import com.torr.materia.ModRecipes;
 import com.torr.materia.materia;
 import net.minecraft.core.NonNullList;
@@ -83,8 +84,8 @@ public class VerdigrisRecipe extends CustomRecipe {
         if (item == ModItems.VINEGAR_POT.get()) {
             return new ItemStack(ModItems.POT.get());
         }
-        if (item == ModItems.VINEGAR_BUCKET.get()) {
-            return new ItemStack(Items.BUCKET);
+        if (item == ModItems.VINEGAR_BUCKET.get() || item == ModItems.COPPER_BUCKET_VINEGAR.get()) {
+            return MateriaBuckets.emptyBucketFrom(vinegarStack);
         }
         if (item == ModItems.CRUCIBLE.get().asItem()) {
             return new ItemStack(ModItems.CRUCIBLE.get());

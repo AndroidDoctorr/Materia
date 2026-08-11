@@ -1,5 +1,7 @@
 package com.torr.materia;
 
+import com.torr.materia.util.MateriaBuckets;
+
 import com.torr.materia.blockentity.BeerPotBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
@@ -99,13 +101,13 @@ public class BeerPotBlock extends Block implements EntityBlock {
         }
 
         // Empty bucket: take a full beer bucket (only when full)
-        if (held.is(Items.BUCKET)) {
+        if (MateriaBuckets.isEmptyBucket(held)) {
             if (!level.isClientSide) {
                 BlockEntity be = level.getBlockEntity(pos);
                 if (be instanceof BeerPotBlockEntity potEntity && potEntity.getBeerLevel() == 3) {
                     potEntity.setBeerLevel(0);
                     level.playSound(null, pos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
-                    ItemStack beerBucket = new ItemStack(ModItems.BEER_BUCKET.get());
+                    ItemStack beerBucket = MateriaBuckets.beerBucketFrom(held);
                     ItemStack result = ItemUtils.createFilledResult(held, player, beerBucket);
                     player.setItemInHand(hand, result);
                     level.setBlock(pos, ModBlocks.POT.get().defaultBlockState(), 3);
@@ -148,13 +150,13 @@ public class BeerPotBlock extends Block implements EntityBlock {
         }
 
         // Beer bucket: fill to full
-        if (held.is(ModItems.BEER_BUCKET.get())) {
+        if (MateriaBuckets.isBeerBucket(held)) {
             if (!level.isClientSide) {
                 BlockEntity be = level.getBlockEntity(pos);
                 if (be instanceof BeerPotBlockEntity potEntity && potEntity.canAddBeer()) {
                     potEntity.setBeerLevel(3);
                     level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
-                    ItemStack emptyBucket = new ItemStack(Items.BUCKET);
+                    ItemStack emptyBucket = MateriaBuckets.emptyBucketFrom(held);
                     ItemStack result = ItemUtils.createFilledResult(held, player, emptyBucket);
                     player.setItemInHand(hand, result);
                     return InteractionResult.SUCCESS;

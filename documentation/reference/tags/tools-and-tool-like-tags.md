@@ -20,7 +20,7 @@ Used by: recipes that accept any knife tier.
 Used by: saw-required recipes and components.
 
 - **Tag JSON**: `shared/src/main/resources/data/materia/tags/items/all_saws.json`
-- **Includes**: currently `materia:bronze_saw`
+- **Includes**: `#forge:tools/saws` → `materia:bronze_saw`, `materia:iron_saw`
 
 ## Construction fasteners and joinery
 

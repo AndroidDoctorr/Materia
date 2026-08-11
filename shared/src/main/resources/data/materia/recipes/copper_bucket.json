@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " W",
+        "PP",
+        " S"
+    ],
+    "key": {
+        "W": {
+            "item": "materia:copper_wire"
+        },
+        "P": {
+            "tag": "materia:soft_plates"
+        },
+        "S": {
+            "tag": "materia:sealants"
+        }
+    },
+    "result": {
+        "item": "materia:copper_bucket",
+        "count": 1
+    }
+}

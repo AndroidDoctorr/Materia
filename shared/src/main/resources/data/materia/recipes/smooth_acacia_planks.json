@@ -5,7 +5,7 @@
             "item": "materia:rough_acacia_plank"
         },
         {
-            "item": "materia:bronze_saw"
+            "tag": "materia:all_saws"
         }
     ],
     "result": {

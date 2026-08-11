@@ -1,5 +1,7 @@
 package com.torr.materia;
 
+import com.torr.materia.util.MateriaBuckets;
+
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import com.torr.materia.blockentity.WaterPotBlockEntity;
 import net.minecraft.core.BlockPos;
@@ -120,7 +122,7 @@ public class WaterPotBlock extends Block implements EntityBlock {
         }
         
         // Bucket interactions: water bucket fills pot to full, empty bucket takes full pot
-        if (held.is(Items.WATER_BUCKET)) {
+        if (MateriaBuckets.isWaterBucket(held)) {
             if (!level.isClientSide) {
                 BlockEntity be = level.getBlockEntity(pos);
                 if (be instanceof WaterPotBlockEntity potEntity) {
@@ -130,7 +132,7 @@ public class WaterPotBlock extends Block implements EntityBlock {
 
                         // Sound and replace with empty bucket
                         level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
-                        ItemStack emptyBucket = new ItemStack(Items.BUCKET);
+                        ItemStack emptyBucket = MateriaBuckets.emptyBucketFrom(held);
                         ItemStack result = ItemUtils.createFilledResult(held, player, emptyBucket);
                         player.setItemInHand(hand, result);
                         return InteractionResult.SUCCESS;
@@ -140,7 +142,7 @@ public class WaterPotBlock extends Block implements EntityBlock {
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
 
-        if (held.is(Items.BUCKET)) {
+        if (MateriaBuckets.isEmptyBucket(held)) {
             if (!level.isClientSide) {
                 BlockEntity be = level.getBlockEntity(pos);
                 if (be instanceof WaterPotBlockEntity potEntity) {
@@ -149,7 +151,7 @@ public class WaterPotBlock extends Block implements EntityBlock {
                         potEntity.setWaterLevel(0);
 
                         level.playSound(null, pos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
-                        ItemStack waterBucket = new ItemStack(Items.WATER_BUCKET);
+                        ItemStack waterBucket = MateriaBuckets.waterBucketFrom(held);
                         ItemStack result = ItemUtils.createFilledResult(held, player, waterBucket);
                         player.setItemInHand(hand, result);
                         return InteractionResult.SUCCESS;

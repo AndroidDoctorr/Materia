@@ -188,6 +188,26 @@ public class ModItems {
                          () -> new com.torr.materia.item.WaterCupItem(new Item.Properties()
                                          
                                          .stacksTo(16)));
+        public static final RegistryObject<Item> COPPER_BUCKET = ITEMS.register("copper_bucket",
+                        () -> com.torr.materia.item.MateriaFluidBucketItem.copperEmpty(new Item.Properties().stacksTo(1)));
+        public static final RegistryObject<Item> COPPER_BUCKET_WATER = ITEMS.register("copper_bucket_water",
+                        () -> com.torr.materia.item.MateriaFluidBucketItem.copperWater(new Item.Properties().stacksTo(1)));
+        public static final RegistryObject<Item> COPPER_BUCKET_MILK = ITEMS.register("copper_bucket_milk",
+                        () -> new com.torr.materia.item.MateriaMilkBucketItem(
+                                        () -> COPPER_BUCKET.get(),
+                                        new Item.Properties().stacksTo(1)));
+        public static final RegistryObject<Item> COPPER_BUCKET_WINE = ITEMS.register("copper_bucket_wine",
+                        () -> new Item(new Item.Properties().stacksTo(1)));
+        public static final RegistryObject<Item> COPPER_BUCKET_BEER = ITEMS.register("copper_bucket_beer",
+                        () -> new Item(new Item.Properties().stacksTo(1)));
+        public static final RegistryObject<Item> COPPER_BUCKET_TEA = ITEMS.register("copper_bucket_tea",
+                        () -> new Item(new Item.Properties().stacksTo(1)));
+        public static final RegistryObject<Item> COPPER_BUCKET_GRAPE_JUICE = ITEMS.register("copper_bucket_grape_juice",
+                        () -> new Item(new Item.Properties().stacksTo(1)));
+        public static final RegistryObject<Item> COPPER_BUCKET_VINEGAR = ITEMS.register("copper_bucket_vinegar",
+                        () -> new Item(new Item.Properties().stacksTo(1)));
+        public static final RegistryObject<Item> COPPER_BUCKET_OLIVE_OIL = ITEMS.register("copper_bucket_olive_oil",
+                        () -> new Item(new Item.Properties().stacksTo(1)));
         public static final RegistryObject<Item> GLASS_MIXTURE = ITEMS.register("glass_mixture",
                         () -> new Item(new Item.Properties()
                                         ));
@@ -649,11 +669,11 @@ public class ModItems {
         public static final RegistryObject<Item> BRONZE_SAW_BAND = ITEMS.register("bronze_saw_band",
                         () -> new Item(new Item.Properties()
                                         ));
-// TODO: Add later...
-/*
         public static final RegistryObject<Item> IRON_SAW_BAND = ITEMS.register("iron_saw_band",
                         () -> new Item(new Item.Properties()
                                         ));
+// TODO: Add later...
+/*
         public static final RegistryObject<Item> STEEL_SAW_BAND = ITEMS.register("steel_saw_band",
                         () -> new Item(new Item.Properties()
                                         ));
@@ -1171,6 +1191,10 @@ public class ModItems {
                                         new Item.Properties()
                                                         
                                                         .durability(300)));
+        public static final RegistryObject<Item> IRON_SAW = ITEMS.register("iron_saw",
+                        () -> new com.torr.materia.item.IronSawItem(
+                                        new Item.Properties()
+                                                        .durability(400)));
         public static final RegistryObject<Item> BRONZE_PICKAXE = ITEMS.register("bronze_pickaxe",
                         () -> new com.torr.materia.item.BronzePickaxeItem(
                                         new Item.Properties()

@@ -2,6 +2,7 @@ package com.torr.materia.block;
 
 import com.torr.materia.ModBlockEntities;
 import com.torr.materia.ModItems;
+import com.torr.materia.util.MateriaBuckets;
 import com.torr.materia.blockentity.BriningVatBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -134,7 +135,7 @@ public class BriningVatBlock extends BaseEntityBlock {
         // Fill with water bucket
         if (stage == Stage.EMPTY && held.getItem() == Items.WATER_BUCKET) {
             if (!player.isCreative()) {
-                player.setItemInHand(hand, new ItemStack(Items.BUCKET));
+                player.setItemInHand(hand, MateriaBuckets.emptyBucketFrom(held));
             }
             vatEntity.fillWithWater();
             level.setBlock(pos, state.setValue(STAGE, Stage.WATER), 3);

@@ -32,6 +32,7 @@ The bronze plate is also an anvil product:
 
 ## Related
 
+- [Iron saw](iron-saw.md) (later tier, higher durability)
 - [Bronze hammer](bronze-hammer.md) (common tool dependency)
 - [Anvils](../../mechanics/anvils.md)
 - [Progression](../../mechanics/progression.md)
