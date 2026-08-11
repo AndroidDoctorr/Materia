@@ -800,6 +800,9 @@ public class ModItems {
         public static final RegistryObject<Item> COPPER_NEEDLE = ITEMS.register("copper_needle",
                         () -> new com.torr.materia.item.NeedleItem(new Item.Properties()
                                         .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)));
+        public static final RegistryObject<Item> BONE_NEEDLE = ITEMS.register("bone_needle",
+                        () -> new com.torr.materia.item.NeedleItem(new Item.Properties()
+                                        .tab(net.minecraft.world.item.CreativeModeTab.TAB_MATERIALS)));
         public static final RegistryObject<Item> BEDROLL = ITEMS.register("bedroll",
                         () -> new com.torr.materia.item.BedrollItem(new Item.Properties()
                                         .tab(net.minecraft.world.item.CreativeModeTab.TAB_TOOLS)

@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " W",
+        "PP",
+        " S"
+    ],
+    "key": {
+        "W": {
+            "item": "materia:iron_wire"
+        },
+        "P": {
+            "tag": "materia:hard_plates"
+        },
+        "S": {
+            "tag": "materia:sealants"
+        }
+    },
+    "result": {
+        "item": "minecraft:bucket",
+        "count": 1
+    }
+}

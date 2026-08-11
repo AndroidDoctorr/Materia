@@ -1,15 +1,3 @@
 {
-    "type": "minecraft:crafting_shapeless",
-    "ingredients": [
-        {
-            "item": "minecraft:bone"
-        },
-        {
-            "tag": "materia:advanced_cutting_tools"
-        }
-    ],
-    "result": {
-        "item": "materia:bone_strip",
-        "count": 3
-    }
+    "type": "materia:bone_strip"
 }

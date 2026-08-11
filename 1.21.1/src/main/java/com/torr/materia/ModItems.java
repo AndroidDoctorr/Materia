@@ -808,6 +808,9 @@ public class ModItems {
         public static final RegistryObject<Item> COPPER_NEEDLE = ITEMS.register("copper_needle",
                         () -> new com.torr.materia.item.NeedleItem(new Item.Properties()
                                         ));
+        public static final RegistryObject<Item> BONE_NEEDLE = ITEMS.register("bone_needle",
+                        () -> new com.torr.materia.item.NeedleItem(new Item.Properties()
+                                        ));
         public static final RegistryObject<Item> BEDROLL = ITEMS.register("bedroll",
                         () -> new com.torr.materia.item.BedrollItem(new Item.Properties()
                                         

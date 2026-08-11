@@ -1,0 +1,7 @@
+{
+    "replace": false,
+    "values": [
+        "#materia:basic_cutting_tools",
+        "#materia:advanced_cutting_tools"
+    ]
+}

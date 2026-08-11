@@ -56,6 +56,19 @@ public class WaterCupItem extends Item {
         if (player == null) return InteractionResult.PASS;
         
         BlockState blockState = level.getBlockState(blockPos);
+
+        // Match vanilla water bottle: moisten dirt into mud (returns empty vessel)
+        if (blockState.is(Blocks.DIRT) || blockState.is(Blocks.COARSE_DIRT) || blockState.is(Blocks.ROOTED_DIRT)) {
+            if (!level.isClientSide) {
+                level.setBlock(blockPos, Blocks.MUD.defaultBlockState(), 3);
+                level.playSound(null, blockPos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
+                ItemStack crucible = new ItemStack(ModItems.CRUCIBLE.get());
+                ItemStack result = ItemUtils.createFilledResult(itemStack, player, crucible);
+                player.setItemInHand(hand, result);
+                player.awardStat(Stats.ITEM_USED.get(this));
+            }
+            return InteractionResult.sidedSuccess(level.isClientSide);
+        }
         
         // Pour water into cauldrons
         if (blockState.is(Blocks.CAULDRON) || blockState.is(Blocks.WATER_CAULDRON)) {

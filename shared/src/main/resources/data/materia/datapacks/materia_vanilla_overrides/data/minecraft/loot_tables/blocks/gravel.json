@@ -30,7 +30,7 @@
       ]
     },
     {
-      "name": "main_pool",
+      "name": "pebble_full_pool",
       "rolls": 1,
       "entries": [
         {
@@ -60,6 +60,66 @@
               ]
             }
           }
+        },
+        {
+          "condition": "minecraft:inverted",
+          "term": {
+            "condition": "minecraft:table_bonus",
+            "enchantment": "minecraft:fortune",
+            "chances": [
+              0.1,
+              0.14285715,
+              0.25,
+              1.0
+            ]
+          }
+        },
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ]
+    },
+    {
+      "name": "pebble_with_flint_pool",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "materia:pebble",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": 2
+            }
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:inverted",
+          "term": {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "enchantments": [
+                {
+                  "enchantment": "minecraft:silk_touch",
+                  "levels": {
+                    "min": 1
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "condition": "minecraft:table_bonus",
+          "enchantment": "minecraft:fortune",
+          "chances": [
+            0.1,
+            0.14285715,
+            0.25,
+            1.0
+          ]
         },
         {
           "condition": "minecraft:survives_explosion"

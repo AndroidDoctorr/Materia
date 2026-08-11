@@ -21,7 +21,7 @@ Used by: recipes that accept “any string-like thing”, including lashings.
 Used by: sacks and other stitched textile recipes.
 
 - **Tag JSON**: `shared/src/main/resources/data/materia/tags/items/all_needles.json`
-- **Includes**: `materia:iron_needle`, `materia:brass_needle`, `materia:steel_needle`, `materia:bronze_needle`, `materia:copper_needle`
+- **Includes**: `materia:iron_needle`, `materia:brass_needle`, `materia:steel_needle`, `materia:bronze_needle`, `materia:copper_needle`, `materia:bone_needle`
 
 ## `#materia:wickers`
 
