@@ -7,7 +7,12 @@
             "entries": [
                 {
                     "type": "minecraft:item",
-                    "name": "materia:water_pot"
+                    "name": "materia:water_pot",
+                    "functions": [
+                        {
+                            "function": "minecraft:copy_block_entity"
+                        }
+                    ]
                 }
             ],
             "conditions": [

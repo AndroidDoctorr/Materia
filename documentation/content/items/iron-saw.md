@@ -2,7 +2,7 @@
 
 <img src="../../../shared/src/main/resources/assets/materia/textures/item/iron_saw.png" alt="Iron saw" width="64" height="64">
 
-The iron saw is a wrought-iron woodworking tool. It behaves like the [bronze saw](bronze-saw.md) but lasts longer (**400** durability vs **300**).
+The **wrought iron saw** (`materia:iron_saw`) is a wrought-iron woodworking tool. It behaves like the [bronze saw](bronze-saw.md) but lasts longer (**400** durability vs **300**).
 
 Use it anywhere a saw is required — including **rough → smooth plank** recipes and `#materia:all_saws` tag checks.
 

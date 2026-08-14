@@ -20,12 +20,12 @@ Key ingredients:
 
 ## Furnace chimney (required for some recipes)
 
-Some high-heat recipes (notably steelmaking) require a **furnace chimney** block placed above the furnace kiln.
+Some high-heat recipes (notably iron smelting) require a **furnace chimney** block placed above the furnace kiln.
 
 See:
 
 - [Furnace chimney](furnace-chimney.md)
-- [Steel ingot](../items/steel-ingot.md)
+- [Iron ingot](../items/iron-ingot.md)
 
 ## Related
 

@@ -33,13 +33,13 @@ Icons:
 
 <img src="../../../shared/src/main/resources/assets/materia/textures/item/bronze_arrow.png" alt="Bronze arrow" width="32" height="32">
 <img src="../../../shared/src/main/resources/assets/materia/textures/item/iron_arrow.png" alt="Iron arrow" width="32" height="32">
-<img src="../../../shared/src/main/resources/assets/materia/textures/item/steel_arrow.png" alt="Steel arrow" width="32" height="32">
+<img src="../../../shared/src/main/resources/assets/materia/textures/item/steel_arrow.png" alt="Iron arrow" width="32" height="32">
 
 Recipe JSONs:
 
 - [Bronze arrow](../../../shared/src/main/resources/data/materia/recipes/bronze_arrow.json)
 - [Iron arrow](../../../shared/src/main/resources/data/materia/recipes/iron_arrow.json)
-- [Steel arrow](../../../shared/src/main/resources/data/materia/recipes/steel_arrow.json)
+- [Iron arrow](../../../shared/src/main/resources/data/materia/recipes/steel_arrow.json)
 
 Arrow-head crafting notes:
 

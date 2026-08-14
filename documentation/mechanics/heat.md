@@ -13,8 +13,8 @@ Source note: the tier ranges and “what smelts where” matrix below is derived
 | **Fire pit** | 300–600 | Early processing station. Some “smelting-like” outputs live here. |
 | **Kiln** | 600–900 | Entry point for metalworking heat. Food burns to ash at this tier. |
 | **Kiln + chimney** | 700–1100 | Higher heat tier for iron/quicklime and more complete melting. |
-| **Kiln + chimney + bellows** | 900–1200 | High heat tier for steel and clear glass. |
-| **Furnace kiln + chimney / blast-furnace kiln tier** | 1100+ | Highest tier (stone/glass/steel end of the scale). |
+| **Kiln + chimney + bellows** | 900–1200 | High heat tier for refined iron smelting and clear glass. |
+| **Furnace kiln + chimney / blast-furnace kiln tier** | 1100+ | Highest tier (stone/glass/refined iron end of the scale). |
 
 Related pages:
 
@@ -65,7 +65,7 @@ Key:
   - Kiln + chimney and hotter: **EVAPORATES** (watch your heat tier)
 - **Quicklime**: requires **Kiln + chimney** or hotter
 - **(Wrought) iron**: requires **Kiln + chimney** or hotter
-- **Steel**: requires the highest tiers (see note below)
+- **Refined iron**: requires the highest tiers (see note below)
 - **Clear glass**: requires **Kiln + chimney + bellows** or hotter
 - **Stones**: require the **highest tier** (1100+)
 
@@ -82,15 +82,15 @@ Related:
 - [Coke oven](../content/blocks/coke-oven.md)
 - [Coal coke](../content/items/coal-coke.md)
 
-## Steel note (implementation vs reference)
+## Refined iron note (implementation vs reference)
 
-The “tier table” above comes from `smelting_rules.csv`, but in the 1.18.2 implementation steelmaking is also gated by **which kiln variant** you’re using:
+The “tier table” above comes from `smelting_rules.csv`, but in the 1.18.2 implementation iron smelting is also gated by **which kiln variant** you’re using:
 
-- Steel ingots are produced by an advanced kiln “steel” recipe that requires:
+- Iron ingots are produced by an advanced kiln iron smelting recipe that requires:
   - **coal coke fuel**
   - a **blast furnace kiln**, or a **furnace kiln** with a **furnace chimney**
 
-See: [Steel ingot](../content/items/steel-ingot.md)
+See: [Iron ingot](../content/items/iron-ingot.md)
 
 ## Hot outputs and safety (tongs are “fuel tech” too)
 

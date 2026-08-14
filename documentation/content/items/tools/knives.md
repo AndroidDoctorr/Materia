@@ -7,7 +7,7 @@ Knives are cutting tools used in crafting and gathering.
 - Flint knife (early)
 - Bronze knife
 - Iron knife
-- Steel knife
+- Iron knife
 
 ## Recipes
 

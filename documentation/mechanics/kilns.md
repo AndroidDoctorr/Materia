@@ -27,9 +27,9 @@ Coal coke is supported and burns longer.
 
 See also: [Heat and fuel overview](heat.md)
 
-## Steelmaking (Steel Age)
+## Iron smelting (Iron Age)
 
-In 1.18.2 implementation, the “steel” recipe (which produces `minecraft:iron_ingot`, displayed as “Steel ingot”) is gated:
+In 1.18.2 implementation, the refined-iron advanced kiln recipe (which produces `minecraft:iron_ingot`) is gated:
 
 - Requires **coal coke fuel**
 - Requires either:
@@ -38,7 +38,7 @@ In 1.18.2 implementation, the “steel” recipe (which produces `minecraft:iron
 
 See:
 
-- [Steel ingot](../content/items/steel-ingot.md)
+- [Iron ingot](../content/items/iron-ingot.md)
 - [Coke oven](../content/blocks/coke-oven.md)
 
 ## First metals (Neolithic → Bronze ramp)

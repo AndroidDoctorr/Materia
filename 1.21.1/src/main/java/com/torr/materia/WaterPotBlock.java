@@ -4,7 +4,10 @@ import com.torr.materia.util.MateriaBuckets;
 
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import com.torr.materia.blockentity.WaterPotBlockEntity;
+import com.torr.materia.ModBlockEntities;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.particles.ParticleTypes;
 import java.util.Random;
 import net.minecraft.sounds.SoundEvents;
@@ -38,7 +41,10 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.util.Mth;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.level.LevelReader;
 
 import javax.annotation.Nullable;
 
@@ -401,6 +407,18 @@ public class WaterPotBlock extends Block implements EntityBlock {
         }
     }
 
+    @Override
+    public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state) {
+        ItemStack stack = new ItemStack(this);
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        if (blockEntity instanceof WaterPotBlockEntity potEntity) {
+            HolderLookup.Provider provider = level instanceof Level l ? l.registryAccess() : RegistryAccess.EMPTY;
+            CompoundTag blockEntityTag = potEntity.saveWithoutMetadata(provider);
+            BlockItem.setBlockEntityData(stack, ModBlockEntities.WATER_POT_BLOCK_ENTITY.get(), blockEntityTag);
+        }
+        return stack;
+    }
+
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
@@ -410,13 +428,23 @@ public class WaterPotBlock extends Block implements EntityBlock {
     @Override
     public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable net.minecraft.world.entity.LivingEntity placer, ItemStack stack) {
         super.setPlacedBy(level, pos, state, placer, stack);
-        // When a water pot block is placed, it should start with full water (level 3)
         if (!level.isClientSide) {
             BlockEntity be = level.getBlockEntity(pos);
             if (be instanceof WaterPotBlockEntity potEntity) {
-                potEntity.setWaterLevel(3);
+                potEntity.setWaterLevel(resolvePlacedWaterLevel(stack, potEntity));
             }
         }
+    }
+
+    private static int resolvePlacedWaterLevel(ItemStack stack, WaterPotBlockEntity potEntity) {
+        CompoundTag blockEntityTag = BlockItem.getBlockEntityData(stack, ModBlockEntities.WATER_POT_BLOCK_ENTITY.get());
+        if (blockEntityTag != null && blockEntityTag.contains("waterLevel")) {
+            return Mth.clamp(blockEntityTag.getInt("waterLevel"), 0, 3);
+        }
+        if (blockEntityTag != null) {
+            return Mth.clamp(potEntity.getWaterLevel(), 0, 3);
+        }
+        return 3;
     }
 
     @Nullable

@@ -10,6 +10,7 @@ If you ever feel stuck, open JEI and search the part name (ex: “wire”, “ro
   - Cold metal will not work in anvil recipes.
   - In normal play, heat metal in a valid heat source.
   - In Creative/testing, you can force heat with the command: `/heatmetal`.
+- **Soft metals can be hammered into plates at a crafting table** (no anvil, no heat): **tin**, **copper**, and **gold** ingot + `#materia:stone_hammers` (or a stone hammer for tin). Alloys and iron-tier metals (**bronze**, **brass**, **wrought iron**, **refined iron**, etc.) require **hot** ingots on the appropriate anvil.
 - **Anvil recipes may consume multiple units of the same item.**
   - Example: some recipes use **9 ingots** (such as compressing into a metal block).
   - Always check JEI input counts, not just item types.

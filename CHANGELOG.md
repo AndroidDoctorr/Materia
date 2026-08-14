@@ -6,6 +6,18 @@ Planned work is tracked in [`documentation/release-roadmap.md`](documentation/re
 
 ## Unreleased
 
+### Naming — remove “steel” terminology
+
+- **Wrought iron** (`materia:wrought_iron_*`, `materia:iron_*` tools/components/armor) now uses explicit **Wrought Iron** display names.
+- **Refined iron** tier (`materia:steel_*` registry ids, `minecraft:iron_ingot` output) now displays as **Iron** — vanilla iron tools/items use vanilla names again (removed lang overrides).
+- Documentation and Flemish (`nl_be`) translations updated to match; internal `steel_*` ids unchanged for compatibility.
+
+### Cold plate crafting (shapeless)
+
+- **Soft metals only** at the crafting table: tin, copper, and gold ingot + hammer → plate (no heat or anvil).
+- Removed shapeless plate recipes for **bronze**, **brass**, and **wrought iron** — those require hot forging on an anvil.
+- Copper plate now accepts `#materia:stone_hammers` (was incorrectly `#materia:iron_hammers`).
+
 ## 1.4.0
 
 Land vehicle update — hand cart, village chest loot, and cart polish.

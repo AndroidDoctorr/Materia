@@ -422,16 +422,16 @@ Note:
 
 - Many iron-anvil recipes intentionally still accept some bronze-tier tools (ex: bronze tongs / bronze chisel) to smooth the transition.
 
-### Steel age (reliable steel tooling)
+### Iron Age (refined iron tooling)
 
 Defined by:
 
-- steel becoming a “baseline endgame material” for many tools/parts
+- refined iron (`minecraft:iron_ingot`) becoming a baseline endgame material for many tools and parts
 
 What you can do now:
 
-- Set up steelmaking (coal coke + high-heat kiln variant)
-- Produce steel components and craft the vanilla “iron” gear set (labeled as steel)
+- Set up iron smelting (coal coke + high-heat kiln variant)
+- Produce iron components (`materia:steel_*` parts, displayed as **Iron**) and craft the vanilla iron gear set
 - Reach a stable endgame tooling baseline for most of the mod
 
 Good entry pages:
@@ -441,18 +441,18 @@ Good entry pages:
 - [Metalworking (overview)](metalworking.md)
 - [Heat and fuel overview](heat.md)
 
-#### Steel Age walkthrough (iron anvil → steel tools)
+#### Iron Age walkthrough (wrought iron anvil → refined iron tools)
 
-In 1.18.2, Materia treats vanilla iron as **steel**:
+In Materia, vanilla `minecraft:iron_ingot` is the **refined iron** tier:
 
-- `minecraft:iron_ingot` is displayed as **Steel ingot**
-- `minecraft:iron_nugget` is displayed as **Steel nugget**
+- Display name: **Iron Ingot** (vanilla lang)
+- `minecraft:iron_nugget`: **Iron Nugget** (vanilla lang)
 
-See: [Steel ingot](../content/items/steel-ingot.md)
+See: [Iron ingot](../content/items/iron-ingot.md)
 
 ##### 1) Set up coke production (coal → coal coke)
 
-Steelmaking requires **coal coke fuel**.
+Iron smelting requires **coal coke fuel**.
 
 - Craft a [Coke oven](../content/blocks/coke-oven.md):
   - `shared/src/main/resources/data/materia/recipes/coke_oven.json`
@@ -465,7 +465,7 @@ See: [Coal coke](../content/items/coal-coke.md)
 
 ##### 2) Build a high-heat kiln (furnace kiln + furnace chimney) or a blast furnace kiln
 
-Steelmaking does **not** run on a basic kiln.
+Iron smelting does **not** run on a basic kiln.
 
 Option A (furnace kiln):
 
@@ -480,49 +480,49 @@ Option B (blast furnace kiln):
 - Blast furnace kiln (overrides vanilla blast furnace recipe):
   - `shared/src/main/resources/data/minecraft/recipes/blast_furnace.json`
 
-##### 3) Smelt steel ingots (Steel Age fuel + recipe gate)
+##### 3) Smelt iron ingots (Iron Age fuel + recipe gate)
 
-Steel ingots come from an advanced kiln “steel” recipe:
+Iron ingots come from an advanced kiln iron smelting recipe:
 
 - `shared/src/main/resources/data/materia/recipes/steel_ingot.json`
   - Inputs: `minecraft:raw_iron` + `#minecraft:coals`
-  - Output: `minecraft:iron_ingot` (displayed as “Steel ingot”)
+  - Output: `minecraft:iron_ingot` (displayed as “Iron ingot”)
 
 Important:
 
-- The steel recipe requires **coal coke as fuel** (`requires_coke_fuel: true`)
+- The iron smelting recipe requires **coal coke as fuel** (`requires_coke_fuel: true`)
 
-##### 4) Forge steel components on the iron anvil
+##### 4) Forge iron components on the iron anvil
 
-Once you have steel ingots, the iron anvil can shape them into steel parts:
+Once you have iron ingots, the iron anvil can shape them into iron parts:
 
-- Steel rod:
+- Iron rod:
   - `shared/src/main/resources/data/materia/recipes/iron_anvil/steel_rod_from_ingot.json`
-- Steel plate:
+- Iron plate:
   - `shared/src/main/resources/data/materia/recipes/iron_anvil/steel_plate_from_ingot.json`
-- Steel wire:
+- Iron wire:
   - `shared/src/main/resources/data/materia/recipes/iron_anvil/steel_wire_from_rod.json`
 
-##### 5) Craft a steel hammer (top-tier hammer)
+##### 5) Craft a refined iron hammer (top-tier hammer)
 
-- Steel hammer head (iron anvil):
+- Iron hammer head (iron anvil):
   - `shared/src/main/resources/data/materia/recipes/iron_anvil/steel_hammer_head_from_ingot.json`
-- Steel hammer (crafting):
+- Iron hammer (crafting):
   - `shared/src/main/resources/data/materia/recipes/steel_hammer.json`
 
-See: [Steel hammer](../content/items/steel-hammer.md)
+See: [Refined iron hammer](../content/items/refined-iron-hammer.md)
 
-##### 6) Steel tools and armor (vanilla “iron” set)
+##### 6) Iron tools and armor (vanilla “iron” set)
 
-Most vanilla “iron” gear recipes are overridden to use steel components.
+Most vanilla “iron” gear recipes are overridden to use iron components.
 
 Examples:
 
-- Steel pickaxe (vanilla iron pickaxe):
+- Iron pickaxe (vanilla iron pickaxe):
   - `shared/src/main/resources/data/minecraft/recipes/iron_pickaxe.json`
-- Steel sword (vanilla iron sword):
+- Iron sword (vanilla iron sword):
   - `shared/src/main/resources/data/minecraft/recipes/iron_sword.json`
-- Steel armor pieces (vanilla iron armor):
+- Iron armor pieces (vanilla iron armor):
   - `shared/src/main/resources/data/minecraft/recipes/iron_helmet.json`
   - `shared/src/main/resources/data/minecraft/recipes/iron_chestplate.json`
 

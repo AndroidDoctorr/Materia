@@ -155,7 +155,7 @@ Shared by plains/desert/savanna/snowy/taiga house chests: **plant fiber**, **peb
 
 ## Design notes
 
-- **No full bronze/iron armor or steel tools** in these tables — those would bypass Materia’s age gates.
+- **No full bronze/iron armor or iron tools** in these tables — those would bypass Materia’s age gates.
 - **No cannon or dynamite** in routine structure loot.
 - **Tyrian purple** is teased via **iota** / **glands** in treasure/stronghold loot; full **tyrian purple dye** only appears at jackpot weight in **buried treasure**.
 - Pack makers can **override** `materia:chests/*` loot tables or disable individual entries in `global_loot_modifiers.json` without touching Java.

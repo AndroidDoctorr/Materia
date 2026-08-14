@@ -1,6 +1,6 @@
 {
     "type": "materia:advanced_kiln",
-    "group": "steel",
+    "group": "iron",
     "ingredient1": {
         "tag": "forge:raw_materials/iron"
     },

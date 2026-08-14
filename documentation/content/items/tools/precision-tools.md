@@ -4,7 +4,7 @@ This page groups “specialty” tools used for crafting chains and advanced pro
 
 ## Chisels
 
-- Iron chisel (pairs with an iron/steel hammer offhand for special mining behavior)
+- Iron chisel (pairs with an iron/iron hammer offhand for special mining behavior)
 
 ## Files, drawplates, bores
 

@@ -19,7 +19,7 @@ This page tells you what those tags actually mean in practice.
 
 - `materia:iron_hammers`
   - `materia:iron_hammer`
-  - `#materia:steel_hammers`
+  - `#materia:steel_hammers` (refined iron tier; includes `materia:steel_hammer`)
 
 - `materia:steel_hammers`
   - `materia:steel_hammer`

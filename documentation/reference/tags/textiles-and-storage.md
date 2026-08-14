@@ -64,7 +64,7 @@ These tags are used by the **bow** and **crossbow** recipe overrides, and by the
 Used by: crossbow and composite bow crafting.
 
 - **Tag JSON**: `shared/src/main/resources/data/materia/tags/items/strong_bowstrings.json`
-- **Includes**: `#materia:strings` plus metal wires (steel/iron/bronze)
+- **Includes**: `#materia:strings` plus metal wires (bronze / wrought iron / refined iron)
 
 ## `#materia:all_bowstrings`
 

@@ -18,7 +18,7 @@ Used by: crafting recipes that accept “any plate” (including several logic-b
 
 - **Tag JSON**: `shared/src/main/resources/data/materia/tags/items/all_plates.json`
 - **Includes**:
-  - `#materia:hard_plates` (bronze/iron/steel plates)
+  - `#materia:hard_plates` (bronze / wrought iron / refined iron plates)
   - `#materia:soft_plates` (copper/aluminum/gold/tin/brass/zinc/lead plates)
 
 Related docs:

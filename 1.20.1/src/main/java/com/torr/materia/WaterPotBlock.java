@@ -37,6 +37,9 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.util.Mth;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 
 import javax.annotation.Nullable;
@@ -385,6 +388,16 @@ public class WaterPotBlock extends Block implements EntityBlock {
         }
     }
 
+    @Override
+    public ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state) {
+        ItemStack stack = new ItemStack(this);
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        if (blockEntity instanceof WaterPotBlockEntity potEntity) {
+            stack.getOrCreateTag().put("BlockEntityTag", potEntity.saveWithoutMetadata());
+        }
+        return stack;
+    }
+
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
@@ -394,13 +407,24 @@ public class WaterPotBlock extends Block implements EntityBlock {
     @Override
     public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable net.minecraft.world.entity.LivingEntity placer, ItemStack stack) {
         super.setPlacedBy(level, pos, state, placer, stack);
-        // When a water pot block is placed, it should start with full water (level 3)
         if (!level.isClientSide) {
             BlockEntity be = level.getBlockEntity(pos);
             if (be instanceof WaterPotBlockEntity potEntity) {
-                potEntity.setWaterLevel(3);
+                potEntity.setWaterLevel(resolvePlacedWaterLevel(stack, potEntity));
             }
         }
+    }
+
+    private static int resolvePlacedWaterLevel(ItemStack stack, WaterPotBlockEntity potEntity) {
+        CompoundTag blockEntityTag = BlockItem.getBlockEntityData(stack);
+        if (blockEntityTag != null && blockEntityTag.contains("waterLevel")) {
+            return Mth.clamp(blockEntityTag.getInt("waterLevel"), 0, 3);
+        }
+        if (blockEntityTag != null) {
+            return Mth.clamp(potEntity.getWaterLevel(), 0, 3);
+        }
+        // Freshly filled water pot items (no saved state) start full.
+        return 3;
     }
 
     @Nullable

@@ -136,7 +136,7 @@ High-impact progression-gate shortlist (auto-inventoried from overrides):
   - `iron_pickaxe` → `materia:steel_pickaxe_head` + `materia:iron_handle` + `materia:strong_adhesives`
   - `iron_sword` → `materia:steel_sword_blade` + `materia:steel_crossbar` + `materia:iron_handle` + `materia:advanced_bindings`
   - `iron_shovel` / `iron_hoe` → similar "tool head + handle/bindings" assembly
-  - `iron_helmet` / `iron_chestplate` / `iron_leggings` / `iron_boots` → gated behind Materia steel/leather/buckle/rivet parts
+  - `iron_helmet` / `iron_chestplate` / `iron_leggings` / `iron_boots` → gated behind Materia refined-iron/leather/buckle/rivet parts
   - `iron_door` / `iron_trapdoor` → gated behind Materia hinges/plates/rivets/tools
 - **Nether progression**
   - `netherite_scrap` → produced via `materia:kiln` (not vanilla blasting/smelting)

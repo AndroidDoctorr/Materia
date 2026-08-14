@@ -23,4 +23,4 @@ Right-click:
 - spruce logs → sapped spruce log + sap
 - rubber tree logs → tapped rubber tree log + latex
 
-Higher-tier knives (like iron/steel) can also do this.
+Higher-tier knives (wrought iron or refined iron) can also do this.

@@ -4,7 +4,7 @@
 
 Coal coke is a higher-grade fuel made from coal.
 
-It burns longer than coal/charcoal and is required for some high-heat / high-tech kiln recipes (notably **steel**).
+It burns longer than coal/charcoal and is required for some high-heat / high-tech kiln recipes (notably **refined iron smelting**).
 
 ## How to get it
 
@@ -32,6 +32,6 @@ Source of truth (1.18.2):
 
 ## Related
 
-- [Steel ingot (Steel Age)](steel-ingot.md)
+- [Iron ingot (Iron Age)](iron-ingot.md)
 - [Heat and fuel overview](../../mechanics/heat.md)
 

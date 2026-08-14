@@ -3,7 +3,7 @@
 This page documents Materia’s arrow progression:
 
 - **Flint arrows** (vanilla `minecraft:arrow`, recipe override)
-- **Metal arrows** (bronze / iron / steel)
+- **Metal arrows** (bronze / wrought iron / refined iron)
 
 ## Flint arrows (vanilla `minecraft:arrow`)
 
@@ -26,7 +26,7 @@ Flint arrow head:
 
 - [Recipe JSON](../../../shared/src/main/resources/data/materia/recipes/flint_arrow_head.json)
 
-## Metal arrows (bronze / iron / steel)
+## Metal arrows (bronze / wrought iron / refined iron)
 
 Metal arrows are distinct arrow items, meant as a “slow but worth it” upgrade path.
 
@@ -36,7 +36,7 @@ In the 1.21.1 code, the arrow items set the projectile base damage to:
 
 - **Bronze arrow**: 2.5
 - **Iron arrow**: 3.0
-- **Steel arrow**: 3.5
+- **Iron arrow**: 3.5
 
 These are implemented via `MetalArrowItem` (a custom `ArrowItem`) and a custom arrow entity so pickup returns the correct item.
 
@@ -53,7 +53,7 @@ Recipe JSONs:
 
 - [Bronze arrow](../../../shared/src/main/resources/data/materia/recipes/bronze_arrow.json)
 - [Iron arrow](../../../shared/src/main/resources/data/materia/recipes/iron_arrow.json)
-- [Steel arrow](../../../shared/src/main/resources/data/materia/recipes/steel_arrow.json)
+- [Iron arrow](../../../shared/src/main/resources/data/materia/recipes/steel_arrow.json)
 
 ### Crafting: arrow heads (anvils)
 
@@ -65,7 +65,7 @@ Bronze-tier anvil example:
 
 Iron-tier anvil examples:
 
-- `materia:iron_anvil` → [Steel arrow head from iron nugget](../../../shared/src/main/resources/data/materia/recipes/iron_anvil/steel_arrow_head_from_nugget.json)
+- `materia:iron_anvil` → [Iron arrow head from iron nugget](../../../shared/src/main/resources/data/materia/recipes/iron_anvil/steel_arrow_head_from_nugget.json)
 
 Reminder:
 

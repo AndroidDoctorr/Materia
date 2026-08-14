@@ -11,7 +11,7 @@ Tapping-capable tools are:
 - `materia:knapped_flint` (knapped flint)
 - `materia:flint_knife` (flint knife)
 - `materia:iron_knife` (iron knife)
-- `materia:steel_knife` (steel knife)
+- `materia:steel_knife` (iron knife)
 
 Notes:
 

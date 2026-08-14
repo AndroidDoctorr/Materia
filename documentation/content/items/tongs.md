@@ -19,20 +19,20 @@ Tongs can store up to **64 total items** internally.
 - **Wood tongs**
 - **Bronze tongs**
 - **Iron tongs**
-- **Steel tongs**
+- **Iron tongs**
 
 ## Progression
 
 - **Early game**: Wood tongs (basic handling)
 - **Bronze Age**: Bronze tongs (made on a bronze anvil)
-- **Iron Age+**: Iron / Steel tongs (made on an iron anvil)
+- **Iron Age+**: Iron / Iron tongs (made on an iron anvil)
 
 ## Recipes
 
 - Wood: [recipe JSON](../../../shared/src/main/resources/data/materia/recipes/wood_tongs.json)
 - Bronze (anvil): [recipe JSON](../../../shared/src/main/resources/data/materia/recipes/bronze_anvil/bronze_tongs_from_rod.json)
 - Iron (anvil): [recipe JSON](../../../shared/src/main/resources/data/materia/recipes/iron_anvil/iron_tongs_from_rod.json)
-- Steel (anvil): [recipe JSON](../../../shared/src/main/resources/data/materia/recipes/iron_anvil/steel_tongs_from_rod.json)
+- Refined iron (wrought iron anvil): [recipe JSON](../../../shared/src/main/resources/data/materia/recipes/iron_anvil/steel_tongs_from_rod.json)
 
 ## Interactions
 

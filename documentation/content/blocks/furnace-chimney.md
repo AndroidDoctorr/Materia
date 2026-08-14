@@ -2,7 +2,7 @@
 
 The furnace chimney is a high-heat chimney block used specifically with the **furnace kiln**.
 
-In 1.18.2, some late-game recipes (notably steelmaking) require a furnace chimney above the furnace kiln.
+In 1.18.2, some late-game recipes (notably iron smelting) require a furnace chimney above the furnace kiln.
 
 ## Crafting
 
@@ -19,6 +19,6 @@ Ingredients:
 
 ## Related
 
-- [Steel ingot](../items/steel-ingot.md)
+- [Iron ingot](../items/iron-ingot.md)
 - [Kilns (mechanic)](../../mechanics/kilns.md)
 

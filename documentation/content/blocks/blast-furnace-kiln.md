@@ -22,7 +22,7 @@ Key ingredients:
 
 ## Related
 
-- [Steel ingot](../items/steel-ingot.md)
+- [Iron ingot](../items/iron-ingot.md)
 - [Kilns (mechanic)](../../mechanics/kilns.md)
 - [Heat and fuel overview](../../mechanics/heat.md)
 

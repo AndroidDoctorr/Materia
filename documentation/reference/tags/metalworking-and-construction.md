@@ -24,7 +24,7 @@ Quick links:
 Used by: many workstation recipes (smithing table, stonecutter, smoker, etc.).
 
 - **Tag JSON**: `shared/src/main/resources/data/materia/tags/items/hard_plates.json`
-- **Includes**: bronze / iron / steel plates
+- **Includes**: bronze / wrought iron / refined iron (`materia:steel_*`) plates
 
 ### `#materia:soft_plates`
 
@@ -45,7 +45,7 @@ Used by: recipes that accept any plate (soft or hard).
 Used by: some workstation recipes (ex: grindstone).
 
 - **Tag JSON**: `shared/src/main/resources/data/materia/tags/items/hard_rods.json`
-- **Includes**: bronze / iron / steel rods
+- **Includes**: bronze / wrought iron / refined iron rods
 
 ### `#materia:soft_rods`
 
@@ -59,7 +59,7 @@ Used by: recipes that accept “any softer metal rod”.
 Used by: late-game recipes that require strong wiring (ex: brewing stand).
 
 - **Tag JSON**: `shared/src/main/resources/data/materia/tags/items/hard_wires.json`
-- **Includes**: bronze / iron / steel wires
+- **Includes**: bronze / wrought iron / refined iron wires
 
 Note:
 
@@ -70,7 +70,7 @@ Note:
 Used by: barrel and brewing stand recipes, and various “metal band” uses.
 
 - **Tag JSON**: `shared/src/main/resources/data/materia/tags/items/hard_bands.json`
-- **Includes**: bronze / iron / steel bands
+- **Includes**: bronze / wrought iron / refined iron bands
 
 ## Sealants
 

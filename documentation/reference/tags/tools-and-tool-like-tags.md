@@ -11,7 +11,7 @@ See: [Early crafting and woodworking](early-crafting-and-woodworking.md)
 Used by: recipes that accept any knife tier.
 
 - **Tag JSON**: `shared/src/main/resources/data/materia/tags/items/all_knives.json`
-- **Includes**: flint, bronze, iron, steel knives
+- **Includes**: flint, bronze, wrought iron, and refined iron knives (`materia:steel_knife`)
 
 ## Saws
 
@@ -56,7 +56,7 @@ Used by: recipes that accept “any crushing tool” (mortar-and-pestle or hamme
 Used by: saw crafting and saw maintenance chains.
 
 - **Tag JSON**: `shared/src/main/resources/data/materia/tags/items/all_sawblades.json`
-- **Includes**: bronze/iron/steel sawblades
+- **Includes**: bronze, wrought iron, and refined iron sawblades (`materia:steel_sawblade`)
 
 ## Armor-related crafting tags
 

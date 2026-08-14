@@ -22,6 +22,8 @@ For the full anvil tool-tag breakdown, see:
 
 ### `#materia:steel_hammers`
 
+Refined-iron-tier hammers (`materia:steel_hammer`, displayed as **Iron Hammer**). Registry tag id unchanged.
+
 - **Tag JSON**: `shared/src/main/resources/data/materia/tags/items/steel_hammers.json`
 - **Includes**: `materia:steel_hammer`
 

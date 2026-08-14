@@ -2,7 +2,7 @@
 
 <img src="../../../shared/src/main/resources/assets/materia/textures/item/wrought_iron_ingot.png" alt="Wrought iron ingot" width="64" height="64">
 
-Wrought iron is the “iron age” metal in Materia. Many “iron” items in Materia are actually `wrought_iron_*` under the hood.
+Wrought iron is Materia’s early **iron-age** metal (`materia:wrought_iron_*` and most `materia:iron_*` tools/components). Display names use **Wrought Iron** explicitly so they are not confused with refined iron (`minecraft:iron_ingot` / `materia:steel_*` parts, displayed as **Iron**).
 
 ## Getting wrought iron ingots
 

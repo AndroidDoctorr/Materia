@@ -7,7 +7,7 @@ Spears are weapons/tools. Some spear tiers can be thrown.
 - Flint spear
 - Bronze spear
 - Iron spear
-- Steel spear
+- Iron spear
 - Diamond spear
 - Netherite spear
 
