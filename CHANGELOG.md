@@ -30,6 +30,10 @@ Planned work is tracked in [`documentation/release-roadmap.md`](documentation/re
 - **Pet passengers** — tamed **cats**, **wolves**, and **parrots** can ride in the cart bed (max **two** occupants: one player + one pet). Uses vanilla boat boarding; pets keep creeper-scare behavior while aboard.
 - **Wheel rolling** — surface clips play as **three 1-second segments** (`cart_<surface>_1.ogg` … `_3.ogg`) cycled every second while moving, so audio stops within ~1s of the cart stopping (replace segment files after splitting the old ~3s loops).
 
+### Performance
+
+- **Removed runtime iron ore weathering** — `IronOreWeatheringHandler` scanned the overworld every tick to convert exposed vanilla iron into surface iron; that conversion already happens in worldgen via `surface_iron_ore_placed` (including `BlockMatchTest` on vanilla iron ore).
+
 ## 1.4.0
 
 Land vehicle update — hand cart, village chest loot, and cart polish.
