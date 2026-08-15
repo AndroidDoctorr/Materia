@@ -5,6 +5,7 @@ The **hand cart** is Materia’s draft-pulled land vehicle: a wheeled chest you 
 Source of truth:
 
 - Entity: `CartEntity` in each version’s `.../entity/` package
+- Side shields: `CartWallSide`, `CartShieldModel`, `textures/entity/cart_shield.png`
 - Items: `ModCarts`, `ModItems` (`cart_wheel`, cart covers, per-wood cart items)
 - Recipes: `shared/src/main/resources/data/materia/recipes/*_cart*.json`
 - Destroy loot: `shared/src/main/resources/data/materia/loot_tables/entities/cart.json`
@@ -94,7 +95,7 @@ Rolling clips do **not** cut off instantly when the cart stops; stopping mid-cli
 
 - **27 slots** — same capacity as a single chest.
 - **Empty hand + use while riding** — open the cart inventory (`CartMenu`).
-- Chest contents, health, wood type, cover, lantern, draft team, and custom name persist in the item when picked up.
+- Chest contents, health, wood type, cover, lantern, **side shields**, draft team, and custom name persist in the item when picked up.
 
 ## Cover, lantern, repair
 
@@ -105,6 +106,23 @@ While **not** sneaking:
 - **Matching smooth plank** — repairs **10 HP** per plank (wood type must match the hull).
 
 Wood types differ in **mass**, **toughness**, and **damage taken** (e.g. fig is light/fragile, dark oak is heavy/tough; crimson/warped take extra fire damage). Max health is **60** at baseline; the UI bar normalizes across wood types.
+
+## Side shields
+
+Mount up to **two** vanilla **`minecraft:shield`** pavises — one on each side wall (no front/back slots).
+
+While **not** sneaking:
+
+- **Shield + use** — attaches a shield to the side you are standing on; if that side is full, tries the other (max **2** total).
+- Shields add a small **damage reduction** and **mass** penalty per side (overall hull defense, not directional blocking).
+
+While **sneaking**:
+
+- **Use** (empty hand or any item) — removes the shield on your side and returns it to you.
+
+Shields persist in cart NBT when the cart is picked up or saved. When the cart is **destroyed**, each mounted shield has a **75%** chance to drop (same roll as the lantern).
+
+Client model: `CartShieldModel` — **`textures/entity/cart_shield.png`** (**23×13** atlas; **22×12** face mapped at **`texOffs(0, 5)`**), wall-thick geometry flush to the side planks.
 
 ## Sneak dismantling
 
@@ -126,6 +144,7 @@ When the cart’s health reaches zero (or it is removed with entity drops enable
 3. **2–4 smooth planks** of the cart’s wood type (recipe uses six)
 4. **Cover** — 85% chance if present
 5. **Lantern** — 75% chance if present
+6. **Shields** — 75% chance per side shield (left and right counted separately)
 
 ## Sleep and phantoms
 

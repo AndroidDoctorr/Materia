@@ -59,6 +59,12 @@ Land vehicle update — mainly the **hand cart**.
 
 ---
 
+## Unreleased
+
+- [x] **Cart side shields** — up to two vanilla shields (left/right); damage reduction + mass; `cart_shield.png` model atlas (**23×13**, face at `texOffs(0, 5)`). See [Hand cart](mechanics/cart.md).
+
+---
+
 ## Later (1.?)
 
 Lower priority or larger-scope ideas; version number TBD.

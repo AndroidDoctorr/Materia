@@ -167,6 +167,8 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
             SynchedEntityData.defineId(CartEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> DATA_WOOD_TYPE =
             SynchedEntityData.defineId(CartEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> DATA_SHIELD_SIDES =
+            SynchedEntityData.defineId(CartEntity.class, EntityDataSerializers.INT);
 
     /** World-space footprint (blocks). Length runs along entity facing (+Z when yaw = 0). */
 
@@ -257,6 +259,11 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
             ResourceLocation.fromNamespaceAndPath(materia.MOD_ID, "entities/cart");
     private static final float COVER_DESTROY_DROP_CHANCE = 0.85F;
     private static final float LANTERN_DESTROY_DROP_CHANCE = 0.75F;
+    private static final float SHIELD_DESTROY_DROP_CHANCE = 0.75F;
+    /** Extra mass per mounted shield (slows draft pull slightly). */
+    private static final float SHIELD_MASS_FACTOR = 0.06F;
+    /** Damage taken multiplier reduction per shield. */
+    private static final float SHIELD_DAMAGE_REDUCTION = 0.08F;
     /** Degrees per tick of draft heading change at full strafe input. */
     private static final float DRAFT_TURN_RATE = 2.8F;
     /** How quickly cart yaw catches up to the draft team heading. */
@@ -310,6 +317,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
         builder.define(DATA_HAS_LANTERN, false);
         builder.define(DATA_HEALTH, (int) (CartWoodType.OAK.getMaxHealth() * 10.0F));
         builder.define(DATA_WOOD_TYPE, CartWoodType.OAK.networkId());
+        builder.define(DATA_SHIELD_SIDES, 0);
     }
 
     public CartWoodType getWoodType() {
@@ -336,7 +344,18 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
     }
 
     public float getMassFactor() {
-        return this.getWoodType().getMassFactor();
+        return this.getWoodType().getMassFactor() + this.getShieldCount() * SHIELD_MASS_FACTOR;
+    }
+
+    public int getShieldCount() {
+        int count = 0;
+        if (this.hasShield(CartWallSide.LEFT)) {
+            count++;
+        }
+        if (this.hasShield(CartWallSide.RIGHT)) {
+            count++;
+        }
+        return count;
     }
 
     public boolean hasCover() {
@@ -360,6 +379,98 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
         if (!hasLantern) {
             this.clearLanternLight();
         }
+    }
+
+    public int getShieldSidesMask() {
+        return this.entityData.get(DATA_SHIELD_SIDES);
+    }
+
+    public void setShieldSidesMask(int mask) {
+        this.entityData.set(DATA_SHIELD_SIDES, mask & CartWallSide.ALL_MASK);
+    }
+
+    public boolean hasShield(CartWallSide side) {
+        return CartWallSide.hasSide(this.getShieldSidesMask(), side);
+    }
+
+    public void setShield(CartWallSide side, boolean attached) {
+        this.setShieldSidesMask(CartWallSide.withSide(this.getShieldSidesMask(), side, attached));
+    }
+
+    public boolean hasAnyShield() {
+        return this.getShieldSidesMask() != 0;
+    }
+
+    @Nullable
+    private CartWallSide resolveShieldSide(Player player, boolean forPlacement) {
+        Vec3 local = CartWallSide.worldToLocal(player.position(), this.getX(), this.getY(), this.getZ(), this.getYRot());
+        CartWallSide preferred = CartWallSide.fromPlayerLocalX(local.x);
+        if (preferred == null) {
+            return null;
+        }
+        if (forPlacement) {
+            if (!this.hasShield(preferred)) {
+                return preferred;
+            }
+            CartWallSide other = CartWallSide.other(preferred);
+            if (!this.hasShield(other)) {
+                return other;
+            }
+            return null;
+        }
+        if (this.hasShield(preferred)) {
+            return preferred;
+        }
+        CartWallSide other = CartWallSide.other(preferred);
+        if (this.hasShield(other)) {
+            return other;
+        }
+        return null;
+    }
+
+    private InteractionResult tryShieldWallInteraction(Player player, InteractionHand hand) {
+        if (player.getVehicle() == this) {
+            return InteractionResult.PASS;
+        }
+
+        ItemStack stack = player.getItemInHand(hand);
+
+        if (player.isShiftKeyDown()) {
+            CartWallSide side = this.resolveShieldSide(player, false);
+            if (side == null) {
+                return InteractionResult.PASS;
+            }
+            if (!this.level().isClientSide()) {
+                this.setShield(side, false);
+                this.giveOrDropItem(player, new ItemStack(Items.SHIELD));
+                this.level().playSound(null, this.blockPosition(), SoundEvents.SHIELD_BLOCK, SoundSource.PLAYERS,
+                        0.8F, 1.0F);
+                this.gameEvent(GameEvent.ENTITY_INTERACT, player);
+            }
+            return InteractionResult.sidedSuccess(this.level().isClientSide());
+        }
+
+        if (!player.isSecondaryUseActive() && stack.is(Items.SHIELD)) {
+            CartWallSide side = this.resolveShieldSide(player, true);
+            if (side == null) {
+                if (this.getShieldCount() >= 2) {
+                    return InteractionResult.sidedSuccess(this.level().isClientSide());
+                }
+                return InteractionResult.PASS;
+            }
+            if (!this.level().isClientSide()) {
+                this.setShield(side, true);
+                if (!player.getAbilities().instabuild) {
+                    stack.shrink(1);
+                }
+                this.level().playSound(null, this.blockPosition(), SoundEvents.ARMOR_EQUIP_IRON, SoundSource.PLAYERS,
+                        0.9F, 1.0F);
+                this.gameEvent(GameEvent.ENTITY_INTERACT, player);
+            }
+            return InteractionResult.sidedSuccess(this.level().isClientSide());
+        }
+
+        return InteractionResult.PASS;
     }
 
     public float getCartHealth() {
@@ -1602,6 +1713,15 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
     }
 
     @Override
+    public InteractionResult interactAt(Player player, Vec3 vec, InteractionHand hand) {
+        InteractionResult shield = this.tryShieldWallInteraction(player, hand);
+        if (shield != InteractionResult.PASS) {
+            return shield;
+        }
+        return InteractionResult.PASS;
+    }
+
+    @Override
 
     public InteractionResult interact(Player player, InteractionHand hand) {
 
@@ -1688,6 +1808,13 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
             return InteractionResult.sidedSuccess(this.level().isClientSide());
         }
 
+        if (!player.isSecondaryUseActive() && stack.is(Items.SHIELD) && player.getVehicle() != this) {
+            InteractionResult shield = this.tryShieldWallInteraction(player, hand);
+            if (shield != InteractionResult.PASS) {
+                return shield;
+            }
+        }
+
         return super.interact(player, hand);
 
     }
@@ -1745,6 +1872,9 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
             this.addChestVehicleSaveData(tag);
         }
         tag.putFloat("CartHealth", this.getCartHealth());
+        if (this.hasAnyShield()) {
+            tag.putByte("ShieldSides", (byte) this.getShieldSidesMask());
+        }
         this.giveOrDropItem(player, stack);
         this.gameEvent(GameEvent.ENTITY_INTERACT, player);
         this.level().playSound(null, this.blockPosition(), SoundEvents.WOOD_PLACE, SoundSource.PLAYERS, 0.9F, 1.0F);
@@ -1900,6 +2030,10 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
         if (amount <= 0.0F) {
             return false;
         }
+        int shields = this.getShieldCount();
+        if (shields > 0) {
+            amount *= 1.0F - SHIELD_DAMAGE_REDUCTION * shields;
+        }
         this.setCartHealth(this.getCartHealth() - amount);
         this.setHurtTime(10);
         this.markHurt();
@@ -1967,6 +2101,14 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
         if (this.hasLantern() && this.random.nextFloat() < LANTERN_DESTROY_DROP_CHANCE) {
             this.spawnAtLocation(new ItemStack(Items.LANTERN));
         }
+        if (this.random.nextFloat() < SHIELD_DESTROY_DROP_CHANCE) {
+            if (this.hasShield(CartWallSide.LEFT)) {
+                this.spawnAtLocation(new ItemStack(Items.SHIELD));
+            }
+            if (this.hasShield(CartWallSide.RIGHT)) {
+                this.spawnAtLocation(new ItemStack(Items.SHIELD));
+            }
+        }
     }
 
     @Override
@@ -2002,6 +2144,8 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         tag.putBoolean("HasLantern", this.hasLantern());
 
+        tag.putInt("ShieldSides", this.getShieldSidesMask());
+
         tag.putFloat("CartHealth", this.getCartHealth());
 
         tag.putString("WoodType", this.getWoodType().getId());
@@ -2027,6 +2171,9 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
         }
         if (tag.contains("HasLantern")) {
             this.setHasLantern(tag.getBoolean("HasLantern"));
+        }
+        if (tag.contains("ShieldSides")) {
+            this.setShieldSidesMask(tag.getInt("ShieldSides"));
         }
         if (tag.contains("WoodType")) {
             CartWoodType.fromId(tag.getString("WoodType")).ifPresent(this::setWoodType);

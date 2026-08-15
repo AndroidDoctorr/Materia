@@ -66,6 +66,9 @@ public class CartItem extends Item {
         } else {
             cart.setCartHealth(cart.getMaxHealth());
         }
+        if (stack.hasTag() && stack.getTag().contains("ShieldSides")) {
+            cart.setShieldSidesMask(stack.getTag().getInt("ShieldSides"));
+        }
         if (!level.noCollision(cart, cart.getBoundingBox().inflate(-0.1D))) {
             return InteractionResultHolder.fail(stack);
         }

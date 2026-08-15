@@ -6,6 +6,7 @@ import com.mojang.math.Axis;
 import com.torr.materia.client.model.CartBodyModel;
 import com.torr.materia.client.model.CartCoverModel;
 import com.torr.materia.client.model.CartLanternModel;
+import com.torr.materia.client.model.CartShieldModel;
 import com.torr.materia.client.model.CartModel;
 import com.torr.materia.entity.CartEntity;
 import com.torr.materia.materia;
@@ -27,11 +28,14 @@ public class CartRenderer extends EntityRenderer<CartEntity> {
             ResourceLocation.fromNamespaceAndPath(materia.MOD_ID, "textures/entity/cart_chest.png");
     private static final ResourceLocation LANTERN_TEXTURE =
             ResourceLocation.fromNamespaceAndPath(materia.MOD_ID, "textures/entity/cart_lantern.png");
+    private static final ResourceLocation SHIELD_TEXTURE =
+            ResourceLocation.fromNamespaceAndPath(materia.MOD_ID, "textures/entity/cart_shield.png");
 
     private final CartBodyModel bodyModel;
     private final CartModel model;
     private final CartCoverModel coverModel;
     private final CartLanternModel lanternModel;
+    private final CartShieldModel shieldModel;
 
     public CartRenderer(EntityRendererProvider.Context context) {
         super(context);
@@ -39,6 +43,7 @@ public class CartRenderer extends EntityRenderer<CartEntity> {
         this.model = new CartModel(context.bakeLayer(CartModel.LAYER));
         this.coverModel = new CartCoverModel(context.bakeLayer(CartCoverModel.LAYER));
         this.lanternModel = new CartLanternModel(context.bakeLayer(CartLanternModel.LAYER));
+        this.shieldModel = new CartShieldModel(context.bakeLayer(CartShieldModel.LAYER));
         this.shadowRadius = CartEntity.shadowRadius();
     }
 
@@ -79,6 +84,11 @@ public class CartRenderer extends EntityRenderer<CartEntity> {
             this.lanternModel.renderLantern(poseStack,
                     buffer.getBuffer(RenderType.entityCutoutNoCull(LANTERN_TEXTURE)),
                     lanternLight, OverlayTexture.NO_OVERLAY);
+        }
+        if (entity.hasAnyShield()) {
+            this.shieldModel.renderShields(poseStack,
+                    buffer.getBuffer(RenderType.entityCutoutNoCull(SHIELD_TEXTURE)),
+                    entity, packedLight, OverlayTexture.NO_OVERLAY);
         }
 
         poseStack.popPose();

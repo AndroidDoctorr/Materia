@@ -18,6 +18,13 @@ Planned work is tracked in [`documentation/release-roadmap.md`](documentation/re
 - Removed shapeless plate recipes for **bronze**, **brass**, and **wrought iron** — those require hot forging on an anvil.
 - Copper plate now accepts `#materia:stone_hammers` (was incorrectly `#materia:iron_hammers`).
 
+### Cart side shields
+
+- **Side pavises** — attach up to **two** vanilla **`minecraft:shield`** items (one per side wall). Right-click the cart with a shield; **sneak + use** removes the shield on your side.
+- **Gameplay** — each shield slightly **reduces damage taken** and adds a little **mass** (slower draft), regardless of hit direction.
+- **Persistence** — shield slots save in cart NBT; picked-up cart items restore them; destroy may return shields (~75% roll per side).
+- **Model / texture** — `textures/entity/cart_shield.png` (**23×13** atlas; face art **22×12** at `texOffs(0, 5)`); wall-thick plank depth, flush to the hull.
+
 ## 1.4.0
 
 Land vehicle update — hand cart, village chest loot, and cart polish.
