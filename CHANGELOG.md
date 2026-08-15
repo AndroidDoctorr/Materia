@@ -6,6 +6,14 @@ Planned work is tracked in [`documentation/release-roadmap.md`](documentation/re
 
 ## Unreleased
 
+## 1.3.8
+
+Patch release: removed runtime iron ore weathering (performance).
+
+### Performance
+
+- **Removed runtime iron ore weathering** — `IronOreWeatheringHandler` scanned the overworld every tick to convert exposed vanilla iron into surface iron; that conversion already happens in worldgen via `surface_iron_ore_placed` (including `BlockMatchTest` on vanilla iron ore).
+
 ## 1.3.7
 
 Patch release: clay roof tile recipe fix.
