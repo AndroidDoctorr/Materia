@@ -92,6 +92,8 @@ public class CartSleepHandler {
 
         playerSleepDelay.put(player.getUUID(), CART_SLEEP_DELAY_TICKS);
 
+        cart.applySleepBodyOrientation(player);
+
         player.setForcedPose(Pose.SLEEPING);
 
         sendVisuals(player, true, CART_SLEEP_DELAY_TICKS);

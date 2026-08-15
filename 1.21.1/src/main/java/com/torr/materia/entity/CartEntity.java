@@ -527,22 +527,56 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
                 forward.z * DRIVER_FORWARD_OFFSET);
     }
 
-    /** How far the rider drops when lying down in the cart bed. */
-    private static final double CART_SLEEP_Y_OFFSET = 0.25D;
-    private static final double CART_SLEEP_Z_OFFSET = 1.0D;
+    /** Blocks to drop the rider onto the cart bed surface when lying down. */
+    private static final double CART_SLEEP_BODY_LIFT = 0.22D;
+    /** Blocks from the driving seat toward the bed (opposite cart forward). */
+    private static final double CART_SLEEP_BACK_OFFSET = 1.5D;
+    /** Rotate sleep pose so the body lies along the cart bed axis, not across the width. */
+    private static final float CART_SLEEP_YAW_OFFSET = 90.0F;
+
+    private double getCartBedSurfaceY() {
+        return this.getY() + (double) (RENDER_Y_OFFSET + WHEEL_RADIUS + HEIGHT * FLOOR_HEIGHT_FRACTION);
+    }
+
+    private double getCartBedSleepY(Entity passenger) {
+        return this.getCartBedSurfaceY() + CART_SLEEP_BODY_LIFT + passenger.getMyRidingOffset();
+    }
+
+    public float getCartSleepYaw() {
+        return Mth.wrapDegrees(this.getYRot() + CART_SLEEP_YAW_OFFSET);
+    }
+
+    public void applySleepBodyOrientation(Player player) {
+        float sleepYaw = this.getCartSleepYaw();
+        player.setYRot(sleepYaw);
+        player.setYBodyRot(sleepYaw);
+        player.setXRot(0.0F);
+    }
+
+    private void positionSleepingRider(Entity passenger, MoveFunction callback) {
+        Vec3 seat = this.getPassengerSeatOffset();
+        Vec3 forward = this.getForward();
+        double backX = -forward.x * CART_SLEEP_BACK_OFFSET;
+        double backZ = -forward.z * CART_SLEEP_BACK_OFFSET;
+        double x = this.getX() + seat.x + backX;
+        double y = this.getCartBedSleepY(passenger);
+        double z = this.getZ() + seat.z + backZ;
+        callback.accept(passenger, x, y, z);
+    }
+
+    private boolean isDriverSleeping() {
+        for (Entity passenger : this.getPassengers()) {
+            if (passenger instanceof Player player && CartSleepHandler.isCartSleeping(player)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     @Override
     protected void positionRider(Entity driver, MoveFunction callback) {
         if (driver instanceof Player player && CartSleepHandler.shouldSkipPassengerPositioning(player)) {
-            Vec3 seat = this.getPassengerSeatOffset();
-            double y = this.getY() + this.getPassengersRidingOffset() + driver.getMyRidingOffset()
-                    - CART_SLEEP_Y_OFFSET;
-            double z = this.getZ() + seat.z - CART_SLEEP_Z_OFFSET;
-            float yaw = this.getYRot();
-            callback.accept(driver, this.getX() + seat.x, y, z);
-            driver.setYRot(yaw);
-            driver.setYBodyRot(yaw);
-            driver.setYHeadRot(yaw);
+            this.positionSleepingRider(driver, callback);
             return;
         }
         Vec3 seat = this.getPassengerSeatOffset();
@@ -633,7 +667,11 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
             this.restoreDraftTeamIfNeeded();
 
-            this.applyDraftDrive();
+            if (this.isDriverSleeping()) {
+                this.setDeltaMovement(Vec3.ZERO);
+            } else {
+                this.applyDraftDrive();
+            }
 
             this.positionDraftTeam();
 

@@ -1,5 +1,6 @@
 package com.torr.materia.client;
 
+import com.torr.materia.entity.CartEntity;
 import com.torr.materia.materia;
 import net.minecraft.client.Minecraft;
 import net.minecraft.sounds.SoundEvents;
@@ -15,7 +16,7 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = materia.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CartSleepVisuals {
 
-    private static final int FADE_IN_TICKS = 30;
+    private static final int FADE_IN_TICKS = 10;
     private static final int FADE_OUT_TICKS = 20;
 
     private static boolean active;
@@ -47,6 +48,9 @@ public class CartSleepVisuals {
         fadeOutTicks = 0;
         Minecraft minecraft = Minecraft.getInstance();
         if (minecraft.player != null) {
+            if (minecraft.player.getVehicle() instanceof CartEntity cart) {
+                cart.applySleepBodyOrientation(minecraft.player);
+            }
             minecraft.player.setForcedPose(Pose.SLEEPING);
             minecraft.player.playSound(SoundEvents.WOOL_STEP, 1.0F, 1.0F);
         }
@@ -77,6 +81,11 @@ public class CartSleepVisuals {
             }
         } else if (fadeOutTicks > 0) {
             fadeOutTicks--;
+        }
+
+        Minecraft minecraft = Minecraft.getInstance();
+        if (minecraft.player != null && active && minecraft.player.getVehicle() instanceof CartEntity) {
+            minecraft.player.setForcedPose(Pose.SLEEPING);
         }
     }
 }
