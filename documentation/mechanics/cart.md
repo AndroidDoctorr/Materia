@@ -48,6 +48,7 @@ Dyed fabric covers (`materia:*_cart_cover`) are crafted separately and applied i
 ## Riding and driving
 
 - **Mount** like a boat (right-click empty cart).
+- **Pet passengers** — up to **two** riders total: one **player** (driver seat) plus one tamed **cat**, **wolf**, or **parrot** in the cart bed. Pets board like boat passengers (walk into the cart or ride along). A cat in the bed still **scares creepers** nearby — handy for overworld travel.
 - **W / S** — forward / reverse intent along the draft heading (reverse coasts; no paddle acceleration).
 - **A / D** — steer the **draft team heading**, not the player’s look direction.
 - The cart **does not** use vanilla boat paddle logic.
@@ -86,10 +87,10 @@ The cart can **ford shallow water** (`isInWater()`); wheel sounds switch to the 
 
 ### Sounds
 
-- **Wheel rolling** — surface-specific clips (`entity.cart.move_*`), replayed on a ~2.7s loop while moving on ground or in water; volume/pitch scale with speed. Plays immediately when movement starts or the dominant surface changes.
+- **Wheel rolling** — surface-specific clips (`entity.cart.move_<surface>.0` … `.2`), each mapped to a **1-second** `cart_<surface>_1.ogg` … `_3.ogg` segment. Segments cycle every second while moving; volume/pitch scale with speed. Plays immediately when movement starts or the dominant surface changes. When the cart stops, at most one segment (~1s) can still play out.
 - **Draft hooves** — vanilla `HORSE_STEP` / `HORSE_GALLOP` for hitched **horses** only, interval ~8–18 ticks based on speed (independent of wheel sounds).
 
-Rolling clips do **not** cut off instantly when the cart stops; stopping mid-clip is a known polish gap for a future pass.
+Split each legacy ~3s `cart_<surface>.ogg` into three equal parts named `cart_<surface>_1.ogg`, `_2`, `_3` under `assets/materia/sounds/` (placeholders duplicate the full clip until you replace them).
 
 ## Storage
 

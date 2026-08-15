@@ -25,6 +25,11 @@ Planned work is tracked in [`documentation/release-roadmap.md`](documentation/re
 - **Persistence** — shield slots save in cart NBT; picked-up cart items restore them; destroy may return shields (~75% roll per side).
 - **Model / texture** — `textures/entity/cart_shield.png` (**23×13** atlas; face art **22×12** at `texOffs(0, 5)`); wall-thick plank depth, flush to the hull.
 
+### Cart pets & wheel sounds
+
+- **Pet passengers** — tamed **cats**, **wolves**, and **parrots** can ride in the cart bed (max **two** occupants: one player + one pet). Uses vanilla boat boarding; pets keep creeper-scare behavior while aboard.
+- **Wheel rolling** — surface clips play as **three 1-second segments** (`cart_<surface>_1.ogg` … `_3.ogg`) cycled every second while moving, so audio stops within ~1s of the cart stopping (replace segment files after splitting the old ~3s loops).
+
 ## 1.4.0
 
 Land vehicle update — hand cart, village chest loot, and cart polish.

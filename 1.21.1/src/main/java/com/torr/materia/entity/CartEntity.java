@@ -7,7 +7,6 @@ import com.torr.materia.ModCarts;
 import com.torr.materia.ModEntities;
 
 import com.torr.materia.ModItems;
-import com.torr.materia.ModSounds;
 import com.torr.materia.events.CartSleepHandler;
 import com.torr.materia.item.CartCoverColor;
 import com.torr.materia.item.CartCoverItem;
@@ -81,6 +80,14 @@ import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.entity.player.Inventory;
 
 import net.minecraft.world.entity.player.Player;
+
+import net.minecraft.world.entity.TamableAnimal;
+
+import net.minecraft.world.entity.animal.Cat;
+
+import net.minecraft.world.entity.animal.Parrot;
+
+import net.minecraft.world.entity.animal.Wolf;
 
 import net.minecraft.world.entity.animal.horse.AbstractHorse;
 
@@ -249,8 +256,9 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
             Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("materia", "cart_surface_wood"));
     private static final TagKey<Block> CART_SURFACE_STONE = TagKey.create(
             Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("materia", "cart_surface_stone"));
-    /** 3s rolling clips; replay slightly early so loops overlap without a gap. */
-    private static final int MOVE_SOUND_INTERVAL = 54;
+    /** 1s rolling segments cycled while moving (max ~1s tail after stop). */
+    private static final int MOVE_SOUND_SEGMENT_COUNT = 3;
+    private static final int MOVE_SOUND_SEGMENT_INTERVAL = 20;
     private static final int DRAFT_SOUND_MIN_INTERVAL = 8;
     private static final int DRAFT_SOUND_MAX_INTERVAL = 18;
     private static final double MOVE_SOUND_MIN_SPEED = 0.03D;
@@ -287,6 +295,8 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
     public float wheelRotation;
 
     private int moveSoundTicks;
+
+    private int moveSoundSegment;
 
     private int draftSoundTicks;
 
@@ -644,6 +654,37 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
     private static final double CART_SLEEP_BACK_OFFSET = 1.5D;
     /** Rotate sleep pose so the body lies along the cart bed axis, not across the width. */
     private static final float CART_SLEEP_YAW_OFFSET = 90.0F;
+    /** Pet sits on the bed deck toward the back of the hull. */
+    private static final double PET_BACK_OFFSET = 0.85D;
+    /** Nudge pets toward the front of the hull (16 model px at 16 px/block). */
+    private static final double PET_FORWARD_NUDGE = 16.0D / 16.0D;
+    private static final double PET_BODY_LIFT = 0.05D;
+    private static final int MAX_CART_PASSENGERS = 2;
+
+    private static boolean isCartPetPassenger(Entity entity) {
+        if (!(entity instanceof TamableAnimal tamable) || !tamable.isTame()) {
+            return false;
+        }
+        return entity instanceof Cat || entity instanceof Wolf || entity instanceof Parrot;
+    }
+
+    private boolean hasPlayerPassenger() {
+        for (Entity passenger : this.getPassengers()) {
+            if (passenger instanceof Player) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean hasPetPassenger() {
+        for (Entity passenger : this.getPassengers()) {
+            if (isCartPetPassenger(passenger)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     private double getCartBedSurfaceY() {
         return this.getY() + (double) (RENDER_Y_OFFSET + WHEEL_RADIUS + HEIGHT * FLOOR_HEIGHT_FRACTION);
@@ -662,6 +703,23 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
         player.setYRot(sleepYaw);
         player.setYBodyRot(sleepYaw);
         player.setXRot(0.0F);
+    }
+
+    private void positionPetRider(Entity pet, MoveFunction callback) {
+        Vec3 forward = this.getForward();
+        double along = PET_FORWARD_NUDGE - PET_BACK_OFFSET;
+        double x = this.getX() + forward.x * along;
+        double y = this.getCartBedSurfaceY() + PET_BODY_LIFT + pet.getMyRidingOffset();
+        double z = this.getZ() + forward.z * along;
+        callback.accept(pet, x, y, z);
+    }
+
+    private void updateCartPetPoses() {
+        for (Entity passenger : this.getPassengers()) {
+            if (passenger instanceof Cat cat) {
+                cat.setInSittingPose(true);
+            }
+        }
     }
 
     private void positionSleepingRider(Entity passenger, MoveFunction callback) {
@@ -685,17 +743,19 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
     }
 
     @Override
-    protected void positionRider(Entity driver, MoveFunction callback) {
-        if (driver instanceof Player player && CartSleepHandler.shouldSkipPassengerPositioning(player)) {
-            this.positionSleepingRider(driver, callback);
+    protected void positionRider(Entity passenger, MoveFunction callback) {
+        if (isCartPetPassenger(passenger)) {
+            this.positionPetRider(passenger, callback);
+            return;
+        }
+        if (passenger instanceof Player player && CartSleepHandler.shouldSkipPassengerPositioning(player)) {
+            this.positionSleepingRider(passenger, callback);
             return;
         }
         Vec3 seat = this.getPassengerSeatOffset();
-        super.positionRider(driver, (entity, x, y, z) ->
+        super.positionRider(passenger, (entity, x, y, z) ->
                 callback.accept(entity, x + seat.x, y, z + seat.z));
     }
-
-
 
     @Override
 
@@ -705,21 +765,20 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
     }
 
-
-
-    @Override
-
-    protected float getSinglePassengerXOffset() {
-
-        return 0.0F;
-
-    }
-
     @Override
 
     protected boolean canAddPassenger(Entity passenger) {
 
-        return passenger instanceof Player && this.getPassengers().isEmpty() && super.canAddPassenger(passenger);
+        if (this.getPassengers().size() >= MAX_CART_PASSENGERS) {
+            return false;
+        }
+        if (passenger instanceof Player) {
+            return !this.hasPlayerPassenger() && super.canAddPassenger(passenger);
+        }
+        if (isCartPetPassenger(passenger)) {
+            return !this.hasPetPassenger() && super.canAddPassenger(passenger);
+        }
+        return false;
 
     }
 
@@ -758,7 +817,9 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         super.tick();
 
-        ejectNonPlayerPassengers();
+        enforcePassengerLimits();
+
+        this.updateCartPetPoses();
 
         float yaw = getYRot();
 
@@ -1274,22 +1335,28 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
         return bestCount > 0 ? CartMoveSurface.values()[bestIndex] : CartMoveSurface.DIRT;
     }
 
-    private static SoundEvent resolveMoveSound(CartMoveSurface surface) {
+    private static String moveSurfaceSoundId(CartMoveSurface surface) {
         return switch (surface) {
-            case STONE -> ModSounds.CART_MOVE_STONE.get();
-            case COBBLE -> ModSounds.CART_MOVE_COBBLE.get();
-            case GRAVEL -> ModSounds.CART_MOVE_GRAVEL.get();
-            case WOOD -> ModSounds.CART_MOVE_WOOD.get();
-            case GRASS -> ModSounds.CART_MOVE_GRASS.get();
-            case SAND -> ModSounds.CART_MOVE_SAND.get();
-            case DIRT -> ModSounds.CART_MOVE_DIRT.get();
-            case SNOW -> ModSounds.CART_MOVE_SNOW.get();
-            case WATER -> ModSounds.CART_MOVE_WATER.get();
+            case STONE -> "stone";
+            case COBBLE -> "cobble";
+            case GRAVEL -> "gravel";
+            case WOOD -> "wood";
+            case GRASS -> "grass";
+            case SAND -> "sand";
+            case DIRT -> "dirt";
+            case SNOW -> "snow";
+            case WATER -> "water";
         };
     }
 
-    private void playMoveSound(CartMoveSurface surface, double speed) {
-        SoundEvent sound = resolveMoveSound(surface);
+    private SoundEvent resolveMoveSound(CartMoveSurface surface, int segment) {
+        int index = Mth.clamp(segment, 0, MOVE_SOUND_SEGMENT_COUNT - 1);
+        return SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(materia.MOD_ID,
+                "entity.cart.move_" + moveSurfaceSoundId(surface) + "." + index));
+    }
+
+    private void playMoveSound(CartMoveSurface surface, double speed, int segment) {
+        SoundEvent sound = resolveMoveSound(surface, segment);
         float volume = Mth.clamp((float) (speed * 2.5D), 0.15F, 0.9F);
         float pitch = 0.9F + Mth.clamp((float) (speed * 0.5D), 0.0F, 0.2F);
         this.level().playSound(null, this.getX(), this.getY(), this.getZ(), sound, SoundSource.NEUTRAL, volume, pitch);
@@ -1304,6 +1371,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
         if (speed < MOVE_SOUND_MIN_SPEED) {
 
             this.moveSoundTicks = 0;
+            this.moveSoundSegment = 0;
             this.lastMoveSurface = null;
 
             return;
@@ -1315,6 +1383,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
         if (!inWater && (!this.onGround() || this.isUnderWater())) {
 
             this.moveSoundTicks = 0;
+            this.moveSoundSegment = 0;
             this.lastMoveSurface = null;
 
             return;
@@ -1325,11 +1394,15 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         boolean playNow = this.lastMoveSurface == null || this.lastMoveSurface != surface;
 
+        if (playNow) {
+            this.moveSoundSegment = 0;
+        }
+
         this.lastMoveSurface = surface;
 
         this.moveSoundTicks++;
 
-        if (!playNow && this.moveSoundTicks < MOVE_SOUND_INTERVAL) {
+        if (!playNow && this.moveSoundTicks < MOVE_SOUND_SEGMENT_INTERVAL) {
 
             return;
 
@@ -1337,7 +1410,8 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         this.moveSoundTicks = 0;
 
-        this.playMoveSound(surface, speed);
+        this.playMoveSound(surface, speed, this.moveSoundSegment);
+        this.moveSoundSegment = (this.moveSoundSegment + 1) % MOVE_SOUND_SEGMENT_COUNT;
 
     }
 
@@ -1467,7 +1541,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
     private float lastCollisionYaw = Float.NaN;
 
-    private void ejectNonPlayerPassengers() {
+    private void enforcePassengerLimits() {
 
         if (this.level().isClientSide()) {
 
@@ -1477,19 +1551,37 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
         boolean keptPlayer = false;
 
+        boolean keptPet = false;
+
         for (Entity passenger : this.getPassengers()) {
 
-            if (!(passenger instanceof Player)) {
+            if (passenger instanceof Player) {
 
-                passenger.stopRiding();
+                if (keptPlayer) {
 
-            } else if (keptPlayer) {
+                    passenger.stopRiding();
 
-                passenger.stopRiding();
+                } else {
+
+                    keptPlayer = true;
+
+                }
+
+            } else if (isCartPetPassenger(passenger)) {
+
+                if (keptPet) {
+
+                    passenger.stopRiding();
+
+                } else {
+
+                    keptPet = true;
+
+                }
 
             } else {
 
-                keptPlayer = true;
+                passenger.stopRiding();
 
             }
 

@@ -54,7 +54,6 @@ Land vehicle update — mainly the **hand cart**.
 
 - [x] **Hand cart** — draft-pulled entity, storage, wood variants, cover/lantern, sleep, phantom shelter, dismantle vs destroy loot, surface/water sounds, draft hoof sounds.
 - [x] **Village chest loot** — 16 building-specific injectors at 70% (see [Structure chest loot](mechanics/structure-chest-loot.md)).
-- [ ] **Cart sound polish** — instant stop when cart halts (deferred; rolling clips may be split into segments later).
 - [ ] **Villager / wandering trader trades** for Materia goods (needs Java, not JSON-only on 1.20.1 Forge).
 
 ---
@@ -62,6 +61,8 @@ Land vehicle update — mainly the **hand cart**.
 ## Unreleased
 
 - [x] **Cart side shields** — up to two vanilla shields (left/right); damage reduction + mass; `cart_shield.png` model atlas (**23×13**, face at `texOffs(0, 5)`). See [Hand cart](mechanics/cart.md).
+- [x] **Cart pet passengers** — tamed cats, wolves, and parrots in the bed (player + pet, max two).
+- [x] **Cart wheel sound segments** — 1s rolling segments (`cart_<surface>_1` … `_3`) instead of ~3s monolithic loops.
 
 ---
 
