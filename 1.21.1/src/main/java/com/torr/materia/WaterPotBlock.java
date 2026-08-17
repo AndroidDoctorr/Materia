@@ -15,10 +15,12 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.Items;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.block.Blocks;
@@ -437,7 +439,7 @@ public class WaterPotBlock extends Block implements EntityBlock {
     }
 
     private static int resolvePlacedWaterLevel(ItemStack stack, WaterPotBlockEntity potEntity) {
-        CompoundTag blockEntityTag = BlockItem.getBlockEntityData(stack, ModBlockEntities.WATER_POT_BLOCK_ENTITY.get());
+        CompoundTag blockEntityTag = stack.getOrDefault(DataComponents.BLOCK_ENTITY_DATA, CustomData.EMPTY).copyTag();
         if (blockEntityTag != null && blockEntityTag.contains("waterLevel")) {
             return Mth.clamp(blockEntityTag.getInt("waterLevel"), 0, 3);
         }

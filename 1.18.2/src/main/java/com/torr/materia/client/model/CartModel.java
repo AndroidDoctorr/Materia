@@ -14,6 +14,9 @@ import net.minecraft.resources.ResourceLocation;
 
 /**
  * Cart hull + wheels in 1/16-block units (16 units = 1 block). Matches {@link CartEntity} footprint.
+ * <p>
+ * Wheels are authored at 1-block diameter so a 16×16 texture maps 1:1 to the disc face, then scaled
+ * in {@link #setupAnim} to {@link CartEntity#WHEEL_RADIUS}.
  */
 public class CartModel extends EntityModel<CartEntity> {
 
@@ -34,12 +37,17 @@ public class CartModel extends EntityModel<CartEntity> {
     private static final float WALL_T = W * CartEntity.WALL_THICKNESS_FRACTION;
     private static final float INNER_L = L - 2.0F * WALL_T;
 
+    /** Template wheel diameter in model units — one block, matches a 16×16 wheel texture. */
+    private static final float WHEEL_MESH_D = U;
+    private static final float WHEEL_MESH_T = 2.0F;
+    private static final float WHEEL_MESH_HALF = WHEEL_MESH_D * 0.5F;
+
     private static final float WHEEL_D = CartEntity.WHEEL_RADIUS * 2.0F * U;
-    private static final float WHEEL_T = CartEntity.WHEEL_THICKNESS * U;
-    private static final float WHEEL_HALF = WHEEL_D * 0.5F;
+    /** Hull floor sits at wheel axle height (center of the disc). */
     private static final float BODY_BASE = WHEEL_D * 0.5F;
     private static final float WHEEL_Z_CENTER_FRONT = -HALF_L + WHEEL_D * 0.5F + 2.0F;
     private static final float WHEEL_Z_CENTER_BACK = HALF_L - WHEEL_D * 0.5F - 2.0F;
+    private static final float WHEEL_PART_SCALE = CartEntity.WHEEL_RADIUS * 2.0F;
 
     private static final float DRAFT_ARM_LEN = 5.0F;
     private static final float DRAFT_ARM_W = 1.5F;
@@ -170,7 +178,7 @@ public class CartModel extends EntityModel<CartEntity> {
                         .addBox(CHEST_LID_X, CHEST_LID_Y, CHEST_LID_Z, CHEST_LID_W, CHEST_LID_H, CHEST_LID_D),
                 PartPose.ZERO);
 
-        float halfAxle = WHEEL_T * 0.5F;
+        float halfAxle = WHEEL_MESH_T * 0.5F;
         addWheel(root, "wheel_left_front", -HALF_W - halfAxle, WHEEL_Z_CENTER_FRONT, false);
         addWheel(root, "wheel_left_back", -HALF_W - halfAxle, WHEEL_Z_CENTER_BACK, false);
         addWheel(root, "wheel_right_front", HALF_W + halfAxle, WHEEL_Z_CENTER_FRONT, true);
@@ -187,7 +195,8 @@ public class CartModel extends EntityModel<CartEntity> {
                 name,
                 CubeListBuilder.create()
                         .texOffs(0, 0)
-                        .addBox(-WHEEL_T * 0.5F, -WHEEL_HALF, -WHEEL_HALF, WHEEL_T, WHEEL_D, WHEEL_D),
+                        .addBox(-WHEEL_MESH_T * 0.5F, -WHEEL_MESH_HALF, -WHEEL_MESH_HALF, WHEEL_MESH_T, WHEEL_MESH_D,
+                                WHEEL_MESH_D),
                 pose);
     }
 
@@ -241,10 +250,13 @@ public class CartModel extends EntityModel<CartEntity> {
 
     public void renderWheels(com.mojang.blaze3d.vertex.PoseStack poseStack,
             com.mojang.blaze3d.vertex.VertexConsumer buffer, int packedLight, int packedOverlay) {
+        poseStack.pushPose();
+        poseStack.scale(WHEEL_PART_SCALE, WHEEL_PART_SCALE, WHEEL_PART_SCALE);
         wheelLeftFront.render(poseStack, buffer, packedLight, packedOverlay);
         wheelLeftBack.render(poseStack, buffer, packedLight, packedOverlay);
         wheelRightFront.render(poseStack, buffer, packedLight, packedOverlay);
         wheelRightBack.render(poseStack, buffer, packedLight, packedOverlay);
+        poseStack.popPose();
     }
 
     @Override

@@ -2,6 +2,8 @@
 
 The **hand cart** is Materia’s draft-pulled land vehicle: a wheeled chest you ride, hitch animals to, and optionally cover for travel and shelter. It replaces vanilla boat-style paddling — the cart only moves when a leashed draft team pulls it while you steer.
 
+For a two-seat combat vehicle without storage or add-ons, see the **[chariot](chariot.md)**.
+
 Source of truth:
 
 - Entity: `CartEntity` in each version’s `.../entity/` package
@@ -32,7 +34,14 @@ Shapeless assembly:
 
 Example: `shared/src/main/resources/data/materia/recipes/oak_cart.json`
 
-Wood variants include vanilla logs (oak through pale oak), crimson/warped, and Materia woods (fig, cedar, eucalyptus, rubber wood, etc.). Each wood has its own item id (`materia:oak_cart`, `materia:cedar_cart`, …).
+Wood variants include vanilla logs available in that Minecraft version (see below), crimson/warped, and Materia woods (fig, cedar, eucalyptus, rubber wood, etc.). Each wood has its own item id (`materia:oak_cart`, `materia:cedar_cart`, …).
+
+| Minecraft version | Vanilla cart woods |
+|-------------------|-------------------|
+| **1.18.2** | oak, spruce, birch, jungle, acacia, dark oak, crimson, warped |
+| **1.19.2** | above + mangrove |
+| **1.20.1** | above + cherry |
+| **1.21.1** | above + pale oak |
 
 ### Cart wheels
 
@@ -75,6 +84,8 @@ Eligible draft animals (pull strength is approximate):
 Extra animals help with **diminishing returns** (second and later animals add ~55% of their raw pull). Untamed horses do not draft.
 
 Draft animals are positioned ahead of the cart and move with the team heading. Hitch state persists in cart NBT.
+
+The **lead attach point** sits on the **draft crossbar** at the front of the cart (aligned with the model’s draft arms), not at wheel-axle height. Chariots use a separate hitch formula on their shorter hull.
 
 ### Surfaces and speed
 

@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 
 /** Wood variants for cart hull textures, crafting, and physical stats. */
 public enum CartWoodType {
+    // Vanilla woods available in Minecraft 1.21.1 (full set).
     OAK("oak", "Oak", "smooth_oak_planks", 1.0F, 1.0F, 1.0F, 1.0F),
     SPRUCE("spruce", "Spruce", "smooth_spruce_planks", 0.9F, 0.85F, 1.1F, 1.0F),
     BIRCH("birch", "Birch", "smooth_birch_planks", 0.85F, 0.75F, 1.25F, 1.0F),

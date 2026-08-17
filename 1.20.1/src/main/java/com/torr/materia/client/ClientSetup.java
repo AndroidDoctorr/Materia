@@ -41,6 +41,7 @@ import com.torr.materia.client.renderer.FlintSpearRenderer;
 import com.torr.materia.client.renderer.MetalArrowRenderer;
 import com.torr.materia.client.model.CartModel;
 import com.torr.materia.client.renderer.entity.CartRenderer;
+import com.torr.materia.client.renderer.entity.ChariotRenderer;
 import com.torr.materia.client.renderer.entity.FallingAmphoraRenderer;
 import com.torr.materia.client.translation.ConditionalTranslationManager;
 import com.torr.materia.blockentity.FrameLoomBlockEntity;
@@ -336,6 +337,8 @@ public class ClientSetup {
                 ModEntities.METAL_ARROW.get(), MetalArrowRenderer::new);
             net.minecraft.client.renderer.entity.EntityRenderers.register(
                 ModEntities.CART.get(), CartRenderer::new);
+            net.minecraft.client.renderer.entity.EntityRenderers.register(
+                ModEntities.CHARIOT.get(), ChariotRenderer::new);
 
             // Sheep layer is now added via EntityRenderersEvent.AddLayers in ClientRenderLayers
             

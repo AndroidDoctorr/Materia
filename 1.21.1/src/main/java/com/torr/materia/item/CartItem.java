@@ -62,13 +62,14 @@ public class CartItem extends Item {
         CartEntity cart = new CartEntity(level, x, y, z);
         cart.setWoodType(this.woodType);
         cart.loadInventoryFromItem(stack);
-        if (stack.hasTag() && stack.getTag().contains("CartHealth")) {
-            cart.setCartHealth(stack.getTag().getFloat("CartHealth"));
+        CompoundTag tag = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
+        if (tag.contains("CartHealth")) {
+            cart.setCartHealth(tag.getFloat("CartHealth"));
         } else {
             cart.setCartHealth(cart.getMaxHealth());
         }
-        if (stack.hasTag() && stack.getTag().contains("ShieldSides")) {
-            cart.setShieldSidesMask(stack.getTag().getInt("ShieldSides"));
+        if (tag.contains("ShieldSides")) {
+            cart.setShieldSidesMask(tag.getInt("ShieldSides"));
         }
         if (!level.noCollision(cart, cart.getBoundingBox().inflate(-0.1D))) {
             return InteractionResultHolder.fail(stack);

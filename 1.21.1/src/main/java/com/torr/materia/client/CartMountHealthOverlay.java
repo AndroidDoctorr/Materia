@@ -1,6 +1,8 @@
 package com.torr.materia.client;
 
 import com.torr.materia.entity.CartEntity;
+import com.torr.materia.entity.ChariotEntity;
+import net.minecraft.world.entity.Entity;
 import com.torr.materia.materia;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
@@ -30,7 +32,11 @@ public class CartMountHealthOverlay {
 
     private static void render(GuiGraphics graphics, DeltaTracker deltaTracker) {
         Minecraft minecraft = Minecraft.getInstance();
-        if (minecraft.player == null || !(minecraft.player.getVehicle() instanceof CartEntity cart)) {
+        if (minecraft.player == null) {
+            return;
+        }
+        float ratio = resolveMountHealthRatio(minecraft.player.getVehicle());
+        if (ratio < 0.0F) {
             return;
         }
 
@@ -38,12 +44,21 @@ public class CartMountHealthOverlay {
         int height = minecraft.getWindow().getGuiScaledHeight();
         int left = width / 2 - 91;
         int top = height - 32 + 3;
-        float ratio = cart.getHealthRatio();
         int filled = (int) (ratio * 183.0F);
 
         graphics.blit(GUI_ICONS, left, top, 0, 84, 182, 5);
         if (filled > 0) {
             graphics.blit(GUI_ICONS, left, top, 0, 89, filled, 5);
         }
+    }
+
+    private static float resolveMountHealthRatio(Entity vehicle) {
+        if (vehicle instanceof CartEntity cart) {
+            return cart.getHealthRatio();
+        }
+        if (vehicle instanceof ChariotEntity chariot) {
+            return chariot.getHealthRatio();
+        }
+        return -1.0F;
     }
 }

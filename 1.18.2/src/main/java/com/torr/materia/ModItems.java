@@ -2288,6 +2288,7 @@ public class ModItems {
         static {
                 ModCartCovers.registerAll();
                 ModCarts.registerAll();
+                ModChariots.registerAll();
         }
         /** Legacy id; same item as {@link CartCoverColor#WHITE}. */
         public static final RegistryObject<Item> CART_COVER = ModCartCovers.get(CartCoverColor.WHITE);
@@ -2301,6 +2302,9 @@ public class ModItems {
         }
         public static RegistryObject<Item> getCartBase(CartWoodType wood) {
                 return ModCarts.getBase(wood);
+        }
+        public static RegistryObject<Item> getChariot(com.torr.materia.item.ChariotType type) {
+                return ModChariots.get(type);
         }
 
         // Healing Poultices

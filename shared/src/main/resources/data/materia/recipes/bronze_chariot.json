@@ -1,0 +1,36 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "materia:cart_wheel"
+        },
+        {
+            "item": "materia:cart_wheel"
+        },
+        {
+            "tag": "materia:smooth_planks"
+        },
+        {
+            "tag": "materia:smooth_planks"
+        },
+        {
+            "item": "materia:bronze_plate"
+        },
+        {
+            "item": "materia:bronze_plate"
+        },
+        {
+            "item": "materia:bronze_plate"
+        },
+        {
+            "item": "materia:bronze_pole"
+        },
+        {
+            "tag": "materia:all_rivets"
+        }
+    ],
+    "result": {
+        "item": "materia:bronze_chariot",
+        "count": 1
+    }
+}

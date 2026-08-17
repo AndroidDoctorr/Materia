@@ -2,6 +2,7 @@ package com.torr.materia.item;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -33,7 +34,7 @@ public class CartCoverItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(stack, level, tooltip, flag);
-        tooltip.add(Component.translatable("item.materia.cart_cover.phantom_shelter")
+        tooltip.add(new TranslatableComponent("item.materia.cart_cover.phantom_shelter")
                 .withStyle(ChatFormatting.GRAY));
     }
 }

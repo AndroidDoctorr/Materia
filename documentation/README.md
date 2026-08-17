@@ -41,6 +41,7 @@ Materia is licensed under the **MIT License**. See [`../LICENSE`](../LICENSE).
   - [Tapping](mechanics/tapping.md)
   - [Structure chest loot](mechanics/structure-chest-loot.md)
   - [Hand cart](mechanics/cart.md)
+  - [Chariot](mechanics/chariot.md)
 - **Planning**
   - [Release roadmap (1.4.0+)](release-roadmap.md)
 - **Mod compatibility**

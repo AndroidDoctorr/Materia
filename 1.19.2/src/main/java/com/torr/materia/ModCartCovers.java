@@ -2,6 +2,7 @@ package com.torr.materia;
 
 import com.torr.materia.item.CartCoverColor;
 import com.torr.materia.item.CartCoverItem;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -20,7 +21,7 @@ public final class ModCartCovers {
     static void registerAll() {
         for (CartCoverColor color : CartCoverColor.values()) {
             COVERS.put(color, ModItems.ITEMS.register(color.getItemId(),
-                    () -> new CartCoverItem(color, new Item.Properties())));
+                    () -> new CartCoverItem(color, new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS))));
         }
     }
 

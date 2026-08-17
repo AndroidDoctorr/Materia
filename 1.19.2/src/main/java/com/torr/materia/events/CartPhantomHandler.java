@@ -7,7 +7,7 @@ import net.minecraft.world.entity.monster.Phantom;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
-import net.minecraftforge.event.entity.living.LivingChangeTargetEvent;
+import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -39,14 +39,15 @@ public class CartPhantomHandler {
         }
     }
 
+    /** Forge before 43.1.8 lacks {@code LivingChangeTargetEvent}; clear target after it is set instead. */
     @SubscribeEvent
-    public static void onLivingChangeTarget(LivingChangeTargetEvent event) {
-        if (!(event.getEntity() instanceof Phantom)) {
+    public static void onLivingSetAttackTarget(LivingSetAttackTargetEvent event) {
+        if (!(event.getEntity() instanceof Phantom phantom)) {
             return;
         }
-        LivingEntity newTarget = event.getNewTarget();
-        if (newTarget instanceof Player player && isShelteredInCoveredCart(player)) {
-            event.setCanceled(true);
+        LivingEntity target = event.getTarget();
+        if (target instanceof Player player && isShelteredInCoveredCart(player)) {
+            phantom.setTarget(null);
         }
     }
 

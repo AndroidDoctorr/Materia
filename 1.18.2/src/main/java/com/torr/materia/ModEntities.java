@@ -1,6 +1,7 @@
 package com.torr.materia;
 
 import com.torr.materia.entity.CartEntity;
+import com.torr.materia.entity.ChariotEntity;
 import com.torr.materia.entity.RockEntity;
 import com.torr.materia.entity.FallingAmphoraEntity;
 import com.torr.materia.entity.DynamiteEntity;
@@ -108,6 +109,14 @@ public class ModEntities {
                     .clientTrackingRange(10)
                     .updateInterval(1)
                     .build("cart"));
+
+    public static final RegistryObject<EntityType<ChariotEntity>> CHARIOT = ENTITIES.register(
+            "chariot",
+            () -> EntityType.Builder.<ChariotEntity>of(ChariotEntity::new, MobCategory.MISC)
+                    .sized(ChariotEntity.LENGTH, ChariotEntity.HEIGHT)
+                    .clientTrackingRange(10)
+                    .updateInterval(1)
+                    .build("chariot"));
 }
 
 

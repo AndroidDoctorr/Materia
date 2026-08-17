@@ -220,8 +220,7 @@ public class CartBodyModel extends EntityModel<CartEntity> {
 
     @Override
     public void renderToBuffer(com.mojang.blaze3d.vertex.PoseStack poseStack,
-            com.mojang.blaze3d.vertex.VertexConsumer buffer, int packedLight, int packedOverlay, float red,
-            float green, float blue, float alpha) {
+            com.mojang.blaze3d.vertex.VertexConsumer buffer, int packedLight, int packedOverlay, int color) {
         renderHullBody(poseStack, buffer, packedLight, packedOverlay);
         renderFront(poseStack, buffer, packedLight, packedOverlay);
         renderBack(poseStack, buffer, packedLight, packedOverlay);

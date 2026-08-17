@@ -17,21 +17,19 @@ import java.util.stream.Collectors;
 
 /** Wood variants for cart hull textures, crafting, and physical stats. */
 public enum CartWoodType {
+    // Vanilla woods available in Minecraft 1.18.2 (no mangrove, cherry, or pale oak).
     OAK("oak", "Oak", "smooth_oak_planks", 1.0F, 1.0F, 1.0F, 1.0F),
     SPRUCE("spruce", "Spruce", "smooth_spruce_planks", 0.9F, 0.85F, 1.1F, 1.0F),
     BIRCH("birch", "Birch", "smooth_birch_planks", 0.85F, 0.75F, 1.25F, 1.0F),
     JUNGLE("jungle", "Jungle", "smooth_jungle_planks", 1.15F, 1.15F, 0.9F, 1.0F),
     ACACIA("acacia", "Acacia", "smooth_acacia_planks", 1.1F, 1.2F, 0.85F, 1.0F),
     DARK_OAK("dark_oak", "Dark Oak", "smooth_dark_oak_planks", 1.2F, 1.25F, 0.8F, 1.0F),
-    CHERRY("cherry", "Cherry", "smooth_cherry_planks", 0.9F, 0.8F, 1.15F, 1.0F),
-    MANGROVE("mangrove", "Mangrove", "smooth_mangrove_planks", 1.15F, 1.1F, 0.95F, 1.0F),
     CRIMSON("crimson", "Crimson", "smooth_crimson_planks", 0.95F, 0.85F, 1.0F, 0.35F),
     WARPED("warped", "Warped", "smooth_warped_planks", 0.95F, 0.85F, 1.0F, 0.35F),
     RUBBER_WOOD("rubber_wood", "Rubber Wood", "smooth_rubber_wood_planks", 1.05F, 0.95F, 1.05F, 1.0F),
     FIG("fig", "Fig", "smooth_fig_plank", 0.82F, 0.7F, 1.3F, 1.0F),
     CEDAR("cedar", "Cedar", "smooth_cedar_plank", 0.85F, 0.85F, 1.1F, 1.0F),
-    EUCALYPTUS("eucalyptus", "Eucalyptus", "smooth_eucalyptus_plank", 0.88F, 0.8F, 1.15F, 1.0F),
-    PALE_OAK("pale_oak", "Pale Oak", null, "minecraft:pale_oak_planks", 0.92F, 0.9F, 1.05F, 1.0F);
+    EUCALYPTUS("eucalyptus", "Eucalyptus", "smooth_eucalyptus_plank", 0.88F, 0.8F, 1.15F, 1.0F);
 
     public static final float BASE_MAX_HEALTH = 60.0F;
     public static final float REPAIR_AMOUNT = 10.0F;

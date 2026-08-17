@@ -18,6 +18,14 @@ Planned work is tracked in [`documentation/release-roadmap.md`](documentation/re
 - Removed shapeless plate recipes for **bronze**, **brass**, and **wrought iron** — those require hot forging on an anvil.
 - Copper plate now accepts `#materia:stone_hammers` (was incorrectly `#materia:iron_hammers`).
 
+### Chariots
+
+- **Bronze** and **iron chariots** — lightweight two-seat draft vehicles (driver + archer). Same draft team, surface speed, and wheel sounds as the hand cart; no chest, sleep, covers, shields, or pets.
+- **Model** — 1×1 open box with forward **hitch** (`ChariotModel`, 48×32 `{bronze,iron}_chariot.png` atlas); two wheels centered on the length.
+- **Draft hook** — lead attach at wheel-axle height, one block forward of chariot center (at the hitch).
+- **Combat durability** — bronze ~80 HP with modest damage reduction; iron ~120 HP and takes half damage (35% from fire). See [Chariot](documentation/mechanics/chariot.md).
+- **Recipes** — shapeless: 2× cart wheel, 2× smooth planks, 3× metal plate, pole, rivets.
+
 ### Cart side shields
 
 - **Side pavises** — attach up to **two** vanilla **`minecraft:shield`** items (one per side wall). Right-click the cart with a shield; **sneak + use** removes the shield on your side.
@@ -27,6 +35,7 @@ Planned work is tracked in [`documentation/release-roadmap.md`](documentation/re
 
 ### Cart pets & wheel sounds
 
+- **Version-specific vanilla woods** — cart items register only for vanilla log types that exist in that Minecraft version (no mangrove/cherry/pale oak on 1.18.2, etc.); Materia woods are the same on all supported versions.
 - **Pet passengers** — tamed **cats**, **wolves**, and **parrots** can ride in the cart bed (max **two** occupants: one player + one pet). Uses vanilla boat boarding; pets keep creeper-scare behavior while aboard.
 - **Wheel rolling** — surface clips play as **three 1-second segments** (`cart_<surface>_1.ogg` … `_3.ogg`) cycled every second while moving, so audio stops within ~1s of the cart stopping (replace segment files after splitting the old ~3s loops).
 

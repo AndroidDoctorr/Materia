@@ -473,7 +473,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
                 if (!player.getAbilities().instabuild) {
                     stack.shrink(1);
                 }
-                this.level().playSound(null, this.blockPosition(), SoundEvents.ARMOR_EQUIP_IRON, SoundSource.PLAYERS,
+                this.level().playSound(null, this.blockPosition(), SoundEvents.ARMOR_EQUIP_IRON.value(), SoundSource.PLAYERS,
                         0.9F, 1.0F);
                 this.gameEvent(GameEvent.ENTITY_INTERACT, player);
             }
@@ -630,12 +630,10 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
 
 
 
-    @Override
     public double getPassengersRidingOffset() {
         return (double) (RENDER_Y_OFFSET + WHEEL_RADIUS + HEIGHT - 0.50F);
     }
 
-    @Override
     protected float getSinglePassengerXOffset() {
         return 0.0F;
     }
@@ -691,7 +689,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
     }
 
     private double getCartBedSleepY(Entity passenger) {
-        return this.getCartBedSurfaceY() + CART_SLEEP_BODY_LIFT + passenger.getMyRidingOffset();
+        return this.getCartBedSurfaceY() + CART_SLEEP_BODY_LIFT;
     }
 
     public float getCartSleepYaw() {
@@ -709,7 +707,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
         Vec3 forward = this.getForward();
         double along = PET_FORWARD_NUDGE - PET_BACK_OFFSET;
         double x = this.getX() + forward.x * along;
-        double y = this.getCartBedSurfaceY() + PET_BODY_LIFT + pet.getMyRidingOffset();
+        double y = this.getCartBedSurfaceY() + PET_BODY_LIFT;
         double z = this.getZ() + forward.z * along;
         callback.accept(pet, x, y, z);
     }
@@ -1957,16 +1955,17 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
         }
         ItemStack stack = new ItemStack(this.getDropItem());
         if (this.hasCustomName()) {
-            stack.setHoverName(this.getCustomName());
+            stack.set(DataComponents.CUSTOM_NAME, this.getCustomName());
         }
-        CompoundTag tag = stack.getOrCreateTag();
+        CompoundTag tag = new CompoundTag();
         if (!this.isChestVehicleEmpty()) {
-            this.addChestVehicleSaveData(tag);
+            this.addChestVehicleSaveData(tag, this.registryAccess());
         }
         tag.putFloat("CartHealth", this.getCartHealth());
         if (this.hasAnyShield()) {
             tag.putByte("ShieldSides", (byte) this.getShieldSidesMask());
         }
+        stack.set(DataComponents.CUSTOM_DATA, CustomData.of(tag));
         this.giveOrDropItem(player, stack);
         this.gameEvent(GameEvent.ENTITY_INTERACT, player);
         this.level().playSound(null, this.blockPosition(), SoundEvents.WOOD_PLACE, SoundSource.PLAYERS, 0.9F, 1.0F);
@@ -2156,7 +2155,8 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
         if (!(this.level() instanceof ServerLevel serverLevel)) {
             return;
         }
-        LootTable table = serverLevel.getServer().getLootData().getLootTable(CART_DESTROY_LOOT);
+        LootTable table = serverLevel.getServer().reloadableRegistries()
+                .getLootTable(ResourceKey.create(Registries.LOOT_TABLE, CART_DESTROY_LOOT));
         LootParams params = new LootParams.Builder(serverLevel)
                 .withParameter(LootContextParams.THIS_ENTITY, this)
                 .withParameter(LootContextParams.ORIGIN, this.position())

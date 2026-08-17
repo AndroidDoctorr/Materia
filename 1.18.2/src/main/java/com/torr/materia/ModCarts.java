@@ -2,6 +2,7 @@ package com.torr.materia;
 
 import com.torr.materia.item.CartItem;
 import com.torr.materia.item.CartWoodType;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -21,9 +22,9 @@ public final class ModCarts {
     static void registerAll() {
         for (CartWoodType wood : CartWoodType.values()) {
             CART_BASES.put(wood, ModItems.ITEMS.register(wood.getCartBaseId(),
-                    () -> new Item(new Item.Properties())));
+                    () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS))));
             CARTS.put(wood, ModItems.ITEMS.register(wood.getCartId(),
-                    () -> new CartItem(wood, new Item.Properties().stacksTo(1))));
+                    () -> new CartItem(wood, new Item.Properties().tab(CreativeModeTab.TAB_TRANSPORTATION).stacksTo(1))));
         }
     }
 

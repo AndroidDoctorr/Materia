@@ -6,6 +6,7 @@ import com.torr.materia.client.model.CartCoverModel;
 import com.torr.materia.client.model.CartLanternModel;
 import com.torr.materia.client.model.CartShieldModel;
 import com.torr.materia.client.model.CartModel;
+import com.torr.materia.client.model.ChariotModel;
 import com.torr.materia.client.renderer.CustomSheepFurLayer;
 import net.minecraft.client.renderer.entity.SheepRenderer;
 import net.minecraft.world.entity.EntityType;
@@ -24,6 +25,7 @@ public class ClientRenderLayers {
         event.registerLayerDefinition(CartCoverModel.LAYER, CartCoverModel::createBodyLayer);
         event.registerLayerDefinition(CartLanternModel.LAYER, CartLanternModel::createBodyLayer);
         event.registerLayerDefinition(CartShieldModel.LAYER, CartShieldModel::createBodyLayer);
+        event.registerLayerDefinition(ChariotModel.LAYER, ChariotModel::createBodyLayer);
     }
     
     @SubscribeEvent

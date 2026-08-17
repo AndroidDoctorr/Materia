@@ -61,7 +61,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LightBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
@@ -351,7 +350,6 @@ public class CartEntity extends Boat implements Container, MenuProvider {
                 this.giveOrDropItem(player, new ItemStack(Items.SHIELD));
                 this.level.playSound(null, this.blockPosition(), SoundEvents.SHIELD_BLOCK, SoundSource.PLAYERS,
                         0.8F, 1.0F);
-                this.gameEvent(GameEvent.ENTITY_INTERACT, player);
             }
             return InteractionResult.sidedSuccess(this.level.isClientSide);
         }
@@ -371,7 +369,6 @@ public class CartEntity extends Boat implements Container, MenuProvider {
                 }
                 this.level.playSound(null, this.blockPosition(), SoundEvents.ARMOR_EQUIP_IRON, SoundSource.PLAYERS,
                         0.9F, 1.0F);
-                this.gameEvent(GameEvent.ENTITY_INTERACT, player);
             }
             return InteractionResult.sidedSuccess(this.level.isClientSide);
         }
@@ -452,7 +449,6 @@ public class CartEntity extends Boat implements Container, MenuProvider {
         return (double) (RENDER_Y_OFFSET + WHEEL_RADIUS + HEIGHT - 0.50F);
     }
 
-    @Override
     protected float getSinglePassengerXOffset() {
         return 0.0F;
     }
@@ -522,32 +518,15 @@ public class CartEntity extends Boat implements Container, MenuProvider {
         player.setXRot(0.0F);
     }
 
-    private void positionPetRider(Entity pet, MoveFunction callback) {
-        Vec3 forward = this.getForward();
-        double along = PET_FORWARD_NUDGE - PET_BACK_OFFSET;
-        double x = this.getX() + forward.x * along;
-        double y = this.getCartBedSurfaceY() + PET_BODY_LIFT + pet.getMyRidingOffset();
-        double z = this.getZ() + forward.z * along;
-        callback.accept(pet, x, y, z);
-    }
-
-    private void updateCartPetPoses() {
-        for (Entity passenger : this.getPassengers()) {
-            if (passenger instanceof Cat cat) {
-                cat.setInSittingPose(true);
-            }
-        }
-    }
-
-    private void positionSleepingRider(Entity passenger, MoveFunction callback) {
+    private void positionSleepingRiderDirect(Entity passenger) {
         Vec3 seat = this.getPassengerSeatOffset();
         Vec3 forward = this.getForward();
         double backX = -forward.x * CART_SLEEP_BACK_OFFSET;
         double backZ = -forward.z * CART_SLEEP_BACK_OFFSET;
-        double x = this.getX() + seat.x + backX;
-        double y = this.getCartBedSleepY(passenger);
-        double z = this.getZ() + seat.z + backZ;
-        callback.accept(passenger, x, y, z);
+        passenger.setPos(
+                this.getX() + seat.x + backX,
+                this.getCartBedSleepY(passenger),
+                this.getZ() + seat.z + backZ);
     }
 
     private boolean isDriverSleeping() {
@@ -559,19 +538,39 @@ public class CartEntity extends Boat implements Container, MenuProvider {
         return false;
     }
 
+    private void positionPetRiderDirect(Entity pet) {
+        Vec3 forward = this.getForward();
+        double along = PET_FORWARD_NUDGE - PET_BACK_OFFSET;
+        pet.setPos(
+                this.getX() + forward.x * along,
+                this.getCartBedSurfaceY() + PET_BODY_LIFT + pet.getMyRidingOffset(),
+                this.getZ() + forward.z * along);
+    }
+
+    private void updateCartPetPoses() {
+        for (Entity passenger : this.getPassengers()) {
+            if (passenger instanceof Cat cat) {
+                cat.setInSittingPose(true);
+            }
+        }
+    }
+
     @Override
-    protected void positionRider(Entity passenger, MoveFunction callback) {
+    public void positionRider(Entity passenger) {
         if (isCartPetPassenger(passenger)) {
-            this.positionPetRider(passenger, callback);
+            this.positionPetRiderDirect(passenger);
             return;
         }
         if (passenger instanceof Player player && CartSleepHandler.shouldSkipPassengerPositioning(player)) {
-            this.positionSleepingRider(passenger, callback);
+            this.positionSleepingRiderDirect(passenger);
             return;
         }
+        this.clampRotation(passenger);
         Vec3 seat = this.getPassengerSeatOffset();
-        super.positionRider(passenger, (entity, x, y, z) ->
-                callback.accept(entity, x + seat.x, y, z + seat.z));
+        passenger.setPos(
+                this.getX() + seat.x,
+                this.getY() + this.getPassengersRidingOffset() + passenger.getMyRidingOffset(),
+                this.getZ() + seat.z);
     }
 
     protected BlockPos getSleepBlockPos() {
@@ -1239,7 +1238,6 @@ public class CartEntity extends Boat implements Container, MenuProvider {
                     if (!player.getAbilities().instabuild) {
                         stack.shrink(1);
                     }
-                    this.gameEvent(GameEvent.ENTITY_INTERACT, player);
                 }
                 return InteractionResult.sidedSuccess(this.level.isClientSide);
             }
@@ -1249,7 +1247,6 @@ public class CartEntity extends Boat implements Container, MenuProvider {
                     if (!player.getAbilities().instabuild) {
                         stack.shrink(1);
                     }
-                    this.gameEvent(GameEvent.ENTITY_INTERACT, player);
                 }
                 return InteractionResult.sidedSuccess(this.level.isClientSide);
             }
@@ -1260,7 +1257,6 @@ public class CartEntity extends Boat implements Container, MenuProvider {
                     if (!player.getAbilities().instabuild) {
                         stack.shrink(1);
                     }
-                    this.gameEvent(GameEvent.ENTITY_INTERACT, player);
                     this.level.playSound(null, this.blockPosition(), SoundEvents.WOOD_PLACE, SoundSource.PLAYERS,
                             0.8F, 1.0F);
                 }
@@ -1291,7 +1287,6 @@ public class CartEntity extends Boat implements Container, MenuProvider {
         if (player.getVehicle() == this && !player.isShiftKeyDown() && stack.isEmpty()) {
             if (!this.level.isClientSide && player instanceof ServerPlayer serverPlayer) {
                 NetworkHooks.openGui(serverPlayer, this, buf -> buf.writeVarInt(this.getId()));
-                this.gameEvent(GameEvent.CONTAINER_OPEN, player);
             }
             return InteractionResult.sidedSuccess(this.level.isClientSide);
         }
@@ -1314,7 +1309,6 @@ public class CartEntity extends Boat implements Container, MenuProvider {
             this.releaseLeashedMobs(player);
             this.level.playSound(null, this.blockPosition(), SoundEvents.LEASH_KNOT_BREAK, SoundSource.PLAYERS, 1.0F,
                     1.0F);
-            this.gameEvent(GameEvent.ENTITY_INTERACT, player);
             return InteractionResult.SUCCESS;
         }
         if (this.hasCover()) {
@@ -1322,7 +1316,6 @@ public class CartEntity extends Boat implements Container, MenuProvider {
             this.setCoverColor(null);
             this.giveOrDropItem(player, new ItemStack(ModItems.getCartCover(color).get()));
             this.level.playSound(null, this.blockPosition(), SoundEvents.WOOL_PLACE, SoundSource.PLAYERS, 0.8F, 1.0F);
-            this.gameEvent(GameEvent.ENTITY_INTERACT, player);
             return InteractionResult.SUCCESS;
         }
         if (this.hasLantern()) {
@@ -1330,7 +1323,6 @@ public class CartEntity extends Boat implements Container, MenuProvider {
             this.giveOrDropItem(player, new ItemStack(Items.LANTERN));
             this.level.playSound(null, this.blockPosition(), SoundEvents.LANTERN_PLACE, SoundSource.BLOCKS, 1.0F,
                     1.0F);
-            this.gameEvent(GameEvent.ENTITY_INTERACT, player);
             return InteractionResult.SUCCESS;
         }
         if (this.tryPickUp(player)) {
@@ -1362,7 +1354,6 @@ public class CartEntity extends Boat implements Container, MenuProvider {
             tag.putByte("ShieldSides", (byte) this.getShieldSidesMask());
         }
         this.giveOrDropItem(player, stack);
-        this.gameEvent(GameEvent.ENTITY_INTERACT, player);
         this.level.playSound(null, this.blockPosition(), SoundEvents.WOOD_PLACE, SoundSource.PLAYERS, 0.9F, 1.0F);
         this.discard();
         return true;
@@ -1459,7 +1450,6 @@ public class CartEntity extends Boat implements Container, MenuProvider {
         this.setCartHealth(this.getCartHealth() - amount);
         this.setHurtTime(10);
         this.markHurt();
-        this.gameEvent(GameEvent.ENTITY_DAMAGED, source.getEntity());
         if (this.getCartHealth() <= 0.0F) {
             if (this.level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
                 this.dropDestroyLoot(source);

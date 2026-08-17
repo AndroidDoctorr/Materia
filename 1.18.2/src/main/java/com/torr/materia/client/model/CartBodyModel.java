@@ -55,6 +55,8 @@ public class CartBodyModel extends EntityModel<CartEntity> {
     public final ModelPart floor;
     public final ModelPart wallNorthFace;
     public final ModelPart wallSouthFace;
+    /** Plain-plank strip over the back wall top edge (cross-UV would otherwise bleed tools art). */
+    public final ModelPart wallSouthTopCap;
     public final ModelPart wallWest;
     public final ModelPart wallEast;
     public final ModelPart draftArmLeft;
@@ -66,6 +68,7 @@ public class CartBodyModel extends EntityModel<CartEntity> {
         this.floor = root.getChild("floor");
         this.wallNorthFace = root.getChild("wall_north_face");
         this.wallSouthFace = root.getChild("wall_south_face");
+        this.wallSouthTopCap = root.getChild("wall_south_top_cap");
         this.wallWest = root.getChild("wall_west");
         this.wallEast = root.getChild("wall_east");
         this.draftArmLeft = root.getChild("draft_arm_left");
@@ -97,6 +100,13 @@ public class CartBodyModel extends EntityModel<CartEntity> {
                 CubeListBuilder.create()
                         .texOffs(BACK_U, BACK_V)
                         .addBox(-HALF_W, BODY_BASE + FLOOR_H, HALF_L - WALL_T, W, WALL_H, WALL_T),
+                PartPose.ZERO);
+
+        root.addOrReplaceChild(
+                "wall_south_top_cap",
+                CubeListBuilder.create()
+                        .texOffs(HULL_U, HULL_V)
+                        .addBox(-HALF_W, BODY_BASE + FLOOR_H + WALL_H - 1.0F, HALF_L - WALL_T, W, 1.0F, WALL_T),
                 PartPose.ZERO);
 
         root.addOrReplaceChild(
@@ -168,6 +178,7 @@ public class CartBodyModel extends EntityModel<CartEntity> {
     public void renderBack(com.mojang.blaze3d.vertex.PoseStack poseStack,
             com.mojang.blaze3d.vertex.VertexConsumer buffer, int packedLight, int packedOverlay) {
         wallSouthFace.render(poseStack, buffer, packedLight, packedOverlay);
+        wallSouthTopCap.render(poseStack, buffer, packedLight, packedOverlay);
     }
 
     public void renderDraftArms(com.mojang.blaze3d.vertex.PoseStack poseStack,

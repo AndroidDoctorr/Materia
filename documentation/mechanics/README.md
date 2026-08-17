@@ -28,6 +28,7 @@ Use this section to document “systems” that affect multiple items/blocks/rec
 - [Animal drops (bones + fat)](animal-drops.md)
 - [Structure chest loot](structure-chest-loot.md)
 - [Hand cart](cart.md)
+- [Chariot](chariot.md)
 - [Vines (wisteria + grapes)](vines.md)
 - [Axes (early)](axes.md)
 - [Tools in crafting](tools-in-crafting.md)
