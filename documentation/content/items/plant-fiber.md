@@ -9,7 +9,8 @@ Plant fiber is a basic early-game material used for bindings (like lashing).
 - From sugar cane:
   - [Recipe JSON](../../../shared/src/main/resources/data/materia/recipes/plant_fiber_from_sugarcane.json)
 - From grass and ferns:
-  - small chance to drop plant fiber when broken normally (no shears / no silk touch)
+  - **Tall grass** and **large ferns** always drop plant fiber when broken normally (no shears / no silk touch)
+  - **Short grass** and **ferns** have a small chance to drop plant fiber when broken normally
 - From leaves:
   - small chance to drop plant fiber when broken normally (no shears / no silk touch)
 - From stripping logs:

@@ -43,8 +43,18 @@ Related blocks:
 
 - `materia:rubber_wood_log` → `materia:tapped_rubber_wood_log`
 
+## Fig latex
+
+- Right-click a fig log → becomes a tapped fig log
+- Drops 1–2 latex
+
+Related blocks:
+
+- `materia:fig_log` → `materia:tapped_fig_log`
+
 See also:
 
+- [Fig tree](../content/blocks/fig-tree.md)
 - [Rubber tree](../content/blocks/rubber-tree.md)
 - [Tapped rubber tree log](../content/blocks/tapped-rubber-tree-log.md)
 

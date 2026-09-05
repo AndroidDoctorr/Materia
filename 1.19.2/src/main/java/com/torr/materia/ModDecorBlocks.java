@@ -141,6 +141,7 @@ public final class ModDecorBlocks {
     public static final RegistryObject<Block> SANDSTONE_BRICKS = stoneCube("sandstone_bricks");
     public static final RegistryObject<Block> SANDSTONE_TILES = stoneCube("sandstone_tiles");
     public static final RegistryObject<Block> BLACKSTONE_TILES = stoneCube("blackstone_tiles");
+    public static final RegistryObject<Block> TERRACOTTA_TILES = stoneCube("terracotta_tiles");
 
     public static final RegistryObject<Block> STONE_URN = sculptureUrn("stone_urn");
     public static final RegistryObject<Block> MARBLE_URN = sculptureUrn("marble_urn");

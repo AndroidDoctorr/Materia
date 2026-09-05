@@ -16,7 +16,7 @@ import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.common.loot.LootModifier;
 
 /**
- * Adds a small chance for grass / ferns to drop plant fibers when broken normally.
+ * Tall grass and large ferns always drop plant fiber; short grass and ferns have a small chance.
  */
 public class GrassFiberModifier extends LootModifier {
     private final float chance;
@@ -40,13 +40,11 @@ public class GrassFiberModifier extends LootModifier {
         BlockState state = context.getParamOrNull(LootContextParams.BLOCK_STATE);
         if (state == null) return generatedLoot;
 
-        boolean isGrassLike =
-                state.is(Blocks.GRASS) ||
-                state.is(Blocks.TALL_GRASS) ||
-                state.is(Blocks.FERN) ||
-                state.is(Blocks.LARGE_FERN);
-
-        if (!isGrassLike) return generatedLoot;
+        boolean isTall = state.is(Blocks.TALL_GRASS) || state.is(Blocks.LARGE_FERN);
+        boolean isShort = state.is(Blocks.GRASS) || state.is(Blocks.FERN);
+        if (!isTall && !isShort) {
+            return generatedLoot;
+        }
 
         ItemStack tool = context.getParamOrNull(LootContextParams.TOOL);
         if (tool != null) {
@@ -57,7 +55,7 @@ public class GrassFiberModifier extends LootModifier {
             }
         }
 
-        if (context.getRandom().nextFloat() < chance) {
+        if (isTall || context.getRandom().nextFloat() < chance) {
             generatedLoot.add(new ItemStack(ModItems.PLANT_FIBER.get()));
         }
         return generatedLoot;

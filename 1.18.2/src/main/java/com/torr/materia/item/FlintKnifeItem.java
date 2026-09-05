@@ -79,6 +79,30 @@ public class FlintKnifeItem extends SwordItem {
             return InteractionResult.sidedSuccess(level.isClientSide());
         }
 
+        // Check if we're right-clicking a fig log
+        if (state.is(ModBlocks.FIG_LOG.get())) {
+            if (!level.isClientSide()) {
+                // Convert to tapped fig log
+                level.setBlock(pos, ModBlocks.TAPPED_FIG_LOG.get().defaultBlockState()
+                        .setValue(RotatedPillarBlock.AXIS, state.getValue(RotatedPillarBlock.AXIS)), 3);
+                
+                // Drop 1-2 latex items
+                int latexCount = level.random.nextInt(2) + 1; // 1 or 2
+                ItemStack latexStack = new ItemStack(ModItems.LATEX.get(), latexCount);
+                net.minecraft.world.entity.item.ItemEntity itemEntity = new net.minecraft.world.entity.item.ItemEntity(
+                        level, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, latexStack);
+                level.addFreshEntity(itemEntity);
+                
+                // Damage the knife
+                stack.hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(context.getHand()));
+                
+                // Play sound
+                level.playSound(null, pos, ModSounds.FLINT_CRAFT.get(), SoundSource.BLOCKS, 1.0F, 
+                        level.random.nextFloat() * 0.4F + 0.8F);
+            }
+            return InteractionResult.sidedSuccess(level.isClientSide());
+        }
+
         return super.useOn(context);
     }
 

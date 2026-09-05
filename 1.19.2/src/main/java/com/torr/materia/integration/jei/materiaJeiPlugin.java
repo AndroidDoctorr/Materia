@@ -140,6 +140,7 @@ public class materiaJeiPlugin implements IModPlugin {
                 new HewingJeiRecipe(Ingredient.of(ModBlocks.BAOBAB_LOG.get().asItem()), basicAxes, new ItemStack(ModItems.ROUGH_OAK_PLANK.get(), 4)),
                 new HewingJeiRecipe(Ingredient.of(ModBlocks.MAPLE_LOG.get().asItem()), basicAxes, new ItemStack(ModItems.ROUGH_BIRCH_PLANK.get(), 4)),
                 new HewingJeiRecipe(Ingredient.of(ModBlocks.FIG_LOG.get().asItem()), basicAxes, new ItemStack(ModItems.ROUGH_FIG_PLANK.get(), 4)),
+                new HewingJeiRecipe(Ingredient.of(ModBlocks.TAPPED_FIG_LOG.get().asItem()), basicAxes, new ItemStack(ModItems.ROUGH_FIG_PLANK.get(), 4)),
                 new HewingJeiRecipe(Ingredient.of(ModBlocks.CEDAR_LOG.get().asItem()), basicAxes, new ItemStack(ModItems.ROUGH_CEDAR_PLANK.get(), 4)),
                 new HewingJeiRecipe(Ingredient.of(ModBlocks.EUCALYPTUS_LOG.get().asItem()), basicAxes, new ItemStack(ModItems.ROUGH_EUCALYPTUS_PLANK.get(), 4)),
                 new HewingJeiRecipe(Ingredient.of(ModBlocks.RAINBOW_EUCALYPTUS_LOG.get().asItem()), basicAxes, new ItemStack(ModItems.ROUGH_EUCALYPTUS_PLANK.get(), 4))

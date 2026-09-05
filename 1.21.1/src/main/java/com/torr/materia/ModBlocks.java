@@ -887,6 +887,8 @@ public class ModBlocks {
         // Fig tree
         public static final RegistryObject<Block> FIG_LOG = registerBlock("fig_log",
                         () -> new com.torr.materia.block.FlammableRotatedPillarBlock(BlockBehaviour.Properties.of().strength(2.0f).sound(SoundType.WOOD)));
+        public static final RegistryObject<Block> TAPPED_FIG_LOG = registerBlock("tapped_fig_log",
+                        () -> new com.torr.materia.block.TappedRubberTreeLogBlock());
         public static final RegistryObject<Block> FIG_SAPLING = registerBlock("fig_sapling",
                         () -> new com.torr.materia.block.FigTreeSaplingBlock(BlockBehaviour.Properties.of().noCollission().instabreak().sound(SoundType.GRASS).randomTicks()));
         public static final RegistryObject<Block> FIG_LEAVES = registerBlock("fig_leaves",

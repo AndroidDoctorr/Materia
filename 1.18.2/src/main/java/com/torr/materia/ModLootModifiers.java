@@ -1,6 +1,7 @@
 package com.torr.materia;
 
 import com.torr.materia.loot.AnimalDropModifier;
+import com.torr.materia.loot.GrassFiberModifier;
 import com.torr.materia.loot.InjectLootTableModifier;
 import com.torr.materia.loot.LeafFiberModifier;
 import com.torr.materia.loot.SheepWoolModifier;
@@ -21,6 +22,9 @@ public class ModLootModifiers {
 
     public static final RegistryObject<GlobalLootModifierSerializer<LeafFiberModifier>> LEAF_FIBER_MODIFIER =
             GLM_SERIALIZERS.register("leaf_fiber_modifier", LeafFiberModifier.Serializer::new);
+
+    public static final RegistryObject<GlobalLootModifierSerializer<GrassFiberModifier>> GRASS_FIBER_MODIFIER =
+            GLM_SERIALIZERS.register("grass_fiber_modifier", GrassFiberModifier.Serializer::new);
 
     public static final RegistryObject<GlobalLootModifierSerializer<InjectLootTableModifier>> INJECT_LOOT_TABLE =
             GLM_SERIALIZERS.register("inject_loot_table", InjectLootTableModifier.Serializer::new);

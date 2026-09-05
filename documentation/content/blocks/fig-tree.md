@@ -13,7 +13,8 @@ Fig trees are a temperate worldgen tree with harvestable fruit on the leaves.
 
 ## Blocks
 
-- Log: `materia:fig_log` — hew to 4× `materia:rough_fig_plank`
+- Log: `materia:fig_log` — hew to 4× `materia:rough_fig_plank`; right-click with a knife to tap for 1–2 latex (becomes `materia:tapped_fig_log`)
+- Tapped log: `materia:tapped_fig_log` — hews to 4× `materia:rough_fig_plank`; fire pit → charcoal + ash
 - Leaves: `materia:fig_leaves` (`has_figs` property; right-click harvest, 20% random-tick regrowth)
 - Sapling: `materia:fig_sapling`
 

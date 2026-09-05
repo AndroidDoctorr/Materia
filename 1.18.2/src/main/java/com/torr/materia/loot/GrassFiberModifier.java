@@ -1,21 +1,21 @@
 package com.torr.materia.loot;
 
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.gson.JsonObject;
 import com.torr.materia.ModItems;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraftforge.common.loot.IGlobalLootModifier;
+import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.common.loot.LootModifier;
+
+import javax.annotation.Nonnull;
+import java.util.List;
 
 /**
  * Tall grass and large ferns always drop plant fiber; short grass and ferns have a small chance.
@@ -23,37 +23,31 @@ import net.minecraftforge.common.loot.LootModifier;
 public class GrassFiberModifier extends LootModifier {
     private final float chance;
 
-    public static final MapCodec<GrassFiberModifier> CODEC = RecordCodecBuilder.mapCodec(inst -> codecStart(inst).and(
-            Codec.FLOAT.optionalFieldOf("chance", 0.08f).forGetter(m -> m.chance)
-    ).apply(inst, GrassFiberModifier::new));
-
     protected GrassFiberModifier(LootItemCondition[] conditionsIn, float chance) {
         super(conditionsIn);
         this.chance = chance;
     }
 
+    @Nonnull
     @Override
-    public MapCodec<? extends IGlobalLootModifier> codec() {
-        return CODEC;
-    }
-
-    @Override
-    protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
+    protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
         BlockState state = context.getParamOrNull(LootContextParams.BLOCK_STATE);
-        if (state == null) return generatedLoot;
+        if (state == null) {
+            return generatedLoot;
+        }
 
         boolean isTall = state.is(Blocks.TALL_GRASS) || state.is(Blocks.LARGE_FERN);
-        boolean isShort = state.is(Blocks.SHORT_GRASS) || state.is(Blocks.FERN);
+        boolean isShort = state.is(Blocks.GRASS) || state.is(Blocks.FERN);
         if (!isTall && !isShort) {
             return generatedLoot;
         }
 
         ItemStack tool = context.getParamOrNull(LootContextParams.TOOL);
         if (tool != null) {
-            // If you shear/silk-touch grass, vanilla expects the block itself, so don't add fiber.
-            if (tool.is(Items.SHEARS)) return generatedLoot;
-            var enchantments = context.getLevel().registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
-            if (net.minecraft.world.item.enchantment.EnchantmentHelper.getItemEnchantmentLevel(enchantments.getOrThrow(Enchantments.SILK_TOUCH), tool) > 0) {
+            if (tool.is(Items.SHEARS)) {
+                return generatedLoot;
+            }
+            if (net.minecraft.world.item.enchantment.EnchantmentHelper.getItemEnchantmentLevel(Enchantments.SILK_TOUCH, tool) > 0) {
                 return generatedLoot;
             }
         }
@@ -63,5 +57,19 @@ public class GrassFiberModifier extends LootModifier {
         }
         return generatedLoot;
     }
-}
 
+    public static class Serializer extends GlobalLootModifierSerializer<GrassFiberModifier> {
+        @Override
+        public GrassFiberModifier read(ResourceLocation name, JsonObject object, LootItemCondition[] conditionsIn) {
+            float chance = object.has("chance") ? object.get("chance").getAsFloat() : 0.08f;
+            return new GrassFiberModifier(conditionsIn, chance);
+        }
+
+        @Override
+        public JsonObject write(GrassFiberModifier instance) {
+            JsonObject json = makeConditions(instance.conditions);
+            json.addProperty("chance", instance.chance);
+            return json;
+        }
+    }
+}

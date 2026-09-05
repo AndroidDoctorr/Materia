@@ -99,6 +99,7 @@ public class HewingRecipe extends CustomRecipe {
         if (log.is(ModBlocks.RAINBOW_EUCALYPTUS_LOG.get().asItem())) return new ItemStack(ModItems.ROUGH_EUCALYPTUS_PLANK.get(), 4);
         if (log.is(ModBlocks.SAPPED_SPRUCE_LOG.get().asItem())) return new ItemStack(ModItems.ROUGH_SPRUCE_PLANK.get(), 4);
         if (log.is(ModBlocks.TAPPED_RUBBER_WOOD_LOG.get().asItem())) return new ItemStack(ModItems.ROUGH_RUBBER_WOOD_PLANK.get(), 4);
+        if (log.is(ModBlocks.TAPPED_FIG_LOG.get().asItem())) return new ItemStack(ModItems.ROUGH_FIG_PLANK.get(), 4);
         
         // default to oak for any other log (includes OAK_LOG)
         return new ItemStack(ModItems.ROUGH_OAK_PLANK.get(), 4);
