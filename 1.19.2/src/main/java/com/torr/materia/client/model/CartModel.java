@@ -15,8 +15,7 @@ import net.minecraft.resources.ResourceLocation;
 /**
  * Cart hull + wheels in 1/16-block units (16 units = 1 block). Matches {@link CartEntity} footprint.
  * <p>
- * Wheels are authored at 1-block diameter so a 16×16 texture maps 1:1 to the disc face, then scaled
- * in {@link #setupAnim} to {@link CartEntity#WHEEL_RADIUS}.
+ * Wheels use a 1-block template and {@link EntityPlaneRenderer} (1.19.x cannot cull single cube faces).
  */
 public class CartModel extends EntityModel<CartEntity> {
 
@@ -37,18 +36,15 @@ public class CartModel extends EntityModel<CartEntity> {
     private static final float WALL_T = W * CartEntity.WALL_THICKNESS_FRACTION;
     private static final float INNER_L = L - 2.0F * WALL_T;
 
-    /** Template wheel diameter in model units — one block, matches a 16×16 wheel texture. */
+    /** Template wheel diameter — matches 1.20+ ({@link #WHEEL_PART_SCALE} applied when drawing). */
     private static final float WHEEL_MESH_D = U;
     private static final float WHEEL_MESH_T = 2.0F;
-    private static final float WHEEL_MESH_HALF = WHEEL_MESH_D * 0.5F;
-
+    private static final float WHEEL_PART_SCALE = CartEntity.WHEEL_RADIUS * 2.0F;
     private static final float WHEEL_D = CartEntity.WHEEL_RADIUS * 2.0F * U;
     /** Hull floor sits at wheel axle height (center of the disc). */
     private static final float BODY_BASE = WHEEL_D * 0.5F;
     private static final float WHEEL_Z_CENTER_FRONT = -HALF_L + WHEEL_D * 0.5F + 2.0F;
     private static final float WHEEL_Z_CENTER_BACK = HALF_L - WHEEL_D * 0.5F - 2.0F;
-    /** Outward wheel disc — left wheels use this face as-is; right wheels rotate 180° on Y. */
-    private static final float WHEEL_PART_SCALE = CartEntity.WHEEL_RADIUS * 2.0F;
 
     /** Draft arms extend from the front wall (−Z); matches {@link CartEntity#DRAFT_HOOK_FORWARD}. */
     private static final float DRAFT_ARM_LEN = 5.0F;
@@ -192,41 +188,21 @@ public class CartModel extends EntityModel<CartEntity> {
         return LayerDefinition.create(mesh, TEX_W, TEX_H);
     }
 
-    /**
-     * @param faceOutward when true, rotate 180° on Y so {@link #WHEEL_DISC_FACE} points away from the cart
-     *                    (right side) instead of using UV mirror or a separate east face.
-     */
     private static void addWheel(PartDefinition root, String name, float centerX, float centerZ, boolean faceOutward) {
         PartPose pose = faceOutward
                 ? PartPose.offsetAndRotation(centerX, BODY_BASE, centerZ, 0.0F, (float) Math.PI, 0.0F)
                 : PartPose.offset(centerX, BODY_BASE, centerZ);
-        root.addOrReplaceChild(
-                name,
-                CubeListBuilder.create()
-                        .texOffs(0, 0)
-                        .addBox(-WHEEL_MESH_T * 0.5F, -WHEEL_MESH_HALF, -WHEEL_MESH_HALF, WHEEL_MESH_T, WHEEL_MESH_D,
-                                WHEEL_MESH_D),
-                pose);
+        root.addOrReplaceChild(name, CubeListBuilder.create(), pose);
     }
 
     @Override
     public void setupAnim(CartEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks,
             float netHeadYaw, float headPitch) {
-        scaleWheel(wheelLeftFront);
-        scaleWheel(wheelLeftBack);
-        scaleWheel(wheelRightFront);
-        scaleWheel(wheelRightBack);
         float roll = entity.wheelRotation;
         wheelLeftFront.xRot = roll;
         wheelLeftBack.xRot = roll;
         wheelRightFront.xRot = -roll;
         wheelRightBack.xRot = -roll;
-    }
-
-    private static void scaleWheel(ModelPart wheel) {
-        wheel.xScale = WHEEL_PART_SCALE;
-        wheel.yScale = WHEEL_PART_SCALE;
-        wheel.zScale = WHEEL_PART_SCALE;
     }
 
     public void renderHullBody(com.mojang.blaze3d.vertex.PoseStack poseStack,
@@ -269,10 +245,14 @@ public class CartModel extends EntityModel<CartEntity> {
 
     public void renderWheels(com.mojang.blaze3d.vertex.PoseStack poseStack,
             com.mojang.blaze3d.vertex.VertexConsumer buffer, int packedLight, int packedOverlay) {
-        wheelLeftFront.render(poseStack, buffer, packedLight, packedOverlay);
-        wheelLeftBack.render(poseStack, buffer, packedLight, packedOverlay);
-        wheelRightFront.render(poseStack, buffer, packedLight, packedOverlay);
-        wheelRightBack.render(poseStack, buffer, packedLight, packedOverlay);
+        EntityPlaneRenderer.westDiscOnPart(poseStack, buffer, wheelLeftFront, packedLight, packedOverlay,
+                WHEEL_MESH_T, WHEEL_MESH_D, WHEEL_PART_SCALE, 0, 0, TEX_W, TEX_H, false);
+        EntityPlaneRenderer.westDiscOnPart(poseStack, buffer, wheelLeftBack, packedLight, packedOverlay,
+                WHEEL_MESH_T, WHEEL_MESH_D, WHEEL_PART_SCALE, 0, 0, TEX_W, TEX_H, false);
+        EntityPlaneRenderer.westDiscOnPart(poseStack, buffer, wheelRightFront, packedLight, packedOverlay,
+                WHEEL_MESH_T, WHEEL_MESH_D, WHEEL_PART_SCALE, 0, 0, TEX_W, TEX_H, false);
+        EntityPlaneRenderer.westDiscOnPart(poseStack, buffer, wheelRightBack, packedLight, packedOverlay,
+                WHEEL_MESH_T, WHEEL_MESH_D, WHEEL_PART_SCALE, 0, 0, TEX_W, TEX_H, false);
     }
 
     @Override

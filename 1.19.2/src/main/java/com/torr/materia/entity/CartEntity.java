@@ -746,26 +746,22 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
         return false;
     }
 
-    private void applyPassengerSeatOffset() {
-        if (this.getPassengers().isEmpty()) {
+    @Override
+    public void positionRider(Entity passenger) {
+        if (isCartPetPassenger(passenger)) {
+            this.positionPetRiderDirect(passenger);
             return;
         }
-        Vec3 seat = this.getPassengerSeatOffset();
-        for (Entity passenger : this.getPassengers()) {
-            if (isCartPetPassenger(passenger)) {
-                this.positionPetRiderDirect(passenger);
-                continue;
-            }
-            if (passenger instanceof Player player
-                    && CartSleepHandler.shouldSkipPassengerPositioning(player)) {
-                this.positionSleepingRiderDirect(passenger);
-                continue;
-            }
-            passenger.setPos(
-                    this.getX() + seat.x,
-                    this.getY() + this.getPassengersRidingOffset() + passenger.getMyRidingOffset(),
-                    this.getZ() + seat.z);
+        if (passenger instanceof Player player && CartSleepHandler.shouldSkipPassengerPositioning(player)) {
+            this.positionSleepingRiderDirect(passenger);
+            return;
         }
+        this.clampRotation(passenger);
+        Vec3 seat = this.getPassengerSeatOffset();
+        passenger.setPos(
+                this.getX() + seat.x,
+                this.getY() + this.getPassengersRidingOffset() + passenger.getMyRidingOffset(),
+                this.getZ() + seat.z);
     }
 
     protected BlockPos getSleepBlockPos() {
@@ -831,8 +827,6 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
         enforcePassengerLimits();
 
         this.updateCartPetPoses();
-
-        this.applyPassengerSeatOffset();
 
         float yaw = getYRot();
 

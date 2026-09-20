@@ -264,18 +264,18 @@ public class ChariotEntity extends Boat {
         return playerIndex == 0 ? DRIVER_FORWARD_OFFSET : ARCHER_FORWARD_OFFSET;
     }
 
-    private void applyPassengerSeatOffsets() {
-        for (Entity passenger : this.getPassengers()) {
-            if (!(passenger instanceof Player)) {
-                continue;
-            }
-            Vec3 forward = this.getForward();
-            float along = this.getPassengerForwardOffset(passenger);
-            passenger.setPos(
-                    this.getX() + forward.x * along,
-                    this.getY() + this.getPassengersRidingOffset() + passenger.getMyRidingOffset(),
-                    this.getZ() + forward.z * along);
+    @Override
+    public void positionRider(Entity passenger) {
+        if (!(passenger instanceof Player)) {
+            return;
         }
+        this.clampRotation(passenger);
+        Vec3 forward = this.getForward();
+        float along = this.getPassengerForwardOffset(passenger);
+        passenger.setPos(
+                this.getX() + forward.x * along,
+                this.getY() + this.getPassengersRidingOffset() + passenger.getMyRidingOffset(),
+                this.getZ() + forward.z * along);
     }
 
     @Override
@@ -322,7 +322,6 @@ public class ChariotEntity extends Boat {
     public void tick() {
         super.tick();
         this.enforcePassengerLimits();
-        this.applyPassengerSeatOffsets();
         float yaw = getYRot();
         if (Float.isNaN(lastCollisionYaw) || Math.abs(yaw - lastCollisionYaw) > 0.01F) {
             lastCollisionYaw = yaw;
