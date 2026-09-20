@@ -38,11 +38,9 @@ public class ChariotModel extends EntityModel<ChariotEntity> {
     private static final float WALL_T = 0.0F;
 
     private static final float WHEEL_MESH_D = U;
-    private static final float WHEEL_MESH_T = 1.0F;
+    private static final float WHEEL_MESH_T = 2.0F;
     private static final float WHEEL_MESH_HALF = WHEEL_MESH_D * 0.5F;
     private static final float WHEEL_PART_SCALE = ChariotEntity.WHEEL_RADIUS * 2.0F;
-    private static final float WHEEL_CUBE_RADIUS = WHEEL_MESH_HALF * WHEEL_PART_SCALE;
-
     private static final float WHEEL_D = ChariotEntity.WHEEL_RADIUS * 2.0F * U;
     private static final float BODY_BASE = WHEEL_D * 0.5F;
 
@@ -102,26 +100,24 @@ public class ChariotModel extends EntityModel<ChariotEntity> {
             com.mojang.blaze3d.vertex.VertexConsumer buffer, int packedLight, int packedOverlay) {
         com.mojang.blaze3d.vertex.PoseStack.Pose pose = poseStack.last();
         float wallY = BODY_BASE + FLOOR_H;
-        float panel = 1.0F;
-        EntityPlaneRenderer.boxFace(pose, buffer, Direction.UP, -HALF_W, BODY_BASE, -HALF_L, W, panel, L, 16, 16,
+        EntityPlaneRenderer.boxFace(pose, buffer, Direction.UP, -HALF_W, BODY_BASE, -HALF_L, W, FLOOR_H, L, 16, 16,
                 TEX_W, TEX_H, packedLight, packedOverlay);
-        EntityPlaneRenderer.boxFace(pose, buffer, Direction.NORTH, -HALF_W, wallY, -HALF_L, W, WALL_H, panel, 16, 0,
+        EntityPlaneRenderer.boxFace(pose, buffer, Direction.NORTH, -HALF_W, wallY, -HALF_L, W, WALL_H, WALL_T, 16, 0,
                 TEX_W, TEX_H, packedLight, packedOverlay);
-        EntityPlaneRenderer.boxFace(pose, buffer, Direction.EAST, HALF_W - panel, wallY, -HALF_L, panel, WALL_H, L, 0,
+        EntityPlaneRenderer.boxFace(pose, buffer, Direction.EAST, HALF_W - WALL_T, wallY, -HALF_L, WALL_T, WALL_H, L, 0,
                 0, TEX_W, TEX_H, packedLight, packedOverlay);
-        EntityPlaneRenderer.boxFace(pose, buffer, Direction.WEST, -HALF_W, wallY, -HALF_L, panel, WALL_H, L, 32, 0,
+        EntityPlaneRenderer.boxFace(pose, buffer, Direction.WEST, -HALF_W, wallY, -HALF_L, WALL_T, WALL_H, L, 32, 0,
                 TEX_W, TEX_H, packedLight, packedOverlay);
-        EntityPlaneRenderer.boxFace(pose, buffer, Direction.UP, -3.0F, wallY, -1.5F * L, 6.0F, panel, 16.0F, 15, 0,
+        EntityPlaneRenderer.boxFace(pose, buffer, Direction.UP, -3.0F, wallY, -1.5F * L, 6.0F, 0.0F, 16.0F, 15, 0,
                 TEX_W, TEX_H, packedLight, packedOverlay);
     }
 
     public void renderWheels(com.mojang.blaze3d.vertex.PoseStack poseStack,
             com.mojang.blaze3d.vertex.VertexConsumer buffer, int packedLight, int packedOverlay) {
-        float radius = WHEEL_CUBE_RADIUS;
         EntityPlaneRenderer.westDiscOnPart(poseStack, buffer, wheelLeft, packedLight, packedOverlay, WHEEL_MESH_T,
-                radius, 0, 16, TEX_W, TEX_H);
+                WHEEL_MESH_D, WHEEL_PART_SCALE, 0, 16, TEX_W, TEX_H, true);
         EntityPlaneRenderer.westDiscOnPart(poseStack, buffer, wheelRight, packedLight, packedOverlay, WHEEL_MESH_T,
-                radius, 0, 16, TEX_W, TEX_H);
+                WHEEL_MESH_D, WHEEL_PART_SCALE, 0, 16, TEX_W, TEX_H, true);
     }
 
     @Override
