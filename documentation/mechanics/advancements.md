@@ -42,7 +42,7 @@ Most triggers are **`minecraft:inventory_changed`** (“have this in inventory a
 | The Iron Age | `materia:the_iron_age` | **Either:** `materia:wrought_iron_ingot` **or** `materia:iron_anvil` |
 | Wings of Empire | `materia:wings_of_empire` | Have `materia:aquila_aurea` |
 | Cooked Carbon | `materia:cooked_carbon` | **Either:** `materia:coal_coke` **or** place `materia:coke_oven` |
-| Stacked Heat | `materia:stacked_heat` | **Any of:** `materia:blast_furnace_kiln`, `materia:furnace_kiln`, `materia:furnace_chimney` (datapack does not verify chimney-on-kiln formation) |
+| Stacked Heat | `materia:stacked_heat` | Requires `materia:blast_furnace_kiln`, `materia:forge`, and `materia:furnace_chimney` (datapack does not verify chimney-on-forge formation) |
 | Carbon Temper | `materia:carbon_temper` | Have `minecraft:iron_ingot` (refined iron tier); see [Iron ingot](../content/items/iron-ingot.md). |
 | Beer Is Good | `materia:beer_is_good` | Have `materia:beer_bottle` |
 | In Vino Veritas | `materia:in_vino_veritas` | Have `materia:wine_bottle` |

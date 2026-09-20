@@ -14,7 +14,7 @@ The vanilla `minecraft:blast_furnace` recipe is overridden to craft a blast furn
 
 Key ingredients:
 
-- `materia:furnace_kiln`
+- `materia:forge`
 - `#materia:hard_plates`
 - `#materia:all_rivets`
 - `materia:blower`

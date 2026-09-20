@@ -203,11 +203,13 @@ Related:
 
 Some vanilla workstation blocks are overridden to craft Materia machines instead.
 
-### Furnace → Furnace kiln
+### Forge (Materia smelter)
 
-- Recipe JSON: `shared/src/main/resources/data/minecraft/recipes/furnace.json`
-- Output: `materia:furnace_kiln`
-- Doc: [Furnace kiln](furnace-kiln.md)
+- Recipe JSON: `shared/src/main/resources/data/materia/recipes/forge.json`
+- Output: `materia:forge`
+- Doc: [Forge](forge.md)
+
+Vanilla `minecraft:furnace` is no longer overridden and remains craftable for mod compatibility.
 
 ### Blast furnace → Blast furnace kiln
 

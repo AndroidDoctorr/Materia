@@ -7,10 +7,10 @@
                 "items": [{"items": ["materia:blast_furnace_kiln"], "count": {"min": 1}}]
             }
         },
-        "furnace_kiln": {
+        "forge": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {
-                "items": [{"items": ["materia:furnace_kiln"], "count": {"min": 1}}]
+                "items": [{"items": ["materia:forge"], "count": {"min": 1}}]
             }
         },
         "chimney_stack": {
@@ -20,7 +20,7 @@
             }
         }
     },
-    "requirements": [["blast", "furnace_kiln", "chimney_stack"]],
+    "requirements": [["blast", "forge", "chimney_stack"]],
     "display": {
         "icon": {"item": "materia:blast_furnace_kiln"},
         "title": {"translate": "advancements.materia.stacked_heat.title"},

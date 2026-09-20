@@ -140,8 +140,8 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
             return new com.torr.materia.menu.BlastFurnaceMenu(containerId, inventory, this, this.data);
         }
         // If this BE is hosted by the furnace-kiln block, always use the furnace menu (dual-input)
-        if (this.level != null && this.level.getBlockState(this.worldPosition).getBlock() == com.torr.materia.ModBlocks.FURNACE_KILN.get()) {
-            return new com.torr.materia.menu.FurnaceKilnMenu(containerId, inventory, this, this.data);
+        if (this.level != null && this.level.getBlockState(this.worldPosition).getBlock() == com.torr.materia.ModBlocks.FORGE.get()) {
+            return new com.torr.materia.menu.ForgeMenu(containerId, inventory, this, this.data);
         }
         // Otherwise pick between basic and advanced kiln
         if (hasChimney()) {
@@ -234,7 +234,7 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
         if (level.getBlockState(worldPosition).getBlock() == ModBlocks.BLAST_FURNACE_KILN.get()) return true;
         BlockPos chimneyPos = worldPosition.above();
         // Furnace-kiln: dedicated furnace chimney or standard kiln chimney above (both stacks count)
-        if (level.getBlockState(worldPosition).getBlock() == ModBlocks.FURNACE_KILN.get()) {
+        if (level.getBlockState(worldPosition).getBlock() == ModBlocks.FORGE.get()) {
             BlockState above = level.getBlockState(chimneyPos);
             return above.is(ModBlocks.FURNACE_CHIMNEY.get()) || above.is(ModBlocks.CHIMNEY.get());
         }
@@ -248,7 +248,7 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
         if (level == null) return false;
         // Blast furnace and furnace-kiln behave as if bellows are always present
         if (level.getBlockState(worldPosition).getBlock() == ModBlocks.BLAST_FURNACE_KILN.get()) return true;
-        if (level.getBlockState(worldPosition).getBlock() == ModBlocks.FURNACE_KILN.get()) return true;
+        if (level.getBlockState(worldPosition).getBlock() == ModBlocks.FORGE.get()) return true;
         BlockPos[] adjacentPositions = {
             worldPosition.north(),
             worldPosition.south(),
@@ -279,7 +279,7 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
      */
     private boolean isFurnaceType() {
         if (level == null) return false;
-        return level.getBlockState(worldPosition).getBlock() == ModBlocks.FURNACE_KILN.get() ||
+        return level.getBlockState(worldPosition).getBlock() == ModBlocks.FORGE.get() ||
                level.getBlockState(worldPosition).getBlock() == ModBlocks.BLAST_FURNACE_KILN.get();
     }
 
@@ -289,7 +289,7 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
     private boolean meetsFurnaceEquivalentHighHeatGate() {
         if (isBlastFurnace()) return true;
         if (!isFurnaceType() && getTemperatureTier() >= 3) return true;
-        if (level != null && level.getBlockState(worldPosition).getBlock() == ModBlocks.FURNACE_KILN.get()) {
+        if (level != null && level.getBlockState(worldPosition).getBlock() == ModBlocks.FORGE.get()) {
             BlockState above = level.getBlockState(worldPosition.above());
             return above.is(ModBlocks.FURNACE_CHIMNEY.get()) || above.is(ModBlocks.CHIMNEY.get());
         }
@@ -314,7 +314,7 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
     /**
      * On furnace kiln, charcoal/coal path skips direct wrought outputs in favor of re-heating a bloom slab.
      */
-    private static boolean skipFurnaceKilnWroughtForBloomReheat(KilnBlockEntity entity, ItemStack kilnPeekResult) {
+    private static boolean skipForgeWroughtForBloomReheat(KilnBlockEntity entity, ItemStack kilnPeekResult) {
         if (!entity.isFurnaceType() || !entity.meetsFurnaceEquivalentHighHeatGate()) {
             return false;
         }
@@ -330,7 +330,7 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     /** Furnace/blast kiln: coke + raw iron at bloomery-grade heat yields vanilla iron ingots instead of wrought. */
-    private static ItemStack coerceFurnaceKilnWroughtMetalOutput(KilnBlockEntity entity, ItemStack kilnRecipeResultCopy) {
+    private static ItemStack coerceForgeWroughtMetalOutput(KilnBlockEntity entity, ItemStack kilnRecipeResultCopy) {
         if (!(entity.isFurnaceType()
                 && entity.meetsFurnaceEquivalentHighHeatGate()
                 && entity.hasCokeFuelAvailableOrBurning())) {
@@ -463,7 +463,7 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
 
         boolean isBurning = entity.fuelTime > 0;
         if (wasBurning != isBurning) {
-            // Support both kiln and furnace_kiln blocks updating LIT property
+            // Support both kiln and forge blocks updating LIT property
             if (blockState.hasProperty(com.torr.materia.KilnBlock.LIT)) {
                 level.setBlock(blockPos, blockState.setValue(com.torr.materia.KilnBlock.LIT, isBurning), 3);
             } else {
@@ -605,7 +605,7 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
             ItemStack kilnPeekResult = kilnRecipe.getResultItem(reg);
             boolean skipLowHeatWroughtClay = kilnPeekResult.getItem() == ModItems.WROUGHT_IRON_INGOT.get()
                     && !entity.meetsFurnaceEquivalentHighHeatGate();
-            boolean skipFurnaceBloom = skipFurnaceKilnWroughtForBloomReheat(entity, kilnPeekResult);
+            boolean skipFurnaceBloom = skipForgeWroughtForBloomReheat(entity, kilnPeekResult);
 
             if (!skipLowHeatWroughtClay && !skipFurnaceBloom) {
 
@@ -632,7 +632,7 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
                 if (!entity.meetsFurnaceEquivalentHighHeatGate()) return;
             }
             
-            // Check if bellows is required and present (furnace_kiln + chimney substitutes for wrought line only)
+            // Check if bellows is required and present (forge + chimney substitutes for wrought line only)
             if (kilnRecipe.requiresBellows() && !entity.hasBellows()) {
                 if (!furnaceKilnSkipsClayBellowsForWroughtLine(entity, kilnPeekResult)) {
                     return; // Can't craft without bellows
@@ -650,7 +650,7 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
                 }
             }
 
-            ItemStack result = coerceFurnaceKilnWroughtMetalOutput(entity, kilnRecipe.getResultItem(reg).copy());
+            ItemStack result = coerceForgeWroughtMetalOutput(entity, kilnRecipe.getResultItem(reg).copy());
 
             // In furnace types, never produce kiln nugget recipes except the wrought bloom nugget line
             boolean skipIronNuggetFurnaceBypass = entity.isFurnaceType()
@@ -846,7 +846,7 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
             ItemStack kilnPeekResult = kilnRecipe.getResultItem(reg);
             boolean skipLowHeatWroughtClay = kilnPeekResult.getItem() == ModItems.WROUGHT_IRON_INGOT.get()
                     && !entity.meetsFurnaceEquivalentHighHeatGate();
-            boolean skipFurnaceBloom = skipFurnaceKilnWroughtForBloomReheat(entity, kilnPeekResult);
+            boolean skipFurnaceBloom = skipForgeWroughtForBloomReheat(entity, kilnPeekResult);
 
             if (!skipLowHeatWroughtClay && !skipFurnaceBloom) {
 
@@ -881,7 +881,7 @@ public class KilnBlockEntity extends BlockEntity implements MenuProvider {
             }
             
             // In furnace types, skip generic kiln nugget recipes except wrought bloom nuggets
-            ItemStack insertionPreview = coerceFurnaceKilnWroughtMetalOutput(entity, kilnRecipe.getResultItem(reg).copy());
+            ItemStack insertionPreview = coerceForgeWroughtMetalOutput(entity, kilnRecipe.getResultItem(reg).copy());
             boolean skipIronNuggetFurnaceBypass = entity.isFurnaceType()
                     && isNuggetItem(insertionPreview.getItem())
                     && insertionPreview.getItem() != ModItems.WROUGHT_IRON_NUGGET.get();

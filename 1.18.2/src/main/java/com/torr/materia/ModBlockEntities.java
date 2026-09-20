@@ -34,7 +34,7 @@ public class ModBlockEntities {
         public static final RegistryObject<BlockEntityType<KilnBlockEntity>> KILN_BLOCK_ENTITY = BLOCK_ENTITIES
                         .register("kiln_block_entity", () -> BlockEntityType.Builder.of(KilnBlockEntity::new,
                                         ModBlocks.KILN.get(),
-                                        ModBlocks.FURNACE_KILN.get(),
+                                        ModBlocks.FORGE.get(),
                                         ModBlocks.BLAST_FURNACE_KILN.get()).build(null));
 
         public static final RegistryObject<BlockEntityType<OvenBlockEntity>> OVEN_BLOCK_ENTITY = BLOCK_ENTITIES

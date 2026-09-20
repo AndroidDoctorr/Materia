@@ -70,7 +70,8 @@ You want **three** things to agree: (1) the **aiming UI / reticle** (2) the **ca
 ## Progression & regressions (spot checks)
 
 - [ ] **Wood:** hewing → rough → smooth → nailed planks chain still behaves; modded **saw** routes (Create/FD) still acceptable for your pack philosophy.
-- [ ] **Kiln / furnace substitution:** `materia:furnace_kiln` path still reachable if overrides are on.
+- [ ] **Forge crafting:** `materia:forge` crafts from fire brick, bellows, and mortar.
+- [ ] **Vanilla furnace:** `minecraft:furnace` still crafts from cobblestone (not overridden).
 - [ ] **No recipe/datapack spam:** no duplicate-ID errors; fix pack list if both `recipes/` and `recipe/` ever conflict (mainly 1.21.1 build layout).
 
 ## Logs & polish

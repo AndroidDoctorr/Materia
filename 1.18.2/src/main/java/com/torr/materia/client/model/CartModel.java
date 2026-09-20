@@ -15,8 +15,7 @@ import net.minecraft.resources.ResourceLocation;
 /**
  * Cart hull + wheels in 1/16-block units (16 units = 1 block). Matches {@link CartEntity} footprint.
  * <p>
- * Wheels are authored at 1-block diameter so a 16×16 texture maps 1:1 to the disc face, then scaled
- * in {@link #setupAnim} to {@link CartEntity#WHEEL_RADIUS}.
+ * Wheels use a thin baked cuboid at {@link #WHEEL_PART_SCALE} × 1-block template (1.18.2 cannot cull cube faces).
  */
 public class CartModel extends EntityModel<CartEntity> {
 
@@ -37,17 +36,22 @@ public class CartModel extends EntityModel<CartEntity> {
     private static final float WALL_T = W * CartEntity.WALL_THICKNESS_FRACTION;
     private static final float INNER_L = L - 2.0F * WALL_T;
 
-    /** Template wheel diameter in model units — one block, matches a 16×16 wheel texture. */
+    /** Template wheel diameter — matches 1.20+ ({@link #WHEEL_PART_SCALE} applied when drawing). */
     private static final float WHEEL_MESH_D = U;
-    private static final float WHEEL_MESH_T = 2.0F;
+    private static final float WHEEL_MESH_T = 1.0F;
     private static final float WHEEL_MESH_HALF = WHEEL_MESH_D * 0.5F;
+    private static final float WHEEL_PART_SCALE = CartEntity.WHEEL_RADIUS * 2.0F;
+    /** Scaled wheel radius in model pixels (baked size; {@link ModelPart} divides by 16 when drawing). */
+    private static final float WHEEL_CUBE_RADIUS = WHEEL_MESH_HALF * WHEEL_PART_SCALE;
 
     private static final float WHEEL_D = CartEntity.WHEEL_RADIUS * 2.0F * U;
+
     /** Hull floor sits at wheel axle height (center of the disc). */
     private static final float BODY_BASE = WHEEL_D * 0.5F;
     private static final float WHEEL_Z_CENTER_FRONT = -HALF_L + WHEEL_D * 0.5F + 2.0F;
     private static final float WHEEL_Z_CENTER_BACK = HALF_L - WHEEL_D * 0.5F - 2.0F;
-    private static final float WHEEL_PART_SCALE = CartEntity.WHEEL_RADIUS * 2.0F;
+    /** How far past the hull side the wheel disc sits (model units). */
+    private static final float WHEEL_OUTWARD_OFFSET = 2.5F;
 
     private static final float DRAFT_ARM_LEN = 5.0F;
     private static final float DRAFT_ARM_W = 1.5F;
@@ -179,10 +183,11 @@ public class CartModel extends EntityModel<CartEntity> {
                 PartPose.ZERO);
 
         float halfAxle = WHEEL_MESH_T * 0.5F;
-        addWheel(root, "wheel_left_front", -HALF_W - halfAxle, WHEEL_Z_CENTER_FRONT, false);
-        addWheel(root, "wheel_left_back", -HALF_W - halfAxle, WHEEL_Z_CENTER_BACK, false);
-        addWheel(root, "wheel_right_front", HALF_W + halfAxle, WHEEL_Z_CENTER_FRONT, true);
-        addWheel(root, "wheel_right_back", HALF_W + halfAxle, WHEEL_Z_CENTER_BACK, true);
+        float wheelOut = halfAxle + WHEEL_OUTWARD_OFFSET;
+        addWheel(root, "wheel_left_front", -HALF_W - wheelOut, WHEEL_Z_CENTER_FRONT, false);
+        addWheel(root, "wheel_left_back", -HALF_W - wheelOut, WHEEL_Z_CENTER_BACK, false);
+        addWheel(root, "wheel_right_front", HALF_W + wheelOut, WHEEL_Z_CENTER_FRONT, true);
+        addWheel(root, "wheel_right_back", HALF_W + wheelOut, WHEEL_Z_CENTER_BACK, true);
 
         return LayerDefinition.create(mesh, TEX_W, TEX_H);
     }
@@ -191,13 +196,7 @@ public class CartModel extends EntityModel<CartEntity> {
         PartPose pose = faceOutward
                 ? PartPose.offsetAndRotation(centerX, BODY_BASE, centerZ, 0.0F, (float) Math.PI, 0.0F)
                 : PartPose.offset(centerX, BODY_BASE, centerZ);
-        root.addOrReplaceChild(
-                name,
-                CubeListBuilder.create()
-                        .texOffs(0, 0)
-                        .addBox(-WHEEL_MESH_T * 0.5F, -WHEEL_MESH_HALF, -WHEEL_MESH_HALF, WHEEL_MESH_T, WHEEL_MESH_D,
-                                WHEEL_MESH_D),
-                pose);
+        root.addOrReplaceChild(name, CubeListBuilder.create(), pose);
     }
 
     @Override
@@ -250,13 +249,15 @@ public class CartModel extends EntityModel<CartEntity> {
 
     public void renderWheels(com.mojang.blaze3d.vertex.PoseStack poseStack,
             com.mojang.blaze3d.vertex.VertexConsumer buffer, int packedLight, int packedOverlay) {
-        poseStack.pushPose();
-        poseStack.scale(WHEEL_PART_SCALE, WHEEL_PART_SCALE, WHEEL_PART_SCALE);
-        wheelLeftFront.render(poseStack, buffer, packedLight, packedOverlay);
-        wheelLeftBack.render(poseStack, buffer, packedLight, packedOverlay);
-        wheelRightFront.render(poseStack, buffer, packedLight, packedOverlay);
-        wheelRightBack.render(poseStack, buffer, packedLight, packedOverlay);
-        poseStack.popPose();
+        float radius = WHEEL_CUBE_RADIUS;
+        EntityPlaneRenderer.westDiscOnPart(poseStack, buffer, wheelLeftFront, packedLight, packedOverlay,
+                WHEEL_MESH_T, radius, 0, 0, TEX_W, TEX_H);
+        EntityPlaneRenderer.westDiscOnPart(poseStack, buffer, wheelLeftBack, packedLight, packedOverlay,
+                WHEEL_MESH_T, radius, 0, 0, TEX_W, TEX_H);
+        EntityPlaneRenderer.westDiscOnPart(poseStack, buffer, wheelRightFront, packedLight, packedOverlay,
+                WHEEL_MESH_T, radius, 0, 0, TEX_W, TEX_H);
+        EntityPlaneRenderer.westDiscOnPart(poseStack, buffer, wheelRightBack, packedLight, packedOverlay,
+                WHEEL_MESH_T, radius, 0, 0, TEX_W, TEX_H);
     }
 
     @Override

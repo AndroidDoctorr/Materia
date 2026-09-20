@@ -22,12 +22,12 @@ import net.minecraft.world.phys.BlockHitResult;
 import javax.annotation.Nullable;
 
 /**
- * A furnace-looking block that reuses kiln logic but is always considered
+ * A forge block that reuses kiln logic but is always considered
  * to have chimney and bellows by the kiln entity checks.
  */
-public class FurnaceKilnBlock extends com.torr.materia.KilnBlock {
+public class ForgeBlock extends com.torr.materia.KilnBlock {
 
-    public FurnaceKilnBlock(Properties properties) {
+    public ForgeBlock(Properties properties) {
         super(properties);
     }
 
@@ -61,7 +61,7 @@ public class FurnaceKilnBlock extends com.torr.materia.KilnBlock {
     }
     
     /**
-     * Handle interaction when player right-clicks furnace with steel pipe
+     * Handle interaction when player right-clicks forge with steel pipe
      */
     private InteractionResult handleSteelPipeInteraction(KilnBlockEntity kilnEntity, ItemStack pipeStack, Player player, boolean isShiftKeyDown) {
         var pipeCapOptional = pipeStack.getCapability(GlassPipeCapability.GLASS_PIPE_CAPABILITY);
@@ -77,7 +77,7 @@ public class FurnaceKilnBlock extends com.torr.materia.KilnBlock {
             return handleGlassBlowing(pipeCap, player);
         }
         
-        // Try to extract hot glass from furnace output slot (slot 2)
+        // Try to extract hot glass from forge output slot (slot 2)
         ItemStack outputStack = kilnItemHandler.getStackInSlot(2);
         
         if (outputStack.isEmpty()) {
@@ -142,5 +142,4 @@ public class FurnaceKilnBlock extends com.torr.materia.KilnBlock {
         return createTickerHelper(type, ModBlockEntities.KILN_BLOCK_ENTITY.get(), KilnBlockEntity::tick);
     }
 }
-
 

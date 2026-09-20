@@ -65,7 +65,7 @@ public class ClientSetup {
             MenuScreens.register(ModMenuTypes.OVEN_MENU.get(), OvenScreen::new);
             MenuScreens.register(ModMenuTypes.COKE_OVEN_MENU.get(), CokeOvenScreen::new);
             MenuScreens.register(ModMenuTypes.ADVANCED_KILN_MENU.get(), AdvancedKilnScreen::new);
-            MenuScreens.register(ModMenuTypes.FURNACE_KILN_MENU.get(), com.torr.materia.client.screen.FurnaceKilnScreen::new);
+            MenuScreens.register(ModMenuTypes.FORGE_MENU.get(), com.torr.materia.client.screen.ForgeScreen::new);
             MenuScreens.register(ModMenuTypes.BLAST_FURNACE_MENU.get(), com.torr.materia.client.screen.BlastFurnaceScreen::new);
             MenuScreens.register(ModMenuTypes.STONE_ANVIL_MENU.get(), com.torr.materia.client.screen.StoneAnvilScreen::new);
             MenuScreens.register(ModMenuTypes.BRONZE_ANVIL_MENU.get(), com.torr.materia.client.screen.BronzeAnvilScreen::new);

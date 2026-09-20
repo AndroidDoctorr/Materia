@@ -173,8 +173,8 @@ public class ModBlocks {
                         () -> new com.torr.materia.block.CokeOvenBlock(BlockBehaviour.Properties.of().strength(2.0f)
                                         .sound(SoundType.STONE).noOcclusion()
                                         .lightLevel(state -> state.getValue(BlockStateProperties.LIT) ? 13 : 0)));
-        public static final RegistryObject<Block> FURNACE_KILN = registerBlock("furnace_kiln",
-                        () -> new com.torr.materia.block.FurnaceKilnBlock(BlockBehaviour.Properties.of().strength(1.5f)
+        public static final RegistryObject<Block> FORGE = registerBlock("forge",
+                        () -> new com.torr.materia.block.ForgeBlock(BlockBehaviour.Properties.of().strength(1.5f)
                                         .sound(SoundType.STONE).noOcclusion()
                                         .lightLevel(state -> 13)));
         public static final RegistryObject<Block> BLAST_FURNACE_KILN = registerBlock("blast_furnace_kiln",

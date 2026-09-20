@@ -8,7 +8,7 @@ Kilns are the main “industrial heat” machines in Materia.
 
 <img src="../../shared/src/main/resources/assets/materia/textures/gui/kiln_tier2.png" alt="Advanced kiln GUI" width="512">
 
-<img src="../../shared/src/main/resources/assets/materia/textures/gui/furnace.png" alt="Furnace kiln GUI" width="512">
+<img src="../../shared/src/main/resources/assets/materia/textures/gui/furnace.png" alt="Forge GUI" width="512">
 
 <img src="../../shared/src/main/resources/assets/materia/textures/gui/blast_furnace.png" alt="Blast furnace kiln GUI" width="512">
 
@@ -17,7 +17,7 @@ Kilns are the main “industrial heat” machines in Materia.
 - **Kiln**: basic kiln behavior
 - **Kiln + chimney**: enables advanced kiln menu/recipes
 - **Kiln + chimney + bellows**: higher temperature tier for the hottest recipes
-- **Furnace kiln**: a kiln variant that uses a dedicated furnace-style menu
+- **Forge**: a kiln variant that uses a dedicated furnace-style menu
 - **Blast furnace kiln**: faster cooking time and behaves as if chimney is always present
 
 ## Fuel
@@ -34,7 +34,7 @@ In 1.18.2 implementation, the refined-iron advanced kiln recipe (which produces 
 - Requires **coal coke fuel**
 - Requires either:
   - a **blast furnace kiln**, or
-  - a **furnace kiln** with a **furnace chimney** above it
+  - a **forge** with a **furnace chimney** above it
 
 See:
 

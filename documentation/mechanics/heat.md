@@ -14,7 +14,7 @@ Source note: the tier ranges and “what smelts where” matrix below is derived
 | **Kiln** | 600–900 | Entry point for metalworking heat. Food burns to ash at this tier. |
 | **Kiln + chimney** | 700–1100 | Higher heat tier for iron/quicklime and more complete melting. |
 | **Kiln + chimney + bellows** | 900–1200 | High heat tier for refined iron smelting and clear glass. |
-| **Furnace kiln + chimney / blast-furnace kiln tier** | 1100+ | Highest tier (stone/glass/refined iron end of the scale). |
+| **Forge + chimney / blast-furnace kiln tier** | 1100+ | Highest tier (stone/glass/refined iron end of the scale). |
 
 Related pages:
 
@@ -88,7 +88,7 @@ The “tier table” above comes from `smelting_rules.csv`, but in the 1.18.2 im
 
 - Iron ingots are produced by an advanced kiln iron smelting recipe that requires:
   - **coal coke fuel**
-  - a **blast furnace kiln**, or a **furnace kiln** with a **furnace chimney**
+  - a **blast furnace kiln**, or a **forge** with a **furnace chimney**
 
 See: [Iron ingot](../content/items/iron-ingot.md)
 

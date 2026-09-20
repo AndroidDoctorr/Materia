@@ -1,5 +1,6 @@
 package com.torr.materia.menu;
 
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import com.torr.materia.ModMenuTypes;
 import com.torr.materia.blockentity.KilnBlockEntity;
 import com.torr.materia.utils.FuelHelper;
@@ -9,23 +10,22 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
 /**
- * Menu for the furnace-behaving kiln. Always behaves like an advanced kiln
+ * Menu for the forge. Always behaves like an advanced kiln
  * (dual input) and is skinned by a separate screen.
  */
-public class FurnaceKilnMenu extends AbstractContainerMenu {
+public class ForgeMenu extends AbstractContainerMenu {
     public final KilnBlockEntity blockEntity;
     private final ContainerData data;
 
-    public FurnaceKilnMenu(int windowId, Inventory inv, FriendlyByteBuf extraData) {
-        this(windowId, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(4));
+    public ForgeMenu(int windowId, Inventory inv, FriendlyByteBuf extraData) {
+        this(windowId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(4));
     }
 
-    public FurnaceKilnMenu(int windowId, Inventory inv, BlockEntity entity, ContainerData data) {
-        super(ModMenuTypes.FURNACE_KILN_MENU.get(), windowId);
+    public ForgeMenu(int windowId, Inventory inv, BlockEntity entity, ContainerData data) {
+        super(ModMenuTypes.FORGE_MENU.get(), windowId);
         checkContainerSize(inv, 4);
         this.blockEntity = (KilnBlockEntity) entity;
         this.data = data;
@@ -33,7 +33,7 @@ public class FurnaceKilnMenu extends AbstractContainerMenu {
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
-        this.blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
+        this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(handler -> {
             // Always expose two input slots like AdvancedKilnMenu
             this.addSlot(new SlotItemHandler(handler, 0, 47, 18));
             this.addSlot(new SlotItemHandler(handler, 3, 65, 18));
@@ -142,5 +142,3 @@ public class FurnaceKilnMenu extends AbstractContainerMenu {
         }
     }
 }
-
-

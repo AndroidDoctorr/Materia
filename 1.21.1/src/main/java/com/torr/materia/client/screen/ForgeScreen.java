@@ -2,7 +2,7 @@ package com.torr.materia.client.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.torr.materia.materia;
-import com.torr.materia.menu.FurnaceKilnMenu;
+import com.torr.materia.menu.ForgeMenu;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
@@ -10,10 +10,11 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
-public class FurnaceKilnScreen extends AbstractContainerScreen<FurnaceKilnMenu> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(materia.MOD_ID, "textures/gui/furnace.png");
+public class ForgeScreen extends AbstractContainerScreen<ForgeMenu> {
+    private static final ResourceLocation TEXTURE =
+            ResourceLocation.fromNamespaceAndPath(materia.MOD_ID, "textures/gui/furnace.png");
 
-    public FurnaceKilnScreen(FurnaceKilnMenu menu, Inventory inventory, Component component) {
+    public ForgeScreen(ForgeMenu menu, Inventory inventory, Component component) {
         super(menu, inventory, component);
     }
 
@@ -53,10 +54,8 @@ public class FurnaceKilnScreen extends AbstractContainerScreen<FurnaceKilnMenu> 
 
     @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float delta) {
-        renderBackground(graphics);
+        renderBackground(graphics, mouseX, mouseY, delta);
         super.render(graphics, mouseX, mouseY, delta);
         renderTooltip(graphics, mouseX, mouseY);
     }
 }
-
-

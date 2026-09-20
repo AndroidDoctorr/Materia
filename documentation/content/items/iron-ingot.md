@@ -23,7 +23,7 @@ Instead, iron ingots come from an advanced kiln recipe:
 Important gating:
 
 - Requires **coal coke as fuel** (`requires_coke_fuel: true`)
-- Runs only in a **blast furnace kiln**, or a **furnace kiln** with a **furnace chimney** above it
+- Runs only in a **blast furnace kiln**, or a **forge** with a **furnace chimney** above it
 
 Source of truth (1.18.2):
 

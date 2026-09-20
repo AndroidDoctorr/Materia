@@ -22,7 +22,7 @@ public class KilnJeiCategory implements IRecipeCategory<KilnRecipe> {
 
     public KilnJeiCategory(IGuiHelper guiHelper) {
         this.background = guiHelper.createBlankDrawable(150, 64);
-        this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ModBlocks.FURNACE_KILN.get()));
+        this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ModBlocks.FORGE.get()));
     }
 
     @Override

@@ -32,7 +32,7 @@ This section documents Materia blocks. Each block page should include:
 - [Kiln](kiln.md)
 - [Chimney (kiln upgrade)](chimney.md)
 - [Bellows (kiln upgrade)](bellows.md)
-- [Furnace kiln](furnace-kiln.md)
+- [Forge](forge.md)
 - [Furnace chimney](furnace-chimney.md)
 - [Blast furnace kiln](blast-furnace-kiln.md)
 - [Pot (empty)](pot.md)

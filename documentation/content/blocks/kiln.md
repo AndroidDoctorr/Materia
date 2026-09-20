@@ -10,7 +10,7 @@ Kilns are used to heat and process items. Some kiln outputs (especially metals) 
 
 There are also specialized kiln blocks:
 
-- Furnace kiln
+- Forge
 - Blast furnace kiln
 
 ## GUIs
@@ -33,13 +33,13 @@ Notes:
 
 - When a chimney is present, the kiln can expose **two inputs** for alloying / advanced recipes.
 
-### Furnace kiln
+### Forge
 
-<img src="../../../shared/src/main/resources/assets/materia/textures/gui/furnace.png" alt="Furnace kiln GUI" width="512">
+<img src="../../../shared/src/main/resources/assets/materia/textures/gui/furnace.png" alt="Forge GUI" width="512">
 
 Notes:
 
-- Furnace kilns always behave like a “two input” kiln menu.
+- Forges always behave like a “two input” kiln menu.
 
 ### Blast furnace kiln
 

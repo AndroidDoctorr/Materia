@@ -2,7 +2,7 @@
     "type": "minecraft:crafting_shapeless",
     "ingredients": [
         {
-            "item": "materia:furnace_kiln"
+            "item": "minecraft:furnace"
         },
         {
             "item": "minecraft:minecart"

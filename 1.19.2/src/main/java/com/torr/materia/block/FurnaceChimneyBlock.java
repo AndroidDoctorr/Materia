@@ -9,8 +9,8 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.RandomSource;
 
 /**
- * Chimney block that can be placed on top of furnaces to enable stone smelting.
- * Only works with furnace blocks, not kilns.
+ * Chimney block that can be placed on top of forges to enable stone smelting.
+ * Only works with forge blocks, not kilns.
  */
 public class FurnaceChimneyBlock extends Block {
 
@@ -19,19 +19,19 @@ public class FurnaceChimneyBlock extends Block {
     }
 
     /**
-     * Check if this chimney is placed on top of a furnace
+     * Check if this chimney is placed on top of a forge
      */
     public static boolean isOnFurnace(Level level, BlockPos chimneyPos) {
         BlockPos furnacePos = chimneyPos.below();
-        return level.getBlockState(furnacePos).is(ModBlocks.FURNACE_KILN.get());
+        return level.getBlockState(furnacePos).is(ModBlocks.FORGE.get());
     }
 
     /**
-     * Get the furnace block below this chimney, or null if not on a furnace
+     * Get the forge block below this chimney, or null if not on a forge
      */
     public static BlockPos getFurnaceBelow(Level level, BlockPos chimneyPos) {
         BlockPos furnacePos = chimneyPos.below();
-        if (level.getBlockState(furnacePos).is(ModBlocks.FURNACE_KILN.get())) {
+        if (level.getBlockState(furnacePos).is(ModBlocks.FORGE.get())) {
             return furnacePos;
         }
         return null;
@@ -40,7 +40,7 @@ public class FurnaceChimneyBlock extends Block {
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
         if (isOnFurnace(level, pos)) {
-            // Add smoke particles when placed on an active furnace
+            // Add smoke particles when placed on an active forge
             BlockPos furnacePos = pos.below();
             BlockState furnaceState = level.getBlockState(furnacePos);
             

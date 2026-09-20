@@ -14,7 +14,7 @@ This mod adds a large number of recipes and custom crafting systems. Using **JEI
 
 ## JEI catalysts (what to click in JEI)
 
-- Kiln: **Furnace kiln**
+- Kiln: **Forge**
 - Advanced kiln: **Blast furnace kiln**
 - Stone / Bronze / Iron anvil: their corresponding blocks
 - Hewing: rough planks (used as a quick entry point)

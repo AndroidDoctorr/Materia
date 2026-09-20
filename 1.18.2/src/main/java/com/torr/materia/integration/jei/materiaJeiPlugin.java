@@ -219,7 +219,7 @@ public class materiaJeiPlugin implements IModPlugin {
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.FURNACE_KILN.get()), materiaJeiRecipeTypes.KILN);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.FORGE.get()), materiaJeiRecipeTypes.KILN);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.BLAST_FURNACE_KILN.get()), materiaJeiRecipeTypes.ADVANCED_KILN);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.OVEN.get()), materiaJeiRecipeTypes.OVEN);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.COKE_OVEN.get()), materiaJeiRecipeTypes.COKE_OVEN);

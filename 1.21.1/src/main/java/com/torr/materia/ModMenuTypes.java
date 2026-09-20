@@ -6,7 +6,7 @@ import com.torr.materia.menu.KilnMenu;
 import com.torr.materia.menu.OvenMenu;
 import com.torr.materia.menu.CokeOvenMenu;
 import com.torr.materia.menu.AdvancedKilnMenu;
-import com.torr.materia.menu.FurnaceKilnMenu;
+import com.torr.materia.menu.ForgeMenu;
 import com.torr.materia.menu.BlastFurnaceMenu;
 import com.torr.materia.menu.AmphoraMenu;
 import net.minecraft.world.inventory.MenuType;
@@ -37,8 +37,8 @@ public class ModMenuTypes {
     public static final RegistryObject<MenuType<AdvancedKilnMenu>> ADVANCED_KILN_MENU =
             MENUS.register("advanced_kiln_menu", () -> IForgeMenuType.create(AdvancedKilnMenu::new));
     
-    public static final RegistryObject<MenuType<FurnaceKilnMenu>> FURNACE_KILN_MENU =
-            MENUS.register("furnace_kiln_menu", () -> IForgeMenuType.create(FurnaceKilnMenu::new));
+    public static final RegistryObject<MenuType<ForgeMenu>> FORGE_MENU =
+            MENUS.register("forge_menu", () -> IForgeMenuType.create(ForgeMenu::new));
     
     public static final RegistryObject<MenuType<BlastFurnaceMenu>> BLAST_FURNACE_MENU =
             MENUS.register("blast_furnace_menu", () -> IForgeMenuType.create(BlastFurnaceMenu::new));

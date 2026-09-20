@@ -463,17 +463,17 @@ Iron smelting requires **coal coke fuel**.
 
 See: [Coal coke](../content/items/coal-coke.md)
 
-##### 2) Build a high-heat kiln (furnace kiln + furnace chimney) or a blast furnace kiln
+##### 2) Build a high-heat kiln (forge + furnace chimney) or a blast furnace kiln
 
 Iron smelting does **not** run on a basic kiln.
 
-Option A (furnace kiln):
+Option A (forge):
 
-- Furnace kiln (overrides vanilla furnace recipe):
-  - `shared/src/main/resources/data/minecraft/recipes/furnace.json`
+- Forge:
+  - `shared/src/main/resources/data/materia/recipes/forge.json`
 - Furnace chimney:
   - `shared/src/main/resources/data/materia/recipes/furnace_chimney.json`
-- Place the furnace chimney **directly above** the furnace kiln.
+- Place the furnace chimney **directly above** the forge.
 
 Option B (blast furnace kiln):
 
