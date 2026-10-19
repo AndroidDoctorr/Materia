@@ -646,6 +646,9 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
                 forward.z * DRIVER_FORWARD_OFFSET);
     }
 
+    /** Extra height for the driving pose on 1.21+ attachment-based positioning. */
+    private static final double CART_DRIVER_ATTACHMENT_Y_BOOST = 0.5D;
+
     /** Blocks to drop the rider onto the cart bed surface when lying down. */
     private static final double CART_SLEEP_BODY_LIFT = 0.22D;
     /** Blocks from the driving seat toward the bed (opposite cart forward). */
@@ -741,6 +744,16 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
     }
 
     @Override
+    protected Vec3 getPassengerAttachmentPoint(Entity passenger, EntityDimensions dimensions, float scale) {
+        if (passenger instanceof Player player && !CartSleepHandler.shouldSkipPassengerPositioning(player)
+                && !isCartPetPassenger(passenger)) {
+            Vec3 seat = this.getPassengerSeatOffset();
+            return new Vec3(seat.x, this.getPassengersRidingOffset() + CART_DRIVER_ATTACHMENT_Y_BOOST, seat.z);
+        }
+        return super.getPassengerAttachmentPoint(passenger, dimensions, scale);
+    }
+
+    @Override
     protected void positionRider(Entity passenger, MoveFunction callback) {
         if (isCartPetPassenger(passenger)) {
             this.positionPetRider(passenger, callback);
@@ -750,9 +763,7 @@ public class CartEntity extends Boat implements HasCustomInventoryScreen, Contai
             this.positionSleepingRider(passenger, callback);
             return;
         }
-        Vec3 seat = this.getPassengerSeatOffset();
-        super.positionRider(passenger, (entity, x, y, z) ->
-                callback.accept(entity, x + seat.x, y, z + seat.z));
+        super.positionRider(passenger, callback);
     }
 
     @Override

@@ -62,6 +62,7 @@
     "block.materia.beer_pot": "Beer Pot",
     "block.materia.tea_pot": "Tea Pot",
     "message.materia.pot.not_empty": "This pot is not empty",
+    "message.materia.vanilla_furnace_disabled": "This furnace cannot smelt. Use a Materia forge instead.",
     "block.materia.wild_wisteria_vine": "Wild Wisteria Vine",
     "item.materia.wild_wisteria_vine": "Wild Wisteria Vine",
     "block.materia.sapped_spruce_log": "Sapped Spruce Log",

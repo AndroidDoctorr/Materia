@@ -2,7 +2,7 @@
 
 The forge is Materia's high-heat smelting block with its own GUI. It replaces the old furnace-kiln lookalike with a distinct block and textures.
 
-Vanilla `minecraft:furnace` remains a normal craftable block (cobblestone recipe) for mod compatibility.
+Vanilla `minecraft:furnace` remains craftable (cobblestone recipe) for mod compatibility, but Materia disables smelting in it—use the forge for heat processing.
 
 ## GUI
 

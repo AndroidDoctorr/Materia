@@ -25,6 +25,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
@@ -245,6 +246,11 @@ public class ChariotEntity extends Boat {
         return (double) (RENDER_Y_OFFSET + WHEEL_RADIUS + HEIGHT - 0.50F);
     }
 
+    @Override
+    public boolean shouldRiderSit() {
+        return false;
+    }
+
     protected float getSinglePassengerXOffset() {
         return 0.0F;
     }
@@ -266,14 +272,21 @@ public class ChariotEntity extends Boat {
     }
 
     @Override
+    protected Vec3 getPassengerAttachmentPoint(Entity passenger, EntityDimensions dimensions, float scale) {
+        if (passenger instanceof Player) {
+            Vec3 forward = this.getForward();
+            float along = this.getPassengerForwardOffset(passenger);
+            return new Vec3(forward.x * along, this.getPassengersRidingOffset(), forward.z * along);
+        }
+        return super.getPassengerAttachmentPoint(passenger, dimensions, scale);
+    }
+
+    @Override
     protected void positionRider(Entity passenger, MoveFunction callback) {
         if (!(passenger instanceof Player)) {
             return;
         }
-        Vec3 forward = this.getForward();
-        float along = this.getPassengerForwardOffset(passenger);
-        super.positionRider(passenger, (entity, x, y, z) ->
-                callback.accept(entity, x + forward.x * along, y, z + forward.z * along));
+        super.positionRider(passenger, callback);
     }
 
     @Override

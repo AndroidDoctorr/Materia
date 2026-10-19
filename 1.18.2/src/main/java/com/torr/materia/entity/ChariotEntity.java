@@ -232,6 +232,11 @@ public class ChariotEntity extends Boat {
         return (double) (RENDER_Y_OFFSET + WHEEL_RADIUS + HEIGHT - 0.50F);
     }
 
+    @Override
+    public boolean shouldRiderSit() {
+        return false;
+    }
+
     protected float getSinglePassengerXOffset() {
         return 0.0F;
     }
